@@ -770,7 +770,7 @@ Existem várias maneiras de criar uma matriz como utilizando o comando <em>matri
 ## [5,]    5   10</code></pre>
 <p>Podemos utilizar também o argumento <em>byrow=</em>, que, diferente do exemplo acima, preenchem as tabelas por linhas.</p>
 <div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="vamos-ao-que-interesa.html#cb79-1" aria-hidden="true" tabindex="-1"></a>p<span class="ot">&lt;-</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span> <span class="co"># cria um vetor de 1 a 10</span></span>
-<span id="cb79-2"><a href="vamos-ao-que-interesa.html#cb79-2" aria-hidden="true" tabindex="-1"></a>p_matriz1<span class="ot">&lt;-</span><span class="fu">matrix</span>(o,<span class="at">nrow=</span><span class="dv">5</span>,<span class="at">byrow=</span>T)<span class="co"># Organiza o vetor 0 e 5 colunas</span></span>
+<span id="cb79-2"><a href="vamos-ao-que-interesa.html#cb79-2" aria-hidden="true" tabindex="-1"></a>p_matriz1<span class="ot">&lt;-</span><span class="fu">matrix</span>(o,<span class="at">nrow=</span><span class="dv">5</span>,<span class="at">byrow=</span>T)<span class="co"># Organiza o vetor &quot;o&quot; e 5 colunas</span></span>
 <span id="cb79-3"><a href="vamos-ao-que-interesa.html#cb79-3" aria-hidden="true" tabindex="-1"></a>p_matriz1; o_matriz2 <span class="co"># compare os 2 modos</span></span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    1    2
@@ -784,7 +784,7 @@ Existem várias maneiras de criar uma matriz como utilizando o comando <em>matri
 ## [3,]    3    8
 ## [4,]    4    9
 ## [5,]    5   10</code></pre>
-<p>As dimensões de uma matriz pode ser acessado através do comando <em>dim()</em>:</p>
+<p>As dimensões de uma matriz podem ser acessadas através do comando <em>dim()</em>:</p>
 <div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="vamos-ao-que-interesa.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(o_matriz1);<span class="fu">dim</span>(o_matriz2) <span class="co"># Leia o o resultado como linha e coluna</span></span></code></pre></div>
 <pre><code>## [1] 2 5</code></pre>
 <pre><code>## [1] 5 2</code></pre>

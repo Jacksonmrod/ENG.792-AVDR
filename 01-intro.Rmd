@@ -372,11 +372,11 @@ Podemos utilizar também o argumento _byrow=_, que, diferente do exemplo acima, 
 
 ```{r matriz_byrow, echo=T}
 p<-1:10 # cria um vetor de 1 a 10
-p_matriz1<-matrix(o,nrow=5,byrow=T)# Organiza o vetor 0 e 5 colunas
+p_matriz1<-matrix(o,nrow=5,byrow=T)# Organiza o vetor "o" e 5 colunas
 p_matriz1; o_matriz2 # compare os 2 modos
 
 ```
-As dimensões de uma matriz pode ser acessado através do comando _dim()_:
+As dimensões de uma matriz podem ser acessadas através do comando _dim()_:
 ```{r matriz_dim, echo=T}
 dim(o_matriz1);dim(o_matriz2) # Leia o o resultado como linha e coluna
 
