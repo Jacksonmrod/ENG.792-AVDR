@@ -494,4 +494,4 @@ Veja que há uma grande quantidade de objeto lá. Agora execute o comando abaixo
 rm(list=ls())
 ```
 
-Voilà! Sumiu tudo.  
+Voilà! Sumiu tudo.
