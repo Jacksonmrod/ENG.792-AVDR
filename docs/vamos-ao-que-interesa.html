@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 2 Vamos ao que interesa | ENG 792 - Análise e visualização de dados com R (RStudio)</title>
+  <meta name="description" content="Este é o material de supporte aos alunos matriculados na disciplina ENG 792 ofertada pelo programa de pós-gradução em Meteorologia Aplicada do Departamento de Engenharia Agrícola (DEA) da Universidade Federal de Viçosa (UFV)." />
+  <meta name="generator" content="bookdown 0.22.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 2 Vamos ao que interesa | ENG 792 - Análise e visualização de dados com R (RStudio)" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Este é o material de supporte aos alunos matriculados na disciplina ENG 792 ofertada pelo programa de pós-gradução em Meteorologia Aplicada do Departamento de Engenharia Agrícola (DEA) da Universidade Federal de Viçosa (UFV)." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 2 Vamos ao que interesa | ENG 792 - Análise e visualização de dados com R (RStudio)" />
+  
+  <meta name="twitter:description" content="Este é o material de supporte aos alunos matriculados na disciplina ENG 792 ofertada pelo programa de pós-gradução em Meteorologia Aplicada do Departamento de Engenharia Agrícola (DEA) da Universidade Federal de Viçosa (UFV)." />
+  
+
+<meta name="author" content="Jackson Rodrigues" />
+
+
+<meta name="date" content="2021-08-10" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">ENG_792-AVDR</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Apresentação</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#hello-world---sejam-bem-vindos"><i class="fa fa-check"></i><b>1.1</b> Hello World! - Sejam Bem Vindos!</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#sobre"><i class="fa fa-check"></i><b>1.1.1</b> Sobre</a></li>
+<li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#utilização"><i class="fa fa-check"></i><b>1.1.2</b> Utilização</a></li>
+<li class="chapter" data-level="1.1.3" data-path="index.html"><a href="index.html#códigos-e-dados"><i class="fa fa-check"></i><b>1.1.3</b> Códigos e Dados</a></li>
+<li class="chapter" data-level="1.1.4" data-path="index.html"><a href="index.html#cronograma-de-aulas"><i class="fa fa-check"></i><b>1.1.4</b> Cronograma de aulas</a></li>
+<li class="chapter" data-level="1.1.5" data-path="index.html"><a href="index.html#métodos-de-avaliação"><i class="fa fa-check"></i><b>1.1.5</b> Métodos de avaliação</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="vamos-ao-que-interesa.html"><a href="vamos-ao-que-interesa.html"><i class="fa fa-check"></i><b>2</b> Vamos ao que interesa</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="vamos-ao-que-interesa.html"><a href="vamos-ao-que-interesa.html#conhecendo-o-r"><i class="fa fa-check"></i><b>2.1</b> Conhecendo o R</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="vamos-ao-que-interesa.html"><a href="vamos-ao-que-interesa.html#o-que-é-o-r"><i class="fa fa-check"></i><b>2.1.1</b> O que é o R?</a></li>
+<li class="chapter" data-level="2.1.2" data-path="vamos-ao-que-interesa.html"><a href="vamos-ao-que-interesa.html#instalação-do-r"><i class="fa fa-check"></i><b>2.1.2</b> Instalação do R</a></li>
+<li class="chapter" data-level="2.1.3" data-path="vamos-ao-que-interesa.html"><a href="vamos-ao-que-interesa.html#primeiro-contato"><i class="fa fa-check"></i><b>2.1.3</b> Primeiro contato</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="vamos-ao-que-interesa.html"><a href="vamos-ao-que-interesa.html#como-r-funciona"><i class="fa fa-check"></i><b>2.2</b> Como R funciona</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="vamos-ao-que-interesa.html"><a href="vamos-ao-que-interesa.html#tipos-de-objetos"><i class="fa fa-check"></i><b>2.2.1</b> Tipos de objetos</a></li>
+<li class="chapter" data-level="2.2.2" data-path="vamos-ao-que-interesa.html"><a href="vamos-ao-que-interesa.html#estrutura-do-objetos"><i class="fa fa-check"></i><b>2.2.2</b> Estrutura do objetos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">ENG 792 - Análise e visualização de dados com R (RStudio)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="vamos-ao-que-interesa" class="section level1" number="2">
+<h1><span class="header-section-number">Capítulo 2</span> Vamos ao que interesa</h1>
+<div id="conhecendo-o-r" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Conhecendo o R</h2>
+<div id="o-que-é-o-r" class="section level3" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> O que é o R?</h3>
+<p>É uma linguagem de programação voltada para resolução de problemas estatísticos, tratamento e visualização de dados.</p>
+<p>Para <span class="citation"><a href="#ref-RogerPeng2020RPro" role="doc-biblioref">Peng</a> (<a href="#ref-RogerPeng2020RPro" role="doc-biblioref">2020</a>)</span> essa resposta é simples, “<em>R é um dialeto do S</em>.”</p>
+<p>De acordo com <span class="citation"><a href="#ref-perlin2018processamento" role="doc-biblioref">Perlin</a> (<a href="#ref-perlin2018processamento" role="doc-biblioref">2018</a>)</span> <em>O código base do R foi inicialmente criado no laboratório da Bell/ AT&amp; T por John Chambers e seus colegas, com base na linguagem S. Esse código foi reaproveitado por dois acadêmicos, Ross Ihaka e Robert Gentleman, resultando na plataforma de programação que temos hoje. Para os curiosos, o nome R foi escolhido devido ao compartilhamento da primeira letra do nome de seus criadores.</em></p>
+<p><img src="Cap_1_Ross_Robert%20R.jpg" id="id" class="class" style="width:70.0%;height:70.0%" /></p>
+<p>O R está em constante desenvolvimento por um grupo chamado <a href="https://www.r-project.org/">R Team Core</a> e conta com colaboração gratuita de centenas de milhares de usuários e desenvolvedores ao redor do mundo.
+Por isso, atualmente o R é utilizado por diversas áreas do conhecimento variando das ciências humanas até exatas, naquelas ciências que poderíamos imaginar pouco ou nada relacionadas. Por isso não se limite a procurar informações apenas no sei nicho, abra sua mente e busque aprender de outras ciências também. Eu, particularmente, busco muita coisa na econometria. embora presente em todo tipo de livro sobre R, asta citação acima (<span class="citation"><a href="#ref-perlin2018processamento" role="doc-biblioref">Perlin</a> (<a href="#ref-perlin2018processamento" role="doc-biblioref">2018</a>)</span>) é de um livro de econometria. Veremos mais conteúdos desse material em breve.</p>
+<p>R é um software livre de análise de dados (não só estatística) que funciona em diversos sistemas operacionais: GNU Linux, MicrosoftWindows, Mac OS X e outros.</p>
+<p>O aprendizado do R é difícil no início devido à necessidade de se adaptar à sua lógica de funcionamento, se acostumar com a estrutura dos seus documentos de ajuda e memorizar alguns comandos básicos.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="vamos-ao-que-interesa.html#cb1-1" aria-hidden="true" tabindex="-1"></a>eq <span class="ot">=</span> <span class="cf">function</span>(x){x<span class="sc">*</span>x}</span>
+<span id="cb1-2"><a href="vamos-ao-que-interesa.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">eq</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>), <span class="at">type=</span><span class="st">&quot;l&quot;</span>,<span class="at">lwd=</span><span class="dv">3</span>,<span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;Tempo&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;Aprendizado&quot;</span>, <span class="at">main=</span><span class="st">&quot;Curva de Aprendizado&quot;</span>)</span></code></pre></div>
+<p><img src="ENG_792-AVDR_files/figure-html/CurvaR-1.png" width="672" /></p>
+<p>É preciso bastante perseverança e motivação para aprender os comandos básicos, e disposição para ler as páginas de ajuda e os manuais.
+Entretanto, depois de um certo tempo, ele possibilita que se trabalhe com grande produtividade e, o que é mais importante, eficácia e independência.</p>
+<p>Leia também sobre o <a href="https://www.r-bloggers.com/2021/07/the-myth-of-the-r-learning-curve/">mito da curva de aprendizado do R</a>.</p>
+</div>
+<div id="instalação-do-r" class="section level3" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> Instalação do R</h3>
+<p>O <strong>R</strong> é um software gratuito para análises estatísticas e além. Pode ser baixado de <a href="https://www.r-project.org/">The R Project for Statistical Computing</a>.</p>
+<p>Clique em <strong>download R</strong>.<br />
+<img src="Cap_1_Pagina_R.jpg" id="id" class="class" style="width:90.0%;height:90.0%" /></p>
+<p>Escolha o <em>“espelho”</em>.Escolha o mais próximo de você.<br />
+<img src="Cap_1_Pagina_R_MIrror.jpg" id="id" class="class" style="width:90.0%;height:90.0%" /></p>
+<p>Escolha o seu sistema operacional. Caso você seja usuário de windows clique em <strong>Download R for Windows</strong> em seguinda em <strong>install R for the first time</strong> e finalmente em <strong>Download R 4.1.0 for Windows</strong>. Veja que no momento que este tutorial foi feito a versdão mais recente é a 4.1.0. No vídeo abaixo a versão é uma anterior, mas a lógica é a mesma.<br />
+<img src="Cap_1_Pagina_R_sistema_operacional.jpg" id="id" class="class" style="width:90.0%;height:90.0%" /></p>
+<p><a href="https://sites.google.com/d/1eCt5C338czwUdwb5R-3k98vHFdf5LFC7/p/1l-WXVHDr8j6cYk-iTSYBaFN7mTesOmQl/edit">clique aqui</a> para assistir ao vídeo de instalação do R e RStudio no windows</p>
+<p>Eu não tenho um sistema operacional de cada para mostrar a instalação, por isso deixo este vídeo para <a href="https://www.youtube.com/watch?v=np2-FIgzpTg&amp;ab_channel=AutoDeeDucks">instalação no linux</a> e este para <a href="https://www.youtube.com/watch?v=LanBozXJjOk&amp;ab_channel=DataSciencewithTom">instalação no mac</a>. Caso você não consiga instalar me procure.</p>
+</div>
+<div id="primeiro-contato" class="section level3" number="2.1.3">
+<h3><span class="header-section-number">2.1.3</span> Primeiro contato</h3>
+<p><img src="Cap_1_ET-dedo.jpg" id="id" class="class" style="width:50.0%;height:50.0%" /></p>
+<p>Temos 1 arquivo .csv com mais de 50.000 linhas referentes a transações de venda de diamantes dividida em 3 colunas <em>clarity</em>, <em>carat</em> e <em>price</em>. Quanto mais claro mais caro, certo? Ou há sub ou super valorização? Vamos investigar se essa relação é verdadeira.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="vamos-ao-que-interesa.html#cb2-1" aria-hidden="true" tabindex="-1"></a>mydata<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_1_P2-Mispriced-Diamonds.csv&quot;</span>)</span>
+<span id="cb2-2"><a href="vamos-ao-que-interesa.html#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="vamos-ao-que-interesa.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;ggplot2&quot;</span>)</span>
+<span id="cb2-4"><a href="vamos-ao-que-interesa.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>mydata, <span class="fu">aes</span>(<span class="at">x=</span>carat, <span class="at">y=</span>price))<span class="sc">+</span> </span>
+<span id="cb2-5"><a href="vamos-ao-que-interesa.html#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="ENG_792-AVDR_files/figure-html/Exemplo_1-1.png" width="672" />
+Faz algum sentido. Mas temos pontos que não são estatisticamente significantes à direita, então vamos fazer uma limpeza, vamos mexer na transparência.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="vamos-ao-que-interesa.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>mydata, <span class="fu">aes</span>(<span class="at">x=</span>carat, <span class="at">y=</span>price, <span class="at">colour=</span>clarity))<span class="sc">+</span> </span>
+<span id="cb3-2"><a href="vamos-ao-que-interesa.html#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="ENG_792-AVDR_files/figure-html/Exemplo_1.2-1.png" width="672" /></p>
+<p>Vamos nos livrar dos pontos não significativos, aqueles que são <em>carat</em> menores que 2.5.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="vamos-ao-que-interesa.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>mydata,</span>
+<span id="cb4-2"><a href="vamos-ao-que-interesa.html#cb4-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>carat, <span class="at">y=</span>price, <span class="at">colour=</span>clarity))<span class="sc">+</span></span>
+<span id="cb4-3"><a href="vamos-ao-que-interesa.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.1</span>) </span></code></pre></div>
+<p><img src="ENG_792-AVDR_files/figure-html/Exemplo_1.3-1.png" width="672" /></p>
+<p><strong>brown</strong> é a melhor claridade, vejam que temos mispricing onde as linhas se cruzam.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="vamos-ao-que-interesa.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>mydata[mydata<span class="sc">$</span>carat<span class="sc">&lt;</span><span class="fl">2.5</span>,],</span>
+<span id="cb5-2"><a href="vamos-ao-que-interesa.html#cb5-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>carat, <span class="at">y=</span>price, <span class="at">colour=</span>clarity))<span class="sc">+</span></span>
+<span id="cb5-3"><a href="vamos-ao-que-interesa.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb5-4"><a href="vamos-ao-que-interesa.html#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code></pre></div>
+<pre><code>## `geom_smooth()` using method = &#39;gam&#39; and formula &#39;y ~ s(x, bs = &quot;cs&quot;)&#39;</code></pre>
+<p><img src="ENG_792-AVDR_files/figure-html/Exemplo_1.4-1.png" width="672" /></p>
+<p>Executando o código abaixo você produzirá uma Modelo Digital do Terreno em 3D em uma janela <strong>pop up</strong> do pacote <a href="https://www.rayshader.com/">rayshader</a>.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="vamos-ao-que-interesa.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rayrender)</span>
+<span id="cb7-2"><a href="vamos-ao-que-interesa.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rayshader)</span>
+<span id="cb7-3"><a href="vamos-ao-que-interesa.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
+<span id="cb7-4"><a href="vamos-ao-que-interesa.html#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="vamos-ao-que-interesa.html#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Here, I load a map with the raster package.</span></span>
+<span id="cb7-6"><a href="vamos-ao-que-interesa.html#cb7-6" aria-hidden="true" tabindex="-1"></a>loadzip <span class="ot">=</span> <span class="fu">tempfile</span>() </span>
+<span id="cb7-7"><a href="vamos-ao-que-interesa.html#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(<span class="st">&quot;https://tylermw.com/data/dem_01.tif.zip&quot;</span>, loadzip)</span>
+<span id="cb7-8"><a href="vamos-ao-que-interesa.html#cb7-8" aria-hidden="true" tabindex="-1"></a>localtif <span class="ot">=</span> raster<span class="sc">::</span><span class="fu">raster</span>(<span class="fu">unzip</span>(loadzip, <span class="st">&quot;dem_01.tif&quot;</span>))</span>
+<span id="cb7-9"><a href="vamos-ao-que-interesa.html#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">unlink</span>(loadzip)</span>
+<span id="cb7-10"><a href="vamos-ao-que-interesa.html#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="vamos-ao-que-interesa.html#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">#And convert it to a matrix:</span></span>
+<span id="cb7-12"><a href="vamos-ao-que-interesa.html#cb7-12" aria-hidden="true" tabindex="-1"></a>elmat <span class="ot">=</span> <span class="fu">raster_to_matrix</span>(localtif)</span>
+<span id="cb7-13"><a href="vamos-ao-que-interesa.html#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="vamos-ao-que-interesa.html#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co">#We use another one of rayshader&#39;s built-in textures:</span></span>
+<span id="cb7-15"><a href="vamos-ao-que-interesa.html#cb7-15" aria-hidden="true" tabindex="-1"></a>elmat <span class="sc">%&gt;%</span></span>
+<span id="cb7-16"><a href="vamos-ao-que-interesa.html#cb7-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sphere_shade</span>(<span class="at">texture =</span> <span class="st">&quot;desert&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-17"><a href="vamos-ao-que-interesa.html#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_water</span>(<span class="fu">detect_water</span>(elmat), <span class="at">color =</span> <span class="st">&quot;desert&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-18"><a href="vamos-ao-que-interesa.html#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_3d</span>(elmat, <span class="at">zscale =</span> <span class="dv">10</span>, <span class="at">fov =</span> <span class="dv">0</span>, <span class="at">theta =</span> <span class="dv">60</span>, <span class="at">zoom =</span> <span class="fl">0.75</span>, <span class="at">phi =</span> <span class="dv">45</span>, <span class="at">windowsize =</span> <span class="fu">c</span>(<span class="dv">1000</span>, <span class="dv">800</span>))</span></code></pre></div>
+<p><img src="Cap_1_rayshader.jpeg" /></p>
+<p>Agora vamos adicionar mais algumas infromações como escala e Norte.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="vamos-ao-que-interesa.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">render_scalebar</span>(<span class="at">limits=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">10</span>),<span class="at">label_unit =</span> <span class="st">&quot;km&quot;</span>,<span class="at">position =</span> <span class="st">&quot;W&quot;</span>, <span class="at">y=</span><span class="dv">50</span>,<span class="at">scale_length =</span> <span class="fu">c</span>(<span class="fl">0.33</span>,<span class="dv">1</span>))</span>
+<span id="cb8-2"><a href="vamos-ao-que-interesa.html#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="vamos-ao-que-interesa.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">render_compass</span>(<span class="at">position =</span> <span class="st">&quot;E&quot;</span>)</span>
+<span id="cb8-4"><a href="vamos-ao-que-interesa.html#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.sleep</span>(<span class="fl">0.2</span>)</span>
+<span id="cb8-5"><a href="vamos-ao-que-interesa.html#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">render_highquality</span>(<span class="at">samples=</span><span class="dv">200</span>, <span class="at">scale_text_size =</span> <span class="dv">24</span>,<span class="at">clear=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<p><img src="Cap_1_rayshader2.jpeg" id="id" class="class" style="width:120.0%;height:120.0%" /></p>
+</div>
+</div>
+<div id="como-r-funciona" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Como R funciona</h2>
+<p>Diferentemente de outras linguagens, todos os comandos escritos são diretamente executados, desta forma o R não precisa de um compilador para executar os comandos como Fortran. Por isso, torna-se uma linguagem muito mais amigável e acessível para não programadores.</p>
+<p>A linguagem é muito intuitiva (quase uma sintaxe lógica). Por exemplo uma regressão linear pode ser executada como <em>lm(x~y)</em> ( <em><em>lm</em></em> vem de <em><em>linear model</em></em>). Como no exemplo do modelo linear acima, sempre que formos executar um comando temos que seguir da seguinte forma <em><em>função(dados e demais ajustes ou parâmetros)</em></em>, ou seja chame a função e coloque o resto dentro de parênteses.</p>
+<p>Como dito anteriormente em aula, tudo que é executado pelo R fica armazenado na memória ativa (RAM) do computador na forma de objetos que possuem um nome. Os objetos, que variam em tipos e estruturas, podem ser funções criadas pelo próprio usuário, dados criados ou importados de uma memória, expressões e etc. Antes de entrarmos em detalhes sobre funções ou expressões, vamos nos ater aos objetos enquanto tipo na sequência suas estruturas.</p>
+<p>Dica de livro de cabeceira sobre R <span class="citation"><a href="#ref-melloandpeternelli2013" role="doc-biblioref">Mello and Peternelli</a> (<a href="#ref-melloandpeternelli2013" role="doc-biblioref">2013</a>)</span>.</p>
+<div id="tipos-de-objetos" class="section level3" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Tipos de objetos</h3>
+<p>Os objetos no R podem ser do tipo <em>lógico</em>, <em>inteiro</em>, <em>simples</em>, <em>dupla</em>, <em>complexo</em>, <em>função</em> ou <em>caractere</em>.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">mode()</th>
+<th align="left">Armazenamento</th>
+<th align="left">Exemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">logical</td>
+<td align="left">lógico</td>
+<td align="left">TRUE or FALSE</td>
+</tr>
+<tr class="even">
+<td align="left">numeric</td>
+<td align="left">inteiro, simples ou dupla</td>
+<td align="left">Números 1, 3.14, 2e-308 etc</td>
+</tr>
+<tr class="odd">
+<td align="left">complex</td>
+<td align="left">complexo</td>
+<td align="left">3+2i</td>
+</tr>
+<tr class="even">
+<td align="left">function</td>
+<td align="left">função</td>
+<td align="left">Soma&lt;-function(…)</td>
+</tr>
+<tr class="odd">
+<td align="left">name</td>
+<td align="left">caractere</td>
+<td align="left">média</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tabela 1:</strong> Tipos de modos para objetos no R.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="vamos-ao-que-interesa.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#logical</span></span>
+<span id="cb9-2"><a href="vamos-ao-que-interesa.html#cb9-2" aria-hidden="true" tabindex="-1"></a>q1 <span class="ot">&lt;-</span>T</span>
+<span id="cb9-3"><a href="vamos-ao-que-interesa.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mode</span>(q1);<span class="fu">typeof</span>(q1)</span></code></pre></div>
+<pre><code>## [1] &quot;logical&quot;</code></pre>
+<pre><code>## [1] &quot;logical&quot;</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="vamos-ao-que-interesa.html#cb12-1" aria-hidden="true" tabindex="-1"></a>q2 <span class="ot">&lt;-</span> <span class="cn">FALSE</span> <span class="co">#pode ser a palavra toda mas em maiúsculas </span></span>
+<span id="cb12-2"><a href="vamos-ao-que-interesa.html#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mode</span>(q2);<span class="fu">typeof</span>(q2)</span></code></pre></div>
+<pre><code>## [1] &quot;logical&quot;</code></pre>
+<pre><code>## [1] &quot;logical&quot;</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="vamos-ao-que-interesa.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#integer</span></span>
+<span id="cb15-2"><a href="vamos-ao-que-interesa.html#cb15-2" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span>2L <span class="co">#L garante que 2 será integer</span></span>
+<span id="cb15-3"><a href="vamos-ao-que-interesa.html#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mode</span>(x);<span class="fu">typeof</span>(x)</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="vamos-ao-que-interesa.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#double</span></span>
+<span id="cb18-2"><a href="vamos-ao-que-interesa.html#cb18-2" aria-hidden="true" tabindex="-1"></a>y<span class="ot">&lt;-</span><span class="fl">2.5</span></span>
+<span id="cb18-3"><a href="vamos-ao-que-interesa.html#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mode</span>(y);<span class="fu">typeof</span>(y)</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<pre><code>## [1] &quot;double&quot;</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="vamos-ao-que-interesa.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Complex</span></span>
+<span id="cb21-2"><a href="vamos-ao-que-interesa.html#cb21-2" aria-hidden="true" tabindex="-1"></a>z<span class="ot">&lt;-</span><span class="dv">3</span><span class="sc">+</span>2i</span>
+<span id="cb21-3"><a href="vamos-ao-que-interesa.html#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mode</span>(z);<span class="fu">typeof</span>(z)</span></code></pre></div>
+<pre><code>## [1] &quot;complex&quot;</code></pre>
+<pre><code>## [1] &quot;complex&quot;</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="vamos-ao-que-interesa.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#function</span></span>
+<span id="cb24-2"><a href="vamos-ao-que-interesa.html#cb24-2" aria-hidden="true" tabindex="-1"></a>Soma<span class="ot">&lt;-</span><span class="cf">function</span>(x,y){</span>
+<span id="cb24-3"><a href="vamos-ao-que-interesa.html#cb24-3" aria-hidden="true" tabindex="-1"></a>  x<span class="sc">+</span>y</span>
+<span id="cb24-4"><a href="vamos-ao-que-interesa.html#cb24-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb24-5"><a href="vamos-ao-que-interesa.html#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mode</span>(Soma);<span class="fu">typeof</span>(Soma)</span></code></pre></div>
+<pre><code>## [1] &quot;function&quot;</code></pre>
+<pre><code>## [1] &quot;closure&quot;</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="vamos-ao-que-interesa.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Character</span></span>
+<span id="cb27-2"><a href="vamos-ao-que-interesa.html#cb27-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span><span class="st">&quot;h&quot;</span> <span class="co">#Para colocar uma letra em uma variável é preciso colocar entre &quot;&quot;)</span></span>
+<span id="cb27-3"><a href="vamos-ao-que-interesa.html#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mode</span>(a);<span class="fu">typeof</span>(a)</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="vamos-ao-que-interesa.html#cb30-1" aria-hidden="true" tabindex="-1"></a>média<span class="ot">&lt;-</span><span class="st">&quot;média&quot;</span></span>
+<span id="cb30-2"><a href="vamos-ao-que-interesa.html#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mode</span>(a);<span class="fu">typeof</span>(a)</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<p>Saber as diferenças entre os diversos objetos é importante para uma exploração mais adequada dos dados, utilização eficiente de funções ou operações lógicas, artiméticas, estatísticas e etc.</p>
+<p>Veja que no caso acima em <em>integer</em> (x &lt;- 2L) optamos por adicionar “L” após o número 2, pois o R por padrão decide onde e como aloca/aloja/armazena um operador. A informação será preferencialmente salva como <em>double</em> e isso faz sentido caso você queira mais adiante realizar operações com números decimais ou realizar operações que resultem em números decimais.</p>
+<p>No entanto, caso queira saber que tipo de dado está manipulado você pode “perguntar” utilizando <em>is.</em> seguido da designação do tipo de dados quer testar ( <em>integer</em>, <em>numeric</em>, <em>double</em> e etc) e teremos uma resposta lógica.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="vamos-ao-que-interesa.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.double</span>(x) </span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<p>Caso você deseje que sua variável seja de um tipo específico, você pode transformá-la utilizando <em>as.</em> seguido da designação desejada ( <em>integer</em>, <em>numeric</em>, <em>double</em> e etc).</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="vamos-ao-que-interesa.html#cb35-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">as.double</span>(x)</span>
+<span id="cb35-2"><a href="vamos-ao-que-interesa.html#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.double</span>(x)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>Cada tipo de dado é associado com um teste e uma função de conversão conforme a tabela 2.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Tipo</th>
+<th align="left">Teste</th>
+<th align="left">Função de conversão</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">character</td>
+<td align="left">is.character</td>
+<td align="left">as.character</td>
+</tr>
+<tr class="even">
+<td align="left">complex</td>
+<td align="left">is.complex</td>
+<td align="left">as.complex</td>
+</tr>
+<tr class="odd">
+<td align="left">double</td>
+<td align="left">is.double</td>
+<td align="left">as.double</td>
+</tr>
+<tr class="even">
+<td align="left">expression</td>
+<td align="left">is.expression</td>
+<td align="left">as.expression</td>
+</tr>
+<tr class="odd">
+<td align="left">integer</td>
+<td align="left">is.integer</td>
+<td align="left">as.integer</td>
+</tr>
+<tr class="even">
+<td align="left">list</td>
+<td align="left">is.list</td>
+<td align="left">as.list</td>
+</tr>
+<tr class="odd">
+<td align="left">logical</td>
+<td align="left">is.logical</td>
+<td align="left">as.logical</td>
+</tr>
+<tr class="even">
+<td align="left">numeric</td>
+<td align="left">is.numeric</td>
+<td align="left">as.numeric</td>
+</tr>
+<tr class="odd">
+<td align="left">single</td>
+<td align="left">is.single</td>
+<td align="left">as.single</td>
+</tr>
+<tr class="even">
+<td align="left">raw</td>
+<td align="left">is.raw</td>
+<td align="left">as.raw</td>
+</tr>
+<tr class="odd">
+<td align="left">Date</td>
+<td align="left">is.Date</td>
+<td align="left">as.Date</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tabela 2:</strong> Tipos de dados, teste e modos de conversão.</p>
+</div>
+<div id="estrutura-do-objetos" class="section level3" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Estrutura do objetos</h3>
+<p>As informações armazenadas em objetos no R podem ser organizadas em diferentes estruturas.</p>
+<p><img src="Cap_1_R_data_strucutres.jpg" id="id" class="class" style="width:50.0%;height:50.0%" /></p>
+<p><strong>Figura 1:</strong> Estrutura de dados no R. Fonte: <a href="https://techvidvan.com/tutorials/r-data-structures/">techvidvan</a></p>
+<table>
+<colgroup>
+<col width="6%" />
+<col width="40%" />
+<col width="52%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Objeto</th>
+<th align="left">modes</th>
+<th align="left">descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">vector</td>
+<td align="left">numeric, character, complex ou logical</td>
+<td align="left">Com um ou mais elementos</td>
+</tr>
+<tr class="even">
+<td align="left">factor</td>
+<td align="left">numeric ou character</td>
+<td align="left">Vetor que representa dados categóricos</td>
+</tr>
+<tr class="odd">
+<td align="left">matriz</td>
+<td align="left">numeric, character, complex ou logical</td>
+<td align="left">Um array de duas dimensões</td>
+</tr>
+<tr class="even">
+<td align="left">array</td>
+<td align="left">numeric, character, complex ou logical</td>
+<td align="left">Pode conter um, duas ou mais dimensões</td>
+</tr>
+<tr class="odd">
+<td align="left">data frame</td>
+<td align="left">numeric, character, complex ou logical</td>
+<td align="left">Um array de duas dimenões que permite colunas de diferentes tipos dem mesmo objeto</td>
+</tr>
+<tr class="even">
+<td align="left">list</td>
+<td align="left">numeric, character, complex, logical, function, expression, …</td>
+<td align="left">Objeto que permite combinar diferentes estruturtas de dados num único objeto</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tabela 3:</strong> Características dos tipos de objetos.</p>
+<div id="vetores-vectors" class="section level4" number="2.2.2.1">
+<h4><span class="header-section-number">2.2.2.1</span> Vetores (<em>Vectors</em>)</h4>
+<p>Vetores são os tipos de objetos mais comuns no R. Um vetor é composto de uma informação ou uma séries de informações ( <em>arrays</em> ) unidimensionais que podem conter informaçõs numéricas, caracteres ou dados lógicos.</p>
+<p>Mesmo quando digitamos apoenas um único elemento ele se torna um vetor de comprimento um (1).</p>
+<p><em>Vetores com Apenas 1 elemento</em></p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="vamos-ao-que-interesa.html#cb37-1" aria-hidden="true" tabindex="-1"></a>esquerdo<span class="ot">&lt;-</span>(<span class="st">&quot;direito&quot;</span>) <span class="co"># O objeto &quot;esquerdo&quot; recebe a palavra &quot;direito&quot;</span></span>
+<span id="cb37-2"><a href="vamos-ao-que-interesa.html#cb37-2" aria-hidden="true" tabindex="-1"></a>esquerdo <span class="co">#execute o arquivo e veja seu conteúdo</span></span></code></pre></div>
+<pre><code>## [1] &quot;direito&quot;</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="vamos-ao-que-interesa.html#cb39-1" aria-hidden="true" tabindex="-1"></a>direito<span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;esquerdo&quot;</span>) <span class="co">#Outra maneira de criar objeto  </span></span>
+<span id="cb39-2"><a href="vamos-ao-que-interesa.html#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(direito) <span class="co">#Outra forma de executar o conteúdo</span></span></code></pre></div>
+<pre><code>## [1] &quot;esquerdo&quot;</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="vamos-ao-que-interesa.html#cb41-1" aria-hidden="true" tabindex="-1"></a>b<span class="ot">=</span>(<span class="dv">10</span>) <span class="co"># O objeto &quot;b&quot; recebe o número 10</span></span>
+<span id="cb41-2"><a href="vamos-ao-que-interesa.html#cb41-2" aria-hidden="true" tabindex="-1"></a>b</span></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="vamos-ao-que-interesa.html#cb43-1" aria-hidden="true" tabindex="-1"></a>(<span class="fl">15.23</span>)<span class="ot">-&gt;</span>c <span class="co"># O objeto &quot;c&quot; recebe o número 15.23</span></span>
+<span id="cb43-2"><a href="vamos-ao-que-interesa.html#cb43-2" aria-hidden="true" tabindex="-1"></a>c</span></code></pre></div>
+<pre><code>## [1] 15.23</code></pre>
+<p>Vetores com múltiplos elementos</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="vamos-ao-que-interesa.html#cb45-1" aria-hidden="true" tabindex="-1"></a>d<span class="ot">&lt;-</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>) <span class="co"># Criando uma sequência de 0 até 10</span></span>
+<span id="cb45-2"><a href="vamos-ao-que-interesa.html#cb45-2" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div>
+<pre><code>##  [1]  0  1  2  3  4  5  6  7  8  9 10</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="vamos-ao-que-interesa.html#cb47-1" aria-hidden="true" tabindex="-1"></a>e<span class="ot">&lt;-</span><span class="fl">10.5</span><span class="sc">:</span><span class="fl">20.5</span> <span class="co"># criando uma sequência de 10.5 até 20.5</span></span>
+<span id="cb47-2"><a href="vamos-ao-que-interesa.html#cb47-2" aria-hidden="true" tabindex="-1"></a>e</span></code></pre></div>
+<pre><code>##  [1] 10.5 11.5 12.5 13.5 14.5 15.5 16.5 17.5 18.5 19.5 20.5</code></pre>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="vamos-ao-que-interesa.html#cb49-1" aria-hidden="true" tabindex="-1"></a>f<span class="ot">&lt;-</span>(<span class="fl">10.6</span><span class="sc">:</span><span class="fl">20.3</span>) <span class="co"># O último elemento é descartado por nãos e encaixar na sequência</span></span>
+<span id="cb49-2"><a href="vamos-ao-que-interesa.html#cb49-2" aria-hidden="true" tabindex="-1"></a>f</span></code></pre></div>
+<pre><code>##  [1] 10.6 11.6 12.6 13.6 14.6 15.6 16.6 17.6 18.6 19.6</code></pre>
+<p>Podemos utilizar também a função <em>seq</em> para gerar uma sequêncaio de dados</p>
+<p><em><em>seq(from = 1, to = 1, by = ((to - from)/(length.out - 1)),length.out = NULL, along.with = NULL, …)</em></em></p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="vamos-ao-que-interesa.html#cb51-1" aria-hidden="true" tabindex="-1"></a>g<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="fl">0.5</span>) <span class="co"># O objeto &quot;g&quot; recebe a sequência de 0 até 10 a cada 0.5</span></span>
+<span id="cb51-2"><a href="vamos-ao-que-interesa.html#cb51-2" aria-hidden="true" tabindex="-1"></a>g</span></code></pre></div>
+<pre><code>##  [1]  0.0  0.5  1.0  1.5  2.0  2.5  3.0  3.5  4.0  4.5  5.0  5.5  6.0  6.5  7.0
+## [16]  7.5  8.0  8.5  9.0  9.5 10.0</code></pre>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="vamos-ao-que-interesa.html#cb53-1" aria-hidden="true" tabindex="-1"></a>h<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="at">from=</span><span class="dv">10</span>,<span class="at">to=</span><span class="dv">20</span>,<span class="at">length.out=</span><span class="dv">50</span>) <span class="co"># O objeto &quot;h&quot; recebe a sequência de 0 até 10 que é do compriumento 50, ou seja, há 50 número de 10 até 20</span></span>
+<span id="cb53-2"><a href="vamos-ao-que-interesa.html#cb53-2" aria-hidden="true" tabindex="-1"></a>h</span></code></pre></div>
+<pre><code>##  [1] 10.00000 10.20408 10.40816 10.61224 10.81633 11.02041 11.22449 11.42857
+##  [9] 11.63265 11.83673 12.04082 12.24490 12.44898 12.65306 12.85714 13.06122
+## [17] 13.26531 13.46939 13.67347 13.87755 14.08163 14.28571 14.48980 14.69388
+## [25] 14.89796 15.10204 15.30612 15.51020 15.71429 15.91837 16.12245 16.32653
+## [33] 16.53061 16.73469 16.93878 17.14286 17.34694 17.55102 17.75510 17.95918
+## [41] 18.16327 18.36735 18.57143 18.77551 18.97959 19.18367 19.38776 19.59184
+## [49] 19.79592 20.00000</code></pre>
+<p>Experimente também a função <em>rep()</em></p>
+<p><em><em>rep(x, times = 1, length.out = NA, each = 1)</em></em></p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="vamos-ao-que-interesa.html#cb55-1" aria-hidden="true" tabindex="-1"></a>i<span class="ot">&lt;-</span><span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">10</span>) <span class="co"># O objeto &quot;i&quot; recebe 10 números 1</span></span>
+<span id="cb55-2"><a href="vamos-ao-que-interesa.html#cb55-2" aria-hidden="true" tabindex="-1"></a>i</span></code></pre></div>
+<pre><code>##  [1] 0 0 0 0 0 0 0 0 0 0</code></pre>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="vamos-ao-que-interesa.html#cb57-1" aria-hidden="true" tabindex="-1"></a>j<span class="ot">&lt;-</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>),<span class="dv">10</span>) <span class="co"># O objeto &quot;j&quot; recebe 10 vezes a sequência 1, 2 e 3</span></span>
+<span id="cb57-2"><a href="vamos-ao-que-interesa.html#cb57-2" aria-hidden="true" tabindex="-1"></a>j</span></code></pre></div>
+<pre><code>##  [1] 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3</code></pre>
+<p style="color:red">
+<strong>Um Vetor só pode conter informações de um único tipo</strong>
+</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="vamos-ao-que-interesa.html#cb59-1" aria-hidden="true" tabindex="-1"></a>k<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>, <span class="st">&quot;A&quot;</span>) <span class="co"># O objeto &quot;k&quot; é do tipo character por causa de &quot;A&quot;</span></span>
+<span id="cb59-2"><a href="vamos-ao-que-interesa.html#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(k);<span class="fu">mode</span>(k)</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="vamos-ao-que-interesa.html#cb62-1" aria-hidden="true" tabindex="-1"></a>l<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>) <span class="co"># O objeto &quot;l&quot; é do tipo numérico</span></span>
+<span id="cb62-2"><a href="vamos-ao-que-interesa.html#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(l);<span class="fu">mode</span>(l)</span></code></pre></div>
+<pre><code>## [1] &quot;double&quot;</code></pre>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+</div>
+<div id="fatores-factors" class="section level4" number="2.2.2.2">
+<h4><span class="header-section-number">2.2.2.2</span> Fatores (<em>Factors</em>)</h4>
+<p>Os fatores são vetores em que os elementos pertencem a uma ou mais categorias temáticas.
+As variáveis aleatórias podem ser divididas em contínuas e categóricas.</p>
+<ul>
+<li>As contínuas podem ser medidas nas escalas: relacional e intervalar.</li>
+<li>As categóricas nas escalas: nominal e ordinal.</li>
+</ul>
+<p>No R, as variáveis categóricas medidas nas escalas nominal e ordinal são chamados fatores.
+A função <em>factor()</em> armazenas os valores categóricos como um vetor de inteiros [1..k] e um vetor interno de <em>strings</em> referentes ao nomes.
+<em>Em outras palavras, um <strong>factor</strong> é um <strong>vetor</strong> objeto usado para especificar uma classsificação discreta (agrupamento) dos componentes de outros vetores de mesmo tamanho.</em></p>
+<p><em><em>factor(x = character(), levels, labels = levels,exclude = NA, ordered = is.ordered(x), nmax = NA)</em></em></p>
+<p>ou</p>
+<p><em><em>gl(n, k, length = n X k, labels = seq_len(n), ordered = FALSE)</em></em></p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="vamos-ao-que-interesa.html#cb65-1" aria-hidden="true" tabindex="-1"></a>m<span class="ot">&lt;-</span><span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;H&quot;</span>,<span class="st">&quot;H&quot;</span>,<span class="st">&quot;H&quot;</span>,<span class="st">&quot;M&quot;</span>,<span class="st">&quot;M&quot;</span>)) <span class="co"># O objeto &quot;k&quot; recebe 3 H&#39;s e 2 M&#39;s</span></span>
+<span id="cb65-2"><a href="vamos-ao-que-interesa.html#cb65-2" aria-hidden="true" tabindex="-1"></a>m</span></code></pre></div>
+<pre><code>## [1] H H H M M
+## Levels: H M</code></pre>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="vamos-ao-que-interesa.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.integer</span>(m)</span></code></pre></div>
+<pre><code>## [1] 1 1 1 2 2</code></pre>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="vamos-ao-que-interesa.html#cb69-1" aria-hidden="true" tabindex="-1"></a>n<span class="ot">&lt;-</span><span class="fu">gl</span>(<span class="at">n=</span><span class="dv">2</span>,<span class="at">k=</span><span class="dv">3</span>,<span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;M&quot;</span>,<span class="st">&quot;F&quot;</span>)) </span>
+<span id="cb69-2"><a href="vamos-ao-que-interesa.html#cb69-2" aria-hidden="true" tabindex="-1"></a>n</span></code></pre></div>
+<pre><code>## [1] M M M F F F
+## Levels: M F</code></pre>
+<p>Podemos verificar os níveis de um fator usando o comando <em>levels()</em>.</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="vamos-ao-que-interesa.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(m)</span></code></pre></div>
+<pre><code>## [1] &quot;H&quot; &quot;M&quot;</code></pre>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="vamos-ao-que-interesa.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(n)</span></code></pre></div>
+<pre><code>## [1] &quot;M&quot; &quot;F&quot;</code></pre>
+</div>
+<div id="matriz-matrix" class="section level4" number="2.2.2.3">
+<h4><span class="header-section-number">2.2.2.3</span> Matriz (<em>Matrix</em>)</h4>
+<p>É o tipo de dado mais comum que encontramos do dia a dia. A maioria dos dados que analisamos estão organizados em matrizes que são dados combinados em 2 dimensões (linas e colunas).
+Existem várias maneiras de criar uma matriz como utilizando o comando <em>matrix()</em>.</p>
+<p><em><em>matrix(data = NA, nrow = 1, ncol = 1, byrow = FALSE,dimnames = NULL)</em></em></p>
+<p>Assim como os vetores, as matrizes só aceitam dados do mesmo tipo.</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="vamos-ao-que-interesa.html#cb75-1" aria-hidden="true" tabindex="-1"></a>o<span class="ot">&lt;-</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span> <span class="co"># cria um vetor de 1 a 10</span></span>
+<span id="cb75-2"><a href="vamos-ao-que-interesa.html#cb75-2" aria-hidden="true" tabindex="-1"></a>o_matriz1<span class="ot">&lt;-</span><span class="fu">matrix</span>(o,<span class="at">ncol=</span><span class="dv">5</span>)<span class="co"># Organiza o vetor 0 e 5 colunas</span></span>
+<span id="cb75-3"><a href="vamos-ao-que-interesa.html#cb75-3" aria-hidden="true" tabindex="-1"></a>o_matriz1</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    1    3    5    7    9
+## [2,]    2    4    6    8   10</code></pre>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="vamos-ao-que-interesa.html#cb77-1" aria-hidden="true" tabindex="-1"></a>o_matriz2<span class="ot">&lt;-</span><span class="fu">matrix</span>(o,<span class="at">nrow=</span><span class="dv">5</span>)<span class="co"># Organiza o vetor 0 e 5 linhas</span></span>
+<span id="cb77-2"><a href="vamos-ao-que-interesa.html#cb77-2" aria-hidden="true" tabindex="-1"></a>o_matriz2</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    1    6
+## [2,]    2    7
+## [3,]    3    8
+## [4,]    4    9
+## [5,]    5   10</code></pre>
+<p>Podemos utilizar também o argumento <em>byrow=</em>, que, diferente do exemplo acima, preenchem as tabelas por linhas.</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="vamos-ao-que-interesa.html#cb79-1" aria-hidden="true" tabindex="-1"></a>p<span class="ot">&lt;-</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span> <span class="co"># cria um vetor de 1 a 10</span></span>
+<span id="cb79-2"><a href="vamos-ao-que-interesa.html#cb79-2" aria-hidden="true" tabindex="-1"></a>p_matriz1<span class="ot">&lt;-</span><span class="fu">matrix</span>(o,<span class="at">nrow=</span><span class="dv">5</span>,<span class="at">byrow=</span>T)<span class="co"># Organiza o vetor 0 e 5 colunas</span></span>
+<span id="cb79-3"><a href="vamos-ao-que-interesa.html#cb79-3" aria-hidden="true" tabindex="-1"></a>p_matriz1; o_matriz2 <span class="co"># compare os 2 modos</span></span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    1    2
+## [2,]    3    4
+## [3,]    5    6
+## [4,]    7    8
+## [5,]    9   10</code></pre>
+<pre><code>##      [,1] [,2]
+## [1,]    1    6
+## [2,]    2    7
+## [3,]    3    8
+## [4,]    4    9
+## [5,]    5   10</code></pre>
+<p>As dimensões de uma matriz pode ser acessado através do comando <em>dim()</em>:</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="vamos-ao-que-interesa.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(o_matriz1);<span class="fu">dim</span>(o_matriz2) <span class="co"># Leia o o resultado como linha e coluna</span></span></code></pre></div>
+<pre><code>## [1] 2 5</code></pre>
+<pre><code>## [1] 5 2</code></pre>
+<p>Também é interessante usar o comando <em>summary()</em>.</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="vamos-ao-que-interesa.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(o_matriz1);<span class="fu">summary</span>(o_matriz2) <span class="co"># Mostra informações por coluna</span></span></code></pre></div>
+<pre><code>##        V1             V2             V3             V4             V5       
+##  Min.   :1.00   Min.   :3.00   Min.   :5.00   Min.   :7.00   Min.   : 9.00  
+##  1st Qu.:1.25   1st Qu.:3.25   1st Qu.:5.25   1st Qu.:7.25   1st Qu.: 9.25  
+##  Median :1.50   Median :3.50   Median :5.50   Median :7.50   Median : 9.50  
+##  Mean   :1.50   Mean   :3.50   Mean   :5.50   Mean   :7.50   Mean   : 9.50  
+##  3rd Qu.:1.75   3rd Qu.:3.75   3rd Qu.:5.75   3rd Qu.:7.75   3rd Qu.: 9.75  
+##  Max.   :2.00   Max.   :4.00   Max.   :6.00   Max.   :8.00   Max.   :10.00</code></pre>
+<pre><code>##        V1          V2    
+##  Min.   :1   Min.   : 6  
+##  1st Qu.:2   1st Qu.: 7  
+##  Median :3   Median : 8  
+##  Mean   :3   Mean   : 8  
+##  3rd Qu.:4   3rd Qu.: 9  
+##  Max.   :5   Max.   :10</code></pre>
+<p>Outras formas de contruir matrizes é juntando objetos existentes através dos comandos <em>cbind()</em> e <em>rbind()</em> que contacatenam objetos por colunas e linhas, respectivamente.</p>
+<p>Vamos juntar as matrizes já criadas.</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="vamos-ao-que-interesa.html#cb88-1" aria-hidden="true" tabindex="-1"></a>o_matriz3<span class="ot">&lt;-</span><span class="fu">rbind</span>(o_matriz1,o_matriz1) <span class="co"># concatena por linhas (r)</span></span>
+<span id="cb88-2"><a href="vamos-ao-que-interesa.html#cb88-2" aria-hidden="true" tabindex="-1"></a>o_matriz3</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    1    3    5    7    9
+## [2,]    2    4    6    8   10
+## [3,]    1    3    5    7    9
+## [4,]    2    4    6    8   10</code></pre>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="vamos-ao-que-interesa.html#cb90-1" aria-hidden="true" tabindex="-1"></a>o_matriz4<span class="ot">&lt;-</span><span class="fu">rbind</span>(o_matriz2,o_matriz2) <span class="co"># concatena por colunas (c)</span></span>
+<span id="cb90-2"><a href="vamos-ao-que-interesa.html#cb90-2" aria-hidden="true" tabindex="-1"></a>o_matriz4</span></code></pre></div>
+<pre><code>##       [,1] [,2]
+##  [1,]    1    6
+##  [2,]    2    7
+##  [3,]    3    8
+##  [4,]    4    9
+##  [5,]    5   10
+##  [6,]    1    6
+##  [7,]    2    7
+##  [8,]    3    8
+##  [9,]    4    9
+## [10,]    5   10</code></pre>
+</div>
+<div id="array" class="section level4" number="2.2.2.4">
+<h4><span class="header-section-number">2.2.2.4</span> Array</h4>
+<p>O array é um conjunto de matrizes ou vetores que podem ter qualquer número de dimensões. Estas dimensões podem receber nomes.
+Podemos criar <em>arrays</em> atribuindo dimensçoes a um vetor com o comando <em>dim()</em> ou usando <em>array()</em>.</p>
+<p><em><em>array(data = NA, dim = length(data), dimnames = NULL)</em></em></p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="vamos-ao-que-interesa.html#cb92-1" aria-hidden="true" tabindex="-1"></a>q_array<span class="ot">&lt;-</span><span class="dv">1</span><span class="sc">:</span><span class="dv">12</span> <span class="co"># cria um vetor</span></span>
+<span id="cb92-2"><a href="vamos-ao-que-interesa.html#cb92-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(q_array)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">2</span>) <span class="co"># atribuindo 3 dimensões a q_array</span></span>
+<span id="cb92-3"><a href="vamos-ao-que-interesa.html#cb92-3" aria-hidden="true" tabindex="-1"></a>q_array</span></code></pre></div>
+<pre><code>## , , 1
+## 
+##      [,1] [,2] [,3]
+## [1,]    1    3    5
+## [2,]    2    4    6
+## 
+## , , 2
+## 
+##      [,1] [,2] [,3]
+## [1,]    7    9   11
+## [2,]    8   10   12</code></pre>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="vamos-ao-que-interesa.html#cb94-1" aria-hidden="true" tabindex="-1"></a>r_array<span class="ot">&lt;-</span><span class="fu">array</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>,<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">2</span>)) <span class="co"># cria um array de 3 dimensões</span></span>
+<span id="cb94-2"><a href="vamos-ao-que-interesa.html#cb94-2" aria-hidden="true" tabindex="-1"></a>r_array</span></code></pre></div>
+<pre><code>## , , 1
+## 
+##      [,1] [,2] [,3]
+## [1,]    1    3    5
+## [2,]    2    4    6
+## 
+## , , 2
+## 
+##      [,1] [,2] [,3]
+## [1,]    7    9   11
+## [2,]    8   10   12</code></pre>
+</div>
+<div id="data-frame" class="section level4" number="2.2.2.5">
+<h4><span class="header-section-number">2.2.2.5</span> Data Frame</h4>
+<p>Tão comum quanto a matriz, o data frame também um modo bidimensional de organização dos dados (linhas e colunas) que, diferentemente da matriz, permite objetos de tipos diferentes (character, numeric, logical e etc)sejam armazenados.
+Normalmente, nos data frames temos nas linhas as observações e nas colunas temos as variáveis.
+No entanto, é importante que cada coluna tenha o mesmo tamanho.</p>
+<p><em><em>data.frame(…, row.names = NULL, check.rows = FALSE,check.names = TRUE, fix.empty.names = TRUE,stringsAsFactors = default.stringsAsFactors())</em></em></p>
+<table>
+<colgroup>
+<col width="39%" />
+<col width="10%" />
+<col width="26%" />
+<col width="11%" />
+<col width="14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Nome</th>
+<th align="left">Matrícula</th>
+<th align="left">Curso</th>
+<th align="left">Nivel.de.R</th>
+<th align="left">Nível.Pós</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Alberto Domingos Macamo</td>
+<td align="left">0</td>
+<td align="left">Meteorologia Aplicada</td>
+<td align="left">NA</td>
+<td align="left">Mestrado</td>
+</tr>
+<tr class="even">
+<td align="left">Ana Luiza Melo Rodrigues</td>
+<td align="left">98075</td>
+<td align="left">Engenharia Agrícola</td>
+<td align="left">0</td>
+<td align="left">Doutorado</td>
+</tr>
+<tr class="odd">
+<td align="left">Arieta Carla Gualandi Leal</td>
+<td align="left">88695</td>
+<td align="left">Nutrição</td>
+<td align="left">0</td>
+<td align="left">Doutorado</td>
+</tr>
+<tr class="even">
+<td align="left">Caio Henrique Patrício Pagani</td>
+<td align="left">104129</td>
+<td align="left">Engenharia Agrícola</td>
+<td align="left">2</td>
+<td align="left">Doutorado</td>
+</tr>
+<tr class="odd">
+<td align="left">Carla Larissa Fonseca da Silva</td>
+<td align="left">104731</td>
+<td align="left">Engenharia Agrícola</td>
+<td align="left">3</td>
+<td align="left">Mestrado</td>
+</tr>
+<tr class="even">
+<td align="left">Conrado Trigo de Moraes</td>
+<td align="left">104589</td>
+<td align="left">Zootecnia</td>
+<td align="left">1</td>
+<td align="left">Doutorado</td>
+</tr>
+<tr class="odd">
+<td align="left">Diego Bispo dos Santos Farias</td>
+<td align="left">0</td>
+<td align="left">Engenharia Agrícola</td>
+<td align="left">NA</td>
+<td align="left">Doutorado</td>
+</tr>
+<tr class="even">
+<td align="left">Eloy Junior Rezende</td>
+<td align="left">104599</td>
+<td align="left">Zootecnia</td>
+<td align="left">0</td>
+<td align="left">Mestrado</td>
+</tr>
+<tr class="odd">
+<td align="left">Fernanda Gonçalves Borges</td>
+<td align="left">104162</td>
+<td align="left">Engenharia Agrícola</td>
+<td align="left">2</td>
+<td align="left">Mestrado</td>
+</tr>
+<tr class="even">
+<td align="left">Flávio Dayrell Gontijo</td>
+<td align="left">101417</td>
+<td align="left">Botânica</td>
+<td align="left">4</td>
+<td align="left">Mestrado</td>
+</tr>
+<tr class="odd">
+<td align="left">Francilene Maria Azevedo</td>
+<td align="left">74843</td>
+<td align="left">Ciência da Nutrição</td>
+<td align="left">1</td>
+<td align="left">Doutorado</td>
+</tr>
+<tr class="even">
+<td align="left">Lorena Moreira Lara</td>
+<td align="left">74038</td>
+<td align="left">Fitotecnia (melhoramento)</td>
+<td align="left">5</td>
+<td align="left">Doutorado</td>
+</tr>
+<tr class="odd">
+<td align="left">Luana Caldeira Fonseca Coutinho</td>
+<td align="left">81919</td>
+<td align="left">Biologia</td>
+<td align="left">1</td>
+<td align="left">Mestrado</td>
+</tr>
+<tr class="even">
+<td align="left">Marconi Martins Cunha</td>
+<td align="left">70859</td>
+<td align="left">Engenharia Civil</td>
+<td align="left">3</td>
+<td align="left">Doutorado</td>
+</tr>
+<tr class="odd">
+<td align="left">Mathias Viana Vicari</td>
+<td align="left">0</td>
+<td align="left">Não informado</td>
+<td align="left">NA</td>
+<td align="left">Nâo informado</td>
+</tr>
+<tr class="even">
+<td align="left">Mayara Oliveira Rocha</td>
+<td align="left">104557</td>
+<td align="left">Engenharia Agrícola</td>
+<td align="left">1</td>
+<td align="left">Doutorado</td>
+</tr>
+<tr class="odd">
+<td align="left">Michel Henriques de Souza</td>
+<td align="left">74102</td>
+<td align="left">Genética e Melhoramento</td>
+<td align="left">5</td>
+<td align="left">Doutorado</td>
+</tr>
+<tr class="even">
+<td align="left">Moana Teixeira Rothe-Neves</td>
+<td align="left">104660</td>
+<td align="left">Ecologia</td>
+<td align="left">5</td>
+<td align="left">Mestrado</td>
+</tr>
+<tr class="odd">
+<td align="left">Pedro Dell’Isola Brauer</td>
+<td align="left">0</td>
+<td align="left">Meteorologia Aplicada</td>
+<td align="left">NA</td>
+<td align="left">Mestrado</td>
+</tr>
+<tr class="even">
+<td align="left">Rafael Luís Silva Dias</td>
+<td align="left">0</td>
+<td align="left">Engenharia Agrícola</td>
+<td align="left">5</td>
+<td align="left">Doutorado</td>
+</tr>
+<tr class="odd">
+<td align="left">Samuli Laurindo Pereira</td>
+<td align="left">104525</td>
+<td align="left">Biologia</td>
+<td align="left">5</td>
+<td align="left">Mestrado</td>
+</tr>
+<tr class="even">
+<td align="left">Sherellyn Daphnee Alves Moretti</td>
+<td align="left">100302</td>
+<td align="left">Ciência Florestal</td>
+<td align="left">1</td>
+<td align="left">Mestrado</td>
+</tr>
+<tr class="odd">
+<td align="left">Thales Maurino de Aquino Silva</td>
+<td align="left">91704</td>
+<td align="left">Engenharia Agrícola</td>
+<td align="left">0</td>
+<td align="left">Doutorado</td>
+</tr>
+<tr class="even">
+<td align="left">Talitha Silva Meneguelli</td>
+<td align="left">0</td>
+<td align="left">Nutrição</td>
+<td align="left">NA</td>
+<td align="left">Doutorado</td>
+</tr>
+<tr class="odd">
+<td align="left">Vinícius Rodrigues dos Santos Petersen</td>
+<td align="left">86022</td>
+<td align="left">Meteorologia Aplicada</td>
+<td align="left">1</td>
+<td align="left">Mestrado</td>
+</tr>
+<tr class="even">
+<td align="left">Victorina Bispo Aires</td>
+<td align="left">104275</td>
+<td align="left">Botânica</td>
+<td align="left">1</td>
+<td align="left">Mestrado</td>
+</tr>
+<tr class="odd">
+<td align="left">Welson Junior Silva</td>
+<td align="left">104283</td>
+<td align="left">Botânica</td>
+<td align="left">1</td>
+<td align="left">Mestrado</td>
+</tr>
+<tr class="even">
+<td align="left">Rafael Bolina da Silva</td>
+<td align="left">104597</td>
+<td align="left">Zootecnia</td>
+<td align="left">4</td>
+<td align="left">Doutorado</td>
+</tr>
+<tr class="odd">
+<td align="left">Mathias Viana Vicari</td>
+<td align="left">0</td>
+<td align="left">Meteorologia Aplicada</td>
+<td align="left">NA</td>
+<td align="left">Doutorado</td>
+</tr>
+<tr class="even">
+<td align="left">Jéssica Bevenuto Mattar</td>
+<td align="left">91502</td>
+<td align="left">Nutrição</td>
+<td align="left">1</td>
+<td align="left">Doutorado</td>
+</tr>
+<tr class="odd">
+<td align="left">Otávio Ferreira Santos</td>
+<td align="left">75179</td>
+<td align="left">Engenharia Agrícola</td>
+<td align="left">3</td>
+<td align="left">Mestrado</td>
+</tr>
+<tr class="even">
+<td align="left">Joslanny Higino Vieira</td>
+<td align="left">98358</td>
+<td align="left">Engenharia Agrícola</td>
+<td align="left">5</td>
+<td align="left">Doutorado</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tabela 3:</strong> Data frame do alunos de ENG 792 III</p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="vamos-ao-que-interesa.html#cb96-1" aria-hidden="true" tabindex="-1"></a>Nome<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>)</span>
+<span id="cb96-2"><a href="vamos-ao-que-interesa.html#cb96-2" aria-hidden="true" tabindex="-1"></a>Idade<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">32</span>, <span class="dv">28</span>)</span>
+<span id="cb96-3"><a href="vamos-ao-que-interesa.html#cb96-3" aria-hidden="true" tabindex="-1"></a>Sexo<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;M&quot;</span>,<span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>)</span>
+<span id="cb96-4"><a href="vamos-ao-que-interesa.html#cb96-4" aria-hidden="true" tabindex="-1"></a>Nome;Idade;Sexo</span></code></pre></div>
+<pre><code>## [1] &quot;A&quot; &quot;B&quot; &quot;C&quot;</code></pre>
+<pre><code>## [1] 25 32 28</code></pre>
+<pre><code>## [1] &quot;M&quot; &quot;M&quot; &quot;F&quot;</code></pre>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="vamos-ao-que-interesa.html#cb100-1" aria-hidden="true" tabindex="-1"></a>Ficha<span class="ot">&lt;-</span><span class="fu">data.frame</span>(Nome,Idade,Sexo)</span>
+<span id="cb100-2"><a href="vamos-ao-que-interesa.html#cb100-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-3"><a href="vamos-ao-que-interesa.html#cb100-3" aria-hidden="true" tabindex="-1"></a><span class="fu">attributes</span>(Ficha) <span class="co"># exibe os atributos do data frame</span></span></code></pre></div>
+<pre><code>## $names
+## [1] &quot;Nome&quot;  &quot;Idade&quot; &quot;Sexo&quot; 
+## 
+## $class
+## [1] &quot;data.frame&quot;
+## 
+## $row.names
+## [1] 1 2 3</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Nome</th>
+<th align="center">Idade</th>
+<th align="center">Sexo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">A</td>
+<td align="center">25</td>
+<td align="center">M</td>
+</tr>
+<tr class="even">
+<td align="left">B</td>
+<td align="center">32</td>
+<td align="center">M</td>
+</tr>
+<tr class="odd">
+<td align="left">C</td>
+<td align="center">28</td>
+<td align="center">F</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tabela 4:</strong> Tabela com dados fictícios.</p>
+</div>
+<div id="lista-list" class="section level4" number="2.2.2.6">
+<h4><span class="header-section-number">2.2.2.6</span> Lista (<em>list</em>)</h4>
+<p><em>List</em> permite combinar diferentes esdtruturas de dados em um mesmo objeto, ou seja, <em>vetores</em>, <em>matrizes</em>, <em>arrays</em>, <em>data.frames</em> e até outras listas.
+As listas são construídas utilizando o comando <em>list()</em></p>
+<p>Os componentes da lista são criados da mesma maneirta como para <em>data.frame</em>.
+<strong>list(…)</strong></p>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="vamos-ao-que-interesa.html#cb102-1" aria-hidden="true" tabindex="-1"></a>Nome<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;A&quot;</span>)</span>
+<span id="cb102-2"><a href="vamos-ao-que-interesa.html#cb102-2" aria-hidden="true" tabindex="-1"></a>Idade<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">25</span>)</span>
+<span id="cb102-3"><a href="vamos-ao-que-interesa.html#cb102-3" aria-hidden="true" tabindex="-1"></a>Sexo<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;M&quot;</span>)</span>
+<span id="cb102-4"><a href="vamos-ao-que-interesa.html#cb102-4" aria-hidden="true" tabindex="-1"></a>Notas<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">55</span>,<span class="dv">42</span>,<span class="dv">50</span>,<span class="dv">35</span>)</span>
+<span id="cb102-5"><a href="vamos-ao-que-interesa.html#cb102-5" aria-hidden="true" tabindex="-1"></a>Nome;Idade;Sexo;Notas</span></code></pre></div>
+<pre><code>## [1] &quot;A&quot;</code></pre>
+<pre><code>## [1] 25</code></pre>
+<pre><code>## [1] &quot;M&quot;</code></pre>
+<pre><code>## [1] 55 42 50 35</code></pre>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="vamos-ao-que-interesa.html#cb107-1" aria-hidden="true" tabindex="-1"></a>Desempenho<span class="ot">&lt;-</span><span class="fu">list</span>(<span class="at">nome=</span><span class="st">&quot;A&quot;</span>, <span class="at">idade=</span><span class="dv">25</span>, <span class="at">Sexo=</span><span class="st">&quot;M&quot;</span>,<span class="at">Notas=</span><span class="fu">c</span>(<span class="dv">55</span>,<span class="dv">42</span>,<span class="dv">50</span>,<span class="dv">35</span>))</span>
+<span id="cb107-2"><a href="vamos-ao-que-interesa.html#cb107-2" aria-hidden="true" tabindex="-1"></a>Desempenho</span></code></pre></div>
+<pre><code>## $nome
+## [1] &quot;A&quot;
+## 
+## $idade
+## [1] 25
+## 
+## $Sexo
+## [1] &quot;M&quot;
+## 
+## $Notas
+## [1] 55 42 50 35</code></pre>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="vamos-ao-que-interesa.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.list</span>(Desempenho)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>Existem também alguns comandos/funções que mostram resultados como listas.</p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="vamos-ao-que-interesa.html#cb111-1" aria-hidden="true" tabindex="-1"></a>s<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">30</span>)</span>
+<span id="cb111-2"><a href="vamos-ao-que-interesa.html#cb111-2" aria-hidden="true" tabindex="-1"></a>t<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">30</span><span class="sc">:</span><span class="dv">59</span>)</span>
+<span id="cb111-3"><a href="vamos-ao-que-interesa.html#cb111-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb111-4"><a href="vamos-ao-que-interesa.html#cb111-4" aria-hidden="true" tabindex="-1"></a>teste.t<span class="ot">&lt;-</span><span class="fu">t.test</span>(s,t, <span class="at">var.equal =</span> T) <span class="co"># calcula o test t para 2 amostras de variâncias iguais</span></span>
+<span id="cb111-5"><a href="vamos-ao-que-interesa.html#cb111-5" aria-hidden="true" tabindex="-1"></a>teste.t</span></code></pre></div>
+<pre><code>## 
+##  Two Sample t-test
+## 
+## data:  s and t
+## t = -12.758, df = 58, p-value &lt; 2.2e-16
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -33.54996 -24.45004
+## sample estimates:
+## mean of x mean of y 
+##      15.5      44.5</code></pre>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="vamos-ao-que-interesa.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.list</span>(teste.t);<span class="fu">mode</span>(teste.t)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<pre><code>## [1] &quot;list&quot;</code></pre>
+<p>Para finalizar por hoje preste atenção no seu <em>Global Environment</em>.
+Veja que há uma grande quantidade de objeto lá. Agora execute o comando abaixo:</p>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="vamos-ao-que-interesa.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>())</span></code></pre></div>
+<p>Voilà! Sumiu tudo.</p>
+
+</div>
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-melloandpeternelli2013" class="csl-entry">
+Mello, M. P., and L. A. Peternelli. 2013. <em>Conhecendo o r: Uma Visão Mais Que Estatística</em>. First. Editora UFV.
+</div>
+<div id="ref-RogerPeng2020RPro" class="csl-entry">
+Peng, R. D. 2020. <em>R Programming for Data Science</em>. bookdown. <a href="https://bookdown.org/rdpeng/rprogdatascience/">https://bookdown.org/rdpeng/rprogdatascience/</a>.
+</div>
+<div id="ref-perlin2018processamento" class="csl-entry">
+Perlin, M. S. 2018. <em>Processamento e an<span>á</span>lise de Dados Financeiros e Econ<span>ô</span>micos Com o r</em>. Cl<span>ó</span>vis Nicacio. <a href="https://books.google.com.br/books?id=uxyluAEACAAJ">https://books.google.com.br/books?id=uxyluAEACAAJ</a>.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/01-intro.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["ENG_792-AVDR.pdf", "ENG_792-AVDR.epub"],
+"search": {
+"engine": "lunr",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

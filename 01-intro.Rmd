@@ -1,0 +1,493 @@
+# Vamos ao que interesa 
+
+## Conhecendo o R
+
+### O que é o R?
+
+É uma linguagem de programação voltada para resolução de problemas estatísticos, tratamento e visualização de dados.
+
+Para @RogerPeng2020RPro essa resposta é simples, "*R é um dialeto do S*".
+
+De acordo com @perlin2018processamento _O código base do R foi inicialmente criado no laboratório da Bell/ AT& T por John Chambers e seus colegas, com base na linguagem S. Esse código foi reaproveitado por dois acadêmicos, Ross Ihaka e Robert Gentleman, resultando na plataforma de programação que temos hoje. Para os curiosos, o nome R foi escolhido devido ao compartilhamento da primeira letra do nome de seus criadores._
+
+![](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_1_Ross_Robert R.jpg){#id .class width=70% height=70%}
+
+O R está em constante desenvolvimento por um grupo chamado [R Team Core](https://www.r-project.org/) e conta com colaboração gratuita de centenas de milhares de usuários e desenvolvedores ao redor do mundo.
+Por isso, atualmente o R é utilizado por diversas áreas do conhecimento variando das ciências humanas até exatas, naquelas ciências que poderíamos imaginar pouco ou nada relacionadas. Por isso não se limite a procurar informações apenas no sei nicho, abra sua mente e busque aprender de outras ciências também. Eu, particularmente, busco muita coisa na econometria. embora presente em todo tipo de livro sobre R, asta citação acima (@perlin2018processamento) é de um livro de econometria. Veremos mais conteúdos desse material em breve.
+
+R é um software livre de análise de dados (não só estatística) que funciona em diversos sistemas operacionais: GNU Linux, MicrosoftWindows, Mac OS X e outros.
+
+O aprendizado do R é difícil no início devido à necessidade de se adaptar à sua lógica de funcionamento, se acostumar com a estrutura dos seus documentos de ajuda e memorizar alguns comandos básicos.
+
+
+```{r CurvaR, echo=T}
+eq = function(x){x*x}
+plot(eq(1:1000), type="l",lwd=3,col="red", xaxt="n", yaxt="n", xlab="Tempo", ylab="Aprendizado", main="Curva de Aprendizado")
+```
+
+É preciso bastante perseverança e motivação para aprender os comandos básicos, e disposição para ler as páginas de ajuda e os manuais.
+Entretanto, depois de um certo tempo, ele possibilita que se trabalhe com grande produtividade e, o que é mais importante, eficácia e independência.   
+
+Leia também sobre o [mito da curva de aprendizado do R](https://www.r-bloggers.com/2021/07/the-myth-of-the-r-learning-curve/).
+
+### Instalação do R
+
+O **R** é um software gratuito para análises estatísticas e além. Pode ser baixado de [The R Project for Statistical Computing](https://www.r-project.org/).
+
+Clique em **download R**.   
+![](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_1_Pagina_R.jpg){#id .class width=90% height=90%}
+
+Escolha o *"espelho"*.Escolha o mais próximo de você.   
+![](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_1_Pagina_R_MIrror.jpg){#id .class width=90% height=90%}
+
+Escolha o seu sistema operacional. Caso você seja usuário de windows clique em **Download R for Windows** em seguinda em **install R for the first time** e finalmente em **Download R 4.1.0 for Windows**. Veja que no momento que este tutorial foi feito a versdão mais recente é a 4.1.0. No vídeo abaixo a versão é uma anterior, mas a lógica é a mesma.   
+![](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_1_Pagina_R_sistema_operacional.jpg){#id .class width=90% height=90%}
+
+[clique aqui](https://sites.google.com/d/1eCt5C338czwUdwb5R-3k98vHFdf5LFC7/p/1l-WXVHDr8j6cYk-iTSYBaFN7mTesOmQl/edit) para assistir ao vídeo de instalação do R e RStudio no windows 
+
+Eu não tenho um sistema operacional de cada para mostrar a instalação, por isso deixo este vídeo para [instalação no linux](https://www.youtube.com/watch?v=np2-FIgzpTg&ab_channel=AutoDeeDucks) e este para [instalação no mac](https://www.youtube.com/watch?v=LanBozXJjOk&ab_channel=DataSciencewithTom). Caso você não consiga instalar me procure.    
+
+### Primeiro contato
+![](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_1_ET-dedo.jpg){#id .class width=50% height=50%}
+
+
+Temos 1 arquivo .csv com mais de 50.000 linhas referentes a transações de venda de diamantes dividida em 3 colunas *clarity*, *carat* e *price*. Quanto mais claro mais caro, certo? Ou há sub ou super valorização? Vamos investigar se essa relação é verdadeira.
+
+```{r Exemplo_1, echo=T}
+mydata<-read.csv("J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_1_P2-Mispriced-Diamonds.csv")
+
+library("ggplot2")
+ggplot(data=mydata, aes(x=carat, y=price))+ 
+  geom_point()
+```
+Faz algum sentido. Mas temos pontos que não são estatisticamente significantes à direita, então vamos fazer uma limpeza, vamos mexer na transparência.
+
+```{r Exemplo_1.2, echo=T}
+ggplot(data=mydata, aes(x=carat, y=price, colour=clarity))+ 
+  geom_point()
+```
+
+Vamos nos livrar dos pontos não significativos, aqueles que são *carat* menores que 2.5.
+
+```{r Exemplo_1.3, echo=T}
+ggplot(data=mydata,
+       aes(x=carat, y=price, colour=clarity))+
+geom_point(alpha=0.1) 
+```
+
+__brown__ é a melhor claridade, vejam que temos mispricing onde as linhas se cruzam.
+
+```{r Exemplo_1.4, echo=T}
+ggplot(data=mydata[mydata$carat<2.5,],
+       aes(x=carat, y=price, colour=clarity))+
+geom_point(alpha=0.1) +
+  geom_smooth()
+```
+
+Executando o código abaixo você produzirá uma Modelo Digital do Terreno em 3D em uma janela __pop up__ do pacote [rayshader](https://www.rayshader.com/).
+
+
+```{r Exemplo_2, echo=T,eval=F}
+
+library(rayrender)
+library(rayshader)
+library(magick)
+
+#Here, I load a map with the raster package.
+loadzip = tempfile() 
+download.file("https://tylermw.com/data/dem_01.tif.zip", loadzip)
+localtif = raster::raster(unzip(loadzip, "dem_01.tif"))
+unlink(loadzip)
+
+#And convert it to a matrix:
+elmat = raster_to_matrix(localtif)
+
+#We use another one of rayshader's built-in textures:
+elmat %>%
+  sphere_shade(texture = "desert") %>%
+  add_water(detect_water(elmat), color = "desert") %>%
+  plot_3d(elmat, zscale = 10, fov = 0, theta = 60, zoom = 0.75, phi = 45, windowsize = c(1000, 800))
+```
+![](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_1_rayshader.jpeg)
+
+Agora vamos adicionar mais algumas infromações como escala e Norte.
+```{r Exemplo_2.plus, echo=T,eval=F}
+render_scalebar(limits=c(0, 5, 10),label_unit = "km",position = "W", y=50,scale_length = c(0.33,1))
+
+render_compass(position = "E")
+Sys.sleep(0.2)
+render_highquality(samples=200, scale_text_size = 24,clear=TRUE)
+
+```
+![](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_1_rayshader2.jpeg){#id .class width=120% height=120%}
+
+## Como R funciona
+
+Diferentemente de outras linguagens, todos os comandos escritos são diretamente executados, desta forma o R não precisa de um compilador para executar os comandos como Fortran. Por isso, torna-se uma linguagem muito mais amigável e acessível para não programadores.
+
+A linguagem é muito intuitiva (quase uma sintaxe lógica). Por exemplo uma regressão linear pode ser executada como _lm(x~y)_ ( *_lm_* vem de *_linear model_*). Como no exemplo do modelo linear acima, sempre que formos executar um comando temos que seguir da seguinte forma *_função(dados e demais ajustes ou parâmetros)_*, ou seja chame a função e coloque o resto dentro de parênteses.
+
+Como dito anteriormente em aula, tudo que é executado pelo R fica armazenado na memória ativa (RAM) do computador na forma de objetos que possuem um nome. Os objetos, que variam em tipos e estruturas, podem ser funções criadas pelo próprio usuário, dados criados ou importados de uma memória, expressões e etc. Antes de entrarmos em detalhes sobre funções ou expressões, vamos nos ater aos objetos enquanto tipo na sequência suas estruturas.
+
+Dica de livro de cabeceira sobre R @melloandpeternelli2013.
+
+### Tipos de objetos
+
+Os objetos no R podem ser do tipo *lógico*, *inteiro*, *simples*, *dupla*, *complexo*, *função* ou *caractere*.
+
+```{r Tabela_1, echo=F}
+library(magrittr)
+header<-c("mode()", "Armazenamento","Exemplo")
+col1<-c("logical","numeric", "complex", "function", "name")
+col2<-c("lógico","inteiro, simples ou dupla", "complexo", "função","caractere")
+col3<-c("TRUE or FALSE", "Números 1, 3.14, 2e-308 etc", "3+2i","Soma<-function(...)","média")
+
+tabela1<-cbind(col1,col2,col3)
+colnames(tabela1)<-header
+
+tabela1 %>% 
+  knitr::kable()
+```
+**Tabela 1:** Tipos de modos para objetos no R.
+
+```{r Modos.&.Tipos, echo=T}
+#logical
+q1 <-T
+mode(q1);typeof(q1)
+
+q2 <- FALSE #pode ser a palavra toda mas em maiúsculas 
+mode(q2);typeof(q2)
+
+#integer
+x<-2L #L garante que 2 será integer
+mode(x);typeof(x)
+
+#double
+y<-2.5
+mode(y);typeof(y)
+
+#Complex
+z<-3+2i
+mode(z);typeof(z)
+
+#function
+Soma<-function(x,y){
+  x+y
+}
+mode(Soma);typeof(Soma)
+
+#Character
+a <-"h" #Para colocar uma letra em uma variável é preciso colocar entre "")
+mode(a);typeof(a)
+
+média<-"média"
+mode(a);typeof(a)
+```
+
+Saber as diferenças entre os diversos objetos é importante para uma exploração mais adequada dos dados, utilização eficiente de funções ou operações lógicas, artiméticas, estatísticas e etc.
+
+Veja que no caso acima em _integer_ (x <- 2L) optamos por adicionar “L” após o número 2, pois o R por padrão decide onde e como aloca/aloja/armazena um operador. A informação será preferencialmente salva como _double_ e isso faz sentido caso você queira mais adiante realizar operações com números decimais ou realizar operações que resultem em números decimais.
+
+No entanto, caso queira saber que tipo de dado está manipulado você pode "perguntar" utilizando _is._ seguido da designação do tipo de dados quer testar ( _integer_, _numeric_, _double_ e etc) e teremos uma resposta lógica. 
+
+```{r Teste_is., echo=T}
+is.double(x) 
+```
+
+Caso você deseje que sua variável seja de um tipo específico, você pode transformá-la utilizando _as._ seguido da designação desejada ( _integer_, _numeric_, _double_ e etc).
+
+```{r conversão_as., echo=T}
+x<-as.double(x)
+is.double(x)
+```
+
+Cada tipo de dado é associado com um teste e uma função de conversão conforme a tabela 2.
+
+```{r Tabela_2, echo=F}
+header<-c("Tipo", "Teste","Função de conversão")
+
+col1<-c("character", "complex","double", "expression", "integer", "list", "logical", "numeric", "single", "raw", "Date")
+
+col2<-c("is.character", "is.complex","is.double", "is.expression", "is.integer", "is.list", "is.logical", "is.numeric", "is.single", "is.raw", "is.Date")
+
+col3<-c("as.character", "as.complex","as.double", "as.expression", "as.integer", "as.list", "as.logical", "as.numeric", "as.single", "as.raw", "as.Date")
+
+tabela2<-cbind(col1,col2,col3)
+colnames(tabela2)<-header
+
+tabela2 %>% 
+  knitr::kable()
+```
+**Tabela 2:** Tipos de dados, teste e modos de conversão.
+
+### Estrutura do objetos
+
+As informações armazenadas em objetos no R podem ser organizadas em diferentes estruturas.
+
+![](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_1_R_data_strucutres.jpg){#id .class width=50% height=50%}
+
+**Figura 1:** Estrutura de dados no R. Fonte: [techvidvan](https://techvidvan.com/tutorials/r-data-structures/)
+
+```{r Tabela_3, echo=F}
+header<-c("Objeto", "modes","descrição")
+col1<-c("vector", "factor","matriz", "array", "data frame", "list")
+col2<-c("numeric, character, complex ou logical",
+        "numeric ou character",
+        "numeric, character, complex ou logical",
+        "numeric, character, complex ou logical",
+        "numeric, character, complex ou logical",
+        "numeric, character, complex, logical, function, expression, ... ")
+col3<-c("Com um ou  mais elementos",
+        "Vetor que representa dados categóricos",
+        "Um array de duas dimensões",
+        "Pode conter um, duas ou mais dimensões",
+        "Um array de duas dimenões que permite colunas de diferentes tipos dem mesmo objeto",
+        "Objeto que permite combinar diferentes estruturtas de dados num único objeto")
+tabela3<-cbind(col1,col2,col3)
+colnames(tabela3)<-header
+tabela3 %>% 
+  knitr::kable()
+```
+**Tabela 3:** Características dos tipos de objetos.
+
+#### Vetores (_Vectors_)
+
+Vetores são os tipos de objetos mais comuns no R. Um vetor é composto de uma informação ou uma séries de informações ( _arrays_ ) unidimensionais que podem conter informaçõs numéricas, caracteres ou dados lógicos.
+
+Mesmo quando digitamos apoenas um único elemento ele se torna um vetor de comprimento um (1).
+
+*Vetores com Apenas 1 elemento*
+```{r Vetores_Atômicos, echo=T}
+esquerdo<-("direito") # O objeto "esquerdo" recebe a palavra "direito"
+esquerdo #execute o arquivo e veja seu conteúdo
+
+direito=c("esquerdo") #Outra maneira de criar objeto  
+print(direito) #Outra forma de executar o conteúdo
+
+b=(10) # O objeto "b" recebe o número 10
+b
+
+(15.23)->c # O objeto "c" recebe o número 15.23
+c
+```
+Vetores com múltiplos elementos
+```{r Vetores_Múltiplos, echo=T}
+d<-(0:10) # Criando uma sequência de 0 até 10
+d
+
+e<-10.5:20.5 # criando uma sequência de 10.5 até 20.5
+e
+
+f<-(10.6:20.3) # O último elemento é descartado por nãos e encaixar na sequência
+f
+```
+
+Podemos utilizar  também a função _seq_ para gerar uma sequêncaio de dados
+
+*_seq(from = 1, to = 1, by = ((to - from)/(length.out - 1)),length.out = NULL, along.with = NULL, ...)_*
+
+```{r Vetores_Seq, echo=T}
+g<-seq(0,10,0.5) # O objeto "g" recebe a sequência de 0 até 10 a cada 0.5
+g
+
+h<-seq(from=10,to=20,length.out=50) # O objeto "h" recebe a sequência de 0 até 10 que é do compriumento 50, ou seja, há 50 número de 10 até 20
+h
+```
+
+Experimente também a função _rep()_
+
+*_rep(x, times = 1, length.out = NA, each = 1)_*
+
+
+```{r Vetores_rep, echo=T}
+i<-rep(0,10) # O objeto "i" recebe 10 números 1
+i
+
+j<-rep(c(1:3),10) # O objeto "j" recebe 10 vezes a sequência 1, 2 e 3
+j
+```
+
+<p style="color:red"> **Um Vetor só pode conter informações de um único tipo**</p>
+```{r Vetores_1tipo, echo=T}
+k<-c(0,1,2,3,4, "A") # O objeto "k" é do tipo character por causa de "A"
+typeof(k);mode(k)
+
+l<-c(0,1,2,3,4) # O objeto "l" é do tipo numérico
+typeof(l);mode(l)
+```
+
+#### Fatores (_Factors_)
+
+Os fatores são vetores em que os elementos pertencem a uma ou mais categorias temáticas.
+As variáveis aleatórias podem ser divididas em contínuas e categóricas. 
+
+* As contínuas podem ser medidas nas escalas: relacional e intervalar.
+* As categóricas nas escalas: nominal e ordinal.
+
+No R, as variáveis categóricas medidas nas escalas nominal e ordinal são chamados fatores.
+A função _factor()_ armazenas os valores categóricos como um vetor de inteiros [1..k] e um vetor interno de _strings_ referentes ao nomes.
+_Em outras palavras, um **factor** é um **vetor** objeto usado para especificar uma classsificação discreta (agrupamento) dos componentes de outros vetores de mesmo tamanho._
+
+*_factor(x = character(), levels, labels = levels,exclude = NA, ordered = is.ordered(x), nmax = NA)_*
+
+ou
+
+*_gl(n, k, length = n X k, labels = seq_len(n), ordered = FALSE)_*
+       
+```{r Factors, echo=T}
+m<-factor(c("H","H","H","M","M")) # O objeto "k" recebe 3 H's e 2 M's
+m
+as.integer(m)
+
+n<-gl(n=2,k=3,labels=c("M","F")) 
+n
+```
+
+Podemos verificar os níveis de um fator usando o comando _levels()_.
+
+```{r levels, echo=T}
+levels(m)
+levels(n)
+```
+
+#### Matriz (_Matrix_)
+
+É o tipo de dado  mais comum que encontramos do dia a dia. A maioria dos dados que analisamos estão organizados em matrizes que são dados combinados em 2 dimensões (linas e colunas).
+Existem várias maneiras de criar uma matriz como utilizando o comando _matrix()_.
+
+*_matrix(data = NA, nrow = 1, ncol = 1, byrow = FALSE,dimnames = NULL)_*
+
+Assim como os vetores, as matrizes só aceitam dados do mesmo tipo. 
+
+```{r matriz, echo=T}
+o<-1:10 # cria um vetor de 1 a 10
+o_matriz1<-matrix(o,ncol=5)# Organiza o vetor 0 e 5 colunas
+o_matriz1
+
+o_matriz2<-matrix(o,nrow=5)# Organiza o vetor 0 e 5 linhas
+o_matriz2
+
+```
+Podemos utilizar também o argumento _byrow=_, que, diferente do exemplo acima, preenchem as tabelas por linhas. 
+
+```{r matriz_byrow, echo=T}
+p<-1:10 # cria um vetor de 1 a 10
+p_matriz1<-matrix(o,nrow=5,byrow=T)# Organiza o vetor 0 e 5 colunas
+p_matriz1; o_matriz2 # compare os 2 modos
+
+```
+As dimensões de uma matriz pode ser acessado através do comando _dim()_:
+```{r matriz_dim, echo=T}
+dim(o_matriz1);dim(o_matriz2) # Leia o o resultado como linha e coluna
+
+```
+Também é interessante usar o comando _summary()_.
+```{r matriz_summary, echo=T}
+summary(o_matriz1);summary(o_matriz2) # Mostra informações por coluna
+
+```
+Outras formas de contruir matrizes é juntando objetos existentes através dos comandos _cbind()_ e _rbind()_ que contacatenam objetos por colunas e linhas, respectivamente.
+
+Vamos juntar as matrizes já criadas.
+```{r matriz_binds, echo=T}
+o_matriz3<-rbind(o_matriz1,o_matriz1) # concatena por linhas (r)
+o_matriz3
+
+o_matriz4<-rbind(o_matriz2,o_matriz2) # concatena por colunas (c)
+o_matriz4
+```
+
+#### Array
+
+O array é um conjunto de matrizes ou vetores que podem ter qualquer número de dimensões. Estas dimensões podem receber nomes.
+Podemos criar _arrays_ atribuindo dimensçoes a um vetor com o comando _dim()_ ou usando _array()_.
+
+*_array(data = NA, dim = length(data), dimnames = NULL)_*
+
+```{r array, echo=T}
+q_array<-1:12 # cria um vetor
+dim(q_array)<-c(2,3,2) # atribuindo 3 dimensões a q_array
+q_array
+
+r_array<-array(1:12,c(2,3,2)) # cria um array de 3 dimensões
+r_array
+```
+
+#### Data Frame
+
+Tão comum quanto a matriz, o data frame também um modo bidimensional de organização dos dados (linhas e colunas) que, diferentemente da matriz, permite objetos de tipos diferentes (character, numeric, logical e etc)sejam armazenados.
+Normalmente, nos data frames temos nas linhas as observações e nas colunas temos as variáveis.
+No entanto, é importante que cada coluna tenha o mesmo tamanho.
+
+*_data.frame(..., row.names = NULL, check.rows = FALSE,check.names = TRUE, fix.empty.names = TRUE,stringsAsFactors = default.stringsAsFactors())_*
+
+```{r data.frame.ENG792, echo=F}
+Nome<-c("Alberto Domingos Macamo",	"Ana Luiza Melo Rodrigues",	"Arieta Carla Gualandi Leal",	"Caio Henrique Patrício Pagani",	"Carla Larissa Fonseca da Silva",	"Conrado Trigo de Moraes",	"Diego Bispo dos Santos Farias",	"Eloy Junior Rezende",	"Fernanda Gonçalves Borges",	"Flávio Dayrell Gontijo",	"Francilene Maria Azevedo",	"Lorena Moreira Lara",	"Luana Caldeira Fonseca Coutinho",	"Marconi Martins Cunha",	"Mathias Viana Vicari",	"Mayara Oliveira Rocha",	"Michel Henriques de Souza",	"Moana Teixeira Rothe-Neves",	"Pedro Dell’Isola Brauer",	"Rafael Luís Silva Dias",	"Samuli Laurindo Pereira",	"Sherellyn Daphnee Alves Moretti",	"Thales Maurino de Aquino Silva",	"Talitha Silva Meneguelli",	"Vinícius Rodrigues dos Santos Petersen",	"Victorina Bispo Aires",	"Welson Junior Silva",	"Rafael Bolina da Silva",	"Mathias Viana Vicari",	"Jéssica Bevenuto Mattar",	"Otávio Ferreira Santos",	"Joslanny Higino Vieira")
+Matrícula<-c(0,98075,88695,104129,104731,104589,0,104599,104162,101417,74843,74038,81919,70859,0,104557,74102,104660,0,0,104525,100302,91704,0,86022,104275,104283,104597,0,91502,75179,98358)
+Curso<-c("Meteorologia Aplicada",	"Engenharia Agrícola",	"Nutrição",	"Engenharia Agrícola",	"Engenharia Agrícola",	"Zootecnia",	"Engenharia Agrícola",	"Zootecnia",	"Engenharia Agrícola",	"Botânica",	"Ciência da Nutrição",	"Fitotecnia (melhoramento)",	"Biologia",	"Engenharia Civil",	"Não informado",	"Engenharia Agrícola",	"Genética e Melhoramento",	"Ecologia",	"Meteorologia Aplicada",	"Engenharia Agrícola",	"Biologia",	"Ciência Florestal",	"Engenharia Agrícola",	"Nutrição",	"Meteorologia Aplicada",	"Botânica",	"Botânica",	"Zootecnia",	"Meteorologia Aplicada",	"Nutrição",	"Engenharia Agrícola",	"Engenharia Agrícola")
+Nivel.de.R<-c(NA,	0,	0,	2,	3,	1,	NA,	0,	2,	4,	1,	5,	1,	3,	NA,	1,	5,	5,	NA,	5,	5,	1,	0,	NA,	1,	1,	1,	4,	NA,	1,	3,	5)
+Nível.Pós<-c("Mestrado",	"Doutorado",	"Doutorado",	"Doutorado",	"Mestrado",	"Doutorado",	"Doutorado",	"Mestrado",	"Mestrado",	"Mestrado",	"Doutorado",	"Doutorado",	"Mestrado",	"Doutorado",	"Nâo informado",	"Doutorado",	"Doutorado",	"Mestrado",	"Mestrado",	"Doutorado",	"Mestrado",	"Mestrado",	"Doutorado",	"Doutorado",	"Mestrado",	"Mestrado",	"Mestrado",	"Doutorado",	"Doutorado",	"Doutorado",	"Mestrado",	"Doutorado")
+
+Alunos.Eng792<-as.data.frame(cbind(Nome,Matrícula,Curso,Nivel.de.R,Nível.Pós))
+
+Alunos.Eng792 %>% 
+  knitr::kable()
+```
+**Tabela 3:** Data frame do alunos de ENG 792 III
+
+```{r data.frame.Ficha, echo=T}
+Nome<-c("A", "B", "C")
+Idade<-c(25, 32, 28)
+Sexo<-c("M","M", "F")
+Nome;Idade;Sexo
+
+Ficha<-data.frame(Nome,Idade,Sexo)
+
+attributes(Ficha) # exibe os atributos do data frame
+```
+```{r data.frame.Ficha.display, echo=F}
+Ficha %>% 
+  knitr::kable(align = "lccrr")
+```
+**Tabela 4:** Tabela com dados fictícios.
+
+#### Lista (_list_)
+
+_List_ permite combinar diferentes esdtruturas de dados em um mesmo objeto, ou seja, _vetores_, _matrizes_, _arrays_, _data.frames_ e até outras listas. 
+As listas são construídas utilizando o comando _list()_
+
+Os componentes da lista são criados da mesma maneirta como para _data.frame_.
+__list(...)__
+
+```{r lista, echo=T}
+Nome<-c("A")
+Idade<-c(25)
+Sexo<-c("M")
+Notas<-c(55,42,50,35)
+Nome;Idade;Sexo;Notas
+
+Desempenho<-list(nome="A", idade=25, Sexo="M",Notas=c(55,42,50,35))
+Desempenho
+is.list(Desempenho)
+```
+
+Existem também alguns comandos/funções que mostram resultados como listas.
+
+```{r lista.de.funcao, echo=T}
+s<-c(1:30)
+t<-c(30:59)
+
+teste.t<-t.test(s,t, var.equal = T) # calcula o test t para 2 amostras de variâncias iguais
+teste.t
+is.list(teste.t);mode(teste.t)
+```
+Para finalizar por hoje preste atenção no seu _Global Environment_.
+Veja que há uma grande quantidade de objeto lá. Agora execute o comando abaixo:
+
+```{r removendo.Objetos, echo=T}
+rm(list=ls())
+```
+
+Voilà! Sumiu tudo.
+
+
