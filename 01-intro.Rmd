@@ -361,10 +361,10 @@ Assim como os vetores, as matrizes só aceitam dados do mesmo tipo.
 
 ```{r matriz, echo=T}
 o<-1:10 # cria um vetor de 1 a 10
-o_matriz1<-matrix(o,ncol=5)# Organiza o vetor 0 e 5 colunas
+o_matriz1<-matrix(o,ncol=5)# Organiza o vetor "o" e 5 colunas
 o_matriz1
 
-o_matriz2<-matrix(o,nrow=5)# Organiza o vetor 0 e 5 linhas
+o_matriz2<-matrix(o,nrow=5)# Organiza o vetor "o" e 5 linhas
 o_matriz2
 
 ```
