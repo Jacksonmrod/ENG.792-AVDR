@@ -390,10 +390,10 @@ Outras formas de contruir matrizes é juntando objetos existentes através dos c
 
 Vamos juntar as matrizes já criadas.
 ```{r matriz_binds, echo=T}
-o_matriz3<-rbind(o_matriz1,o_matriz1) # concatena por linhas (r)
+o_matriz3<-rbind(o_matriz1,o_matriz1) # concatena por linhas (row)
 o_matriz3
 
-o_matriz4<-rbind(o_matriz2,o_matriz2) # concatena por colunas (c)
+o_matriz4<-rbind(o_matriz2,o_matriz2) # concatena por colunas (column)
 o_matriz4
 ```
 
