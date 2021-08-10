@@ -10,7 +10,7 @@ Eventualmente algum especialista será convidado para dar uma aula, bater um pap
 
 Vamos dar uma passeio por muitas coisas legais que o R pode fazer e que vão ajudar a tornar sua vida bem melhor. Com tempo  ganho na otimização das suas tarefas por utilização do **R** sobrará tempo para você escrever um paper a mais na pós-graduação, dormir no final de semana sem culpa, tomar uma cerveja na sexta com a turma e ir ao culto domingo sem pedidos. 
 
-Vamos fazer tudo isso nos divertindo. É legal! Vocês verão. Por isso não se procupem comigo (professor), será muito pior para mim por ter que corrigir trabalhos enquanto vocês produzem mais um paper, dormem, tomam um cerveja com a turma e/ou rezam como foi na véspera de natal de 2020.
+Vamos fazer tudo isso nos divertindo. É legal! Vocês verão. Por isso não se procupem comigo (professor), será muito pior para mim por ter que corrigir trabalhos enquanto vocês produzem mais um paper, dormem, tomam um cerveja com a turma e/ou rezam como foi na véspera de natal de 2020. 
 
 ![Véspera de Natal 2020](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_1_Vespera_de_Natal.jpg){#id .class width=70% height=70%}
 
