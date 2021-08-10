@@ -12,6 +12,6 @@ Vamos dar uma passeio por muitas coisas legais que o R pode fazer e que vão aju
 
 Vamos fazer tudo isso nos divertindo. É legal! Vocês verão. Por isso não se procupem comigo (professor), será muito pior para mim por ter que corrigir trabalhos enquanto vocês produzem mais um paper, dormem, tomam um cerveja com a turma e/ou rezam como foi na véspera de natal de 2020. 
 
-![Véspera de Natal 2020](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_1_Vespera_de_Natal.jpg){#id .class width=70% height=70%}
+![Véspera de Natal 2020](https://github.com/Jacksonmrod/ENG.792-AVDR/blob/master/Cap_1_Vespera_de_Natal.jpg)
 
 [Let's ride to Metal Land!](https://www.youtube.com/watch?v=N8E4s8yAoX4&ab_channel=MassacrationOficial)
