@@ -439,7 +439,7 @@ Campeonato.Brasileiro.2019<-as.data.frame(cbind(Equipes,Jogos,Vitórias,Empates,
 knitr::kable(Campeonato.Brasileiro.2019, col.names = gsub("[.]", " ", names(Campeonato.Brasileiro.2019))) %>%
   kableExtra::kable_styling(font_size = 11.5)
 ```
-**Tabela 3:** Data frame do resultados final do Campeonato Brasileiro de 2019
+**Tabela 3:** Data frame do resultados final do Campeonato Brasileiro de 2019.
 
 ```{r data.frame.Ficha, echo=T}
 Nome<-c("A", "B", "C")
@@ -495,5 +495,3 @@ rm(list=ls())
 ```
 
 Voilà! Sumiu tudo.
-
-
