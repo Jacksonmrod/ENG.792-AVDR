@@ -24,7 +24,7 @@ Este curso foi criado e é ministrado por Jackson Rodrigues, professor da Univer
 
 Este curso foi construído pensando em minha saga para aprender algo utilizando o R em meu doutorado. Foi bastante dolorido, principalmente no começo quando eu nunca havia tido contato com a liguagem, na verdade, sabia quase nada em programação.
 
-Desta forma, o público alvo é aquele que tem conhecimento <p/ style="color:red">zero</p> sobre o assunto. Mas se você já sabe algo em qualquer nível, seja bem vindo também e podemos aprender juntos, você ensina o que você sabe e eu ensino o que eu sei.
+Desta forma, o público alvo é aquele que tem conhecimento </p style="color:red">zero</p> sobre o assunto. Mas se você já sabe algo em qualquer nível, seja bem vindo também! Podemos aprender juntos, você ensina o que você sabe e eu ensino o que eu sei.
 
 A ideia principal deste curso é que o(a) aluno(a) que nada sabe de **R** seja exposto(a) a grande quantidade de conceitos e métodos para que o "gelo" seja quebrado e possa se virar sozinho ao término do curso. Desta forma, não é um curso de estatística, não é um curso de produção gráfica nem um curso produção de conteúdo (eg. modelagem), mas um curso de exposição, quase um "*how to*". Vamos levantar demandas do dia a dia e tentar resolver os problemas comuns enfrentados pelo estudante na condução de suas análises.
 
@@ -43,7 +43,7 @@ Vamos fazer tudo isso nos divertindo. É legal! Vocês verão. Por isso não se 
 
 [Let's ride to Metal Land!](https://www.youtube.com/watch?v=N8E4s8yAoX4&ab_channel=MassacrationOficial)
 
-Nâo se sintam pressionados ou intimidados, façam as perguntas que quiserem. Eu também não sei tudo, o R é uma ferramenta que está em constante desenvolvimento tornando impossível acompanhar cada novidade. Caso eu não saiba uma resposta  não tenho problemas em dizer que não sei, mas vou me esforçar para buscar a resposta.
+Não se sintam pressionados ou intimidados, façam as perguntas que quiserem. Eu também não sei tudo, o R é uma ferramenta que está em constante desenvolvimento tornando impossível acompanhar cada novidade. Caso eu não saiba uma resposta  não tenho problemas em dizer que não sei, mas vou me esforçar para buscar a resposta.
 
 Por isso:
 

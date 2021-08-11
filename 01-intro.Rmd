@@ -13,7 +13,7 @@ De acordo com @perlin2018processamento _O código base do R foi inicialmente cri
 ![](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_1_Ross_Robert R.jpg){#id .class width=70% height=70%}
 
 O R está em constante desenvolvimento por um grupo chamado [R Team Core](https://www.r-project.org/) e conta com colaboração gratuita de centenas de milhares de usuários e desenvolvedores ao redor do mundo.
-Por isso, atualmente o R é utilizado por diversas áreas do conhecimento variando das ciências humanas até exatas, naquelas ciências que poderíamos imaginar pouco ou nada relacionadas. Por isso não se limite a procurar informações apenas no sei nicho, abra sua mente e busque aprender de outras ciências também. Eu, particularmente, busco muita coisa na econometria. embora presente em todo tipo de livro sobre R, asta citação acima (@perlin2018processamento) é de um livro de econometria. Veremos mais conteúdos desse material em breve.
+Por isso, atualmente o R é utilizado por diversas áreas do conhecimento variando das ciências humanas até exatas, naquelas ciências que poderíamos imaginar pouco ou nada relacionadas. Por isso não se limite a procurar informações apenas no seu nicho, abra sua mente e busque aprender de outras ciências também. Eu, particularmente, busco muita coisa na econometria. Embora presente em todo tipo de livro sobre R, esta citação acima (@perlin2018processamento) é de um livro de econometria. Veremos mais conteúdos desse material em breve.
 
 R é um software livre de análise de dados (não só estatística) que funciona em diversos sistemas operacionais: GNU Linux, MicrosoftWindows, Mac OS X e outros.
 
@@ -40,7 +40,7 @@ Clique em **download R**.
 Escolha o *"espelho"*.Escolha o mais próximo de você.   
 ![](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_1_Pagina_R_MIrror.jpg){#id .class width=90% height=90%}
 
-Escolha o seu sistema operacional. Caso você seja usuário de windows clique em **Download R for Windows** em seguinda em **install R for the first time** e finalmente em **Download R 4.1.0 for Windows**. Veja que no momento que este tutorial foi feito a versdão mais recente é a 4.1.0. No vídeo abaixo a versão é uma anterior, mas a lógica é a mesma.   
+Escolha o seu sistema operacional. Caso você seja usuário de windows clique em **Download R for Windows** em seguinda em **install R for the first time** e finalmente em **Download R 4.1.0 for Windows**. Veja que no momento que este tutorial foi feito a versão mais recente é a 4.1.0. No vídeo abaixo a versão é uma anterior, mas a lógica é a mesma.   
 ![](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_1_Pagina_R_sistema_operacional.jpg){#id .class width=90% height=90%}
 
 [clique aqui](https://sites.google.com/d/1eCt5C338czwUdwb5R-3k98vHFdf5LFC7/p/1l-WXVHDr8j6cYk-iTSYBaFN7mTesOmQl/edit) para assistir ao vídeo de instalação do R e RStudio no windows 
@@ -51,7 +51,10 @@ Eu não tenho um sistema operacional de cada para mostrar a instalação, por is
 ![](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_1_ET-dedo.jpg){#id .class width=50% height=50%}
 
 
-Temos 1 arquivo .csv com mais de 50.000 linhas referentes a transações de venda de diamantes dividida em 3 colunas *clarity*, *carat* e *price*. Quanto mais claro mais caro, certo? Ou há sub ou super valorização? Vamos investigar se essa relação é verdadeira.
+Temos 1 arquivo [Cap_1_P2-Mispriced-Diamonds.csv](https://github.com/Jacksonmrod/ENG.792-AVDR/blob/master/Cap_1_P2-Mispriced-Diamonds.csv) com mais de 50.000 linhas referentes a transações de venda de diamantes dividida em 3 colunas *clarity*, *carat* e *price*. Quanto mais claro mais caro, certo? Ou há sub ou super valorização? Vamos investigar se essa relação é verdadeira.
+
+
+Abaixo vamos apenas dar uma olhada no potencial de análise e produção gráfica do R. Não precisa se preocupar se não conseguir fazer tudo funcionar. Vamos aos poucos aprender cada comando aprensentado.
 
 ```{r Exemplo_1, echo=T}
 mydata<-read.csv("J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_1_P2-Mispriced-Diamonds.csv")
@@ -60,20 +63,23 @@ library("ggplot2")
 ggplot(data=mydata, aes(x=carat, y=price))+ 
   geom_point()
 ```
-Faz algum sentido. Mas temos pontos que não são estatisticamente significantes à direita, então vamos fazer uma limpeza, vamos mexer na transparência.
+Faz algum sentido. Mas está difícil de visualizar então vamos fazer um tratamento, vamos atribuir cores de acordo com a classificação do atributo _clarity_.
 
 ```{r Exemplo_1.2, echo=T}
 ggplot(data=mydata, aes(x=carat, y=price, colour=clarity))+ 
   geom_point()
 ```
-
-Vamos nos livrar dos pontos não significativos, aqueles que são *carat* menores que 2.5.
+Os pontos estão sobrepostos impossibilitando a visualização. Vamos mexer na transparência.
 
 ```{r Exemplo_1.3, echo=T}
 ggplot(data=mydata,
        aes(x=carat, y=price, colour=clarity))+
 geom_point(alpha=0.1) 
 ```
+
+Temos pontos que não são estatisticamente significantes à direita. Vamos nos livrar dos pontos não significativos, aqueles que são *carat* menores que 2.5.
+
+Vamos também adicionar algumas linhas  através dos dados para avaliar o comportamento das variáveis em conkunto.
 
 __brown__ é a melhor claridade, vejam que temos mispricing onde as linhas se cruzam.
 
@@ -84,7 +90,9 @@ geom_point(alpha=0.1) +
   geom_smooth()
 ```
 
-Executando o código abaixo você produzirá uma Modelo Digital do Terreno em 3D em uma janela __pop up__ do pacote [rayshader](https://www.rayshader.com/).
+**Vamos agora reproduzir um ourto exemplo muito legal do pacote [rayshader](https://www.rayshader.com/).**
+
+Executando o código abaixo você produzirá uma Modelo Digital do Terreno em 3D em uma janela __pop up__.
 
 
 ```{r Exemplo_2, echo=T,eval=F}
@@ -93,16 +101,16 @@ library(rayrender)
 library(rayshader)
 library(magick)
 
-#Here, I load a map with the raster package.
+#Vamos carregar o mapa com o pacote raster.
 loadzip = tempfile() 
 download.file("https://tylermw.com/data/dem_01.tif.zip", loadzip)
 localtif = raster::raster(unzip(loadzip, "dem_01.tif"))
 unlink(loadzip)
 
-#And convert it to a matrix:
+# convertê-lo para matriz:
 elmat = raster_to_matrix(localtif)
 
-#We use another one of rayshader's built-in textures:
+#Usar uma outra textura do rayshader
 elmat %>%
   sphere_shade(texture = "desert") %>%
   add_water(detect_water(elmat), color = "desert") %>%
@@ -110,14 +118,13 @@ elmat %>%
 ```
 ![](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_1_rayshader.jpeg)
 
-Agora vamos adicionar mais algumas infromações como escala e Norte.
+Agora vamos adicionar mais algumas infromações como escala e indicador de norte.
 ```{r Exemplo_2.plus, echo=T,eval=F}
 render_scalebar(limits=c(0, 5, 10),label_unit = "km",position = "W", y=50,scale_length = c(0.33,1))
 
 render_compass(position = "E")
 Sys.sleep(0.2)
 render_highquality(samples=200, scale_text_size = 24,clear=TRUE)
-
 ```
 ![](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_1_rayshader2.jpeg){#id .class width=120% height=120%}
 
@@ -127,11 +134,25 @@ Diferentemente de outras linguagens, todos os comandos escritos são diretamente
 
 A linguagem é muito intuitiva (quase uma sintaxe lógica). Por exemplo uma regressão linear pode ser executada como _lm(x~y)_ ( *_lm_* vem de *_linear model_*). Como no exemplo do modelo linear acima, sempre que formos executar um comando temos que seguir da seguinte forma *_função(dados e demais ajustes ou parâmetros)_*, ou seja chame a função e coloque o resto dentro de parênteses.
 
-Como dito anteriormente em aula, tudo que é executado pelo R fica armazenado na memória ativa (RAM) do computador na forma de objetos que possuem um nome. Os objetos, que variam em tipos e estruturas, podem ser funções criadas pelo próprio usuário, dados criados ou importados de uma memória, expressões e etc. Antes de entrarmos em detalhes sobre funções ou expressões, vamos nos ater aos objetos enquanto tipo na sequência suas estruturas.
+Tudo que é executado pelo R fica armazenado na memória ativa (RAM) do computador na forma de objetos que possuem um nome. Os objetos, que variam em tipos e estruturas, podem ser funções criadas pelo próprio usuário, dados criados ou importados de uma memória, expressões e etc. Antes de entrarmos em detalhes sobre funções ou expressões, vamos nos ater aos objetos enquanto tipo e, na sequência, suas estruturas.
 
 Dica de livro de cabeceira sobre R @melloandpeternelli2013.
 
-### Tipos de objetos
+Antes de avançarmos para os objetos é necessário fazer algumas recomendações e ressalvas.
+
+Para criar um objeto qualquer podemos utilizar **<-** ou **=**. As boas práticas recomendam o uso de **<-** para evitar confusão já que o sinal **=** tem outras funções.
+
+Um objeto é criado da seguinte forma **nome_do_objeto <- atribuição**.
+
+```{r atribuição, echo=F}
+nome_do_objeto <- "atribuição"
+nome_do_objeto
+```
+
+Contudo, evitem nomes longos, que comecem com numerais ou caracteres especiais ou letras maiúsculas (R é case-sensitive).
+Caso sua linha de comando esetja ficando longa demais opte por quebrar a linha veremos isso mais adiante).
+
+### Tipos de objetos (_mode_ ou _type_)
 
 Os objetos no R podem ser do tipo *lógico*, *inteiro*, *simples*, *dupla*, *complexo*, *função* ou *caractere*.
 
@@ -188,7 +209,7 @@ Saber as diferenças entre os diversos objetos é importante para uma exploraç�
 
 Veja que no caso acima em _integer_ (x <- 2L) optamos por adicionar “L” após o número 2, pois o R por padrão decide onde e como aloca/aloja/armazena um operador. A informação será preferencialmente salva como _double_ e isso faz sentido caso você queira mais adiante realizar operações com números decimais ou realizar operações que resultem em números decimais.
 
-No entanto, caso queira saber que tipo de dado está manipulado você pode "perguntar" utilizando _is._ seguido da designação do tipo de dados quer testar ( _integer_, _numeric_, _double_ e etc) e teremos uma resposta lógica. 
+No entanto, caso queira saber que tipo de dado está manipulando você pode "perguntar" utilizando _is._ seguido da designação do tipo de dados quer testar ( _integer_, _numeric_, _double_ e etc) e teremos uma resposta lógica. 
 
 ```{r Teste_is., echo=T}
 is.double(x) 
@@ -220,9 +241,11 @@ tabela2 %>%
 ```
 **Tabela 2:** Tipos de dados, teste e modos de conversão.
 
-### Estrutura do objetos
+### Estrutura do objetos (_class_)
 
-As informações armazenadas em objetos no R podem ser organizadas em diferentes estruturas.
+As informações armazenadas em objetos no R podem ser organizadas em diferentes estruturas ou classes.
+
+- No R existe uma grande variedade de classes de objetos, e sempre surgindo mais. No entanto, há classes de objetos que são mais comuns em situações em que estamos manipulando bases de dados, seja ela já existente, ou quando estamos criando com coleta usando técnicas de webscraping, por exemplo. São elas: interger, numeric, character, factor, matrix, data.frame e list. Uma coisa importante, no R não precisamos declarar qual classe vai ser o objeto unidimensional como em outras linguagem, embora possamos fazer isso, pois, o R aloca o objeto automaticamente em uma classe a partir do seu conteúdo. @MeirelesandSilva2018
 
 ![](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_1_R_data_strucutres.jpg){#id .class width=50% height=50%}
 
@@ -325,7 +348,7 @@ As variáveis aleatórias podem ser divididas em contínuas e categóricas.
 * As categóricas nas escalas: nominal e ordinal.
 
 No R, as variáveis categóricas medidas nas escalas nominal e ordinal são chamados fatores.
-A função _factor()_ armazenas os valores categóricos como um vetor de inteiros [1..k] e um vetor interno de _strings_ referentes ao nomes.
+A função _factor()_ armazena os valores categóricos como um vetor de inteiros [1..k] e um vetor interno de _strings_ referentes ao nomes.
 _Em outras palavras, um **factor** é um **vetor** objeto usado para especificar uma classsificação discreta (agrupamento) dos componentes de outros vetores de mesmo tamanho._
 
 *_factor(x = character(), levels, labels = levels,exclude = NA, ordered = is.ordered(x), nmax = NA)_*

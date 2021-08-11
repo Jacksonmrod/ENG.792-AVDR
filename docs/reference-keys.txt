@@ -11,12 +11,11 @@ o-que-é-o-r
 instalação-do-r
 primeiro-contato
 como-r-funciona
-tipos-de-objetos
-estrutura-do-objetos
+tipos-de-objetos-mode-ou-type
+estrutura-do-objetos-class
 vetores-vectors
 fatores-factors
 matriz-matrix
 array
 data-frame
 lista-list
-url-your-book-url-like-httpsbookdown.orgyihuibookdown
