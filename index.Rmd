@@ -17,7 +17,7 @@ github-repo: rstudio/bookdown-demo
 
 ## Hello World! - Sejam Bem Vindos!
 
-Assita este conteúdo em *Cap 1 - Hello World! - Sejam Bem Vindos!* no [PVANet](https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php).
+Assista este conteúdo em **Cap 1 - Hello World! - Sejam Bem Vindos!** no [PVANet](https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php).
 
 ![](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_1_ET.jpg){#id .class width=50% height=50%}   
 
