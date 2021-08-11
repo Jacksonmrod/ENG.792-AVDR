@@ -109,6 +109,20 @@
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{5}
 \usepackage{booktabs}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
 \ifluatex
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
@@ -144,7 +158,7 @@ Desta forma, o público alvo é aquele que tem conhecimento
 
 zero
 
-sobre o assunto. Mas se você já sabe algo em qualquer nível, seja bem vindo também e podemos aprender juntos, você ensina o que você sabe e eu ensino o que eu sei.
+sobre o assunto. Mas se você já sabe algo em qualquer nível, seja bem vindo também! Podemos aprender juntos, você ensina o que você sabe e eu ensino o que eu sei.
 
 A ideia principal deste curso é que o(a) aluno(a) que nada sabe de \textbf{R} seja exposto(a) a grande quantidade de conceitos e métodos para que o ``gelo'' seja quebrado e possa se virar sozinho ao término do curso. Desta forma, não é um curso de estatística, não é um curso de produção gráfica nem um curso produção de conteúdo (eg. modelagem), mas um curso de exposição, quase um ``\emph{how to}''. Vamos levantar demandas do dia a dia e tentar resolver os problemas comuns enfrentados pelo estudante na condução de suas análises.
 
@@ -175,7 +189,7 @@ Vamos fazer tudo isso nos divertindo. É legal! Vocês verão. Por isso não se 
 
 \href{https://www.youtube.com/watch?v=N8E4s8yAoX4\&ab_channel=MassacrationOficial}{Let's ride to Metal Land!}
 
-Nâo se sintam pressionados ou intimidados, façam as perguntas que quiserem. Eu também não sei tudo, o R é uma ferramenta que está em constante desenvolvimento tornando impossível acompanhar cada novidade. Caso eu não saiba uma resposta não tenho problemas em dizer que não sei, mas vou me esforçar para buscar a resposta.
+Não se sintam pressionados ou intimidados, façam as perguntas que quiserem. Eu também não sei tudo, o R é uma ferramenta que está em constante desenvolvimento tornando impossível acompanhar cada novidade. Caso eu não saiba uma resposta não tenho problemas em dizer que não sei, mas vou me esforçar para buscar a resposta.
 
 Por isso:
 
@@ -297,7 +311,7 @@ De acordo com \citet{perlin2018processamento} \emph{O código base do R foi inic
 \includegraphics[width=0.7\textwidth,height=0.7\textheight]{J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_1_Ross_Robert R.jpg}
 
 O R está em constante desenvolvimento por um grupo chamado \href{https://www.r-project.org/}{R Team Core} e conta com colaboração gratuita de centenas de milhares de usuários e desenvolvedores ao redor do mundo.
-Por isso, atualmente o R é utilizado por diversas áreas do conhecimento variando das ciências humanas até exatas, naquelas ciências que poderíamos imaginar pouco ou nada relacionadas. Por isso não se limite a procurar informações apenas no sei nicho, abra sua mente e busque aprender de outras ciências também. Eu, particularmente, busco muita coisa na econometria. embora presente em todo tipo de livro sobre R, asta citação acima (\citet{perlin2018processamento}) é de um livro de econometria. Veremos mais conteúdos desse material em breve.
+Por isso, atualmente o R é utilizado por diversas áreas do conhecimento variando das ciências humanas até exatas, naquelas ciências que poderíamos imaginar pouco ou nada relacionadas. Por isso não se limite a procurar informações apenas no seu nicho, abra sua mente e busque aprender de outras ciências também. Eu, particularmente, busco muita coisa na econometria. Embora presente em todo tipo de livro sobre R, esta citação acima (\citet{perlin2018processamento}) é de um livro de econometria. Veremos mais conteúdos desse material em breve.
 
 R é um software livre de análise de dados (não só estatística) que funciona em diversos sistemas operacionais: GNU Linux, MicrosoftWindows, Mac OS X e outros.
 
@@ -328,7 +342,7 @@ Clique em \textbf{download R}.\\
 Escolha o \emph{``espelho''}.Escolha o mais próximo de você.\\
 \includegraphics[width=0.9\textwidth,height=0.9\textheight]{J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_1_Pagina_R_MIrror.jpg}
 
-Escolha o seu sistema operacional. Caso você seja usuário de windows clique em \textbf{Download R for Windows} em seguinda em \textbf{install R for the first time} e finalmente em \textbf{Download R 4.1.0 for Windows}. Veja que no momento que este tutorial foi feito a versdão mais recente é a 4.1.0. No vídeo abaixo a versão é uma anterior, mas a lógica é a mesma.\\
+Escolha o seu sistema operacional. Caso você seja usuário de windows clique em \textbf{Download R for Windows} em seguinda em \textbf{install R for the first time} e finalmente em \textbf{Download R 4.1.0 for Windows}. Veja que no momento que este tutorial foi feito a versão mais recente é a 4.1.0. No vídeo abaixo a versão é uma anterior, mas a lógica é a mesma.\\
 \includegraphics[width=0.9\textwidth,height=0.9\textheight]{J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_1_Pagina_R_sistema_operacional.jpg}
 
 \href{https://sites.google.com/d/1eCt5C338czwUdwb5R-3k98vHFdf5LFC7/p/1l-WXVHDr8j6cYk-iTSYBaFN7mTesOmQl/edit}{clique aqui} para assistir ao vídeo de instalação do R e RStudio no windows
@@ -340,7 +354,9 @@ Eu não tenho um sistema operacional de cada para mostrar a instalação, por is
 
 \includegraphics[width=0.5\textwidth,height=0.5\textheight]{J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_1_ET-dedo.jpg}
 
-Temos 1 arquivo .csv com mais de 50.000 linhas referentes a transações de venda de diamantes dividida em 3 colunas \emph{clarity}, \emph{carat} e \emph{price}. Quanto mais claro mais caro, certo? Ou há sub ou super valorização? Vamos investigar se essa relação é verdadeira.
+Temos 1 arquivo \href{https://github.com/Jacksonmrod/ENG.792-AVDR/blob/master/Cap_1_P2-Mispriced-Diamonds.csv}{Cap\_1\_P2-Mispriced-Diamonds.csv} com mais de 50.000 linhas referentes a transações de venda de diamantes dividida em 3 colunas \emph{clarity}, \emph{carat} e \emph{price}. Quanto mais claro mais caro, certo? Ou há sub ou super valorização? Vamos investigar se essa relação é verdadeira.
+
+Abaixo vamos apenas dar uma olhada no potencial de análise e produção gráfica do R. Não precisa se preocupar se não conseguir fazer tudo funcionar. Vamos aos poucos aprender cada comando aprensentado.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -353,7 +369,7 @@ Temos 1 arquivo .csv com mais de 50.000 linhas referentes a transações de vend
 \end{Shaded}
 
 \includegraphics{ENG_792-AVDR_files/figure-latex/Exemplo_1-1.pdf}
-Faz algum sentido. Mas temos pontos que não são estatisticamente significantes à direita, então vamos fazer uma limpeza, vamos mexer na transparência.
+Faz algum sentido. Mas está difícil de visualizar então vamos fazer um tratamento, vamos atribuir cores de acordo com a classificação do atributo \emph{clarity}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -363,8 +379,7 @@ Faz algum sentido. Mas temos pontos que não são estatisticamente significantes
 \end{Shaded}
 
 \includegraphics{ENG_792-AVDR_files/figure-latex/Exemplo_1.2-1.pdf}
-
-Vamos nos livrar dos pontos não significativos, aqueles que são \emph{carat} menores que 2.5.
+Os pontos estão sobrepostos impossibilitando a visualização. Vamos mexer na transparência.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -375,6 +390,10 @@ Vamos nos livrar dos pontos não significativos, aqueles que são \emph{carat} m
 \end{Shaded}
 
 \includegraphics{ENG_792-AVDR_files/figure-latex/Exemplo_1.3-1.pdf}
+
+Temos pontos que não são estatisticamente significantes à direita. Vamos nos livrar dos pontos não significativos, aqueles que são \emph{carat} menores que 2.5.
+
+Vamos também adicionar algumas linhas através dos dados para avaliar o comportamento das variáveis em conkunto.
 
 \textbf{brown} é a melhor claridade, vejam que temos mispricing onde as linhas se cruzam.
 
@@ -393,7 +412,9 @@ Vamos nos livrar dos pontos não significativos, aqueles que são \emph{carat} m
 
 \includegraphics{ENG_792-AVDR_files/figure-latex/Exemplo_1.4-1.pdf}
 
-Executando o código abaixo você produzirá uma Modelo Digital do Terreno em 3D em uma janela \textbf{pop up} do pacote \href{https://www.rayshader.com/}{rayshader}.
+\textbf{Vamos agora reproduzir um ourto exemplo muito legal do pacote \href{https://www.rayshader.com/}{rayshader}.}
+
+Executando o código abaixo você produzirá uma Modelo Digital do Terreno em 3D em uma janela \textbf{pop up}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -401,16 +422,16 @@ Executando o código abaixo você produzirá uma Modelo Digital do Terreno em 3D
 \FunctionTok{library}\NormalTok{(rayshader)}
 \FunctionTok{library}\NormalTok{(magick)}
 
-\CommentTok{\#Here, I load a map with the raster package.}
+\CommentTok{\#Vamos carregar o mapa com o pacote raster.}
 \NormalTok{loadzip }\OtherTok{=} \FunctionTok{tempfile}\NormalTok{() }
 \FunctionTok{download.file}\NormalTok{(}\StringTok{"https://tylermw.com/data/dem\_01.tif.zip"}\NormalTok{, loadzip)}
 \NormalTok{localtif }\OtherTok{=}\NormalTok{ raster}\SpecialCharTok{::}\FunctionTok{raster}\NormalTok{(}\FunctionTok{unzip}\NormalTok{(loadzip, }\StringTok{"dem\_01.tif"}\NormalTok{))}
 \FunctionTok{unlink}\NormalTok{(loadzip)}
 
-\CommentTok{\#And convert it to a matrix:}
+\CommentTok{\# convertê{-}lo para matriz:}
 \NormalTok{elmat }\OtherTok{=} \FunctionTok{raster\_to\_matrix}\NormalTok{(localtif)}
 
-\CommentTok{\#We use another one of rayshader\textquotesingle{}s built{-}in textures:}
+\CommentTok{\#Usar uma outra textura do rayshader}
 \NormalTok{elmat }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{sphere\_shade}\NormalTok{(}\AttributeTok{texture =} \StringTok{"desert"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{add\_water}\NormalTok{(}\FunctionTok{detect\_water}\NormalTok{(elmat), }\AttributeTok{color =} \StringTok{"desert"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
@@ -420,7 +441,7 @@ Executando o código abaixo você produzirá uma Modelo Digital do Terreno em 3D
 
 \includegraphics{J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_1_rayshader.jpeg}
 
-Agora vamos adicionar mais algumas infromações como escala e Norte.
+Agora vamos adicionar mais algumas infromações como escala e indicador de norte.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -441,12 +462,25 @@ Diferentemente de outras linguagens, todos os comandos escritos são diretamente
 
 A linguagem é muito intuitiva (quase uma sintaxe lógica). Por exemplo uma regressão linear pode ser executada como \emph{lm(x\textasciitilde y)} ( \emph{\emph{lm}} vem de \emph{\emph{linear model}}). Como no exemplo do modelo linear acima, sempre que formos executar um comando temos que seguir da seguinte forma \emph{\emph{função(dados e demais ajustes ou parâmetros)}}, ou seja chame a função e coloque o resto dentro de parênteses.
 
-Como dito anteriormente em aula, tudo que é executado pelo R fica armazenado na memória ativa (RAM) do computador na forma de objetos que possuem um nome. Os objetos, que variam em tipos e estruturas, podem ser funções criadas pelo próprio usuário, dados criados ou importados de uma memória, expressões e etc. Antes de entrarmos em detalhes sobre funções ou expressões, vamos nos ater aos objetos enquanto tipo na sequência suas estruturas.
+Tudo que é executado pelo R fica armazenado na memória ativa (RAM) do computador na forma de objetos que possuem um nome. Os objetos, que variam em tipos e estruturas, podem ser funções criadas pelo próprio usuário, dados criados ou importados de uma memória, expressões e etc. Antes de entrarmos em detalhes sobre funções ou expressões, vamos nos ater aos objetos enquanto tipo e, na sequência, suas estruturas.
 
 Dica de livro de cabeceira sobre R \citet{melloandpeternelli2013}.
 
-\hypertarget{tipos-de-objetos}{%
-\subsection{Tipos de objetos}\label{tipos-de-objetos}}
+Antes de avançarmos para os objetos é necessário fazer algumas recomendações e ressalvas.
+
+Para criar um objeto qualquer podemos utilizar \textbf{\textless-} ou \textbf{=}. As boas práticas recomendam o uso de \textbf{\textless-} para evitar confusão já que o sinal \textbf{=} tem outras funções.
+
+Um objeto é criado da seguinte forma \textbf{nome\_do\_objeto \textless- atribuição}.
+
+\begin{verbatim}
+## [1] "atribuição"
+\end{verbatim}
+
+Contudo, evitem nomes longos, que comecem com numerais ou caracteres especiais ou letras maiúsculas (R é case-sensitive).
+Caso sua linha de comando esetja ficando longa demais opte por quebrar a linha veremos isso mais adiante).
+
+\hypertarget{tipos-de-objetos-mode-ou-type}{%
+\subsection{\texorpdfstring{Tipos de objetos (\emph{mode} ou \emph{type})}{Tipos de objetos (mode ou type)}}\label{tipos-de-objetos-mode-ou-type}}
 
 Os objetos no R podem ser do tipo \emph{lógico}, \emph{inteiro}, \emph{simples}, \emph{dupla}, \emph{complexo}, \emph{função} ou \emph{caractere}.
 
@@ -600,7 +634,7 @@ Saber as diferenças entre os diversos objetos é importante para uma exploraç�
 
 Veja que no caso acima em \emph{integer} (x \textless- 2L) optamos por adicionar ``L'' após o número 2, pois o R por padrão decide onde e como aloca/aloja/armazena um operador. A informação será preferencialmente salva como \emph{double} e isso faz sentido caso você queira mais adiante realizar operações com números decimais ou realizar operações que resultem em números decimais.
 
-No entanto, caso queira saber que tipo de dado está manipulado você pode ``perguntar'' utilizando \emph{is.} seguido da designação do tipo de dados quer testar ( \emph{integer}, \emph{numeric}, \emph{double} e etc) e teremos uma resposta lógica.
+No entanto, caso queira saber que tipo de dado está manipulando você pode ``perguntar'' utilizando \emph{is.} seguido da designação do tipo de dados quer testar ( \emph{integer}, \emph{numeric}, \emph{double} e etc) e teremos uma resposta lógica.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -657,10 +691,16 @@ Date & is.Date & as.Date\\
 
 \textbf{Tabela 2:} Tipos de dados, teste e modos de conversão.
 
-\hypertarget{estrutura-do-objetos}{%
-\subsection{Estrutura do objetos}\label{estrutura-do-objetos}}
+\hypertarget{estrutura-do-objetos-class}{%
+\subsection{\texorpdfstring{Estrutura do objetos (\emph{class})}{Estrutura do objetos (class)}}\label{estrutura-do-objetos-class}}
 
-As informações armazenadas em objetos no R podem ser organizadas em diferentes estruturas.
+As informações armazenadas em objetos no R podem ser organizadas em diferentes estruturas ou classes.
+
+\begin{itemize}
+\tightlist
+\item
+  No R existe uma grande variedade de classes de objetos, e sempre surgindo mais. No entanto, há classes de objetos que são mais comuns em situações em que estamos manipulando bases de dados, seja ela já existente, ou quando estamos criando com coleta usando técnicas de webscraping, por exemplo. São elas: interger, numeric, character, factor, matrix, data.frame e list. Uma coisa importante, no R não precisamos declarar qual classe vai ser o objeto unidimensional como em outras linguagem, embora possamos fazer isso, pois, o R aloca o objeto automaticamente em uma classe a partir do seu conteúdo. \citet{MeirelesandSilva2018}
+\end{itemize}
 
 \includegraphics[width=0.5\textwidth,height=0.5\textheight]{J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_1_R_data_strucutres.jpg}
 
@@ -880,7 +920,7 @@ As variáveis aleatórias podem ser divididas em contínuas e categóricas.
 \end{itemize}
 
 No R, as variáveis categóricas medidas nas escalas nominal e ordinal são chamados fatores.
-A função \emph{factor()} armazenas os valores categóricos como um vetor de inteiros {[}1..k{]} e um vetor interno de \emph{strings} referentes ao nomes.
+A função \emph{factor()} armazena os valores categóricos como um vetor de inteiros {[}1..k{]} e um vetor interno de \emph{strings} referentes ao nomes.
 \emph{Em outras palavras, um \textbf{factor} é um \textbf{vetor} objeto usado para especificar uma classsificação discreta (agrupamento) dos componentes de outros vetores de mesmo tamanho.}
 
 \emph{\emph{factor(x = character(), levels, labels = levels,exclude = NA, ordered = is.ordered(x), nmax = NA)}}
@@ -958,7 +998,7 @@ Assim como os vetores, as matrizes só aceitam dados do mesmo tipo.
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{o}\OtherTok{\textless{}{-}}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10} \CommentTok{\# cria um vetor de 1 a 10}
-\NormalTok{o\_matriz1}\OtherTok{\textless{}{-}}\FunctionTok{matrix}\NormalTok{(o,}\AttributeTok{ncol=}\DecValTok{5}\NormalTok{)}\CommentTok{\# Organiza o vetor 0 e 5 colunas}
+\NormalTok{o\_matriz1}\OtherTok{\textless{}{-}}\FunctionTok{matrix}\NormalTok{(o,}\AttributeTok{ncol=}\DecValTok{5}\NormalTok{)}\CommentTok{\# Organiza o vetor "o" e 5 colunas}
 \NormalTok{o\_matriz1}
 \end{Highlighting}
 \end{Shaded}
@@ -971,7 +1011,7 @@ Assim como os vetores, as matrizes só aceitam dados do mesmo tipo.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{o\_matriz2}\OtherTok{\textless{}{-}}\FunctionTok{matrix}\NormalTok{(o,}\AttributeTok{nrow=}\DecValTok{5}\NormalTok{)}\CommentTok{\# Organiza o vetor 0 e 5 linhas}
+\NormalTok{o\_matriz2}\OtherTok{\textless{}{-}}\FunctionTok{matrix}\NormalTok{(o,}\AttributeTok{nrow=}\DecValTok{5}\NormalTok{)}\CommentTok{\# Organiza o vetor "o" e 5 linhas}
 \NormalTok{o\_matriz2}
 \end{Highlighting}
 \end{Shaded}
@@ -990,7 +1030,7 @@ Podemos utilizar também o argumento \emph{byrow=}, que, diferente do exemplo ac
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{p}\OtherTok{\textless{}{-}}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10} \CommentTok{\# cria um vetor de 1 a 10}
-\NormalTok{p\_matriz1}\OtherTok{\textless{}{-}}\FunctionTok{matrix}\NormalTok{(o,}\AttributeTok{nrow=}\DecValTok{5}\NormalTok{,}\AttributeTok{byrow=}\NormalTok{T)}\CommentTok{\# Organiza o vetor 0 e 5 colunas}
+\NormalTok{p\_matriz1}\OtherTok{\textless{}{-}}\FunctionTok{matrix}\NormalTok{(o,}\AttributeTok{nrow=}\DecValTok{5}\NormalTok{,}\AttributeTok{byrow=}\NormalTok{T)}\CommentTok{\# Organiza o vetor "o" e 5 colunas}
 \NormalTok{p\_matriz1; o\_matriz2 }\CommentTok{\# compare os 2 modos}
 \end{Highlighting}
 \end{Shaded}
@@ -1013,7 +1053,7 @@ Podemos utilizar também o argumento \emph{byrow=}, que, diferente do exemplo ac
 ## [5,]    5   10
 \end{verbatim}
 
-As dimensões de uma matriz pode ser acessado através do comando \emph{dim()}:
+As dimensões de uma matriz podem ser acessadas através do comando \emph{dim()}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1063,7 +1103,7 @@ Vamos juntar as matrizes já criadas.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{o\_matriz3}\OtherTok{\textless{}{-}}\FunctionTok{rbind}\NormalTok{(o\_matriz1,o\_matriz1) }\CommentTok{\# concatena por linhas (r)}
+\NormalTok{o\_matriz3}\OtherTok{\textless{}{-}}\FunctionTok{rbind}\NormalTok{(o\_matriz1,o\_matriz1) }\CommentTok{\# concatena por linhas (row)}
 \NormalTok{o\_matriz3}
 \end{Highlighting}
 \end{Shaded}
@@ -1078,7 +1118,7 @@ Vamos juntar as matrizes já criadas.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{o\_matriz4}\OtherTok{\textless{}{-}}\FunctionTok{rbind}\NormalTok{(o\_matriz2,o\_matriz2) }\CommentTok{\# concatena por colunas (c)}
+\NormalTok{o\_matriz4}\OtherTok{\textless{}{-}}\FunctionTok{rbind}\NormalTok{(o\_matriz2,o\_matriz2) }\CommentTok{\# concatena por colunas (column)}
 \NormalTok{o\_matriz4}
 \end{Highlighting}
 \end{Shaded}
@@ -1157,9 +1197,12 @@ No entanto, é importante que cada coluna tenha o mesmo tamanho.
 
 \emph{\emph{data.frame(\ldots, row.names = NULL, check.rows = FALSE,check.names = TRUE, fix.empty.names = TRUE,stringsAsFactors = default.stringsAsFactors())}}
 
+\begin{table}
+\centering\begingroup\fontsize{11.5}{13.5}\selectfont
+
 \begin{tabular}{l|l|l|l|l|l|l|l|l|l|l}
 \hline
-Equipes & Jogos & Vitórias & Empates & Derrotas & Gols Pró & Gols Contra & Pontos & Saldo de Gols & Aproveitamento & Destino\\
+Equipes & Jogos & Vitórias & Empates & Derrotas & Gols Pró & Gols Contra & Pontos & Saldo de Gols & Aprov  & Destino\\
 \hline
 Flamengo & 38 & 28 & 6 & 4 & 86 & 37 & 90 & 49 & 79 & Libertadores\\
 \hline
@@ -1202,8 +1245,10 @@ Chapecoense & 38 & 7 & 11 & 20 & 31 & 52 & 32 & -21 & 28 & Rebaixado\\
 Avaí & 38 & 3 & 11 & 24 & 18 & 62 & 20 & -44 & 18 & Rebaixado\\
 \hline
 \end{tabular}
+\endgroup{}
+\end{table}
 
-\textbf{Tabela 3:} Data frame do resultados final do Campeonato Brasileiro de 2019
+\textbf{Tabela 3:} Data frame do resultados final do Campeonato Brasileiro de 2019.
 
 \begin{Shaded}
 \begin{Highlighting}[]
