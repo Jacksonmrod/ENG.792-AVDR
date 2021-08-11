@@ -51,7 +51,7 @@ Eu não tenho um sistema operacional de cada para mostrar a instalação, por is
 ![](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_1_ET-dedo.jpg){#id .class width=50% height=50%}
 
 
-Temos 1 arquivo [Cap_1_P2-Mispriced-Diamonds.csv](https://github.com/Jacksonmrod/ENG.792-AVDR/blob/master/Cap_1_P2-Mispriced-Diamonds.csv) com mais de 50.000 linhas referentes a transações de venda de diamantes dividida em 3 colunas *clarity*, *carat* e *price*. Quanto mais claro mais caro, certo? Ou há sub ou super valorização? Vamos investigar se essa relação é verdadeira.
+Temos 1 arquivo [Cap_1_P2-Mispriced-Diamonds.csv](https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php) no PVANet com mais de 50.000 linhas referentes a transações de venda de diamantes dividida em 3 colunas *clarity*, *carat* e *price*. Quanto mais claro mais caro, certo? Ou há sub ou super valorização? Vamos investigar se essa relação é verdadeira.
 
 
 Abaixo vamos apenas dar uma olhada no potencial de análise e produção gráfica do R. Não precisa se preocupar se não conseguir fazer tudo funcionar. Vamos aos poucos aprender cada comando aprensentado.
