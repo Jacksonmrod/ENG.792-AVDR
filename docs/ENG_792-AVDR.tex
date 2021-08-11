@@ -131,7 +131,7 @@
 
 \title{ENG 792 - Análise e visualização de dados com R (RStudio)}
 \author{Jackson Rodrigues}
-\date{2021-08-10}
+\date{2021-08-11}
 
 \begin{document}
 \maketitle
@@ -345,7 +345,7 @@ Escolha o \emph{``espelho''}.Escolha o mais próximo de você.\\
 Escolha o seu sistema operacional. Caso você seja usuário de windows clique em \textbf{Download R for Windows} em seguinda em \textbf{install R for the first time} e finalmente em \textbf{Download R 4.1.0 for Windows}. Veja que no momento que este tutorial foi feito a versão mais recente é a 4.1.0. No vídeo abaixo a versão é uma anterior, mas a lógica é a mesma.\\
 \includegraphics[width=0.9\textwidth,height=0.9\textheight]{J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_1_Pagina_R_sistema_operacional.jpg}
 
-\href{https://sites.google.com/d/1eCt5C338czwUdwb5R-3k98vHFdf5LFC7/p/1l-WXVHDr8j6cYk-iTSYBaFN7mTesOmQl/edit}{clique aqui} para assistir ao vídeo de instalação do R e RStudio no windows
+Acesse o \href{https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php}{PVANet} para assistir ao vídeo de instalação do R e RStudio no windows
 
 Eu não tenho um sistema operacional de cada para mostrar a instalação, por isso deixo este vídeo para \href{https://www.youtube.com/watch?v=np2-FIgzpTg\&ab_channel=AutoDeeDucks}{instalação no linux} e este para \href{https://www.youtube.com/watch?v=LanBozXJjOk\&ab_channel=DataSciencewithTom}{instalação no mac}. Caso você não consiga instalar me procure.
 
@@ -354,7 +354,7 @@ Eu não tenho um sistema operacional de cada para mostrar a instalação, por is
 
 \includegraphics[width=0.5\textwidth,height=0.5\textheight]{J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_1_ET-dedo.jpg}
 
-Temos 1 arquivo \href{https://github.com/Jacksonmrod/ENG.792-AVDR/blob/master/Cap_1_P2-Mispriced-Diamonds.csv}{Cap\_1\_P2-Mispriced-Diamonds.csv} com mais de 50.000 linhas referentes a transações de venda de diamantes dividida em 3 colunas \emph{clarity}, \emph{carat} e \emph{price}. Quanto mais claro mais caro, certo? Ou há sub ou super valorização? Vamos investigar se essa relação é verdadeira.
+Temos 1 arquivo \href{https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php}{Cap\_1\_P2-Mispriced-Diamonds.csv} no PVANet com mais de 50.000 linhas referentes a transações de venda de diamantes dividida em 3 colunas \emph{clarity}, \emph{carat} e \emph{price}. Quanto mais claro mais caro, certo? Ou há sub ou super valorização? Vamos investigar se essa relação é verdadeira como sugerido em \href{https://ecapitaladvisors.com/blog/finding-mispriced-diamonds/}{ecapitaladvisors}.
 
 Abaixo vamos apenas dar uma olhada no potencial de análise e produção gráfica do R. Não precisa se preocupar se não conseguir fazer tudo funcionar. Vamos aos poucos aprender cada comando aprensentado.
 
@@ -369,6 +369,7 @@ Abaixo vamos apenas dar uma olhada no potencial de análise e produção gráfic
 \end{Shaded}
 
 \includegraphics{ENG_792-AVDR_files/figure-latex/Exemplo_1-1.pdf}
+
 Faz algum sentido. Mas está difícil de visualizar então vamos fazer um tratamento, vamos atribuir cores de acordo com a classificação do atributo \emph{clarity}.
 
 \begin{Shaded}
@@ -379,6 +380,7 @@ Faz algum sentido. Mas está difícil de visualizar então vamos fazer um tratam
 \end{Shaded}
 
 \includegraphics{ENG_792-AVDR_files/figure-latex/Exemplo_1.2-1.pdf}
+
 Os pontos estão sobrepostos impossibilitando a visualização. Vamos mexer na transparência.
 
 \begin{Shaded}
@@ -393,7 +395,7 @@ Os pontos estão sobrepostos impossibilitando a visualização. Vamos mexer na t
 
 Temos pontos que não são estatisticamente significantes à direita. Vamos nos livrar dos pontos não significativos, aqueles que são \emph{carat} menores que 2.5.
 
-Vamos também adicionar algumas linhas através dos dados para avaliar o comportamento das variáveis em conkunto.
+Vamos também adicionar algumas linhas através dos dados para avaliar o comportamento das variáveis em conjunto.
 
 \textbf{brown} é a melhor claridade, vejam que temos mispricing onde as linhas se cruzam.
 

@@ -161,7 +161,7 @@ div.csl-indent {
 <li><a href="./">ENG_792-AVDR</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> url: your book url like <span>https://bookdown.org/yihui/bookdown</span></a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Apresentação</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#hello-world---sejam-bem-vindos"><i class="fa fa-check"></i><b>1.1</b> Hello World! - Sejam Bem Vindos!</a>
 <ul>
@@ -243,25 +243,25 @@ Entretanto, depois de um certo tempo, ele possibilita que se trabalhe com grande
 <div id="primeiro-contato" class="section level3" number="2.1.3">
 <h3><span class="header-section-number">2.1.3</span> Primeiro contato</h3>
 <p><img src="Cap_1_ET-dedo.jpg" id="id" class="class" style="width:50.0%;height:50.0%" /></p>
-<p>Temos 1 arquivo <a href="https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php">Cap_1_P2-Mispriced-Diamonds.csv</a> no PVANet com mais de 50.000 linhas referentes a transações de venda de diamantes dividida em 3 colunas <em>clarity</em>, <em>carat</em> e <em>price</em>. Quanto mais claro mais caro, certo? Ou há sub ou super valorização? Vamos investigar se essa relação é verdadeira.</p>
+<p>Temos 1 arquivo <em>Cap_1_P2-Mispriced-Diamonds.csv</em> <a href="https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php">PVANet</a> no PVANet com mais de 50.000 linhas referentes a transações de venda de diamantes dividida em 3 colunas <em>clarity</em>, <em>carat</em> e <em>price</em>. Quanto mais claro mais caro, certo? Ou há sub ou super valorização? Vamos investigar se essa relação é verdadeira como sugerido em <a href="https://ecapitaladvisors.com/blog/finding-mispriced-diamonds/">ecapitaladvisors</a>.</p>
 <p>Abaixo vamos apenas dar uma olhada no potencial de análise e produção gráfica do R. Não precisa se preocupar se não conseguir fazer tudo funcionar. Vamos aos poucos aprender cada comando aprensentado.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="vamos-ao-que-interesa.html#cb2-1" aria-hidden="true" tabindex="-1"></a>mydata<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_1_P2-Mispriced-Diamonds.csv&quot;</span>)</span>
 <span id="cb2-2"><a href="vamos-ao-que-interesa.html#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="vamos-ao-que-interesa.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;ggplot2&quot;</span>)</span>
 <span id="cb2-4"><a href="vamos-ao-que-interesa.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>mydata, <span class="fu">aes</span>(<span class="at">x=</span>carat, <span class="at">y=</span>price))<span class="sc">+</span> </span>
 <span id="cb2-5"><a href="vamos-ao-que-interesa.html#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="ENG_792-AVDR_files/figure-html/Exemplo_1-1.png" width="672" />
-Faz algum sentido. Mas está difícil de visualizar então vamos fazer um tratamento, vamos atribuir cores de acordo com a classificação do atributo <em>clarity</em>.</p>
+<p><img src="ENG_792-AVDR_files/figure-html/Exemplo_1-1.png" width="672" /></p>
+<p>Faz algum sentido. Mas está difícil de visualizar então vamos fazer um tratamento, vamos atribuir cores de acordo com a classificação do atributo <em>clarity</em>.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="vamos-ao-que-interesa.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>mydata, <span class="fu">aes</span>(<span class="at">x=</span>carat, <span class="at">y=</span>price, <span class="at">colour=</span>clarity))<span class="sc">+</span> </span>
 <span id="cb3-2"><a href="vamos-ao-que-interesa.html#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="ENG_792-AVDR_files/figure-html/Exemplo_1.2-1.png" width="672" />
-Os pontos estão sobrepostos impossibilitando a visualização. Vamos mexer na transparência.</p>
+<p><img src="ENG_792-AVDR_files/figure-html/Exemplo_1.2-1.png" width="672" /></p>
+<p>Os pontos estão sobrepostos impossibilitando a visualização. Vamos mexer na transparência.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="vamos-ao-que-interesa.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>mydata,</span>
 <span id="cb4-2"><a href="vamos-ao-que-interesa.html#cb4-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>carat, <span class="at">y=</span>price, <span class="at">colour=</span>clarity))<span class="sc">+</span></span>
 <span id="cb4-3"><a href="vamos-ao-que-interesa.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.1</span>) </span></code></pre></div>
 <p><img src="ENG_792-AVDR_files/figure-html/Exemplo_1.3-1.png" width="672" /></p>
 <p>Temos pontos que não são estatisticamente significantes à direita. Vamos nos livrar dos pontos não significativos, aqueles que são <em>carat</em> menores que 2.5.</p>
-<p>Vamos também adicionar algumas linhas através dos dados para avaliar o comportamento das variáveis em conkunto.</p>
+<p>Vamos também adicionar algumas linhas através dos dados para avaliar o comportamento das variáveis em conjunto.</p>
 <p><strong>brown</strong> é a melhor claridade, vejam que temos mispricing onde as linhas se cruzam.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="vamos-ao-que-interesa.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>mydata[mydata<span class="sc">$</span>carat<span class="sc">&lt;</span><span class="fl">2.5</span>,],</span>
 <span id="cb5-2"><a href="vamos-ao-que-interesa.html#cb5-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>carat, <span class="at">y=</span>price, <span class="at">colour=</span>clarity))<span class="sc">+</span></span>
@@ -314,6 +314,11 @@ Caso sua linha de comando esetja ficando longa demais opte por quebrar a linha v
 <div id="tipos-de-objetos-mode-ou-type" class="section level3" number="2.2.1">
 <h3><span class="header-section-number">2.2.1</span> Tipos de objetos (<em>mode</em> ou <em>type</em>)</h3>
 <p>Os objetos no R podem ser do tipo <em>lógico</em>, <em>inteiro</em>, <em>simples</em>, <em>dupla</em>, <em>complexo</em>, <em>função</em> ou <em>caractere</em>.</p>
+<pre><code>## 
+## Attaching package: &#39;magrittr&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:raster&#39;:
+## 
+##     extract</code></pre>
 <table>
 <thead>
 <tr>
@@ -387,54 +392,54 @@ média
 </tbody>
 </table>
 <p><strong>Tabela 1:</strong> Tipos de modos para objetos no R.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="vamos-ao-que-interesa.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#logical</span></span>
-<span id="cb10-2"><a href="vamos-ao-que-interesa.html#cb10-2" aria-hidden="true" tabindex="-1"></a>q1 <span class="ot">&lt;-</span>T</span>
-<span id="cb10-3"><a href="vamos-ao-que-interesa.html#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mode</span>(q1);<span class="fu">typeof</span>(q1)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="vamos-ao-que-interesa.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#logical</span></span>
+<span id="cb12-2"><a href="vamos-ao-que-interesa.html#cb12-2" aria-hidden="true" tabindex="-1"></a>q1 <span class="ot">&lt;-</span>T</span>
+<span id="cb12-3"><a href="vamos-ao-que-interesa.html#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mode</span>(q1);<span class="fu">typeof</span>(q1)</span></code></pre></div>
 <pre><code>## [1] &quot;logical&quot;</code></pre>
 <pre><code>## [1] &quot;logical&quot;</code></pre>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="vamos-ao-que-interesa.html#cb13-1" aria-hidden="true" tabindex="-1"></a>q2 <span class="ot">&lt;-</span> <span class="cn">FALSE</span> <span class="co">#pode ser a palavra toda mas em maiúsculas </span></span>
-<span id="cb13-2"><a href="vamos-ao-que-interesa.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mode</span>(q2);<span class="fu">typeof</span>(q2)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="vamos-ao-que-interesa.html#cb15-1" aria-hidden="true" tabindex="-1"></a>q2 <span class="ot">&lt;-</span> <span class="cn">FALSE</span> <span class="co">#pode ser a palavra toda mas em maiúsculas </span></span>
+<span id="cb15-2"><a href="vamos-ao-que-interesa.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mode</span>(q2);<span class="fu">typeof</span>(q2)</span></code></pre></div>
 <pre><code>## [1] &quot;logical&quot;</code></pre>
 <pre><code>## [1] &quot;logical&quot;</code></pre>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="vamos-ao-que-interesa.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#integer</span></span>
-<span id="cb16-2"><a href="vamos-ao-que-interesa.html#cb16-2" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span>2L <span class="co">#L garante que 2 será integer</span></span>
-<span id="cb16-3"><a href="vamos-ao-que-interesa.html#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mode</span>(x);<span class="fu">typeof</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="vamos-ao-que-interesa.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#integer</span></span>
+<span id="cb18-2"><a href="vamos-ao-que-interesa.html#cb18-2" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span>2L <span class="co">#L garante que 2 será integer</span></span>
+<span id="cb18-3"><a href="vamos-ao-que-interesa.html#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mode</span>(x);<span class="fu">typeof</span>(x)</span></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
 <pre><code>## [1] &quot;integer&quot;</code></pre>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="vamos-ao-que-interesa.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#double</span></span>
-<span id="cb19-2"><a href="vamos-ao-que-interesa.html#cb19-2" aria-hidden="true" tabindex="-1"></a>y<span class="ot">&lt;-</span><span class="fl">2.5</span></span>
-<span id="cb19-3"><a href="vamos-ao-que-interesa.html#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mode</span>(y);<span class="fu">typeof</span>(y)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="vamos-ao-que-interesa.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#double</span></span>
+<span id="cb21-2"><a href="vamos-ao-que-interesa.html#cb21-2" aria-hidden="true" tabindex="-1"></a>y<span class="ot">&lt;-</span><span class="fl">2.5</span></span>
+<span id="cb21-3"><a href="vamos-ao-que-interesa.html#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mode</span>(y);<span class="fu">typeof</span>(y)</span></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
 <pre><code>## [1] &quot;double&quot;</code></pre>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="vamos-ao-que-interesa.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Complex</span></span>
-<span id="cb22-2"><a href="vamos-ao-que-interesa.html#cb22-2" aria-hidden="true" tabindex="-1"></a>z<span class="ot">&lt;-</span><span class="dv">3</span><span class="sc">+</span>2i</span>
-<span id="cb22-3"><a href="vamos-ao-que-interesa.html#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mode</span>(z);<span class="fu">typeof</span>(z)</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="vamos-ao-que-interesa.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Complex</span></span>
+<span id="cb24-2"><a href="vamos-ao-que-interesa.html#cb24-2" aria-hidden="true" tabindex="-1"></a>z<span class="ot">&lt;-</span><span class="dv">3</span><span class="sc">+</span>2i</span>
+<span id="cb24-3"><a href="vamos-ao-que-interesa.html#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mode</span>(z);<span class="fu">typeof</span>(z)</span></code></pre></div>
 <pre><code>## [1] &quot;complex&quot;</code></pre>
 <pre><code>## [1] &quot;complex&quot;</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="vamos-ao-que-interesa.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#function</span></span>
-<span id="cb25-2"><a href="vamos-ao-que-interesa.html#cb25-2" aria-hidden="true" tabindex="-1"></a>Soma<span class="ot">&lt;-</span><span class="cf">function</span>(x,y){</span>
-<span id="cb25-3"><a href="vamos-ao-que-interesa.html#cb25-3" aria-hidden="true" tabindex="-1"></a>  x<span class="sc">+</span>y</span>
-<span id="cb25-4"><a href="vamos-ao-que-interesa.html#cb25-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb25-5"><a href="vamos-ao-que-interesa.html#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mode</span>(Soma);<span class="fu">typeof</span>(Soma)</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="vamos-ao-que-interesa.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">#function</span></span>
+<span id="cb27-2"><a href="vamos-ao-que-interesa.html#cb27-2" aria-hidden="true" tabindex="-1"></a>Soma<span class="ot">&lt;-</span><span class="cf">function</span>(x,y){</span>
+<span id="cb27-3"><a href="vamos-ao-que-interesa.html#cb27-3" aria-hidden="true" tabindex="-1"></a>  x<span class="sc">+</span>y</span>
+<span id="cb27-4"><a href="vamos-ao-que-interesa.html#cb27-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb27-5"><a href="vamos-ao-que-interesa.html#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mode</span>(Soma);<span class="fu">typeof</span>(Soma)</span></code></pre></div>
 <pre><code>## [1] &quot;function&quot;</code></pre>
 <pre><code>## [1] &quot;closure&quot;</code></pre>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="vamos-ao-que-interesa.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Character</span></span>
-<span id="cb28-2"><a href="vamos-ao-que-interesa.html#cb28-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span><span class="st">&quot;h&quot;</span> <span class="co">#Para colocar uma letra em uma variável é preciso colocar entre &quot;&quot;)</span></span>
-<span id="cb28-3"><a href="vamos-ao-que-interesa.html#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mode</span>(a);<span class="fu">typeof</span>(a)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="vamos-ao-que-interesa.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Character</span></span>
+<span id="cb30-2"><a href="vamos-ao-que-interesa.html#cb30-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span><span class="st">&quot;h&quot;</span> <span class="co">#Para colocar uma letra em uma variável é preciso colocar entre &quot;&quot;)</span></span>
+<span id="cb30-3"><a href="vamos-ao-que-interesa.html#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mode</span>(a);<span class="fu">typeof</span>(a)</span></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 <pre><code>## [1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="vamos-ao-que-interesa.html#cb31-1" aria-hidden="true" tabindex="-1"></a>média<span class="ot">&lt;-</span><span class="st">&quot;média&quot;</span></span>
-<span id="cb31-2"><a href="vamos-ao-que-interesa.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mode</span>(a);<span class="fu">typeof</span>(a)</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="vamos-ao-que-interesa.html#cb33-1" aria-hidden="true" tabindex="-1"></a>média<span class="ot">&lt;-</span><span class="st">&quot;média&quot;</span></span>
+<span id="cb33-2"><a href="vamos-ao-que-interesa.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mode</span>(a);<span class="fu">typeof</span>(a)</span></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 <p>Saber as diferenças entre os diversos objetos é importante para uma exploração mais adequada dos dados, utilização eficiente de funções ou operações lógicas, artiméticas, estatísticas e etc.</p>
 <p>Veja que no caso acima em <em>integer</em> (x &lt;- 2L) optamos por adicionar “L” após o número 2, pois o R por padrão decide onde e como aloca/aloja/armazena um operador. A informação será preferencialmente salva como <em>double</em> e isso faz sentido caso você queira mais adiante realizar operações com números decimais ou realizar operações que resultem em números decimais.</p>
 <p>No entanto, caso queira saber que tipo de dado está manipulando você pode “perguntar” utilizando <em>is.</em> seguido da designação do tipo de dados quer testar ( <em>integer</em>, <em>numeric</em>, <em>double</em> e etc) e teremos uma resposta lógica.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="vamos-ao-que-interesa.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.double</span>(x) </span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="vamos-ao-que-interesa.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.double</span>(x) </span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>Caso você deseje que sua variável seja de um tipo específico, você pode transformá-la utilizando <em>as.</em> seguido da designação desejada ( <em>integer</em>, <em>numeric</em>, <em>double</em> e etc).</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="vamos-ao-que-interesa.html#cb36-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">as.double</span>(x)</span>
-<span id="cb36-2"><a href="vamos-ao-que-interesa.html#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.double</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="vamos-ao-que-interesa.html#cb38-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">as.double</span>(x)</span>
+<span id="cb38-2"><a href="vamos-ao-que-interesa.html#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.double</span>(x)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>Cada tipo de dado é associado com um teste e uma função de conversão conforme a tabela 2.</p>
 <table>
@@ -674,60 +679,66 @@ Objeto que permite combinar diferentes estruturtas de dados num único objeto
 <p>Vetores são os tipos de objetos mais comuns no R. Um vetor é composto de uma informação ou uma séries de informações ( <em>arrays</em> ) unidimensionais que podem conter informaçõs numéricas, caracteres ou dados lógicos.</p>
 <p>Mesmo quando digitamos apoenas um único elemento ele se torna um vetor de comprimento um (1).</p>
 <p><em>Vetores com Apenas 1 elemento</em></p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="vamos-ao-que-interesa.html#cb38-1" aria-hidden="true" tabindex="-1"></a>esquerdo<span class="ot">&lt;-</span>(<span class="st">&quot;direito&quot;</span>) <span class="co"># O objeto &quot;esquerdo&quot; recebe a palavra &quot;direito&quot;</span></span>
-<span id="cb38-2"><a href="vamos-ao-que-interesa.html#cb38-2" aria-hidden="true" tabindex="-1"></a>esquerdo <span class="co">#execute o arquivo e veja seu conteúdo</span></span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="vamos-ao-que-interesa.html#cb40-1" aria-hidden="true" tabindex="-1"></a>esquerdo<span class="ot">&lt;-</span>(<span class="st">&quot;direito&quot;</span>) <span class="co"># O objeto &quot;esquerdo&quot; recebe a palavra &quot;direito&quot;</span></span>
+<span id="cb40-2"><a href="vamos-ao-que-interesa.html#cb40-2" aria-hidden="true" tabindex="-1"></a>esquerdo <span class="co">#execute o arquivo e veja seu conteúdo</span></span></code></pre></div>
 <pre><code>## [1] &quot;direito&quot;</code></pre>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="vamos-ao-que-interesa.html#cb40-1" aria-hidden="true" tabindex="-1"></a>direito<span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;esquerdo&quot;</span>) <span class="co">#Outra maneira de criar objeto  </span></span>
-<span id="cb40-2"><a href="vamos-ao-que-interesa.html#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(direito) <span class="co">#Outra forma de executar o conteúdo</span></span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="vamos-ao-que-interesa.html#cb42-1" aria-hidden="true" tabindex="-1"></a>direito<span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;esquerdo&quot;</span>) <span class="co">#Outra maneira de criar objeto  </span></span>
+<span id="cb42-2"><a href="vamos-ao-que-interesa.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(direito) <span class="co">#Outra forma de executar o conteúdo</span></span></code></pre></div>
 <pre><code>## [1] &quot;esquerdo&quot;</code></pre>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="vamos-ao-que-interesa.html#cb42-1" aria-hidden="true" tabindex="-1"></a>b<span class="ot">=</span>(<span class="dv">10</span>) <span class="co"># O objeto &quot;b&quot; recebe o número 10</span></span>
-<span id="cb42-2"><a href="vamos-ao-que-interesa.html#cb42-2" aria-hidden="true" tabindex="-1"></a>b</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="vamos-ao-que-interesa.html#cb44-1" aria-hidden="true" tabindex="-1"></a>b<span class="ot">=</span>(<span class="dv">10</span>) <span class="co"># O objeto &quot;b&quot; recebe o número 10</span></span>
+<span id="cb44-2"><a href="vamos-ao-que-interesa.html#cb44-2" aria-hidden="true" tabindex="-1"></a>b</span></code></pre></div>
 <pre><code>## [1] 10</code></pre>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="vamos-ao-que-interesa.html#cb44-1" aria-hidden="true" tabindex="-1"></a>(<span class="fl">15.23</span>)<span class="ot">-&gt;</span>c <span class="co"># O objeto &quot;c&quot; recebe o número 15.23</span></span>
-<span id="cb44-2"><a href="vamos-ao-que-interesa.html#cb44-2" aria-hidden="true" tabindex="-1"></a>c</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="vamos-ao-que-interesa.html#cb46-1" aria-hidden="true" tabindex="-1"></a>(<span class="fl">15.23</span>)<span class="ot">-&gt;</span>c <span class="co"># O objeto &quot;c&quot; recebe o número 15.23</span></span>
+<span id="cb46-2"><a href="vamos-ao-que-interesa.html#cb46-2" aria-hidden="true" tabindex="-1"></a>c</span></code></pre></div>
 <pre><code>## [1] 15.23</code></pre>
 <p>Vetores com múltiplos elementos</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="vamos-ao-que-interesa.html#cb46-1" aria-hidden="true" tabindex="-1"></a>d<span class="ot">&lt;-</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>) <span class="co"># Criando uma sequência de 0 até 10</span></span>
-<span id="cb46-2"><a href="vamos-ao-que-interesa.html#cb46-2" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="vamos-ao-que-interesa.html#cb48-1" aria-hidden="true" tabindex="-1"></a>d<span class="ot">&lt;-</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>) <span class="co"># Criando uma sequência de 0 até 10</span></span>
+<span id="cb48-2"><a href="vamos-ao-que-interesa.html#cb48-2" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div>
 <pre><code>##  [1]  0  1  2  3  4  5  6  7  8  9 10</code></pre>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="vamos-ao-que-interesa.html#cb48-1" aria-hidden="true" tabindex="-1"></a>e<span class="ot">&lt;-</span><span class="fl">10.5</span><span class="sc">:</span><span class="fl">20.5</span> <span class="co"># criando uma sequência de 10.5 até 20.5</span></span>
-<span id="cb48-2"><a href="vamos-ao-que-interesa.html#cb48-2" aria-hidden="true" tabindex="-1"></a>e</span></code></pre></div>
-<pre><code>##  [1] 10.5 11.5 12.5 13.5 14.5 15.5 16.5 17.5 18.5 19.5 20.5</code></pre>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="vamos-ao-que-interesa.html#cb50-1" aria-hidden="true" tabindex="-1"></a>f<span class="ot">&lt;-</span>(<span class="fl">10.6</span><span class="sc">:</span><span class="fl">20.3</span>) <span class="co"># O último elemento é descartado por nãos e encaixar na sequência</span></span>
-<span id="cb50-2"><a href="vamos-ao-que-interesa.html#cb50-2" aria-hidden="true" tabindex="-1"></a>f</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="vamos-ao-que-interesa.html#cb50-1" aria-hidden="true" tabindex="-1"></a>e<span class="ot">&lt;-</span><span class="fl">10.5</span><span class="sc">:</span><span class="fl">20.5</span> <span class="co"># criando uma sequência de 10.5 até 20.5</span></span>
+<span id="cb50-2"><a href="vamos-ao-que-interesa.html#cb50-2" aria-hidden="true" tabindex="-1"></a>e</span></code></pre></div>
+<pre><code>##  [1] 10.5 11.5 12.5 13.5 14.5 15.5 16.5 17.5 18.5 19.5
+## [11] 20.5</code></pre>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="vamos-ao-que-interesa.html#cb52-1" aria-hidden="true" tabindex="-1"></a>f<span class="ot">&lt;-</span>(<span class="fl">10.6</span><span class="sc">:</span><span class="fl">20.3</span>) <span class="co"># O último elemento é descartado por nãos e encaixar na sequência</span></span>
+<span id="cb52-2"><a href="vamos-ao-que-interesa.html#cb52-2" aria-hidden="true" tabindex="-1"></a>f</span></code></pre></div>
 <pre><code>##  [1] 10.6 11.6 12.6 13.6 14.6 15.6 16.6 17.6 18.6 19.6</code></pre>
 <p>Podemos utilizar também a função <em>seq</em> para gerar uma sequêncaio de dados</p>
 <p><em><em>seq(from = 1, to = 1, by = ((to - from)/(length.out - 1)),length.out = NULL, along.with = NULL, …)</em></em></p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="vamos-ao-que-interesa.html#cb52-1" aria-hidden="true" tabindex="-1"></a>g<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="fl">0.5</span>) <span class="co"># O objeto &quot;g&quot; recebe a sequência de 0 até 10 a cada 0.5</span></span>
-<span id="cb52-2"><a href="vamos-ao-que-interesa.html#cb52-2" aria-hidden="true" tabindex="-1"></a>g</span></code></pre></div>
-<pre><code>##  [1]  0.0  0.5  1.0  1.5  2.0  2.5  3.0  3.5  4.0  4.5  5.0  5.5  6.0  6.5  7.0  7.5
-## [17]  8.0  8.5  9.0  9.5 10.0</code></pre>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="vamos-ao-que-interesa.html#cb54-1" aria-hidden="true" tabindex="-1"></a>h<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="at">from=</span><span class="dv">10</span>,<span class="at">to=</span><span class="dv">20</span>,<span class="at">length.out=</span><span class="dv">50</span>) <span class="co"># O objeto &quot;h&quot; recebe a sequência de 0 até 10 que é do compriumento 50, ou seja, há 50 número de 10 até 20</span></span>
-<span id="cb54-2"><a href="vamos-ao-que-interesa.html#cb54-2" aria-hidden="true" tabindex="-1"></a>h</span></code></pre></div>
-<pre><code>##  [1] 10.00000 10.20408 10.40816 10.61224 10.81633 11.02041 11.22449 11.42857
-##  [9] 11.63265 11.83673 12.04082 12.24490 12.44898 12.65306 12.85714 13.06122
-## [17] 13.26531 13.46939 13.67347 13.87755 14.08163 14.28571 14.48980 14.69388
-## [25] 14.89796 15.10204 15.30612 15.51020 15.71429 15.91837 16.12245 16.32653
-## [33] 16.53061 16.73469 16.93878 17.14286 17.34694 17.55102 17.75510 17.95918
-## [41] 18.16327 18.36735 18.57143 18.77551 18.97959 19.18367 19.38776 19.59184
-## [49] 19.79592 20.00000</code></pre>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="vamos-ao-que-interesa.html#cb54-1" aria-hidden="true" tabindex="-1"></a>g<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="fl">0.5</span>) <span class="co"># O objeto &quot;g&quot; recebe a sequência de 0 até 10 a cada 0.5</span></span>
+<span id="cb54-2"><a href="vamos-ao-que-interesa.html#cb54-2" aria-hidden="true" tabindex="-1"></a>g</span></code></pre></div>
+<pre><code>##  [1]  0.0  0.5  1.0  1.5  2.0  2.5  3.0  3.5  4.0  4.5
+## [11]  5.0  5.5  6.0  6.5  7.0  7.5  8.0  8.5  9.0  9.5
+## [21] 10.0</code></pre>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="vamos-ao-que-interesa.html#cb56-1" aria-hidden="true" tabindex="-1"></a>h<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="at">from=</span><span class="dv">10</span>,<span class="at">to=</span><span class="dv">20</span>,<span class="at">length.out=</span><span class="dv">50</span>) <span class="co"># O objeto &quot;h&quot; recebe a sequência de 0 até 10 que é do compriumento 50, ou seja, há 50 número de 10 até 20</span></span>
+<span id="cb56-2"><a href="vamos-ao-que-interesa.html#cb56-2" aria-hidden="true" tabindex="-1"></a>h</span></code></pre></div>
+<pre><code>##  [1] 10.00000 10.20408 10.40816 10.61224 10.81633
+##  [6] 11.02041 11.22449 11.42857 11.63265 11.83673
+## [11] 12.04082 12.24490 12.44898 12.65306 12.85714
+## [16] 13.06122 13.26531 13.46939 13.67347 13.87755
+## [21] 14.08163 14.28571 14.48980 14.69388 14.89796
+## [26] 15.10204 15.30612 15.51020 15.71429 15.91837
+## [31] 16.12245 16.32653 16.53061 16.73469 16.93878
+## [36] 17.14286 17.34694 17.55102 17.75510 17.95918
+## [41] 18.16327 18.36735 18.57143 18.77551 18.97959
+## [46] 19.18367 19.38776 19.59184 19.79592 20.00000</code></pre>
 <p>Experimente também a função <em>rep()</em></p>
 <p><em><em>rep(x, times = 1, length.out = NA, each = 1)</em></em></p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="vamos-ao-que-interesa.html#cb56-1" aria-hidden="true" tabindex="-1"></a>i<span class="ot">&lt;-</span><span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">10</span>) <span class="co"># O objeto &quot;i&quot; recebe 10 números 1</span></span>
-<span id="cb56-2"><a href="vamos-ao-que-interesa.html#cb56-2" aria-hidden="true" tabindex="-1"></a>i</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="vamos-ao-que-interesa.html#cb58-1" aria-hidden="true" tabindex="-1"></a>i<span class="ot">&lt;-</span><span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">10</span>) <span class="co"># O objeto &quot;i&quot; recebe 10 números 1</span></span>
+<span id="cb58-2"><a href="vamos-ao-que-interesa.html#cb58-2" aria-hidden="true" tabindex="-1"></a>i</span></code></pre></div>
 <pre><code>##  [1] 0 0 0 0 0 0 0 0 0 0</code></pre>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="vamos-ao-que-interesa.html#cb58-1" aria-hidden="true" tabindex="-1"></a>j<span class="ot">&lt;-</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>),<span class="dv">10</span>) <span class="co"># O objeto &quot;j&quot; recebe 10 vezes a sequência 1, 2 e 3</span></span>
-<span id="cb58-2"><a href="vamos-ao-que-interesa.html#cb58-2" aria-hidden="true" tabindex="-1"></a>j</span></code></pre></div>
-<pre><code>##  [1] 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3</code></pre>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="vamos-ao-que-interesa.html#cb60-1" aria-hidden="true" tabindex="-1"></a>j<span class="ot">&lt;-</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>),<span class="dv">10</span>) <span class="co"># O objeto &quot;j&quot; recebe 10 vezes a sequência 1, 2 e 3</span></span>
+<span id="cb60-2"><a href="vamos-ao-que-interesa.html#cb60-2" aria-hidden="true" tabindex="-1"></a>j</span></code></pre></div>
+<pre><code>##  [1] 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1
+## [26] 2 3 1 2 3</code></pre>
 <p style="color:red">
 <strong>Um Vetor só pode conter informações de um único tipo</strong>
 </p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="vamos-ao-que-interesa.html#cb60-1" aria-hidden="true" tabindex="-1"></a>k<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>, <span class="st">&quot;A&quot;</span>) <span class="co"># O objeto &quot;k&quot; é do tipo character por causa de &quot;A&quot;</span></span>
-<span id="cb60-2"><a href="vamos-ao-que-interesa.html#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(k);<span class="fu">mode</span>(k)</span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="vamos-ao-que-interesa.html#cb62-1" aria-hidden="true" tabindex="-1"></a>k<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>, <span class="st">&quot;A&quot;</span>) <span class="co"># O objeto &quot;k&quot; é do tipo character por causa de &quot;A&quot;</span></span>
+<span id="cb62-2"><a href="vamos-ao-que-interesa.html#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(k);<span class="fu">mode</span>(k)</span></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 <pre><code>## [1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="vamos-ao-que-interesa.html#cb63-1" aria-hidden="true" tabindex="-1"></a>l<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>) <span class="co"># O objeto &quot;l&quot; é do tipo numérico</span></span>
-<span id="cb63-2"><a href="vamos-ao-que-interesa.html#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(l);<span class="fu">mode</span>(l)</span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="vamos-ao-que-interesa.html#cb65-1" aria-hidden="true" tabindex="-1"></a>l<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>) <span class="co"># O objeto &quot;l&quot; é do tipo numérico</span></span>
+<span id="cb65-2"><a href="vamos-ao-que-interesa.html#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(l);<span class="fu">mode</span>(l)</span></code></pre></div>
 <pre><code>## [1] &quot;double&quot;</code></pre>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
 </div>
@@ -745,20 +756,20 @@ A função <em>factor()</em> armazena os valores categóricos como um vetor de i
 <p><em><em>factor(x = character(), levels, labels = levels,exclude = NA, ordered = is.ordered(x), nmax = NA)</em></em></p>
 <p>ou</p>
 <p><em><em>gl(n, k, length = n X k, labels = seq_len(n), ordered = FALSE)</em></em></p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="vamos-ao-que-interesa.html#cb66-1" aria-hidden="true" tabindex="-1"></a>m<span class="ot">&lt;-</span><span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;H&quot;</span>,<span class="st">&quot;H&quot;</span>,<span class="st">&quot;H&quot;</span>,<span class="st">&quot;M&quot;</span>,<span class="st">&quot;M&quot;</span>)) <span class="co"># O objeto &quot;k&quot; recebe 3 H&#39;s e 2 M&#39;s</span></span>
-<span id="cb66-2"><a href="vamos-ao-que-interesa.html#cb66-2" aria-hidden="true" tabindex="-1"></a>m</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="vamos-ao-que-interesa.html#cb68-1" aria-hidden="true" tabindex="-1"></a>m<span class="ot">&lt;-</span><span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;H&quot;</span>,<span class="st">&quot;H&quot;</span>,<span class="st">&quot;H&quot;</span>,<span class="st">&quot;M&quot;</span>,<span class="st">&quot;M&quot;</span>)) <span class="co"># O objeto &quot;k&quot; recebe 3 H&#39;s e 2 M&#39;s</span></span>
+<span id="cb68-2"><a href="vamos-ao-que-interesa.html#cb68-2" aria-hidden="true" tabindex="-1"></a>m</span></code></pre></div>
 <pre><code>## [1] H H H M M
 ## Levels: H M</code></pre>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="vamos-ao-que-interesa.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.integer</span>(m)</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="vamos-ao-que-interesa.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.integer</span>(m)</span></code></pre></div>
 <pre><code>## [1] 1 1 1 2 2</code></pre>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="vamos-ao-que-interesa.html#cb70-1" aria-hidden="true" tabindex="-1"></a>n<span class="ot">&lt;-</span><span class="fu">gl</span>(<span class="at">n=</span><span class="dv">2</span>,<span class="at">k=</span><span class="dv">3</span>,<span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;M&quot;</span>,<span class="st">&quot;F&quot;</span>)) </span>
-<span id="cb70-2"><a href="vamos-ao-que-interesa.html#cb70-2" aria-hidden="true" tabindex="-1"></a>n</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="vamos-ao-que-interesa.html#cb72-1" aria-hidden="true" tabindex="-1"></a>n<span class="ot">&lt;-</span><span class="fu">gl</span>(<span class="at">n=</span><span class="dv">2</span>,<span class="at">k=</span><span class="dv">3</span>,<span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;M&quot;</span>,<span class="st">&quot;F&quot;</span>)) </span>
+<span id="cb72-2"><a href="vamos-ao-que-interesa.html#cb72-2" aria-hidden="true" tabindex="-1"></a>n</span></code></pre></div>
 <pre><code>## [1] M M M F F F
 ## Levels: M F</code></pre>
 <p>Podemos verificar os níveis de um fator usando o comando <em>levels()</em>.</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="vamos-ao-que-interesa.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(m)</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="vamos-ao-que-interesa.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(m)</span></code></pre></div>
 <pre><code>## [1] &quot;H&quot; &quot;M&quot;</code></pre>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="vamos-ao-que-interesa.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(n)</span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="vamos-ao-que-interesa.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(n)</span></code></pre></div>
 <pre><code>## [1] &quot;M&quot; &quot;F&quot;</code></pre>
 </div>
 <div id="matriz-matrix" class="section level4" number="2.2.2.3">
@@ -767,14 +778,14 @@ A função <em>factor()</em> armazena os valores categóricos como um vetor de i
 Existem várias maneiras de criar uma matriz como utilizando o comando <em>matrix()</em>.</p>
 <p><em><em>matrix(data = NA, nrow = 1, ncol = 1, byrow = FALSE,dimnames = NULL)</em></em></p>
 <p>Assim como os vetores, as matrizes só aceitam dados do mesmo tipo.</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="vamos-ao-que-interesa.html#cb76-1" aria-hidden="true" tabindex="-1"></a>o<span class="ot">&lt;-</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span> <span class="co"># cria um vetor de 1 a 10</span></span>
-<span id="cb76-2"><a href="vamos-ao-que-interesa.html#cb76-2" aria-hidden="true" tabindex="-1"></a>o_matriz1<span class="ot">&lt;-</span><span class="fu">matrix</span>(o,<span class="at">ncol=</span><span class="dv">5</span>)<span class="co"># Organiza o vetor &quot;o&quot; e 5 colunas</span></span>
-<span id="cb76-3"><a href="vamos-ao-que-interesa.html#cb76-3" aria-hidden="true" tabindex="-1"></a>o_matriz1</span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="vamos-ao-que-interesa.html#cb78-1" aria-hidden="true" tabindex="-1"></a>o<span class="ot">&lt;-</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span> <span class="co"># cria um vetor de 1 a 10</span></span>
+<span id="cb78-2"><a href="vamos-ao-que-interesa.html#cb78-2" aria-hidden="true" tabindex="-1"></a>o_matriz1<span class="ot">&lt;-</span><span class="fu">matrix</span>(o,<span class="at">ncol=</span><span class="dv">5</span>)<span class="co"># Organiza o vetor &quot;o&quot; e 5 colunas</span></span>
+<span id="cb78-3"><a href="vamos-ao-que-interesa.html#cb78-3" aria-hidden="true" tabindex="-1"></a>o_matriz1</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5]
 ## [1,]    1    3    5    7    9
 ## [2,]    2    4    6    8   10</code></pre>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="vamos-ao-que-interesa.html#cb78-1" aria-hidden="true" tabindex="-1"></a>o_matriz2<span class="ot">&lt;-</span><span class="fu">matrix</span>(o,<span class="at">nrow=</span><span class="dv">5</span>)<span class="co"># Organiza o vetor &quot;o&quot; e 5 linhas</span></span>
-<span id="cb78-2"><a href="vamos-ao-que-interesa.html#cb78-2" aria-hidden="true" tabindex="-1"></a>o_matriz2</span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="vamos-ao-que-interesa.html#cb80-1" aria-hidden="true" tabindex="-1"></a>o_matriz2<span class="ot">&lt;-</span><span class="fu">matrix</span>(o,<span class="at">nrow=</span><span class="dv">5</span>)<span class="co"># Organiza o vetor &quot;o&quot; e 5 linhas</span></span>
+<span id="cb80-2"><a href="vamos-ao-que-interesa.html#cb80-2" aria-hidden="true" tabindex="-1"></a>o_matriz2</span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    1    6
 ## [2,]    2    7
@@ -782,9 +793,9 @@ Existem várias maneiras de criar uma matriz como utilizando o comando <em>matri
 ## [4,]    4    9
 ## [5,]    5   10</code></pre>
 <p>Podemos utilizar também o argumento <em>byrow=</em>, que, diferente do exemplo acima, preenchem as tabelas por linhas.</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="vamos-ao-que-interesa.html#cb80-1" aria-hidden="true" tabindex="-1"></a>p<span class="ot">&lt;-</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span> <span class="co"># cria um vetor de 1 a 10</span></span>
-<span id="cb80-2"><a href="vamos-ao-que-interesa.html#cb80-2" aria-hidden="true" tabindex="-1"></a>p_matriz1<span class="ot">&lt;-</span><span class="fu">matrix</span>(o,<span class="at">nrow=</span><span class="dv">5</span>,<span class="at">byrow=</span>T)<span class="co"># Organiza o vetor &quot;o&quot; e 5 colunas</span></span>
-<span id="cb80-3"><a href="vamos-ao-que-interesa.html#cb80-3" aria-hidden="true" tabindex="-1"></a>p_matriz1; o_matriz2 <span class="co"># compare os 2 modos</span></span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="vamos-ao-que-interesa.html#cb82-1" aria-hidden="true" tabindex="-1"></a>p<span class="ot">&lt;-</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span> <span class="co"># cria um vetor de 1 a 10</span></span>
+<span id="cb82-2"><a href="vamos-ao-que-interesa.html#cb82-2" aria-hidden="true" tabindex="-1"></a>p_matriz1<span class="ot">&lt;-</span><span class="fu">matrix</span>(o,<span class="at">nrow=</span><span class="dv">5</span>,<span class="at">byrow=</span>T)<span class="co"># Organiza o vetor &quot;o&quot; e 5 colunas</span></span>
+<span id="cb82-3"><a href="vamos-ao-que-interesa.html#cb82-3" aria-hidden="true" tabindex="-1"></a>p_matriz1; o_matriz2 <span class="co"># compare os 2 modos</span></span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    1    2
 ## [2,]    3    4
@@ -798,18 +809,25 @@ Existem várias maneiras de criar uma matriz como utilizando o comando <em>matri
 ## [4,]    4    9
 ## [5,]    5   10</code></pre>
 <p>As dimensões de uma matriz podem ser acessadas através do comando <em>dim()</em>:</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="vamos-ao-que-interesa.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(o_matriz1);<span class="fu">dim</span>(o_matriz2) <span class="co"># Leia o o resultado como linha e coluna</span></span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="vamos-ao-que-interesa.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(o_matriz1);<span class="fu">dim</span>(o_matriz2) <span class="co"># Leia o o resultado como linha e coluna</span></span></code></pre></div>
 <pre><code>## [1] 2 5</code></pre>
 <pre><code>## [1] 5 2</code></pre>
 <p>Também é interessante usar o comando <em>summary()</em>.</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="vamos-ao-que-interesa.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(o_matriz1);<span class="fu">summary</span>(o_matriz2) <span class="co"># Mostra informações por coluna</span></span></code></pre></div>
-<pre><code>##        V1             V2             V3             V4             V5       
-##  Min.   :1.00   Min.   :3.00   Min.   :5.00   Min.   :7.00   Min.   : 9.00  
-##  1st Qu.:1.25   1st Qu.:3.25   1st Qu.:5.25   1st Qu.:7.25   1st Qu.: 9.25  
-##  Median :1.50   Median :3.50   Median :5.50   Median :7.50   Median : 9.50  
-##  Mean   :1.50   Mean   :3.50   Mean   :5.50   Mean   :7.50   Mean   : 9.50  
-##  3rd Qu.:1.75   3rd Qu.:3.75   3rd Qu.:5.75   3rd Qu.:7.75   3rd Qu.: 9.75  
-##  Max.   :2.00   Max.   :4.00   Max.   :6.00   Max.   :8.00   Max.   :10.00</code></pre>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="vamos-ao-que-interesa.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(o_matriz1);<span class="fu">summary</span>(o_matriz2) <span class="co"># Mostra informações por coluna</span></span></code></pre></div>
+<pre><code>##        V1             V2             V3      
+##  Min.   :1.00   Min.   :3.00   Min.   :5.00  
+##  1st Qu.:1.25   1st Qu.:3.25   1st Qu.:5.25  
+##  Median :1.50   Median :3.50   Median :5.50  
+##  Mean   :1.50   Mean   :3.50   Mean   :5.50  
+##  3rd Qu.:1.75   3rd Qu.:3.75   3rd Qu.:5.75  
+##  Max.   :2.00   Max.   :4.00   Max.   :6.00  
+##        V4             V5       
+##  Min.   :7.00   Min.   : 9.00  
+##  1st Qu.:7.25   1st Qu.: 9.25  
+##  Median :7.50   Median : 9.50  
+##  Mean   :7.50   Mean   : 9.50  
+##  3rd Qu.:7.75   3rd Qu.: 9.75  
+##  Max.   :8.00   Max.   :10.00</code></pre>
 <pre><code>##        V1          V2    
 ##  Min.   :1   Min.   : 6  
 ##  1st Qu.:2   1st Qu.: 7  
@@ -819,15 +837,15 @@ Existem várias maneiras de criar uma matriz como utilizando o comando <em>matri
 ##  Max.   :5   Max.   :10</code></pre>
 <p>Outras formas de contruir matrizes é juntando objetos existentes através dos comandos <em>cbind()</em> e <em>rbind()</em> que contacatenam objetos por colunas e linhas, respectivamente.</p>
 <p>Vamos juntar as matrizes já criadas.</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="vamos-ao-que-interesa.html#cb89-1" aria-hidden="true" tabindex="-1"></a>o_matriz3<span class="ot">&lt;-</span><span class="fu">rbind</span>(o_matriz1,o_matriz1) <span class="co"># concatena por linhas (row)</span></span>
-<span id="cb89-2"><a href="vamos-ao-que-interesa.html#cb89-2" aria-hidden="true" tabindex="-1"></a>o_matriz3</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="vamos-ao-que-interesa.html#cb91-1" aria-hidden="true" tabindex="-1"></a>o_matriz3<span class="ot">&lt;-</span><span class="fu">rbind</span>(o_matriz1,o_matriz1) <span class="co"># concatena por linhas (row)</span></span>
+<span id="cb91-2"><a href="vamos-ao-que-interesa.html#cb91-2" aria-hidden="true" tabindex="-1"></a>o_matriz3</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5]
 ## [1,]    1    3    5    7    9
 ## [2,]    2    4    6    8   10
 ## [3,]    1    3    5    7    9
 ## [4,]    2    4    6    8   10</code></pre>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="vamos-ao-que-interesa.html#cb91-1" aria-hidden="true" tabindex="-1"></a>o_matriz4<span class="ot">&lt;-</span><span class="fu">rbind</span>(o_matriz2,o_matriz2) <span class="co"># concatena por colunas (column)</span></span>
-<span id="cb91-2"><a href="vamos-ao-que-interesa.html#cb91-2" aria-hidden="true" tabindex="-1"></a>o_matriz4</span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="vamos-ao-que-interesa.html#cb93-1" aria-hidden="true" tabindex="-1"></a>o_matriz4<span class="ot">&lt;-</span><span class="fu">rbind</span>(o_matriz2,o_matriz2) <span class="co"># concatena por colunas (column)</span></span>
+<span id="cb93-2"><a href="vamos-ao-que-interesa.html#cb93-2" aria-hidden="true" tabindex="-1"></a>o_matriz4</span></code></pre></div>
 <pre><code>##       [,1] [,2]
 ##  [1,]    1    6
 ##  [2,]    2    7
@@ -845,9 +863,9 @@ Existem várias maneiras de criar uma matriz como utilizando o comando <em>matri
 <p>O array é um conjunto de matrizes ou vetores que podem ter qualquer número de dimensões. Estas dimensões podem receber nomes.
 Podemos criar <em>arrays</em> atribuindo dimensçoes a um vetor com o comando <em>dim()</em> ou usando <em>array()</em>.</p>
 <p><em><em>array(data = NA, dim = length(data), dimnames = NULL)</em></em></p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="vamos-ao-que-interesa.html#cb93-1" aria-hidden="true" tabindex="-1"></a>q_array<span class="ot">&lt;-</span><span class="dv">1</span><span class="sc">:</span><span class="dv">12</span> <span class="co"># cria um vetor</span></span>
-<span id="cb93-2"><a href="vamos-ao-que-interesa.html#cb93-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(q_array)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">2</span>) <span class="co"># atribuindo 3 dimensões a q_array</span></span>
-<span id="cb93-3"><a href="vamos-ao-que-interesa.html#cb93-3" aria-hidden="true" tabindex="-1"></a>q_array</span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="vamos-ao-que-interesa.html#cb95-1" aria-hidden="true" tabindex="-1"></a>q_array<span class="ot">&lt;-</span><span class="dv">1</span><span class="sc">:</span><span class="dv">12</span> <span class="co"># cria um vetor</span></span>
+<span id="cb95-2"><a href="vamos-ao-que-interesa.html#cb95-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(q_array)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">2</span>) <span class="co"># atribuindo 3 dimensões a q_array</span></span>
+<span id="cb95-3"><a href="vamos-ao-que-interesa.html#cb95-3" aria-hidden="true" tabindex="-1"></a>q_array</span></code></pre></div>
 <pre><code>## , , 1
 ## 
 ##      [,1] [,2] [,3]
@@ -859,8 +877,8 @@ Podemos criar <em>arrays</em> atribuindo dimensçoes a um vetor com o comando <e
 ##      [,1] [,2] [,3]
 ## [1,]    7    9   11
 ## [2,]    8   10   12</code></pre>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="vamos-ao-que-interesa.html#cb95-1" aria-hidden="true" tabindex="-1"></a>r_array<span class="ot">&lt;-</span><span class="fu">array</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>,<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">2</span>)) <span class="co"># cria um array de 3 dimensões</span></span>
-<span id="cb95-2"><a href="vamos-ao-que-interesa.html#cb95-2" aria-hidden="true" tabindex="-1"></a>r_array</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="vamos-ao-que-interesa.html#cb97-1" aria-hidden="true" tabindex="-1"></a>r_array<span class="ot">&lt;-</span><span class="fu">array</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>,<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">2</span>)) <span class="co"># cria um array de 3 dimensões</span></span>
+<span id="cb97-2"><a href="vamos-ao-que-interesa.html#cb97-2" aria-hidden="true" tabindex="-1"></a>r_array</span></code></pre></div>
 <pre><code>## , , 1
 ## 
 ##      [,1] [,2] [,3]
@@ -1621,16 +1639,16 @@ Rebaixado
 </tbody>
 </table>
 <p><strong>Tabela 3:</strong> Data frame do resultados final do Campeonato Brasileiro de 2019.</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="vamos-ao-que-interesa.html#cb97-1" aria-hidden="true" tabindex="-1"></a>Nome<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>)</span>
-<span id="cb97-2"><a href="vamos-ao-que-interesa.html#cb97-2" aria-hidden="true" tabindex="-1"></a>Idade<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">32</span>, <span class="dv">28</span>)</span>
-<span id="cb97-3"><a href="vamos-ao-que-interesa.html#cb97-3" aria-hidden="true" tabindex="-1"></a>Sexo<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;M&quot;</span>,<span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>)</span>
-<span id="cb97-4"><a href="vamos-ao-que-interesa.html#cb97-4" aria-hidden="true" tabindex="-1"></a>Nome;Idade;Sexo</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="vamos-ao-que-interesa.html#cb99-1" aria-hidden="true" tabindex="-1"></a>Nome<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>)</span>
+<span id="cb99-2"><a href="vamos-ao-que-interesa.html#cb99-2" aria-hidden="true" tabindex="-1"></a>Idade<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">32</span>, <span class="dv">28</span>)</span>
+<span id="cb99-3"><a href="vamos-ao-que-interesa.html#cb99-3" aria-hidden="true" tabindex="-1"></a>Sexo<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;M&quot;</span>,<span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>)</span>
+<span id="cb99-4"><a href="vamos-ao-que-interesa.html#cb99-4" aria-hidden="true" tabindex="-1"></a>Nome;Idade;Sexo</span></code></pre></div>
 <pre><code>## [1] &quot;A&quot; &quot;B&quot; &quot;C&quot;</code></pre>
 <pre><code>## [1] 25 32 28</code></pre>
 <pre><code>## [1] &quot;M&quot; &quot;M&quot; &quot;F&quot;</code></pre>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="vamos-ao-que-interesa.html#cb101-1" aria-hidden="true" tabindex="-1"></a>Ficha<span class="ot">&lt;-</span><span class="fu">data.frame</span>(Nome,Idade,Sexo)</span>
-<span id="cb101-2"><a href="vamos-ao-que-interesa.html#cb101-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-3"><a href="vamos-ao-que-interesa.html#cb101-3" aria-hidden="true" tabindex="-1"></a><span class="fu">attributes</span>(Ficha) <span class="co"># exibe os atributos do data frame</span></span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="vamos-ao-que-interesa.html#cb103-1" aria-hidden="true" tabindex="-1"></a>Ficha<span class="ot">&lt;-</span><span class="fu">data.frame</span>(Nome,Idade,Sexo)</span>
+<span id="cb103-2"><a href="vamos-ao-que-interesa.html#cb103-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-3"><a href="vamos-ao-que-interesa.html#cb103-3" aria-hidden="true" tabindex="-1"></a><span class="fu">attributes</span>(Ficha) <span class="co"># exibe os atributos do data frame</span></span></code></pre></div>
 <pre><code>## $names
 ## [1] &quot;Nome&quot;  &quot;Idade&quot; &quot;Sexo&quot; 
 ## 
@@ -1697,17 +1715,17 @@ F
 As listas são construídas utilizando o comando <em>list()</em></p>
 <p>Os componentes da lista são criados da mesma maneirta como para <em>data.frame</em>.
 <strong>list(…)</strong></p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="vamos-ao-que-interesa.html#cb103-1" aria-hidden="true" tabindex="-1"></a>Nome<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;A&quot;</span>)</span>
-<span id="cb103-2"><a href="vamos-ao-que-interesa.html#cb103-2" aria-hidden="true" tabindex="-1"></a>Idade<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">25</span>)</span>
-<span id="cb103-3"><a href="vamos-ao-que-interesa.html#cb103-3" aria-hidden="true" tabindex="-1"></a>Sexo<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;M&quot;</span>)</span>
-<span id="cb103-4"><a href="vamos-ao-que-interesa.html#cb103-4" aria-hidden="true" tabindex="-1"></a>Notas<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">55</span>,<span class="dv">42</span>,<span class="dv">50</span>,<span class="dv">35</span>)</span>
-<span id="cb103-5"><a href="vamos-ao-que-interesa.html#cb103-5" aria-hidden="true" tabindex="-1"></a>Nome;Idade;Sexo;Notas</span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="vamos-ao-que-interesa.html#cb105-1" aria-hidden="true" tabindex="-1"></a>Nome<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;A&quot;</span>)</span>
+<span id="cb105-2"><a href="vamos-ao-que-interesa.html#cb105-2" aria-hidden="true" tabindex="-1"></a>Idade<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">25</span>)</span>
+<span id="cb105-3"><a href="vamos-ao-que-interesa.html#cb105-3" aria-hidden="true" tabindex="-1"></a>Sexo<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;M&quot;</span>)</span>
+<span id="cb105-4"><a href="vamos-ao-que-interesa.html#cb105-4" aria-hidden="true" tabindex="-1"></a>Notas<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">55</span>,<span class="dv">42</span>,<span class="dv">50</span>,<span class="dv">35</span>)</span>
+<span id="cb105-5"><a href="vamos-ao-que-interesa.html#cb105-5" aria-hidden="true" tabindex="-1"></a>Nome;Idade;Sexo;Notas</span></code></pre></div>
 <pre><code>## [1] &quot;A&quot;</code></pre>
 <pre><code>## [1] 25</code></pre>
 <pre><code>## [1] &quot;M&quot;</code></pre>
 <pre><code>## [1] 55 42 50 35</code></pre>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="vamos-ao-que-interesa.html#cb108-1" aria-hidden="true" tabindex="-1"></a>Desempenho<span class="ot">&lt;-</span><span class="fu">list</span>(<span class="at">nome=</span><span class="st">&quot;A&quot;</span>, <span class="at">idade=</span><span class="dv">25</span>, <span class="at">Sexo=</span><span class="st">&quot;M&quot;</span>,<span class="at">Notas=</span><span class="fu">c</span>(<span class="dv">55</span>,<span class="dv">42</span>,<span class="dv">50</span>,<span class="dv">35</span>))</span>
-<span id="cb108-2"><a href="vamos-ao-que-interesa.html#cb108-2" aria-hidden="true" tabindex="-1"></a>Desempenho</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="vamos-ao-que-interesa.html#cb110-1" aria-hidden="true" tabindex="-1"></a>Desempenho<span class="ot">&lt;-</span><span class="fu">list</span>(<span class="at">nome=</span><span class="st">&quot;A&quot;</span>, <span class="at">idade=</span><span class="dv">25</span>, <span class="at">Sexo=</span><span class="st">&quot;M&quot;</span>,<span class="at">Notas=</span><span class="fu">c</span>(<span class="dv">55</span>,<span class="dv">42</span>,<span class="dv">50</span>,<span class="dv">35</span>))</span>
+<span id="cb110-2"><a href="vamos-ao-que-interesa.html#cb110-2" aria-hidden="true" tabindex="-1"></a>Desempenho</span></code></pre></div>
 <pre><code>## $nome
 ## [1] &quot;A&quot;
 ## 
@@ -1719,14 +1737,14 @@ As listas são construídas utilizando o comando <em>list()</em></p>
 ## 
 ## $Notas
 ## [1] 55 42 50 35</code></pre>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="vamos-ao-que-interesa.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.list</span>(Desempenho)</span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="vamos-ao-que-interesa.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.list</span>(Desempenho)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>Existem também alguns comandos/funções que mostram resultados como listas.</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="vamos-ao-que-interesa.html#cb112-1" aria-hidden="true" tabindex="-1"></a>s<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">30</span>)</span>
-<span id="cb112-2"><a href="vamos-ao-que-interesa.html#cb112-2" aria-hidden="true" tabindex="-1"></a>t<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">30</span><span class="sc">:</span><span class="dv">59</span>)</span>
-<span id="cb112-3"><a href="vamos-ao-que-interesa.html#cb112-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb112-4"><a href="vamos-ao-que-interesa.html#cb112-4" aria-hidden="true" tabindex="-1"></a>teste.t<span class="ot">&lt;-</span><span class="fu">t.test</span>(s,t, <span class="at">var.equal =</span> T) <span class="co"># calcula o test t para 2 amostras de variâncias iguais</span></span>
-<span id="cb112-5"><a href="vamos-ao-que-interesa.html#cb112-5" aria-hidden="true" tabindex="-1"></a>teste.t</span></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="vamos-ao-que-interesa.html#cb114-1" aria-hidden="true" tabindex="-1"></a>s<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">30</span>)</span>
+<span id="cb114-2"><a href="vamos-ao-que-interesa.html#cb114-2" aria-hidden="true" tabindex="-1"></a>t<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">30</span><span class="sc">:</span><span class="dv">59</span>)</span>
+<span id="cb114-3"><a href="vamos-ao-que-interesa.html#cb114-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb114-4"><a href="vamos-ao-que-interesa.html#cb114-4" aria-hidden="true" tabindex="-1"></a>teste.t<span class="ot">&lt;-</span><span class="fu">t.test</span>(s,t, <span class="at">var.equal =</span> T) <span class="co"># calcula o test t para 2 amostras de variâncias iguais</span></span>
+<span id="cb114-5"><a href="vamos-ao-que-interesa.html#cb114-5" aria-hidden="true" tabindex="-1"></a>teste.t</span></code></pre></div>
 <pre><code>## 
 ##  Two Sample t-test
 ## 
@@ -1738,12 +1756,12 @@ As listas são construídas utilizando o comando <em>list()</em></p>
 ## sample estimates:
 ## mean of x mean of y 
 ##      15.5      44.5</code></pre>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="vamos-ao-que-interesa.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.list</span>(teste.t);<span class="fu">mode</span>(teste.t)</span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="vamos-ao-que-interesa.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.list</span>(teste.t);<span class="fu">mode</span>(teste.t)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <pre><code>## [1] &quot;list&quot;</code></pre>
 <p>Para finalizar por hoje preste atenção no seu <em>Global Environment</em>.
 Veja que há uma grande quantidade de objeto lá. Agora execute o comando abaixo:</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="vamos-ao-que-interesa.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="vamos-ao-que-interesa.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>())</span></code></pre></div>
 <p>Voilà! Sumiu tudo.</p>
 
 </div>

@@ -51,8 +51,7 @@ Eu não tenho um sistema operacional de cada para mostrar a instalação, por is
 ![](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_1_ET-dedo.jpg){#id .class width=50% height=50%}
 
 
-Temos 1 arquivo [Cap_1_P2-Mispriced-Diamonds.csv](https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php) no PVANet com mais de 50.000 linhas referentes a transações de venda de diamantes dividida em 3 colunas *clarity*, *carat* e *price*. Quanto mais claro mais caro, certo? Ou há sub ou super valorização? Vamos investigar se essa relação é verdadeira.
-
+Temos 1 arquivo *Cap_1_P2-Mispriced-Diamonds.csv* [PVANet](https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php) no PVANet com mais de 50.000 linhas referentes a transações de venda de diamantes dividida em 3 colunas *clarity*, *carat* e *price*. Quanto mais claro mais caro, certo? Ou há sub ou super valorização? Vamos investigar se essa relação é verdadeira como sugerido em [ecapitaladvisors](https://ecapitaladvisors.com/blog/finding-mispriced-diamonds/).
 
 Abaixo vamos apenas dar uma olhada no potencial de análise e produção gráfica do R. Não precisa se preocupar se não conseguir fazer tudo funcionar. Vamos aos poucos aprender cada comando aprensentado.
 
@@ -63,12 +62,14 @@ library("ggplot2")
 ggplot(data=mydata, aes(x=carat, y=price))+ 
   geom_point()
 ```
+
 Faz algum sentido. Mas está difícil de visualizar então vamos fazer um tratamento, vamos atribuir cores de acordo com a classificação do atributo _clarity_.
 
 ```{r Exemplo_1.2, echo=T}
 ggplot(data=mydata, aes(x=carat, y=price, colour=clarity))+ 
   geom_point()
 ```
+
 Os pontos estão sobrepostos impossibilitando a visualização. Vamos mexer na transparência.
 
 ```{r Exemplo_1.3, echo=T}
@@ -79,7 +80,7 @@ geom_point(alpha=0.1)
 
 Temos pontos que não são estatisticamente significantes à direita. Vamos nos livrar dos pontos não significativos, aqueles que são *carat* menores que 2.5.
 
-Vamos também adicionar algumas linhas  através dos dados para avaliar o comportamento das variáveis em conkunto.
+Vamos também adicionar algumas linhas  através dos dados para avaliar o comportamento das variáveis em conjunto.
 
 __brown__ é a melhor claridade, vejam que temos mispricing onde as linhas se cruzam.
 

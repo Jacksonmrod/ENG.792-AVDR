@@ -19,4 +19,3 @@ matriz-matrix
 array
 data-frame
 lista-list
-url-your-book-url-like-httpsbookdown.orgyihuibookdown
