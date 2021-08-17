@@ -681,6 +681,7 @@ ifelse(Aluno*2>=Jackson^2, "Aluno é mais bonito!",
 [Spatial Data Science - Indexing](https://rspatial.org/intr/4-indexing.html)   
 
 [Indexing into a data structure](http://www.cookbook-r.com/Basics/Indexing_into_a_data_structure/)   
+
 [datamentor - R if…else Statement](https://www.datamentor.io/r-programming/if-else-statement/)
 
 ## Exercícios
@@ -694,3 +695,5 @@ Organize *p* por linhas em uma matriz com 10 colunas .
 7. Use uma iteração restrita para gerar uma sequência de números de 1 até 20.
 8. Use iteração restrita para conduzir o cálculo  `(i^2)-i`, onde *i*  vai de 5 até 10.
 9. Use interação não restrita para gerar  uma sequência de  inteiros de  -10 até -20.
+
+## References
