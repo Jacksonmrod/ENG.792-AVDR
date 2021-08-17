@@ -670,7 +670,8 @@ ifelse(Aluno*2>=Jackson^2, "Aluno é mais bonito!",
 
 @Kabacoff2015R    
 
-@VenablesSmithRTeamCore2017    
+@VenablesSmithRTeamCore2017  
+
 @Neth2021    
 
 @Yamamoto2020     
