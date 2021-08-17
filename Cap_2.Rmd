@@ -2,7 +2,7 @@
 
 ## Organização   
 
-Assista este conteúdo em **Cap 2 - Organização** no [PVANet](https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php)
+Assista este conteúdo em **Cap 2 - Organização Partes 1 e 2** no [PVANet](https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php)
 
 Como mencionado anteriormente, `vector` é uma das principais estruturas do **R**. Um vetor é uma sequência de elementos (1...n) do mesmo tipo organizados tal qual livros em uma prateleira.  
 No caso abaixo temos um vetor numérico que pode ser `integer` ou `double`.
@@ -169,12 +169,12 @@ Podemos também acessar elementos específicos de uma matriz definindo o "endere
 l[2,3] # Acessa apenas o elemento do cruzamento da linha 2 e coluna 3
 ```
 
-Para facilitar a manipulação das matrizes podemos nomear as linas e colunas. Para isso podemos utilizar as funções `colnames()` e `rownames()`.
+Para facilitar a manipulação das matrizes podemos nomear as linhas e colunas. Para isso podemos utilizar as funções `colnames()` e `rownames()`.
 
 ```{r matriz_4, echo=T, verbose=T}
 nrow(l) # Retorna o número de linhas
 ncol(l) # Retorna o número de colunas
-dim(l) # Retorna as dimnesões (n° de linas e colunas)
+dim(l) # Retorna as dimnesões (n° de linhas e colunas)
 l
 rownames(l)<-letters[1:7] # Atribui 7 letras minúsculas sequenciais de "a" até "g" como nomes das linhas
 l
@@ -331,8 +331,10 @@ As funções `grep, grepl, regexpr, gregexpr e regexec` busca por elementos de u
 grep("Lugar Algum", Campeonato.Brasileiro.2019$Destino) # retorna as posições de tudo no vetor Campeonato.Brasileiro.2019$Destino que coincide com Lugar Algum 
 ```
 
+**Durante a aula gravada eu me enrolei um pouco na demonstração abaixo. Acontece que Libertadores estava escrito errado, estava escrito Libetadores (sem o r).**
+
 ```{r grep.2, echo=T} 
-grep("Libetadores|Lugar Algum", Campeonato.Brasileiro.2019$Destino) # retorna as posições de tudo no vetor Campeonato.Brasileiro.2019$Destino que coincide com Libetadores ou Lugar Algum
+grep("Libertadores|Lugar Algum", Campeonato.Brasileiro.2019$Destino) # retorna as posições de tudo no vetor Campeonato.Brasileiro.2019$Destino que coincide com Libetadores ou Lugar Algum
 ```
 
 ```{r grep.3, echo=T}
@@ -354,9 +356,14 @@ grep("[L l]ugar [A a]lgum",Campeonato.Brasileiro.2019$Destino) # retorna as posi
 ```
 
 ```{r grep.5, echo=T}
-la <-grep("lugar algum", Campeonato.Brasileiro.2019$Destino)
-LA <- grep("Lugar Algum", Campeonato.Brasileiro.2019$Destino)
-str(la);str(LA) # mostra a estrutura de um objeto
+str(grep("lugar algum", Campeonato.Brasileiro.2019$Destino))
+str(grep("Lugar Algum", Campeonato.Brasileiro.2019$Destino)) # mostra a estrutura de um objeto
+
+setdiff(grep("lugar algum", Campeonato.Brasileiro.2019$Destino), 
+        grep("Lugar Algum", Campeonato.Brasileiro.2019$Destino)) #Identifica a difença entre X e Y
+
+setdiff(grep("Lugar Algum", Campeonato.Brasileiro.2019$Destino), 
+        grep("lugar algum", Campeonato.Brasileiro.2019$Destino)) 
 ```
 
 ```{r grep.6, echo=T}
@@ -382,7 +389,7 @@ sub("Fla", "fla", Campeonato.Brasileiro.2019$Equipes) #Substitui Fla por fla naq
 ```
 
 ```{r sub.gsub2, echo=T}
-gsub("Atlé|Athle", "Atlé", Campeonato.Brasileiro.2019$Equipes) #Substitui Atlé ou Athle por Atlé naquilo que contém com Atlé ou Athle
+gsub("Atlé|Athle", "Atle", Campeonato.Brasileiro.2019$Equipes) #Substitui Atlé ou Athle por Atlé naquilo que contém com Atlé ou Athle
 ```
 
 Alguns elementos especiais podem ser encontrados no **R** como: **Infinito positivo ou negativo (-Inf e Inf)**, elementos **"não número" (NaN - Not a Number)** e **valores ausentes (NA, Not Available)**.
