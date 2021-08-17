@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (MiKTeX 20.11) (preloaded format=xelatex 2021.8.3)  16 AUG 2021 22:23
+This is XeTeX, Version 3.14159265-2.6-0.999992 (MiKTeX 20.11) (preloaded format=xelatex 2021.8.3)  17 AUG 2021 06:36
 entering extended mode
 **./ENG_792-AVDR.tex
 (ENG_792-AVDR.tex
@@ -1223,27 +1223,27 @@ ual to 0[]
 Chapter 3.
 
 Package longtable Warning: Column widths have changed
-(longtable)                in table 3.1 on input line 1456.
+(longtable)                in table 3.1 on input line 1458.
 
 [33
 
 ]
 
 Package longtable Warning: Column widths have changed
-(longtable)                in table 3.2 on input line 1485.
+(longtable)                in table 3.2 on input line 1487.
 
 
 Package longtable Warning: Column widths have changed
-(longtable)                in table 3.3 on input line 1516.
+(longtable)                in table 3.3 on input line 1518.
 
 
-Overfull \hbox (90.75pt too wide) in paragraph at lines 1530--1530
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1532--1532
 []\TU/lmtt/m/n/10 ##  [1] 100  99  98  97  96  95  94  93  92  91  90  89  88  
 87  86  85  84  83  82[] 
  []
 
 
-Overfull \hbox (90.75pt too wide) in paragraph at lines 1530--1530
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1532--1532
 []\TU/lmtt/m/n/10 ## [20]  81  80  79  78  77  76  75  74  73  72  71  70  69  
 68  67  66  65  64  63[] 
  []
@@ -1254,488 +1254,480 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [34]
 
 Package longtable Warning: Column widths have changed
-(longtable)                in table 3.4 on input line 1561.
+(longtable)                in table 3.4 on input line 1563.
 
 [35]
 
 Package longtable Warning: Column widths have changed
-(longtable)                in table 3.5 on input line 1700.
+(longtable)                in table 3.5 on input line 1702.
 
 
 Package longtable Warning: Column widths have changed
-(longtable)                in table 3.6 on input line 1709.
+(longtable)                in table 3.6 on input line 1711.
 
 [36]
 
 Package longtable Warning: Column widths have changed
-(longtable)                in table 3.7 on input line 1752.
+(longtable)                in table 3.7 on input line 1754.
 
 
 Package longtable Warning: Column widths have changed
-(longtable)                in table 3.8 on input line 1761.
+(longtable)                in table 3.8 on input line 1763.
 
 
-Overfull \hbox (80.25pt too wide) in paragraph at lines 1815--1815
+Overfull \hbox (80.25pt too wide) in paragraph at lines 1817--1817
 []\TU/lmtt/m/n/10 ## Warning in j + k: comprimento do objeto maior não é múltip
 lo do comprimento do[] 
  []
 
 [37]
-Underfull \hbox (badness 1308) in paragraph at lines 1845--1847
+Underfull \hbox (badness 1308) in paragraph at lines 1847--1849
 []\TU/lmr/m/n/10 As linhas e colunas \TU/lmtt/m/n/10 [linhas, colunas] \TU/lmr/
 m/n/10 são numeradas sequencialmente
  []
 
 [38] [39] [40] [41] [42]
-Overfull \hbox (285.28995pt too wide) in paragraph at lines 2264--2309
-[][] 
+Overfull \hbox (347.38144pt too wide) in paragraph at lines 2269--2315
+ [][] 
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[43]
-Overfull \hbox (38.25pt too wide) in paragraph at lines 2321--2321
+Overfull \hbox (38.25pt too wide) in paragraph at lines 2328--2328
 []\TU/lmtt/m/n/10 ##    Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.C
 ontra Pontos[] 
  []
 
 
-Overfull \hbox (38.25pt too wide) in paragraph at lines 2321--2321
+Overfull \hbox (38.25pt too wide) in paragraph at lines 2328--2328
 []\TU/lmtt/m/n/10 ## 1 Flamengo    38       28       6        4       86       
    37     90[] 
  []
 
 
-Overfull \hbox (17.25pt too wide) in paragraph at lines 2337--2337
+Overfull \hbox (17.25pt too wide) in paragraph at lines 2344--2344
 []\TU/lmtt/m/n/10 ## [10] "Goiás"                "Bahia"                "Vasco 
 da Gama"[] 
  []
 
-[44]
-Overfull \hbox (17.25pt too wide) in paragraph at lines 2356--2356
+[43] [44]
+Overfull \hbox (17.25pt too wide) in paragraph at lines 2363--2363
 []\TU/lmtt/m/n/10 ## [10] "Goiás"                "Bahia"                "Vasco 
 da Gama"[] 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 2367--2367
+Overfull \hbox (85.5pt too wide) in paragraph at lines 2374--2374
 []\TU/lmtt/m/n/10 ##  [1] "28" "22" "21" "19" "18" "17" "16" "14" "15" "15" "12
 " "12" "13" "12" "13"[] 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 2378--2378
+Overfull \hbox (85.5pt too wide) in paragraph at lines 2385--2385
 []\TU/lmtt/m/n/10 ##  [1] "86" "60" "61" "64" "51" "39" "44" "42" "50" "46" "44
 " "39" "45" "38" "31"[] 
  []
 
 
-Overfull \hbox (64.5pt too wide) in paragraph at lines 2389--2389
+Overfull \hbox (64.5pt too wide) in paragraph at lines 2396--2396
 []\TU/lmtt/m/n/10 ##  [1] "49"  "27"  "29"  "25"  "19"  "9"   "5"   "8"   "1"  
  "-18" "1"   "-6"[] 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 2402--2402
+Overfull \hbox (85.5pt too wide) in paragraph at lines 2409--2409
 []\TU/lmtt/m/n/10 ##  [1] "Libertadores" "Libertadores" "Libertadores" "Liberta
 dores" "Libertadores"[] 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 2402--2402
+Overfull \hbox (85.5pt too wide) in paragraph at lines 2409--2409
 []\TU/lmtt/m/n/10 ##  [6] "Libertadores" "Libertadores" "Libertadores" "Sulamer
 icana" "Sulamericana"[] 
  []
 
 
-Overfull \hbox (33.0pt too wide) in paragraph at lines 2402--2402
+Overfull \hbox (33.0pt too wide) in paragraph at lines 2409--2409
 []\TU/lmtt/m/n/10 ## [11] "Sulamericana" "Sulamericana" "Sulamericana" "Sulamer
 icana" "NA"[] 
  []
 
 
-Overfull \hbox (69.75pt too wide) in paragraph at lines 2402--2402
+Overfull \hbox (69.75pt too wide) in paragraph at lines 2409--2409
 []\TU/lmtt/m/n/10 ## [16] "NA"           "Rebaixado"    "Rebaixado"    "Rebaixa
 do"    "Rebaixado"[] 
  []
 
-
-Overfull \hbox (38.25pt too wide) in paragraph at lines 2467--2467
+[45]
+Overfull \hbox (38.25pt too wide) in paragraph at lines 2474--2474
 []\TU/lmtt/m/n/10 ##    Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.C
 ontra Pontos[] 
  []
 
-[45]
-Overfull \hbox (38.25pt too wide) in paragraph at lines 2467--2467
+
+Overfull \hbox (38.25pt too wide) in paragraph at lines 2474--2474
 []\TU/lmtt/m/n/10 ## 1 Flamengo    38       28       6        4       86       
    37     90[] 
  []
 
 
-Overfull \hbox (64.5pt too wide) in paragraph at lines 2531--2531
+Overfull \hbox (64.5pt too wide) in paragraph at lines 2538--2538
 []\TU/lmtt/m/n/10 ##                Equipes Jogos Vitórias Empates Derrotas Gol
 s.Pró Gols.Contra[] 
  []
 
 
-Overfull \hbox (64.5pt too wide) in paragraph at lines 2531--2531
+Overfull \hbox (64.5pt too wide) in paragraph at lines 2538--2538
 []\TU/lmtt/m/n/10 ## 1             Flamengo    38       28       6        4    
    86          37[] 
  []
 
 
-Overfull \hbox (64.5pt too wide) in paragraph at lines 2531--2531
+Overfull \hbox (64.5pt too wide) in paragraph at lines 2538--2538
 []\TU/lmtt/m/n/10 ## 2               Santos    38       22       8        8    
    60          33[] 
  []
 
 
-Overfull \hbox (64.5pt too wide) in paragraph at lines 2531--2531
+Overfull \hbox (64.5pt too wide) in paragraph at lines 2538--2538
 []\TU/lmtt/m/n/10 ## 3            Palmeiras    38       21      11        6    
    61          32[] 
  []
 
 
-Overfull \hbox (64.5pt too wide) in paragraph at lines 2531--2531
+Overfull \hbox (64.5pt too wide) in paragraph at lines 2538--2538
 []\TU/lmtt/m/n/10 ## 4               Grêmio    38       19       8       11    
    64          39[] 
  []
 
 
-Overfull \hbox (64.5pt too wide) in paragraph at lines 2531--2531
+Overfull \hbox (64.5pt too wide) in paragraph at lines 2538--2538
 []\TU/lmtt/m/n/10 ## 5 Athletico Paranaense    38       18      10       10    
    51          32[] 
  []
 
 
-Overfull \hbox (64.5pt too wide) in paragraph at lines 2531--2531
+Overfull \hbox (64.5pt too wide) in paragraph at lines 2538--2538
 []\TU/lmtt/m/n/10 ## 6            Sao Paulo    38       17      12        9    
    39          30[] 
  []
 
 
-Overfull \hbox (64.5pt too wide) in paragraph at lines 2531--2531
+Overfull \hbox (64.5pt too wide) in paragraph at lines 2538--2538
 []\TU/lmtt/m/n/10 ## 7        Internacional    38       16       9       13    
    44          39[] 
  []
 
 
-Overfull \hbox (64.5pt too wide) in paragraph at lines 2531--2531
+Overfull \hbox (64.5pt too wide) in paragraph at lines 2538--2538
 []\TU/lmtt/m/n/10 ## 8          Corinthians    38       14      14       10    
    42          34[] 
  []
 
 
-Overfull \hbox (43.5pt too wide) in paragraph at lines 2531--2531
+Overfull \hbox (43.5pt too wide) in paragraph at lines 2538--2538
 []\TU/lmtt/m/n/10 ##     Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.
 Contra Pontos[] 
  []
 
 
-Overfull \hbox (43.5pt too wide) in paragraph at lines 2531--2531
+Overfull \hbox (43.5pt too wide) in paragraph at lines 2538--2538
 []\TU/lmtt/m/n/10 ## 15 Botafogo    38       13       4       21       31      
     45     43[] 
  []
 
 
-Overfull \hbox (43.5pt too wide) in paragraph at lines 2531--2531
+Overfull \hbox (43.5pt too wide) in paragraph at lines 2538--2538
 []\TU/lmtt/m/n/10 ## 16    Ceará    38       10       9       19       36      
     41     39[] 
  []
 
 
-Overfull \hbox (59.25pt too wide) in paragraph at lines 2531--2531
+Overfull \hbox (59.25pt too wide) in paragraph at lines 2538--2538
 []\TU/lmtt/m/n/10 ##        Equipes Jogos Vitórias Empates Derrotas Gols.Pró Go
 ls.Contra Pontos[] 
  []
 
 
-Overfull \hbox (59.25pt too wide) in paragraph at lines 2531--2531
+Overfull \hbox (59.25pt too wide) in paragraph at lines 2538--2538
 []\TU/lmtt/m/n/10 ## 17    Cruzeiro    38        7      15       16       27   
        46     36[] 
  []
 
 
-Overfull \hbox (59.25pt too wide) in paragraph at lines 2531--2531
+Overfull \hbox (59.25pt too wide) in paragraph at lines 2538--2538
 []\TU/lmtt/m/n/10 ## 18         CSA    38        8       8       22       24   
        58     32[] 
  []
 
 
-Overfull \hbox (59.25pt too wide) in paragraph at lines 2531--2531
+Overfull \hbox (59.25pt too wide) in paragraph at lines 2538--2538
 []\TU/lmtt/m/n/10 ## 19 Chapecoense    38        7      11       20       31   
        52     32[] 
  []
 
 
-Overfull \hbox (59.25pt too wide) in paragraph at lines 2531--2531
+Overfull \hbox (59.25pt too wide) in paragraph at lines 2538--2538
 []\TU/lmtt/m/n/10 ## 20        Avaí    38        3      11       24       18   
        62     20[] 
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
 [46]
-Overfull \hbox (85.5pt too wide) in paragraph at lines 2531--2531
+Overfull \hbox (85.5pt too wide) in paragraph at lines 2538--2538
 []\TU/lmtt/m/n/10 ##             Equipes Jogos Vitórias Empates Derrotas Gols.P
 ró Gols.Contra Pontos[] 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 2531--2531
+Overfull \hbox (85.5pt too wide) in paragraph at lines 2538--2538
 []\TU/lmtt/m/n/10 ## 9         Fortaleza    38       15       8       15       
 50          49     53[] 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 2531--2531
+Overfull \hbox (85.5pt too wide) in paragraph at lines 2538--2538
 []\TU/lmtt/m/n/10 ## 10            Goiás    38       15       7       16       
 46          64     52[] 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 2531--2531
+Overfull \hbox (85.5pt too wide) in paragraph at lines 2538--2538
 []\TU/lmtt/m/n/10 ## 11            Bahia    38       12      13       13       
 44          43     49[] 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 2531--2531
+Overfull \hbox (85.5pt too wide) in paragraph at lines 2538--2538
 []\TU/lmtt/m/n/10 ## 12    Vasco da Gama    38       12      13       13       
 39          45     49[] 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 2531--2531
+Overfull \hbox (85.5pt too wide) in paragraph at lines 2538--2538
 []\TU/lmtt/m/n/10 ## 13 Atlético Mineiro    38       13       9       16       
 45          49     48[] 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 2531--2531
+Overfull \hbox (85.5pt too wide) in paragraph at lines 2538--2538
 []\TU/lmtt/m/n/10 ## 14       Fluminense    38       12      10       16       
 38          46     46[] 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 2546--2546
+Overfull \hbox (85.5pt too wide) in paragraph at lines 2553--2553
 []\TU/lmtt/m/n/10 ##  [1] "Libertadores" "Libertadores" "Libertadores" "Liberta
 dores" "Libertadores"[] 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 2546--2546
+Overfull \hbox (85.5pt too wide) in paragraph at lines 2553--2553
 []\TU/lmtt/m/n/10 ##  [6] "Libertadores" "Libertadores" "Libertadores" "Sulamer
 icana" "Sulamericana"[] 
  []
 
 
-Overfull \hbox (33.0pt too wide) in paragraph at lines 2546--2546
+Overfull \hbox (33.0pt too wide) in paragraph at lines 2553--2553
 []\TU/lmtt/m/n/10 ## [11] "Sulamericana" "Sulamericana" "Sulamericana" "Sulamer
 icana" "NA"[] 
  []
 
 
-Overfull \hbox (69.75pt too wide) in paragraph at lines 2546--2546
+Overfull \hbox (69.75pt too wide) in paragraph at lines 2553--2553
 []\TU/lmtt/m/n/10 ## [16] "NA"           "Rebaixado"    "Rebaixado"    "Rebaixa
 do"    "Rebaixado"[] 
  []
 
 
-Overfull \hbox (285.28995pt too wide) in paragraph at lines 2558--2603
-[][] 
+Overfull \hbox (347.38144pt too wide) in paragraph at lines 2568--2614
+ [][] 
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[47]
-Overfull \hbox (17.25pt too wide) in paragraph at lines 2620--2620
+Overfull \hbox (17.25pt too wide) in paragraph at lines 2632--2632
 []\TU/lmtt/m/n/10 ## [10] "Goiás"                "Bahia"                "Vasco 
 da Gama"[] 
  []
 
 
-Overfull \hbox (69.75pt too wide) in paragraph at lines 2669--2669
+Overfull \hbox (69.75pt too wide) in paragraph at lines 2681--2681
 []\TU/lmtt/m/n/10 ##                 Equipes Jogos Vitórias Empates Derrotas Go
 ls.Pró Gols.Contra[] 
  []
 
-
-Overfull \hbox (69.75pt too wide) in paragraph at lines 2669--2669
+[47] [48]
+Overfull \hbox (69.75pt too wide) in paragraph at lines 2681--2681
 []\TU/lmtt/m/n/10 ## 1              Flamengo    38       28       6        4   
     86          37[] 
  []
 
 
-Overfull \hbox (69.75pt too wide) in paragraph at lines 2669--2669
+Overfull \hbox (69.75pt too wide) in paragraph at lines 2681--2681
 []\TU/lmtt/m/n/10 ## 2                Santos    38       22       8        8   
     60          33[] 
  []
 
 
-Overfull \hbox (69.75pt too wide) in paragraph at lines 2669--2669
+Overfull \hbox (69.75pt too wide) in paragraph at lines 2681--2681
 []\TU/lmtt/m/n/10 ## 3             Palmeiras    38       21      11        6   
     61          32[] 
  []
 
 
-Overfull \hbox (69.75pt too wide) in paragraph at lines 2669--2669
+Overfull \hbox (69.75pt too wide) in paragraph at lines 2681--2681
 []\TU/lmtt/m/n/10 ## 4                Grêmio    38       19       8       11   
     64          39[] 
  []
 
 
-Overfull \hbox (69.75pt too wide) in paragraph at lines 2669--2669
+Overfull \hbox (69.75pt too wide) in paragraph at lines 2681--2681
 []\TU/lmtt/m/n/10 ## 5  Athletico Paranaense    38       18      10       10   
     51          32[] 
  []
 
 
-Overfull \hbox (69.75pt too wide) in paragraph at lines 2669--2669
+Overfull \hbox (69.75pt too wide) in paragraph at lines 2681--2681
 []\TU/lmtt/m/n/10 ## 6             Sao Paulo    38       17      12        9   
     39          30[] 
  []
 
 
-Overfull \hbox (69.75pt too wide) in paragraph at lines 2669--2669
+Overfull \hbox (69.75pt too wide) in paragraph at lines 2681--2681
 []\TU/lmtt/m/n/10 ## 7         Internacional    38       16       9       13   
     44          39[] 
  []
 
 
-Overfull \hbox (69.75pt too wide) in paragraph at lines 2669--2669
+Overfull \hbox (69.75pt too wide) in paragraph at lines 2681--2681
 []\TU/lmtt/m/n/10 ## 8           Corinthians    38       14      14       10   
     42          34[] 
  []
 
 
-Overfull \hbox (69.75pt too wide) in paragraph at lines 2669--2669
+Overfull \hbox (69.75pt too wide) in paragraph at lines 2681--2681
 []\TU/lmtt/m/n/10 ## 9             Fortaleza    38       15       8       15   
     50          49[] 
  []
 
 
-Overfull \hbox (69.75pt too wide) in paragraph at lines 2669--2669
+Overfull \hbox (69.75pt too wide) in paragraph at lines 2681--2681
 []\TU/lmtt/m/n/10 ## 10                Goiás    38       15       7       16   
     46          64[] 
  []
 
 
-Overfull \hbox (69.75pt too wide) in paragraph at lines 2669--2669
+Overfull \hbox (69.75pt too wide) in paragraph at lines 2681--2681
 []\TU/lmtt/m/n/10 ## 11                Bahia    38       12      13       13   
     44          43[] 
  []
 
-[48]
-Overfull \hbox (69.75pt too wide) in paragraph at lines 2669--2669
+
+Overfull \hbox (69.75pt too wide) in paragraph at lines 2681--2681
 []\TU/lmtt/m/n/10 ## 13     Atlético Mineiro    38       13       9       16   
     45          49[] 
  []
 
 
-Overfull \hbox (69.75pt too wide) in paragraph at lines 2669--2669
+Overfull \hbox (69.75pt too wide) in paragraph at lines 2681--2681
 []\TU/lmtt/m/n/10 ## 14           Fluminense    38       12      10       16   
     38          46[] 
  []
 
 
-Overfull \hbox (69.75pt too wide) in paragraph at lines 2669--2669
+Overfull \hbox (69.75pt too wide) in paragraph at lines 2681--2681
 []\TU/lmtt/m/n/10 ## 15             Botafogo    38       13       4       21   
     31          45[] 
  []
 
 
-Overfull \hbox (69.75pt too wide) in paragraph at lines 2669--2669
+Overfull \hbox (69.75pt too wide) in paragraph at lines 2681--2681
 []\TU/lmtt/m/n/10 ## 16                Ceará    38       10       9       19   
     36          41[] 
  []
 
 
-Overfull \hbox (69.75pt too wide) in paragraph at lines 2669--2669
+Overfull \hbox (69.75pt too wide) in paragraph at lines 2681--2681
 []\TU/lmtt/m/n/10 ## 17             Cruzeiro    38        7      15       16   
     27          46[] 
  []
 
 
-Overfull \hbox (69.75pt too wide) in paragraph at lines 2669--2669
+Overfull \hbox (69.75pt too wide) in paragraph at lines 2681--2681
 []\TU/lmtt/m/n/10 ## 18                  CSA    38        8       8       22   
     24          58[] 
  []
 
 
-Overfull \hbox (69.75pt too wide) in paragraph at lines 2669--2669
+Overfull \hbox (69.75pt too wide) in paragraph at lines 2681--2681
 []\TU/lmtt/m/n/10 ## 19          Chapecoense    38        7      11       20   
     31          52[] 
  []
 
 
-Overfull \hbox (69.75pt too wide) in paragraph at lines 2669--2669
+Overfull \hbox (69.75pt too wide) in paragraph at lines 2681--2681
 []\TU/lmtt/m/n/10 ## 20                 Avaí    38        3      11       24   
     18          62[] 
  []
 
 
-Overfull \hbox (285.28995pt too wide) in paragraph at lines 2671--2716
-[][] 
+Overfull \hbox (347.38144pt too wide) in paragraph at lines 2686--2732
+ [][] 
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 2698) has occurred while \output is active []
 
-[49]
-Overfull \hbox (285.86993pt too wide) in paragraph at lines 2762--2807
+[49] [50]
+Overfull \hbox (285.86993pt too wide) in paragraph at lines 2779--2824
 [][] 
  []
 
-
-Underfull \vbox (badness 2065) has occurred while \output is active []
-
-[50] [51]
-Overfull \hbox (69.75pt too wide) in paragraph at lines 2886--2886
+[51]
+Overfull \hbox (69.75pt too wide) in paragraph at lines 2903--2903
 []\TU/lmtt/m/n/10 ##  [1]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
  FALSE FALSE FALSE[] 
  []
 
 
-Overfull \hbox (17.25pt too wide) in paragraph at lines 2905--2905
+Overfull \hbox (17.25pt too wide) in paragraph at lines 2922--2922
 []\TU/lmtt/m/n/10 ## [10] "Goiás"                "Bahia"                "Vasco 
 da Gama"[] 
  []
 
 
-Overfull \hbox (6.75pt too wide) in paragraph at lines 2921--2921
+Overfull \hbox (6.75pt too wide) in paragraph at lines 2938--2938
 []\TU/lmtt/m/n/10 ## [10] "Goiás"               "Bahia"               "Vasco da
  Gama"[] 
  []
 
 [52]
-Overfull \hbox (285.86993pt too wide) in paragraph at lines 2991--3036
+Overfull \hbox (285.86993pt too wide) in paragraph at lines 3008--3053
 [][] 
  []
 
 [53]
 
 Package longtable Warning: Column widths have changed
-(longtable)                in table 3.9 on input line 3106.
+(longtable)                in table 3.9 on input line 3125.
 
 [54]
 
 Package longtable Warning: Column widths have changed
-(longtable)                in table 3.10 on input line 3194.
+(longtable)                in table 3.10 on input line 3213.
 
 [55]
 
 Package longtable Warning: Column widths have changed
-(longtable)                in table 3.11 on input line 3325.
+(longtable)                in table 3.11 on input line 3344.
 
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[56]
 File: J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_2_2.tipos.de.pessoas.png Graphic
  file (type bmp)
 <J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_2_2.tipos.de.pessoas.png>
-[56]
-Underfull \hbox (badness 1365) in paragraph at lines 3346--3350
+
+Underfull \hbox (badness 1365) in paragraph at lines 3365--3369
 \TU/lmtt/m/n/10 while(){} \TU/lmr/m/n/10 A segunda parte vai dentro de parêntes
 es e diz respeito a
  []
@@ -1744,7 +1736,7 @@ File: J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_2_while.loop.png Graphic file (t
 ype bmp)
 <J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_2_while.loop.png>
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 1874) has occurred while \output is active []
 
 [57]
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -1754,16 +1746,46 @@ File: J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_2_for.loop.jpg Graphic file (typ
 e bmp)
 <J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_2_for.loop.jpg>
 [59] [60]
-Overfull \hbox (6.75pt too wide) in paragraph at lines 3521--3521
+Overfull \hbox (6.75pt too wide) in paragraph at lines 3540--3540
 []\TU/lmtt/m/n/10 ## [1] "Aluno2 é mais bonito que Aluno e menos bonito que Jac
 kson."[] 
  []
 
 [61]
-Underfull \hbox (badness 10000) in paragraph at lines 3584--3587
+
+Package natbib Warning: Citation `melloandpeternelli2013' on page 62 undefined 
+on input line 3589.
+
+
+Package natbib Warning: Citation `RogerPeng2020RPro' on page 62 undefined on in
+put line 3591.
+
+
+Package natbib Warning: Citation `Kabacoff2015R' on page 62 undefined on input 
+line 3593.
+
+
+Package natbib Warning: Citation `VenablesSmithRTeamCore2017' on page 62 undefi
+ned on input line 3595.
+
+
+Package natbib Warning: Citation `Neth2021' on page 62 undefined on input line 
+3597.
+
+
+Package natbib Warning: Citation `Yamamoto2020' on page 62 undefined on input l
+ine 3599.
+
+
+Package natbib Warning: Citation `SergioFreireINTRO2020' on page 62 undefined o
+n input line 3601.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3617--3620
 
  []
 
+[62]
 No file ENG_792-AVDR.bbl.
 
 Package natbib Warning: There were undefined citations.
@@ -1771,7 +1793,7 @@ Package natbib Warning: There were undefined citations.
 
 Package longtable Warning: Table widths have changed. Rerun LaTeX.
 
-[62] (ENG_792-AVDR.aux)
+[63] (ENG_792-AVDR.aux)
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
@@ -1779,10 +1801,10 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 Here is how much of TeX's memory you used:
  20176 strings out of 412095
  347270 string characters out of 2847044
- 874156 words of memory out of 3000000
+ 874352 words of memory out of 3000000
  39472 multiletter control sequences out of 15000+200000
  412924 words of font info for 105 fonts, out of 3000000 for 9000
  1348 hyphenation exceptions out of 8191
- 94i,9n,118p,891b,496s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 94i,9n,118p,891b,498s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on ENG_792-AVDR.pdf (62 pages).
+Output written on ENG_792-AVDR.pdf (63 pages).
