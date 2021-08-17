@@ -313,11 +313,11 @@ Vamos ~~expurgar~~ remover o *Vasco da Gama* da nossa lista.
 
 ```{r data.frame_9, echo=T}
 Campeonato.Brasileiro.2019$Equipes # Retorna apenas as informações da coluna "Equipes" 
-Campeonato.Brasileiro.2019[Campeonato.Brasileiro.2019$Equipes!="Vasco da Gama",] #Seleciona tudo exceto aquilo que for de "Grêmio"
+Campeonato.Brasileiro.2019.SV<-Campeonato.Brasileiro.2019[Campeonato.Brasileiro.2019$Equipes!="Vasco da Gama",] #Seleciona tudo exceto aquilo que for de "Vasco da Gama"
 ```
 
 ```{r data.frame_10, echo=F}
-knitr::kable(Campeonato.Brasileiro.2019, col.names = gsub("[.]", " ", names(Campeonato.Brasileiro.2019))) %>%
+knitr::kable(Campeonato.Brasileiro.2019.SV, col.names = gsub("[.]", " ", names(Campeonato.Brasileiro.2019.SV))) %>%
   kableExtra::kable_styling(font_size = 11.5)
 ```
 
