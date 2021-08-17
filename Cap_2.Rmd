@@ -696,4 +696,3 @@ Organize *p* por linhas em uma matriz com 10 colunas .
 8. Use iteração restrita para conduzir o cálculo  `(i^2)-i`, onde *i*  vai de 5 até 10.
 9. Use interação não restrita para gerar  uma sequência de  inteiros de  -10 até -20.
 
-## References
