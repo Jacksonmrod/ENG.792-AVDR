@@ -266,8 +266,34 @@ Campeonato.Brasileiro.2019[Campeonato.Brasileiro.2019$Equipes=="Flamengo",] # Re
 ```
 
 ```{r data.frame_6, echo=T}
-split(Campeonato.Brasileiro.2019,Destino) # Retorna apenas as informações da coluna "Destino" que atendem o critério "Engenharia Agrícola"
+split(Campeonato.Brasileiro.2019,Destino) # Retorna apenas as informações da coluna "Destino" 
 ```
+
+Vou criar alguns verores aleatórios.
+
+```{r split_data.frame_6, echo=T}
+gr1 <- rep(letters[1:4],each=5)
+gr1
+
+gr2 <- c(rep(1:2,each=5),rep(2:3,each=5))
+gr2
+
+fc1 <- factor(rep(letters[1:4],each=5))
+fc1
+
+fc2 <- factor(c(rep(1:2,each=5),rep(2:3,each=5)))
+fc2
+
+```
+
+```{r data.frame_6.2, echo=T}
+split(Campeonato.Brasileiro.2019,f=(gr1)) # Divide o Campeonato.Brasileiro.2019 de acordo com os vetores informados 
+
+split(Campeonato.Brasileiro.2019,f=(gr2)) # Divide o Campeonato.Brasileiro.2019 de acordo com os vetores informados 
+
+split(Campeonato.Brasileiro.2019,f=list(gr1,gr2), drop = TRUE, sep = ": ") # Divide o Campeonato.Brasileiro.2019 de acordo com as listas informadas 
+```
+
 Alterando elementos dentro do `data frame`.
 
 ```{r data.frame_7, echo=T}
@@ -638,6 +664,8 @@ ifelse(Aluno*2>=Jackson^2, "Aluno é mais bonito!",
 [Spatial Data Science - Indexing](https://rspatial.org/intr/4-indexing.html)   
 
 [Indexing into a data structure](http://www.cookbook-r.com/Basics/Indexing_into_a_data_structure/)   
+
+[r-coder](https://r-coder.com/split-r/)   
 
 [datamentor - R if…else Statement](https://www.datamentor.io/r-programming/if-else-statement/)
 
