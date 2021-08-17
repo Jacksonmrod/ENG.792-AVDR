@@ -1,0 +1,695 @@
+# Acessando e manipulação de dados 
+
+## Organização   
+
+Assista este conteúdo em **Cap 2 - Organização** no [PVANet](https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php)
+
+Como mencionado anteriormente, `vector` é uma das principais estruturas do **R**. Um vetor é uma sequência de elementos (1...n) do mesmo tipo organizados tal qual livros em uma prateleira.  
+No caso abaixo temos um vetor numérico que pode ser `integer` ou `double`.
+
+```{r vetor_1, echo=T}
+a<-c(25,17,55,3,12,315,10,2,3,11)
+a
+```
+|Posição|1|2|3|4|5|6|7|8|9|10|
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|Elementos|25|17|55|3|12|315|10|2|3|11|
+
+Um vetor também pode armazernar caracteres. Neste caso eles devem estar entre aspas duplas `("")`.  
+
+```{r vetor_2, echo=T}
+b<-c("Z","f", "7","2a","Yes","A","Ab")
+b;typeof(b)
+```
+
+Embora tenhamos o número _7_ entre os nossos elementos do vetor acima, por estar entre aspas o número _7_ não é `numéric`, mas caractere.  
+Lembrem-se que um `vector` é um banco de dados da mesmo tipo Logo, se você colocar um número _7_ dentro dele, o **R** vai automaticamente convertê-lo em caractere independente de estar entre `""` ou não.
+
+
+|Posição|1|2|3|4|5|6|7|
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|Elementos|"Z"|"f"|"7"|"2a"|"Yes"|"A"|"Ab"|
+
+Mesmo que você tenha apenas um único numeral ele será armazenado como vector,  vector de **comprimento  = 1**. 
+Então um único número ou um único caractere será um vector.
+
+```{r vetor_3, echo=T}
+c<-(1)
+c;typeof(c);is.vector(c)
+```
+
+|Posição|1|
+|:--:|:--:|
+|Elemento|"1"|
+
+Entender a posição de cada elemento dentro de um `vector` é crucial! Saber a posição correta onde determinado(s) elemento(s) está(estão) facilita em muito nossa limpeza, nosso tratamento e demais passos para uma eficiente manipulação dos dados.
+
+```{r vetor_4, echo=T}
+seq(100,50,-1)
+```
+Atenção para os números dentro dos colchetes `[1] [17] [33] [49]`. Como mencionado em aulas passadas, eles, os colchetes, indicam a posição de determinados elementos dentro de um banco de dados.  
+Especificamente o `[1]` informa que o número *100* é o primeiro elemento, `[17]` informa que o número *84* é o vigésimo elemento, `[33]` informa que o número *68* é o trigésimo nono elemento, `[49]` informa que o número *52* é o trigésimo nono elemento.
+
+### Usando [ ] - Subscribing ou indexing
+
+#### Vetores
+
+Podemos extrapolar esta ideia de utilização de `[]` para acessar informações dentros dos objetos que criamos ou importamos.
+
+```{r vetor_5, echo=T}
+d<-c("a","b","c","d","e")
+d
+```
+
+|Posição|1|2|3|4|5|
+|:-:|:-:|:-:|:-:|:-:|:-:|
+|Elementos|"a"|"b"|"c"|"d"|"e"|
+
+No `vector d` temos cada um dos elementos em sua respectiva posição. Para acessar um elemento específico podemos inserir o número refere à sua posição dentro de `[]`.  
+Por exemplo:
+
+```{r vetor_6, echo=T}
+d[1]
+d[2]
+d[3]
+d[4]
+d[5]
+```
+Importante saber que `[]` é muito versátil.
+
+```{r vetor_7, echo=T}
+d[-1] # Acessa todos elementos exceto o primeiro
+d1<-d[3] # Atribuir o(s) elemento(s) de um vetor a outro vetor, ou criar um novo objeto de elementos já de objetos já existentes
+d1
+d[1:3] # Acessar um intervalo de elementos
+d[3:5]
+d[c(1,3:5)] # Acessar utilizando combinações
+d[c(-2,-4)] # Exceto o segundo e quanto elementos
+d[-3:-5] # Exceto o intervalo entre 3 e 5
+```
+
+Vamos dar mais uma olhada na importância do `[]`.
+
+Considere os seguintes vetores.
+
+|Posição|1|2|3|4|5|6|7|8|9|10|
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|Elemento|50|34|11|7|24|631|20|4|7|21|
+
+|Posição|1|2|3|4|5|6|7|8|9|10|
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|Elemento|100|2|56|12|0|65|93|10|244|1|
+
+Vamos somar os dois vetores e observe que são adicionados o primeiro elemento com primeiro elemento, segundo elemento com segundo elemento e assim por diante.  
+Em algumas outras linguagens se você quiser fazer esse procedimento, você vai provavelmente usar um `loop`. Mas em **R** você pode simplesmente adicioná-los. Esse é o motivo do **R** ser linguagem vetorizada. Você pode testar qualquer método matemático (`soma, divisão, booleana, lógica`).
+
+```{r vetor_8, echo=T}
+e<-c(50,34,11,7,24,631,20,4,7,21)
+
+f<-c(100,2,56,12,0,65,93,10,244,1)
+
+e;f
+
+e+f
+```
+Neste caso funcionou tudo perfeitamente, pois nossos vetores são do mesmo tamanho.  
+No entanto, caso tenhamos vetores de tamanho diferentes o **R** vai fazer um procedimento chamado *_recycling of vector_*. O **R** vai fazer com que os dois vetores se encaixarem no mesmo tamanho caso sejam múltiplos. Basicamente, o **R** vai copiar os elementos do começo do vetor menor e adicionar ao seu fim até que fiqque do mesmo tamanho do outro vetor para, então, fazer a operação.
+
+|Posição|1|2|3|4|5|
+|:-:|:-:|:-:|:-:|:-:|:-:|
+|Elemento|50|34|11|7|24|
+
+|Posição|1|2|3|4|5|6|7|8|9|10|
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|Elemento|100|2|56|12|0|65|93|10|244|1|
+
+
+```{r vetor_9, echo=T, verbose=T}
+h<-c( 50,34,11, 7,24)
+
+i<-c(100, 2,56,12, 0,65,93,10,244,1)
+
+h+i
+
+h;i
+
+h+i
+```
+
+E se não forem múltiplos?  
+Nesse caso vamos ter uma aviso, em que o **R** ao fazer o preenchimento dos valores faltantes vai querer saber se está certo o que estamos fazendo e emitindo um `warning`. 
+
+```{r vetor_10, echo=T, verbose=T}
+j<-c(50,34,11,7,24,631)
+k<-c(100,2,56,12,0,65,93,10,244,1)
+j+k
+```
+
+#### Matrizes
+
+Da mesma forma que utilizamos `[ ]` para acessar elementos específicos em um vetor, estes podem ser utilizados para acessar elementos de matrizes.  
+Lembrando que as matrizes possuem duas dimensões e que as dimensões são organizadas na sequência de linhas e colunas.
+
+```{r matriz_1, echo=T, verbose=T}
+l<-cbind(matrix(14:1, ncol=2),matrix(1:14, ncol=2))
+l
+```
+
+As linhas e colunas `[linhas, colunas]` são numeradas sequencialmente `[x...n,y]` e `[x,y...n]`.  
+Podemos desta forma selecionar uma ou várias linhas e colunas de uma só vez. Para isto basta apenas numerar a linhas ou coluna requerida.
+
+```{r matriz_2, echo=T, verbose=T}
+l[1,] # Apenas a primeira linhas
+l[,1] # Apenas a primeira coluna
+
+l[1:3,] # O intervalo de linhas entre 1 a 3
+l[,1:3] # O intervalo de colunas entre 1 e 3
+
+l[-3,] # Exceto a terceira linha
+l[,-3] # Exceto a terceira coluna
+
+l[-1:-3,] # Exceto o intervalo de linhas entre 1 a 3
+l[,-1:-3] # Exceto o intervalo de colunas entre 1 e 3
+  
+```
+
+Podemos também acessar elementos específicos de uma matriz definindo o "endereço" do elemento nas linhas e colunas.
+
+```{r matriz_3, echo=T, verbose=T}
+l[2,3] # Acessa apenas o elemento do cruzamento da linha 2 e coluna 3
+```
+
+Para facilitar a manipulação das matrizes podemos nomear as linas e colunas. Para isso podemos utilizar as funções `colnames()` e `rownames()`.
+
+```{r matriz_4, echo=T, verbose=T}
+nrow(l) # Retorna o número de linhas
+ncol(l) # Retorna o número de colunas
+dim(l) # Retorna as dimnesões (n° de linas e colunas)
+l
+rownames(l)<-letters[1:7] # Atribui 7 letras minúsculas sequenciais de "a" até "g" como nomes das linhas
+l
+colnames(l)<-LETTERS[1:ncol(l)] # Atribui letras maiúsculas sequenciais obedecendo o número de colunas como nomes das colunas
+l
+```
+
+Agora podemos acessar via nomes das linhas e colunas também.
+
+```{r matriz_5, echo=T, verbose=T}
+l["a",] # Apenas a primeira linhas
+l[,"A"] # Apenas a primeira coluna
+
+l[letters[1:3],] # O intervalo de linhas entre "a" a "c"
+l[,LETTERS[1:3]] # O intervalo de colunas entre "A" e "C"
+
+l[c("a","c","d"),] # Seleciona as linhas "a", "c" e "d"
+l[,c("A","C","D")] # Seleciona as colunas "a", "c" e "d"
+
+```
+
+#### Arrays
+
+Sendo muito similares aos vetores e matrizes, os arrays podem ter _n_ dimensões. 
+
+```{r array_1, echo=T, verbose=T}
+m<-1:24
+dim(m)<-c(4,3,2)
+m
+
+# ou
+
+m<-array(1:24,c(4,3,2))
+m
+
+m[1,,] # Retorna as primeiras linhas do array
+m[,2,] # Retorna as segundas colunas do array
+m[1,2,] # Retorna as intersecções entre as primeiras linhas com as segundas colunas
+m[1,2,2] # Retorna as intersecções entre a primeira linha com segunda coluna da sugunda camada
+```
+
+#### Data Frame
+
+Sendo semelhantes às `matrizes`, os `data frames` pode serm acessados pelo número das linhas ou colunas.
+
+```{r data.frame_1, echo=T}
+Equipes<-c("Flamengo",	"Santos",	"Palmeiras",	"Grêmio",	"Athletico Paranaense",	"Săo Paulo",	"Internacional",	"Corinthians",	"Fortaleza",	"Goiás",	"Bahia",	"Vasco da Gama",	"Atlético Mineiro",	"Fluminense",	"Botafogo",	"Ceará",	"Cruzeiro",	"CSA",	"Chapecoense",	"Avaí")
+Jogos<-c("38",	"38",	"38",	"38",	"38",	"38",	"38",	"38",	"38",	"38",	"38",	"38",	"38",	"38",	"38",	"38",	"38",	"38",	"38",	"38")
+Vitórias<-c("28",	"22",	"21",	"19",	"18",	"17",	"16",	"14",	"15",	"15",	"12",	"12",	"13",	"12",	"13",	"10",	"7",	"8",	"7",	"3")
+Empates<-c("6",	"8",	"11",	"8",	"10",	"12",	"9",	"14",	"8",	"7",	"13",	"13",	"9",	"10",	"4",	"9",	"15",	"8",	"11",	"11")
+Derrotas<-c("4",	"8",	"6",	"11",	"10",	"9",	"13",	"10",	"15",	"16",	"13",	"13",	"16",	"16",	"21",	"19",	"16",	"22",	"20",	"24")
+Gols.Pró<-c("86",	"60",	"61",	"64",	"51",	"39",	"44",	"42",	"50",	"46",	"44",	"39",	"45",	"38",	"31",	"36",	"27",	"24",	"31",	"18")
+Gols.Contra<-c("37",	"33",	"32",	"39",	"32",	"30",	"39",	"34",	"49",	"64",	"43",	"45",	"49",	"46",	"45",	"41",	"46",	"58",	"52",	"62")
+Pontos<-c("90",	"74",	"74",	"65",	"64",	"63",	"57",	"56",	"53",	"52",	"49",	"49",	"48",	"46",	"43",	"39",	"36",	"32",	"32",	"20")
+Saldo.de.Gols<-c("49",	"27",	"29",	"25",	"19",	"9",	"5",	"8",	"1",	"-18",	"1",	"-6",	"-4",	"-8",	"-14",	"-5",	"-19",	"-34",	"-21",	"-44")
+Aprov.<-c("79",	"65",	"65",	"57",	"56",	"55",	"5",	"49",	"46",	"46",	"43",	"43",	"42",	"4",	"38",	"34",	"32",	"28",	"28",	"18")
+Destino<-c("Libertadores",	"Libertadores",	"Libertadores",	"Libertadores",	"Libertadores",	"Libertadores",	"Libertadores",	"Libertadores",	"Sulamericana",	"Sulamericana",	"Sulamericana",	"Sulamericana",	"Sulamericana",	"Sulamericana",	"NA",	"NA",	"Rebaixado",	"Rebaixado",	"Rebaixado",	"Rebaixado")
+
+Campeonato.Brasileiro.2019<-as.data.frame(cbind(Equipes,Jogos,Vitórias,Empates,Derrotas,Gols.Pró,Gols.Contra,Pontos,Saldo.de.Gols, Aprov., Destino))
+```
+
+```{r data.frame_1.display, echo=F}
+library(magrittr)
+knitr::kable(Campeonato.Brasileiro.2019, col.names = gsub("[.]", " ", names(Campeonato.Brasileiro.2019))) %>%
+  kableExtra::kable_styling(font_size = 11.5)
+```
+
+```{r data.frame_2, echo=T}
+Campeonato.Brasileiro.2019[1,] # Retorna a primeira linha do data frame
+Campeonato.Brasileiro.2019[,1] # Retorna a primeira coluna do data frame
+```
+
+Todas as outras combinações utilizadas nas `matrizes` podem ser utilizadas aqui nos `data frames`.  
+No entanto, os data frames possuem uma outra "vantagem" sobre as matrizes. Além de armazenar elementos de diferentes tipos (`numeric, character, logical` e etc), eles também podemser acessados utilizando `$`.
+
+```{r data.frame_3, echo=T}
+Campeonato.Brasileiro.2019$Equipes # Retorna os elementos da coluna "Equipes"
+Campeonato.Brasileiro.2019$Vitórias # Retorna os elementos da coluna "Vitórias"
+Campeonato.Brasileiro.2019$Gols.Pró # Retorna os elementos da coluna "Gols.Pró"
+Campeonato.Brasileiro.2019$Saldo.de.Gols # Retorna os elementos da coluna "Saldo.de.Gols"
+Campeonato.Brasileiro.2019$Destino # Retorna os elementos da coluna "Destino"
+```
+
+```{r data.frame_4, echo=T}
+Campeonato.Brasileiro.2019$Equipes[2] # Retorna o segundo elemento da coluna "Nome"
+Campeonato.Brasileiro.2019$Vitórias[5] # Retorna o quinto elemento da coluna "Vitórias"
+Campeonato.Brasileiro.2019$Gols.Pró[3] # Retorna os elementos da coluna "Gols.Pró"
+Campeonato.Brasileiro.2019$Saldo.de.Gols[1] # Retorna os elementos da coluna "Nivel.deR"
+Campeonato.Brasileiro.2019$Destino[10] # Retorna os elementos da décima coluna "Destino"
+```
+
+Outra maneira de acessar informações pode através `[]`.
+
+```{r data.frame_5, echo=T}
+Campeonato.Brasileiro.2019[Campeonato.Brasileiro.2019$Equipes=="Flamengo",] # Retorna apenas as informações da coluna "Equipes" que atendem o critério "Flamengo"
+
+```
+
+```{r data.frame_6, echo=T}
+split(Campeonato.Brasileiro.2019,Destino) # Retorna apenas as informações da coluna "Destino" que atendem o critério "Engenharia Agrícola"
+
+```
+Alterando elementos dentro do `data frame`.
+
+```{r data.frame_7, echo=T}
+Campeonato.Brasileiro.2019$Destino # Retorna apenas as informações da coluna "Destino" 
+
+Campeonato.Brasileiro.2019$Destino[Campeonato.Brasileiro.2019$Destino=="NA"]<-"Lugar Algum" 
+
+# Substitui "Libertadores" na coluna "Destino" por "Liberta".
+```
+
+Veja como ficou com a informação alterada.
+
+```{r data.frame_8, echo=F}
+knitr::kable(Campeonato.Brasileiro.2019, col.names = gsub("[.]", " ", names(Campeonato.Brasileiro.2019))) %>%
+  kableExtra::kable_styling(font_size = 11.5)
+```
+
+Vamos ~~expurgar~~ remover o *Vasco da Gama* da nossa lista.
+
+```{r data.frame_9, echo=T}
+Campeonato.Brasileiro.2019$Equipes # Retorna apenas as informações da coluna "Equipes" 
+
+Campeonato.Brasileiro.2019[Campeonato.Brasileiro.2019$Equipes!="Vasco da Gama",] #Seleciona tudo exceto aquilo que for de "Grêmio"
+```
+
+```{r data.frame_10, echo=F}
+knitr::kable(Campeonato.Brasileiro.2019, col.names = gsub("[.]", " ", names(Campeonato.Brasileiro.2019))) %>%
+  kableExtra::kable_styling(font_size = 11.5)
+```
+
+Atendendo a pedidos, vamos continuar brevemente com manipulação de dados em `data.frame`.
+
+As funções `grep, grepl, regexpr, gregexpr e regexec` busca por elementos de um objeto que coincidem com um _argumento padrão_.
+
+### grep()
+
+```{r grep.1, echo=T} 
+grep("Lugar Algum", Campeonato.Brasileiro.2019$Destino) # retorna as posições de tudo no vetor Campeonato.Brasileiro.2019$Destino que coincide com Lugar Algum 
+```
+
+```{r grep.2, echo=T} 
+grep("Libetadores|Lugar Algum", Campeonato.Brasileiro.2019$Destino) # retorna as posições de tudo no vetor Campeonato.Brasileiro.2019$Destino que coincide com Libetadores ou Lugar Algum
+```
+
+```{r grep.3, echo=T}
+grep("Lugar Algum", Campeonato.Brasileiro.2019$Destino) # retorna as posições de tudo no vetor Campeonato.Brasileiro.2019$Destino que coincide com Lugar Algum 
+```
+
+```{r data.frame2, echo=T}
+Campeonato.Brasileiro.2019$Destino[15]<-"lugar algum" #Substitui a 15ª posição por lugar algum"
+```
+Execute o comando `grep`anteior novamente e veja as diferenças.
+
+```{r data.frame3, echo=F} 
+Campeonato.Brasileiro.2019 %>% 
+  knitr::kable()
+```
+
+```{r grep.4, echo=T}
+grep("[L l]ugar [A a]lgum",Campeonato.Brasileiro.2019$Destino) # retorna as posições de tudo no vetor Alunos.Eng792$Curso que coincide com Nutrição ou nutrição
+```
+
+```{r grep.5, echo=T}
+la <-grep("lugar algum", Campeonato.Brasileiro.2019$Destino)
+LA <- grep("Lugar Algum", Campeonato.Brasileiro.2019$Destino)
+str(la);str(LA) # mostra a estrutura de um objeto
+```
+
+```{r grep.6, echo=T}
+setdiff(la, LA) #Identifica a difença entre X e Y
+setdiff(LA, la) 
+```
+
+```{r grep.7, echo=T}
+Campeonato.Brasileiro.2019$Equipes[1]
+
+grep("Flamengo", Campeonato.Brasileiro.2019$Equipes, value = TRUE)
+```
+
+### grepl()
+
+```{r grepl.1, echo=T}
+grepl("Flamengo", Campeonato.Brasileiro.2019$Equipes) # Retorna valores lógicos de acordo com o critério estabelecido
+```
+
+### sub() e gsub()
+
+```{r sub.gsub1, echo=T}
+sub("Fla", "fla", Campeonato.Brasileiro.2019$Equipes) #Substitui Fla por fla naquilo que começa com Fla
+```
+
+```{r sub.gsub2, echo=T}
+gsub("Atlé|Athle", "Atlé", Campeonato.Brasileiro.2019$Equipes) #Substitui Atlé ou Athle por Atlé naquilo que contém com Atlé ou Athle
+```
+
+Alguns elementos especiais podem ser encontrados no **R** como: **Infinito positivo ou negativo (-Inf e Inf)**, elementos **"não número" (NaN - Not a Number)** e **valores ausentes (NA, Not Available)**.
+
+```{r especiais, echo=T}
+3/0
+-3/0
+x<-Inf;x
+y<-(-Inf);y
+0/0
+Inf-Inf
+
+``` 
+
+```{r NA, echo=T}
+Campeonato.Brasileiro.2019[Campeonato.Brasileiro.2019<=10]<-NA
+```
+
+```{r data.frame4, echo=F} 
+Campeonato.Brasileiro.2019 %>% 
+  knitr::kable()
+```
+
+```{r any, echo=T}
+any(is.na(Campeonato.Brasileiro.2019))
+```
+
+Identificando onde estão os valores que atendem critérios desejados.
+```{r sub.gsub5, echo=T}
+which(is.na(Campeonato.Brasileiro.2019), arr.ind=TRUE)
+
+which((Campeonato.Brasileiro.2019<1), arr.ind=TRUE)
+```
+
+## Operadores
+
+
+Assista este conteúdo em **Cap 2 - Operadores** no [PVANet](https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php)
+
+O R tem vários operadores, tais quais outras linguagens, que nos permitem realizar procedimentos _aritiméticos_, _lógicos_ ou _relacionais_. 
+
+Os operadores aritméticos atuam em 2 elementos (*x* e *y*) e retorna respostas lógicas. Estes elementos, pos sua vez, podem ser de modo (`mode()`) numéricos ou complexos e também variáveis lógicas.
+
+|Símbolo|Operação|
+|:-:|:-:|
+|+|adição|
+|-|subtração|
+|*|multiplicação|
+|/|divisão|
+|^|potência|
+|%%|resto da divisão|
+|%/%|divisão inteira|
+
+
+```{r calc_aritméticos, echo=T}
+x<-2;y<-3
+
+x+y
+
+x-y
+
+x*y
+
+y/x
+
+y%/%x
+
+y%%x
+
+y^x
+```
+
+Os operadores de comparações atuam em cada elemento de 2 objetos sob comparação (fazendo o _recycling_ se necessário) retornando um objeto do mesmo tamanho.
+
+|Símbolo|Relação|
+|:-:|:-:|
+|<|menor que|
+|>|maior que|
+|<=|menor ou igual|
+|>=|maior ou igual|
+|==|igual|
+|!=|diferente|
+
+```{r calc_comparacoes.1, echo=T}
+x<-1:3;y<-1:3
+
+x>y
+
+x<y
+
+x*y
+
+y>=x
+
+y<=x
+
+y==x
+
+y!=x
+```
+
+Caso queira comparar bancos de dados completos, por inteiro de uma vez só, utilize `identical(x,y)` e `all.equal(x,y)`.   
+`identical`faz uma comparação estrita da representação dos objetos e retorna como `TRUE` ou `FALSE`.  
+`all.equal` compara a _"igualdade próxima"_ e retorna TRUE ou mostra as diferenças.
+
+```{r calc_comparacoes.2, echo=T}
+x<-0.9;y<-0.9
+identical(x,y)
+
+identical(0.9, 1.1 - 0.2)
+
+all.equal(x,y)
+
+all.equal(0.9, 1.1 - 0.2, tolerance = 1e-16)
+```
+
+Operadores lógicos são utilizados para para testes lógicos entre 1 ou 2 objetos e retorna valores lógicos também.
+
+|Símbolo|Relação|
+|:-:|:-:|
+|!|Logical NOT|
+|&|Logical AND|
+|||Logical OR|
+|or|Exclusive OR|
+
+Lembrando que temos outro operadores `$, @, [, [[, :, ?, <-, <<-, =, ::` que já começamos a manipular.
+
+![Existem dois tipos de pessoas: = & <-](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_2_2.tipos.de.pessoas.png)
+
+Com o passar do tempo vamos "brincando" com cada operador e, assim, assimilando o que cada uma faz.
+
+### Iterações   
+
+#### while()
+
+Essa forma de _loop_ é menos comumente usada e potencialmente perigosa, uma vez que ela pode resultar em uma execução descontrolada. Por isso, em muitos casos iterações restritivas são mais adequadas.
+A função `while()` requer uma condição testável que continuará a resultar em declarações subsequentes a serem executadas  até o resultado do teste dar falso (FALSE).
+
+Estrutura:
+Começa com a palavra _while_ seguida por _parênteses_ e _colchetes_ `while(){}` 
+A segunda parte vai dentro de parênteses e diz respeito a uma *expressão lógica* e a terceira parte, entre colchetes, o *corpo do loop*.
+`while(abc){xyz}` #Se abc for *TRUE* ele vai executar o resto {xyz}. Depois volta para checar se (abc) continua *TRUE* ou *FALSE* para decidir se continua no loop ou parar.
+
+`while(condição){`  
+  `“Código a ser executado”`  
+  `}`
+
+![**while loop**](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_2_while.loop.png)   
+**Fonte**: [Guru99](https://www.guru99.com/r-while-loop.html)
+
+Exemplo 1: Teste
+Ter aula na segunda-feira é bom ou não?
+
+```{r while.1,echo=T,eval = FALSE}
+while(FALSE){  
+  print("Aula segunda-feira é ótimo!")}
+```
+
+```{r while.2,echo=T,eval = FALSE}
+while(TRUE){  
+  print("Aula segunda-feira é ótimo!")}
+```
+
+Exemplo 2: Teste
+Num concurso de beleza Jackson desafiou qualquer um de seus alunos. Cada um recebeu uma nota.
+
+```{r while.3,echo=T,eval = FALSE}
+Jackson<-9.5  
+Aluno<-6  
+while(Aluno<Jackson){  
+  print(Jackson)} 
+```
+
+#### for()   
+
+É similar ao `while()`, mas é mais conveniente na maioria dos casos.
+Iterações restritas (loops) destinam-se a execução de um número fixo de vezes dos comandos usando a função `for()`.
+O loop é executado tantas vezes quanto variam os valores de _i_.
+Começa com a palavra `for` seguindo de por _parênteses_ e _colchetes_ – `for(){}`.
+
+_()_ não especifica funções lógicas como no while, mas especifica as interações do loop.
+_{}_ são usados para preencher com os comandos do loop
+
+`for(i in conjunto_de_valores){`  
+  `comandos que serão repetidos`  
+	`}`  
+
+![**for loop**](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_2_for.loop.jpg)   
+**Fonte:**[tutorialspoint](https://www.tutorialspoint.com/r/r_for_loop.htm)   
+
+```{r for.loop.1, echo=T}
+for(i  in 1:5){
+  print("Aula segunda-feira é ótimo!")
+}
+```
+Significa que *Aula segunda-feira é ótimo!* Será mostrada 5 vezes sempre retornando como o objeto criado *i*.
+
+```{r for.loop.2, echo=T}
+for(i in  1:5){
+  print((i+1)*3)
+  }
+```
+
+Não importa onde você começa ou o tipo de vetor que é (*Caractere*, *número* e etc). Basicamente toda vez que mudar ele vai executar o que estiver dentro do corpo do loop. 
+
+### Condicionais   
+
+#### if, else
+
+A função `if()` é usado para conduzir uma ou mais declarações contidas dentro de `[]`, fornecendo a condição dentro de `()`.
+
+Voltando para nosso concurso de beleza, temos um controle um pouco mais inteligente do resultado mostrado.
+
+```{r if.1, echo=T}
+Jackson<-9.5  
+Aluno<-6 
+if(Jackson>Aluno){	
+  print("Jackson é mais bonito que Aluno!")
+  }
+```
+
+```{r if.2, echo=T}
+if(Aluno*2>=Jackson){
+  print("Aluno é mais bonito!")
+  }
+
+```
+Adaptando a o código acima para fazer a declaração condicional **FALSE** simplesmente retorna nenhum comando no prompt uma vez que o código não disse como **R** deveria responder nesse caso.
+
+```{r if.3, echo=T}
+if(Aluno*2>=Jackson^2){
+	print("Aluno é mais bonito!")
+  }
+```
+
+Existem 2 métodos de informar ao R como responder em casos onde a declaração de condição é retornada como **FALSE**: usando o modificador `else` ou a função `ifelse()`.
+Ao contrário de uma função qualquer, `else` não pode ser usado independentemente, mas apenas como um modificador (adição) ao `if()`. `If` no exemplo acima, o resultado é solicitado quando o valor retornado é **FALSE**, `else` pode ser adicionado como segue:
+
+```{r else1, echo=T}
+if(Aluno*2>=Jackson^2){
+	print("A declaração é verdadeira!")
+  }else{
+    print("A declaração é falsa!")
+    }
+```
+Note que `else` foi escrito na mesma linha que conclui o `if()` para informar ao R que o teste condicional continua.
+
+Podemos retirar a segunda parte do teste anterior e adicionar uma nova comparação.
+
+```{r else2, echo=T}
+Aluno2<-7
+if(Aluno2>Jackson){
+	print("Aluno1 é mais bonito!")
+  }else if(Aluno2>Aluno){
+    print("Aluno2 é mais bonito que Aluno e menos bonito que Jackson.")
+    }
+```
+
+#### ifelse()
+
+A função `ifelse()` é separada de `if()` e é formada de uma sintaxe mais simples e concisa. No entanto, ela pode ser usada para gerar o mesmo efeito que nas demonstrações anteriores usando `if()` com o modificador `else`.
+
+```{r if.else1, echo=T}
+ifelse(Aluno*2>=Jackson^2, "Aluno é mais bonito!", "Jackson é mais bonito!")
+```
+
+Como mostrado acima, o uso de `ifelse()` usa a forma:
+`ifelse(teste condicional, resultado se verdadeiro, resultado se falso)`
+
+Declarações condicionais também podem ser aninhadas dentro uma outra. Adaptando o exemplo com o argumento `else` um outro teste é executado se o teste inicial é **FALSE**, onde o secundário é **TRUE**.
+
+```{r if.else2, echo=T}
+ifelse(Aluno*2>=Jackson^2, "Aluno é mais bonito!",
+       ifelse(Aluno*2>=Jackson^0.5 ,"Agora o Aluno é mais bonito!", "Aluno continua feio!"))
+```
+Se o teste secundário é ajustado de maneira que os resultados em um teste lógico **FALSE**, o seguinte resultado é retornado.
+
+```{r if.else3, echo=T}
+ifelse(Aluno*2>=Jackson^2, "Aluno é mais bonito!",
+       ifelse(Aluno*2>=Jackson^3,"Agora o Aluno é mais bonito!", "Aluno continua feio!"))
+```
+
+## Dica de leitura
+
+@melloandpeternelli2013
+
+@RogerPeng2020RPro
+
+@Kabacoff2015R    
+
+@VenablesSmithRTeamCore2017    
+@Neth2021    
+
+@Yamamoto2020     
+
+@SergioFreireINTRO2020
+
+[Spatial Data Science - Indexing](https://rspatial.org/intr/4-indexing.html)   
+
+[Indexing into a data structure](http://www.cookbook-r.com/Basics/Indexing_into_a_data_structure/)   
+[datamentor - R if…else Statement](https://www.datamentor.io/r-programming/if-else-statement/)
+
+## Exercícios
+1. Crie o vetor *p* que contenham uma sequência de *200* iniciando em *0* aumentando *0.5*.
+2. Eleve o vetor *p* ao cubo criando o vetor *o* e multiplique por *p*.
+Organize *p* por linhas em uma matriz com 10 colunas .   
+3. Crie os elementos `x  = 10` e `y = 25`.
+4. Mostre na tela **A declaração é verdadeira** sob a condição de *x* ser menor que *y*.
+5. Mostre 2 maneiras  condicionais de executar  a declaração na qual  mostraria **A declaração é correta** se *x* é menor ou igual a *y*, ou caso contrário mostre **A declaração é incorreta** se não for o caso.
+6. Atribua `z = 50` e construa uma função `ifelse()` que testa se *x* é maior que *y*, mostrando **true** se a condição é encontrada. Aninhe dentro disso uma segunda condição que mostre **uma verdadeira, uma falsa** ou **ambas falsas** caso *x*  seja maior que *z*.
+7. Use uma iteração restrita para gerar uma sequência de números de 1 até 20.
+8. Use iteração restrita para conduzir o cálculo  `(i^2)-i`, onde *i*  vai de 5 até 10.
+9. Use interação não restrita para gerar  uma sequência de  inteiros de  -10 até -20.
