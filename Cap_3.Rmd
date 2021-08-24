@@ -376,7 +376,7 @@ Para saber quais são as _options_ e o que cada uma delas faz você pode acessar
 
 No caso abaixo estamos utilizando `sep=","`, `header=T` e `skip=3`.
 
-Baixe os dados aqui [Notas.txt](https://drive.google.com/file/d/1k73dMfJF3Dj7vOqfOX6F3W2_jRrP9ix_/view?usp=sharing)
+Baixe os dados aqui **Cap_3_Notas_ENG792.txt** no [PVANet](https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php)
 
 ```{r data.table, echo=T}
 notas<-read.table("J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Notas_ENG792.txt", sep=",", header = T, skip=3)
@@ -404,7 +404,7 @@ O argumento `skip=3"` indica que as 3 primeiras linhas de nosso arquivo devem se
 
 Note ainda que os nomes das colunas foram automaticamente alterados para atender as convenções de condificação do R. Onde originalmente estava _Nota 1_  agora temos _Nota.1_.
 
-![**Notas Eng792**](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_notas eng 792.jpg){#id .class width=50% height=50%}
+![**Notas Eng792**](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_notas eng 792.jpg)
 
 Vejam que na tabela criada houve erros na na codificação dos caracteres especiais.
 <p style="color:red"> **RESOLVA ISSO! E digo mais determine que a primeira coluna (os nomes de vocês) sejam o nome das linhas**</p>
