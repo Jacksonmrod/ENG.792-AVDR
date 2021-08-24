@@ -474,7 +474,7 @@ Caso a instalação desses pacotes não funcione e, a mensagem de abaixo apareç
 Experimente instalar ou atualizar antes o [_Java_](https://www.java.com/en/download/manual.jsp) correspondente ao seu sistema operacional e _bit_.
 
 Vamos abrir o _Definições iniciais - ENG 792.xlsx_.  
-![**Informações Alunos - ENG 792.xlsx**](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_InformaÃ§Ãµes - Alunos ENG 792.jpg){#id .class width=100% height=100%}
+![**Informações Alunos - ENG 792.xlsx**](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Informacoes - Alunos ENG 792.jpg)
 
 Eu já tenho instalado no meu **R**, então instale no seu caso não o tenha.
 `install.packages("xlsx")`
