@@ -1,4 +1,4 @@
-url-your-book-url-like-httpsbookdown.orgyihuibookdown
+apresentação
 hello-world---sejam-bem-vindos
 sobre
 utilização
@@ -38,3 +38,19 @@ if-else
 ifelse
 dica-de-leitura
 exercícios
+acessando-e-criando-funções-importação-e-exportação-dados
+funções
+pacotes
+o-que-são-de-onde-vem-para-onde-vão-do-que-se-alimentam
+entrando-com-dados
+edit
+built-in
+scan
+lendo-arquivos-de-texto-.txt
+read.csv
+planilhas-excel-completas-.xls-ou-.xlsx
+exportar-arquivos
+definir-diretório-de-trabalho-setwd
+exercícios-1
+dica-de-leitura-1
+url-your-book-url-like-httpsbookdown.orgyihuibookdown

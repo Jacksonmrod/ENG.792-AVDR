@@ -367,8 +367,15 @@ setdiff(grep("Lugar Algum", Campeonato.Brasileiro.2019$Destino),
 ```
 
 ```{r grep.6, echo=T}
-setdiff(la, LA) #Identifica a difença entre X e Y
-setdiff(LA, la) 
+#install.packages("prob")
+library(prob)
+S <- cards()
+A <- subset(S, suit == "Heart")
+A
+B <- subset(S, rank == "A" )
+B
+setdiff(B, A) #Identifica a difença entre X e Y
+
 ```
 
 ```{r grep.7, echo=T}

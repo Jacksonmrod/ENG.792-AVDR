@@ -1,0 +1,553 @@
+# Acessando e criando Funções,  Importação e exportação dados
+
+## Funções
+
+Embora existam uma grande variedade de _funções_ e _pacotes_ disponíveis e crescendo em número, a grande versatilidade do R nos permite criar _comandos/funções_ personalizadas.  
+No entanto, uma dúvida que por ventura você tenha e não consida sanar dentro das opções de ajuda do próprio R, buscar em fóruns sobre o assunto pode ser uma saída, pois geralmente a sua dúvida foi a dúvida de alguém antes de você.
+
+Vamos inicialmente dar uma olhada nas funções do próprio R.
+Até aqui vimos algumas funções como: `c(), seq(), rep(), print(), is.numeric(), is.integer(), is.double(), is.character(), typeof(), which(), grep() e etc`
+
+Para entender melhor como uma _função_ funciona ou o que ela faz e permite fazer podemos pedir ajuda escrevendo `?nomedafunção`.
+Por exemplo:
+
+```{r ajuda_rnorm, echo=TRUE, include=T}
+?rnorm #Gera um vetor de números aleatórios normalmente ditribuídos
+```
+
+No display de ajuda da função `rnorm()`observamos como a função deve ser utilizada, quais parâmetros devem ser inseridos.  
+`rnorm(n, mean = 0, sd = 1)`
+
+```{r rnorm.1, echo=TRUE, include=T}
+rnorm(5 ,10 , 8) #Vejam que não estão próximas de zero, mas de dez. 
+```
+
+Podemos dar nomes aos parâmetros também, caso não sejam nomeados, os parâmetros seguirão a ordem estabelecida na função original inciada em _n_ seguida de _mean_ e _sd_. 
+
+```{r rnorm.2, echo=TRUE, include=T}
+set.seed(1234)
+rnorm(n=5 ,mean=10 , sd=8) 
+
+set.seed(1234)
+rnorm(mean=10,n=5, sd=8) # Uma vez nomeados, eles podem ser arranjados da maneira que desejar. 
+```
+
+Quando você executou `?rnorm`, você deve ter percebido que existem outro comandos semelhantes: 
+
+`dnorm(x, mean = 0, sd = 1, log = FALSE)`  
+`pnorm(q, mean = 0, sd = 1, lower.tail = TRUE, log.p = FALSE)` 
+`qnorm(p, mean = 0, sd = 1, lower.tail = TRUE, log.p = FALSE)` 
+
+`dnorm` retorna o valor da função de densidade de probabilidade para os parâmetros. fornececidos.
+
+```{r dnorm, echo=TRUE, include=T}
+dnorm(5, mean = 10, sd = 8)
+```
+
+`pnorm` retorna a integral de _-Inf_ até _q_ de um _pdf_ ( _Probability density function_) da distribuição normal onde _q_ é o _z-score_.
+
+```{r pnorm, echo=TRUE, include=T}
+pnorm(5, mean = 10, sd = 8)
+```
+
+`qnorm` é simplesmente o inverso do _cdf_ ( _cumulative distribution function_), no qual você pode entender com o inverso de `pnorm`.
+
+```{r qnorm, echo=TRUE, include=T}
+qnorm(.2) # Responde como o z-score do vigèsimo elemento de uma distribuiçãop normal.
+```
+ Para mais detalhes sobre estas funções [clique aqui](http://seankross.com/notes/dpqr/).
+ 
+
+```{r Quadro.Func.Mate, echo=F, include=F}
+ 
+função<-c("abs(x)", "sqrt(x)","ceiling(x)","floor(x)","trunc(x)","round(x,digits=n)","log(x)","log10(x)", "exp(x)","sin(x)","cos(x)","tan(x)")
+
+Descrição<-c("Valor absoluto","Raiz quadrada","Arredonda para o inteiro acima","Arredonda para o inteiro abaixo", "Trunca para um inteiro","Arredonda de acordo com número de casas decimais", "Logarítimo natural","Logarítmo decimal","Exponenciação de base e com expoente x","Seno em radianos","Cosseno em radianos", "Tangente em radianos")
+
+Func.Mate<-cbind(função,Descrição)
+```
+
+As funções acima e tantas outras estão disponíveis no **R** desde sua instalação, assim como as funções básicas abaixo.
+
+```{r Func.Mate, echo=F, include=T}
+library(magrittr) 
+Func.Mate %>% 
+  knitr::kable()
+```
+
+```{r Apli.Func.Mate, echo=F, include=T}
+ abs(-9.99)
+sqrt(pi)
+ceiling(pi)
+floor(pi)
+trunc(pi)
+round(pi,digits=2)
+log(pi)
+log10(pi)
+exp(pi)
+sin(pi)
+cos(pi)
+tan(pi)
+```
+
+Pesquise por `asin(), acos(), atan()`. 
+
+Embora seja rico de opções, com funções dos mais variados tipos e aplicações às vezes não encontramos aquelas específicas que precisamos para algo específico. Ou, mesmo que esteja desenvolvendo uma metodologia nova com novos _approaches_ ou um novo **pacote** você precisará impreterivelmente de criar suas próprias funções.
+
+As funções às vezes não são tão simples para uma primeira tentativa de uso ou criação principalmente para aqueles que estão iniciando em R ou qualquer linguagem de programação.
+Podemos imaginar a função dividida em 3 partes (entrada, processamento e sapida) como uma caixa com muito buracos de uma lado ( _inputs_) e apenas um buraco do outro ( _output_) e a caixa atua de acordo com nossos comandos. Ou ainda como processamento de frutas para um suco.
+
+![Estrutura de uma função](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_funcoes.png)   
+
+Estrutura de uma função:
+* A função recebe um nome que recebe os argumentos e comandos a serem executados. O nome da função será o comando a ser executado sempre que desejado.  
+
+* Após o atribuidor vem o comando _function_ seguindo de _()_. Dentro de _()_ vem os argumentos (posição ou nomes) que são as variáveis ou outras informações inseridas pelo usuário. 
+
+* Após fechar os parênteses abre-se chaves _{}_ onde entram as equações ou testes a serem executados e as opções de saídas com o comando **return** quer geralmente encontra-se ao final da função. Não há restrição sobre a estrutura ou tipo de objeto retornado (`list, data.frame, matrix, numeric, logical` ... etc).  
+
+* Após o registro da função no ambiente do R (Veja o _global environment_), a função fica pronta para uso.
+
+```{r function1, echo=T, include=T, error=T}
+minhafunção <- function(arg1, arg2, ... ){
+	statements
+	return(object)
+}
+```
+
+Vamos criar uma função de divisão.
+```{r function, echo=T, include=T}
+
+divisao <- function(x, y) { 
+	resultado <- x/y 
+	print(resultado) 
+}
+```
+1. A função se chama `divisao`.
+2. Declare as variáveis **x, y** entre **()**;
+3. **{}** guardam os comandos a serem executados;
+4. `resultado <- x/y` e `print(resultado)` são os comandos a serem executados.
+
+```{r flow.function, echo=F}
+#install.packages("flow")
+library(flow)
+flow_view(divisao)
+```
+
+```{r function.apli.1, echo T}
+divisao(50,25)
+divisao(22,4.4)
+```
+
+```{r function.apli.2, echo=T}
+g<-5
+x<-10
+a<-x
+divisao(g,a)
+divisao(a+g,g)
+```
+
+Experimentem e vejam o que acontece.
+```{r function.apli.3, echo=T,include=T,error=TRUE}
+divisao(50,)
+divisao(50,25,32)
+divisao(a,m)
+```
+
+***Escreva uma função teste chamada `multiplicador` que multiplica os valores 12.8, 19.2 e  _pi_. _pi_é armazenado internamente pelo R com 6 casas decimais e pode ser chamada escrevendo _pi_.***
+
+```{r function.apli.4, echo=T,include=T,error=TRUE}
+multiplicador <- function(x, y, z) {
+	resultado <- x*y*z 
+	print(resultado) } # `print` mostra o resultado de um objeto ou operação
+
+multiplicador(12.8, 19.2, pi)
+
+```
+***Escreva uma função teste chamada `multiplicador` que multiplica os valores um vetor com 50 números por outro de 50 números e armazene o resultado como G sem mostrá-los na tela***
+
+```{r function.apli.5, echo=T,include=T,error=TRUE}
+s<-seq(from= 1,to=10, length.out=50); 
+length(s) 
+s
+
+d<-seq(from=1,to=10,length.out = length(s))
+d
+```
+
+```{r function.apli.6, echo=T,include=T,error=TRUE}
+multiplicador <- function(x, y){
+  resultado <- x*y
+  assign("resultado", resultado, envir=globalenv())
+  } # `assign` atribui os valores de uma operação a um objeto
+
+multiplicador(s,d)
+resultado
+```
+
+```{r function.apli.7, echo=T,include=T,error=TRUE}
+media <- function( x = c( 1, 1, 1, 1)){ 
+  #Neste caso utilizamos valores default que permitem testes caso algo saia errado
+  #Calcula média do inpout x
+  out <- sum(x)/length(x)
+  return( out) # `return` devolve/retorna/mostra os resultado de uma operação ou objeto
+}
+
+minha.media <- media( x = 1: 100) # print result print( my.mean)
+print(minha.media)
+
+```
+
+As funções também permitem maior interação com usuário para a tomada de uma decisão por exemplo.
+
+```{r function.apli.8, echo=T,include=T,error=TRUE}
+mensagem <- function( arg1=readline(prompt="escreva sua mensagem: "), arg2 = readline(prompt="De novo: ")){ 
+  msg1 <- paste0(arg1) 
+  msg2 <- paste0(arg2) 
+  cat( msg1, msg2)
+   }
+mensagem()
+```
+
+## Pacotes
+### O que são? De onde vem? Para onde vão? Do que se alimentam?
+
+Quando iniciamos o R pouco mais de 2000 funções e outros objetos na memória estão prontos para uso.
+
+No R temos os pacotes que são feitos para cálculos estatísticos dos mais variados, pacotes para fazer gráficos, pacotes aplicados à um determinado tipo de dado ou subdivisão da ciência e etc...  
+
+Eles basicamente permitem vocês expandirem a funcionalidade do R para programação, ao invés de escrever dezenas de linhas de códigos, esses códigos são preparados, empacotados e tudo que você precisa fazer e usá-lo.
+Os `Packages` são coleções de funções, dados, e códigos compilados num formato bem definido. O diretório onde os pacotes estão armazenados são chamados `library`. A função
+`.libPaths()` onde sua biblioteca está alojada.
+
+```{r libpath, echo =T}
+.libPaths()
+```
+
+Milhares de outras funções, para as mais diversas tarefas, podem ser adicionadas por meio de pacotes (**packages**) disponíveis livremente na internet.  
+No entanto, a principal fonte de pacotes para o R é o [CRAN](https://cran.r-project.org/), mas também temos [r-forge](https://r-forge.r-project.org/.), [github](https://github.com/) e outras fontes pela internet.
+
+[CRAN now has 10,000 R packages. Here's how to find the ones you need.](https://blog.revolutionanalytics.com/2017/01/cran-10000.html)
+
+<p style="color:red"> **!!!!!!!!!! Não é porque um pacote está no CRAN que ele foi testado e funciona perfeitamente!!!!!!!!!**</p>
+
+[lista de pacotes no CRAN](https://cran.r-project.org/web/packages/available_packages_by_name.html)  
+
+Para instalar um novo pacote, utilize a função `install.packages("nome do pacote")` ou
+`Tools->Install Packages->Install from  (Repository CRAN) -> Packages (escreva o nome do pacote)`.  
+
+Para carregar na memória um pacote já instalado, `library(nome do pacote)` ou `require(nome do pacote)`. 
+
+Ao abrir lista de pacotes vemos quais estão disponíveis. Os que estão marcados estão ativados e disponíveis para uso. Aqueles que não estão marcados podem ser ativados e suas funções utilizadas.
+
+![lista de pacotes instalados](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_pacotes.png)
+
+Vamos deletar o pacote `ggplot2`, basta clicar no x no lado direito.
+Agora vamos reinstalar pela barra de ferramentas.
+Mas o que CRAN quer dizer? É o local onde os pacotes são armazenados.
+R é um open source software então se você quiser, pode criar um pacote ar mazená-lo no CRAN.
+
+```{r pacotes, echo=T, error=T}
+#install.packages("analogue")
+library(analogue)
+```
+Visite [Analogue](https://cran.r-project.org/web/packages/analogue/) e explore o que há disponível para o pacote analogue.
+Use a aba packages para explorar suas funcionalidades
+
+Muitas vezes os pacotes disponíveis no **CRAN** não estão *UpToDate* por isso talvez seja mais interessante isntalar os pacotes diretamente do [github](https://github.com/).
+
+Veja o pacote [packman](https://github.com/trinker/pacman) e vamos instalá-lo pelo **github**. Mas antes vamos instalar o pacote [devtools](https://www.r-project.org/nosvn/pandoc/devtools.html) que , entre outras coisas, nos permite "buscar" os pacotes do **github**.
+
+```{r install.packages, echo=T}
+#install.packages("devtools")
+devtools::install_github("trinker/pacman")
+```
+
+Ao utilizar o software R e um pacote na execução de seu trabalho você **deve** citá-los.
+```{r pacotes2, echo=T}
+citation () # citação do software R
+```
+
+```{r pacotes3, echo=T}
+citation(package = "analogue") # citação do pacote Analogue
+```
+
+Aqui listo os pacotes carregados agora em meu R.
+```{r pacotes4, echo=T}
+(.packages())
+```
+
+Aqui listo os pacotes instalados em meu R.
+```{r pacotes5, echo=T}
+meus.pacotes <- library()$results[,1]
+meus.pacotes
+```
+Ou poderia simplesmente digitar `library()`.
+
+```{r pacotes6, echo=T, include=T}
+library()
+```
+
+
+## Entrando com dados
+
+Agora que dominamos ~~100%~~ as estruturas e tratamento de objetos podemos partir para importação de dados das mais variadas fontes.  
+Até agora nós basicamente trabalhamos com dados "`café com leite`". Criamos uma tabelinha aqui, uma matrizinha acolá um vetor e por aí vai.  
+Sinto muito em informá-los, mas o mundo é bem mais complexo e cruel.
+
+| |
+|-|
+|   _"O mundo não é um mar de rosas. É um lugar sujo, um lugar cruel, que não quer saber o quanto você é durão. Vai botar você de joelhos e você vai ficar de joelhos para sempre se você deixar. Você, eu, ninguém vai bater tão forte como a vida, mas não se trata de bater forte. Se trata de quanto você aguenta apanhar e seguir em frente, o quanto você é capaz de aguentar e continuar tentando. É assim que se consegue vencer.Agora se você sabe do teu valor, então vá atrás do que você merece, mas tem que estar preparado para apanhar. E nada de apontar dedos, dizer que você não consegue por causa dele ou dela, ou de quem quer que seja. Só covardes fazem isso e você não é covarde, você é melhor que isso.”_ |
+**Balboa, Rocky**
+|
+
+Os dados no R podem ser importados por diferentes meios (teclado, text file, outros softwares estatísticos, planilhas e etc).
+
+
+![**Data input**](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_data input.png){#id .class width=50% height=50%}   
+Fonte: @Kabacoff2015R
+
+### edit()
+
+A forma mais simples de inserção de dados é através do teclado.
+No caso a seguir, o comando `Matrícula=numeric(0)` cria uma variável de um `mode()`específico, mas sem dados. O comando `edit()`, por sua vez, e como nome sugere, permite editar um banco de dados. Um _popup_ abrirá na sua tela que permitirá a sua edição. Após o uso bas fechar que as edições feitas serão salvas.  
+
+![**comando edit()**](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_edit DF.JPG){#id .class width=35% height=35%} 
+
+```{r edit(), echo=T, error=T, include=T}
+Alunos.Eng792 <- data.frame(Nome=character(0),Matrícula=numeric(0), Curço=character(0),Nível.de.R=numeric(0),Nível.de.Pós=character(0))
+
+Alunos.Eng792
+
+Alunos.Eng792 <- edit(Alunos.Eng792)
+
+Alunos.Eng792
+```
+
+### built-in
+
+No R também temos os dados _buit-in_ que são dados que já vem "dentro" do R ou pacotes que permite a execução dos exemplos das funções naturais do R e aquelas instaladas por meio dos pacotes. Temos vários dados _built-in_ no R como `ìris`, `mtcars`, `anscombe`, `USArrests`, `USAccDeaths`,`AirPassengers`  e etc.
+
+Vamos dar uma olha no `USArrests` que contém estatísticas de presos por diferentes crimes em  EUA em taxas de 100.000.
+
+```{r built_in, echo=T, error=T}
+Presidiarios.USA<-(USArrests)
+Presidiarios.USA
+```
+
+### scan()
+
+Uma outra forma de entrada manual se dá através dom comando `scan()`. Neste formato de entrada de dados podemos digitar informação por informação ou copiar de uma fonte e colá-la. Tudo isso feito no console e em formato numérico.
+
+**Exemplo com digitação.**
+```{r scan().1, echo=T, eval=F}
+teste1 <-scan()
+# Digite 1, 2, 4, 5, 6, 7, 8
+
+teste1
+```
+
+**Exemplo com copia e cola.**
+```{r scan().2, echo=T, eval=F}
+seq(30,38)
+
+teste2 <-scan()
+
+teste2
+```
+
+### Lendo arquivos de texto (.txt)
+
+No dia a dia esbarramos em dados que estão disponíveis em formato de texto. Geralmente este dados estão organizados em linhas e colunas onde cada linha representa uma observação e cada coluna uma variável.
+
+Para fazer leitura de dados em formato de texto (**.txt**) podemos utilizar o comando `read.table()` que lê o arquivo em formato de tabela e armazena em formato de _data.frame_.  
+
+A sintaxe do comando é:  
+`meu.df <- read.table(file, options)`
+
+Existem muitas opções ( _options_) disponíveis, mas podemos destacar algumas mais utilizadas `header`, `sep`, `row.names`, `col.names`, `skip`.
+
+Para saber quais são as _options_ e o que cada uma delas faz você pode acessar através de `?data.datble`.
+
+No caso abaixo estamos utilizando `sep=","`, `header=T` e `skip=3`.
+
+Baixe os dados aqui [Notas.txt](https://drive.google.com/file/d/1k73dMfJF3Dj7vOqfOX6F3W2_jRrP9ix_/view?usp=sharing)
+
+```{r data.table, echo=T}
+notas<-read.table("J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Notas_ENG792.txt", sep=",", header = T, skip=3)
+
+notas
+
+str(notas)
+```
+
+Acima nós criamos o objeto `notas`pela importação do arquivo `Notas_ENG792.txt` referente às notas hipotéticas de vocês na disciplina Eng 792 ao término do semestre.  
+Este arquivo está armazenado em meu computador na pasta `J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/`. Preste atenção na forma como ele foi importado o endereço veio antes do nome do arquivo e as separações entre os diretórios se pelo uso de `/`, mas também poderia ter utilizado `\\`.  
+Após o endereço do arquivo vieram as _options_ separadas por vírgulas (`,`). Se você tiver a curiosidade de abrir o arquivo `.txt`, você verá como os dados estão organizados e entenderá a utilização de cada argumento.  
+
+No entanto, como eu sou gente boa, vou ajudar vocês embora vocês não mereçam.    
+
+O argumento `sep=","`foi utilizado pois os dados de cada "célula" está separado da outra por meio de uma vírgula `,`.  
+
+`sep=""` indica _espaço_ delimitando os dados
+`sep="\t"` indica _tab_ delimitando os dados
+`sep="\n"` indica _new line_ delimitaNdo os dados
+
+O argumento `header=T"` indica que nossa tabela tem cabeçalho e é a primeira linha após o `skip=3`.  
+
+O argumento `skip=3"` indica que as 3 primeiras linhas de nosso arquivo devem ser ignoradas começando assim, nossa tabela a partir da 4ª linha.
+
+Note ainda que os nomes das colunas foram automaticamente alterados para atender as convenções de condificação do R. Onde originalmente estava _Nota 1_  agora temos _Nota.1_.
+
+![**Notas Eng792**](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_notas eng 792.jpg){#id .class width=50% height=50%}
+
+Vejam que na tabela criada houve erros na na codificação dos caracteres especiais.
+<p style="color:red"> **RESOLVA ISSO! E digo mais determine que a primeira coluna (os nomes de vocês) sejam o nome das linhas**</p>
+
+### read.csv()
+
+Embora muito comuns arquivos em formato `.txt`, a maioria dos cientistas preferem armazenar dados em planilhas eletrônicas como do excel `xlsx.` ou `.csv` ( _comma-separated values_).
+
+Baixe o  arquivo **Cap_1_P2-Mispriced-Diamonds.csv** [PVANet](https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php)
+
+```{r .csv, echo=T}
+diamantes<-read.csv("J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_1_P2-Mispriced-Diamonds.csv")
+
+str(diamantes)
+
+head(diamantes) # mostra as 6 primeiras linhas do objeto
+tail(diamantes) # mostra as 6 últimas linhas do objeto 
+```
+
+Observem que no comando `read.csv()` nós não adicionamos o argumento `header=T`, issto por que por padrão `header`é igual a `TRUE (T)`, caso seus dados não tenham cabeçalhos você deve argumentar `header=F` 
+
+Você já deve ter esbarrado com dados no "brasileiros" nos quais os separadores decimais não são pontos como no padrão internacional, mas vírgulas. Da mesma maneira, em Banânia, os separadores de de células são _ponto e vírgula_ (_semi-vírgula - ;_). 
+
+Para evitar problemas como esse na importação dos dados, (@perlin2018processamento) sugere que sejam abertos em um editor de texto qualquer e substitua todos os valores de _vírgula (,)_ por _ponto (.)_. Isso deixa o arquivo em um formato internacional. No Windows, programas como o Notepad e o Notepad + + realizam essa tarefa facilmente, no linux o _gedit_  e etc. 
+
+@perlin2018processamento suegre para evitar problemas, antes de prosseguir para a importação de dados em um arquivo _.csv_, deve-se abrir o arquivo em um editor de texto qualquer e verificar: 
+
+1. A existência de texto antes dos dados e a necessidade de ignorar algumas linhas iniciais; 
+2. A existência ou não dos nomes das colunas; 
+3. O símbolo separador de colunas; 
+4. O símbolo de decimal, o qual deve ser o ponto (.).
+
+Caso não seja possível converter os dados para o formato internacional, para esta jaboticaba você pode utilizar funções específicas como `read.csv2()` que assume que o indicador de decimal é a _vírgula (,)_ e o separação de colunas é o _ponto-e-vírgula (;)_. 
+
+O `read.csv()`usa como _default_ o padrão internacional `sep=”,”` e `dec=”.”` já o `read.csv2()` tem por default o padrão `sep=";"` e `dec=","`.  
+`dec=""` (separador de casas decimais)
+
+Experimente ambos comandos para abrir o _Notas_ENG792.csv_.  
+![**Notas_,_.csvCap_3_notas.csv eng 792.jpg:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3){#id .class width=50% height=50%} 
+
+Temos 1 arquivo **Cap_3_Notas_ENG792.csv** [PVANet](https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php)
+
+```{r .csv2, echo=T, error=T}
+
+Notas.csv<-read.csv2("J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Notas_ENG792.csv", row.names = "Nome")
+Notas.csv
+
+Notas.csv<-read.csv("J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Notas_ENG792.csv", row.names = "Nome")
+```
+
+<p style="color:red"> **Note que o comando `read.csv()` não funcionou, faça os ajustes necessários para que ele funcine.**</p>
+Explore o comandos `rowSums()`, `colSums()`, `rowMeans()`, `colMeans()`.
+
+
+### Planilhas excel completas (.xls ou .xlsx)
+
+É muito comum encontrarmos dados organizados em diferentes planilhas dentro de um mesmo arquivo como no caso do excel ( _.xls_ ou _.xlsx_) e semelehantes ( _.odt_).
+
+Estes arquivos e suas diferentes abas podem ser acessados pelo R também, no entanto não há funções nativas que executem esta ação. Precisamos nesse caso instalar pacotes de funções específicas para desempnhar esta operação.
+
+Temos algumas opções de pacotes para esta função como `XLConnect` (@MiraiSolutionsGmbH2020), `xlsx` (@DragulescuandArendt2007) e `readxl` (@WickhamandBryan2019).
+
+Caso a instalação desses pacotes não funcione e, a mensagem de abaixo apareça.  
+
+`error: No CurrentVersion entry in Software/JavaSoft registry! Try re-installing Java and make sure R and Java have matching architectures.`   
+
+Experimente instalar ou atualizar antes o [_Java_](https://www.java.com/en/download/manual.jsp) correspondente ao seu sistema operacional e _bit_.
+
+Vamos abrir o _Definições iniciais - ENG 792.xlsx_.  
+![**Informações Alunos - ENG 792.xlsx**](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_InformaÃ§Ãµes - Alunos ENG 792.jpg){#id .class width=100% height=100%}
+
+Eu já tenho instalado no meu **R**, então instale no seu caso não o tenha.
+`install.packages("xlsx")`
+
+Baixe os dados aqui
+Baixe o  arquivo **Cap_3_Informações - Alunos ENG 792.xlsx** [PVANet](https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php)
+
+```{r xlsx, echo=T, eval=F}
+
+library(xlsx)
+
+Info.Alunos<-read.xlsx(file="J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Informações - Alunos ENG 792.xlsx", endRow=28,sheetIndex=4,startRow = 2, header = T,encoding="UTF-8")
+
+Info.Alunos
+```
+
+### Exportar arquivos()
+
+Uma vez que somo capazes de importar arquivos de formatos específicos, somo também capazes de exportá-los.
+
+Podemos exportar `data.frame`, `matrix` ou `vector` para `.csv` (dos 2 tipos `csv` e `csv2`) e para `.txt`.
+
+A estrutura é semelhante para diferentes métodos (`write.csv()`, `write.csv2()` ou `write.table()`):
+
+`write.csv(Objeto, file = “objeto.csv", append = FALSE, quote = TRUE, sep = " ", eol = "\n",` 
+`na = "NA", dec = ".", row.names = TRUE, col.names = TRUE, qmethod = c("escape", "double"), fileEncoding = "")`
+
+Vamos experimentar os diferentes comandos.
+Antes de prosseguir certifique-se que o endereço de saída está adequado.
+
+```{r write.csv, echo=T, error=T}
+
+write.csv(Info.Alunos, file="J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Informações - Alunos ENG 792.csv", sep=",",fileEncoding="UTF-8")
+
+write.csv2(Info.Alunos, file="J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Informações - Alunos ENG 792.2.csv",sep=",",fileEncoding="UTF-8")
+
+write.table(Info.Alunos, file="J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Informações - Alunos ENG 792.txt", sep=",",fileEncoding="UTF-8")
+```
+
+### Definir diretório de trabalho `setwd()`
+
+Durante a importação e exportação de dados nós forncemos dentro dos comandos os endereço no seu computador ou periférico de onde e para onde os dados deveriam ser importados e exportados, respectivamente.  
+
+Esta tarefa pode ser simplificada pela determinação de um diretório de trabalho. Após esta definição o R vai comunicar diretamente com esta pasta de maneira que todos os arquivos importados e exportados de a para esta pasta.
+
+```{r setwd, echo=T, eval=F}
+setwd("J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/")
+
+Reposição.de.aula<-read.xlsx(file="Cap_3_Informações - Alunos ENG 792.xlsx", endRow=28,sheetIndex=4,startRow = 2, header =T, encoding="UTF-8")
+
+write.table(Reposição.de.aula, file="Cap_3_Informações - Alunos ENG 792.txt",sep=",",fileEncoding="UTF-8")
+
+```
+
+<p style="color:red"> **Explore o comandos `rowSums()`, `colSums()`, `rowMeans()`, `colMeans()` e acrescente no _data.frame_  notas uma coluna com soma e média das notas dos alunos e linhas com no fim do arquivo soma e média das notas 1 a 4. Para terminar exporte os arquivos em formato .csv e .txt**</p>
+
+**Para mais informações sobre importação e exportação de dados leia** @RCoreTeam **.** 
+
+<p style="color:red"> **E digo mais, é só isso mesmo.**</p>
+
+### Exercícios
+
+1. Defina um objeto chamado a  com valores de 60 a 85. 
+2. Determine o elemento 12 de a. 
+3. Determine elemento 20 de a. 
+4. Mostre o 5° e 25° elementos de a. 
+5. Mostre o 4°, 8°, 12°, 20° e 24° elementos de a.
+6. Mostre todos exceto 18°elemento de a. 
+7. Mostre todos exceto o 2°, 15° e 17° elementos de a . 
+8. Gere um data frame chamado new_frame com 3 colunas: A primeira com valores de 33 a 47; a segunda começando em 115 e terminando em 157, com incrementos de 3; e a terceira começando em 10, com 15 elementods, e cada elemento decrescendo 8.5. Cada coluna deve ser chamada de X, Y e Z respectivamente. 
+9. Extraia todos os valores da coluna 1. 
+10. Extraia das linhas 6 a 10 da coluna 2.
+11. Extraia os valores da linha 11 para todas as colunas. 
+12. Extraia os valores das linhas 4 a 8 das colunas 1 e 3 em formato de data frame
+13. Demonstre como mostrar o número de linhas do new_frame.
+14. Demonstre 4 diferentes métodos de extrair os valores de todas as linhas da coluna 1 de new_frame.
+
+## Dica de leitura
+
+[Introduction to the pacman Package in R (3 Examples)](https://statisticsglobe.com/pacman-r-package)
+
