@@ -2,6 +2,8 @@
 
 ## Funções
 
+Assista este conteúdo em **Cap 3 - Funções** no [PVANet](https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php)
+
 Embora existam uma grande variedade de _funções_ e _pacotes_ disponíveis e crescendo em número, a grande versatilidade do R nos permite criar _comandos/funções_ personalizadas.  
 No entanto, uma dúvida que por ventura você tenha e não consida sanar dentro das opções de ajuda do próprio R, buscar em fóruns sobre o assunto pode ser uma saída, pois geralmente a sua dúvida foi a dúvida de alguém antes de você.
 
@@ -210,6 +212,9 @@ mensagem()
 ```
 
 ## Pacotes
+
+Assista este conteúdo em **Cap 3 - Pacotes** no [PVANet](https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php)
+
 ### O que são? De onde vem? Para onde vão? Do que se alimentam?
 
 Quando iniciamos o R pouco mais de 2000 funções e outros objetos na memória estão prontos para uso.

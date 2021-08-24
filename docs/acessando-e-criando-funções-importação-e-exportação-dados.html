@@ -253,6 +253,7 @@ div.csl-indent {
 <h1><span class="header-section-number">Capítulo 4</span> Acessando e criando Funções, Importação e exportação dados</h1>
 <div id="funções" class="section level2" number="4.1">
 <h2><span class="header-section-number">4.1</span> Funções</h2>
+<p>Assista este conteúdo em <strong>Cap 3 - Funções</strong> no <a href="https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php">PVANet</a></p>
 <p>Embora existam uma grande variedade de <em>funções</em> e <em>pacotes</em> disponíveis e crescendo em número, a grande versatilidade do R nos permite criar <em>comandos/funções</em> personalizadas.<br />
 No entanto, uma dúvida que por ventura você tenha e não consida sanar dentro das opções de ajuda do próprio R, buscar em fóruns sobre o assunto pode ser uma saída, pois geralmente a sua dúvida foi a dúvida de alguém antes de você.</p>
 <p>Vamos inicialmente dar uma olhada nas funções do próprio R.
@@ -438,8 +439,8 @@ Podemos imaginar a função dividida em 3 partes (entrada, processamento e sapid
 <li><strong>{}</strong> guardam os comandos a serem executados;</li>
 <li><code>resultado &lt;- x/y</code> e <code>print(resultado)</code> são os comandos a serem executados.</li>
 </ol>
-<div id="htmlwidget-75df24d67e751e9438c9" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
-<script type="application/json" data-for="htmlwidget-75df24d67e751e9438c9">{"x":{"code":"#.if: visual=rhomb fill=#e2efda align=center\n#.for: visual=rhomb fill=#ddebf7 align=center\n#.repeat: visual=rhomb fill=#fce4d6 align=center\n#.while: visual=rhomb fill=#fff2cc align=center\n#.standard: visual=class fill=#ededed align=left\n#.commented: visual=class fill=#ededed\n#.header: visual=roundrect fill=#d9e1f2 align=left\n#.return: visual=end fill=#70ad47  empty\n#.stop: visual=end fill=#ed7d31  empty\n#.break: visual=receiver fill=#ffc000 empty\n#.next: visual=transceiver fill=#5b9bd5  empty\n#arrowSize: 1\n#bendSize: 0.3\n#direction: down\n#gutter: 5\n#edgeMargin: 0\n#edges: hard\n#fill: #eee8d5\n#fillArrows: false\n#font: Courier\n#fontSize: 12\n#leading: 1.25\n#lineWidth: 3\n#padding: 16\n#spacing: 40\n#stroke: #33322E\n#title: filename\n#zoom: 1\n#acyclicer: greedy\n#ranker: network-simplex\n\n[<header>divisao(x, y)]  -> [<standard> 1: ;resultado <- x / y\nprint(resultado)]\n[<standard> 1: ;resultado <- x / y\nprint(resultado)]  -> [<return> 2:]","svg":true},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-4722946fd0dfdc545ce4" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4722946fd0dfdc545ce4">{"x":{"code":"#.if: visual=rhomb fill=#e2efda align=center\n#.for: visual=rhomb fill=#ddebf7 align=center\n#.repeat: visual=rhomb fill=#fce4d6 align=center\n#.while: visual=rhomb fill=#fff2cc align=center\n#.standard: visual=class fill=#ededed align=left\n#.commented: visual=class fill=#ededed\n#.header: visual=roundrect fill=#d9e1f2 align=left\n#.return: visual=end fill=#70ad47  empty\n#.stop: visual=end fill=#ed7d31  empty\n#.break: visual=receiver fill=#ffc000 empty\n#.next: visual=transceiver fill=#5b9bd5  empty\n#arrowSize: 1\n#bendSize: 0.3\n#direction: down\n#gutter: 5\n#edgeMargin: 0\n#edges: hard\n#fill: #eee8d5\n#fillArrows: false\n#font: Courier\n#fontSize: 12\n#leading: 1.25\n#lineWidth: 3\n#padding: 16\n#spacing: 40\n#stroke: #33322E\n#title: filename\n#zoom: 1\n#acyclicer: greedy\n#ranker: network-simplex\n\n[<header>divisao(x, y)]  -> [<standard> 1: ;resultado <- x / y\nprint(resultado)]\n[<standard> 1: ;resultado <- x / y\nprint(resultado)]  -> [<return> 2:]","svg":true},"evals":[],"jsHooks":[]}</script>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">divisao</span>(<span class="dv">50</span>,<span class="dv">25</span>)</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">divisao</span>(<span class="dv">22</span>,<span class="fl">4.4</span>)</span></code></pre></div>
@@ -537,10 +538,11 @@ Podemos imaginar a função dividida em 3 partes (entrada, processamento e sapid
 <span id="cb54-4"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb54-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>( msg1, msg2)</span>
 <span id="cb54-5"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb54-5" aria-hidden="true" tabindex="-1"></a>   }</span>
 <span id="cb54-6"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb54-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mensagem</span>()</span></code></pre></div>
-<pre><code>## Olá Mundo! Hello World!</code></pre>
+<pre><code>## Hello World! Olá Mundo!</code></pre>
 </div>
 <div id="pacotes" class="section level2" number="4.2">
 <h2><span class="header-section-number">4.2</span> Pacotes</h2>
+<p>Assista este conteúdo em <strong>Cap 3 - Pacotes</strong> no <a href="https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php">PVANet</a></p>
 <div id="o-que-são-de-onde-vem-para-onde-vão-do-que-se-alimentam" class="section level3" number="4.2.1">
 <h3><span class="header-section-number">4.2.1</span> O que são? De onde vem? Para onde vão? Do que se alimentam?</h3>
 <p>Quando iniciamos o R pouco mais de 2000 funções e outros objetos na memória estão prontos para uso.</p>
