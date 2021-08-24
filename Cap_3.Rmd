@@ -317,7 +317,7 @@ Fonte: @Kabacoff2015R
 A forma mais simples de inserção de dados é através do teclado.
 No caso a seguir, o comando `Matrícula=numeric(0)` cria uma variável de um `mode()`específico, mas sem dados. O comando `edit()`, por sua vez, e como nome sugere, permite editar um banco de dados. Um _popup_ abrirá na sua tela que permitirá a sua edição. Após o uso bas fechar que as edições feitas serão salvas.  
 
-![**comando edit()**](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_edit DF.JPG)
+![**comando edit()**](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_edit_DF.JPG)
 
 ```{r edit(), echo=T, error=T, include=T}
 Alunos.Eng792 <- data.frame(Nome=character(0),Matrícula=numeric(0), Curço=character(0),Nível.de.R=numeric(0),Nível.de.Pós=character(0))
