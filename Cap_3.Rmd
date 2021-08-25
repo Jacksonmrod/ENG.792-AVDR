@@ -537,22 +537,54 @@ write.table(Reposição.de.aula, file="Cap_3_Informações - Alunos ENG 792.txt"
 
 ### Exercícios
 
-1. Defina um objeto chamado a  com valores de 60 a 85. 
-2. Determine o elemento 12 de a. 
-3. Determine elemento 20 de a. 
-4. Mostre o 5° e 25° elementos de a. 
-5. Mostre o 4°, 8°, 12°, 20° e 24° elementos de a.
-6. Mostre todos exceto 18°elemento de a. 
-7. Mostre todos exceto o 2°, 15° e 17° elementos de a . 
-8. Gere um data frame chamado new_frame com 3 colunas: A primeira com valores de 33 a 47; a segunda começando em 115 e terminando em 157, com incrementos de 3; e a terceira começando em 10, com 15 elementods, e cada elemento decrescendo 8.5. Cada coluna deve ser chamada de X, Y e Z respectivamente. 
+1. Defina um objeto chamado `a`  com valores de 60 a 85. 
+2. Determine o elemento 12 de `a`. 
+3. Determine elemento 20 de `a`. 
+4. Mostre o 5° e 25° elementos de `a`. 
+5. Mostre o 4°, 8°, 12°, 20° e 24° elementos de `a`.
+6. Mostre todos exceto 18°elemento de `a`. 
+7. Mostre todos exceto o 2°, 15° e 17° elementos de `a`. 
+8. Gere um data frame chamado `new_frame` com 3 colunas: A primeira com valores de 33 a 47; a segunda começando em 115 e terminando em 157, com incrementos de 3; e a terceira começando em 10, com 15 elementods, e cada elemento decrescendo 8.5. Cada coluna deve ser chamada de `X`, `Y` e `Z` respectivamente. 
 9. Extraia todos os valores da coluna 1. 
 10. Extraia das linhas 6 a 10 da coluna 2.
 11. Extraia os valores da linha 11 para todas as colunas. 
 12. Extraia os valores das linhas 4 a 8 das colunas 1 e 3 em formato de data frame
-13. Demonstre como mostrar o número de linhas do new_frame.
-14. Demonstre 4 diferentes métodos de extrair os valores de todas as linhas da coluna 1 de new_frame.
+13. Demonstre o número de linhas do `new_frame`.
+14. Demonstre 4 diferentes métodos de extrair os valores de todas as linhas da coluna 1 de `new_frame`.
+15. Crie uma função que multiplique os valores de cada coluna por 2 ao cubo e em seguida aplique para a mesma seleção `log10()` criando `new_frame2` alojando-o no global environment.
+15. Exporte seu `new_frame2` para *.csv* e *.txt*.
+
 
 ## Dica de leitura
 
 [Introduction to the pacman Package in R (3 Examples)](https://statisticsglobe.com/pacman-r-package)
 
+[Quick list of useful R packages](https://support.rstudio.com/hc/en-us/articles/201057987-Quick-list-of-useful-R-packages)
+
+[36 Instalando e usando pacotes (packages) do R](http://www.leg.ufpr.br/~paulojus/embrapa/Rembrapa/Rembrapase36.html)
+
+[ Installing and Using R Packages](http://www.sthda.com/english/wiki/installing-and-using-r-packages)
+
+[15 Essential packages in R for Data Science](https://www.r-bloggers.com/2021/04/15-essential-packages-in-r-for-data-science/)
+
+[A Tutorial on Using Functions in R!](https://www.datacamp.com/community/tutorials/functions-in-r-a-tutorial?utm_source=adwords_ppc&utm_campaignid=1455363063&utm_adgroupid=65083631748&utm_device=c&utm_keyword=&utm_matchtype=b&utm_network=g&utm_adpostion=&utm_creative=278443377095&utm_targetid=aud-748597547652:dsa-473406575675&utm_loc_interest_ms=&utm_loc_physical_ms=1001592&gclid=CjwKCAjw1JeJBhB9EiwAV612y66twSK9_J0e3-7SEH_9VcY4m1XkUZZZ55Any-KLvwtu0l3S9y9ZdxoCUdcQAvD_BwE)
+
+[R - Functions](https://www.tutorialspoint.com/r/r_functions.htm)
+
+[Creating Functions](https://swcarpentry.github.io/r-novice-inflammation/02-func-R/)
+
+[R Functions](https://www.datamentor.io/r-programming/function/)
+
+[Writing Functions in R: Example One](https://www.r-bloggers.com/2019/07/writing-functions-in-r-example-one/)
+
+[How to write Functions in R](https://www.r-bloggers.com/2016/09/how-to-write-functions-in-r/)
+
+[This R Data Import Tutorial Is Everything You Need](https://www.datacamp.com/community/tutorials/r-data-import-tutorial?utm_source=adwords_ppc&utm_campaignid=12492439802&utm_adgroupid=122563403921&utm_device=c&utm_keyword=read%20data%20r&utm_matchtype=b&utm_network=g&utm_adpostion=&utm_creative=504100780791&utm_targetid=aud-763347114660:kwd-382747396515&utm_loc_interest_ms=&utm_loc_physical_ms=1001592&gclid=CjwKCAjw1JeJBhB9EiwAV612yxy0FqcBt3Z18BBwRcObKUdJzw4dsv36A5fex-GsB_8GPmUcKNgyixoCUkAQAvD_BwE)
+
+[Importing Data Into R](http://www.sthda.com/english/wiki/importing-data-into-r)
+
+[Importing Data](https://www.statmethods.net/input/importingdata.html)
+
+[R Data Import/Export](https://cran.r-project.org/doc/manuals/r-release/R-data.html)
+
+[Importing Data with the RStudio IDE](https://support.rstudio.com/hc/en-us/articles/218611977-Importing-Data-with-the-RStudio-IDE)

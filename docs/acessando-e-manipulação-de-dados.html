@@ -24,7 +24,7 @@
 <meta name="author" content="Jackson Rodrigues" />
 
 
-<meta name="date" content="2021-08-24" />
+<meta name="date" content="2021-08-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -349,9 +349,10 @@ Então um único número ou um único caractere será um vector.</p>
 </table>
 <p>Entender a posição de cada elemento dentro de um <code>vector</code> é crucial! Saber a posição correta onde determinado(s) elemento(s) está(estão) facilita em muito nossa limpeza, nosso tratamento e demais passos para uma eficiente manipulação dos dados.</p>
 <div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="acessando-e-manipulação-de-dados.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">100</span>,<span class="dv">50</span>,<span class="sc">-</span><span class="dv">1</span>)</span></code></pre></div>
-<pre><code>##  [1] 100  99  98  97  96  95  94  93  92  91  90  89  88  87  86  85  84
-## [18]  83  82  81  80  79  78  77  76  75  74  73  72  71  70  69  68  67
-## [35]  66  65  64  63  62  61  60  59  58  57  56  55  54  53  52  51  50</code></pre>
+<pre><code>##  [1] 100  99  98  97  96  95  94  93  92  91  90  89  88  87  86  85
+## [17]  84  83  82  81  80  79  78  77  76  75  74  73  72  71  70  69
+## [33]  68  67  66  65  64  63  62  61  60  59  58  57  56  55  54  53
+## [49]  52  51  50</code></pre>
 <p>Atenção para os números dentro dos colchetes <code>[1] [17] [33] [49]</code>. Como mencionado em aulas passadas, eles, os colchetes, indicam a posição de determinados elementos dentro de um banco de dados.<br />
 Especificamente o <code>[1]</code> informa que o número <em>100</em> é o primeiro elemento, <code>[17]</code> informa que o número <em>84</em> é o vigésimo elemento, <code>[33]</code> informa que o número <em>68</em> é o trigésimo nono elemento, <code>[49]</code> informa que o número <em>52</em> é o trigésimo nono elemento.</p>
 <div id="usando---subscribing-ou-indexing" class="section level3" number="3.1.1">
@@ -1588,12 +1589,12 @@ No entanto, os data frames possuem uma outra “vantagem” sobre as matrizes. A
 ## 8          34     56             8     49 Libertadores
 ## 
 ## $`NA`
-##     Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra Pontos
-## 15 Botafogo    38       13       4       21       31          45     43
-## 16    Ceará    38       10       9       19       36          41     39
-##    Saldo.de.Gols Aprov. Destino
-## 15           -14     38      NA
-## 16            -5     34      NA
+##     Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra
+## 15 Botafogo    38       13       4       21       31          45
+## 16    Ceará    38       10       9       19       36          41
+##    Pontos Saldo.de.Gols Aprov. Destino
+## 15     43           -14     38      NA
+## 16     39            -5     34      NA
 ## 
 ## $Rebaixado
 ##        Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra
@@ -1625,8 +1626,8 @@ No entanto, os data frames possuem uma outra “vantagem” sobre as matrizes. A
 <p>Vou criar alguns verores aleatórios.</p>
 <div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="acessando-e-manipulação-de-dados.html#cb256-1" aria-hidden="true" tabindex="-1"></a>gr1 <span class="ot">&lt;-</span> <span class="fu">rep</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>],<span class="at">each=</span><span class="dv">5</span>)</span>
 <span id="cb256-2"><a href="acessando-e-manipulação-de-dados.html#cb256-2" aria-hidden="true" tabindex="-1"></a>gr1</span></code></pre></div>
-<pre><code>##  [1] &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;b&quot; &quot;b&quot; &quot;b&quot; &quot;b&quot; &quot;b&quot; &quot;c&quot; &quot;c&quot; &quot;c&quot; &quot;c&quot; &quot;c&quot; &quot;d&quot; &quot;d&quot;
-## [18] &quot;d&quot; &quot;d&quot; &quot;d&quot;</code></pre>
+<pre><code>##  [1] &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;b&quot; &quot;b&quot; &quot;b&quot; &quot;b&quot; &quot;b&quot; &quot;c&quot; &quot;c&quot; &quot;c&quot; &quot;c&quot; &quot;c&quot; &quot;d&quot;
+## [17] &quot;d&quot; &quot;d&quot; &quot;d&quot; &quot;d&quot;</code></pre>
 <div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="acessando-e-manipulação-de-dados.html#cb258-1" aria-hidden="true" tabindex="-1"></a>gr2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,<span class="at">each=</span><span class="dv">5</span>),<span class="fu">rep</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>,<span class="at">each=</span><span class="dv">5</span>))</span>
 <span id="cb258-2"><a href="acessando-e-manipulação-de-dados.html#cb258-2" aria-hidden="true" tabindex="-1"></a>gr2</span></code></pre></div>
 <pre><code>##  [1] 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 3 3 3 3 3</code></pre>

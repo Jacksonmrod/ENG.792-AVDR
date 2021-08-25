@@ -24,7 +24,7 @@
 <meta name="author" content="Jackson Rodrigues" />
 
 
-<meta name="date" content="2021-08-24" />
+<meta name="date" content="2021-08-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -439,8 +439,8 @@ Podemos imaginar a função dividida em 3 partes (entrada, processamento e sapid
 <li><strong>{}</strong> guardam os comandos a serem executados;</li>
 <li><code>resultado &lt;- x/y</code> e <code>print(resultado)</code> são os comandos a serem executados.</li>
 </ol>
-<div id="htmlwidget-968c7d6bdcd3ec44f963" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
-<script type="application/json" data-for="htmlwidget-968c7d6bdcd3ec44f963">{"x":{"code":"#.if: visual=rhomb fill=#e2efda align=center\n#.for: visual=rhomb fill=#ddebf7 align=center\n#.repeat: visual=rhomb fill=#fce4d6 align=center\n#.while: visual=rhomb fill=#fff2cc align=center\n#.standard: visual=class fill=#ededed align=left\n#.commented: visual=class fill=#ededed\n#.header: visual=roundrect fill=#d9e1f2 align=left\n#.return: visual=end fill=#70ad47  empty\n#.stop: visual=end fill=#ed7d31  empty\n#.break: visual=receiver fill=#ffc000 empty\n#.next: visual=transceiver fill=#5b9bd5  empty\n#arrowSize: 1\n#bendSize: 0.3\n#direction: down\n#gutter: 5\n#edgeMargin: 0\n#edges: hard\n#fill: #eee8d5\n#fillArrows: false\n#font: Courier\n#fontSize: 12\n#leading: 1.25\n#lineWidth: 3\n#padding: 16\n#spacing: 40\n#stroke: #33322E\n#title: filename\n#zoom: 1\n#acyclicer: greedy\n#ranker: network-simplex\n\n[<header>divisao(x, y)]  -> [<standard> 1: ;resultado <- x / y\nprint(resultado)]\n[<standard> 1: ;resultado <- x / y\nprint(resultado)]  -> [<return> 2:]","svg":true},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-a77ad32f6b82562872f5" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a77ad32f6b82562872f5">{"x":{"code":"#.if: visual=rhomb fill=#e2efda align=center\n#.for: visual=rhomb fill=#ddebf7 align=center\n#.repeat: visual=rhomb fill=#fce4d6 align=center\n#.while: visual=rhomb fill=#fff2cc align=center\n#.standard: visual=class fill=#ededed align=left\n#.commented: visual=class fill=#ededed\n#.header: visual=roundrect fill=#d9e1f2 align=left\n#.return: visual=end fill=#70ad47  empty\n#.stop: visual=end fill=#ed7d31  empty\n#.break: visual=receiver fill=#ffc000 empty\n#.next: visual=transceiver fill=#5b9bd5  empty\n#arrowSize: 1\n#bendSize: 0.3\n#direction: down\n#gutter: 5\n#edgeMargin: 0\n#edges: hard\n#fill: #eee8d5\n#fillArrows: false\n#font: Courier\n#fontSize: 12\n#leading: 1.25\n#lineWidth: 3\n#padding: 16\n#spacing: 40\n#stroke: #33322E\n#title: filename\n#zoom: 1\n#acyclicer: greedy\n#ranker: network-simplex\n\n[<header>divisao(x, y)]  -> [<standard> 1: ;resultado <- x / y\nprint(resultado)]\n[<standard> 1: ;resultado <- x / y\nprint(resultado)]  -> [<return> 2:]","svg":true},"evals":[],"jsHooks":[]}</script>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">divisao</span>(<span class="dv">50</span>,<span class="dv">25</span>)</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">divisao</span>(<span class="dv">22</span>,<span class="fl">4.4</span>)</span></code></pre></div>
@@ -602,8 +602,8 @@ Use a aba packages para explorar suas funcionalidades</p>
 ##     url = {https://www.R-project.org/},
 ##   }
 ## 
-## We have invested a lot of time and effort in creating R, please
-## cite it when using it for data analysis. See also
+## We have invested a lot of time and effort in creating R,
+## please cite it when using it for data analysis. See also
 ## &#39;citation(&quot;pkgname&quot;)&#39; for citing R packages.</code></pre>
 <div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span>(<span class="at">package =</span> <span class="st">&quot;analogue&quot;</span>) <span class="co"># citação do pacote Analogue</span></span></code></pre></div>
 <pre><code>## 
@@ -624,9 +624,9 @@ Use a aba packages para explorar suas funcionalidades</p>
 <p>Aqui listo os pacotes carregados agora em meu R.</p>
 <div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb65-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">.packages</span>())</span></code></pre></div>
 <pre><code>##  [1] &quot;analogue&quot;      &quot;vegan&quot;         &quot;lattice&quot;       &quot;permute&quot;      
-##  [5] &quot;prob&quot;          &quot;fAsianOptions&quot; &quot;fOptions&quot;      &quot;fBasics&quot;      
-##  [9] &quot;timeSeries&quot;    &quot;timeDate&quot;      &quot;combinat&quot;      &quot;magrittr&quot;     
-## [13] &quot;ggplot2&quot;       &quot;flow&quot;          &quot;stats&quot;         &quot;graphics&quot;     
+##  [5] &quot;flow&quot;          &quot;prob&quot;          &quot;fAsianOptions&quot; &quot;fOptions&quot;     
+##  [9] &quot;fBasics&quot;       &quot;timeSeries&quot;    &quot;timeDate&quot;      &quot;combinat&quot;     
+## [13] &quot;magrittr&quot;      &quot;ggplot2&quot;       &quot;stats&quot;         &quot;graphics&quot;     
 ## [17] &quot;grDevices&quot;     &quot;utils&quot;         &quot;datasets&quot;      &quot;methods&quot;      
 ## [21] &quot;base&quot;</code></pre>
 <p>Aqui listo os pacotes instalados em meu R.</p>
@@ -1033,8 +1033,8 @@ Antes de prosseguir certifique-se que o endereço de saída está adequado.</p>
 <pre><code>## Error in is.data.frame(x): object &#39;Info.Alunos&#39; not found</code></pre>
 <div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv2</span>(Info.Alunos, <span class="at">file=</span><span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Informações - Alunos ENG 792.2.csv&quot;</span>,<span class="at">sep=</span><span class="st">&quot;,&quot;</span>,<span class="at">fileEncoding=</span><span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning in write.csv2(Info.Alunos, file = &quot;J:/ENG 792/ENG_792-AVDR/
-## ENG.792-AVDR/Cap_3_Informações - Alunos ENG 792.2.csv&quot;, : attempt to set
-## &#39;sep&#39; ignored</code></pre>
+## ENG.792-AVDR/Cap_3_Informações - Alunos ENG 792.2.csv&quot;, : attempt to
+## set &#39;sep&#39; ignored</code></pre>
 <pre><code>## Error in is.data.frame(x): object &#39;Info.Alunos&#39; not found</code></pre>
 <div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(Info.Alunos, <span class="at">file=</span><span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Informações - Alunos ENG 792.txt&quot;</span>, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>,<span class="at">fileEncoding=</span><span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
 <pre><code>## Error in is.data.frame(x): object &#39;Info.Alunos&#39; not found</code></pre>
@@ -1059,26 +1059,43 @@ Antes de prosseguir certifique-se que o endereço de saída está adequado.</p>
 <div id="exercícios-1" class="section level3" number="4.3.9">
 <h3><span class="header-section-number">4.3.9</span> Exercícios</h3>
 <ol style="list-style-type: decimal">
-<li>Defina um objeto chamado a com valores de 60 a 85.</li>
-<li>Determine o elemento 12 de a.</li>
-<li>Determine elemento 20 de a.</li>
-<li>Mostre o 5° e 25° elementos de a.</li>
-<li>Mostre o 4°, 8°, 12°, 20° e 24° elementos de a.</li>
-<li>Mostre todos exceto 18°elemento de a.</li>
-<li>Mostre todos exceto o 2°, 15° e 17° elementos de a .</li>
-<li>Gere um data frame chamado new_frame com 3 colunas: A primeira com valores de 33 a 47; a segunda começando em 115 e terminando em 157, com incrementos de 3; e a terceira começando em 10, com 15 elementods, e cada elemento decrescendo 8.5. Cada coluna deve ser chamada de X, Y e Z respectivamente.</li>
+<li>Defina um objeto chamado <code>a</code> com valores de 60 a 85.</li>
+<li>Determine o elemento 12 de <code>a</code>.</li>
+<li>Determine elemento 20 de <code>a</code>.</li>
+<li>Mostre o 5° e 25° elementos de <code>a</code>.</li>
+<li>Mostre o 4°, 8°, 12°, 20° e 24° elementos de <code>a</code>.</li>
+<li>Mostre todos exceto 18°elemento de <code>a</code>.</li>
+<li>Mostre todos exceto o 2°, 15° e 17° elementos de <code>a</code>.</li>
+<li>Gere um data frame chamado <code>new_frame</code> com 3 colunas: A primeira com valores de 33 a 47; a segunda começando em 115 e terminando em 157, com incrementos de 3; e a terceira começando em 10, com 15 elementods, e cada elemento decrescendo 8.5. Cada coluna deve ser chamada de <code>X</code>, <code>Y</code> e <code>Z</code> respectivamente.</li>
 <li>Extraia todos os valores da coluna 1.</li>
 <li>Extraia das linhas 6 a 10 da coluna 2.</li>
 <li>Extraia os valores da linha 11 para todas as colunas.</li>
 <li>Extraia os valores das linhas 4 a 8 das colunas 1 e 3 em formato de data frame</li>
-<li>Demonstre como mostrar o número de linhas do new_frame.</li>
-<li>Demonstre 4 diferentes métodos de extrair os valores de todas as linhas da coluna 1 de new_frame.</li>
+<li>Demonstre o número de linhas do <code>new_frame</code>.</li>
+<li>Demonstre 4 diferentes métodos de extrair os valores de todas as linhas da coluna 1 de <code>new_frame</code>.</li>
+<li>Crie uma função que multiplique os valores de cada coluna por 2 ao cubo e em seguida aplique para a mesma seleção <code>log10()</code> criando <code>new_frame2</code> alojando-o no global environment.</li>
+<li>Exporte seu <code>new_frame2</code> para <em>.csv</em> e <em>.txt</em>.</li>
 </ol>
 </div>
 </div>
 <div id="dica-de-leitura-1" class="section level2" number="4.4">
 <h2><span class="header-section-number">4.4</span> Dica de leitura</h2>
 <p><a href="https://statisticsglobe.com/pacman-r-package">Introduction to the pacman Package in R (3 Examples)</a></p>
+<p><a href="https://support.rstudio.com/hc/en-us/articles/201057987-Quick-list-of-useful-R-packages">Quick list of useful R packages</a></p>
+<p><a href="http://www.leg.ufpr.br/~paulojus/embrapa/Rembrapa/Rembrapase36.html">36 Instalando e usando pacotes (packages) do R</a></p>
+<p><a href="http://www.sthda.com/english/wiki/installing-and-using-r-packages">Installing and Using R Packages</a></p>
+<p><a href="https://www.r-bloggers.com/2021/04/15-essential-packages-in-r-for-data-science/">15 Essential packages in R for Data Science</a></p>
+<p><a href="https://www.datacamp.com/community/tutorials/functions-in-r-a-tutorial?utm_source=adwords_ppc&amp;utm_campaignid=1455363063&amp;utm_adgroupid=65083631748&amp;utm_device=c&amp;utm_keyword=&amp;utm_matchtype=b&amp;utm_network=g&amp;utm_adpostion=&amp;utm_creative=278443377095&amp;utm_targetid=aud-748597547652:dsa-473406575675&amp;utm_loc_interest_ms=&amp;utm_loc_physical_ms=1001592&amp;gclid=CjwKCAjw1JeJBhB9EiwAV612y66twSK9_J0e3-7SEH_9VcY4m1XkUZZZ55Any-KLvwtu0l3S9y9ZdxoCUdcQAvD_BwE">A Tutorial on Using Functions in R!</a></p>
+<p><a href="https://www.tutorialspoint.com/r/r_functions.htm">R - Functions</a></p>
+<p><a href="https://swcarpentry.github.io/r-novice-inflammation/02-func-R/">Creating Functions</a></p>
+<p><a href="https://www.datamentor.io/r-programming/function/">R Functions</a></p>
+<p><a href="https://www.r-bloggers.com/2019/07/writing-functions-in-r-example-one/">Writing Functions in R: Example One</a></p>
+<p><a href="https://www.r-bloggers.com/2016/09/how-to-write-functions-in-r/">How to write Functions in R</a></p>
+<p><a href="https://www.datacamp.com/community/tutorials/r-data-import-tutorial?utm_source=adwords_ppc&amp;utm_campaignid=12492439802&amp;utm_adgroupid=122563403921&amp;utm_device=c&amp;utm_keyword=read%20data%20r&amp;utm_matchtype=b&amp;utm_network=g&amp;utm_adpostion=&amp;utm_creative=504100780791&amp;utm_targetid=aud-763347114660:kwd-382747396515&amp;utm_loc_interest_ms=&amp;utm_loc_physical_ms=1001592&amp;gclid=CjwKCAjw1JeJBhB9EiwAV612yxy0FqcBt3Z18BBwRcObKUdJzw4dsv36A5fex-GsB_8GPmUcKNgyixoCUkAQAvD_BwE">This R Data Import Tutorial Is Everything You Need</a></p>
+<p><a href="http://www.sthda.com/english/wiki/importing-data-into-r">Importing Data Into R</a></p>
+<p><a href="https://www.statmethods.net/input/importingdata.html">Importing Data</a></p>
+<p><a href="https://cran.r-project.org/doc/manuals/r-release/R-data.html">R Data Import/Export</a></p>
+<p><a href="https://support.rstudio.com/hc/en-us/articles/218611977-Importing-Data-with-the-RStudio-IDE">Importing Data with the RStudio IDE</a></p>
 
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div class="csl-entry">
