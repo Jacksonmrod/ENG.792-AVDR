@@ -535,7 +535,7 @@ write.table(Reposição.de.aula, file="Cap_3_Informações - Alunos ENG 792.txt"
 
 <p style="color:red"> **E digo mais, é só isso mesmo.**</p>
 
-### Exercícios
+## Exercícios
 
 1. Defina um objeto chamado `a`  com valores de 60 a 85. 
 2. Determine o elemento 12 de `a`. 
