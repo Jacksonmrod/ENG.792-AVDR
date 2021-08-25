@@ -227,9 +227,9 @@ div.csl-indent {
 <li class="chapter" data-level="4.3.6" data-path="acessando-e-criando-funções-importação-e-exportação-dados.html"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#planilhas-excel-completas-.xls-ou-.xlsx"><i class="fa fa-check"></i><b>4.3.6</b> Planilhas excel completas (.xls ou .xlsx)</a></li>
 <li class="chapter" data-level="4.3.7" data-path="acessando-e-criando-funções-importação-e-exportação-dados.html"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#exportar-arquivos"><i class="fa fa-check"></i><b>4.3.7</b> Exportar arquivos()</a></li>
 <li class="chapter" data-level="4.3.8" data-path="acessando-e-criando-funções-importação-e-exportação-dados.html"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#definir-diretório-de-trabalho-setwd"><i class="fa fa-check"></i><b>4.3.8</b> Definir diretório de trabalho <code>setwd()</code></a></li>
-<li class="chapter" data-level="4.3.9" data-path="acessando-e-criando-funções-importação-e-exportação-dados.html"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#exercícios-1"><i class="fa fa-check"></i><b>4.3.9</b> Exercícios</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="acessando-e-criando-funções-importação-e-exportação-dados.html"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#dica-de-leitura-1"><i class="fa fa-check"></i><b>4.4</b> Dica de leitura</a></li>
+<li class="chapter" data-level="4.4" data-path="acessando-e-criando-funções-importação-e-exportação-dados.html"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#exercícios-1"><i class="fa fa-check"></i><b>4.4</b> Exercícios</a></li>
+<li class="chapter" data-level="4.5" data-path="acessando-e-criando-funções-importação-e-exportação-dados.html"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#dica-de-leitura-1"><i class="fa fa-check"></i><b>4.5</b> Dica de leitura</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -740,7 +740,8 @@ Objeto que permite combinar diferentes estruturtas de dados num único objeto
 <pre><code>##  [1]  0  1  2  3  4  5  6  7  8  9 10</code></pre>
 <div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="vamos-ao-que-interesa.html#cb49-1" aria-hidden="true" tabindex="-1"></a>e<span class="ot">&lt;-</span><span class="fl">10.5</span><span class="sc">:</span><span class="fl">20.5</span> <span class="co"># criando uma sequência de 10.5 até 20.5</span></span>
 <span id="cb49-2"><a href="vamos-ao-que-interesa.html#cb49-2" aria-hidden="true" tabindex="-1"></a>e</span></code></pre></div>
-<pre><code>##  [1] 10.5 11.5 12.5 13.5 14.5 15.5 16.5 17.5 18.5 19.5 20.5</code></pre>
+<pre><code>##  [1] 10.5 11.5 12.5 13.5 14.5 15.5 16.5 17.5 18.5 19.5
+## [11] 20.5</code></pre>
 <div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="vamos-ao-que-interesa.html#cb51-1" aria-hidden="true" tabindex="-1"></a>f<span class="ot">&lt;-</span>(<span class="fl">10.6</span><span class="sc">:</span><span class="fl">20.3</span>) <span class="co"># O último elemento é descartado por nãos e encaixar na sequência</span></span>
 <span id="cb51-2"><a href="vamos-ao-que-interesa.html#cb51-2" aria-hidden="true" tabindex="-1"></a>f</span></code></pre></div>
 <pre><code>##  [1] 10.6 11.6 12.6 13.6 14.6 15.6 16.6 17.6 18.6 19.6</code></pre>
@@ -748,18 +749,21 @@ Objeto que permite combinar diferentes estruturtas de dados num único objeto
 <p><em><em>seq(from = 1, to = 1, by = ((to - from)/(length.out - 1)),length.out = NULL, along.with = NULL, …)</em></em></p>
 <div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="vamos-ao-que-interesa.html#cb53-1" aria-hidden="true" tabindex="-1"></a>g<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="fl">0.5</span>) <span class="co"># O objeto &quot;g&quot; recebe a sequência de 0 até 10 a cada 0.5</span></span>
 <span id="cb53-2"><a href="vamos-ao-que-interesa.html#cb53-2" aria-hidden="true" tabindex="-1"></a>g</span></code></pre></div>
-<pre><code>##  [1]  0.0  0.5  1.0  1.5  2.0  2.5  3.0  3.5  4.0  4.5  5.0  5.5  6.0
-## [14]  6.5  7.0  7.5  8.0  8.5  9.0  9.5 10.0</code></pre>
+<pre><code>##  [1]  0.0  0.5  1.0  1.5  2.0  2.5  3.0  3.5  4.0  4.5
+## [11]  5.0  5.5  6.0  6.5  7.0  7.5  8.0  8.5  9.0  9.5
+## [21] 10.0</code></pre>
 <div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="vamos-ao-que-interesa.html#cb55-1" aria-hidden="true" tabindex="-1"></a>h<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="at">from=</span><span class="dv">10</span>,<span class="at">to=</span><span class="dv">20</span>,<span class="at">length.out=</span><span class="dv">50</span>) <span class="co"># O objeto &quot;h&quot; recebe a sequência de 0 até 10 que é do compriumento 50, ou seja, há 50 número de 10 até 20</span></span>
 <span id="cb55-2"><a href="vamos-ao-que-interesa.html#cb55-2" aria-hidden="true" tabindex="-1"></a>h</span></code></pre></div>
-<pre><code>##  [1] 10.00000 10.20408 10.40816 10.61224 10.81633 11.02041 11.22449
-##  [8] 11.42857 11.63265 11.83673 12.04082 12.24490 12.44898 12.65306
-## [15] 12.85714 13.06122 13.26531 13.46939 13.67347 13.87755 14.08163
-## [22] 14.28571 14.48980 14.69388 14.89796 15.10204 15.30612 15.51020
-## [29] 15.71429 15.91837 16.12245 16.32653 16.53061 16.73469 16.93878
-## [36] 17.14286 17.34694 17.55102 17.75510 17.95918 18.16327 18.36735
-## [43] 18.57143 18.77551 18.97959 19.18367 19.38776 19.59184 19.79592
-## [50] 20.00000</code></pre>
+<pre><code>##  [1] 10.00000 10.20408 10.40816 10.61224 10.81633
+##  [6] 11.02041 11.22449 11.42857 11.63265 11.83673
+## [11] 12.04082 12.24490 12.44898 12.65306 12.85714
+## [16] 13.06122 13.26531 13.46939 13.67347 13.87755
+## [21] 14.08163 14.28571 14.48980 14.69388 14.89796
+## [26] 15.10204 15.30612 15.51020 15.71429 15.91837
+## [31] 16.12245 16.32653 16.53061 16.73469 16.93878
+## [36] 17.14286 17.34694 17.55102 17.75510 17.95918
+## [41] 18.16327 18.36735 18.57143 18.77551 18.97959
+## [46] 19.18367 19.38776 19.59184 19.79592 20.00000</code></pre>
 <p>Experimente também a função <em>rep()</em>.</p>
 <p><em><em>rep(x, times = 1, length.out = NA, each = 1)</em></em></p>
 <div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="vamos-ao-que-interesa.html#cb57-1" aria-hidden="true" tabindex="-1"></a>i<span class="ot">&lt;-</span><span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">10</span>) <span class="co"># O objeto &quot;i&quot; recebe 10 números 1</span></span>
@@ -767,7 +771,8 @@ Objeto que permite combinar diferentes estruturtas de dados num único objeto
 <pre><code>##  [1] 0 0 0 0 0 0 0 0 0 0</code></pre>
 <div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="vamos-ao-que-interesa.html#cb59-1" aria-hidden="true" tabindex="-1"></a>j<span class="ot">&lt;-</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>),<span class="dv">10</span>) <span class="co"># O objeto &quot;j&quot; recebe 10 vezes a sequência 1, 2 e 3</span></span>
 <span id="cb59-2"><a href="vamos-ao-que-interesa.html#cb59-2" aria-hidden="true" tabindex="-1"></a>j</span></code></pre></div>
-<pre><code>##  [1] 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3</code></pre>
+<pre><code>##  [1] 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1
+## [26] 2 3 1 2 3</code></pre>
 <p style="color:red">
 <strong>Um Vetor só pode conter informações de um único tipo!</strong>
 </p>
@@ -852,20 +857,20 @@ Existem várias maneiras de criar uma matriz como utilizando o comando <em>matri
 <pre><code>## [1] 5 2</code></pre>
 <p>Também é interessante usar o comando <em>summary()</em>.</p>
 <div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="vamos-ao-que-interesa.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(o_matriz1);<span class="fu">summary</span>(o_matriz2) <span class="co"># Mostra informações por coluna</span></span></code></pre></div>
-<pre><code>##        V1             V2             V3             V4      
-##  Min.   :1.00   Min.   :3.00   Min.   :5.00   Min.   :7.00  
-##  1st Qu.:1.25   1st Qu.:3.25   1st Qu.:5.25   1st Qu.:7.25  
-##  Median :1.50   Median :3.50   Median :5.50   Median :7.50  
-##  Mean   :1.50   Mean   :3.50   Mean   :5.50   Mean   :7.50  
-##  3rd Qu.:1.75   3rd Qu.:3.75   3rd Qu.:5.75   3rd Qu.:7.75  
-##  Max.   :2.00   Max.   :4.00   Max.   :6.00   Max.   :8.00  
-##        V5       
-##  Min.   : 9.00  
-##  1st Qu.: 9.25  
-##  Median : 9.50  
-##  Mean   : 9.50  
-##  3rd Qu.: 9.75  
-##  Max.   :10.00</code></pre>
+<pre><code>##        V1             V2             V3      
+##  Min.   :1.00   Min.   :3.00   Min.   :5.00  
+##  1st Qu.:1.25   1st Qu.:3.25   1st Qu.:5.25  
+##  Median :1.50   Median :3.50   Median :5.50  
+##  Mean   :1.50   Mean   :3.50   Mean   :5.50  
+##  3rd Qu.:1.75   3rd Qu.:3.75   3rd Qu.:5.75  
+##  Max.   :2.00   Max.   :4.00   Max.   :6.00  
+##        V4             V5       
+##  Min.   :7.00   Min.   : 9.00  
+##  1st Qu.:7.25   1st Qu.: 9.25  
+##  Median :7.50   Median : 9.50  
+##  Mean   :7.50   Mean   : 9.50  
+##  3rd Qu.:7.75   3rd Qu.: 9.75  
+##  Max.   :8.00   Max.   :10.00</code></pre>
 <pre><code>##        V1          V2    
 ##  Min.   :1   Min.   : 6  
 ##  1st Qu.:2   1st Qu.: 7  

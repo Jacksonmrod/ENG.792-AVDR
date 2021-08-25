@@ -5,7 +5,7 @@
 Assista este conteúdo em **Cap 3 - Funções** no [PVANet](https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php)
 
 Embora existam uma grande variedade de _funções_ e _pacotes_ disponíveis e crescendo em número, a grande versatilidade do R nos permite criar _comandos/funções_ personalizadas.  
-No entanto, uma dúvida que por ventura você tenha e não consida sanar dentro das opções de ajuda do próprio R, buscar em fóruns sobre o assunto pode ser uma saída, pois geralmente a sua dúvida foi a dúvida de alguém antes de você.
+No entanto, uma dúvida que por ventura você tenha e não consiga sanar dentro das opções de ajuda do próprio R, buscar em fóruns sobre o assunto pode ser uma saída, pois geralmente a sua dúvida foi a dúvida de alguém antes de você.
 
 Vamos inicialmente dar uma olhada nas funções do próprio R.
 Até aqui vimos algumas funções como: `c(), seq(), rep(), print(), is.numeric(), is.integer(), is.double(), is.character(), typeof(), which(), grep() e etc`
@@ -97,11 +97,11 @@ Pesquise por `asin(), acos(), atan()`.
 Embora seja rico de opções, com funções dos mais variados tipos e aplicações às vezes não encontramos aquelas específicas que precisamos para algo específico. Ou, mesmo que esteja desenvolvendo uma metodologia nova com novos _approaches_ ou um novo **pacote** você precisará impreterivelmente de criar suas próprias funções.
 
 As funções às vezes não são tão simples para uma primeira tentativa de uso ou criação principalmente para aqueles que estão iniciando em R ou qualquer linguagem de programação.
-Podemos imaginar a função dividida em 3 partes (entrada, processamento e sapida) como uma caixa com muito buracos de uma lado ( _inputs_) e apenas um buraco do outro ( _output_) e a caixa atua de acordo com nossos comandos. Ou ainda como processamento de frutas para um suco.
+Podemos imaginar a função dividida em 3 partes (entrada, processamento e saída) como uma caixa com muito buracos de uma lado ( _inputs_) e apenas um buraco do outro ( _output_) e a caixa atua de acordo com nossos comandos. Ou ainda como processamento de frutas para um suco.
 
 ![Estrutura de uma função](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_funcoes.png)   
 
-Estrutura de uma função:
+Estrutura de uma função:   
 * A função recebe um nome que recebe os argumentos e comandos a serem executados. O nome da função será o comando a ser executado sempre que desejado.  
 
 * Após o atribuidor vem o comando _function_ seguindo de _()_. Dentro de _()_ vem os argumentos (posição ou nomes) que são as variáveis ou outras informações inseridas pelo usuário. 
@@ -293,8 +293,9 @@ Ou poderia simplesmente digitar `library()`.
 library()
 ```
 
-
 ## Entrando com dados
+
+Assista este conteúdo em **Cap 3 - Entrando com dados partes 1 e 2** no [PVANet](https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php)
 
 Agora que dominamos ~~100%~~ as estruturas e tratamento de objetos podemos partir para importação de dados das mais variadas fontes.  
 Até agora nós basicamente trabalhamos com dados "`café com leite`". Criamos uma tabelinha aqui, uma matrizinha acolá um vetor e por aí vai.  
@@ -315,7 +316,7 @@ Fonte: @Kabacoff2015R
 ### edit()
 
 A forma mais simples de inserção de dados é através do teclado.
-No caso a seguir, o comando `Matrícula=numeric(0)` cria uma variável de um `mode()`específico, mas sem dados. O comando `edit()`, por sua vez, e como nome sugere, permite editar um banco de dados. Um _popup_ abrirá na sua tela que permitirá a sua edição. Após o uso bas fechar que as edições feitas serão salvas.  
+No caso a seguir, o comando `Matrícula=numeric(0)` cria uma variável de um `mode()`específico, mas sem dados. O comando `edit()`, por sua vez, e como nome sugere, permite editar um banco de dados. Um _popup_ abrirá na sua tela que permitirá a sua edição. Após o uso basta fechar que as edições feitas serão salvas.  
 
 ![**comando edit()**](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_edit_DF.JPG)
 
@@ -523,7 +524,7 @@ Esta tarefa pode ser simplificada pela determinação de um diretório de trabal
 ```{r setwd, echo=T, eval=F}
 setwd("J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/")
 
-Reposição.de.aula<-read.xlsx(file="Cap_3_Informações - Alunos ENG 792.xlsx", endRow=28,sheetIndex=4,startRow = 2, header =T, encoding="UTF-8")
+Al.Eng792<-read.xlsx(file="Cap_3_Informações - Alunos ENG 792.xlsx", endRow=28,sheetIndex=4,startRow = 2, header =T, encoding="UTF-8")
 
 write.table(Reposição.de.aula, file="Cap_3_Informações - Alunos ENG 792.txt",sep=",",fileEncoding="UTF-8")
 
@@ -552,7 +553,7 @@ write.table(Reposição.de.aula, file="Cap_3_Informações - Alunos ENG 792.txt"
 13. Demonstre o número de linhas do `new_frame`.
 14. Demonstre 4 diferentes métodos de extrair os valores de todas as linhas da coluna 1 de `new_frame`.
 15. Crie uma função que multiplique os valores de cada coluna por 2 ao cubo e em seguida aplique para a mesma seleção `log10()` criando `new_frame2` alojando-o no global environment.
-15. Exporte seu `new_frame2` para *.csv* e *.txt*.
+16. Exporte seu `new_frame2` para *.csv* e *.txt*.
 
 
 ## Dica de leitura
