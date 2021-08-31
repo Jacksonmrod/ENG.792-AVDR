@@ -303,7 +303,7 @@ Tipos básicos de gráficos ( <em>barplot</em>, <em>boxplot</em>, <em>scatterplo
 <img src="Cap_4_Painel_Plot.JPG" id="id" class="class" style="width:100.0%;height:100.0%" alt="" />
 <p class="caption"><strong>Painel de plotagem</strong></p>
 </div>
-<p>O R possui algumas funções nativas para a criação de figuras, tal como <em>plot</em> e <em>hist</em>.
+<p>O R possui algumas funções nativas para a criação de figuras, tal como <em>plot</em> e <em>hist</em>.<br />
 De acordo com <span class="citation"><a href="#ref-perlin2018processamento" role="doc-biblioref">Perlin</a> (<a href="#ref-perlin2018processamento" role="doc-biblioref">2018</a>)</span> essas e outras funções nativas são restritivas e não recomendadas com customização pouco intuitivas com resultado final pouco atrativo.<br />
 Eu pessoalmente nunca experimentei tal limitação e, arrisco a dizer respeitosamente que, tudo que você quer fazer com funções do <em>ggplot2</em> pode ser feito com funções nativas, basta saber manipular corretamente os argumentos. Mas tenho que concordar que com <em>ggplot2</em> as funções são mais simples e objetivas. De qualquer forma fica o alerta para possíveis limitações.</p>
 <div id="utilizando-funções-nativas" class="section level2" number="5.1">
@@ -318,7 +318,7 @@ Eu pessoalmente nunca experimentei tal limitação e, arrisco a dizer respeitosa
 <p>No R estes gráficos podem ser feitos utilizando o comando <code>boxplot()</code>. A fórmula tem a forma de <code>eixo-y ~ eixo-x</code>.</p>
 <p>Vamos utilizar o pacote <a href="https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html"><strong>datasets</strong></a> e os dados <em>InsectSprays</em> que mostra dados de um experimento de agricultura onde insetos foram tratados com diferentes inseticidas.</p>
 <p>A hipótese é que quanto mais eficiente o inseticida ( <em>spray</em> ) menos insetos ( <em>count</em> ) sobrevivem, ou seja, <em>count</em> é em função de <em>spray</em>.</p>
-<p>No <code>boxplot</code> cada caixa mostra os dados observados de cada tipos de spray (A até F) e vemos que os inseticidas C, D e E são os mais eficientes.</p>
+<p>No <code>boxplot</code> cada caixa mostra os dados observados de cada tipos de <em>spray</em> (A até F) e vemos que os inseticidas C, D e E são os mais eficientes.</p>
 <p>Temos a mediana representada pela linha preta, os limites inferior e superior que representam o primeiro e o terceiro quartil (50% dos dados). As linhas superiores e inferiores correspondem a 2 desvios-padrão e os pontos fora das caixas são os outliers.<br />
 Para mais detalhes sobre interpretação do <code>boxplot</code> procure um livro de estatística ou acesse a internet como em <img src="https://operdata.com.br/blog/como-interpretar-um-boxplot" alt="Boxplot" />.</p>
 <div class="sourceCode" id="cb487"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb487-1"><a href="produção-gráfica-e-comunicação-visual.html#cb487-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(InsectSprays)</span>
@@ -605,7 +605,7 @@ Por padrão o R usa círculos abertos nos gráficos. Isso pode ser alterado de a
 <p><img src="ENG_792-AVDR_files/figure-html/plot.9-1.png" width="672" /></p>
 <p>Os gráficos podem também ser feitos por diferentes tipos de linhas. Uma vez defino que ele será do tipo <em>l</em> por xemplo (<code>type="l"</code>) podemos variar como a linha será apresentada com <code>lty=x</code> (x = número de 0 a 6).
 Experimente acrescentar o comando <code>lwd=x</code> (x é um número) para ir variando a espessura da linha.</p>
-<p><img src="http://www.sthda.com/sthda/RDoc/figure/graphs/linetypes-in-r-line-types.png" id="id" class="class" style="width:30.0%;height:30.0%" /></p>
+<p><img src="Cap_4_linetypes-in-r-line-types.JPG" /></p>
 <p>Fonte: <a href="http://www.sthda.com/sthda/RDoc/figure/graphs/linetypes-in-r-line-types.png">sthda</a></p>
 <div class="sourceCode" id="cb510"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb510-1"><a href="produção-gráfica-e-comunicação-visual.html#cb510-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfcol=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">2</span>))</span>
 <span id="cb510-2"><a href="produção-gráfica-e-comunicação-visual.html#cb510-2" aria-hidden="true" tabindex="-1"></a>    </span>
@@ -639,10 +639,8 @@ Experimente acrescentar o comando <code>lwd=x</code> (x é um número) para ir v
 <li>3 - superior</li>
 <li>4 - direita</li>
 </ul>
-<div class="figure">
-<img src="http://applied-r.com/wp-content/uploads/2013/10/PlotRegion1.png" alt="" />
-<p class="caption">Margens da figura</p>
-</div>
+<p><img src="Cap_4_PlotRegion1.png" alt="Margens da figura" />
+Fonte: <a href="http://applied-r.com/wp-content/uploads/2013/10/PlotRegion1.png">http://applied-r.com/</a></p>
 <p>O tamanho destas margens podem ser controladas utilizando o argumento <code>mar=c(A,B,C,D)</code> em que <em>c(A, B, C e D)</em> é um vetor numérico que determina o tamanho das margens referentes à 1ª, 2ª, 3ª e 4ª posição, respectivamente.</p>
 <p>Vamos liberar um espaço à direita para adicionar um eixo secundário no exemplo anterior.
 O eixo secundário é inserido “ativando” a margem 4 com comando <code>axis(side=4, las=1)</code> e em seguinda, acrescentando as informaçõpes necessárias com <code>mtext(side=4, line=2.5, "Volume da madeira (pés cúbicos)")</code>.</p>
@@ -804,27 +802,24 @@ Caso determine <code>xpd=NA</code> você pode utilizar qualquer região da área
 <span id="cb517-29"><a href="produção-gráfica-e-comunicação-visual.html#cb517-29" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
 <pre><code>## png 
 ##   2</code></pre>
-<p>Para mais exemplos sobre as fontes acesse. <a href="https://stackoverflow.com/questions/7121807/how-to-change-the-font-of-the-main-title-in-plot">aqui</a></p>
+<p>Para mais exemplos sobre as fontes acesse <a href="https://stackoverflow.com/questions/7121807/how-to-change-the-font-of-the-main-title-in-plot">aqui</a>.</p>
 <p>Para saber mais dos parâmetros:</p>
 <div class="sourceCode" id="cb519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb519-1"><a href="produção-gráfica-e-comunicação-visual.html#cb519-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(<span class="fu">par</span>())</span></code></pre></div>
-<pre><code>##  [1] &quot;xlog&quot;      &quot;ylog&quot;      &quot;adj&quot;       &quot;ann&quot;      
-##  [5] &quot;ask&quot;       &quot;bg&quot;        &quot;bty&quot;       &quot;cex&quot;      
-##  [9] &quot;cex.axis&quot;  &quot;cex.lab&quot;   &quot;cex.main&quot;  &quot;cex.sub&quot;  
-## [13] &quot;cin&quot;       &quot;col&quot;       &quot;col.axis&quot;  &quot;col.lab&quot;  
-## [17] &quot;col.main&quot;  &quot;col.sub&quot;   &quot;cra&quot;       &quot;crt&quot;      
-## [21] &quot;csi&quot;       &quot;cxy&quot;       &quot;din&quot;       &quot;err&quot;      
-## [25] &quot;family&quot;    &quot;fg&quot;        &quot;fig&quot;       &quot;fin&quot;      
-## [29] &quot;font&quot;      &quot;font.axis&quot; &quot;font.lab&quot;  &quot;font.main&quot;
-## [33] &quot;font.sub&quot;  &quot;lab&quot;       &quot;las&quot;       &quot;lend&quot;     
-## [37] &quot;lheight&quot;   &quot;ljoin&quot;     &quot;lmitre&quot;    &quot;lty&quot;      
-## [41] &quot;lwd&quot;       &quot;mai&quot;       &quot;mar&quot;       &quot;mex&quot;      
-## [45] &quot;mfcol&quot;     &quot;mfg&quot;       &quot;mfrow&quot;     &quot;mgp&quot;      
-## [49] &quot;mkh&quot;       &quot;new&quot;       &quot;oma&quot;       &quot;omd&quot;      
-## [53] &quot;omi&quot;       &quot;page&quot;      &quot;pch&quot;       &quot;pin&quot;      
-## [57] &quot;plt&quot;       &quot;ps&quot;        &quot;pty&quot;       &quot;smo&quot;      
-## [61] &quot;srt&quot;       &quot;tck&quot;       &quot;tcl&quot;       &quot;usr&quot;      
-## [65] &quot;xaxp&quot;      &quot;xaxs&quot;      &quot;xaxt&quot;      &quot;xpd&quot;      
-## [69] &quot;yaxp&quot;      &quot;yaxs&quot;      &quot;yaxt&quot;      &quot;ylbias&quot;</code></pre>
+<pre><code>##  [1] &quot;xlog&quot;      &quot;ylog&quot;      &quot;adj&quot;       &quot;ann&quot;       &quot;ask&quot;      
+##  [6] &quot;bg&quot;        &quot;bty&quot;       &quot;cex&quot;       &quot;cex.axis&quot;  &quot;cex.lab&quot;  
+## [11] &quot;cex.main&quot;  &quot;cex.sub&quot;   &quot;cin&quot;       &quot;col&quot;       &quot;col.axis&quot; 
+## [16] &quot;col.lab&quot;   &quot;col.main&quot;  &quot;col.sub&quot;   &quot;cra&quot;       &quot;crt&quot;      
+## [21] &quot;csi&quot;       &quot;cxy&quot;       &quot;din&quot;       &quot;err&quot;       &quot;family&quot;   
+## [26] &quot;fg&quot;        &quot;fig&quot;       &quot;fin&quot;       &quot;font&quot;      &quot;font.axis&quot;
+## [31] &quot;font.lab&quot;  &quot;font.main&quot; &quot;font.sub&quot;  &quot;lab&quot;       &quot;las&quot;      
+## [36] &quot;lend&quot;      &quot;lheight&quot;   &quot;ljoin&quot;     &quot;lmitre&quot;    &quot;lty&quot;      
+## [41] &quot;lwd&quot;       &quot;mai&quot;       &quot;mar&quot;       &quot;mex&quot;       &quot;mfcol&quot;    
+## [46] &quot;mfg&quot;       &quot;mfrow&quot;     &quot;mgp&quot;       &quot;mkh&quot;       &quot;new&quot;      
+## [51] &quot;oma&quot;       &quot;omd&quot;       &quot;omi&quot;       &quot;page&quot;      &quot;pch&quot;      
+## [56] &quot;pin&quot;       &quot;plt&quot;       &quot;ps&quot;        &quot;pty&quot;       &quot;smo&quot;      
+## [61] &quot;srt&quot;       &quot;tck&quot;       &quot;tcl&quot;       &quot;usr&quot;       &quot;xaxp&quot;     
+## [66] &quot;xaxs&quot;      &quot;xaxt&quot;      &quot;xpd&quot;       &quot;yaxp&quot;      &quot;yaxs&quot;     
+## [71] &quot;yaxt&quot;      &quot;ylbias&quot;</code></pre>
 </div>
 </div>
 <div id="cores-no-r" class="section level2" number="5.2">
@@ -876,7 +871,7 @@ Caso determine <code>xpd=NA</code> você pode utilizar qualquer região da área
 <h2><span class="header-section-number">5.4</span> ggplot2</h2>
 <p>Assista este conteúdo em <strong>Cap 4 - ggplot2</strong> no <a href="https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php">PVANet</a></p>
 <p>O pacote <code>ggplot2</code> é parte da coleção de pacotes chamado <a href="https://www.tidyverse.org/">tidyverse</a> que se destina à ciência de dados. Todos estes pacotes possuem a mesma espinha dorsal, ideia e/ou filosofia desde sua concepção até sua utilização.</p>
-<p><img src="D:/Desktop/Micro%20SD/Análise%20ambiental%20em%20R/tidyverse.JPG" /></p>
+<p><img src="Cap_4_tidyverse.JPG" /></p>
 <p>Caso queira se aventurar no universo tidy (altamente recomendado) instale todos os pacotes de uma só ves pelo comando:</p>
 <p><code>install.packages("tidyverse")</code></p>
 <p>Vai demorar um pouco, pois são muitos arquivos enquanto isso você pode ir lendo o livro <a href="https://r4ds.had.co.nz/index.html">R for Data Science</a>.</p>
@@ -936,17 +931,15 @@ Da mesma maneira que associamos às cores podemos associar ao tamanho utilizando
 <p>Poderíamos ainda associar <em>class</em> à transparência <code>alpha</code>, como já apresentado na <strong>Semana 1 - Aula 1</strong>, ou a formato.</p>
 <div class="sourceCode" id="cb527"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb527-1"><a href="produção-gráfica-e-comunicação-visual.html#cb527-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
 <span id="cb527-2"><a href="produção-gráfica-e-comunicação-visual.html#cb527-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">alpha =</span> class))</span></code></pre></div>
-<pre><code>## Warning: Using alpha for a discrete variable is not
-## advised.</code></pre>
+<pre><code>## Warning: Using alpha for a discrete variable is not advised.</code></pre>
 <p><img src="ENG_792-AVDR_files/figure-html/ggplot.4-1.png" width="672" /></p>
 <div class="sourceCode" id="cb529"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb529-1"><a href="produção-gráfica-e-comunicação-visual.html#cb529-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
 <span id="cb529-2"><a href="produção-gráfica-e-comunicação-visual.html#cb529-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">shape =</span> class))</span></code></pre></div>
-<pre><code>## Warning: The shape palette can deal with a maximum of 6
-## discrete values because more than 6 becomes
-## difficult to discriminate; you have 7. Consider
-## specifying shapes manually if you must have them.</code></pre>
-<pre><code>## Warning: Removed 62 rows containing missing values
-## (geom_point).</code></pre>
+<pre><code>## Warning: The shape palette can deal with a maximum of 6 discrete
+## values because more than 6 becomes difficult to
+## discriminate; you have 7. Consider specifying shapes
+## manually if you must have them.</code></pre>
+<pre><code>## Warning: Removed 62 rows containing missing values (geom_point).</code></pre>
 <p><img src="ENG_792-AVDR_files/figure-html/ggplot.4-2.png" width="672" /></p>
 <p>Pela análise do gráfico acima ficamos pensando o que acontece com as SUV’s, notamos assim que temos apenas 6 tipos de <em>shapes</em> para nossas variáveis e os demais grupos ficam de fora da classificação.</p>
 <p>Uma vez definido as características estéticas (<code>aes</code>) a seleção dos demais atributos como a paleta de cores será automaticamente definida pelo <strong>ggplot2</strong>.</p>
@@ -1009,24 +1002,22 @@ O comando comando responsável por esta diferença é o <code>geom_COMPLEMENTO</
 </blockquote>
 </blockquote>
 <div class="sourceCode" id="cb540"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb540-1"><a href="produção-gráfica-e-comunicação-visual.html#cb540-1" aria-hidden="true" tabindex="-1"></a>mpg<span class="sc">$</span>drv</span></code></pre></div>
-<pre><code>##   [1] &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot;
-##  [14] &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot;
-##  [27] &quot;r&quot; &quot;r&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot;
-##  [40] &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot;
-##  [53] &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot;
-##  [66] &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;4&quot;
-##  [79] &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;r&quot;
-##  [92] &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot;
-## [105] &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot;
-## [118] &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot;
-## [131] &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;f&quot; &quot;f&quot;
-## [144] &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;f&quot; &quot;f&quot;
-## [157] &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot;
-## [170] &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot;
-## [183] &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot;
-## [196] &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;f&quot;
-## [209] &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot;
-## [222] &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot;</code></pre>
+<pre><code>##   [1] &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot;
+##  [16] &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;4&quot; &quot;4&quot;
+##  [31] &quot;4&quot; &quot;4&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot;
+##  [46] &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot;
+##  [61] &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;r&quot;
+##  [76] &quot;r&quot; &quot;r&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot;
+##  [91] &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot;
+## [106] &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot;
+## [121] &quot;f&quot; &quot;f&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;r&quot;
+## [136] &quot;r&quot; &quot;r&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot;
+## [151] &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot;
+## [166] &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;f&quot;
+## [181] &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot;
+## [196] &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot;
+## [211] &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot;
+## [226] &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot;</code></pre>
 <div class="sourceCode" id="cb542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb542-1"><a href="produção-gráfica-e-comunicação-visual.html#cb542-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span> </span>
 <span id="cb542-2"><a href="produção-gráfica-e-comunicação-visual.html#cb542-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">linetype =</span> drv))</span></code></pre></div>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>

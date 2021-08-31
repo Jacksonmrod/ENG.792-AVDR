@@ -381,10 +381,10 @@ Então um único número ou um único caractere será um vector.</p>
 </table>
 <p>Entender a posição de cada elemento dentro de um <code>vector</code> é crucial! Saber a posição correta onde determinado(s) elemento(s) está(estão) facilita em muito nossa limpeza, nosso tratamento e demais passos para uma eficiente manipulação dos dados.</p>
 <div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="acessando-e-manipulação-de-dados.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">100</span>,<span class="dv">50</span>,<span class="sc">-</span><span class="dv">1</span>)</span></code></pre></div>
-<pre><code>##  [1] 100  99  98  97  96  95  94  93  92  91  90  89  88
-## [14]  87  86  85  84  83  82  81  80  79  78  77  76  75
-## [27]  74  73  72  71  70  69  68  67  66  65  64  63  62
-## [40]  61  60  59  58  57  56  55  54  53  52  51  50</code></pre>
+<pre><code>##  [1] 100  99  98  97  96  95  94  93  92  91  90  89  88  87  86  85
+## [17]  84  83  82  81  80  79  78  77  76  75  74  73  72  71  70  69
+## [33]  68  67  66  65  64  63  62  61  60  59  58  57  56  55  54  53
+## [49]  52  51  50</code></pre>
 <p>Atenção para os números dentro dos colchetes <code>[1] [17] [33] [49]</code>. Como mencionado em aulas passadas, eles, os colchetes, indicam a posição de determinados elementos dentro de um banco de dados.<br />
 Especificamente o <code>[1]</code> informa que o número <em>100</em> é o primeiro elemento, <code>[17]</code> informa que o número <em>84</em> é o vigésimo elemento, <code>[33]</code> informa que o número <em>68</em> é o trigésimo nono elemento, <code>[49]</code> informa que o número <em>52</em> é o trigésimo nono elemento.</p>
 <div id="usando---subscribing-ou-indexing" class="section level3" number="3.1.1">
@@ -590,8 +590,8 @@ Nesse caso vamos ter uma aviso, em que o <strong>R</strong> ao fazer o preenchim
 <div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="acessando-e-manipulação-de-dados.html#cb168-1" aria-hidden="true" tabindex="-1"></a>j<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">50</span>,<span class="dv">34</span>,<span class="dv">11</span>,<span class="dv">7</span>,<span class="dv">24</span>,<span class="dv">631</span>)</span>
 <span id="cb168-2"><a href="acessando-e-manipulação-de-dados.html#cb168-2" aria-hidden="true" tabindex="-1"></a>k<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">100</span>,<span class="dv">2</span>,<span class="dv">56</span>,<span class="dv">12</span>,<span class="dv">0</span>,<span class="dv">65</span>,<span class="dv">93</span>,<span class="dv">10</span>,<span class="dv">244</span>,<span class="dv">1</span>)</span>
 <span id="cb168-3"><a href="acessando-e-manipulação-de-dados.html#cb168-3" aria-hidden="true" tabindex="-1"></a>j<span class="sc">+</span>k</span></code></pre></div>
-<pre><code>## Warning in j + k: longer object length is not a multiple of
-## shorter object length</code></pre>
+<pre><code>## Warning in j + k: longer object length is not a multiple of shorter
+## object length</code></pre>
 <pre><code>##  [1] 150  36  67  19  24 696 143  44 255   8</code></pre>
 </div>
 <div id="matrizes" class="section level4" number="3.1.1.2">
@@ -1540,10 +1540,10 @@ Rebaixado
 </tbody>
 </table>
 <div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="acessando-e-manipulação-de-dados.html#cb228-1" aria-hidden="true" tabindex="-1"></a>Campeonato.Brasileiro<span class="fl">.2019</span>[<span class="dv">1</span>,] <span class="co"># Retorna a primeira linha do data frame</span></span></code></pre></div>
-<pre><code>##    Equipes Jogos Vitórias Empates Derrotas Gols.Pró
-## 1 Flamengo    38       28       6        4       86
-##   Gols.Contra Pontos Saldo.de.Gols Aprov.      Destino
-## 1          37     90            49     79 Libertadores</code></pre>
+<pre><code>##    Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra
+## 1 Flamengo    38       28       6        4       86          37
+##   Pontos Saldo.de.Gols Aprov.      Destino
+## 1     90            49     79 Libertadores</code></pre>
 <div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="acessando-e-manipulação-de-dados.html#cb230-1" aria-hidden="true" tabindex="-1"></a>Campeonato.Brasileiro<span class="fl">.2019</span>[,<span class="dv">1</span>] <span class="co"># Retorna a primeira coluna do data frame</span></span></code></pre></div>
 <pre><code>##  [1] &quot;Flamengo&quot;             &quot;Santos&quot;              
 ##  [3] &quot;Palmeiras&quot;            &quot;Grêmio&quot;              
@@ -1569,23 +1569,20 @@ No entanto, os data frames possuem uma outra “vantagem” sobre as matrizes. A
 ## [17] &quot;Cruzeiro&quot;             &quot;CSA&quot;                 
 ## [19] &quot;Chapecoense&quot;          &quot;Avaí&quot;</code></pre>
 <div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="acessando-e-manipulação-de-dados.html#cb234-1" aria-hidden="true" tabindex="-1"></a>Campeonato.Brasileiro<span class="fl">.2019</span><span class="sc">$</span>Vitórias <span class="co"># Retorna os elementos da coluna &quot;Vitórias&quot;</span></span></code></pre></div>
-<pre><code>##  [1] &quot;28&quot; &quot;22&quot; &quot;21&quot; &quot;19&quot; &quot;18&quot; &quot;17&quot; &quot;16&quot; &quot;14&quot; &quot;15&quot; &quot;15&quot; &quot;12&quot;
-## [12] &quot;12&quot; &quot;13&quot; &quot;12&quot; &quot;13&quot; &quot;10&quot; &quot;7&quot;  &quot;8&quot;  &quot;7&quot;  &quot;3&quot;</code></pre>
+<pre><code>##  [1] &quot;28&quot; &quot;22&quot; &quot;21&quot; &quot;19&quot; &quot;18&quot; &quot;17&quot; &quot;16&quot; &quot;14&quot; &quot;15&quot; &quot;15&quot; &quot;12&quot; &quot;12&quot;
+## [13] &quot;13&quot; &quot;12&quot; &quot;13&quot; &quot;10&quot; &quot;7&quot;  &quot;8&quot;  &quot;7&quot;  &quot;3&quot;</code></pre>
 <div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="acessando-e-manipulação-de-dados.html#cb236-1" aria-hidden="true" tabindex="-1"></a>Campeonato.Brasileiro<span class="fl">.2019</span><span class="sc">$</span>Gols.Pró <span class="co"># Retorna os elementos da coluna &quot;Gols.Pró&quot;</span></span></code></pre></div>
-<pre><code>##  [1] &quot;86&quot; &quot;60&quot; &quot;61&quot; &quot;64&quot; &quot;51&quot; &quot;39&quot; &quot;44&quot; &quot;42&quot; &quot;50&quot; &quot;46&quot; &quot;44&quot;
-## [12] &quot;39&quot; &quot;45&quot; &quot;38&quot; &quot;31&quot; &quot;36&quot; &quot;27&quot; &quot;24&quot; &quot;31&quot; &quot;18&quot;</code></pre>
+<pre><code>##  [1] &quot;86&quot; &quot;60&quot; &quot;61&quot; &quot;64&quot; &quot;51&quot; &quot;39&quot; &quot;44&quot; &quot;42&quot; &quot;50&quot; &quot;46&quot; &quot;44&quot; &quot;39&quot;
+## [13] &quot;45&quot; &quot;38&quot; &quot;31&quot; &quot;36&quot; &quot;27&quot; &quot;24&quot; &quot;31&quot; &quot;18&quot;</code></pre>
 <div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="acessando-e-manipulação-de-dados.html#cb238-1" aria-hidden="true" tabindex="-1"></a>Campeonato.Brasileiro<span class="fl">.2019</span><span class="sc">$</span>Saldo.de.Gols <span class="co"># Retorna os elementos da coluna &quot;Saldo.de.Gols&quot;</span></span></code></pre></div>
-<pre><code>##  [1] &quot;49&quot;  &quot;27&quot;  &quot;29&quot;  &quot;25&quot;  &quot;19&quot;  &quot;9&quot;   &quot;5&quot;   &quot;8&quot;   &quot;1&quot;  
-## [10] &quot;-18&quot; &quot;1&quot;   &quot;-6&quot;  &quot;-4&quot;  &quot;-8&quot;  &quot;-14&quot; &quot;-5&quot;  &quot;-19&quot; &quot;-34&quot;
-## [19] &quot;-21&quot; &quot;-44&quot;</code></pre>
+<pre><code>##  [1] &quot;49&quot;  &quot;27&quot;  &quot;29&quot;  &quot;25&quot;  &quot;19&quot;  &quot;9&quot;   &quot;5&quot;   &quot;8&quot;   &quot;1&quot;   &quot;-18&quot;
+## [11] &quot;1&quot;   &quot;-6&quot;  &quot;-4&quot;  &quot;-8&quot;  &quot;-14&quot; &quot;-5&quot;  &quot;-19&quot; &quot;-34&quot; &quot;-21&quot; &quot;-44&quot;</code></pre>
 <div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="acessando-e-manipulação-de-dados.html#cb240-1" aria-hidden="true" tabindex="-1"></a>Campeonato.Brasileiro<span class="fl">.2019</span><span class="sc">$</span>Destino <span class="co"># Retorna os elementos da coluna &quot;Destino&quot;</span></span></code></pre></div>
-<pre><code>##  [1] &quot;Libertadores&quot; &quot;Libertadores&quot; &quot;Libertadores&quot;
-##  [4] &quot;Libertadores&quot; &quot;Libertadores&quot; &quot;Libertadores&quot;
-##  [7] &quot;Libertadores&quot; &quot;Libertadores&quot; &quot;Sulamericana&quot;
-## [10] &quot;Sulamericana&quot; &quot;Sulamericana&quot; &quot;Sulamericana&quot;
-## [13] &quot;Sulamericana&quot; &quot;Sulamericana&quot; &quot;NA&quot;          
-## [16] &quot;NA&quot;           &quot;Rebaixado&quot;    &quot;Rebaixado&quot;   
-## [19] &quot;Rebaixado&quot;    &quot;Rebaixado&quot;</code></pre>
+<pre><code>##  [1] &quot;Libertadores&quot; &quot;Libertadores&quot; &quot;Libertadores&quot; &quot;Libertadores&quot;
+##  [5] &quot;Libertadores&quot; &quot;Libertadores&quot; &quot;Libertadores&quot; &quot;Libertadores&quot;
+##  [9] &quot;Sulamericana&quot; &quot;Sulamericana&quot; &quot;Sulamericana&quot; &quot;Sulamericana&quot;
+## [13] &quot;Sulamericana&quot; &quot;Sulamericana&quot; &quot;NA&quot;           &quot;NA&quot;          
+## [17] &quot;Rebaixado&quot;    &quot;Rebaixado&quot;    &quot;Rebaixado&quot;    &quot;Rebaixado&quot;</code></pre>
 <div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="acessando-e-manipulação-de-dados.html#cb242-1" aria-hidden="true" tabindex="-1"></a>Campeonato.Brasileiro<span class="fl">.2019</span><span class="sc">$</span>Equipes[<span class="dv">2</span>] <span class="co"># Retorna o segundo elemento da coluna &quot;Nome&quot;</span></span></code></pre></div>
 <pre><code>## [1] &quot;Santos&quot;</code></pre>
 <div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="acessando-e-manipulação-de-dados.html#cb244-1" aria-hidden="true" tabindex="-1"></a>Campeonato.Brasileiro<span class="fl">.2019</span><span class="sc">$</span>Vitórias[<span class="dv">5</span>] <span class="co"># Retorna o quinto elemento da coluna &quot;Vitórias&quot;</span></span></code></pre></div>
@@ -1598,87 +1595,71 @@ No entanto, os data frames possuem uma outra “vantagem” sobre as matrizes. A
 <pre><code>## [1] &quot;Sulamericana&quot;</code></pre>
 <p>Outra maneira de acessar informações pode através <code>[]</code>.</p>
 <div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="acessando-e-manipulação-de-dados.html#cb252-1" aria-hidden="true" tabindex="-1"></a>Campeonato.Brasileiro<span class="fl">.2019</span>[Campeonato.Brasileiro<span class="fl">.2019</span><span class="sc">$</span>Equipes<span class="sc">==</span><span class="st">&quot;Flamengo&quot;</span>,] <span class="co"># Retorna apenas as informações da coluna &quot;Equipes&quot; que atendem o critério &quot;Flamengo&quot;</span></span></code></pre></div>
-<pre><code>##    Equipes Jogos Vitórias Empates Derrotas Gols.Pró
-## 1 Flamengo    38       28       6        4       86
-##   Gols.Contra Pontos Saldo.de.Gols Aprov.      Destino
-## 1          37     90            49     79 Libertadores</code></pre>
+<pre><code>##    Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra
+## 1 Flamengo    38       28       6        4       86          37
+##   Pontos Saldo.de.Gols Aprov.      Destino
+## 1     90            49     79 Libertadores</code></pre>
 <div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="acessando-e-manipulação-de-dados.html#cb254-1" aria-hidden="true" tabindex="-1"></a><span class="fu">split</span>(Campeonato.Brasileiro<span class="fl">.2019</span>,Destino) <span class="co"># Retorna apenas as informações da coluna &quot;Destino&quot; </span></span></code></pre></div>
 <pre><code>## $Libertadores
-##                Equipes Jogos Vitórias Empates Derrotas
-## 1             Flamengo    38       28       6        4
-## 2               Santos    38       22       8        8
-## 3            Palmeiras    38       21      11        6
-## 4               Grêmio    38       19       8       11
-## 5 Athletico Paranaense    38       18      10       10
-## 6            Sao Paulo    38       17      12        9
-## 7        Internacional    38       16       9       13
-## 8          Corinthians    38       14      14       10
-##   Gols.Pró Gols.Contra Pontos Saldo.de.Gols Aprov.
-## 1       86          37     90            49     79
-## 2       60          33     74            27     65
-## 3       61          32     74            29     65
-## 4       64          39     65            25     57
-## 5       51          32     64            19     56
-## 6       39          30     63             9     55
-## 7       44          39     57             5      5
-## 8       42          34     56             8     49
-##        Destino
-## 1 Libertadores
-## 2 Libertadores
-## 3 Libertadores
-## 4 Libertadores
-## 5 Libertadores
-## 6 Libertadores
-## 7 Libertadores
-## 8 Libertadores
+##                Equipes Jogos Vitórias Empates Derrotas Gols.Pró
+## 1             Flamengo    38       28       6        4       86
+## 2               Santos    38       22       8        8       60
+## 3            Palmeiras    38       21      11        6       61
+## 4               Grêmio    38       19       8       11       64
+## 5 Athletico Paranaense    38       18      10       10       51
+## 6            Sao Paulo    38       17      12        9       39
+## 7        Internacional    38       16       9       13       44
+## 8          Corinthians    38       14      14       10       42
+##   Gols.Contra Pontos Saldo.de.Gols Aprov.      Destino
+## 1          37     90            49     79 Libertadores
+## 2          33     74            27     65 Libertadores
+## 3          32     74            29     65 Libertadores
+## 4          39     65            25     57 Libertadores
+## 5          32     64            19     56 Libertadores
+## 6          30     63             9     55 Libertadores
+## 7          39     57             5      5 Libertadores
+## 8          34     56             8     49 Libertadores
 ## 
 ## $`NA`
-##     Equipes Jogos Vitórias Empates Derrotas Gols.Pró
-## 15 Botafogo    38       13       4       21       31
-## 16    Ceará    38       10       9       19       36
-##    Gols.Contra Pontos Saldo.de.Gols Aprov. Destino
-## 15          45     43           -14     38      NA
-## 16          41     39            -5     34      NA
+##     Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra
+## 15 Botafogo    38       13       4       21       31          45
+## 16    Ceará    38       10       9       19       36          41
+##    Pontos Saldo.de.Gols Aprov. Destino
+## 15     43           -14     38      NA
+## 16     39            -5     34      NA
 ## 
 ## $Rebaixado
-##        Equipes Jogos Vitórias Empates Derrotas Gols.Pró
-## 17    Cruzeiro    38        7      15       16       27
-## 18         CSA    38        8       8       22       24
-## 19 Chapecoense    38        7      11       20       31
-## 20        Avaí    38        3      11       24       18
-##    Gols.Contra Pontos Saldo.de.Gols Aprov.   Destino
-## 17          46     36           -19     32 Rebaixado
-## 18          58     32           -34     28 Rebaixado
-## 19          52     32           -21     28 Rebaixado
-## 20          62     20           -44     18 Rebaixado
+##        Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra
+## 17    Cruzeiro    38        7      15       16       27          46
+## 18         CSA    38        8       8       22       24          58
+## 19 Chapecoense    38        7      11       20       31          52
+## 20        Avaí    38        3      11       24       18          62
+##    Pontos Saldo.de.Gols Aprov.   Destino
+## 17     36           -19     32 Rebaixado
+## 18     32           -34     28 Rebaixado
+## 19     32           -21     28 Rebaixado
+## 20     20           -44     18 Rebaixado
 ## 
 ## $Sulamericana
-##             Equipes Jogos Vitórias Empates Derrotas
-## 9         Fortaleza    38       15       8       15
-## 10            Goiás    38       15       7       16
-## 11            Bahia    38       12      13       13
-## 12    Vasco da Gama    38       12      13       13
-## 13 Atlético Mineiro    38       13       9       16
-## 14       Fluminense    38       12      10       16
-##    Gols.Pró Gols.Contra Pontos Saldo.de.Gols Aprov.
-## 9        50          49     53             1     46
-## 10       46          64     52           -18     46
-## 11       44          43     49             1     43
-## 12       39          45     49            -6     43
-## 13       45          49     48            -4     42
-## 14       38          46     46            -8      4
-##         Destino
-## 9  Sulamericana
-## 10 Sulamericana
-## 11 Sulamericana
-## 12 Sulamericana
-## 13 Sulamericana
-## 14 Sulamericana</code></pre>
+##             Equipes Jogos Vitórias Empates Derrotas Gols.Pró
+## 9         Fortaleza    38       15       8       15       50
+## 10            Goiás    38       15       7       16       46
+## 11            Bahia    38       12      13       13       44
+## 12    Vasco da Gama    38       12      13       13       39
+## 13 Atlético Mineiro    38       13       9       16       45
+## 14       Fluminense    38       12      10       16       38
+##    Gols.Contra Pontos Saldo.de.Gols Aprov.      Destino
+## 9           49     53             1     46 Sulamericana
+## 10          64     52           -18     46 Sulamericana
+## 11          43     49             1     43 Sulamericana
+## 12          45     49            -6     43 Sulamericana
+## 13          49     48            -4     42 Sulamericana
+## 14          46     46            -8      4 Sulamericana</code></pre>
 <p>Vou criar alguns verores aleatórios.</p>
 <div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="acessando-e-manipulação-de-dados.html#cb256-1" aria-hidden="true" tabindex="-1"></a>gr1 <span class="ot">&lt;-</span> <span class="fu">rep</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>],<span class="at">each=</span><span class="dv">5</span>)</span>
 <span id="cb256-2"><a href="acessando-e-manipulação-de-dados.html#cb256-2" aria-hidden="true" tabindex="-1"></a>gr1</span></code></pre></div>
-<pre><code>##  [1] &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;b&quot; &quot;b&quot; &quot;b&quot; &quot;b&quot; &quot;b&quot; &quot;c&quot; &quot;c&quot; &quot;c&quot;
-## [14] &quot;c&quot; &quot;c&quot; &quot;d&quot; &quot;d&quot; &quot;d&quot; &quot;d&quot; &quot;d&quot;</code></pre>
+<pre><code>##  [1] &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;b&quot; &quot;b&quot; &quot;b&quot; &quot;b&quot; &quot;b&quot; &quot;c&quot; &quot;c&quot; &quot;c&quot; &quot;c&quot; &quot;c&quot; &quot;d&quot;
+## [17] &quot;d&quot; &quot;d&quot; &quot;d&quot; &quot;d&quot;</code></pre>
 <div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="acessando-e-manipulação-de-dados.html#cb258-1" aria-hidden="true" tabindex="-1"></a>gr2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,<span class="at">each=</span><span class="dv">5</span>),<span class="fu">rep</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>,<span class="at">each=</span><span class="dv">5</span>))</span>
 <span id="cb258-2"><a href="acessando-e-manipulação-de-dados.html#cb258-2" aria-hidden="true" tabindex="-1"></a>gr2</span></code></pre></div>
 <pre><code>##  [1] 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 3 3 3 3 3</code></pre>
@@ -1692,24 +1673,18 @@ No entanto, os data frames possuem uma outra “vantagem” sobre as matrizes. A
 ## Levels: 1 2 3</code></pre>
 <div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="acessando-e-manipulação-de-dados.html#cb264-1" aria-hidden="true" tabindex="-1"></a><span class="fu">split</span>(Campeonato.Brasileiro<span class="fl">.2019</span>,<span class="at">f=</span>(gr1)) <span class="co"># Divide o Campeonato.Brasileiro.2019 de acordo com os vetores informados </span></span></code></pre></div>
 <pre><code>## $a
-##                Equipes Jogos Vitórias Empates Derrotas
-## 1             Flamengo    38       28       6        4
-## 2               Santos    38       22       8        8
-## 3            Palmeiras    38       21      11        6
-## 4               Grêmio    38       19       8       11
-## 5 Athletico Paranaense    38       18      10       10
-##   Gols.Pró Gols.Contra Pontos Saldo.de.Gols Aprov.
-## 1       86          37     90            49     79
-## 2       60          33     74            27     65
-## 3       61          32     74            29     65
-## 4       64          39     65            25     57
-## 5       51          32     64            19     56
-##        Destino
-## 1 Libertadores
-## 2 Libertadores
-## 3 Libertadores
-## 4 Libertadores
-## 5 Libertadores
+##                Equipes Jogos Vitórias Empates Derrotas Gols.Pró
+## 1             Flamengo    38       28       6        4       86
+## 2               Santos    38       22       8        8       60
+## 3            Palmeiras    38       21      11        6       61
+## 4               Grêmio    38       19       8       11       64
+## 5 Athletico Paranaense    38       18      10       10       51
+##   Gols.Contra Pontos Saldo.de.Gols Aprov.      Destino
+## 1          37     90            49     79 Libertadores
+## 2          33     74            27     65 Libertadores
+## 3          32     74            29     65 Libertadores
+## 4          39     65            25     57 Libertadores
+## 5          32     64            19     56 Libertadores
 ## 
 ## $b
 ##          Equipes Jogos Vitórias Empates Derrotas Gols.Pró
@@ -1726,127 +1701,98 @@ No entanto, os data frames possuem uma outra “vantagem” sobre as matrizes. A
 ## 10          64     52           -18     46 Sulamericana
 ## 
 ## $c
-##             Equipes Jogos Vitórias Empates Derrotas
-## 11            Bahia    38       12      13       13
-## 12    Vasco da Gama    38       12      13       13
-## 13 Atlético Mineiro    38       13       9       16
-## 14       Fluminense    38       12      10       16
-## 15         Botafogo    38       13       4       21
-##    Gols.Pró Gols.Contra Pontos Saldo.de.Gols Aprov.
-## 11       44          43     49             1     43
-## 12       39          45     49            -6     43
-## 13       45          49     48            -4     42
-## 14       38          46     46            -8      4
-## 15       31          45     43           -14     38
-##         Destino
-## 11 Sulamericana
-## 12 Sulamericana
-## 13 Sulamericana
-## 14 Sulamericana
-## 15           NA
+##             Equipes Jogos Vitórias Empates Derrotas Gols.Pró
+## 11            Bahia    38       12      13       13       44
+## 12    Vasco da Gama    38       12      13       13       39
+## 13 Atlético Mineiro    38       13       9       16       45
+## 14       Fluminense    38       12      10       16       38
+## 15         Botafogo    38       13       4       21       31
+##    Gols.Contra Pontos Saldo.de.Gols Aprov.      Destino
+## 11          43     49             1     43 Sulamericana
+## 12          45     49            -6     43 Sulamericana
+## 13          49     48            -4     42 Sulamericana
+## 14          46     46            -8      4 Sulamericana
+## 15          45     43           -14     38           NA
 ## 
 ## $d
-##        Equipes Jogos Vitórias Empates Derrotas Gols.Pró
-## 16       Ceará    38       10       9       19       36
-## 17    Cruzeiro    38        7      15       16       27
-## 18         CSA    38        8       8       22       24
-## 19 Chapecoense    38        7      11       20       31
-## 20        Avaí    38        3      11       24       18
-##    Gols.Contra Pontos Saldo.de.Gols Aprov.   Destino
-## 16          41     39            -5     34        NA
-## 17          46     36           -19     32 Rebaixado
-## 18          58     32           -34     28 Rebaixado
-## 19          52     32           -21     28 Rebaixado
-## 20          62     20           -44     18 Rebaixado</code></pre>
+##        Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra
+## 16       Ceará    38       10       9       19       36          41
+## 17    Cruzeiro    38        7      15       16       27          46
+## 18         CSA    38        8       8       22       24          58
+## 19 Chapecoense    38        7      11       20       31          52
+## 20        Avaí    38        3      11       24       18          62
+##    Pontos Saldo.de.Gols Aprov.   Destino
+## 16     39            -5     34        NA
+## 17     36           -19     32 Rebaixado
+## 18     32           -34     28 Rebaixado
+## 19     32           -21     28 Rebaixado
+## 20     20           -44     18 Rebaixado</code></pre>
 <div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="acessando-e-manipulação-de-dados.html#cb266-1" aria-hidden="true" tabindex="-1"></a><span class="fu">split</span>(Campeonato.Brasileiro<span class="fl">.2019</span>,<span class="at">f=</span>(gr2)) <span class="co"># Divide o Campeonato.Brasileiro.2019 de acordo com os vetores informados </span></span></code></pre></div>
 <pre><code>## $`1`
-##                Equipes Jogos Vitórias Empates Derrotas
-## 1             Flamengo    38       28       6        4
-## 2               Santos    38       22       8        8
-## 3            Palmeiras    38       21      11        6
-## 4               Grêmio    38       19       8       11
-## 5 Athletico Paranaense    38       18      10       10
-##   Gols.Pró Gols.Contra Pontos Saldo.de.Gols Aprov.
-## 1       86          37     90            49     79
-## 2       60          33     74            27     65
-## 3       61          32     74            29     65
-## 4       64          39     65            25     57
-## 5       51          32     64            19     56
-##        Destino
-## 1 Libertadores
-## 2 Libertadores
-## 3 Libertadores
-## 4 Libertadores
-## 5 Libertadores
+##                Equipes Jogos Vitórias Empates Derrotas Gols.Pró
+## 1             Flamengo    38       28       6        4       86
+## 2               Santos    38       22       8        8       60
+## 3            Palmeiras    38       21      11        6       61
+## 4               Grêmio    38       19       8       11       64
+## 5 Athletico Paranaense    38       18      10       10       51
+##   Gols.Contra Pontos Saldo.de.Gols Aprov.      Destino
+## 1          37     90            49     79 Libertadores
+## 2          33     74            27     65 Libertadores
+## 3          32     74            29     65 Libertadores
+## 4          39     65            25     57 Libertadores
+## 5          32     64            19     56 Libertadores
 ## 
 ## $`2`
-##             Equipes Jogos Vitórias Empates Derrotas
-## 6         Sao Paulo    38       17      12        9
-## 7     Internacional    38       16       9       13
-## 8       Corinthians    38       14      14       10
-## 9         Fortaleza    38       15       8       15
-## 10            Goiás    38       15       7       16
-## 11            Bahia    38       12      13       13
-## 12    Vasco da Gama    38       12      13       13
-## 13 Atlético Mineiro    38       13       9       16
-## 14       Fluminense    38       12      10       16
-## 15         Botafogo    38       13       4       21
-##    Gols.Pró Gols.Contra Pontos Saldo.de.Gols Aprov.
-## 6        39          30     63             9     55
-## 7        44          39     57             5      5
-## 8        42          34     56             8     49
-## 9        50          49     53             1     46
-## 10       46          64     52           -18     46
-## 11       44          43     49             1     43
-## 12       39          45     49            -6     43
-## 13       45          49     48            -4     42
-## 14       38          46     46            -8      4
-## 15       31          45     43           -14     38
-##         Destino
-## 6  Libertadores
-## 7  Libertadores
-## 8  Libertadores
-## 9  Sulamericana
-## 10 Sulamericana
-## 11 Sulamericana
-## 12 Sulamericana
-## 13 Sulamericana
-## 14 Sulamericana
-## 15           NA
+##             Equipes Jogos Vitórias Empates Derrotas Gols.Pró
+## 6         Sao Paulo    38       17      12        9       39
+## 7     Internacional    38       16       9       13       44
+## 8       Corinthians    38       14      14       10       42
+## 9         Fortaleza    38       15       8       15       50
+## 10            Goiás    38       15       7       16       46
+## 11            Bahia    38       12      13       13       44
+## 12    Vasco da Gama    38       12      13       13       39
+## 13 Atlético Mineiro    38       13       9       16       45
+## 14       Fluminense    38       12      10       16       38
+## 15         Botafogo    38       13       4       21       31
+##    Gols.Contra Pontos Saldo.de.Gols Aprov.      Destino
+## 6           30     63             9     55 Libertadores
+## 7           39     57             5      5 Libertadores
+## 8           34     56             8     49 Libertadores
+## 9           49     53             1     46 Sulamericana
+## 10          64     52           -18     46 Sulamericana
+## 11          43     49             1     43 Sulamericana
+## 12          45     49            -6     43 Sulamericana
+## 13          49     48            -4     42 Sulamericana
+## 14          46     46            -8      4 Sulamericana
+## 15          45     43           -14     38           NA
 ## 
 ## $`3`
-##        Equipes Jogos Vitórias Empates Derrotas Gols.Pró
-## 16       Ceará    38       10       9       19       36
-## 17    Cruzeiro    38        7      15       16       27
-## 18         CSA    38        8       8       22       24
-## 19 Chapecoense    38        7      11       20       31
-## 20        Avaí    38        3      11       24       18
-##    Gols.Contra Pontos Saldo.de.Gols Aprov.   Destino
-## 16          41     39            -5     34        NA
-## 17          46     36           -19     32 Rebaixado
-## 18          58     32           -34     28 Rebaixado
-## 19          52     32           -21     28 Rebaixado
-## 20          62     20           -44     18 Rebaixado</code></pre>
+##        Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra
+## 16       Ceará    38       10       9       19       36          41
+## 17    Cruzeiro    38        7      15       16       27          46
+## 18         CSA    38        8       8       22       24          58
+## 19 Chapecoense    38        7      11       20       31          52
+## 20        Avaí    38        3      11       24       18          62
+##    Pontos Saldo.de.Gols Aprov.   Destino
+## 16     39            -5     34        NA
+## 17     36           -19     32 Rebaixado
+## 18     32           -34     28 Rebaixado
+## 19     32           -21     28 Rebaixado
+## 20     20           -44     18 Rebaixado</code></pre>
 <div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="acessando-e-manipulação-de-dados.html#cb268-1" aria-hidden="true" tabindex="-1"></a><span class="fu">split</span>(Campeonato.Brasileiro<span class="fl">.2019</span>,<span class="at">f=</span><span class="fu">list</span>(gr1,gr2), <span class="at">drop =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">&quot;: &quot;</span>) <span class="co"># Divide o Campeonato.Brasileiro.2019 de acordo com as listas informadas </span></span></code></pre></div>
 <pre><code>## $`a: 1`
-##                Equipes Jogos Vitórias Empates Derrotas
-## 1             Flamengo    38       28       6        4
-## 2               Santos    38       22       8        8
-## 3            Palmeiras    38       21      11        6
-## 4               Grêmio    38       19       8       11
-## 5 Athletico Paranaense    38       18      10       10
-##   Gols.Pró Gols.Contra Pontos Saldo.de.Gols Aprov.
-## 1       86          37     90            49     79
-## 2       60          33     74            27     65
-## 3       61          32     74            29     65
-## 4       64          39     65            25     57
-## 5       51          32     64            19     56
-##        Destino
-## 1 Libertadores
-## 2 Libertadores
-## 3 Libertadores
-## 4 Libertadores
-## 5 Libertadores
+##                Equipes Jogos Vitórias Empates Derrotas Gols.Pró
+## 1             Flamengo    38       28       6        4       86
+## 2               Santos    38       22       8        8       60
+## 3            Palmeiras    38       21      11        6       61
+## 4               Grêmio    38       19       8       11       64
+## 5 Athletico Paranaense    38       18      10       10       51
+##   Gols.Contra Pontos Saldo.de.Gols Aprov.      Destino
+## 1          37     90            49     79 Libertadores
+## 2          33     74            27     65 Libertadores
+## 3          32     74            29     65 Libertadores
+## 4          39     65            25     57 Libertadores
+## 5          32     64            19     56 Libertadores
 ## 
 ## $`b: 2`
 ##          Equipes Jogos Vitórias Empates Derrotas Gols.Pró
@@ -1863,47 +1809,39 @@ No entanto, os data frames possuem uma outra “vantagem” sobre as matrizes. A
 ## 10          64     52           -18     46 Sulamericana
 ## 
 ## $`c: 2`
-##             Equipes Jogos Vitórias Empates Derrotas
-## 11            Bahia    38       12      13       13
-## 12    Vasco da Gama    38       12      13       13
-## 13 Atlético Mineiro    38       13       9       16
-## 14       Fluminense    38       12      10       16
-## 15         Botafogo    38       13       4       21
-##    Gols.Pró Gols.Contra Pontos Saldo.de.Gols Aprov.
-## 11       44          43     49             1     43
-## 12       39          45     49            -6     43
-## 13       45          49     48            -4     42
-## 14       38          46     46            -8      4
-## 15       31          45     43           -14     38
-##         Destino
-## 11 Sulamericana
-## 12 Sulamericana
-## 13 Sulamericana
-## 14 Sulamericana
-## 15           NA
+##             Equipes Jogos Vitórias Empates Derrotas Gols.Pró
+## 11            Bahia    38       12      13       13       44
+## 12    Vasco da Gama    38       12      13       13       39
+## 13 Atlético Mineiro    38       13       9       16       45
+## 14       Fluminense    38       12      10       16       38
+## 15         Botafogo    38       13       4       21       31
+##    Gols.Contra Pontos Saldo.de.Gols Aprov.      Destino
+## 11          43     49             1     43 Sulamericana
+## 12          45     49            -6     43 Sulamericana
+## 13          49     48            -4     42 Sulamericana
+## 14          46     46            -8      4 Sulamericana
+## 15          45     43           -14     38           NA
 ## 
 ## $`d: 3`
-##        Equipes Jogos Vitórias Empates Derrotas Gols.Pró
-## 16       Ceará    38       10       9       19       36
-## 17    Cruzeiro    38        7      15       16       27
-## 18         CSA    38        8       8       22       24
-## 19 Chapecoense    38        7      11       20       31
-## 20        Avaí    38        3      11       24       18
-##    Gols.Contra Pontos Saldo.de.Gols Aprov.   Destino
-## 16          41     39            -5     34        NA
-## 17          46     36           -19     32 Rebaixado
-## 18          58     32           -34     28 Rebaixado
-## 19          52     32           -21     28 Rebaixado
-## 20          62     20           -44     18 Rebaixado</code></pre>
+##        Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra
+## 16       Ceará    38       10       9       19       36          41
+## 17    Cruzeiro    38        7      15       16       27          46
+## 18         CSA    38        8       8       22       24          58
+## 19 Chapecoense    38        7      11       20       31          52
+## 20        Avaí    38        3      11       24       18          62
+##    Pontos Saldo.de.Gols Aprov.   Destino
+## 16     39            -5     34        NA
+## 17     36           -19     32 Rebaixado
+## 18     32           -34     28 Rebaixado
+## 19     32           -21     28 Rebaixado
+## 20     20           -44     18 Rebaixado</code></pre>
 <p>Alterando elementos dentro do <code>data frame</code>.</p>
 <div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="acessando-e-manipulação-de-dados.html#cb270-1" aria-hidden="true" tabindex="-1"></a>Campeonato.Brasileiro<span class="fl">.2019</span><span class="sc">$</span>Destino <span class="co"># Retorna apenas as informações da coluna &quot;Destino&quot; </span></span></code></pre></div>
-<pre><code>##  [1] &quot;Libertadores&quot; &quot;Libertadores&quot; &quot;Libertadores&quot;
-##  [4] &quot;Libertadores&quot; &quot;Libertadores&quot; &quot;Libertadores&quot;
-##  [7] &quot;Libertadores&quot; &quot;Libertadores&quot; &quot;Sulamericana&quot;
-## [10] &quot;Sulamericana&quot; &quot;Sulamericana&quot; &quot;Sulamericana&quot;
-## [13] &quot;Sulamericana&quot; &quot;Sulamericana&quot; &quot;NA&quot;          
-## [16] &quot;NA&quot;           &quot;Rebaixado&quot;    &quot;Rebaixado&quot;   
-## [19] &quot;Rebaixado&quot;    &quot;Rebaixado&quot;</code></pre>
+<pre><code>##  [1] &quot;Libertadores&quot; &quot;Libertadores&quot; &quot;Libertadores&quot; &quot;Libertadores&quot;
+##  [5] &quot;Libertadores&quot; &quot;Libertadores&quot; &quot;Libertadores&quot; &quot;Libertadores&quot;
+##  [9] &quot;Sulamericana&quot; &quot;Sulamericana&quot; &quot;Sulamericana&quot; &quot;Sulamericana&quot;
+## [13] &quot;Sulamericana&quot; &quot;Sulamericana&quot; &quot;NA&quot;           &quot;NA&quot;          
+## [17] &quot;Rebaixado&quot;    &quot;Rebaixado&quot;    &quot;Rebaixado&quot;    &quot;Rebaixado&quot;</code></pre>
 <div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="acessando-e-manipulação-de-dados.html#cb272-1" aria-hidden="true" tabindex="-1"></a>Campeonato.Brasileiro<span class="fl">.2019</span><span class="sc">$</span>Destino[Campeonato.Brasileiro<span class="fl">.2019</span><span class="sc">$</span>Destino<span class="sc">==</span><span class="st">&quot;NA&quot;</span>]<span class="ot">&lt;-</span><span class="st">&quot;Lugar Algum&quot;</span> </span>
 <span id="cb272-2"><a href="acessando-e-manipulação-de-dados.html#cb272-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Substitui &quot;Libertadores&quot; na coluna &quot;Destino&quot; por &quot;Liberta&quot;.</span></span></code></pre></div>
 <p>Veja como ficou com a informação alterada.</p>
@@ -4233,9 +4171,8 @@ Rebaixado
 <div id="grepl" class="section level3" number="3.1.3">
 <h3><span class="header-section-number">3.1.3</span> grepl()</h3>
 <div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="acessando-e-manipulação-de-dados.html#cb303-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grepl</span>(<span class="st">&quot;Flamengo&quot;</span>, Campeonato.Brasileiro<span class="fl">.2019</span><span class="sc">$</span>Equipes) <span class="co"># Retorna valores lógicos de acordo com o critério estabelecido</span></span></code></pre></div>
-<pre><code>##  [1]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-## [10] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-## [19] FALSE FALSE</code></pre>
+<pre><code>##  [1]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [11] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
 </div>
 <div id="sub-e-gsub" class="section level3" number="3.1.4">
 <h3><span class="header-section-number">3.1.4</span> sub() e gsub()</h3>

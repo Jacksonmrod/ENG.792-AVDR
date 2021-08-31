@@ -19,9 +19,9 @@ Os gráficos são plotados na aba _Plots_.
 
 ![**Painel de plotagem**](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_4_Painel_Plot.JPG){#id .class width=100% height=100%} 
   
-  O R possui algumas funções nativas para a criação de figuras, tal como _plot_ e _hist_. 
-  De acordo com @perlin2018processamento essas e outras funções nativas são restritivas e não recomendadas com customização pouco intuitivas com resultado final pouco atrativo.   
-  Eu pessoalmente nunca experimentei tal limitação e, arrisco a dizer respeitosamente que, tudo que você quer fazer com funções do _ggplot2_ pode ser feito com funções nativas, basta saber manipular corretamente os argumentos. Mas tenho que concordar que com _ggplot2_ as funções são mais simples e objetivas. De qualquer forma fica o alerta para possíveis limitações.  
+O R possui algumas funções nativas para a criação de figuras, tal como _plot_ e _hist_.    
+De acordo com @perlin2018processamento essas e outras funções nativas são restritivas e não recomendadas com customização pouco intuitivas com resultado final pouco atrativo.   
+Eu pessoalmente nunca experimentei tal limitação e, arrisco a dizer respeitosamente que, tudo que você quer fazer com funções do _ggplot2_ pode ser feito com funções nativas, basta saber manipular corretamente os argumentos. Mas tenho que concordar que com _ggplot2_ as funções são mais simples e objetivas. De qualquer forma fica o alerta para possíveis limitações.  
   
 ## Utilizando funções nativas 
   
@@ -33,7 +33,6 @@ As funções nativas do R para prdoução de gráficos e plotagem são armazenad
   
 Os gráficos básicos no R possuem uma grande variedade de parâmetros que nos auxiliam na produção e/ou "melhoramento" de um gráfico pré-concebido através da adição de novas informações.
   
-  
 ### boxplot - boxplot()
   
 São gráficos muito úteis que conseguem concatenar e mostrar uma série de informações de uma só vez. Muito úteis principalmente quando temos uma variável categórica associada. 
@@ -44,10 +43,10 @@ Vamos utilizar o pacote [**datasets**](https://stat.ethz.ch/R-manual/R-devel/lib
   
 A hipótese é que quanto mais eficiente o inseticida ( _spray_ ) menos insetos ( _count_ ) sobrevivem, ou seja, _count_ é em função de _spray_.  
   
-No `boxplot` cada caixa mostra os dados observados de cada tipos de spray (A até F) e vemos que os inseticidas C, D e E são os mais eficientes.  
+No `boxplot` cada caixa mostra os dados observados de cada tipos de _spray_ (A até F) e vemos que os inseticidas C, D e E são os mais eficientes.  
   
 Temos a mediana representada pela linha preta, os limites inferior e superior que representam o primeiro e o terceiro quartil (50% dos dados). As linhas superiores e inferiores correspondem a 2 desvios-padrão e os pontos fora das caixas são os outliers.  
-Para mais detalhes sobre interpretação do `boxplot` procure um livro de estatística ou acesse a internet como em ![**Boxplot**](https://operdata.com.br/blog/como-interpretar-um-boxplot).
+Para mais detalhes sobre interpretação do `boxplot` procure um livro de estatística ou acesse a internet como em  ![**Boxplot**](https://operdata.com.br/blog/como-interpretar-um-boxplot).
   
 ```{r boxplot, echo=T}
 data(InsectSprays)
@@ -353,7 +352,7 @@ plot(trees$Girth, trees$Height,main="9° Relação Altura x Circunferência", xl
 Os gráficos podem também ser feitos por diferentes tipos de linhas. Uma vez defino que ele será do tipo _l_ por xemplo (`type="l"`) podemos variar como a linha será apresentada com `lty=x` (x = número de 0 a 6).
 Experimente acrescentar o comando `lwd=x` (x é um número) para ir variando a espessura da linha.
   
-![](http://www.sthda.com/sthda/RDoc/figure/graphs/linetypes-in-r-line-types.png){#id .class width=30% height=30%}
+![](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_4_linetypes-in-r-line-types.JPG)
     
 Fonte: [sthda](http://www.sthda.com/sthda/RDoc/figure/graphs/linetypes-in-r-line-types.png)
     
@@ -399,7 +398,9 @@ Precisamos entender antes de tudo que a região de plotagem é possui 4 lados (4
 * 3 - superior
 * 4 - direita
     
-![Margens da figura](http://applied-r.com/wp-content/uploads/2013/10/PlotRegion1.png)
+![Margens da figura](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_4_PlotRegion1.png)
+Fonte: [http://applied-r.com/](http://applied-r.com/wp-content/uploads/2013/10/PlotRegion1.png)
+
     
 O tamanho destas margens podem ser controladas utilizando o argumento `mar=c(A,B,C,D)` em que _c(A, B, C e D)_ é um vetor numérico que determina o tamanho das margens referentes à 1ª, 2ª, 3ª e 4ª posição, respectivamente.
     
@@ -586,7 +587,7 @@ boxplot(trees$Height,xaxt = "n",yaxt = "n",
 dev.off()
 ```
     
-Para mais exemplos sobre as fontes acesse.   [aqui](https://stackoverflow.com/questions/7121807/how-to-change-the-font-of-the-main-title-in-plot)
+Para mais exemplos sobre as fontes acesse   [aqui](https://stackoverflow.com/questions/7121807/how-to-change-the-font-of-the-main-title-in-plot).
     
 Para saber mais dos parâmetros:
       
@@ -731,7 +732,7 @@ Assista este conteúdo em **Cap 4 - ggplot2** no [PVANet](https://www2.cead.ufv.
 
 O pacote `ggplot2` é parte da coleção de pacotes chamado [tidyverse](https://www.tidyverse.org/) que se destina à ciência de dados. Todos estes pacotes possuem a mesma espinha dorsal, ideia e/ou filosofia desde sua concepção até sua utilização.
 
-![](D:/Desktop/Micro SD/Análise ambiental em R/tidyverse.JPG)
+![](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_4_tidyverse.JPG)
 
 Caso queira se aventurar no universo tidy (altamente recomendado) instale todos os pacotes de uma só ves pelo comando:
 
