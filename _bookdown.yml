@@ -3,7 +3,8 @@ book_filename: "ENG_792-AVDR"
 delete_merged_file: true
 edit: https://github.com/USERNAME/REPO/edit/BRANCH/%s
 view: https://github.com/USERNAME/REPO/edit/BRANCH/%s
-rmd_subdir: ["index.Rmd", "01-intro.Rmd", "Cap_2.Rmd","Cap_3.Rmd","07-references.Rmd"]
+rmd_subdir: ["index.Rmd", "01-intro.Rmd", "Cap_2.Rmd","Cap_3.Rmd",
+"Cap_4.Rmd","07-references.Rmd"]
 language:
   ui:
     chapter_name: "Capítulo "

@@ -1,0 +1,1451 @@
+# Produção gráfica e comunicação visual
+
+Assista este conteúdo em **Cap 4 - Produção gráfica e comunicação visual** no [PVANet](https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php)
+
+R é capaz de produzir uma grande variedade de gráficos em alta qualidade para publicação e impressão.
+Tipos básicos de gráficos ( _barplot_, _boxplot_, _scatterplot_, _maps_ e etc).
+É bastante simples produzir gráficos tradicionais no R, especialmente no nível mais básico e cada gráfico pode ser personalizado para atender as demandas do usuário.
+
+![Gráficos R](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_4_graficos_R.png)
+
+Fonte: [Revolutions](https://blog.revolutionanalytics.com/2011/09/the-r-graph-gallery-goes-social.html)
+
+Os comando gráficos podem ser divididos em 3 categorias @melloandpeternelli2013;  
+1. comando de alto nível – criam gráficos completos;  
+2. comando de baixo nível – adicionam informações a gráficos já existentes;  
+3. comando interativos – permitem ao usuário a interação com a janela gráfica.  
+
+Os gráficos são plotados na aba _Plots_.
+
+![**Painel de plotagem**](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_4_Painel_Plot.JPG){#id .class width=100% height=100%} 
+  
+  O R possui algumas funções nativas para a criação de figuras, tal como _plot_ e _hist_. 
+  De acordo com @perlin2018processamento essas e outras funções nativas são restritivas e não recomendadas com customização pouco intuitivas com resultado final pouco atrativo.   
+  Eu pessoalmente nunca experimentei tal limitação e, arrisco a dizer respeitosamente que, tudo que você quer fazer com funções do _ggplot2_ pode ser feito com funções nativas, basta saber manipular corretamente os argumentos. Mas tenho que concordar que com _ggplot2_ as funções são mais simples e objetivas. De qualquer forma fica o alerta para possíveis limitações.  
+  
+## Utilizando funções nativas 
+  
+As funções nativas do R para prdoução de gráficos e plotagem são armazenadas pelos pacotes `graphics` e `grDevices` que carregam atutomaticamente sempre que o R é iniciado @RogerPeng2020.
+  
+`graphics`: Contém as funções básicas do ambiente gráfico (`plot`, `hist`, `boxplot` e etc) 
+  
+`grDevices`: É responsável por permitir a comunição dos gráficos produzidos com outras linguagens de tratameneto de imagens ( _X11_, _.pdf_, _PostScript_, _PNG_ e etc).
+  
+Os gráficos básicos no R possuem uma grande variedade de parâmetros que nos auxiliam na produção e/ou "melhoramento" de um gráfico pré-concebido através da adição de novas informações.
+  
+  
+### boxplot - boxplot()
+  
+São gráficos muito úteis que conseguem concatenar e mostrar uma série de informações de uma só vez. Muito úteis principalmente quando temos uma variável categórica associada. 
+  
+No R estes gráficos podem ser feitos utilizando o comando `boxplot()`. A fórmula tem a forma de `eixo-y ~ eixo-x`.  
+  
+Vamos utilizar o pacote [**datasets**](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html) e os dados _InsectSprays_ que mostra dados de um experimento de agricultura onde insetos foram tratados com diferentes inseticidas.  
+  
+A hipótese é que quanto mais eficiente o inseticida ( _spray_ ) menos insetos ( _count_ ) sobrevivem, ou seja, _count_ é em função de _spray_.  
+  
+No `boxplot` cada caixa mostra os dados observados de cada tipos de spray (A até F) e vemos que os inseticidas C, D e E são os mais eficientes.  
+  
+Temos a mediana representada pela linha preta, os limites inferior e superior que representam o primeiro e o terceiro quartil (50% dos dados). As linhas superiores e inferiores correspondem a 2 desvios-padrão e os pontos fora das caixas são os outliers.  
+Para mais detalhes sobre interpretação do `boxplot` procure um livro de estatística ou acesse a internet como em ![**Boxplot**](https://operdata.com.br/blog/como-interpretar-um-boxplot).
+  
+```{r boxplot, echo=T}
+data(InsectSprays)
+  
+str(InsectSprays)
+head(InsectSprays)
+tail(InsectSprays)
+  
+boxplot(count ~ spray,data = InsectSprays)
+```
+  
+Experimente adicionar o argumento `notch=T`.
+  
+### histograma - hist()
+  
+[Histograma](https://www.fm2s.com.br/histograma/) é um tipo de gráfico que combina várias barras verticais representando as frequências das variáveis. 
+
+```{r histograma, echo=T}
+hist(InsectSprays$count,right=T, breaks=10, include.lowest=T,
+     col= "orange", border="red", adj=0, col.axis="blue")
+```
+  
+Veja que no histograma gerado nós adicionais alguns argumentos.
+Estes comandos introduzem variações no gráfico gerado que auxiliam na visualização das informações.  
+  
+`right=T`: Considera valores fechado à direita (já é o padrão).  
+`breaks=30`: Define o intervalo das classes no eixo x (abscissas) controlando a espessura das barras.  
+`include.lowest=T`: Inclui os valor extremos do vetor.  
+`col="orange`: Define a cor do preenchimento da forma.  
+`border=red`: Define a cor da borda.  
+`adj=0`: Ajusta o alinhamento dos nomes dos eixos.  
+`col.axis=blue`: Define a cor dos eixos.  
+  
+### Gráfico de barras - barplot()
+  
+Linhas verticais descrevendo valores (`barplot()`).
+  
+Exemplo abaixo veio do stackoverflow [Texture in barplot for 7 bars in R?](https://stackoverflow.com/questions/23913276/texture-in-barplot-for-7-bars-in-r). Aqui temos gráficos de barras com texturas.
+  
+```{r barplot, echo=T}
+# data generation ---------------------------------------------------------
+set.seed(1)
+mat <- matrix(runif(4*7, min=0, max=10), 7, 4)
+rownames(mat) <- 1:7
+colnames(mat) <- LETTERS[1:4]
+  
+# plotting settings -------------------------------------------------------
+ylim <- range(mat)*c(1,1.5)
+angle1 <- rep(c(45,45,135), length.out=7)
+angle2 <- rep(c(45,135,135), length.out=7)
+density1 <- seq(5,35,length.out=7)
+density2 <- seq(5,35,length.out=7)
+col <- 1 # rainbow(7)
+  
+# plot --------------------------------------------------------------------
+op <- par(mar=c(3,3,1,1))
+barplot(mat, beside=TRUE, ylim=ylim, col=col, angle=angle1,
+        density=density1)
+barplot(mat, add=TRUE, beside=TRUE, ylim=ylim, col=col,
+        angle=angle2, density=density2)
+legend("top", legend=1:7, ncol=7, fill=TRUE, col=col,
+       angle=angle1, density=density1)
+par(bg="transparent")
+legend("top", legend=1:7, ncol=7, fill=TRUE, col=col,
+       angle=angle2, density=density2) 
+par(op)
+``` 
+  
+###  Gráfico de setores (pizza) - pie()
+
+Divide um círculo em setores de acorco com os valores de cada categoria.
+  
+```{r piecharts, echo=T}
+pie(1:15, col = rainbow(15)) 
+```
+  
+`col=rainbow(15)`= Preenche as áreas internas do gráfico com 15 cores utilizando a paleta de cores do arco-íris.
+  
+### Função _plot()_ 
+  
+A função `plot()` é uma função genérica amplamente utilizada para gerar gráficos. Nós vamos utilizá-la muito de agora em diante.
+  
+`plot()`é provavelmente o comando de alto nível mais simples para criação de gráficos. Com ele podemos visualizar desde gráficos de dispersão até imagens de satélites. 
+  
+O tipo de _plot_ a ser gerado depende da classe (`class(x)`) do primeiro argumento(x).
+  
+* Se _x_ e _y_ são vetores (`plot(x, y)`) produzirá um gráfico de dispersão ( _scatter plot_).
+  
+* Se _x_ é um vetor numérico `plot(x)` produzirá um gráfico dos valores de _X_ contra os valores dos índices.
+  
+* Se _x_ é uma série temporal `plot(x)` produzirá um gráfico de uma série temporal. 
+  
+* Se _x_ é um _factor_, `plot(x)` produzirá um _bar plot_ de _x_.
+
+* Se _x_ é um _factor_ e _y_ um vetor numérico `plot(x,y)` produzirá um _bosplot_ de _y_ para cada nível de _x_.
+  
+* Se _x_ é um _data.frame_, _y_ é qualquer objeto e _expr_ é uma lista de nomes de objetos separados por "+" (por exemplo, a + b + c). 
+  
+* `plot(df)` e `plot(~ expr)` produzirão gráficos de distribuição das variáveis em uma tabela quadro de dados (1º plot) ou de vários objetos nomeados (2° plot). 
+  
+* `plot(y ~ expr)` produzirá um plot de _y_ em relação a cada objeto nomeado em _expr_.
+  
+```{r plot.1, echo=T}
+v<-1:20
+m<-v^2
+  
+plot(v,m)
+  
+points(rev(v),m) # points () adiciona pontos a um gráfico já existente
+  
+lines(v,400-m, col="red") #lines() adiciona linhas a um gráfico já existente
+  
+text(10,200, "Anuncie aqui")
+```
+  
+```{r plot.2, echo=T}
+X<-c(2, 3, 4, 5, 6, 7) #X maiúsculos mesmo
+Y<-c(15, 46, 56, 15, 81, 11) #Y maiúsculo mesmo
+Nomes<-LETTERS[1:6]
+Cidades<-data.frame(X, Y, row.names=Nomes)
+Cidades
+plot(Cidades)
+identify(Cidades)
+```
+  
+### Formatando eixos
+  
+Os exemplos anteriores serviram apenas para ilustração, mas se quisermos algo para publicação ou  qualquer comunicação de melhor qualidade temos que trabalhar um pouco mais.  
+Inicialmente podemos inserir os título e nomear os eixos.
+  
+`main=`: Insere um título no gráfico;  
+`xlab=`: Adiciona título ao eixo x do gráfico;   
+`ylab=`: Adiciona título ao eixo y do gráfico.  
+  
+```{r plot.3, echo=T}
+plot(trees$Girth, trees$Height,main="Relação Altura x Circunferência", xlab="Circunferência da árvore (polegadas)",
+     ylab="Altura da árvore (pés)")
+```
+  
+Nesse caso nós manipulamos os tamanhos dos eixos x e y concatenando vetores para `xlim` e `ylim` respectivamente.  
+  
+`xlim=`: Determina o intervalo do eixo x.  
+`ylim=`: Determina o intervalo do eixo y.  
+  
+```{r plot.4, echo }
+plot(trees$Girth, trees$Height,main="Relação Altura x Circunferência", xlab="Circunferência da árvore (polegadas)",
+     ylab="Altura da árvore (pés)", xlim=c(5,25), ylim=c(60,90))
+```
+  
+Os rótulos dos eixos são geralmente posicionados na horizontal, no entanto os rótulos podem ser ajustados para o critério do usuário  utilizando o argumento `las=x` (x=valor inteiro entre 0 e 3).  
+* 1: sempre paralelo ao eixo (default)  
+* 2: sempre horizontal  
+* 3: sempre perpendicular ao eixo  
+* 4: sempre vertical  
+  
+Podemos também plotar vários gráficos na mesma janela. Para isso precismamos controlar o painel com o comando `par()` combinado com `mfrow`ou `mfcol`.
+  
+`mfrow=(x,y)`: Distribui os gráficos em **linhas** em que **x** é o número de linhas e **y** o número de colunas.  
+  
+`mfcol=(x,y)`: Distribui os gráficos em **colunas** em que **x** é o número de linhas e **y** o número de colunas.
+  
+```{r plot.5, echo=T}
+par(mfrow=c(2,2))
+  
+plot(trees$Girth, trees$Height,main="1° Relação Altura x Circunferência", xlab="Circunferência da árvore (polegadas)",
+     ylab="Altura da árvore (pés)", xlim=c(5,25),
+     ylim=c(60,90),col="red",las=0)
+  
+plot(trees$Girth, trees$Height,main="2° Relação Altura x Circunferência", xlab="Circunferência da árvore (polegadas)",
+     ylab="Altura da árvore (pés)", xlim=c(5,25),
+     ylim=c(60,90),col="blue",las=1)
+  
+plot(trees$Girth, trees$Height,main="3° Relação Altura x Circunferência", xlab="Circunferência da árvore (polegadas)",
+     ylab="Altura da árvore (pés)", xlim=c(5,25),
+     ylim=c(60,90),col="black",las=2)
+  
+plot(trees$Girth, trees$Height,main="4° Relação Altura x Circunferência", xlab="Circunferência da árvore (polegadas)",
+     ylab="Altura da árvore (pés)", xlim=c(5,25),
+     ylim=c(60,90),col="purple",las=3)
+```
+
+```{r plot.6, echo=T}
+par(mfcol=c(2,2))
+  
+plot(trees$Girth, trees$Height,main="1° Relação Altura x Circunferência", xlab="Circunferência da árvore (polegadas)",
+     ylab="Altura da árvore (pés)", xlim=c(5,25),
+     ylim=c(60,90),col="red",las=0)
+  
+plot(trees$Girth, trees$Height,main="2° Relação Altura x Circunferência", xlab="Circunferência da árvore (polegadas)",
+     ylab="Altura da árvore (pés)", xlim=c(5,25),
+     ylim=c(60,90),col="blue",las=1)
+  
+plot(trees$Girth, trees$Height,main="3° Relação Altura x Circunferência", xlab="Circunferência da árvore (polegadas)",
+     ylab="Altura da árvore (pés)", xlim=c(5,25),
+     ylim=c(60,90),col="black",las=2)
+  
+plot(trees$Girth, trees$Height,main="4° Relação Altura x Circunferência", xlab="Circunferência da árvore (polegadas)",
+     ylab="Altura da árvore (pés)", xlim=c(5,25),
+     ylim=c(60,90),col="purple",las=3)
+```
+  
+Podemos alterar também os símbolos dos gráficos
+Por padrão o R usa círculos abertos nos gráficos. Isso pode ser alterado de acordo com preferência do usuário usando o argumento `pch = x` (*x*=valor inteiro entre 0 e 25) dentro do `plot()`.
+  
+```{r pch, echo=F, message=FALSE}
+ggpubr::show_point_shapes()
+```
+  
+```{r plot.7, echo=T}
+par(mfcol=c(2,2))
+  
+plot(trees$Girth, trees$Height,main="1° Relação Altura x Circunferência", xlab="Circunferência da árvore (polegadas)",
+     ylab="Altura da árvore (pés)", xlim=c(5,25),
+     ylim=c(60,90),col="red",las=0, pch=2)
+  
+plot(trees$Girth, trees$Height,main="2° Relação Altura x Circunferência", xlab="Circunferência da árvore (polegadas)",
+     ylab="Altura da árvore (pés)", xlim=c(5,25),
+     ylim=c(60,90),col="blue",las=1,pch=4)
+  
+plot(trees$Girth, trees$Height,main="3° Relação Altura x Circunferência", xlab="Circunferência da árvore (polegadas)",
+     ylab="Altura da árvore (pés)", xlim=c(5,25),
+     ylim=c(60,90),col="black",las=2,pch=8)
+  
+plot(trees$Girth, trees$Height,main="4° Relação Altura x Circunferência", xlab="Circunferência da árvore (polegadas)",
+     ylab="Altura da árvore (pés)", xlim=c(5,25),
+     ylim=c(60,90),col="purple",las=3,pch=16)
+```
+  
+O tamanho dos símbolos também pode ser ajustado utilizando o argumento `cex=x`.
+  
+```{r plot.8, echo=T}
+par(mfcol=c(2,2))
+  
+plot(trees$Girth, trees$Height,main="1° Relação Altura x Circunferência", xlab="Circunferência da árvore (polegadas)",
+     ylab="Altura da árvore (pés)", xlim=c(5,25),
+     ylim=c(60,90),col="red",las=0, pch=2, cex=0.3)
+  
+plot(trees$Girth, trees$Height,main="2° Relação Altura x Circunferência", xlab="Circunferência da árvore (polegadas)",
+     ylab="Altura da árvore (pés)", xlim=c(5,25),
+     ylim=c(60,90),col="blue",las=1,pch=4, cex=0.8)
+  
+plot(trees$Girth, trees$Height,main="3° Relação Altura x Circunferência", xlab="Circunferência da árvore (polegadas)",
+     ylab="Altura da árvore (pés)", xlim=c(5,25),
+     ylim=c(60,90),col="black",las=2,pch=8, cex=1.3)
+  
+plot(trees$Girth, trees$Height,main="4° Relação Altura x Circunferência", xlab="Circunferência da árvore (polegadas)",
+     ylab="Altura da árvore (pés)", xlim=c(5,25),
+     ylim=c(60,90),col="purple",las=3,pch=16, cex=1.8)
+```
+  
+O usuário não precisa unicamente utilizar os símbolos de `pch` para fazer seus gráficos, a conexão entres os pontos podem ser importante em alguns casos acrescentando o argumento `type="x"` (x pode ser p, l, b, c, o, h, s, S, n).
+  
+* "p" para pontos;  
+* "l" para linhas;  
+* "b" para ambos;  
+* "c" apenas as linhas sem os pontos;  
+* "o" para ambos sobrepostos;  
+* "h" para tipo histograma (ou "alta densidade") linhas verticais;  
+* "s" para degraus;  
+* "S" para outros tipos de degraus;  
+* "n" sem plot;  
+
+```{r plot.9, echo=T}
+par(mfcol=c(3,3))
+  
+plot(trees$Girth, trees$Height,main="1° Relação Altura x Circunferência", xlab="Circunferência da árvore (polegadas)",
+     ylab="Altura da árvore (pés)", xlim=c(5,25),
+     ylim=c(60,90),col="red",las=0, cex=1, type="p")
+  
+plot(trees$Girth, trees$Height,main="2° Relação Altura x Circunferência", xlab="Circunferência da árvore (polegadas)",
+     ylab="Altura da árvore (pés)", xlim=c(5,25),
+     ylim=c(60,90),col="blue",las=1,cex=1, type="l")
+  
+plot(trees$Girth, trees$Height,main="3° Relação Altura x Circunferência", xlab="Circunferência da árvore (polegadas)",
+     ylab="Altura da árvore (pés)", xlim=c(5,25),
+     ylim=c(60,90),col="black",las=2, cex=1,type="b")
+  
+plot(trees$Girth, trees$Height,main="4° Relação Altura x Circunferência", xlab="Circunferência da árvore (polegadas)",
+     ylab="Altura da árvore (pés)", xlim=c(5,25),
+     ylim=c(60,90),col="purple",las=3,cex=1,type="c")
+  
+plot(trees$Girth, trees$Height,main="5° Relação Altura x Circunferência", xlab="Circunferência da árvore (polegadas)",
+     ylab="Altura da árvore (pés)", xlim=c(5,25),
+     ylim=c(60,90),col="red",las=0, cex=1, type="o")
+  
+plot(trees$Girth, trees$Height,main="6° Relação Altura x Circunferência", xlab="Circunferência da árvore (polegadas)",
+     ylab="Altura da árvore (pés)", xlim=c(5,25),
+     ylim=c(60,90),col="blue",las=1,cex=1, type="h")
+  
+plot(trees$Girth, trees$Height,main="7° Relação Altura x Circunferência", xlab="Circunferência da árvore (polegadas)",
+     ylab="Altura da árvore (pés)", xlim=c(5,25),
+     ylim=c(60,90),col="black",las=2, cex=1,type="s")
+  
+plot(trees$Girth, trees$Height,main="8° Relação Altura x Circunferência", xlab="Circunferência da árvore (polegadas)",
+     ylab="Altura da árvore (pés)", xlim=c(5,25),
+     ylim=c(60,90),col="purple",las=3,cex=1,type="S")
+  
+plot(trees$Girth, trees$Height,main="9° Relação Altura x Circunferência", xlab="Circunferência da árvore (polegadas)",
+     ylab="Altura da árvore (pés)", xlim=c(5,25),
+     ylim=c(60,90),col="purple",las=3,cex=1,type="n")
+```
+  
+Os gráficos podem também ser feitos por diferentes tipos de linhas. Uma vez defino que ele será do tipo _l_ por xemplo (`type="l"`) podemos variar como a linha será apresentada com `lty=x` (x = número de 0 a 6).
+Experimente acrescentar o comando `lwd=x` (x é um número) para ir variando a espessura da linha.
+  
+![](http://www.sthda.com/sthda/RDoc/figure/graphs/linetypes-in-r-line-types.png){#id .class width=30% height=30%}
+    
+Fonte: [sthda](http://www.sthda.com/sthda/RDoc/figure/graphs/linetypes-in-r-line-types.png)
+    
+```{r plot.10, echo=T}
+par(mfcol=c(3,2))
+    
+# Já que lty = 0 produz uma gráfico em branco não vamos mostrá-lo.
+    
+for(i in 1:6){
+plot(trees$Girth, trees$Height,main=paste(i,"Relação Altura x Circunferência"), xlab="Circunferência da árvore (polegadas)",
+       ylab="Altura da árvore (pés)", xlim=c(5,25),
+       ylim=c(60,90),col="red",las=0, cex=1, type="l",lty=i)
+      legend("bottomright",c(paste("lty=",i)),col=c("red"))
+      }
+```
+    
+Podemos também fazer a sobreposição de gráficos ou adicionar elementos em um gráfico existente.
+    
+`par(new=T)`: habilita a sobreposição no mesmo painel de um outro gráfico.
+  
+**Lembre-se de desativar os outros parâmetros como eixos, labels, nomes e etc. Deixe apenas os pontos e informações do eixo necessário.**  
+      
+`axes=FALSE`: Desativa a inclusão dos eixos
+`xlab="" e ylab=""`: Deixa os labels dos eixos vazios.
+    
+```{r plot.11, echo=T}
+    
+plot(trees$Girth, trees$Height,main="Relação Altura x Circunferência x Volume", xlab="Circunferência da árvore (polegadas)",ylab="Altura da árvore (pés)",xlim=c(5,25),
+     ylim=c(60,90), las=1, pch=16, col="springgreen")
+    
+par(new=TRUE)
+    
+plot(trees$Girth, trees$Volume, axes=FALSE, xlab="", ylab="",
+     pch=4, col="blue")
+```
+    
+Veja no gráfico acima que o eixo secundário da informação voluma não foi incluído por isso precisamos adicioná-lo. Contudo antes de adicioná-lo, vamos ter que ajustar o painel, caso contrário ele será plotado, mas não aparecerá.
+    
+Precisamos entender antes de tudo que a região de plotagem é possui 4 lados (4 margens) numeradas da seguinte forma.  
+    
+* 1 - inferior
+* 2 - esquerda
+* 3 - superior
+* 4 - direita
+    
+![Margens da figura](http://applied-r.com/wp-content/uploads/2013/10/PlotRegion1.png)
+    
+O tamanho destas margens podem ser controladas utilizando o argumento `mar=c(A,B,C,D)` em que _c(A, B, C e D)_ é um vetor numérico que determina o tamanho das margens referentes à 1ª, 2ª, 3ª e 4ª posição, respectivamente.
+    
+Vamos liberar um espaço à direita para adicionar um eixo secundário no exemplo anterior.
+O eixo secundário é inserido "ativando" a margem 4 com comando `axis(side=4, las=1)` e em seguinda, acrescentando as informaçõpes necessárias com `mtext(side=4, line=2.5, "Volume da madeira (pés cúbicos)")`.
+    
+`side=4`: Indica que as informações serão inseridas no lado 4.  
+`line=2.5`: Indica a posição onde o texto será inserio no lado 4.
+    
+```{r plot.12, echo=T}
+par(mar=c(4, 4, 2, 4))
+    
+plot(trees$Girth, trees$Height,main="Relação Altura x Circunferência x Volume", xlab="Circunferência da árvore (polegadas)",
+     ylab="Altura da árvore (pés)",xlim=c(5,25),
+     ylim=c(60,90), las=1, pch=16, col="springgreen")
+    
+par(new=TRUE)
+    
+plot(trees$Girth, trees$Volume, axes=FALSE, xlab="", ylab="",
+     pch=4, col="blue")
+    
+axis(side=4, las=1)
+    
+mtext(side=4, line=2.5, "Volume da madeira (pés cúbicos)")
+```
+    
+Podemos adicionar informações fora do gráfico (como título do eixo secundário) de uma outra forma.  
+Para isto precisamos determinar `xpd=T` que viabiliza utilizar as margens externas do gráfico atual (padrão é `xpd=F`).  
+Caso determine `xpd=NA` você pode utilizar qualquer região da área de plotagem.
+    
+`par(oma=c(0,0,4,3))`: oma (Outer Margin Area) - especifica que as margens 3 e 4 terão 4 e 3 linhas, respectivamente.
+    
+Investigue também os argumentos `omi`, `mai`, `mgp`, `outer` e `omd`.
+    
+```{r plot.13, echo=T}
+par(mar=c(4, 4, 2, 4),par(oma=c(0,0,4,3)))
+    
+plot(trees$Girth, trees$Height,main="Relação Altura x Circunferência x Volume", xlab="Circunferência da árvore (polegadas)",
+     ylab="Altura da árvore (pés)",xlim=c(5,25),
+     ylim=c(60,90), las=1, pch=16, col="springgreen")
+    
+par(new=TRUE)
+    
+plot(trees$Girth, trees$Volume, axes=FALSE, xlab="", ylab="", pch=4, col="blue")
+    
+axis(side=4, las=1)
+    
+#mtext(side=4, line=2.5, "Volume da madeira (pés cúbicos)")
+text(22.6, 70, adj=0, srt=-90, " Volume da madeira (pés cúbicos)", xpd=TRUE)
+    
+```
+    
+**Pesquise por `outer=T`.**
+      
+A legenda pode ser adicionada com argumento `legend()`.
+  
+`bty="n"`: não permite desenhar uma caixa em torno da legenda.    
+`\n` : Permite quebrar o texto como no título agora inserido com comando `title()`.    
+`cex.main=`: Tamanho da fonte  
+`font.main=` Tipo da fonte   
+    
+```{r plot.14, echo=T}
+par(mfrow=c(1,2),mar=c(2, 2, 2, 2),par(oma=c(1,1,1,1)))
+    
+plot(trees$Girth, trees$Height, xlab="Circunferência da árvore (polegadas)",
+     ylab="Altura da árvore (pés)",xlim=c(5,25),
+     ylim=c(60,90), las=1, pch=16, col="springgreen")
+    
+title("Medidas de altura, diâmentro e\n volume para 31 cerejeiras", cex.main=0.5,font.main=2)
+    
+par(new=TRUE)
+    
+plot(trees$Girth, trees$Volume, axes=FALSE, xlab="", ylab="",
+     pch=4, col="blue")
+    
+axis(side=4, las=1)
+    
+#mtext(side=4, line=2.5, "Volume da madeira (pés cúbicos)")
+text(25, 70, adj=0, srt=-90, " Volume da madeira (pés cúbicos)",
+     xpd=TRUE)
+    
+legend("topleft", c("Altura da árvore", "Volume da madeira"),
+       pch=c(16, 4),col=c("springgreen",  "blue"), bty="n")
+    
+#####################
+    
+plot(trees$Girth, trees$Height,xlab="Circunferência da árvore (polegadas)",
+     ylab="Altura da árvore (pés)",xlim=c(5,25),
+     ylim=c(60,90), las=1, pch=16, col="springgreen")
+    
+title("Medidas de altura, diâmentro e\n volume para 31 cerejeiras", cex.main=1,font.main=4)
+    
+par(new=TRUE)
+    
+plot(trees$Girth, trees$Volume, axes=FALSE, xlab="", ylab="",
+     pch=4, col="blue")
+    
+axis(side=4, las=1)
+    
+#mtext(side=4, line=2.5, "Volume da madeira (pés cúbicos)")
+text(25, 70, adj=0, srt=-90, " Volume da madeira (pés cúbicos)",
+     xpd=TRUE)
+    
+legend(12,20, c("Altura da árvore", "Volume da madeira"),
+       pch=c(16, 4), col=c("springgreen", "blue"), bty="n")
+```
+    
+Outra maneira de plotar vários gráficos é manipulando os `layouts`. 
+    
+```{r plot.15, echo =T}
+layout.matrix <- matrix(c(2,1, 0, 3), nrow = 2, ncol = 2)
+    
+layout(mat = layout.matrix,
+       heights = c(1, 2), # Altura das duas linhas
+       widths = c(2, 2)) # Largura das duas colunas
+    
+layout.show(3)
+```
+    
+```{r plot.16, echo =T}
+layout.matrix <- matrix(c(2,1, 0, 3), nrow = 2, ncol = 2)
+    
+layout(mat = layout.matrix,
+       heights = c(1, 2), # Altura das duas linhas
+       widths = c(2, 2)) # Largura das duas colunas
+    
+plot(trees$Girth, trees$Height, xlab="Circunferência da árvore (polegadas)",ylab="Altura da árvore (pés)",xlim=c(5,25),
+     ylim=c(60,90), las=1, pch=16, col="springgreen")
+
+title("Medidas de altura, diâmentro e\n volume para 31 cerejeiras", cex.main=1,font.main=2)
+
+par(new=TRUE)
+plot(trees$Girth, trees$Volume, axes=FALSE, xlab="", ylab="",
+     pch=4, col="blue")
+axis(side=4, las=1)
+#mtext(side=4, line=2.5, "Volume da madeira (pés cúbicos)")
+text(25, 70, adj=0, srt=-90, " Volume da madeira (pés cúbicos)",
+     xpd=TRUE)
+legend("topleft", c("Altura da árvore", "Volume da madeira"),
+       pch=c(16, 4),col=c("springgreen",  "blue"), bty="n")
+    
+par(mar = c(0, 4, 4, 0))
+boxplot(trees$Girth, xaxt = "n",yaxt = "n",
+        bty = "n",col = "white", frame = FALSE, horizontal = TRUE, main="Boxplot circunferência")
+    
+par(mar = c(5, 0, 4, 0))
+boxplot(trees$Height,xaxt = "n",yaxt = "n",
+        bty = "n",col = "white", frame = F,main="Boxplot Altura")
+```
+    
+Para salvar os gráficos ou figuras podemos fazê-lo manualmente no painel _Plots_ -> _export_ e escolher o formato de saída bem como as dimensões.
+    
+Podemos também exportar as figuras por linhas de comando.
+    
+```{r plot.17, echo=T}
+png(filename = "ENG792.Plot.png", width = 480, height = 480)
+layout.matrix <- matrix(c(2,1, 0, 3), nrow = 2, ncol = 2)
+    
+layout(mat = layout.matrix,
+       heights = c(1, 2), # Altura das duas linhas
+       widths = c(2, 2)) # Largura das duas colunas
+    
+plot(trees$Girth, trees$Height, xlab="Circunferência da árvore (polegadas)",ylab="Altura da árvore (pés)",xlim=c(5,25),
+     ylim=c(60,90), las=1, pch=16, col="springgreen")
+title("Medidas de altura, diâmentro e\n volume para 31 cerejeiras", cex.main=1,font.main=2)
+par(new=TRUE)
+plot(trees$Girth, trees$Volume, axes=FALSE, xlab="", ylab="",
+     pch=4, col="blue")
+axis(side=4, las=1)
+#mtext(side=4, line=2.5, "Volume da madeira (pés cúbicos)")
+text(25, 70, adj=0, srt=-90, " Volume da madeira (pés cúbicos)",
+     xpd=TRUE)
+legend("topleft", c("Altura da árvore", "Volume da madeira"),
+       pch=c(16,4),col=c("springgreen",  "blue"), bty="n")
+    
+par(mar = c(0, 4, 4, 0))
+boxplot(trees$Girth, xaxt = "n",yaxt = "n",
+        bty = "n",col = "white", frame = FALSE, 
+        horizontal = TRUE,main="Boxplot circunferência")
+    
+par(mar = c(5, 0, 4, 0))
+boxplot(trees$Height,xaxt = "n",yaxt = "n",
+        bty = "n",col = "white", frame = F,main="Boxplot Altura")
+dev.off()
+```
+    
+Para mais exemplos sobre as fontes acesse.   [aqui](https://stackoverflow.com/questions/7121807/how-to-change-the-font-of-the-main-title-in-plot)
+    
+Para saber mais dos parâmetros:
+      
+```{r plot.18, echo=T}
+names(par())
+```
+    
+## Cores no R
+    
+O R nativo possui uma grande variedade de cores que podem ser utilizadas e combinadas.
+    
+```{r color, echo=F}
+# No margin around chart
+par(mar=c(0,0,0,0))
+    
+# Empty chart
+plot(0, 0, type = "n", xlim = c(0, 1), ylim = c(0, 1), 
+     axes = FALSE, xlab = "",
+     ylab = "")
+    
+# Settings
+line <- 25
+col <- 5
+    
+# Add color background
+rect(rep((0:(col - 1)/col),line) ,
+     sort(rep((0:(line - 1)/line),col),decreasing=T),
+     rep((1:col/col),line) ,
+     sort(rep((1:line/line),col),decreasing=T),
+     border = "white" ,
+     col=colors()[seq(1,line*col)])
+    
+# Color names
+text(rep((0:(col - 1)/col),line)+0.1 ,
+     sort(rep((0:(line - 1)/line),col),decreasing=T)+0.015 ,
+     colors()[seq(1,line*col)],
+     cex=1)
+```
+    
+Podemos utilizar cores (*cm.colors*, *rainbow*, *heat.colors*, *terrain.colors* ou *topo.colors*) do `grDevices`.
+    
+```{r grDevices, echo=F}
+col1 <- cm.colors(10)
+col2 <- rainbow(10)
+col3 <- heat.colors(10)
+col4 <- terrain.colors(10)
+col5 <- topo.colors(10)
+par(mfrow=c(2,3))
+barplot(seq(1:10), col = col1, main="cm.colors")
+barplot(seq(1:10), col = col2, main="rainbow")
+barplot(seq(1:10), col = col3,main="heat.colors")
+barplot(seq(1:10), col = col4,main="terrain.colors")
+barplot(seq(1:10), col = col5,main="topo.colors")
+```
+    
+Podemos utilizar pacotes de cores também como `RColorBrewer`, `unikn`, `viridis`
+    
+### RColorBrewer
+    
+```{r brewer, echo=F}
+library(RColorBrewer)
+display.brewer.all()
+```
+    
+### unkin
+    
+```{r unkin, echo=F,message=FALSE}
+library('unikn')
+seecol("unikn_all")
+```
+    
+    
+### viridis
+    
+```{r viridis, echo=F,message=FALSE}
+library(viridis)
+n <- 20  # number of colors
+    
+# define 5 different color scales (n colors each):
+v1 <- viridis(n)
+v2 <- magma(n)
+v3 <- inferno(n)
+v4 <- plasma(n)
+v5 <- cividis(n)
+    
+# See and compare color scales:
+seecol(list(v1, v2, v3, v4, v5),
+       col_brd = "white", lwd_brd = 4,
+       title = "Various viridis color palettes (n = 20)",
+       pal_names = c("v1: viridis", "v2: magma", "v3: inferno", "v4: plasma","v5: cividis"))
+```
+    
+## Para mais informações utilize o Google ou os documentos abaixo
+    
+Uma grande fonte de inspiração para produção de gráficos é o [The R Graph Gallery](https://www.r-graph-gallery.com/)    
+    
+[Mastering r plot - part 1](https://datascienceplus.com/mastering-r-plot-part-1-colors-legends-and-lines/)    
+
+[Mastering r plot - part 2](https://datascienceplus.com/mastering-r-plot-part-2-axis/)    
+
+[Mastering r plot - part 3](https://datascienceplus.com/mastering-r-plot-part-3-outer-margins/)    
+
+[An Introduction to R Graphics parameters list](https://www.performancetrading.it/Documents/AiRIntroduction/AiR_Graphics.htm)    
+
+[The R Graphics Package](http://search.r-project.org/R/library/graphics/html/00Index.html)     
+
+[Graphical Parameters - cheat sheet](https://www.gastonsanchez.com/r-graphical-parameters-cheatsheet.pdf)   
+
+
+[R Graphics: Plot Parameters](http://applied-r.com/r-graphics-plot-parameters/)     
+
+[Graphical parameters - STHDA](http://www.sthda.com/english/wiki/graphical-parameters)      
+[Styling Base R Graphics](https://www.jumpingrivers.com/blog/styling-base-r-graphics/)    
+
+[R Base Graphics: An Idiot's Guide](https://rstudio-pubs-static.s3.amazonaws.com/7953_4e3efd5b9415444ca065b1167862c349.html)    
+
+[R Function of the Day - par(mar, mgp, las)](http://rfunction.com/archives/1302)    
+
+[Set or Query Graphical Parameters](https://stat.ethz.ch/R-manual/R-patched/library/graphics/html/par.html)    
+
+[Graphical Layouts](https://www.stat.auckland.ac.nz/~ihaka/787/lectures-layouts.pdf)    
+
+[An xpd-tion into R plot margins](https://www.r-bloggers.com/2014/11/an-xpd-tion-into-r-plot-margins/)   
+
+[Barplots with Pattern Fill](https://rpubs.com/Kolpashnikova/229027)   
+
+[AN INTRODUCTION TO PATTERNPLOT PACKAGE](https://cran.r-project.org/web/packages/patternplot/vignettes/patternplot-intro.html)   
+
+[Colors in R](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf)   
+
+[Top R Color Palettes to Know for Great Data Visualization](https://www.datanovia.com/en/blog/top-r-color-palettes-to-know-for-great-data-visualization/)   
+
+[R color cheatsheet](https://www.nceas.ucsb.edu/sites/default/files/2020-04/colorPaletteCheatsheet.pdf)   
+
+[Creating a composite gif with multiple gganimate panels](https://www.r-bloggers.com/2021/08/creating-a-composite-gif-with-multiple-gganimate-panels-2/?fbclid=IwAR09i4nbl2Cm1HkzKKU0Gc5rlxcuaDC2W2J2TnaefeAHL0I7xEnkRENhzP4)      
+
+Leia também @Murrel2011, @VenablesSmithRTeamCore2017, @Chang2020 e @Neth2021   
+
+## ggplot2
+
+Assista este conteúdo em **Cap 4 - ggplot2** no [PVANet](https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php)
+
+O pacote `ggplot2` é parte da coleção de pacotes chamado [tidyverse](https://www.tidyverse.org/) que se destina à ciência de dados. Todos estes pacotes possuem a mesma espinha dorsal, ideia e/ou filosofia desde sua concepção até sua utilização.
+
+![](D:/Desktop/Micro SD/Análise ambiental em R/tidyverse.JPG)
+
+Caso queira se aventurar no universo tidy (altamente recomendado) instale todos os pacotes de uma só ves pelo comando:
+
+`install.packages("tidyverse")`
+
+Vai demorar um pouco, pois são muitos arquivos enquanto isso você pode ir lendo o livro [R for Data Science](https://r4ds.had.co.nz/index.html).
+
+Como nosso assunto hoje é apenas o _ggplot2_ podemos instalar apenas ele.
+
+Você pode instalá-lo diretamente do **CRAN** `install.packages("ggplot2")` ou do **github** `install.packages("devtools")` em seguida `devtools::install_github("tidyverse/ggplot2")`.    
+Para instalar do **github** você vai precisar de um pacote como [devtools](https://www.r-project.org/nosvn/pandoc/devtools.html) que permite, entre outras coisas, abrir conexão com **github** através da *URL* do pacote para instalá-lo.  
+
+Uma vez instalado o pacote pode ser carregado por `library(tidyverse)`(carrega todos os pacotes da coleção) ou `library(ggplot2)` (carrega apenas o _ggplot2_)
+
+Veremos que, embora o potencial do comando nativo `plot()` seja enorme o comando `ggplot()` e seus argumentos deixam as coisas bem mais simples e objetivas.  
+
+Seguirei aquilo que foi apresentado no livro [R for Data Science](https://r4ds.had.co.nz/index.html) por @WickhamandGrolemund2019.
+
+O `ggplot2()`possui uma estrutura lógica de construção de grágicos que nos permite entender melhor ou de maneira mais fácil como os dados podem ser visualizados.  
+
+![Estrutura do ggplot](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_4_ggplot.png){#id .class width=100% height=100%} 
+
+Atenção quando forem trabalhar os dados (quantitativos, qualitativos, cronológicos ou geográficos), cada tipo de dados possui características que são melhores exploradas/visualizadas por tipos específicos de gráficos.
+
+![](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_4_ggplot_Bertins.jpg){#id .class width=60% height=60%} 
+
+
+![](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_4_ggplot_exemplo_argumentos.jpg)  
+
+Vamos utilizar os dados _mpg_ para iniciar nossas análises. Estes dados guardam informações coletadas pela Agência de Proteção Ambiental dos Estados Unidos sobre 38 modelos de carros.
+Carros com motores maiores consomem mais combustível?   
+
+```{r ggplot.1, echo=T}
+library(tidyverse)
+# ou
+library(ggplot2)
+
+str(mpg)
+
+ggplot(data=mpg)+
+  geom_point(mapping=aes(x=displ, y=hwy))
+```
+
+Veja que a estrutura do gráfico com `ggplot()` é a seguinte:
+
+`ggplot(data = <DATA>) +` 
+   `<GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))`
+
+`ggplot()` cria um sistema de coordenadas ao qual outras informações são adicionadas.
+O usuário diz a origem dos dados (`data=`), escolhe a `função geom_` (`geom_point` nesse caso) para definir o tipo de gráfico que quer (ponto, linhas, barras e etc) seguido de parênteses com os argumentos da estética do (`aes`) que estabelece o que vai em cada eixo.
+
+No gráfico acima, observamos alguns pontos à direta que estão fora da tendência linear e gostaríamos de saber quais pontos são esses. Para isso podemos adicionar uma terceira informação ao nosso gráfico relacionado às cores (`color` ou `colour` funcionam da mesma maneira) para o atributo _class_.
+
+Não se esqueça que o sinal **+** deve ficar no final da linha a qual quer continuar abaixo.
+
+```{r ggplot.2, echo=T}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy, color = class))
+
+```
+
+Desta forma, para associar uma variável ou atributo à um elemento gráfico adicione tudo dentro de `aes()` como no caso acima associamos _classe_ às _cores_ e um legenda foi automaticamente gerada.
+
+Percebemos que os pontos fora da tendência são pontos de carros de 2 lugares que não são necessariamente híbridos, mas esportivos.  
+Da mesma maneira que associamos às cores podemos associar ao tamanho utilizando `size=class`. Mas observe que temos um aviso sobre o inconveniente que é associar variável discreta à tamanho.
+
+```{r ggplot.3, echo=T, warnings=T}
+ggplot(data = mpg) +
+	geom_point(mapping = aes(x = displ, y = hwy, size = class))
+```
+
+Poderíamos ainda associar _class_ à transparência `alpha`, como já apresentado na **Semana 1 - Aula 1**, ou a formato. 
+
+```{r ggplot.4, echo=T}
+ggplot(data = mpg) +
+	geom_point(mapping = aes(x = displ, y = hwy, alpha = class))
+
+ggplot(data = mpg) +
+	geom_point(mapping = aes(x = displ, y = hwy, shape = class))
+```
+
+Pela análise do gráfico acima ficamos pensando o que acontece com as SUV's, notamos assim que temos apenas 6 tipos de _shapes_ para nossas variáveis e os demais grupos ficam de fora da classificação.
+
+Uma vez definido as características estéticas (`aes`) a seleção dos demais atributos como a paleta de cores será automaticamente definida pelo **ggplot2**.
+
+Se definirmos a cor como _blue_  por exemplo, não temos ganho de informação no nosso gráfico uma vez que ficou tudo azul.
+
+```{r ggplot.5, echo=T}
+ggplot(data = mpg) +
+	geom_point(mapping = aes(x = displ, y = hwy), color = "blue")
+```
+
+### Facetas (subgráficos) - facets
+
+Uma maneira de prozir múltiplos gráficos com _ggplot2_ é utilizar o comand `facet`
+
+Para gerar gráficos de facetas com uma única variável utilize `facet_wrap()` e adicione os argumento que achar necessários como número de linhas `ncol=2`.
+
+```{r ggplot.6, echo=T}
+ggplot(data = mpg) +
+	geom_point(mapping = aes(x = displ, y = hwy)) +
+	facet_wrap(~ class, nrow = 2)
+```
+ 
+Para combinar 2 variáveis utilize `facet_grid()`. Desta vez o argumento é uma fórmula `drv ~ cyl`
+
+```{r ggplot.7, echo=T}
+ggplot(data = mpg) +
+geom_point(mapping = aes(x = displ, y = hwy)) +
+	facet_grid(drv ~ cyl)
+```
+
+Se optar por gráficos não atrelados às dimensões de linhas ou colunas, use **ponto** (*.*) no lugar do nome de uma variável.
+
+```{r ggplot.8, echo=T}
+# Orientação por linha
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy)) +
+  facet_grid(drv ~ .)
+
+# Orientação por coluna
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy)) +
+  facet_grid(. ~ cyl)
+
+# Organizados em 2 linhas por class
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy)) + 
+  facet_wrap(~ class, nrow = 2)
+```
+
+### Objetos geométricos
+
+Observe os gráficos abaixo e vejam em que eles diferem. Obviamente um mostra pontos e o outro uma linha suavizada.  
+O comando comando responsável por esta diferença é o `geom_COMPLEMENTO`.
+
+
+```{r ggplot.9, echo=T}
+#install.packages("ggpubr")
+library(ggpubr)
+
+ggarrange(ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy)),
+
+ggplot(data = mpg) + 
+  geom_smooth(mapping = aes(x = displ, y = hwy)))
+```
+
+>>  _"Um `geom` é um objeto geométrico que um gráfico usa para representar dados. As pessoas descrevem o geom como o tipo de gráfico que ele usa. Por exemplo, gráfico de barras usam **geoms** de barras, gráficos de linha usam **geoms** de linha ... . Gráficos de dispersão quebram a tendência, eles utilizam **geom** de ponto. ..."_
+
+
+>> _"Cada função **geom** recebe um argumento **mapping**. Entretanto, nem toda estética funciona com todo **geom**. Você pode configurar a forma de um ponto, mas não pode configurar a "forma" de uma linha. Por outro lado, você pode configurar o tipo de linha._
+
+```{r ggplot.10, echo =T}
+mpg$drv
+ggplot(data = mpg) + 
+  geom_smooth(mapping = aes(x = displ, y = hwy, linetype = drv))
+# 4 = tração 4x4
+# f = tração dianteira
+# r = tração traseira
+```
+
+_ggplot2_ tem mais de 30 geoms [clique aqui](https://exts.ggplot2.tidyverse.org/gallery/) e confira.   
+_ggplot2_ vai automaticamente agrupar os dados para esses _geoms_ de qualquer mapeamento estético para variável discreta.
+
+
+Podemos utilizar o argumento `group` com uma variável para agrupar vários objetos.
+
+```{r ggplot.11, echo=T}
+ggarrange(ggplot(data = mpg) +
+  geom_smooth(mapping = aes(x = displ, y = hwy)),
+              
+ggplot(data = mpg) +
+  geom_smooth(mapping = aes(x = displ, y = hwy, group = drv)),
+    
+ggplot(data = mpg) +
+  geom_smooth(
+    mapping = aes(x = displ, y = hwy, color = drv),
+    show.legend = FALSE), ncol=3)
+```
+
+Para exibir mais de um _geom_ no mesmo gráfico você pode combiná-los.
+
+```{r ggplot.12, echo =T}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy)) +
+  geom_smooth(mapping = aes(x = displ, y = hwy))
+```
+
+Nesse caso há uma duplicação de informações e caso queira fazer alterações em uma variável e esquecesse a outra poderia ter problemas.
+Por isso podemos evitar repetições combinando os _geoms_. Veja que temos o mesmo gráfico sem tantos argumentos.
+
+```{r ggplot.13, echo=T}
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
+  geom_point() + 
+  geom_smooth()
+```
+
+O `ggplot2` tratará os mapeamentos locais para cada camada caso determine mapeamentos em função de `geom` possibilitando exibir estéticas diferentes.
+
+```{r ggplot.14, echo=T}
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
+  geom_point(mapping = aes(color = class)) + 
+  geom_smooth()
+```
+Podemos utilizar a mesma ideia para especificar um conjunto de dados diferentes para cada camada. No exemplo abaixo a linha exibe o comportamento de um outro banco de dados.
+
+```{r ggplot.15, echo=T}
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
+  geom_point(mapping = aes(color = class)) + 
+  geom_smooth(data = filter(mpg, class == "subcompact"), se = FALSE)
+``` 
+
+### Transformações estatísticas
+
+#### Gráfico de barras
+
+Número total de diamantes agrupados por _cut_. É aquele conjunto de dados de diamantes que trabalhamos nas aulas anteriores, mas agora com outras variáveis além de _price_, _carat_ e _clarity_. Agora temos também _color_ e _cut_.
+
+No eixo _x_ temos _cut_ e no _y_ temos _count_ mesmo não sendo uma variável de _diamonds_.
+
+Esta figura mostra como funciona a transformação para produção do gráfico de barras utilizando o algorítimo _stat_.  
+
+[](https://d33wubrfki0l68.cloudfront.net/70a3b18a1128c785d8676a48c005ee9b6a23cc00/7283c/images/visualization-stat-bar.png)
+
+```{r ggplot.16, echo=T}
+str(diamonds)
+ggplot(data = diamonds) + 
+  geom_bar(mapping = aes(x = cut))
+```
+
+Podemos analisar qual stat cada _geom_ utiliza entrando com os comando adequados (`geom_bar()` usa `stat_count()`) 
+
+```{r stat, echo=T}
+geom_bar()
+
+stat_count()
+```
+
+```{r ggplot.17, echo=T}
+ggplot(data = diamonds) + 
+  stat_count(mapping = aes(x = cut))
+```
+Podemos alterar o mapeamento padrão de variáveis transformadas para estética. Exibir um gráfico de barras de proporção, em vez de count. 
+
+```{r ggplot.18, echo=T}
+ggplot(data = diamonds) + 
+  geom_bar(
+    mapping = aes(x = cut, y = stat(prop), group = 1)
+    )
+```
+
+Um pouco mais de detalhe.
+
+```{r ggplot.19, echo=T}
+ggplot(data = diamonds) + 
+  stat_summary(
+    mapping = aes(x = cut, y = depth),
+    fun.min = min,
+    fun.max = max,
+    fun = median
+  )
+```
+
+`?stat_bin` para mais informações sobre os mais de 20 _stats_.
+
+#### Ajustes de Posição
+
+Você também pode colorir as barras do gráficos utilizando o argumento estético `color` ou `fill`.
+
+```{r ggplot.20, echo=T}
+ggarrange(ggplot(data = diamonds) + 
+  geom_bar(mapping = aes(x = cut, colour = cut)),
+
+ggplot(data = diamonds) + 
+  geom_bar(mapping = aes(x = cut, fill = cut)))
+```
+
+Se alternar e coloar `fill=clarity` as barras ficam empilhadas.
+
+```{r ggplot.21, echo=T}
+ggplot(data = diamonds) + 
+  geom_bar(mapping = aes(x = cut, fill = clarity))
+``` 
+
+O empilhamento acontece automaticamente pelo ajuste de posição. Se você não quiser o gráfico empilhado, pode usar ma outra opção como `identity`, `dodge` ou `fill`.
+
+```{r ggplot.22, echo=T}
+ggplot(data = diamonds) + 
+  geom_bar(mapping = aes(x = cut, fill = clarity), position = "dodge")
+
+ggplot(data = diamonds) + 
+  geom_bar(mapping = aes(x = cut, fill = clarity), position = "identity")
+
+ggplot(data = diamonds) + 
+  geom_bar(mapping = aes(x = cut, fill = clarity), position = "fill")
+
+```
+
+```{r ggplot.23, echo=T}
+ggarrange(ggplot(data = diamonds, mapping = aes(x = cut, fill = clarity)) + 
+  geom_bar(alpha = 1/5, position = "identity"),
+ggplot(data = diamonds, mapping = aes(x = cut, colour = clarity)) + 
+  geom_bar(fill = NA, position = "identity"), ncol=2)
+```
+
+Para gráficos de dispersão podemos utilizar `position=jitter` que adiciona um pouco de ruído no espalhamento dos pontos.
+
+```{r ggplot.24, echo=T }
+
+ggarrange(ggplot(data=mpg)+
+  geom_point(mapping=aes(x=displ, y=hwy)),
+
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy), position = "jitter"))
+```
+
+Para saber mais sobre ajuste de posição `?position_dodge`,`?position_fill`,`?position_identity`,`?position_jitter`,`?position_stack`. 
+
+### Sistema de coordenadas
+
+O sistema de coordenadas padrão do `ggplot2` é cartesiano (*x* e *y* agem independentemente para encontrar a localização de cada ponto).
+
+`cord_flip` alterna os eixos *x* e *y*.
+
+```{r ggplot.25, echo=T}
+ggarrange(ggplot(data = mpg, mapping = aes(x = class, y = hwy)) + 
+  geom_boxplot(),
+ggplot(data = mpg, mapping = aes(x = class, y = hwy)) + 
+  geom_boxplot() +
+  coord_flip())
+```
+
+`coord_quickmap()` ajusta a tela para mapas.
+
+```{r ggplot.26, echo=T}
+nz <- map_data("nz")
+
+ggplot(nz, aes(long, lat, group = group)) +
+  geom_polygon(fill = "white", colour = "black")
+
+ggplot(nz, aes(long, lat, group = group)) +
+  geom_polygon(fill = "white", colour = "black") +
+  coord_quickmap()
+```
+
+Experimente alternar os temas.
+
+![](https://d33wubrfki0l68.cloudfront.net/6be25cfb939e69d72df9fbc68e7a0334e1febefe/10e92/images/visualization-themes.png)
+
+```{r ggplot.27, echo=T}
+
+gg<-ggplot(nz, aes(long, lat, group = group)) +
+  geom_polygon(fill = "white", colour = "black")+
+  coord_quickmap()
+
+gg + theme_light()
+gg + theme_minimal()
+gg + theme_classic()
+
+```
+
+`coord_polar()` usa coordendas polares.
+
+```{r ggplot.28, echo=T}
+bar <- ggplot(data = diamonds) + 
+  geom_bar(
+    mapping = aes(x = cut, fill = cut), 
+    show.legend = FALSE,
+    width = 1
+  ) + 
+  theme(aspect.ratio = 1) +
+  labs(x = NULL, y = NULL)
+
+ggarrange(bar + coord_flip(),
+          bar + coord_polar())
+```
+
+### Rótulos 
+
+#### Título, subtítulo e *caption* (canto inferior direito).
+
+
+```{r ggplot.29, echo=T}
+ggplot(mpg, aes(displ, hwy)) +
+  geom_point(aes(color = class)) +
+  geom_smooth(se = FALSE) +
+  labs(title = "Fuel efficiency generally decreases with engine size")
+```
+
+```{r ggplot.30, echo=T}
+ggplot(mpg, aes(displ, hwy)) +
+  geom_point(aes(color = class)) +
+  geom_smooth(se = FALSE) +
+  labs(
+    title = "Fuel efficiency generally decreases with engine size",
+    subtitle = "Two seaters (sports cars) are an exception because of their light weight",
+    caption = "Data from fueleconomy.gov"
+  )
+```
+
+Podemos tambpem usar `labs()` para renomear os eixos.
+
+```{r ggplot.31, echo=T}
+ggplot(mpg, aes(displ, hwy)) +
+  geom_point(aes(colour = class)) +
+  geom_smooth(se = FALSE) +
+  labs(
+    x = "Engine displacement (L)",
+    y = "Highway fuel economy (mpg)",
+    colour = "Car type"
+  )
+```
+
+#### Anotações
+
+Podemos rotular as observações do gráfico com `geom_text()`. 
+
+```{r ggplot.32, echo=T}
+
+best_in_class <- mpg %>%
+  group_by(class) %>%
+  filter(row_number(desc(hwy)) == 1)
+
+ggplot(mpg, aes(displ, hwy)) +
+  geom_point(aes(colour = class)) +
+  geom_text(aes(label = model), data = best_in_class)
+```
+
+**Melhorando a visualização 1.**
+
+```{r ggplot.33, echo=T}
+ggplot(mpg, aes(displ, hwy)) +
+  geom_point(aes(colour = class)) +
+  geom_label(aes(label = model), data = best_in_class, nudge_y = 2, alpha = 0.5)
+```
+
+**Melhorando a visualização 2.**
+
+```{r ggplot.34, echo=T}
+ggplot(mpg, aes(displ, hwy)) +
+  geom_point(aes(colour = class)) +
+  geom_point(size = 3, shape = 1, data = best_in_class) +
+  ggrepel::geom_label_repel(aes(label = model), data = best_in_class)
+```
+
+Alterando os rótulos das legendas (`legend.position=none`). 
+Rótulos diretamente no gráfico.
+
+```{r ggplot.35, echo=T}
+class_avg <- mpg %>%
+  group_by(class) %>%
+  summarise(
+    displ = median(displ),
+    hwy = median(hwy)
+  )
+
+ggplot(mpg, aes(displ, hwy, colour = class)) +
+  ggrepel::geom_label_repel(aes(label = class),
+    data = class_avg,
+    size = 6,
+    label.size = 0,
+    segment.color = NA
+  ) +
+  geom_point() +
+  theme(legend.position = "none")
+```
+
+Adicionando um único rótulos aos gráficos (`geom_text()`).  
+Note o ajuste de `hjust` e `vjust`.
+
+![](https://d33wubrfki0l68.cloudfront.net/9f9f1806b5c583874a725bdff526e990bd4fcba6/b955a/communicate-plots_files/figure-html/just-1.png)
+
+```{r ggplot.36, echo=T}
+label <- mpg %>%
+  summarise(
+    displ = max(displ),
+    hwy = max(hwy),
+    label = "Increasing engine size is \nrelated to decreasing fuel economy."
+  )
+
+ggplot(mpg, aes(displ, hwy)) +
+  geom_point() +
+  geom_text(aes(label = label), data = label, vjust = "top", hjust = "right")
+
+# Texto exatamente nas bordas use -inf e +Inf
+
+label <- tibble(
+  displ = Inf,
+  hwy = Inf,
+  label = "Increasing engine size is \nrelated to decreasing fuel economy."
+)
+
+ggplot(mpg, aes(displ, hwy)) +
+  geom_point() +
+  geom_text(aes(label = label), data = label, vjust = "top", hjust = "right")
+```
+
+### Eixos
+
+Podemos alterar os eixos e os intervalos dos eixos (*x* e *y*).  
+No exemplo abaixo vamos utilizar `scale_y_continuous` para habilitar a edição do eixo y e determinar seus limites (`limits=`) e intervalos (`breaks`). 
+
+```{r ggplot.37, echo=T}
+p<-ggplot(mpg, aes(displ, hwy)) +
+  geom_point() +
+  scale_y_continuous(breaks = seq(5,45,5), limits = c(5,45))
+p
+```
+
+Para adicionar um eixo _y_ secundário precisamos utilizar o argumento `sec.axis` dentro de `scale_y_continuous`.
+
+```{r ggplot.38, echo=T}
+p <- ggplot(mpg, aes(x = displ))+
+  geom_point(aes(y = hwy, colour = "hwy"))+
+  geom_line(aes(y = cty, colour = "cty"))+
+  scale_y_continuous(sec.axis = sec_axis(~ . , name = "cty", seq(1,1000,10)))+
+  scale_colour_manual(values = c("green", "red"))+
+  labs(y = "hwy",x = "displ",colour = "Legenda")+
+  theme(legend.position = c(0.8, 0.9))
+p
+```
+
+### Escalas
+
+Uma outra forma de melhorar o aspecto de nosso gráfico é alterando as escalas que são automaticamente geradas. `breaks()` e `label.breaks()` controlam a posição das marcas ou os valores associados.
+
+```{r ggplot.39, echo=T}
+ggarrange(ggplot(mpg, aes(displ, hwy)) +
+            geom_point(aes(colour = class)),
+          
+          ggplot(mpg, aes(displ, hwy)) +
+            geom_point(aes(colour = class)) +
+            scale_x_continuous() +
+            scale_y_continuous() +
+            scale_colour_discrete(),
+          
+          ggplot(mpg, aes(displ, hwy)) +
+            geom_point() +
+            scale_y_continuous(breaks = seq(15, 40, by = 5)), ncol=2)
+```
+
+Pode determinar `labels=NULL` para omitir os rótulos.
+
+```{r ggplot.40, echo=T}
+ggplot(mpg, aes(displ, hwy)) +
+  geom_point() +
+  scale_x_continuous(labels = NULL) +
+  scale_y_continuous(labels = NULL)
+```
+
+`breaks()` também pode destacar exatamente onde as observações ocorreram. 
+
+```{r ggplot.41, echo=T}
+# Quando cada presidente americano começou e terminou seu mandato
+
+presidential %>%
+  mutate(id = 33 + row_number()) %>%
+  ggplot(aes(start, id)) +
+    geom_point() +
+    geom_segment(aes(xend = end, yend = id)) +
+    scale_x_date(NULL, breaks = presidential$start, date_labels = "'%y")
+```
+
+### layout da legenda
+
+Para controlar a posição da legenda precismos da função `theme()` que controla as partes sem dados do gráfico. `legend.position()`controla onde a legenda será desenhada.
+
+```{r ggplot.42, echo=T}
+base <- ggplot(mpg, aes(displ, hwy)) +
+  geom_point(aes(colour = class))
+
+ggarrange(base + theme(legend.position = "left"),
+base + theme(legend.position = "top"),
+base + theme(legend.position = "bottom"),
+base + theme(legend.position = "right"),ncol=2, nrow=2) # the default
+
+```
+
+Para controlar a exibição das legendas  use `guides()` junto de `gui_legend()` ou `guide_colorbar()`.  
+O exemplo abaixo temos `nrow=1` controla número de linhas da legenda.
+
+```{r ggplot.43, echo=T}
+ggplot(mpg, aes(displ, hwy)) +
+  geom_point(aes(colour = class)) +
+  geom_smooth(se = FALSE) +
+  theme(legend.position = "bottom") +
+  guides(colour = guide_legend(nrow = 1, override.aes = list(size = 4)))
+#> `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+```
+
+#### Substituindo uma escala.
+
+Se vezes não queremos ajustar uma escala, mas queremos substituí-la.
+
+Temos abaixo a relação de _carat_ e _price_ em escala logarítimica facilitando a visualização. 
+
+```{r ggplot.44, echo=T}
+ggarrange(ggplot(diamonds, aes(carat, price)) +
+  geom_bin2d(),
+
+ggplot(diamonds, aes(log10(carat), log10(price))) +
+  geom_bin2d(),ncol=2)
+```
+
+A desvantagem é que os eixos estão rotulados com os valores transformados. Assim, em vez de fazer trasnformação no mapeamentos podemos fazê-la na escala.
+
+```{r ggplot.45, echo=T}
+ggplot(diamonds, aes(carat, price)) +
+  geom_bin2d() + 
+  scale_x_log10() + 
+  scale_y_log10()
+```
+
+Outra escala frequentemente customizada é a cor.
+
+```{r ggplot.46, echo=T}
+ggarrange(ggplot(mpg, aes(displ, hwy)) +
+  geom_point(aes(color = drv)),
+
+ggplot(mpg, aes(displ, hwy)) +
+  geom_point(aes(color = drv)) +
+  scale_colour_brewer(palette = "Set1"), ncol=2)
+```
+
+```{r ggplot.47, echo=T}
+ggplot(mpg, aes(displ, hwy)) +
+  geom_point(aes(color = drv, shape = drv)) +
+  scale_colour_brewer(palette = "Set1")
+
+presidential %>%
+  mutate(id = 33 + row_number()) %>%
+  ggplot(aes(start, id, colour = party)) +
+    geom_point() +
+    geom_segment(aes(xend = end, yend = id)) +
+    scale_colour_manual(values = c(Republican = "red", Democratic = "blue"))
+```
+
+### Dando zoom
+
+Há 3 formas de controlar os limites do gráfico.
+
+1 - ajustando os dados do gráfico.  
+2 - Configurando limites em cada escala.  
+3 - Configurando `xlim` e `ylim`em `coord_cartesian()`).  
+
+```{r ggplot.48, echo=T}
+ggplot(mpg, mapping = aes(displ, hwy)) +
+  geom_point(aes(color = class)) +
+  geom_smooth() +
+  coord_cartesian(xlim = c(5, 7), ylim = c(10, 30))
+
+mpg %>%
+  filter(displ >= 5, displ <= 7, hwy >= 10, hwy <= 30) %>%
+  ggplot(aes(displ, hwy)) +
+  geom_point(aes(color = class)) +
+  geom_smooth()
+```
+
+Extraindo classes de carro e fazendo gráficos delas separadamente deixa difícil a comparação uma vez que cada um tem sua escala.
+
+```{r ggplot.49, echo=T}
+suv <- mpg %>% filter(class == "suv")
+compact <- mpg %>% filter(class == "compact")
+
+ggarrange(ggplot(suv, aes(displ, hwy, colour = drv)) +
+  geom_point(),
+
+ggplot(compact, aes(displ, hwy, colour = drv)) +
+  geom_point(), ncol=2)
+```
+
+Podemos superar isso formatando as escalas com os limites de todos os gráficos.
+
+```{r ggplot.50, echo=T}
+x_scale <- scale_x_continuous(limits = range(mpg$displ))
+y_scale <- scale_y_continuous(limits = range(mpg$hwy))
+col_scale <- scale_colour_discrete(limits = unique(mpg$drv))
+
+ggplot(suv, aes(displ, hwy, colour = drv)) +
+  geom_point() +
+  x_scale +
+  y_scale +
+  col_scale
+
+ggplot(compact, aes(displ, hwy, colour = drv)) +
+  geom_point() +
+  x_scale +
+  y_scale +
+  col_scale
+```
+
+## Para mais informações utilize o Google ou os documentos abaixo
+
+[Articles - ggpubr: Publication Ready Plots](http://www.sthda.com/english/articles/24-ggpubr-publication-ready-plots/81-ggplot2-easy-way-to-mix-multiple-graphs-on-the-same-page/#:~:text=To%20arrange%20multiple%20ggplot2%20graphs,multiple%20ggplots%20on%20one%20page)   
+
+[ggplot2 Quick Reference: geom](http://sape.inf.usi.ch/quick-reference/ggplot2/geom)   
+
+[gganimate](https://gganimate.com/)    
+
+[r-grph-gallery-ggplot2](https://www.r-graph-gallery.com/ggplot2-package.html)
+   
+[GRÁFICOS COM GGPLOT2](https://www.curso-r.com/material/ggplot/)   
+
+[O Que é ggplot2?](https://rpubs.com/mnunes/ggplot2)    
+
+[ggplot2](https://ggplot2.tidyverse.org/)   
+
+[esquisse](https://cran.r-project.org/web/packages/esquisse/readme/README.html)    
+
+[R is Getting an Official Pipe Operator](https://www.r-bloggers.com/2020/12/r-is-getting-an-official-pipe-operator/)    
+
+[My aversion to pipes](https://fromthebottomoftheheap.net/2015/06/03/my-aversion-to-pipes/)    
+
+[Draw Composition of Plots Using the patchwork Package in R (3 Examples)](https://statisticsglobe.com/plot-composition-using-patchwork-package-in-r?fbclid=IwAR1hUYkI50nKPfXLsFxDTeZIzLz5bGkTRdarvRrB2uOdAQDjHgkuzNaw16M)   
+
+@kassambara2019ggplot2  
