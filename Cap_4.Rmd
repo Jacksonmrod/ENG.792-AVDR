@@ -1,6 +1,6 @@
 # Produção gráfica e comunicação visual
 
-Assista este conteúdo em **Cap 4 - Produção gráfica e comunicação visual** no [PVANet](https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php)
+Assista este conteúdo em **Cap 4 - Produção gráfica e comunicação visual - Parte 1** no [PVANet](https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php)
 
 R é capaz de produzir uma grande variedade de gráficos em alta qualidade para publicação e impressão.
 Tipos básicos de gráficos ( _barplot_, _boxplot_, _scatterplot_, _maps_ e etc).
@@ -46,7 +46,7 @@ A hipótese é que quanto mais eficiente o inseticida ( _spray_ ) menos insetos 
 No `boxplot` cada caixa mostra os dados observados de cada tipos de _spray_ (A até F) e vemos que os inseticidas C, D e E são os mais eficientes.  
   
 Temos a mediana representada pela linha preta, os limites inferior e superior que representam o primeiro e o terceiro quartil (50% dos dados). As linhas superiores e inferiores correspondem a 2 desvios-padrão e os pontos fora das caixas são os outliers.  
-Para mais detalhes sobre interpretação do `boxplot` procure um livro de estatística ou acesse a internet como em  ![**Boxplot**](https://operdata.com.br/blog/como-interpretar-um-boxplot).
+Para mais detalhes sobre interpretação do `boxplot` procure um livro de estatística ou acesse a internet como em  ![**Boxplot**](https://operdata.com.br/blog/como-interpretar-um-boxplot) .
   
 ```{r boxplot, echo=T}
 data(InsectSprays)
