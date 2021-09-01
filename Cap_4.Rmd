@@ -46,7 +46,7 @@ A hipótese é que quanto mais eficiente o inseticida ( _spray_ ) menos insetos 
 No `boxplot` cada caixa mostra os dados observados de cada tipos de _spray_ (A até F) e vemos que os inseticidas C, D e E são os mais eficientes.  
   
 Temos a mediana representada pela linha preta, os limites inferior e superior que representam o primeiro e o terceiro quartil (50% dos dados). As linhas superiores e inferiores correspondem a 2 desvios-padrão e os pontos fora das caixas são os outliers.  
-Para mais detalhes sobre interpretação do `boxplot` procure um livro de estatística ou acesse a internet como em  ![**Boxplot**](https://operdata.com.br/blog/como-interpretar-um-boxplot) .
+Para mais detalhes sobre interpretação do `boxplot` procure um livro de estatística ou acesse a internet como em  [**Boxplot**](https://operdata.com.br/blog/como-interpretar-um-boxplot/) .
   
 ```{r boxplot, echo=T}
 data(InsectSprays)
@@ -141,7 +141,7 @@ O tipo de _plot_ a ser gerado depende da classe (`class(x)`) do primeiro argumen
   
 * Se _x_ é um _factor_, `plot(x)` produzirá um _bar plot_ de _x_.
 
-* Se _x_ é um _factor_ e _y_ um vetor numérico `plot(x,y)` produzirá um _bosplot_ de _y_ para cada nível de _x_.
+* Se _x_ é um _factor_ e _y_ um vetor numérico `plot(x,y)` produzirá um _boxplot_ de _y_ para cada nível de _x_.
   
 * Se _x_ é um _data.frame_, _y_ é qualquer objeto e _expr_ é uma lista de nomes de objetos separados por "+" (por exemplo, a + b + c). 
   

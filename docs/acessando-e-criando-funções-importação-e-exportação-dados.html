@@ -294,30 +294,30 @@ No entanto, uma dúvida que por ventura você tenha e não consiga sanar dentro 
 Até aqui vimos algumas funções como: <code>c(), seq(), rep(), print(), is.numeric(), is.integer(), is.double(), is.character(), typeof(), which(), grep() e etc</code></p>
 <p>Para entender melhor como uma <em>função</em> funciona ou o que ela faz e permite fazer podemos pedir ajuda escrevendo <code>?nomedafunção</code>.
 Por exemplo:</p>
-<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb397-1" aria-hidden="true" tabindex="-1"></a>?rnorm <span class="co">#Gera um vetor de números aleatórios normalmente ditribuídos</span></span></code></pre></div>
+<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb386-1" aria-hidden="true" tabindex="-1"></a>?rnorm <span class="co">#Gera um vetor de números aleatórios normalmente ditribuídos</span></span></code></pre></div>
 <p>No display de ajuda da função <code>rnorm()</code>observamos como a função deve ser utilizada, quais parâmetros devem ser inseridos.<br />
 <code>rnorm(n, mean = 0, sd = 1)</code></p>
-<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb398-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">5</span> ,<span class="dv">10</span> , <span class="dv">8</span>) <span class="co">#Vejam que não estão próximas de zero, mas de dez. </span></span></code></pre></div>
-<pre><code>## [1] 18.999447  9.640531  9.870478 17.550690 16.569770</code></pre>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb387-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">5</span> ,<span class="dv">10</span> , <span class="dv">8</span>) <span class="co">#Vejam que não estão próximas de zero, mas de dez. </span></span></code></pre></div>
+<pre><code>## [1]  9.073397  3.480250 11.938108 -1.400787 12.927529</code></pre>
 <p>Podemos dar nomes aos parâmetros também, caso não sejam nomeados, os parâmetros seguirão a ordem estabelecida na função original inciada em <em>n</em> seguida de <em>mean</em> e <em>sd</em>.</p>
-<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb400-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
-<span id="cb400-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb400-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n=</span><span class="dv">5</span> ,<span class="at">mean=</span><span class="dv">10</span> , <span class="at">sd=</span><span class="dv">8</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb389-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb389-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb389-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n=</span><span class="dv">5</span> ,<span class="at">mean=</span><span class="dv">10</span> , <span class="at">sd=</span><span class="dv">8</span>) </span></code></pre></div>
 <pre><code>## [1]  0.343474 12.219434 18.675529 -8.765582 13.432998</code></pre>
-<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb402-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
-<span id="cb402-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb402-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">mean=</span><span class="dv">10</span>,<span class="at">n=</span><span class="dv">5</span>, <span class="at">sd=</span><span class="dv">8</span>) <span class="co"># Uma vez nomeados, eles podem ser arranjados da maneira que desejar. </span></span></code></pre></div>
+<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb391-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb391-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb391-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">mean=</span><span class="dv">10</span>,<span class="at">n=</span><span class="dv">5</span>, <span class="at">sd=</span><span class="dv">8</span>) <span class="co"># Uma vez nomeados, eles podem ser arranjados da maneira que desejar. </span></span></code></pre></div>
 <pre><code>## [1]  0.343474 12.219434 18.675529 -8.765582 13.432998</code></pre>
 <p>Quando você executou <code>?rnorm</code>, você deve ter percebido que existem outro comandos semelhantes:</p>
 <p><code>dnorm(x, mean = 0, sd = 1, log = FALSE)</code><br />
 <code>pnorm(q, mean = 0, sd = 1, lower.tail = TRUE, log.p = FALSE)</code>
 <code>qnorm(p, mean = 0, sd = 1, lower.tail = TRUE, log.p = FALSE)</code></p>
 <p><code>dnorm</code> retorna o valor da função de densidade de probabilidade para os parâmetros. fornececidos.</p>
-<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb404-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dnorm</span>(<span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">8</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb393-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dnorm</span>(<span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">8</span>)</span></code></pre></div>
 <pre><code>## [1] 0.04102012</code></pre>
 <p><code>pnorm</code> retorna a integral de <em>-Inf</em> até <em>q</em> de um <em>pdf</em> ( <em>Probability density function</em>) da distribuição normal onde <em>q</em> é o <em>z-score</em>.</p>
-<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb406-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">8</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb395-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">8</span>)</span></code></pre></div>
 <pre><code>## [1] 0.2659855</code></pre>
 <p><code>qnorm</code> é simplesmente o inverso do <em>cdf</em> ( <em>cumulative distribution function</em>), no qual você pode entender com o inverso de <code>pnorm</code>.</p>
-<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb408-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(.<span class="dv">2</span>) <span class="co"># Responde como o z-score do vigèsimo elemento de uma distribuiçãop normal.</span></span></code></pre></div>
+<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb397-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(.<span class="dv">2</span>) <span class="co"># Responde como o z-score do vigèsimo elemento de uma distribuiçãop normal.</span></span></code></pre></div>
 <pre><code>## [1] -0.8416212</code></pre>
 <p>Para mais detalhes sobre estas funções <a href="http://seankross.com/notes/dpqr/">clique aqui</a>.</p>
 <p>As funções acima e tantas outras estão disponíveis no <strong>R</strong> desde sua instalação, assim como as funções básicas abaixo.</p>
@@ -458,46 +458,40 @@ Podemos imaginar a função dividida em 3 partes (entrada, processamento e saíd
 <li><p>Após fechar os parênteses abre-se chaves <em>{}</em> onde entram as equações ou testes a serem executados e as opções de saídas com o comando <strong>return</strong> quer geralmente encontra-se ao final da função. Não há restrição sobre a estrutura ou tipo de objeto retornado (<code>list, data.frame, matrix, numeric, logical</code> … etc).</p></li>
 <li><p>Após o registro da função no ambiente do R (Veja o <em>global environment</em>), a função fica pronta para uso.</p></li>
 </ul>
-<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb422-1" aria-hidden="true" tabindex="-1"></a>minhafunção <span class="ot">&lt;-</span> <span class="cf">function</span>(arg1, arg2, ... ){</span>
-<span id="cb422-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb422-2" aria-hidden="true" tabindex="-1"></a>    statements</span>
-<span id="cb422-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb422-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(object)</span>
-<span id="cb422-4"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb422-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb411-1" aria-hidden="true" tabindex="-1"></a>minhafunção <span class="ot">&lt;-</span> <span class="cf">function</span>(arg1, arg2, ... ){</span>
+<span id="cb411-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb411-2" aria-hidden="true" tabindex="-1"></a>    statements</span>
+<span id="cb411-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb411-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(object)</span>
+<span id="cb411-4"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb411-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Vamos criar uma função de divisão.</p>
-<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb423-1" aria-hidden="true" tabindex="-1"></a>divisao <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) { </span>
-<span id="cb423-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb423-2" aria-hidden="true" tabindex="-1"></a>    resultado <span class="ot">&lt;-</span> x<span class="sc">/</span>y </span>
-<span id="cb423-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb423-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(resultado) </span>
-<span id="cb423-4"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb423-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb412-1" aria-hidden="true" tabindex="-1"></a>divisao <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) { </span>
+<span id="cb412-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb412-2" aria-hidden="true" tabindex="-1"></a>    resultado <span class="ot">&lt;-</span> x<span class="sc">/</span>y </span>
+<span id="cb412-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb412-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(resultado) </span>
+<span id="cb412-4"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb412-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <ol style="list-style-type: decimal">
 <li>A função se chama <code>divisao</code>.</li>
 <li>Declare as variáveis <strong>x, y</strong> entre <strong>()</strong>;</li>
 <li><strong>{}</strong> guardam os comandos a serem executados;</li>
 <li><code>resultado &lt;- x/y</code> e <code>print(resultado)</code> são os comandos a serem executados.</li>
 </ol>
-<pre><code>## Warning: package &#39;flow&#39; was built under R version 4.1.1</code></pre>
-<pre><code>## 
-## Attaching package: &#39;flow&#39;</code></pre>
-<pre><code>## The following object is masked _by_ &#39;.GlobalEnv&#39;:
-## 
-##     d</code></pre>
-<div id="htmlwidget-8f836166d559454ecd73" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
-<script type="application/json" data-for="htmlwidget-8f836166d559454ecd73">{"x":{"code":"#.if: visual=rhomb fill=#e2efda align=center\n#.for: visual=rhomb fill=#ddebf7 align=center\n#.repeat: visual=rhomb fill=#fce4d6 align=center\n#.while: visual=rhomb fill=#fff2cc align=center\n#.standard: visual=class fill=#ededed align=left\n#.commented: visual=class fill=#ededed\n#.header: visual=roundrect fill=#d9e1f2 align=left\n#.return: visual=end fill=#70ad47  empty\n#.stop: visual=end fill=#ed7d31  empty\n#.break: visual=receiver fill=#ffc000 empty\n#.next: visual=transceiver fill=#5b9bd5  empty\n#arrowSize: 1\n#bendSize: 0.3\n#direction: down\n#gutter: 5\n#edgeMargin: 0\n#edges: hard\n#fill: #eee8d5\n#fillArrows: false\n#font: Courier\n#fontSize: 12\n#leading: 1.25\n#lineWidth: 3\n#padding: 16\n#spacing: 40\n#stroke: #33322E\n#title: filename\n#zoom: 1\n#acyclicer: greedy\n#ranker: network-simplex\n\n[<header>divisao(x, y)]  -> [<standard> 1: ;resultado <- x / y\nprint(resultado)]\n[<standard> 1: ;resultado <- x / y\nprint(resultado)]  -> [<return> 2:]","svg":true},"evals":[],"jsHooks":[]}</script>
-<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb427-1" aria-hidden="true" tabindex="-1"></a><span class="fu">divisao</span>(<span class="dv">50</span>,<span class="dv">25</span>)</span></code></pre></div>
+<div id="htmlwidget-c2e3fede5c798441fdae" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c2e3fede5c798441fdae">{"x":{"code":"#.if: visual=rhomb fill=#e2efda align=center\n#.for: visual=rhomb fill=#ddebf7 align=center\n#.repeat: visual=rhomb fill=#fce4d6 align=center\n#.while: visual=rhomb fill=#fff2cc align=center\n#.standard: visual=class fill=#ededed align=left\n#.commented: visual=class fill=#ededed\n#.header: visual=roundrect fill=#d9e1f2 align=left\n#.return: visual=end fill=#70ad47  empty\n#.stop: visual=end fill=#ed7d31  empty\n#.break: visual=receiver fill=#ffc000 empty\n#.next: visual=transceiver fill=#5b9bd5  empty\n#arrowSize: 1\n#bendSize: 0.3\n#direction: down\n#gutter: 5\n#edgeMargin: 0\n#edges: hard\n#fill: #eee8d5\n#fillArrows: false\n#font: Courier\n#fontSize: 12\n#leading: 1.25\n#lineWidth: 3\n#padding: 16\n#spacing: 40\n#stroke: #33322E\n#title: filename\n#zoom: 1\n#acyclicer: greedy\n#ranker: network-simplex\n\n[<header>divisao(x, y)]  -> [<standard> 1: ;resultado <- x / y\nprint(resultado)]\n[<standard> 1: ;resultado <- x / y\nprint(resultado)]  -> [<return> 2:]","svg":true},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb413-1" aria-hidden="true" tabindex="-1"></a><span class="fu">divisao</span>(<span class="dv">50</span>,<span class="dv">25</span>)</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb429-1" aria-hidden="true" tabindex="-1"></a><span class="fu">divisao</span>(<span class="dv">22</span>,<span class="fl">4.4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb415-1" aria-hidden="true" tabindex="-1"></a><span class="fu">divisao</span>(<span class="dv">22</span>,<span class="fl">4.4</span>)</span></code></pre></div>
 <pre><code>## [1] 5</code></pre>
-<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb431-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb431-1" aria-hidden="true" tabindex="-1"></a>g<span class="ot">&lt;-</span><span class="dv">5</span></span>
-<span id="cb431-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb431-2" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="dv">10</span></span>
-<span id="cb431-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb431-3" aria-hidden="true" tabindex="-1"></a>a<span class="ot">&lt;-</span>x</span>
-<span id="cb431-4"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb431-4" aria-hidden="true" tabindex="-1"></a><span class="fu">divisao</span>(g,a)</span></code></pre></div>
+<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb417-1" aria-hidden="true" tabindex="-1"></a>g<span class="ot">&lt;-</span><span class="dv">5</span></span>
+<span id="cb417-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb417-2" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="dv">10</span></span>
+<span id="cb417-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb417-3" aria-hidden="true" tabindex="-1"></a>a<span class="ot">&lt;-</span>x</span>
+<span id="cb417-4"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb417-4" aria-hidden="true" tabindex="-1"></a><span class="fu">divisao</span>(g,a)</span></code></pre></div>
 <pre><code>## [1] 0.5</code></pre>
-<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb433-1" aria-hidden="true" tabindex="-1"></a><span class="fu">divisao</span>(a<span class="sc">+</span>g,g)</span></code></pre></div>
+<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb419-1" aria-hidden="true" tabindex="-1"></a><span class="fu">divisao</span>(a<span class="sc">+</span>g,g)</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 <p>Experimentem e vejam o que acontece.</p>
-<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb435-1" aria-hidden="true" tabindex="-1"></a><span class="fu">divisao</span>(<span class="dv">50</span>,)</span></code></pre></div>
+<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb421-1" aria-hidden="true" tabindex="-1"></a><span class="fu">divisao</span>(<span class="dv">50</span>,)</span></code></pre></div>
 <pre><code>## Error in divisao(50, ): argument &quot;y&quot; is missing, with no default</code></pre>
-<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb437-1" aria-hidden="true" tabindex="-1"></a><span class="fu">divisao</span>(<span class="dv">50</span>,<span class="dv">25</span>,<span class="dv">32</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb423-1" aria-hidden="true" tabindex="-1"></a><span class="fu">divisao</span>(<span class="dv">50</span>,<span class="dv">25</span>,<span class="dv">32</span>)</span></code></pre></div>
 <pre><code>## Error in divisao(50, 25, 32): unused argument (32)</code></pre>
-<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb439-1" aria-hidden="true" tabindex="-1"></a><span class="fu">divisao</span>(a,m)</span></code></pre></div>
+<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb425-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb425-1" aria-hidden="true" tabindex="-1"></a><span class="fu">divisao</span>(a,m)</span></code></pre></div>
 <pre><code>## , , 1
 ## 
 ##           [,1]     [,2]      [,3]
@@ -514,17 +508,17 @@ Podemos imaginar a função dividida em 3 partes (entrada, processamento e saíd
 ## [3,] 0.6666667 0.5263158 0.4347826
 ## [4,] 0.6250000 0.5000000 0.4166667</code></pre>
 <p>***Escreva uma função teste chamada <code>multiplicador</code> que multiplica os valores 12.8, 19.2 e <em>pi</em>. _pi_é armazenado internamente pelo R com 6 casas decimais e pode ser chamada escrevendo <em>pi</em>.***</p>
-<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb441-1" aria-hidden="true" tabindex="-1"></a>multiplicador <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, z) {</span>
-<span id="cb441-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb441-2" aria-hidden="true" tabindex="-1"></a>    resultado <span class="ot">&lt;-</span> x<span class="sc">*</span>y<span class="sc">*</span>z </span>
-<span id="cb441-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb441-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(resultado) } <span class="co"># `print` mostra o resultado de um objeto ou operação</span></span>
-<span id="cb441-4"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb441-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb441-5"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb441-5" aria-hidden="true" tabindex="-1"></a><span class="fu">multiplicador</span>(<span class="fl">12.8</span>, <span class="fl">19.2</span>, pi)</span></code></pre></div>
+<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb427-1" aria-hidden="true" tabindex="-1"></a>multiplicador <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, z) {</span>
+<span id="cb427-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb427-2" aria-hidden="true" tabindex="-1"></a>    resultado <span class="ot">&lt;-</span> x<span class="sc">*</span>y<span class="sc">*</span>z </span>
+<span id="cb427-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb427-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(resultado) } <span class="co"># `print` mostra o resultado de um objeto ou operação</span></span>
+<span id="cb427-4"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb427-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb427-5"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb427-5" aria-hidden="true" tabindex="-1"></a><span class="fu">multiplicador</span>(<span class="fl">12.8</span>, <span class="fl">19.2</span>, pi)</span></code></pre></div>
 <pre><code>## [1] 772.0778</code></pre>
 <p><strong><em>Escreva uma função teste chamada <code>multiplicador</code> que multiplica os valores um vetor com 50 números por outro de 50 números e armazene o resultado como G sem mostrá-los na tela</em></strong></p>
-<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb443-1" aria-hidden="true" tabindex="-1"></a>s<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="at">from=</span> <span class="dv">1</span>,<span class="at">to=</span><span class="dv">10</span>, <span class="at">length.out=</span><span class="dv">50</span>); </span>
-<span id="cb443-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb443-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(s) </span></code></pre></div>
+<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb429-1" aria-hidden="true" tabindex="-1"></a>s<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="at">from=</span> <span class="dv">1</span>,<span class="at">to=</span><span class="dv">10</span>, <span class="at">length.out=</span><span class="dv">50</span>); </span>
+<span id="cb429-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb429-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(s) </span></code></pre></div>
 <pre><code>## [1] 50</code></pre>
-<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb445-1" aria-hidden="true" tabindex="-1"></a>s</span></code></pre></div>
+<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb431-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb431-1" aria-hidden="true" tabindex="-1"></a>s</span></code></pre></div>
 <pre><code>##  [1]  1.000000  1.183673  1.367347  1.551020  1.734694
 ##  [6]  1.918367  2.102041  2.285714  2.469388  2.653061
 ## [11]  2.836735  3.020408  3.204082  3.387755  3.571429
@@ -535,8 +529,8 @@ Podemos imaginar a função dividida em 3 partes (entrada, processamento e saíd
 ## [36]  7.428571  7.612245  7.795918  7.979592  8.163265
 ## [41]  8.346939  8.530612  8.714286  8.897959  9.081633
 ## [46]  9.265306  9.448980  9.632653  9.816327 10.000000</code></pre>
-<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb447-1" aria-hidden="true" tabindex="-1"></a>d<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="at">from=</span><span class="dv">1</span>,<span class="at">to=</span><span class="dv">10</span>,<span class="at">length.out =</span> <span class="fu">length</span>(s))</span>
-<span id="cb447-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb447-2" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div>
+<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb433-1" aria-hidden="true" tabindex="-1"></a>d<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="at">from=</span><span class="dv">1</span>,<span class="at">to=</span><span class="dv">10</span>,<span class="at">length.out =</span> <span class="fu">length</span>(s))</span>
+<span id="cb433-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb433-2" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div>
 <pre><code>##  [1]  1.000000  1.183673  1.367347  1.551020  1.734694
 ##  [6]  1.918367  2.102041  2.285714  2.469388  2.653061
 ## [11]  2.836735  3.020408  3.204082  3.387755  3.571429
@@ -547,13 +541,13 @@ Podemos imaginar a função dividida em 3 partes (entrada, processamento e saíd
 ## [36]  7.428571  7.612245  7.795918  7.979592  8.163265
 ## [41]  8.346939  8.530612  8.714286  8.897959  9.081633
 ## [46]  9.265306  9.448980  9.632653  9.816327 10.000000</code></pre>
-<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb449-1" aria-hidden="true" tabindex="-1"></a>multiplicador <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y){</span>
-<span id="cb449-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb449-2" aria-hidden="true" tabindex="-1"></a>  resultado <span class="ot">&lt;-</span> x<span class="sc">*</span>y</span>
-<span id="cb449-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb449-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">assign</span>(<span class="st">&quot;resultado&quot;</span>, resultado, <span class="at">envir=</span><span class="fu">globalenv</span>())</span>
-<span id="cb449-4"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb449-4" aria-hidden="true" tabindex="-1"></a>  } <span class="co"># `assign` atribui os valores de uma operação a um objeto</span></span>
-<span id="cb449-5"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb449-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb449-6"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb449-6" aria-hidden="true" tabindex="-1"></a><span class="fu">multiplicador</span>(s,d)</span>
-<span id="cb449-7"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb449-7" aria-hidden="true" tabindex="-1"></a>resultado</span></code></pre></div>
+<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb435-1" aria-hidden="true" tabindex="-1"></a>multiplicador <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y){</span>
+<span id="cb435-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb435-2" aria-hidden="true" tabindex="-1"></a>  resultado <span class="ot">&lt;-</span> x<span class="sc">*</span>y</span>
+<span id="cb435-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb435-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">assign</span>(<span class="st">&quot;resultado&quot;</span>, resultado, <span class="at">envir=</span><span class="fu">globalenv</span>())</span>
+<span id="cb435-4"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb435-4" aria-hidden="true" tabindex="-1"></a>  } <span class="co"># `assign` atribui os valores de uma operação a um objeto</span></span>
+<span id="cb435-5"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb435-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb435-6"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb435-6" aria-hidden="true" tabindex="-1"></a><span class="fu">multiplicador</span>(s,d)</span>
+<span id="cb435-7"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb435-7" aria-hidden="true" tabindex="-1"></a>resultado</span></code></pre></div>
 <pre><code>##  [1]   1.000000   1.401083   1.869638   2.405664   3.009163
 ##  [6]   3.680133   4.418576   5.224490   6.097876   7.038734
 ## [11]   8.047064   9.122865  10.266139  11.476885  12.755102
@@ -564,23 +558,23 @@ Podemos imaginar a função dividida em 3 partes (entrada, processamento e saíd
 ## [36]  55.183673  57.946272  60.776343  63.673886  66.638900
 ## [41]  69.671387  72.771345  75.938776  79.173678  82.476052
 ## [46]  85.845898  89.283215  92.788005  96.360267 100.000000</code></pre>
-<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb451-1" aria-hidden="true" tabindex="-1"></a>media <span class="ot">&lt;-</span> <span class="cf">function</span>( <span class="at">x =</span> <span class="fu">c</span>( <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)){ </span>
-<span id="cb451-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb451-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Neste caso utilizamos valores default que permitem testes caso algo saia errado</span></span>
-<span id="cb451-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb451-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Calcula média do inpout x</span></span>
-<span id="cb451-4"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb451-4" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">sum</span>(x)<span class="sc">/</span><span class="fu">length</span>(x)</span>
-<span id="cb451-5"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb451-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>( out) <span class="co"># `return` devolve/retorna/mostra os resultado de uma operação ou objeto</span></span>
-<span id="cb451-6"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb451-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb451-7"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb451-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb451-8"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb451-8" aria-hidden="true" tabindex="-1"></a>minha.media <span class="ot">&lt;-</span> <span class="fu">media</span>( <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span> <span class="dv">100</span>) <span class="co"># print result print( my.mean)</span></span>
-<span id="cb451-9"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb451-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(minha.media)</span></code></pre></div>
+<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb437-1" aria-hidden="true" tabindex="-1"></a>media <span class="ot">&lt;-</span> <span class="cf">function</span>( <span class="at">x =</span> <span class="fu">c</span>( <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)){ </span>
+<span id="cb437-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb437-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Neste caso utilizamos valores default que permitem testes caso algo saia errado</span></span>
+<span id="cb437-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb437-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Calcula média do inpout x</span></span>
+<span id="cb437-4"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb437-4" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">sum</span>(x)<span class="sc">/</span><span class="fu">length</span>(x)</span>
+<span id="cb437-5"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb437-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>( out) <span class="co"># `return` devolve/retorna/mostra os resultado de uma operação ou objeto</span></span>
+<span id="cb437-6"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb437-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb437-7"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb437-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb437-8"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb437-8" aria-hidden="true" tabindex="-1"></a>minha.media <span class="ot">&lt;-</span> <span class="fu">media</span>( <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span> <span class="dv">100</span>) <span class="co"># print result print( my.mean)</span></span>
+<span id="cb437-9"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb437-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(minha.media)</span></code></pre></div>
 <pre><code>## [1] 50.5</code></pre>
 <p>As funções também permitem maior interação com usuário para a tomada de uma decisão por exemplo.</p>
-<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb453-1" aria-hidden="true" tabindex="-1"></a>mensagem <span class="ot">&lt;-</span> <span class="cf">function</span>( <span class="at">arg1=</span><span class="fu">readline</span>(<span class="at">prompt=</span><span class="st">&quot;escreva sua mensagem: &quot;</span>), <span class="at">arg2 =</span> <span class="fu">readline</span>(<span class="at">prompt=</span><span class="st">&quot;De novo: &quot;</span>)){ </span>
-<span id="cb453-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb453-2" aria-hidden="true" tabindex="-1"></a>  msg1 <span class="ot">&lt;-</span> <span class="fu">paste0</span>(arg1) </span>
-<span id="cb453-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb453-3" aria-hidden="true" tabindex="-1"></a>  msg2 <span class="ot">&lt;-</span> <span class="fu">paste0</span>(arg2) </span>
-<span id="cb453-4"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb453-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>( msg1, msg2)</span>
-<span id="cb453-5"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb453-5" aria-hidden="true" tabindex="-1"></a>   }</span>
-<span id="cb453-6"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb453-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mensagem</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb439-1" aria-hidden="true" tabindex="-1"></a>mensagem <span class="ot">&lt;-</span> <span class="cf">function</span>( <span class="at">arg1=</span><span class="fu">readline</span>(<span class="at">prompt=</span><span class="st">&quot;escreva sua mensagem: &quot;</span>), <span class="at">arg2 =</span> <span class="fu">readline</span>(<span class="at">prompt=</span><span class="st">&quot;De novo: &quot;</span>)){ </span>
+<span id="cb439-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb439-2" aria-hidden="true" tabindex="-1"></a>  msg1 <span class="ot">&lt;-</span> <span class="fu">paste0</span>(arg1) </span>
+<span id="cb439-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb439-3" aria-hidden="true" tabindex="-1"></a>  msg2 <span class="ot">&lt;-</span> <span class="fu">paste0</span>(arg2) </span>
+<span id="cb439-4"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb439-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>( msg1, msg2)</span>
+<span id="cb439-5"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb439-5" aria-hidden="true" tabindex="-1"></a>   }</span>
+<span id="cb439-6"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb439-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mensagem</span>()</span></code></pre></div>
 <pre><code>## Olá Mundo! Hello World!</code></pre>
 </div>
 <div id="pacotes" class="section level2" number="4.2">
@@ -593,7 +587,7 @@ Podemos imaginar a função dividida em 3 partes (entrada, processamento e saíd
 <p>Eles basicamente permitem vocês expandirem a funcionalidade do R para programação, ao invés de escrever dezenas de linhas de códigos, esses códigos são preparados, empacotados e tudo que você precisa fazer e usá-lo.
 Os <code>Packages</code> são coleções de funções, dados, e códigos compilados num formato bem definido. O diretório onde os pacotes estão armazenados são chamados <code>library</code>. A função
 <code>.libPaths()</code> onde sua biblioteca está alojada.</p>
-<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb455-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.libPaths</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb441-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.libPaths</span>()</span></code></pre></div>
 <pre><code>## [1] &quot;C:/Users/jacks/Documents/R/win-library/4.1&quot;
 ## [2] &quot;C:/Program Files/R/R-4.1.0/library&quot;</code></pre>
 <p>Milhares de outras funções, para as mais diversas tarefas, podem ser adicionadas por meio de pacotes (<strong>packages</strong>) disponíveis livremente na internet.<br />
@@ -615,28 +609,18 @@ No entanto, a principal fonte de pacotes para o R é o <a href="https://cran.r-p
 Agora vamos reinstalar pela barra de ferramentas.
 Mas o que CRAN quer dizer? É o local onde os pacotes são armazenados.
 R é um open source software então se você quiser, pode criar um pacote ar mazená-lo no CRAN.</p>
-<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb457-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;analogue&quot;)</span></span>
-<span id="cb457-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb457-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(analogue)</span></code></pre></div>
-<pre><code>## Carregando pacotes exigidos: vegan</code></pre>
-<pre><code>## Carregando pacotes exigidos: permute</code></pre>
-<pre><code>## Carregando pacotes exigidos: lattice</code></pre>
-<pre><code>## This is vegan 2.5-7</code></pre>
-<pre><code>## analogue version 0.17-6</code></pre>
-<pre><code>## 
-## Attaching package: &#39;analogue&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:timeSeries&#39;:
-## 
-##     smoothSpline</code></pre>
+<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb443-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;analogue&quot;)</span></span>
+<span id="cb443-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb443-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(analogue)</span></code></pre></div>
 <p>Visite <a href="https://cran.r-project.org/web/packages/analogue/">Analogue</a> e explore o que há disponível para o pacote analogue.
 Use a aba packages para explorar suas funcionalidades</p>
 <p>Muitas vezes os pacotes disponíveis no <strong>CRAN</strong> não estão <em>UpToDate</em> por isso talvez seja mais interessante isntalar os pacotes diretamente do <a href="https://github.com/">github</a>.</p>
 <p>Veja o pacote <a href="https://github.com/trinker/pacman">packman</a> e vamos instalá-lo pelo <strong>github</strong>. Mas antes vamos instalar o pacote <a href="https://www.r-project.org/nosvn/pandoc/devtools.html">devtools</a> que , entre outras coisas, nos permite “buscar” os pacotes do <strong>github</strong>.</p>
-<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb465-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;devtools&quot;)</span></span>
-<span id="cb465-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb465-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;trinker/pacman&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb444-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;devtools&quot;)</span></span>
+<span id="cb444-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb444-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;trinker/pacman&quot;</span>)</span></code></pre></div>
 <pre><code>## Skipping install of &#39;pacman&#39; from a github remote, the SHA1 (ace09364) has not changed since last install.
 ##   Use `force = TRUE` to force installation</code></pre>
 <p>Ao utilizar o software R e um pacote na execução de seu trabalho você <strong>deve</strong> citá-los.</p>
-<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb467-1" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span> () <span class="co"># citação do software R</span></span></code></pre></div>
+<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb446-1" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span> () <span class="co"># citação do software R</span></span></code></pre></div>
 <pre><code>## 
 ## To cite R in publications use:
 ## 
@@ -659,7 +643,7 @@ Use a aba packages para explorar suas funcionalidades</p>
 ## We have invested a lot of time and effort in creating
 ## R, please cite it when using it for data analysis. See
 ## also &#39;citation(&quot;pkgname&quot;)&#39; for citing R packages.</code></pre>
-<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb469-1" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span>(<span class="at">package =</span> <span class="st">&quot;analogue&quot;</span>) <span class="co"># citação do pacote Analogue</span></span></code></pre></div>
+<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb448-1" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span>(<span class="at">package =</span> <span class="st">&quot;analogue&quot;</span>) <span class="co"># citação do pacote Analogue</span></span></code></pre></div>
 <pre><code>## 
 ## To cite use of &#39;analogue&#39; in publications use:
 ## 
@@ -676,17 +660,22 @@ Use a aba packages para explorar suas funcionalidades</p>
 ## &#39;print(&lt;citation&gt;, bibtex=TRUE)&#39;, &#39;toBibtex(.)&#39;, or set
 ## &#39;options(citation.bibtex.max=999)&#39;.</code></pre>
 <p>Aqui listo os pacotes carregados agora em meu R.</p>
-<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb471-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb471-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">.packages</span>())</span></code></pre></div>
-<pre><code>##  [1] &quot;analogue&quot;      &quot;vegan&quot;         &quot;lattice&quot;      
-##  [4] &quot;permute&quot;       &quot;flow&quot;          &quot;prob&quot;         
-##  [7] &quot;fAsianOptions&quot; &quot;fOptions&quot;      &quot;fBasics&quot;      
-## [10] &quot;timeSeries&quot;    &quot;timeDate&quot;      &quot;combinat&quot;     
-## [13] &quot;magrittr&quot;      &quot;ggplot2&quot;       &quot;stats&quot;        
-## [16] &quot;graphics&quot;      &quot;grDevices&quot;     &quot;utils&quot;        
-## [19] &quot;datasets&quot;      &quot;methods&quot;       &quot;base&quot;</code></pre>
+<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb450-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">.packages</span>())</span></code></pre></div>
+<pre><code>##  [1] &quot;ggpubr&quot;        &quot;forcats&quot;       &quot;stringr&quot;      
+##  [4] &quot;dplyr&quot;         &quot;purrr&quot;         &quot;readr&quot;        
+##  [7] &quot;tidyr&quot;         &quot;tibble&quot;        &quot;tidyverse&quot;    
+## [10] &quot;viridis&quot;       &quot;viridisLite&quot;   &quot;unikn&quot;        
+## [13] &quot;RColorBrewer&quot;  &quot;analogue&quot;      &quot;vegan&quot;        
+## [16] &quot;lattice&quot;       &quot;permute&quot;       &quot;flow&quot;         
+## [19] &quot;prob&quot;          &quot;fAsianOptions&quot; &quot;fOptions&quot;     
+## [22] &quot;fBasics&quot;       &quot;timeSeries&quot;    &quot;timeDate&quot;     
+## [25] &quot;combinat&quot;      &quot;magrittr&quot;      &quot;ggplot2&quot;      
+## [28] &quot;stats&quot;         &quot;graphics&quot;      &quot;grDevices&quot;    
+## [31] &quot;utils&quot;         &quot;datasets&quot;      &quot;methods&quot;      
+## [34] &quot;base&quot;</code></pre>
 <p>Aqui listo os pacotes instalados em meu R.</p>
-<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb473-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb473-1" aria-hidden="true" tabindex="-1"></a>meus.pacotes <span class="ot">&lt;-</span> <span class="fu">library</span>()<span class="sc">$</span>results[,<span class="dv">1</span>]</span>
-<span id="cb473-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb473-2" aria-hidden="true" tabindex="-1"></a>meus.pacotes</span></code></pre></div>
+<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb452-1" aria-hidden="true" tabindex="-1"></a>meus.pacotes <span class="ot">&lt;-</span> <span class="fu">library</span>()<span class="sc">$</span>results[,<span class="dv">1</span>]</span>
+<span id="cb452-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb452-2" aria-hidden="true" tabindex="-1"></a>meus.pacotes</span></code></pre></div>
 <pre><code>##   [1] &quot;abind&quot;             &quot;analogue&quot;         
 ##   [3] &quot;askpass&quot;           &quot;assertthat&quot;       
 ##   [5] &quot;audio&quot;             &quot;backports&quot;        
@@ -859,7 +848,7 @@ Use a aba packages para explorar suas funcionalidades</p>
 ## [339] &quot;tools&quot;             &quot;translations&quot;     
 ## [341] &quot;utils&quot;</code></pre>
 <p>Ou poderia simplesmente digitar <code>library()</code>.</p>
-<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb475-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb475-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb454-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>()</span></code></pre></div>
 </div>
 </div>
 <div id="entrando-com-dados" class="section level2" number="4.3">
@@ -891,15 +880,15 @@ No caso a seguir, o comando <code>Matrícula=numeric(0)</code> cria uma variáve
 <img src="Cap_3_edit_DF.JPG" alt="" />
 <p class="caption"><strong>comando edit()</strong></p>
 </div>
-<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb476-1" aria-hidden="true" tabindex="-1"></a>Alunos.Eng792 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Nome=</span><span class="fu">character</span>(<span class="dv">0</span>),Matrícula<span class="ot">=</span><span class="fu">numeric</span>(<span class="dv">0</span>), Curço<span class="ot">=</span><span class="fu">character</span>(<span class="dv">0</span>),Nível<span class="at">.de.R=</span><span class="fu">numeric</span>(<span class="dv">0</span>),Nível.de.Pós<span class="ot">=</span><span class="fu">character</span>(<span class="dv">0</span>))</span>
-<span id="cb476-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb476-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb476-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb476-3" aria-hidden="true" tabindex="-1"></a>Alunos.Eng792</span></code></pre></div>
+<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb455-1" aria-hidden="true" tabindex="-1"></a>Alunos.Eng792 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Nome=</span><span class="fu">character</span>(<span class="dv">0</span>),Matrícula<span class="ot">=</span><span class="fu">numeric</span>(<span class="dv">0</span>), Curço<span class="ot">=</span><span class="fu">character</span>(<span class="dv">0</span>),Nível<span class="at">.de.R=</span><span class="fu">numeric</span>(<span class="dv">0</span>),Nível.de.Pós<span class="ot">=</span><span class="fu">character</span>(<span class="dv">0</span>))</span>
+<span id="cb455-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb455-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb455-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb455-3" aria-hidden="true" tabindex="-1"></a>Alunos.Eng792</span></code></pre></div>
 <pre><code>## [1] Nome         Matrícula    Curço        Nível.de.R  
 ## [5] Nível.de.Pós
 ## &lt;0 linhas&gt; (ou row.names de comprimento 0)</code></pre>
-<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb478-1" aria-hidden="true" tabindex="-1"></a>Alunos.Eng792 <span class="ot">&lt;-</span> <span class="fu">edit</span>(Alunos.Eng792)</span>
-<span id="cb478-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb478-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb478-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb478-3" aria-hidden="true" tabindex="-1"></a>Alunos.Eng792</span></code></pre></div>
+<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb457-1" aria-hidden="true" tabindex="-1"></a>Alunos.Eng792 <span class="ot">&lt;-</span> <span class="fu">edit</span>(Alunos.Eng792)</span>
+<span id="cb457-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb457-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb457-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb457-3" aria-hidden="true" tabindex="-1"></a>Alunos.Eng792</span></code></pre></div>
 <pre><code>## [1] Nome         Matrícula    Curço        Nível.de.R  
 ## [5] Nível.de.Pós
 ## &lt;0 linhas&gt; (ou row.names de comprimento 0)</code></pre>
@@ -908,8 +897,8 @@ No caso a seguir, o comando <code>Matrícula=numeric(0)</code> cria uma variáve
 <h3><span class="header-section-number">4.3.2</span> built-in</h3>
 <p>No R também temos os dados <em>buit-in</em> que são dados que já vem “dentro” do R ou pacotes que permite a execução dos exemplos das funções naturais do R e aquelas instaladas por meio dos pacotes. Temos vários dados <em>built-in</em> no R como <code>ìris</code>, <code>mtcars</code>, <code>anscombe</code>, <code>USArrests</code>, <code>USAccDeaths</code>,<code>AirPassengers</code> e etc.</p>
 <p>Vamos dar uma olha no <code>USArrests</code> que contém estatísticas de presos por diferentes crimes em EUA em taxas de 100.000.</p>
-<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb480-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb480-1" aria-hidden="true" tabindex="-1"></a>Presidiarios.USA<span class="ot">&lt;-</span>(USArrests)</span>
-<span id="cb480-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb480-2" aria-hidden="true" tabindex="-1"></a>Presidiarios.USA</span></code></pre></div>
+<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb459-1" aria-hidden="true" tabindex="-1"></a>Presidiarios.USA<span class="ot">&lt;-</span>(USArrests)</span>
+<span id="cb459-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb459-2" aria-hidden="true" tabindex="-1"></a>Presidiarios.USA</span></code></pre></div>
 <pre><code>##                Murder Assault UrbanPop Rape
 ## Alabama          13.2     236       58 21.2
 ## Alaska           10.0     263       48 44.5
@@ -966,16 +955,16 @@ No caso a seguir, o comando <code>Matrícula=numeric(0)</code> cria uma variáve
 <h3><span class="header-section-number">4.3.3</span> scan()</h3>
 <p>Uma outra forma de entrada manual se dá através dom comando <code>scan()</code>. Neste formato de entrada de dados podemos digitar informação por informação ou copiar de uma fonte e colá-la. Tudo isso feito no console e em formato numérico.</p>
 <p><strong>Exemplo com digitação.</strong></p>
-<div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb482-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb482-1" aria-hidden="true" tabindex="-1"></a>teste1 <span class="ot">&lt;-</span><span class="fu">scan</span>()</span>
-<span id="cb482-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb482-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Digite 1, 2, 4, 5, 6, 7, 8</span></span>
-<span id="cb482-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb482-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb482-4"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb482-4" aria-hidden="true" tabindex="-1"></a>teste1</span></code></pre></div>
+<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb461-1" aria-hidden="true" tabindex="-1"></a>teste1 <span class="ot">&lt;-</span><span class="fu">scan</span>()</span>
+<span id="cb461-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb461-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Digite 1, 2, 4, 5, 6, 7, 8</span></span>
+<span id="cb461-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb461-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb461-4"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb461-4" aria-hidden="true" tabindex="-1"></a>teste1</span></code></pre></div>
 <p><strong>Exemplo com copia e cola.</strong></p>
-<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb483-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb483-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">30</span>,<span class="dv">38</span>)</span>
-<span id="cb483-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb483-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb483-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb483-3" aria-hidden="true" tabindex="-1"></a>teste2 <span class="ot">&lt;-</span><span class="fu">scan</span>()</span>
-<span id="cb483-4"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb483-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb483-5"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb483-5" aria-hidden="true" tabindex="-1"></a>teste2</span></code></pre></div>
+<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb462-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">30</span>,<span class="dv">38</span>)</span>
+<span id="cb462-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb462-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb462-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb462-3" aria-hidden="true" tabindex="-1"></a>teste2 <span class="ot">&lt;-</span><span class="fu">scan</span>()</span>
+<span id="cb462-4"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb462-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb462-5"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb462-5" aria-hidden="true" tabindex="-1"></a>teste2</span></code></pre></div>
 </div>
 <div id="lendo-arquivos-de-texto-.txt" class="section level3" number="4.3.4">
 <h3><span class="header-section-number">4.3.4</span> Lendo arquivos de texto (.txt)</h3>
@@ -987,9 +976,9 @@ No caso a seguir, o comando <code>Matrícula=numeric(0)</code> cria uma variáve
 <p>Para saber quais são as <em>options</em> e o que cada uma delas faz você pode acessar através de <code>?data.datble</code>.</p>
 <p>No caso abaixo estamos utilizando <code>sep=","</code>, <code>header=T</code> e <code>skip=3</code>.</p>
 <p>Baixe os dados aqui <strong>Cap_3_Notas_ENG792.txt</strong> no <a href="https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php">PVANet</a></p>
-<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb484-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb484-1" aria-hidden="true" tabindex="-1"></a>notas<span class="ot">&lt;-</span><span class="fu">read.table</span>(<span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Notas_ENG792.txt&quot;</span>, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>, <span class="at">header =</span> T, <span class="at">skip=</span><span class="dv">3</span>)</span>
-<span id="cb484-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb484-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb484-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb484-3" aria-hidden="true" tabindex="-1"></a>notas</span></code></pre></div>
+<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb463-1" aria-hidden="true" tabindex="-1"></a>notas<span class="ot">&lt;-</span><span class="fu">read.table</span>(<span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Notas_ENG792.txt&quot;</span>, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>, <span class="at">header =</span> T, <span class="at">skip=</span><span class="dv">3</span>)</span>
+<span id="cb463-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb463-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb463-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb463-3" aria-hidden="true" tabindex="-1"></a>notas</span></code></pre></div>
 <pre><code>##    Nome Nota.1 Nota.2 Nota.3 Nota.4
 ## 1     A   10.9   60.9   53.6   12.0
 ## 2     B   71.3    9.9   13.9   47.0
@@ -1015,7 +1004,7 @@ No caso a seguir, o comando <code>Matrícula=numeric(0)</code> cria uma variáve
 ## 22    X   56.6   32.0   74.6   28.0
 ## 23    Y   22.3   42.3   88.9   65.0
 ## 24    Z   36.6   44.3   17.9   23.9</code></pre>
-<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb486-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(notas)</span></code></pre></div>
+<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb465-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(notas)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    24 obs. of  5 variables:
 ##  $ Nome  : chr  &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; ...
 ##  $ Nota.1: num  10.9 71.3 65.9 3.6 70.9 76.9 73.6 2 25.3 7 ...
@@ -1046,14 +1035,14 @@ Vejam que na tabela criada houve erros na na codificação dos caracteres especi
 <h3><span class="header-section-number">4.3.5</span> read.csv()</h3>
 <p>Embora muito comuns arquivos em formato <code>.txt</code>, a maioria dos cientistas preferem armazenar dados em planilhas eletrônicas como do excel <code>xlsx.</code> ou <code>.csv</code> ( <em>comma-separated values</em>).</p>
 <p>Baixe o arquivo <strong>Cap_1_P2-Mispriced-Diamonds.csv</strong> <a href="https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php">PVANet</a></p>
-<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb488-1" aria-hidden="true" tabindex="-1"></a>diamantes<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_1_P2-Mispriced-Diamonds.csv&quot;</span>)</span>
-<span id="cb488-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb488-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb488-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb488-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(diamantes)</span></code></pre></div>
+<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb467-1" aria-hidden="true" tabindex="-1"></a>diamantes<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_1_P2-Mispriced-Diamonds.csv&quot;</span>)</span>
+<span id="cb467-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb467-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb467-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb467-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(diamantes)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    53940 obs. of  3 variables:
 ##  $ carat  : num  0.23 0.21 0.23 0.29 0.31 0.24 0.24 0.26 0.22 0.23 ...
 ##  $ clarity: chr  &quot;SI2&quot; &quot;SI1&quot; &quot;VS1&quot; &quot;VS2&quot; ...
 ##  $ price  : int  326 326 327 334 335 336 336 337 337 338 ...</code></pre>
-<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb490-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(diamantes) <span class="co"># mostra as 6 primeiras linhas do objeto</span></span></code></pre></div>
+<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb469-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(diamantes) <span class="co"># mostra as 6 primeiras linhas do objeto</span></span></code></pre></div>
 <pre><code>##   carat clarity price
 ## 1  0.23     SI2   326
 ## 2  0.21     SI1   326
@@ -1061,7 +1050,7 @@ Vejam que na tabela criada houve erros na na codificação dos caracteres especi
 ## 4  0.29     VS2   334
 ## 5  0.31     SI2   335
 ## 6  0.24    VVS2   336</code></pre>
-<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb492-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(diamantes) <span class="co"># mostra as 6 últimas linhas do objeto </span></span></code></pre></div>
+<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb471-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb471-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(diamantes) <span class="co"># mostra as 6 últimas linhas do objeto </span></span></code></pre></div>
 <pre><code>##       carat clarity price
 ## 53935  0.72     SI1  2757
 ## 53936  0.72     SI1  2757
@@ -1085,8 +1074,8 @@ Vejam que na tabela criada houve erros na na codificação dos caracteres especi
 <p>Experimente ambos comandos para abrir o <strong>Cap_3_Notas_ENG792.csv</strong>.<br />
 <img src="Cap_3_notas.csv%20eng%20792.jpg" alt="Cap_3_Notas_ENG792.csv" /></p>
 <p>Temos 1 arquivo <strong>Cap_3_Notas_ENG792.csv</strong> <a href="https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php">PVANet</a></p>
-<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb494-1" aria-hidden="true" tabindex="-1"></a>Notas.csv<span class="ot">&lt;-</span><span class="fu">read.csv2</span>(<span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Notas_ENG792.csv&quot;</span>, <span class="at">row.names =</span> <span class="st">&quot;Nome&quot;</span>)</span>
-<span id="cb494-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb494-2" aria-hidden="true" tabindex="-1"></a>Notas.csv</span></code></pre></div>
+<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb473-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb473-1" aria-hidden="true" tabindex="-1"></a>Notas.csv<span class="ot">&lt;-</span><span class="fu">read.csv2</span>(<span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Notas_ENG792.csv&quot;</span>, <span class="at">row.names =</span> <span class="st">&quot;Nome&quot;</span>)</span>
+<span id="cb473-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb473-2" aria-hidden="true" tabindex="-1"></a>Notas.csv</span></code></pre></div>
 <pre><code>##   Nota.1 Nota.2 Nota.3 Nota.4
 ## A   10.9   60.9   53.6   12.0
 ## B   71.3    9.9   13.9   47.0
@@ -1113,7 +1102,7 @@ Vejam que na tabela criada houve erros na na codificação dos caracteres especi
 ## X   22.3   42.3   88.9   65.0
 ## Y   36.6   44.3   17.9   23.9
 ## Z   40.0   65.0   77.9   59.0</code></pre>
-<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb496-1" aria-hidden="true" tabindex="-1"></a>Notas.csv<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Notas_ENG792.csv&quot;</span>, <span class="at">row.names =</span> <span class="st">&quot;Nome&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb475-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb475-1" aria-hidden="true" tabindex="-1"></a>Notas.csv<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Notas_ENG792.csv&quot;</span>, <span class="at">row.names =</span> <span class="st">&quot;Nome&quot;</span>)</span></code></pre></div>
 <pre><code>## Error in read.table(file = file, header = header, sep = sep, quote = quote, : more columns than column names</code></pre>
 <p style="color:red">
 <strong>Note que o comando <code>read.csv()</code> não funcionou, faça os ajustes necessários para que ele funcine.</strong>
@@ -1134,11 +1123,11 @@ Vejam que na tabela criada houve erros na na codificação dos caracteres especi
 <code>install.packages("xlsx")</code></p>
 <p>Baixe os dados aqui
 Baixe o arquivo <strong>Cap_3_Informações - Alunos ENG 792.xlsx</strong> <a href="https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php">PVANet</a></p>
-<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb498-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(xlsx)</span>
-<span id="cb498-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb498-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb498-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb498-3" aria-hidden="true" tabindex="-1"></a>Info.Alunos<span class="ot">&lt;-</span><span class="fu">read.xlsx</span>(<span class="at">file=</span><span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Informações - Alunos ENG 792.xlsx&quot;</span>, <span class="at">endRow=</span><span class="dv">28</span>,<span class="at">sheetIndex=</span><span class="dv">4</span>,<span class="at">startRow =</span> <span class="dv">2</span>, <span class="at">header =</span> T,<span class="at">encoding=</span><span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb498-4"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb498-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb498-5"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb498-5" aria-hidden="true" tabindex="-1"></a>Info.Alunos</span></code></pre></div>
+<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb477-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(xlsx)</span>
+<span id="cb477-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb477-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb477-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb477-3" aria-hidden="true" tabindex="-1"></a>Info.Alunos<span class="ot">&lt;-</span><span class="fu">read.xlsx</span>(<span class="at">file=</span><span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Informações - Alunos ENG 792.xlsx&quot;</span>, <span class="at">endRow=</span><span class="dv">28</span>,<span class="at">sheetIndex=</span><span class="dv">4</span>,<span class="at">startRow =</span> <span class="dv">2</span>, <span class="at">header =</span> T,<span class="at">encoding=</span><span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb477-4"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb477-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb477-5"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb477-5" aria-hidden="true" tabindex="-1"></a>Info.Alunos</span></code></pre></div>
 </div>
 <div id="exportar-arquivos" class="section level3" number="4.3.7">
 <h3><span class="header-section-number">4.3.7</span> Exportar arquivos()</h3>
@@ -1149,28 +1138,28 @@ Baixe o arquivo <strong>Cap_3_Informações - Alunos ENG 792.xlsx</strong> <a hr
 <code>na = "NA", dec = ".", row.names = TRUE, col.names = TRUE, qmethod = c("escape", "double"), fileEncoding = "")</code></p>
 <p>Vamos experimentar os diferentes comandos.
 Antes de prosseguir certifique-se que o endereço de saída está adequado.</p>
-<div class="sourceCode" id="cb499"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb499-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb499-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(Info.Alunos, <span class="at">file=</span><span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Informações - Alunos ENG 792.csv&quot;</span>, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>,<span class="at">fileEncoding=</span><span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb478-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(Info.Alunos, <span class="at">file=</span><span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Informações - Alunos ENG 792.csv&quot;</span>, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>,<span class="at">fileEncoding=</span><span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning in write.csv(Info.Alunos, file = &quot;J:/ENG 792/ENG_792-
 ## AVDR/ENG.792-AVDR/Cap_3_Informações - Alunos ENG 792.csv&quot;, :
 ## attempt to set &#39;sep&#39; ignored</code></pre>
 <pre><code>## Error in is.data.frame(x): object &#39;Info.Alunos&#39; not found</code></pre>
-<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb502-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb502-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv2</span>(Info.Alunos, <span class="at">file=</span><span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Informações - Alunos ENG 792.2.csv&quot;</span>,<span class="at">sep=</span><span class="st">&quot;,&quot;</span>,<span class="at">fileEncoding=</span><span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb481-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv2</span>(Info.Alunos, <span class="at">file=</span><span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Informações - Alunos ENG 792.2.csv&quot;</span>,<span class="at">sep=</span><span class="st">&quot;,&quot;</span>,<span class="at">fileEncoding=</span><span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning in write.csv2(Info.Alunos, file = &quot;J:/ENG 792/ENG_792-
 ## AVDR/ENG.792-AVDR/Cap_3_Informações - Alunos ENG 792.2.csv&quot;, :
 ## attempt to set &#39;sep&#39; ignored</code></pre>
 <pre><code>## Error in is.data.frame(x): object &#39;Info.Alunos&#39; not found</code></pre>
-<div class="sourceCode" id="cb505"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb505-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb505-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(Info.Alunos, <span class="at">file=</span><span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Informações - Alunos ENG 792.txt&quot;</span>, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>,<span class="at">fileEncoding=</span><span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb484-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb484-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(Info.Alunos, <span class="at">file=</span><span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Informações - Alunos ENG 792.txt&quot;</span>, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>,<span class="at">fileEncoding=</span><span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
 <pre><code>## Error in is.data.frame(x): object &#39;Info.Alunos&#39; not found</code></pre>
 </div>
 <div id="definir-diretório-de-trabalho-setwd" class="section level3" number="4.3.8">
 <h3><span class="header-section-number">4.3.8</span> Definir diretório de trabalho <code>setwd()</code></h3>
 <p>Durante a importação e exportação de dados nós forncemos dentro dos comandos os endereço no seu computador ou periférico de onde e para onde os dados deveriam ser importados e exportados, respectivamente.</p>
 <p>Esta tarefa pode ser simplificada pela determinação de um diretório de trabalho. Após esta definição o R vai comunicar diretamente com esta pasta de maneira que todos os arquivos importados e exportados de a para esta pasta.</p>
-<div class="sourceCode" id="cb507"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb507-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb507-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/&quot;</span>)</span>
-<span id="cb507-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb507-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb507-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb507-3" aria-hidden="true" tabindex="-1"></a>Al.Eng792<span class="ot">&lt;-</span><span class="fu">read.xlsx</span>(<span class="at">file=</span><span class="st">&quot;Cap_3_Informações - Alunos ENG 792.xlsx&quot;</span>, <span class="at">endRow=</span><span class="dv">28</span>,<span class="at">sheetIndex=</span><span class="dv">4</span>,<span class="at">startRow =</span> <span class="dv">2</span>, <span class="at">header =</span>T, <span class="at">encoding=</span><span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb507-4"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb507-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb507-5"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb507-5" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(Reposição.de.aula, <span class="at">file=</span><span class="st">&quot;Cap_3_Informações - Alunos ENG 792.txt&quot;</span>,<span class="at">sep=</span><span class="st">&quot;,&quot;</span>,<span class="at">fileEncoding=</span><span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb486-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/&quot;</span>)</span>
+<span id="cb486-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb486-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb486-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb486-3" aria-hidden="true" tabindex="-1"></a>Al.Eng792<span class="ot">&lt;-</span><span class="fu">read.xlsx</span>(<span class="at">file=</span><span class="st">&quot;Cap_3_Informações - Alunos ENG 792.xlsx&quot;</span>, <span class="at">endRow=</span><span class="dv">28</span>,<span class="at">sheetIndex=</span><span class="dv">4</span>,<span class="at">startRow =</span> <span class="dv">2</span>, <span class="at">header =</span>T, <span class="at">encoding=</span><span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb486-4"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb486-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb486-5"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb486-5" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(Reposição.de.aula, <span class="at">file=</span><span class="st">&quot;Cap_3_Informações - Alunos ENG 792.txt&quot;</span>,<span class="at">sep=</span><span class="st">&quot;,&quot;</span>,<span class="at">fileEncoding=</span><span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
 <p style="color:red">
 <strong>Explore o comandos <code>rowSums()</code>, <code>colSums()</code>, <code>rowMeans()</code>, <code>colMeans()</code> e acrescente no <em>data.frame</em> notas uma coluna com soma e média das notas dos alunos e linhas com no fim do arquivo soma e média das notas 1 a 4. Para terminar exporte os arquivos em formato .csv e .txt</strong>
 </p>
