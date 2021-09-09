@@ -552,7 +552,7 @@ write.table(Reposição.de.aula, file="Cap_3_Informações - Alunos ENG 792.txt"
 12. Extraia os valores das linhas 4 a 8 das colunas 1 e 3 em formato de data frame
 13. Demonstre o número de linhas do `new_frame`.
 14. Demonstre 4 diferentes métodos de extrair os valores de todas as linhas da coluna 1 de `new_frame`.
-15. Crie uma função que multiplique os valores de cada coluna por 2 ao cubo e em seguida aplique para a mesma seleção `log10()` criando `new_frame2` alojando-o no global environment.
+15. Crie uma função que multiplique os valores de cada coluna por 2 ao cubo e em seguida aplique para o módulo da mesma seleção `log10()` criando `new_frame2` alojando-o no global environment.
 16. Exporte seu `new_frame2` para *.csv* e *.txt*.
 
 

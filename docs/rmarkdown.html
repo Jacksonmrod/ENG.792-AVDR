@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 6 RMarkdown | R Markdown - Kit de Sobrevivência</title>
+  <meta name="description" content="Este é o material de supporte aos alunos matriculados na disciplina ENG 792 ofertada pelo programa de pós-gradução em Meteorologia Aplicada do Departamento de Engenharia Agrícola (DEA) da Universidade Federal de Viçosa (UFV)." />
+  <meta name="generator" content="bookdown 0.22.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 6 RMarkdown | R Markdown - Kit de Sobrevivência" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Este é o material de supporte aos alunos matriculados na disciplina ENG 792 ofertada pelo programa de pós-gradução em Meteorologia Aplicada do Departamento de Engenharia Agrícola (DEA) da Universidade Federal de Viçosa (UFV)." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 6 RMarkdown | R Markdown - Kit de Sobrevivência" />
+  
+  <meta name="twitter:description" content="Este é o material de supporte aos alunos matriculados na disciplina ENG 792 ofertada pelo programa de pós-gradução em Meteorologia Aplicada do Departamento de Engenharia Agrícola (DEA) da Universidade Federal de Viçosa (UFV)." />
+  
+
+<meta name="author" content="Jackson Rodrigues" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="produção-gráfica-e-comunicação-visual.html"/>
+
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/es6shim-0.35.6/es6shim.js"></script>
+<script src="libs/es7shim-6.0.0/es7shim.js"></script>
+<script src="libs/graphre-0.1.3/graphre.js"></script>
+<script src="libs/nomnoml-1.3.1/nomnoml.js"></script>
+<script src="libs/nomnoml-binding-0.2.3/nomnoml.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">ENG_792-AVDR</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Apresentação</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#hello-world---sejam-bem-vindos"><i class="fa fa-check"></i><b>1.1</b> Hello World! - Sejam Bem Vindos!</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#sobre"><i class="fa fa-check"></i><b>1.1.1</b> Sobre</a></li>
+<li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#utilização"><i class="fa fa-check"></i><b>1.1.2</b> Utilização</a></li>
+<li class="chapter" data-level="1.1.3" data-path="index.html"><a href="index.html#códigos-e-dados"><i class="fa fa-check"></i><b>1.1.3</b> Códigos e Dados</a></li>
+<li class="chapter" data-level="1.1.4" data-path="index.html"><a href="index.html#cronograma-de-aulas"><i class="fa fa-check"></i><b>1.1.4</b> Cronograma de aulas</a></li>
+<li class="chapter" data-level="1.1.5" data-path="index.html"><a href="index.html#métodos-de-avaliação"><i class="fa fa-check"></i><b>1.1.5</b> Métodos de avaliação</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="vamos-ao-que-interesa.html"><a href="vamos-ao-que-interesa.html"><i class="fa fa-check"></i><b>2</b> Vamos ao que interesa</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="vamos-ao-que-interesa.html"><a href="vamos-ao-que-interesa.html#conhecendo-o-r"><i class="fa fa-check"></i><b>2.1</b> Conhecendo o R</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="vamos-ao-que-interesa.html"><a href="vamos-ao-que-interesa.html#o-que-é-o-r"><i class="fa fa-check"></i><b>2.1.1</b> O que é o R?</a></li>
+<li class="chapter" data-level="2.1.2" data-path="vamos-ao-que-interesa.html"><a href="vamos-ao-que-interesa.html#instalação-do-r"><i class="fa fa-check"></i><b>2.1.2</b> Instalação do R</a></li>
+<li class="chapter" data-level="2.1.3" data-path="vamos-ao-que-interesa.html"><a href="vamos-ao-que-interesa.html#primeiro-contato"><i class="fa fa-check"></i><b>2.1.3</b> Primeiro contato</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="vamos-ao-que-interesa.html"><a href="vamos-ao-que-interesa.html#como-r-funciona"><i class="fa fa-check"></i><b>2.2</b> Como R funciona</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="vamos-ao-que-interesa.html"><a href="vamos-ao-que-interesa.html#tipos-de-objetos-mode-ou-type"><i class="fa fa-check"></i><b>2.2.1</b> Tipos de objetos (<em>mode</em> ou <em>type</em>)</a></li>
+<li class="chapter" data-level="2.2.2" data-path="vamos-ao-que-interesa.html"><a href="vamos-ao-que-interesa.html#estrutura-do-objetos-class"><i class="fa fa-check"></i><b>2.2.2</b> Estrutura do objetos (<em>class</em>)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="3" data-path="acessando-e-manipulação-de-dados.html"><a href="acessando-e-manipulação-de-dados.html"><i class="fa fa-check"></i><b>3</b> Acessando e manipulação de dados</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="acessando-e-manipulação-de-dados.html"><a href="acessando-e-manipulação-de-dados.html#organização"><i class="fa fa-check"></i><b>3.1</b> Organização</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="acessando-e-manipulação-de-dados.html"><a href="acessando-e-manipulação-de-dados.html#usando---subscribing-ou-indexing"><i class="fa fa-check"></i><b>3.1.1</b> Usando [ ] - Subscribing ou indexing</a></li>
+<li class="chapter" data-level="3.1.2" data-path="acessando-e-manipulação-de-dados.html"><a href="acessando-e-manipulação-de-dados.html#grep"><i class="fa fa-check"></i><b>3.1.2</b> grep()</a></li>
+<li class="chapter" data-level="3.1.3" data-path="acessando-e-manipulação-de-dados.html"><a href="acessando-e-manipulação-de-dados.html#grepl"><i class="fa fa-check"></i><b>3.1.3</b> grepl()</a></li>
+<li class="chapter" data-level="3.1.4" data-path="acessando-e-manipulação-de-dados.html"><a href="acessando-e-manipulação-de-dados.html#sub-e-gsub"><i class="fa fa-check"></i><b>3.1.4</b> sub() e gsub()</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="acessando-e-manipulação-de-dados.html"><a href="acessando-e-manipulação-de-dados.html#operadores"><i class="fa fa-check"></i><b>3.2</b> Operadores</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="acessando-e-manipulação-de-dados.html"><a href="acessando-e-manipulação-de-dados.html#iterações"><i class="fa fa-check"></i><b>3.2.1</b> Iterações</a></li>
+<li class="chapter" data-level="3.2.2" data-path="acessando-e-manipulação-de-dados.html"><a href="acessando-e-manipulação-de-dados.html#condicionais"><i class="fa fa-check"></i><b>3.2.2</b> Condicionais</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="acessando-e-manipulação-de-dados.html"><a href="acessando-e-manipulação-de-dados.html#dica-de-leitura"><i class="fa fa-check"></i><b>3.3</b> Dica de leitura</a></li>
+<li class="chapter" data-level="3.4" data-path="acessando-e-manipulação-de-dados.html"><a href="acessando-e-manipulação-de-dados.html#exercícios"><i class="fa fa-check"></i><b>3.4</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="acessando-e-criando-funções-importação-e-exportação-dados.html"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html"><i class="fa fa-check"></i><b>4</b> Acessando e criando Funções, Importação e exportação dados</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="acessando-e-criando-funções-importação-e-exportação-dados.html"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#funções"><i class="fa fa-check"></i><b>4.1</b> Funções</a></li>
+<li class="chapter" data-level="4.2" data-path="acessando-e-criando-funções-importação-e-exportação-dados.html"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#pacotes"><i class="fa fa-check"></i><b>4.2</b> Pacotes</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="acessando-e-criando-funções-importação-e-exportação-dados.html"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#o-que-são-de-onde-vem-para-onde-vão-do-que-se-alimentam"><i class="fa fa-check"></i><b>4.2.1</b> O que são? De onde vem? Para onde vão? Do que se alimentam?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="acessando-e-criando-funções-importação-e-exportação-dados.html"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#entrando-com-dados"><i class="fa fa-check"></i><b>4.3</b> Entrando com dados</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="acessando-e-criando-funções-importação-e-exportação-dados.html"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#edit"><i class="fa fa-check"></i><b>4.3.1</b> edit()</a></li>
+<li class="chapter" data-level="4.3.2" data-path="acessando-e-criando-funções-importação-e-exportação-dados.html"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#built-in"><i class="fa fa-check"></i><b>4.3.2</b> built-in</a></li>
+<li class="chapter" data-level="4.3.3" data-path="acessando-e-criando-funções-importação-e-exportação-dados.html"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#scan"><i class="fa fa-check"></i><b>4.3.3</b> scan()</a></li>
+<li class="chapter" data-level="4.3.4" data-path="acessando-e-criando-funções-importação-e-exportação-dados.html"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#lendo-arquivos-de-texto-.txt"><i class="fa fa-check"></i><b>4.3.4</b> Lendo arquivos de texto (.txt)</a></li>
+<li class="chapter" data-level="4.3.5" data-path="acessando-e-criando-funções-importação-e-exportação-dados.html"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#read.csv"><i class="fa fa-check"></i><b>4.3.5</b> read.csv()</a></li>
+<li class="chapter" data-level="4.3.6" data-path="acessando-e-criando-funções-importação-e-exportação-dados.html"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#planilhas-excel-completas-.xls-ou-.xlsx"><i class="fa fa-check"></i><b>4.3.6</b> Planilhas excel completas (.xls ou .xlsx)</a></li>
+<li class="chapter" data-level="4.3.7" data-path="acessando-e-criando-funções-importação-e-exportação-dados.html"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#exportar-arquivos"><i class="fa fa-check"></i><b>4.3.7</b> Exportar arquivos()</a></li>
+<li class="chapter" data-level="4.3.8" data-path="acessando-e-criando-funções-importação-e-exportação-dados.html"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#definir-diretório-de-trabalho-setwd"><i class="fa fa-check"></i><b>4.3.8</b> Definir diretório de trabalho <code>setwd()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="acessando-e-criando-funções-importação-e-exportação-dados.html"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#exercícios-1"><i class="fa fa-check"></i><b>4.4</b> Exercícios</a></li>
+<li class="chapter" data-level="4.5" data-path="acessando-e-criando-funções-importação-e-exportação-dados.html"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#dica-de-leitura-1"><i class="fa fa-check"></i><b>4.5</b> Dica de leitura</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html"><i class="fa fa-check"></i><b>5</b> Produção gráfica e comunicação visual</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#utilizando-funções-nativas"><i class="fa fa-check"></i><b>5.1</b> Utilizando funções nativas</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#boxplot---boxplot"><i class="fa fa-check"></i><b>5.1.1</b> boxplot - boxplot()</a></li>
+<li class="chapter" data-level="5.1.2" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#histograma---hist"><i class="fa fa-check"></i><b>5.1.2</b> histograma - hist()</a></li>
+<li class="chapter" data-level="5.1.3" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#gráfico-de-barras---barplot"><i class="fa fa-check"></i><b>5.1.3</b> Gráfico de barras - barplot()</a></li>
+<li class="chapter" data-level="5.1.4" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#gráfico-de-setores-pizza---pie"><i class="fa fa-check"></i><b>5.1.4</b> Gráfico de setores (pizza) - pie()</a></li>
+<li class="chapter" data-level="5.1.5" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#função-plot"><i class="fa fa-check"></i><b>5.1.5</b> Função <em>plot()</em></a></li>
+<li class="chapter" data-level="5.1.6" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#formatando-eixos"><i class="fa fa-check"></i><b>5.1.6</b> Formatando eixos</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#cores-no-r"><i class="fa fa-check"></i><b>5.2</b> Cores no R</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#rcolorbrewer"><i class="fa fa-check"></i><b>5.2.1</b> RColorBrewer</a></li>
+<li class="chapter" data-level="5.2.2" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#unkin"><i class="fa fa-check"></i><b>5.2.2</b> unkin</a></li>
+<li class="chapter" data-level="5.2.3" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#viridis"><i class="fa fa-check"></i><b>5.2.3</b> viridis</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#para-mais-informações-utilize-o-google-ou-os-documentos-abaixo"><i class="fa fa-check"></i><b>5.3</b> Para mais informações utilize o Google ou os documentos abaixo</a></li>
+<li class="chapter" data-level="5.4" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#ggplot2"><i class="fa fa-check"></i><b>5.4</b> ggplot2</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#facetas-subgráficos---facets"><i class="fa fa-check"></i><b>5.4.1</b> Facetas (subgráficos) - facets</a></li>
+<li class="chapter" data-level="5.4.2" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#objetos-geométricos"><i class="fa fa-check"></i><b>5.4.2</b> Objetos geométricos</a></li>
+<li class="chapter" data-level="5.4.3" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#transformações-estatísticas"><i class="fa fa-check"></i><b>5.4.3</b> Transformações estatísticas</a></li>
+<li class="chapter" data-level="5.4.4" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#sistema-de-coordenadas"><i class="fa fa-check"></i><b>5.4.4</b> Sistema de coordenadas</a></li>
+<li class="chapter" data-level="5.4.5" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#rótulos"><i class="fa fa-check"></i><b>5.4.5</b> Rótulos</a></li>
+<li class="chapter" data-level="5.4.6" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#eixos"><i class="fa fa-check"></i><b>5.4.6</b> Eixos</a></li>
+<li class="chapter" data-level="5.4.7" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#escalas"><i class="fa fa-check"></i><b>5.4.7</b> Escalas</a></li>
+<li class="chapter" data-level="5.4.8" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#layout-da-legenda"><i class="fa fa-check"></i><b>5.4.8</b> layout da legenda</a></li>
+<li class="chapter" data-level="5.4.9" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#dando-zoom"><i class="fa fa-check"></i><b>5.4.9</b> Dando zoom</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#para-mais-informações-utilize-o-google-ou-os-documentos-abaixo-1"><i class="fa fa-check"></i><b>5.5</b> Para mais informações utilize o Google ou os documentos abaixo</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>6</b> RMarkdown</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="rmarkdown.html"><a href="rmarkdown.html#fontes"><i class="fa fa-check"></i><b>6.1</b> Fontes</a></li>
+<li class="chapter" data-level="6.2" data-path="rmarkdown.html"><a href="rmarkdown.html#formatação-de-texto"><i class="fa fa-check"></i><b>6.2</b> Formatação de texto</a></li>
+<li class="chapter" data-level="6.3" data-path="rmarkdown.html"><a href="rmarkdown.html#variando-cores"><i class="fa fa-check"></i><b>6.3</b> Variando Cores</a></li>
+<li class="chapter" data-level="6.4" data-path="rmarkdown.html"><a href="rmarkdown.html#negrito-e-itálico"><i class="fa fa-check"></i><b>6.4</b> Negrito e itálico</a></li>
+<li class="chapter" data-level="6.5" data-path="rmarkdown.html"><a href="rmarkdown.html#inline"><i class="fa fa-check"></i><b>6.5</b> Inline</a></li>
+<li class="chapter" data-level="6.6" data-path="rmarkdown.html"><a href="rmarkdown.html#fórmulas-matemáticas"><i class="fa fa-check"></i><b>6.6</b> Fórmulas Matemáticas</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="rmarkdown.html"><a href="rmarkdown.html#soma"><i class="fa fa-check"></i><b>6.6.1</b> <em>Soma</em></a></li>
+<li class="chapter" data-level="6.6.2" data-path="rmarkdown.html"><a href="rmarkdown.html#subtração"><i class="fa fa-check"></i><b>6.6.2</b> <em>Subtração</em></a></li>
+<li class="chapter" data-level="6.6.3" data-path="rmarkdown.html"><a href="rmarkdown.html#multiplição"><i class="fa fa-check"></i><b>6.6.3</b> <em>Multiplição</em></a></li>
+<li class="chapter" data-level="6.6.4" data-path="rmarkdown.html"><a href="rmarkdown.html#divisão"><i class="fa fa-check"></i><b>6.6.4</b> <em>Divisão</em></a></li>
+<li class="chapter" data-level="6.6.5" data-path="rmarkdown.html"><a href="rmarkdown.html#potenciação"><i class="fa fa-check"></i><b>6.6.5</b> <em>Potenciação</em></a></li>
+<li class="chapter" data-level="6.6.6" data-path="rmarkdown.html"><a href="rmarkdown.html#raiz-quadrada"><i class="fa fa-check"></i><b>6.6.6</b> <em>Raiz Quadrada</em></a></li>
+<li class="chapter" data-level="6.6.7" data-path="rmarkdown.html"><a href="rmarkdown.html#raiz-quadrada-de-fração"><i class="fa fa-check"></i><b>6.6.7</b> <em>Raiz Quadrada de fração</em></a></li>
+<li class="chapter" data-level="6.6.8" data-path="rmarkdown.html"><a href="rmarkdown.html#subscrito"><i class="fa fa-check"></i><b>6.6.8</b> <em>Subscrito</em></a></li>
+<li class="chapter" data-level="6.6.9" data-path="rmarkdown.html"><a href="rmarkdown.html#sobrescrito"><i class="fa fa-check"></i><b>6.6.9</b> <em>Sobrescrito</em></a></li>
+<li class="chapter" data-level="6.6.10" data-path="rmarkdown.html"><a href="rmarkdown.html#matriz-2-x-2"><i class="fa fa-check"></i><b>6.6.10</b> Matriz 2 x 2</a></li>
+<li class="chapter" data-level="6.6.11" data-path="rmarkdown.html"><a href="rmarkdown.html#matriz-2-x-2-entre-parênteses"><i class="fa fa-check"></i><b>6.6.11</b> Matriz 2 x 2 entre parênteses</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="rmarkdown.html"><a href="rmarkdown.html#tabelas"><i class="fa fa-check"></i><b>6.7</b> Tabelas</a></li>
+<li class="chapter" data-level="6.8" data-path="rmarkdown.html"><a href="rmarkdown.html#listas"><i class="fa fa-check"></i><b>6.8</b> Listas</a>
+<ul>
+<li class="chapter" data-level="6.8.1" data-path="rmarkdown.html"><a href="rmarkdown.html#lista-ordenada"><i class="fa fa-check"></i><b>6.8.1</b> Lista ordenada</a></li>
+<li class="chapter" data-level="6.8.2" data-path="rmarkdown.html"><a href="rmarkdown.html#lista-não-ordenada"><i class="fa fa-check"></i><b>6.8.2</b> Lista não ordenada</a></li>
+<li class="chapter" data-level="6.8.3" data-path="rmarkdown.html"><a href="rmarkdown.html#sublista"><i class="fa fa-check"></i><b>6.8.3</b> Sublista</a></li>
+</ul></li>
+<li class="chapter" data-level="6.9" data-path="rmarkdown.html"><a href="rmarkdown.html#criando-links"><i class="fa fa-check"></i><b>6.9</b> Criando links</a></li>
+<li class="chapter" data-level="6.10" data-path="rmarkdown.html"><a href="rmarkdown.html#comandos-r"><i class="fa fa-check"></i><b>6.10</b> Comandos R</a></li>
+<li class="chapter" data-level="6.11" data-path="rmarkdown.html"><a href="rmarkdown.html#dica-de-leitura-2"><i class="fa fa-check"></i><b>6.11</b> Dica de leitura</a></li>
+<li class="chapter" data-level="6.12" data-path="rmarkdown.html"><a href="rmarkdown.html#bibliografia"><i class="fa fa-check"></i><b>6.12</b> Bibliografia</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Markdown - Kit de Sobrevivência</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="rmarkdown" class="section level1" number="6">
+<h1><span class="header-section-number">Capítulo 6</span> RMarkdown</h1>
+<p>Assista este conteúdo em <strong>Cap 3 - RMarkdown</strong> no <a href="https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php">PVANet</a></p>
+<p>O conteúdo apresentado aqui não será apresentado corretamente no material online. Para saber o real <em>output</em> veja o arquivo gerado em <em>.pdf</em>.</p>
+<p>O <strong>RMarkdown</strong> é uma excelente ferramenta para comunicação e compartilhamento de informações.<br />
+Nele podemos combinar textos, códigos, resultados (gráficos e tabelas) que permitirão outro usuário repetir passo a passo tudo que foi desenvolvido por você.
+Isso facilita muito, pois você não precisa enviar scripts cheios de comentários mais os dados utilizados. Você pode selvar os dados numa nuvem e deixar o link para leitura no seu arquivo.</p>
+<p>Os arquivos de saída do RMarkdown são diversos. Podemos ter saída em <em>.pdf</em>, <em>.ppt</em>, <em>.doc.</em>, <em>.html</em> e etc. Podemos também contruir sites, blogs e escrever nossos artigos, teses e dissertações utilizando o RMarkdown.</p>
+<p>A estrutura inicial é bastante simples, mas vai complicando à medida que avançamos no conteúdo.<br />
+Da mesma maneira que a produção gráfica é veloz e com uma infinidade de recursos, temos no RMarkdown o mesmo comportamento. Por isso, não se preocupe em decorar os comandos, aos poucos eles serão assimilados por você. O importante é saber o que você quer fazer e utilizar os recursos de ajuda com eficiência.</p>
+<p>Por isso vamos ver o básico de sobrevivência no RMarkdown, mas se quiser se aprofundar no conteúdo você pode ler <span class="citation"><a href="#ref-rmarkdownDynamicDocuments" role="doc-biblioref">Allaire et al.</a> (<a href="#ref-rmarkdownDynamicDocuments" role="doc-biblioref">2020</a>)</span>, <span class="citation"><a href="#ref-RMarkdownTheDefinitiveGuide" role="doc-biblioref">Xie, Allaire, and Grolemund</a> (<a href="#ref-RMarkdownTheDefinitiveGuide" role="doc-biblioref">2021</a>)</span>, <span class="citation"><a href="#ref-RMarkdownCookbook" role="doc-biblioref">Xie, Dervieux, and Riederer</a> (<a href="#ref-RMarkdownCookbook" role="doc-biblioref">2020</a>)</span>, <span class="citation"><a href="#ref-knitr" role="doc-biblioref">Xie</a> (<a href="#ref-knitr" role="doc-biblioref">2015</a>)</span> ou <span class="citation"><a href="#ref-WickhamandGrolemund2019" role="doc-biblioref">H. Wickham and Grolemund</a> (<a href="#ref-WickhamandGrolemund2019" role="doc-biblioref">2019</a>)</span>.</p>
+<div class="sourceCode" id="cb615"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb615-1"><a href="rmarkdown.html#cb615-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;rmarkdown&quot;</span>)</span>
+<span id="cb615-2"><a href="rmarkdown.html#cb615-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rmarkdown)</span></code></pre></div>
+<p>Vá em <em>new file</em> e escolha <code>R Markdown...</code>.<br />
+Abrirá um <em>pop up</em> em sua tela onde você já pode definir algumas coisas como título, autor e formato a ser exportado. Para facilitar, deixe do jeito que está e dê <strong>OK</strong>.</p>
+<p>A nova aba aberta já é um <em>template RMarkdown</em> pronto para ser executado. Nele já temos as estruturas básicas que compõem o básico para produção de um arquivo como <em>YAML</em>, textos, <em>chunks</em> e alguns definidores de títulos.</p>
+<p>Com estes elementos já podemos gerar relatórios. Basta clicar em <code>Knit</code> que o arquivo ( <em>YAML</em>, <em>chunks</em>, <em>equações</em>, <em>textos</em>, <em>códigos</em> e etc) será processado no <a href="http://yihui.name/knitr/"><strong>knitr</strong></a> gerando um arquivo <em>.md</em> que será processao pelo <a href="https://pandoc.org/"><strong>pandoc</strong></a> que vai fazer a conversão para, no nosso caso, um <em>html</em>.</p>
+<p><a href="J:/ENG%20792/ENG_792-AVDR/ENG.792-AVDR/Cap_5_rmarkdownflow.png">rmarkdown flow PC</a></p>
+<div id="fontes" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Fontes</h2>
+<pre><code># Título
+
+## Subtítulo (2x menor)      
+
+### Subsubtítulo (3x menor)    
+
+#### Subsubsubsubsubtítulo (4x menor)    
+
+##### Subsubsubsubsubtítulo (5x menor)    
+
+###### Subsubsubsubsubsubtítulo (6x menor)    </code></pre>
+</div>
+<div id="formatação-de-texto" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> Formatação de texto</h2>
+<p><code>~~Tachado~~</code>: <strong><del>Tachado</del></strong><br />
+<code>*Itálico* ou _Itálico_</code>: <em>Itálico</em><br />
+<code>**Negrito** ou __Negrito__</code>: <strong>Negrito</strong></p>
+<div style="page-break-after: always;"></div>
+<p>Texto 1<br />
+Texto 2<br />
+Texto 3<br />
+Texto 4<br />
+Texto 5<br />
+Texto 6<br />
+Texto 7<br />
+Texto 8<br />
+Texto 9<br />
+Texto 10</p>
+</div>
+<div id="variando-cores" class="section level2" number="6.3">
+<h2><span class="header-section-number">6.3</span> Variando Cores</h2>
+<p>, , .</p>
+<pre><code>\normalsize
+\textcolor{red}{vermelho}, \textcolor{blue}{azul}, \textcolor{purple}{roxo}.</code></pre>
+</div>
+<div id="negrito-e-itálico" class="section level2" number="6.4">
+<h2><span class="header-section-number">6.4</span> Negrito e itálico</h2>
+<p>“A vingança nuca é plena, mata a alma e envenena.”<br />
+<em>Madruga, Seu</em></p>
+<p>“O trabalho não é ruim. Ruim é ter de trabalhar!”
+<strong>Madruga, Seu</strong></p>
+</div>
+<div id="inline" class="section level2" number="6.5">
+<h2><span class="header-section-number">6.5</span> Inline</h2>
+<p>Utilize cráse antes e depois da palavra que deseja que se pareça com código <span class="math inline">\(`head`\)</span>.<br />
+Para você obter os primeiros dados de um vetor usar a função <code>head()</code>.</p>
+</div>
+<div id="fórmulas-matemáticas" class="section level2" number="6.6">
+<h2><span class="header-section-number">6.6</span> Fórmulas Matemáticas</h2>
+<p>Para incluírmos as fórmulas matemáticas no documento, usar <code>$$ LaTeX $$</code> (bloco) ou <code>$ LaTeX $</code> (na linha)</p>
+<div id="soma" class="section level3" number="6.6.1">
+<h3><span class="header-section-number">6.6.1</span> <em>Soma</em></h3>
+<p><span class="math display">\[
+a+b
+\]</span></p>
+</div>
+<div id="subtração" class="section level3" number="6.6.2">
+<h3><span class="header-section-number">6.6.2</span> <em>Subtração</em></h3>
+<p><span class="math display">\[
+a-b
+\]</span></p>
+</div>
+<div id="multiplição" class="section level3" number="6.6.3">
+<h3><span class="header-section-number">6.6.3</span> <em>Multiplição</em></h3>
+<p><span class="math display">\[
+a \times b
+\]</span></p>
+</div>
+<div id="divisão" class="section level3" number="6.6.4">
+<h3><span class="header-section-number">6.6.4</span> <em>Divisão</em></h3>
+<p><span class="math display">\[
+a/b
+\]</span></p>
+<p>ou</p>
+<p><span class="math display">\[
+\frac{a}{b}
+\]</span></p>
+</div>
+<div id="potenciação" class="section level3" number="6.6.5">
+<h3><span class="header-section-number">6.6.5</span> <em>Potenciação</em></h3>
+<p><span class="math display">\[
+a^b
+\]</span></p>
+</div>
+<div id="raiz-quadrada" class="section level3" number="6.6.6">
+<h3><span class="header-section-number">6.6.6</span> <em>Raiz Quadrada</em></h3>
+<p><span class="math display">\[
+\sqrt{a}
+\]</span></p>
+</div>
+<div id="raiz-quadrada-de-fração" class="section level3" number="6.6.7">
+<h3><span class="header-section-number">6.6.7</span> <em>Raiz Quadrada de fração</em></h3>
+<p><span class="math display">\[
+\sqrt{\frac{a}{b}}
+\]</span></p>
+</div>
+<div id="subscrito" class="section level3" number="6.6.8">
+<h3><span class="header-section-number">6.6.8</span> <em>Subscrito</em></h3>
+<p><span class="math display">\[
+x_{a_b}
+\]</span></p>
+</div>
+<div id="sobrescrito" class="section level3" number="6.6.9">
+<h3><span class="header-section-number">6.6.9</span> <em>Sobrescrito</em></h3>
+<p><span class="math display">\[
+x^{y^z}
+\]</span>
+### <em>Conjunto</em></p>
+<p><span class="math display">\[
+\mathbb{N} = \{1, 2,\ldots\}
+\]</span>
+## Matriz<br />
+### Matriz 1 x 4</p>
+<p><span class="math display">\[
+\begin{matrix}
+0.8944272 &amp; 0.4472136
+-0.4472136 &amp; -0.8944272
+\end{matrix}
+\]</span></p>
+</div>
+<div id="matriz-2-x-2" class="section level3" number="6.6.10">
+<h3><span class="header-section-number">6.6.10</span> Matriz 2 x 2</h3>
+<p><span class="math display">\[
+\begin{matrix}
+0.8944272 &amp; 0.4472136\\
+-0.4472136 &amp; -0.8944272
+\end{matrix}
+\]</span></p>
+</div>
+<div id="matriz-2-x-2-entre-parênteses" class="section level3" number="6.6.11">
+<h3><span class="header-section-number">6.6.11</span> Matriz 2 x 2 entre parênteses</h3>
+<p><span class="math display">\[
+\begin{pmatrix}
+0.8944272 &amp; 0.4472136\\
+-0.4472136 &amp; -0.8944272
+\end{pmatrix}
+\]</span></p>
+<p>Experimente também <code>vbmatrix</code>, <code>Bmatrix</code>, <code>vmatrix</code>, <code>Vmatrix</code>.</p>
+<p>Veja mais em <a href="https://pt.overleaf.com/learn/latex/Matrices">matrizes</a>.</p>
+<p><span class="math display">\[
+\left(\begin{array}{cc} 
+0.8944272 &amp; 0.4472136\\
+-0.4472136 &amp; -0.8944272
+\end{array}\right)
+\left(\begin{array}{cc} 
+10 &amp; 0\\ 
+0 &amp; 5
+\end{array}\right)
+\]</span></p>
+</div>
+</div>
+<div id="tabelas" class="section level2" number="6.7">
+<h2><span class="header-section-number">6.7</span> Tabelas</h2>
+<p><code>|</code> delimitam as colunas<br />
+<code>-</code> delimitam os títulos<br />
+<code>:</code> Define o alinhamento que por padrão é a esquerda</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">ID</th>
+<th align="center">Produto</th>
+<th align="right">Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">01</td>
+<td align="center">Arroz</td>
+<td align="right">R$ 31,00</td>
+</tr>
+<tr class="even">
+<td align="left">02</td>
+<td align="center">Feijão</td>
+<td align="right">R$ 9,00</td>
+</tr>
+<tr class="odd">
+<td align="left">03</td>
+<td align="center">Kinder Ovo</td>
+<td align="right">R$ 2.500,00</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="listas" class="section level2" number="6.8">
+<h2><span class="header-section-number">6.8</span> Listas</h2>
+<div id="lista-ordenada" class="section level3" number="6.8.1">
+<h3><span class="header-section-number">6.8.1</span> Lista ordenada</h3>
+<ol style="list-style-type: decimal">
+<li>Arroz</li>
+<li>Feijão</li>
+<li>Batata</li>
+</ol>
+</div>
+<div id="lista-não-ordenada" class="section level3" number="6.8.2">
+<h3><span class="header-section-number">6.8.2</span> Lista não ordenada</h3>
+<ul>
+<li>Lichia</li>
+<li>Pistache</li>
+<li>Pitaya</li>
+</ul>
+</div>
+<div id="sublista" class="section level3" number="6.8.3">
+<h3><span class="header-section-number">6.8.3</span> Sublista</h3>
+<ol style="list-style-type: decimal">
+<li>Refrigerante preto</li>
+<li>Batata frita</li>
+<li>Podrão
+<ul>
+<li>2 Hambúrgueres</li>
+<li>Alface</li>
+<li>Queijo</li>
+<li>Molho especial</li>
+<li>Cebola</li>
+<li>Picles</li>
+<li>Pão com Gergelim</li>
+</ul></li>
+</ol>
+</div>
+</div>
+<div id="criando-links" class="section level2" number="6.9">
+<h2><span class="header-section-number">6.9</span> Criando links</h2>
+<p>Para criar links, é só envolver o texto a ser exibido por colchetes <strong>[ ]</strong> e o link entre parênteses <strong>( )</strong>.</p>
+<p><strong>Código</strong>: <span class="math inline">\([UFV](https://www.ufv.br/)\)</span> fica assim –&gt; <a href="https://www.ufv.br/">UFV</a></p>
+<p>ou colocar o link direto entre <strong>&lt;&gt;</strong> assim <span class="math inline">\(&lt;https://www.ufv.br/&gt;\)</span> fica assim –&gt; <a href="https://www.ufv.br/" class="uri">https://www.ufv.br/</a>.</p>
+</div>
+<div id="comandos-r" class="section level2" number="6.10">
+<h2><span class="header-section-number">6.10</span> Comandos R</h2>
+<p>Sempre que precisar adicionar códigos a serem executados dentro do seu <strong>Rmarkdown</strong> você deve obedecer algumas regras.</p>
+<p>Seu código deve ficar dentro de um <code>chunk</code>.<br />
+Veja que iniciamos è finalizamos com aspas simples triplas <code>(```)</code> seguindo de <code>r</code> dentro de chaves <code>{ }</code>.
+Após o <code>r</code> podemos ainda adicionar argumentos como o nome do <code>chunk</code> e outros comandos.
+É altamente recomendado que nomeie os <code>chunks</code> com nomes intuitivos para o que está sendo executado. Isso failita muito a navegação e execução.</p>
+<div class="sourceCode" id="cb618"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb618-1"><a href="rmarkdown.html#cb618-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb618-2"><a href="rmarkdown.html#cb618-2" aria-hidden="true" tabindex="-1"></a><span class="in">Comandos a serem executados</span></span>
+<span id="cb618-3"><a href="rmarkdown.html#cb618-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<p>````</p>
+<div class="sourceCode" id="cb619"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb619-1"><a href="rmarkdown.html#cb619-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
+<span id="cb619-2"><a href="rmarkdown.html#cb619-2" aria-hidden="true" tabindex="-1"></a>Notas <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;J:/ENG 792/ENG_792-AVDR/Cap_5_Notas_ENG792.txt&quot;</span>, <span class="at">header =</span> T, </span>
+<span id="cb619-3"><a href="rmarkdown.html#cb619-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">sep=</span><span class="st">&quot;,&quot;</span>, <span class="at">dec=</span><span class="st">&quot;.&quot;</span>,<span class="at">skip=</span><span class="dv">3</span>, <span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb619-4"><a href="rmarkdown.html#cb619-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb619-5"><a href="rmarkdown.html#cb619-5" aria-hidden="true" tabindex="-1"></a>Notas <span class="sc">%&gt;%</span> </span>
+<span id="cb619-6"><a href="rmarkdown.html#cb619-6" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Nome
+</th>
+<th style="text-align:right;">
+Nota.1
+</th>
+<th style="text-align:right;">
+Nota.2
+</th>
+<th style="text-align:right;">
+Nota.3
+</th>
+<th style="text-align:right;">
+Nota.4
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+10.9
+</td>
+<td style="text-align:right;">
+60.9
+</td>
+<td style="text-align:right;">
+53.6
+</td>
+<td style="text-align:right;">
+12.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+71.3
+</td>
+<td style="text-align:right;">
+9.9
+</td>
+<td style="text-align:right;">
+13.9
+</td>
+<td style="text-align:right;">
+47.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:right;">
+65.9
+</td>
+<td style="text-align:right;">
+0.3
+</td>
+<td style="text-align:right;">
+28.9
+</td>
+<td style="text-align:right;">
+55.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:right;">
+3.6
+</td>
+<td style="text-align:right;">
+70.0
+</td>
+<td style="text-align:right;">
+37.9
+</td>
+<td style="text-align:right;">
+75.3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+E
+</td>
+<td style="text-align:right;">
+70.9
+</td>
+<td style="text-align:right;">
+81.9
+</td>
+<td style="text-align:right;">
+43.9
+</td>
+<td style="text-align:right;">
+8.6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:right;">
+76.9
+</td>
+<td style="text-align:right;">
+53.0
+</td>
+<td style="text-align:right;">
+29.9
+</td>
+<td style="text-align:right;">
+38.6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+G
+</td>
+<td style="text-align:right;">
+73.6
+</td>
+<td style="text-align:right;">
+2.3
+</td>
+<td style="text-align:right;">
+23.0
+</td>
+<td style="text-align:right;">
+37.3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H
+</td>
+<td style="text-align:right;">
+2.0
+</td>
+<td style="text-align:right;">
+88.0
+</td>
+<td style="text-align:right;">
+10.3
+</td>
+<td style="text-align:right;">
+28.3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+I
+</td>
+<td style="text-align:right;">
+25.3
+</td>
+<td style="text-align:right;">
+11.9
+</td>
+<td style="text-align:right;">
+12.3
+</td>
+<td style="text-align:right;">
+26.3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+J
+</td>
+<td style="text-align:right;">
+7.0
+</td>
+<td style="text-align:right;">
+19.3
+</td>
+<td style="text-align:right;">
+82.9
+</td>
+<td style="text-align:right;">
+46.3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+K
+</td>
+<td style="text-align:right;">
+52.0
+</td>
+<td style="text-align:right;">
+41.0
+</td>
+<td style="text-align:right;">
+70.3
+</td>
+<td style="text-align:right;">
+31.6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+L
+</td>
+<td style="text-align:right;">
+27.3
+</td>
+<td style="text-align:right;">
+74.0
+</td>
+<td style="text-align:right;">
+47.6
+</td>
+<td style="text-align:right;">
+18.9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+M
+</td>
+<td style="text-align:right;">
+87.9
+</td>
+<td style="text-align:right;">
+75.9
+</td>
+<td style="text-align:right;">
+17.9
+</td>
+<td style="text-align:right;">
+80.6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:right;">
+76.0
+</td>
+<td style="text-align:right;">
+47.9
+</td>
+<td style="text-align:right;">
+2.0
+</td>
+<td style="text-align:right;">
+19.6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+O
+</td>
+<td style="text-align:right;">
+55.0
+</td>
+<td style="text-align:right;">
+60.6
+</td>
+<td style="text-align:right;">
+51.9
+</td>
+<td style="text-align:right;">
+24.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:right;">
+76.6
+</td>
+<td style="text-align:right;">
+47.9
+</td>
+<td style="text-align:right;">
+90.3
+</td>
+<td style="text-align:right;">
+55.6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Q
+</td>
+<td style="text-align:right;">
+10.3
+</td>
+<td style="text-align:right;">
+55.9
+</td>
+<td style="text-align:right;">
+18.0
+</td>
+<td style="text-align:right;">
+86.3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:right;">
+17.0
+</td>
+<td style="text-align:right;">
+0.9
+</td>
+<td style="text-align:right;">
+43.3
+</td>
+<td style="text-align:right;">
+14.6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+S
+</td>
+<td style="text-align:right;">
+38.6
+</td>
+<td style="text-align:right;">
+22.6
+</td>
+<td style="text-align:right;">
+23.6
+</td>
+<td style="text-align:right;">
+6.6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+T
+</td>
+<td style="text-align:right;">
+69.0
+</td>
+<td style="text-align:right;">
+31.9
+</td>
+<td style="text-align:right;">
+75.3
+</td>
+<td style="text-align:right;">
+90.6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+U
+</td>
+<td style="text-align:right;">
+26.9
+</td>
+<td style="text-align:right;">
+3.6
+</td>
+<td style="text-align:right;">
+65.3
+</td>
+<td style="text-align:right;">
+48.6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+X
+</td>
+<td style="text-align:right;">
+56.6
+</td>
+<td style="text-align:right;">
+32.0
+</td>
+<td style="text-align:right;">
+74.6
+</td>
+<td style="text-align:right;">
+28.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Y
+</td>
+<td style="text-align:right;">
+22.3
+</td>
+<td style="text-align:right;">
+42.3
+</td>
+<td style="text-align:right;">
+88.9
+</td>
+<td style="text-align:right;">
+65.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Z
+</td>
+<td style="text-align:right;">
+36.6
+</td>
+<td style="text-align:right;">
+44.3
+</td>
+<td style="text-align:right;">
+17.9
+</td>
+<td style="text-align:right;">
+23.9
+</td>
+</tr>
+</tbody>
+</table>
+<p>Dê uma olhada em <a href="https://rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">R Markdown Cheat Sheet</a></p>
+<div class="sourceCode" id="cb620"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb620-1"><a href="rmarkdown.html#cb620-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb620-2"><a href="rmarkdown.html#cb620-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb620-3"><a href="rmarkdown.html#cb620-3" aria-hidden="true" tabindex="-1"></a>bar <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> diamonds) <span class="sc">+</span> </span>
+<span id="cb620-4"><a href="rmarkdown.html#cb620-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(</span>
+<span id="cb620-5"><a href="rmarkdown.html#cb620-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> cut, <span class="at">fill =</span> cut), </span>
+<span id="cb620-6"><a href="rmarkdown.html#cb620-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">show.legend =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb620-7"><a href="rmarkdown.html#cb620-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">width =</span> <span class="dv">1</span></span>
+<span id="cb620-8"><a href="rmarkdown.html#cb620-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb620-9"><a href="rmarkdown.html#cb620-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">aspect.ratio =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb620-10"><a href="rmarkdown.html#cb620-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>)</span>
+<span id="cb620-11"><a href="rmarkdown.html#cb620-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb620-12"><a href="rmarkdown.html#cb620-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ggarrange</span>(bar <span class="sc">+</span> <span class="fu">coord_flip</span>(),</span>
+<span id="cb620-13"><a href="rmarkdown.html#cb620-13" aria-hidden="true" tabindex="-1"></a>          bar <span class="sc">+</span> <span class="fu">coord_polar</span>())</span></code></pre></div>
+<p><img src="ENG_792-AVDR_files/figure-html/gráfico 1-1.png" width="1632" /></p>
+<p>A média de count é 9.5.</p>
+</div>
+<div id="dica-de-leitura-2" class="section level2" number="6.11">
+<h2><span class="header-section-number">6.11</span> Dica de leitura</h2>
+<p><a href="https://yihui.org/knitr/">knitr</a></p>
+<p><a href="https://pandoc.org/MANUAL.html">Pandoc</a></p>
+<p><a href="https://www.overleaf.com/learn/latex/Aligning%20equations%20with%20amsmath">Aligning equations with amsmath</a></p>
+<p><a href="https://bookdown.org/yihui/rmarkdown/">R Markdown: The Definitive Guide</a></p>
+<p><a href="https://www.overleaf.com/learn/latex/Knitr">Knitr</a></p>
+<p><a href="https://texblog.org/2012/08/29/changing-the-font-size-in-latex/">texblog</a></p>
+<p><a href="https://r4ds.had.co.nz/index.html">R for Data Science</a></p>
+<p><a href="https://rmarkdown.rstudio.com/index.html">R Markdown</a></p>
+<p><a href="https://bookdown.org/rdpeng/exdata/">Exploratory Data Analysis with R</a></p>
+<p><a href="https://ulyngs.github.io/oxforddown/index.html">An Oxford University Thesis Template for R Markdown</a></p>
+<p><a href="https://medium.com/@HadrienD/how-to-customize-font-size-in-r-markdown-documents-f5adff36e2cc">How to customize font size in R Markdown documents</a></p>
+<p><a href="https://support.rstudio.com/hc/en-us/articles/200532307-Customizing-Fonts-and-Appearance">Customizing Fonts and Appearance</a></p>
+<p><a href="https://shiny.rstudio.com/articles/css.html">Style your apps with CSS</a>
+<a href="https://xspdf.com/resolution/58715759.html">XsPDF</a></p>
+<p><a href="http://each.uspnet.usp.br/sarajane/wp-content/uploads/2016/10/manual-latex-1.pdf">APOSTILA DE LATEX</a></p>
+<p><a href="https://bookdown.org/yihui/rmarkdown-cookbook/">R Markdown Cookbook</a></p>
+<p><a href="https://cran.r-project.org/web/packages/stationery/vignettes/Rmarkdown.pdf">R Markdown Basics</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a></p>
+<p><a href="https://github.com/FelipeSBarros/Dominando_RMarkdown">Dominando RMarkdown</a></p>
+<p><a href="https://bookdown.org/yihui/rmarkdown/pdf-document.html">YAML PDF Document pdf_document settings</a></p>
+<p><a href="https://bookdown.org/yihui/rmarkdown/html-document.html">YAML HMTL Document pdf_document settings</a></p>
+</div>
+<div id="bibliografia" class="section level2" number="6.12">
+<h2><span class="header-section-number">6.12</span> Bibliografia</h2>
+
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div class="csl-entry">
+Allaire, JJ, Yihui Xie, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, Hadley Wickham, Joe Cheng, Winston Chang, and Richard Iannone. 2020. <em>Rmarkdown: Dynamic Documents for r</em>. <a href="https://github.com/rstudio/rmarkdown">https://github.com/rstudio/rmarkdown</a>.
+</div>
+<div class="csl-entry">
+Chang, W. 2020. <em>R Graphics Cookbook</em>. Second. O’Reilly. <a href="https://r-graphics.org/">https://r-graphics.org/</a>.
+</div>
+<div class="csl-entry">
+Dragulescu, Adrian, and Cole Arendt. 2020. <em>Xlsx: Read, Write, Format Excel 2007 and Excel 97/2000/XP/2003 Files</em>. <a href="https://CRAN.R-project.org/package=xlsx">https://CRAN.R-project.org/package=xlsx</a>.
+</div>
+<div class="csl-entry">
+Freire, S. M. 2020. <em>Introdução Ao r</em>. bookdown. <a href="https://bookdown.org/steve_midway/DAR/">https://bookdown.org/steve_midway/DAR/</a>.
+</div>
+<div class="csl-entry">
+Kabacoff, Robert I. 2015. <em><span class="nocase">R in Action</span></em>. Second. Manning. <a href="http://www.worldcat.org/isbn/9781617291388">http://www.worldcat.org/isbn/9781617291388</a>.
+</div>
+<div class="csl-entry">
+Kassambara, A. 2019. <em>GGPlot2 Essentials: Great Data Visualization in r</em>. Amazon Digital Services LLC - KDP Print US. <a href="https://books.google.com.br/books?id=McyXzQEACAAJ">https://books.google.com.br/books?id=McyXzQEACAAJ</a>.
+</div>
+<div class="csl-entry">
+Meireles, Fernando, and Denisson Silva. 2018. <em>Usando r: Um Guia Para Cientistas Políticos</em>. bookdown. <a href="http://electionsbr.com/livro/index.html">http://electionsbr.com/livro/index.html</a>.
+</div>
+<div class="csl-entry">
+Mello, M. P., and L. A. Peternelli. 2013. <em>Conhecendo o r: Uma Visão Mais Que Estatística</em>. First. Editora UFV.
+</div>
+<div class="csl-entry">
+Mirai Solutions GmbH. 2020. <em>XLConnect: Excel Connector for r</em>. <a href="https://CRAN.R-project.org/package=XLConnect">https://CRAN.R-project.org/package=XLConnect</a>.
+</div>
+<div class="csl-entry">
+Murrel, P. 2011. <em>R Graphics</em>. Second. Chapman &amp; Hall/CRC. <a href="https://www.stat.auckland.ac.nz/~paul/RG2e/">https://www.stat.auckland.ac.nz/~paul/RG2e/</a>.
+</div>
+<div class="csl-entry">
+Neth, H. 2021. <em>Data Science for Psychologists</em>. bookdown. <a href="https://bookdown.org/hneth/ds4psy/">https://bookdown.org/hneth/ds4psy/</a>.
+</div>
+<div class="csl-entry">
+Peng, R. D. 2020a. <em>Exploratory Data Analysis with r</em>. bookdown. <a href="https://bookdown.org/rdpeng/exdata/">https://bookdown.org/rdpeng/exdata/</a>.
+</div>
+<div class="csl-entry">
+———. 2020b. <em>R Programming for Data Science</em>. bookdown. <a href="https://bookdown.org/rdpeng/rprogdatascience/">https://bookdown.org/rdpeng/rprogdatascience/</a>.
+</div>
+<div class="csl-entry">
+Perlin, M. S. 2018. <em>Processamento e an<span>á</span>lise de Dados Financeiros e Econ<span>ô</span>micos Com o r</em>. Cl<span>ó</span>vis Nicacio. <a href="https://books.google.com.br/books?id=uxyluAEACAAJ">https://books.google.com.br/books?id=uxyluAEACAAJ</a>.
+</div>
+<div class="csl-entry">
+RCoreTeam. 2020. <em>R Data Import/Export</em>. <em>Cran</em>. <a href="https://cran.r-project.org/doc/manuals/R-data.pdf">https://cran.r-project.org/doc/manuals/R-data.pdf</a>.
+</div>
+<div class="csl-entry">
+Venables, W. N., and D. M. Smith. 2020. <em>An Introduction to r</em>. bookdown. <a href="https://colinfay.me/intro-to-r/">https://colinfay.me/intro-to-r/</a>.
+</div>
+<div class="csl-entry">
+Wickham, H., and G. Grolemund. 2019. <em>R Para Data Science: Importe, Arrume, Transforme, Visualize e Modele Dados</em>. First. Alta Books.
+</div>
+<div class="csl-entry">
+Wickham, Hadley, and Jennifer Bryan. 2019. <em>Readxl: Read Excel Files</em>. <a href="https://CRAN.R-project.org/package=readxl">https://CRAN.R-project.org/package=readxl</a>.
+</div>
+<div class="csl-entry">
+Xie, Yihui. 2015. <em>Dynamic Documents with r and Knitr</em>. 2nd ed. Chapman &amp; Hall/CRC the r Series. Chapman; Hall/CRC. <a href="http://gen.lib.rus.ec/book/index.php?md5=dac125f250d388d76db3c95844923767">http://gen.lib.rus.ec/book/index.php?md5=dac125f250d388d76db3c95844923767</a>.
+</div>
+<div class="csl-entry">
+Xie, Yihui, J. J. Allaire, and Garrett Grolemund. 2021. <em>R Markdown: The Definitive Guide</em>. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://bookdown.org/yihui/rmarkdown">https://bookdown.org/yihui/rmarkdown</a>.
+</div>
+<div class="csl-entry">
+Xie, Yihui, Christophe Dervieux, and Emily Riederer. 2020. <em>R Markdown Cookbook</em>. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://bookdown.org/yihui/rmarkdown-cookbook">https://bookdown.org/yihui/rmarkdown-cookbook</a>.
+</div>
+<div class="csl-entry">
+Yamamoto, J. K. 2020. <em>Estatística, análise e Interpolação de Dados Geoespaciais</em>. 1st ed. São Paulo: Gráfica Paulos.
+</div>
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-rmarkdownDynamicDocuments" class="csl-entry">
+Allaire, JJ, Yihui Xie, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, Hadley Wickham, Joe Cheng, Winston Chang, and Richard Iannone. 2020. <em>Rmarkdown: Dynamic Documents for r</em>. <a href="https://github.com/rstudio/rmarkdown">https://github.com/rstudio/rmarkdown</a>.
+</div>
+<div id="ref-WickhamandGrolemund2019" class="csl-entry">
+Wickham, H., and G. Grolemund. 2019. <em>R Para Data Science: Importe, Arrume, Transforme, Visualize e Modele Dados</em>. First. Alta Books.
+</div>
+<div id="ref-knitr" class="csl-entry">
+Xie, Yihui. 2015. <em>Dynamic Documents with r and Knitr</em>. 2nd ed. Chapman &amp; Hall/CRC the r Series. Chapman; Hall/CRC. <a href="http://gen.lib.rus.ec/book/index.php?md5=dac125f250d388d76db3c95844923767">http://gen.lib.rus.ec/book/index.php?md5=dac125f250d388d76db3c95844923767</a>.
+</div>
+<div id="ref-RMarkdownTheDefinitiveGuide" class="csl-entry">
+Xie, Yihui, J. J. Allaire, and Garrett Grolemund. 2021. <em>R Markdown: The Definitive Guide</em>. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://bookdown.org/yihui/rmarkdown">https://bookdown.org/yihui/rmarkdown</a>.
+</div>
+<div id="ref-RMarkdownCookbook" class="csl-entry">
+Xie, Yihui, Christophe Dervieux, and Emily Riederer. 2020. <em>R Markdown Cookbook</em>. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://bookdown.org/yihui/rmarkdown-cookbook">https://bookdown.org/yihui/rmarkdown-cookbook</a>.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="produção-gráfica-e-comunicação-visual.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/Jacksonmrod/ENG.792-AVDR/edit/master/Cap_5.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/Cap_5.Rmd",
+"text": null
+},
+"download": ["ENG_792-AVDR.pdf", "ENG_792-AVDR.epub"],
+"search": {
+"engine": "lunr",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,367 @@
+---
+title: "R Markdown - Kit de Sobrevivência"
+author: "Jackson Rodrigues"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  pdf_document:
+    toc: true
+    toc_depth: 3
+    number_sections: true
+line-height: 1.5em
+fontsize: 12pt
+link-citations: yes
+font-family: times new roman
+biblio-style: apalike
+subtitle: O mínimo que você precisa saber para gerar um .pdf
+bibliography: book.bib
+---
+
+# RMarkdown
+
+Assista este conteúdo em **Cap 3 - RMarkdown** no [PVANet](https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php)
+
+O conteúdo apresentado aqui não será apresentado corretamente no material online. Para saber o real *output* veja o arquivo gerado em *.pdf*.
+
+O **RMarkdown** é uma excelente ferramenta para comunicação e compartilhamento de informações.  
+Nele podemos combinar textos, códigos, resultados (gráficos e tabelas) que permitirão outro usuário repetir passo a passo tudo que foi desenvolvido por você.
+Isso facilita muito, pois você não precisa enviar scripts cheios de comentários mais os dados utilizados. Você pode selvar os dados numa nuvem e deixar o link para leitura no seu arquivo.
+
+Os arquivos de saída do RMarkdown são diversos. Podemos ter saída em *.pdf*, *.ppt*, *.doc.*, *.html* e etc. Podemos também contruir sites, blogs e escrever nossos artigos, teses e dissertações utilizando o RMarkdown.
+
+A estrutura inicial é bastante simples, mas vai complicando à medida que avançamos no conteúdo.  
+Da mesma maneira que a produção gráfica é veloz e com uma infinidade de recursos, temos no RMarkdown o mesmo comportamento. Por isso, não se preocupe em decorar os comandos, aos poucos eles serão assimilados por você. O importante é saber o que você quer fazer e utilizar os recursos de ajuda com eficiência.
+
+Por isso vamos ver o básico de sobrevivência no RMarkdown, mas se quiser se aprofundar no conteúdo você pode ler @rmarkdownDynamicDocuments, @RMarkdownTheDefinitiveGuide, @RMarkdownCookbook, @knitr ou @WickhamandGrolemund2019. 
+
+```{r rmarkdown.instalacao, echo=T, eval=FALSE}
+install.packages("rmarkdown")
+library(rmarkdown)
+```
+
+Vá em _new file_ e escolha `R Markdown...`.  
+Abrirá um _pop up_  em sua tela onde você já pode definir algumas coisas como título, autor e formato a ser exportado. Para facilitar, deixe do jeito que está e dê **OK**.
+
+A nova aba aberta já é um _template RMarkdown_ pronto para ser executado. Nele já temos as estruturas básicas que compõem o básico para produção de um arquivo como _YAML_, textos, _chunks_ e alguns definidores de títulos.
+
+Com estes elementos já podemos gerar relatórios. Basta clicar em `Knit` que o arquivo ( _YAML_, _chunks_, _equações_, _textos_, _códigos_ e etc) será processado no [**knitr**](http://yihui.name/knitr/) gerando um arquivo _.md_ que será processao pelo [**pandoc**](https://pandoc.org/) que vai fazer a conversão para, no nosso caso, um  _html_.
+
+[rmarkdown flow PC](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_5_rmarkdownflow.png)
+
+
+## Fontes
+
+````
+# Título
+
+## Subtítulo (2x menor)      
+
+### Subsubtítulo (3x menor)    
+
+#### Subsubsubsubsubtítulo (4x menor)    
+
+##### Subsubsubsubsubtítulo (5x menor)    
+
+###### Subsubsubsubsubsubtítulo (6x menor)    
+````
+
+## Formatação de texto 
+
+`~~Tachado~~`: **~~Tachado~~**   
+`*Itálico* ou _Itálico_`: *Itálico*     
+`**Negrito** ou __Negrito__`: **Negrito**    
+
+\newpage
+
+\tiny	Texto 1   
+\scriptsize	Texto 2  
+\footnotesize	Texto 3  
+\small	Texto 4  
+\normalsize	Texto 5  
+\large	Texto 6  
+\Large	Texto 7  
+\LARGE	Texto 8  
+\huge	Texto 9  
+\Huge	Texto 10
+
+## Variando Cores
+\normalsize
+\textcolor{red}{vermelho}, \textcolor{blue}{azul}, \textcolor{purple}{roxo}.
+
+```
+\normalsize
+\textcolor{red}{vermelho}, \textcolor{blue}{azul}, \textcolor{purple}{roxo}.
+```
+
+
+## Negrito e itálico
+
+"A vingança nuca é plena, mata a alma e envenena."   
+_Madruga, Seu_
+
+"O trabalho não é ruim. Ruim é ter de trabalhar!"
+**Madruga, Seu**
+
+## Inline
+
+Utilize cráse antes e depois da palavra que deseja que se pareça com código $`head`$.  
+Para você obter os primeiros dados de um vetor usar a função `head()`.
+
+## Fórmulas Matemáticas
+
+Para incluírmos as fórmulas matemáticas no documento, usar `$$ LaTeX $$` (bloco) ou `$ LaTeX $` (na linha) 
+
+### _Soma_
+$$
+a+b
+$$ 
+
+### _Subtração_
+$$
+a-b
+$$
+
+### _Multiplição_
+
+$$
+a \times b
+$$
+
+### _Divisão_
+
+$$
+a/b
+$$
+
+\large	ou  
+
+$$
+\frac{a}{b}
+$$
+
+### _Potenciação_
+
+$$
+a^b
+$$
+
+### _Raiz Quadrada_
+
+$$
+\sqrt{a}
+$$
+
+### _Raiz Quadrada de fração_
+
+$$
+\sqrt{\frac{a}{b}}
+$$
+
+### _Subscrito_
+
+$$
+x_{a_b}
+$$
+
+### _Sobrescrito_
+
+$$
+x^{y^z}
+$$
+### _Conjunto_
+
+$$
+\mathbb{N} = \{1, 2,\ldots\}
+$$ 
+## Matriz    
+### Matriz 1 x 4 
+
+$$
+\begin{matrix}
+0.8944272 & 0.4472136
+-0.4472136 & -0.8944272
+\end{matrix}
+$$ 
+
+### Matriz 2 x 2
+
+$$
+\begin{matrix}
+0.8944272 & 0.4472136\\
+-0.4472136 & -0.8944272
+\end{matrix}
+$$ 
+
+### Matriz 2 x 2 entre parênteses
+
+$$
+\begin{pmatrix}
+0.8944272 & 0.4472136\\
+-0.4472136 & -0.8944272
+\end{pmatrix}
+$$ 
+
+Experimente também `vbmatrix`, `Bmatrix`, `vmatrix`, `Vmatrix`.    
+
+Veja mais em [matrizes](https://pt.overleaf.com/learn/latex/Matrices).
+
+$$
+\left(\begin{array}{cc} 
+0.8944272 & 0.4472136\\
+-0.4472136 & -0.8944272
+\end{array}\right)
+\left(\begin{array}{cc} 
+10 & 0\\ 
+0 & 5
+\end{array}\right)
+$$ 
+
+
+
+## Tabelas
+
+`|` delimitam as colunas    
+`-` delimitam os títulos    
+`:` Define o alinhamento que por padrão é a esquerda    
+
+
+ID  | Produto      | Valor 
+:---|:------------:|------------:
+01  | Arroz        | R$ 31,00
+02  | Feijão       | R$ 9,00
+03  | Kinder Ovo   | R$ 2.500,00
+
+
+## Listas
+
+### Lista ordenada
+
+1. Arroz
+2. Feijão
+3. Batata
+
+### Lista não ordenada
+
+* Lichia
+* Pistache
+* Pitaya
+
+### Sublista
+
+1. Refrigerante preto
+2. Batata frita
+3. Podrão
+    + 2 Hambúrgueres
+    + Alface
+    + Queijo
+    + Molho especial
+    + Cebola
+    + Picles
+    + Pão com Gergelim
+
+## Criando links 
+Para criar links, é só envolver o texto a ser exibido por colchetes **[ ]** e o link entre parênteses **( )**.
+
+**Código**: $[UFV](https://www.ufv.br/)$  fica assim -->  [UFV](https://www.ufv.br/) 
+
+ou colocar o link direto entre **<>** assim $<https://www.ufv.br/>$ fica assim --> <https://www.ufv.br/>.
+
+
+## Comandos R
+
+Sempre que precisar adicionar códigos a serem executados dentro do seu **Rmarkdown** você deve obedecer algumas regras.
+
+Seu código deve ficar dentro de um `chunk`.    
+Veja que iniciamos è finalizamos com aspas simples triplas ```` (```) ```` seguindo de `r` dentro de chaves `{ }`.
+Após o `r` podemos ainda adicionar argumentos como o nome do `chunk` e outros comandos. 
+É altamente recomendado que nomeie os `chunks` com nomes intuitivos para o que está sendo executado. Isso failita muito a navegação e execução.
+
+
+````markdown
+`r ''````{r}
+Comandos a serem executados
+```
+````
+````    
+
+```{r tabela.1}
+library(magrittr)
+Notas <- read.table("J:/ENG 792/ENG_792-AVDR/Cap_5_Notas_ENG792.txt", header = T, 
+                    sep=",", dec=".",skip=3, encoding = "UTF-8")
+
+Notas %>% 
+  knitr::kable()
+``` 
+
+Dê uma olhada em [R Markdown Cheat Sheet](https://rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)    
+
+
+```{r gráfico 1, echo=T,eval=T,fig.width=17,fig.height=17}
+library(ggplot2)
+library(ggpubr)
+bar <- ggplot(data = diamonds) + 
+  geom_bar(
+    mapping = aes(x = cut, fill = cut), 
+    show.legend = FALSE,
+    width = 1
+  ) + 
+  theme(aspect.ratio = 1) +
+  labs(x = NULL, y = NULL)
+
+ggarrange(bar + coord_flip(),
+          bar + coord_polar())
+```
+
+```{r include = F}
+boxplot(count ~ spray,data = InsectSprays)
+
+Count.media<-mean(InsectSprays$count, na.rm=T)
+```
+
+A média de count é `r Count.media`.
+
+
+## Dica de leitura    
+
+[knitr](https://yihui.org/knitr/)   
+
+[Pandoc](https://pandoc.org/MANUAL.html)   
+
+[Aligning equations with amsmath](https://www.overleaf.com/learn/latex/Aligning%20equations%20with%20amsmath)   
+
+[R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/)   
+
+[Knitr](https://www.overleaf.com/learn/latex/Knitr)   
+
+[texblog](https://texblog.org/2012/08/29/changing-the-font-size-in-latex/)   
+
+[R for Data Science](https://r4ds.had.co.nz/index.html)   
+
+[R Markdown](https://rmarkdown.rstudio.com/index.html)   
+
+[Exploratory Data Analysis with R](https://bookdown.org/rdpeng/exdata/)   
+
+[An Oxford University Thesis Template for R Markdown](https://ulyngs.github.io/oxforddown/index.html)   
+
+[How to customize font size in R Markdown documents](https://medium.com/@HadrienD/how-to-customize-font-size-in-r-markdown-documents-f5adff36e2cc)   
+
+[Customizing Fonts and Appearance](https://support.rstudio.com/hc/en-us/articles/200532307-Customizing-Fonts-and-Appearance)   
+
+[Style your apps with CSS](https://shiny.rstudio.com/articles/css.html)
+[XsPDF](https://xspdf.com/resolution/58715759.html)   
+
+[APOSTILA DE LATEX](http://each.uspnet.usp.br/sarajane/wp-content/uploads/2016/10/manual-latex-1.pdf)   
+
+[R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/)   
+
+[R Markdown Basics](https://cran.r-project.org/web/packages/stationery/vignettes/Rmarkdown.pdf)   
+
+[Markdown](https://en.wikipedia.org/wiki/Markdown)   
+
+[Dominando RMarkdown](https://github.com/FelipeSBarros/Dominando_RMarkdown)   
+
+[YAML PDF Document pdf_document settings](https://bookdown.org/yihui/rmarkdown/pdf-document.html)    
+
+[YAML HMTL Document pdf_document settings](https://bookdown.org/yihui/rmarkdown/html-document.html)
+
+
+## Bibliografia
