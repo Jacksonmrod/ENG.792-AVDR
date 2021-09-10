@@ -86,7 +86,6 @@ rmarkdown
 fontes
 formatação-de-texto
 variando-cores
-negrito-e-itálico
 inline
 fórmulas-matemáticas
 soma
@@ -98,6 +97,9 @@ raiz-quadrada
 raiz-quadrada-de-fração
 subscrito
 sobrescrito
+conjunto
+matriz
+matriz-1-x-4
 matriz-2-x-2
 matriz-2-x-2-entre-parênteses
 tabelas
@@ -109,3 +111,4 @@ criando-links
 comandos-r
 dica-de-leitura-2
 bibliografia
+url-your-book-url-like-httpsbookdown.orgyihuibookdown
