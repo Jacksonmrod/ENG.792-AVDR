@@ -20,7 +20,7 @@ bibliography: book.bib
 
 Assista este conteúdo em **Cap 3 - RMarkdown** no [PVANet](https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php)
 
-O conteúdo apresentado aqui não será apresentado corretamente no material online. Para saber o real *output* veja o arquivo gerado **R-Markdown---Kit-de-Sobrevivência.pdf**.
+O conteúdo apresentado aqui não será apresentado corretamente no material online. Para saber o real *output* veja o arquivo gerado **R-Markdown---Kit-de-Sobrevivência.pdf**.    
 
 O **RMarkdown** é uma excelente ferramenta para comunicação e compartilhamento de informações.  
 Nele podemos combinar textos, códigos, resultados (gráficos e tabelas) que permitirão outro usuário repetir passo a passo tudo que foi desenvolvido por você.
@@ -106,58 +106,53 @@ Para você obter os primeiros dados de um vetor usar a função `head()`.
 Para incluírmos as fórmulas matemáticas no documento, usar `$$ LaTeX $$` (bloco) ou `$ LaTeX $` (na linha) 
 
 ### _Soma_
-`a+b`
-$a+b$ 
+`$$a+b$$` &#8594; $a+b$ 
 
 ### _Subtração_
-`a-b`
-$$a-b$$
+`$a-b$` &#8594; $a-b$
 
 ### _Multiplição_
-`a \times b`
-$$a \times b$$
+`$$a \times b$$` &#8594; $$a \times b$$
 
 ### _Divisão_
-`a/b`
-$$a/b$$
+`$$a/b$$` &#8594; $$a/b$$
 
 \large	ou  
 
-`\frac{a}{b}`
-$$\frac{a}{b}$$
+`$\frac{a}{b}$` &#8594; $\frac{a}{b}$
 
 ### _Potenciação_
 
-`a^b` 
-$$a^b$$
+`$a^b$` &#8594; $a^b$
 
 ### _Raiz Quadrada_
 
-`\sqrt{a}`
-$$\sqrt{a}$$
+`$$\sqrt{a}$$` &#8594; $$\sqrt{a}$$
 
 ### _Raiz Quadrada de fração_
 
-`\sqrt{\frac{a}{b}}`
-$$\sqrt{\frac{a}{b}}$$
+`$\sqrt{\frac{a}{b}}$` &#8594; $\sqrt{\frac{a}{b}}$
 
 ### _Subscrito_
-`x_{a_b}`
-$$x_{a_b}$$
+`$x_{a_b}$` &#8594; $x_{a_b}$
 
 ### _Sobrescrito_
-`x^{y^z}`
-$$x^{y^z}$$
+`$x^{y^z}$` &#8594; $x^{y^z}$
 
 ### _Conjunto_
 
-`\mathbb{N} = \{1, 2,\ldots\}`
-$$\mathbb{N} = \{1, 2,\ldots\}$$ 
-\end{center}
+`$\mathbb{N} = \{1, 2,\ldots\}$` &#8594; $\mathbb{N} = \{1, 2,\ldots\}$ 
 
 
 ## Matriz    
 ### Matriz 1 x 4 
+`$$`    
+`\begin{matrix}`     
+`0.8944272 & 0.4472136`    
+`-0.4472136 & -0.8944272`    
+`\end{matrix}`    
+`$$`    
+
 
 $$
 \begin{matrix}
@@ -168,6 +163,13 @@ $$
 
 ### Matriz 2 x 2
 
+`$$`    
+`\begin{matrix}`    
+`0.8944272 & 0.4472136\\`    
+`-0.4472136 & -0.8944272`    
+`\end{matrix}`    
+`$$`    
+
 $$
 \begin{matrix}
 0.8944272 & 0.4472136\\
@@ -176,6 +178,13 @@ $$
 $$ 
 
 ### Matriz 2 x 2 entre parênteses
+
+`$$`   
+`\begin{pmatrix}`   
+`0.8944272 & 0.4472136\\`    
+`-0.4472136 & -0.8944272`    
+`\end{pmatrix}`    
+`$$`     
 
 $$
 \begin{pmatrix}
@@ -187,6 +196,19 @@ $$
 Experimente também `vbmatrix`, `Bmatrix`, `vmatrix`, `Vmatrix`.    
 
 Veja mais em [matrizes](https://pt.overleaf.com/learn/latex/Matrices).
+
+`$$`    
+`\left(\begin{array}{cc}`     
+`0.8944272 & 0.4472136\\`    
+`-0.4472136 & -0.8944272`    
+`\end{array}\right)`    
+`\left(\begin{array}{cc}`    
+`10 & 0\\`    
+`0 & 5`   
+`\end{array}\right)`   
+`$$` 
+
+
 
 $$
 \left(\begin{array}{cc} 
@@ -208,11 +230,11 @@ $$
 `:` Define o alinhamento que por padrão é a esquerda    
 
 
-ID  | Produto      | Valor 
+ìtem  | Produto      | Valor 
 :---|:------------:|------------:
-01  | Arroz        | R$ 31,00
-02  | Feijão       | R$ 9,00
-03  | Kinder Ovo   | R$ 2.500,00
+1  | Arroz        | R$ 31,00
+2  | Feijão       | R$ 9,00
+3  | Kinder Ovo   | R$ 2.500,00
 
 
 ## Listas
@@ -245,9 +267,9 @@ ID  | Produto      | Valor
 ## Criando links 
 Para criar links, é só envolver o texto a ser exibido por colchetes **[ ]** e o link entre parênteses **( )**.
 
-**Código**: $[UFV](https://www.ufv.br/)$  fica assim -->  [UFV](https://www.ufv.br/) 
+$[UFV](https://www.ufv.br/)$  fica assim &#8594;  [UFV](https://www.ufv.br/) 
 
-ou colocar o link direto entre **<>** assim $<https://www.ufv.br/>$ fica assim --> <https://www.ufv.br/>.
+ou colocar o link direto entre **<>** assim $<https://www.ufv.br/>$ fica assim &#8594; <https://www.ufv.br/>.
 
 
 ## Comandos R

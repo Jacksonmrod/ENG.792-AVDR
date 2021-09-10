@@ -111,4 +111,3 @@ criando-links
 comandos-r
 dica-de-leitura-2
 bibliografia
-url-your-book-url-like-httpsbookdown.orgyihuibookdown

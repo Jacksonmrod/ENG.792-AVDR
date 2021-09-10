@@ -971,10 +971,10 @@ Da mesma maneira que associamos às cores podemos associar ao tamanho utilizando
 <p><img src="ENG_792-AVDR_files/figure-html/ggplot.4-1.png" width="672" /></p>
 <div class="sourceCode" id="cb529"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb529-1"><a href="produção-gráfica-e-comunicação-visual.html#cb529-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
 <span id="cb529-2"><a href="produção-gráfica-e-comunicação-visual.html#cb529-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">shape =</span> class))</span></code></pre></div>
-<pre><code>## Warning: The shape palette can deal with a maximum of 6 discrete
-## values because more than 6 becomes difficult to
-## discriminate; you have 7. Consider specifying shapes
-## manually if you must have them.</code></pre>
+<pre><code>## Warning: The shape palette can deal with a maximum of 6 discrete values
+## because more than 6 becomes difficult to discriminate; you
+## have 7. Consider specifying shapes manually if you must have
+## them.</code></pre>
 <pre><code>## Warning: Removed 62 rows containing missing values (geom_point).</code></pre>
 <p><img src="ENG_792-AVDR_files/figure-html/ggplot.4-2.png" width="672" /></p>
 <p>Pela análise do gráfico acima ficamos pensando o que acontece com as SUV’s, notamos assim que temos apenas 6 tipos de <em>shapes</em> para nossas variáveis e os demais grupos ficam de fora da classificação.</p>
@@ -1038,22 +1038,21 @@ O comando comando responsável por esta diferença é o <code>geom_COMPLEMENTO</
 </blockquote>
 </blockquote>
 <div class="sourceCode" id="cb540"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb540-1"><a href="produção-gráfica-e-comunicação-visual.html#cb540-1" aria-hidden="true" tabindex="-1"></a>mpg<span class="sc">$</span>drv</span></code></pre></div>
-<pre><code>##   [1] &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot;
-##  [16] &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;4&quot; &quot;4&quot;
-##  [31] &quot;4&quot; &quot;4&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot;
-##  [46] &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot;
-##  [61] &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;r&quot;
-##  [76] &quot;r&quot; &quot;r&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot;
-##  [91] &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot;
-## [106] &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot;
-## [121] &quot;f&quot; &quot;f&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;r&quot;
-## [136] &quot;r&quot; &quot;r&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot;
-## [151] &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot;
-## [166] &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;f&quot;
-## [181] &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot;
-## [196] &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot;
-## [211] &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot;
-## [226] &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot;</code></pre>
+<pre><code>##   [1] &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot;
+##  [17] &quot;4&quot; &quot;4&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot;
+##  [33] &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot;
+##  [49] &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot;
+##  [65] &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot;
+##  [81] &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot;
+##  [97] &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot;
+## [113] &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot;
+## [129] &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot;
+## [145] &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;4&quot;
+## [161] &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot;
+## [177] &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot;
+## [193] &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;f&quot;
+## [209] &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot;
+## [225] &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot;</code></pre>
 <div class="sourceCode" id="cb542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb542-1"><a href="produção-gráfica-e-comunicação-visual.html#cb542-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span> </span>
 <span id="cb542-2"><a href="produção-gráfica-e-comunicação-visual.html#cb542-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">linetype =</span> drv))</span></code></pre></div>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>

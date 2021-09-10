@@ -334,7 +334,7 @@ Por exemplo:</p>
 <p>No display de ajuda da função <code>rnorm()</code>observamos como a função deve ser utilizada, quais parâmetros devem ser inseridos.<br />
 <code>rnorm(n, mean = 0, sd = 1)</code></p>
 <div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb387-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">5</span> ,<span class="dv">10</span> , <span class="dv">8</span>) <span class="co">#Vejam que não estão próximas de zero, mas de dez. </span></span></code></pre></div>
-<pre><code>## [1]  9.073397  3.480250 11.938108 -1.400787 12.927529</code></pre>
+<pre><code>## [1]  7.3908906 16.2244572  0.8957123  1.2613697  9.0059740</code></pre>
 <p>Podemos dar nomes aos parâmetros também, caso não sejam nomeados, os parâmetros seguirão a ordem estabelecida na função original inciada em <em>n</em> seguida de <em>mean</em> e <em>sd</em>.</p>
 <div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb389-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
 <span id="cb389-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb389-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n=</span><span class="dv">5</span> ,<span class="at">mean=</span><span class="dv">10</span> , <span class="at">sd=</span><span class="dv">8</span>) </span></code></pre></div>
@@ -509,8 +509,8 @@ Podemos imaginar a função dividida em 3 partes (entrada, processamento e saíd
 <li><strong>{}</strong> guardam os comandos a serem executados;</li>
 <li><code>resultado &lt;- x/y</code> e <code>print(resultado)</code> são os comandos a serem executados.</li>
 </ol>
-<div id="htmlwidget-988252b1f4f7d9d645fb" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
-<script type="application/json" data-for="htmlwidget-988252b1f4f7d9d645fb">{"x":{"code":"#.if: visual=rhomb fill=#e2efda align=center\n#.for: visual=rhomb fill=#ddebf7 align=center\n#.repeat: visual=rhomb fill=#fce4d6 align=center\n#.while: visual=rhomb fill=#fff2cc align=center\n#.standard: visual=class fill=#ededed align=left\n#.commented: visual=class fill=#ededed\n#.header: visual=roundrect fill=#d9e1f2 align=left\n#.return: visual=end fill=#70ad47  empty\n#.stop: visual=end fill=#ed7d31  empty\n#.break: visual=receiver fill=#ffc000 empty\n#.next: visual=transceiver fill=#5b9bd5  empty\n#arrowSize: 1\n#bendSize: 0.3\n#direction: down\n#gutter: 5\n#edgeMargin: 0\n#edges: hard\n#fill: #eee8d5\n#fillArrows: false\n#font: Courier\n#fontSize: 12\n#leading: 1.25\n#lineWidth: 3\n#padding: 16\n#spacing: 40\n#stroke: #33322E\n#title: filename\n#zoom: 1\n#acyclicer: greedy\n#ranker: network-simplex\n\n[<header>divisao(x, y)]  -> [<standard> 1: ;resultado <- x / y\nprint(resultado)]\n[<standard> 1: ;resultado <- x / y\nprint(resultado)]  -> [<return> 2:]","svg":true},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-c2e3fede5c798441fdae" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c2e3fede5c798441fdae">{"x":{"code":"#.if: visual=rhomb fill=#e2efda align=center\n#.for: visual=rhomb fill=#ddebf7 align=center\n#.repeat: visual=rhomb fill=#fce4d6 align=center\n#.while: visual=rhomb fill=#fff2cc align=center\n#.standard: visual=class fill=#ededed align=left\n#.commented: visual=class fill=#ededed\n#.header: visual=roundrect fill=#d9e1f2 align=left\n#.return: visual=end fill=#70ad47  empty\n#.stop: visual=end fill=#ed7d31  empty\n#.break: visual=receiver fill=#ffc000 empty\n#.next: visual=transceiver fill=#5b9bd5  empty\n#arrowSize: 1\n#bendSize: 0.3\n#direction: down\n#gutter: 5\n#edgeMargin: 0\n#edges: hard\n#fill: #eee8d5\n#fillArrows: false\n#font: Courier\n#fontSize: 12\n#leading: 1.25\n#lineWidth: 3\n#padding: 16\n#spacing: 40\n#stroke: #33322E\n#title: filename\n#zoom: 1\n#acyclicer: greedy\n#ranker: network-simplex\n\n[<header>divisao(x, y)]  -> [<standard> 1: ;resultado <- x / y\nprint(resultado)]\n[<standard> 1: ;resultado <- x / y\nprint(resultado)]  -> [<return> 2:]","svg":true},"evals":[],"jsHooks":[]}</script>
 <div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb413-1" aria-hidden="true" tabindex="-1"></a><span class="fu">divisao</span>(<span class="dv">50</span>,<span class="dv">25</span>)</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
 <div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb415-1" aria-hidden="true" tabindex="-1"></a><span class="fu">divisao</span>(<span class="dv">22</span>,<span class="fl">4.4</span>)</span></code></pre></div>
@@ -582,16 +582,15 @@ Podemos imaginar a função dividida em 3 partes (entrada, processamento e saíd
 <span id="cb435-5"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb435-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb435-6"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb435-6" aria-hidden="true" tabindex="-1"></a><span class="fu">multiplicador</span>(s,d)</span>
 <span id="cb435-7"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb435-7" aria-hidden="true" tabindex="-1"></a>resultado</span></code></pre></div>
-<pre><code>##  [1]   1.000000   1.401083   1.869638   2.405664   3.009163
-##  [6]   3.680133   4.418576   5.224490   6.097876   7.038734
-## [11]   8.047064   9.122865  10.266139  11.476885  12.755102
-## [16]  14.100791  15.513953  16.994586  18.542691  20.158267
-## [21]  21.841316  23.591837  25.409829  27.295294  29.248230
-## [26]  31.268638  33.356518  35.511870  37.734694  40.024990
-## [31]  42.382757  44.807997  47.300708  49.860891  52.488546
-## [36]  55.183673  57.946272  60.776343  63.673886  66.638900
-## [41]  69.671387  72.771345  75.938776  79.173678  82.476052
-## [46]  85.845898  89.283215  92.788005  96.360267 100.000000</code></pre>
+<pre><code>##  [1]   1.000000   1.401083   1.869638   2.405664   3.009163   3.680133
+##  [7]   4.418576   5.224490   6.097876   7.038734   8.047064   9.122865
+## [13]  10.266139  11.476885  12.755102  14.100791  15.513953  16.994586
+## [19]  18.542691  20.158267  21.841316  23.591837  25.409829  27.295294
+## [25]  29.248230  31.268638  33.356518  35.511870  37.734694  40.024990
+## [31]  42.382757  44.807997  47.300708  49.860891  52.488546  55.183673
+## [37]  57.946272  60.776343  63.673886  66.638900  69.671387  72.771345
+## [43]  75.938776  79.173678  82.476052  85.845898  89.283215  92.788005
+## [49]  96.360267 100.000000</code></pre>
 <div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb437-1" aria-hidden="true" tabindex="-1"></a>media <span class="ot">&lt;-</span> <span class="cf">function</span>( <span class="at">x =</span> <span class="fu">c</span>( <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)){ </span>
 <span id="cb437-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb437-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Neste caso utilizamos valores default que permitem testes caso algo saia errado</span></span>
 <span id="cb437-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb437-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Calcula média do inpout x</span></span>
@@ -660,8 +659,7 @@ Use a aba packages para explorar suas funcionalidades</p>
 ## 
 ##   R Core Team (2021). R: A language and environment for
 ##   statistical computing. R Foundation for Statistical
-##   Computing, Vienna, Austria. URL
-##   https://www.R-project.org/.
+##   Computing, Vienna, Austria. URL https://www.R-project.org/.
 ## 
 ## A BibTeX entry for LaTeX users is
 ## 
@@ -681,17 +679,17 @@ Use a aba packages para explorar suas funcionalidades</p>
 <pre><code>## 
 ## To cite use of &#39;analogue&#39; in publications use:
 ## 
-##   Simpson, G.L. and Oksanen, J.  ( 2021 ). analogue:
-##   Analogue matching and Modern Analogue Technique transfer
-##   function models. (R package version 0.17-6 ).
+##   Simpson, G.L. and Oksanen, J.  ( 2021 ). analogue: Analogue
+##   matching and Modern Analogue Technique transfer function
+##   models. (R package version 0.17-6 ).
 ##   (https://cran.r-project.org/package=analogue).
 ## 
 ##   Simpson, G.L. (2007). Analogue Methods in Palaeoecology:
-##   Using the analogue Package Journal of Statistical
-##   Software, 22(2), 1--29
+##   Using the analogue Package Journal of Statistical Software,
+##   22(2), 1--29
 ## 
-## To see these entries in BibTeX format, use
-## &#39;print(&lt;citation&gt;, bibtex=TRUE)&#39;, &#39;toBibtex(.)&#39;, or set
+## To see these entries in BibTeX format, use &#39;print(&lt;citation&gt;,
+## bibtex=TRUE)&#39;, &#39;toBibtex(.)&#39;, or set
 ## &#39;options(citation.bibtex.max=999)&#39;.</code></pre>
 <p>Aqui listo os pacotes carregados agora em meu R.</p>
 <div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb450-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">.packages</span>())</span></code></pre></div>
@@ -701,9 +699,9 @@ Use a aba packages para explorar suas funcionalidades</p>
 ## [13] &quot;RColorBrewer&quot;  &quot;analogue&quot;      &quot;vegan&quot;         &quot;lattice&quot;      
 ## [17] &quot;permute&quot;       &quot;flow&quot;          &quot;prob&quot;          &quot;fAsianOptions&quot;
 ## [21] &quot;fOptions&quot;      &quot;fBasics&quot;       &quot;timeSeries&quot;    &quot;timeDate&quot;     
-## [25] &quot;combinat&quot;      &quot;magrittr&quot;      &quot;ggplot2&quot;       &quot;sp&quot;           
-## [29] &quot;stats&quot;         &quot;graphics&quot;      &quot;grDevices&quot;     &quot;utils&quot;        
-## [33] &quot;datasets&quot;      &quot;methods&quot;       &quot;base&quot;</code></pre>
+## [25] &quot;combinat&quot;      &quot;magrittr&quot;      &quot;ggplot2&quot;       &quot;stats&quot;        
+## [29] &quot;graphics&quot;      &quot;grDevices&quot;     &quot;utils&quot;         &quot;datasets&quot;     
+## [33] &quot;methods&quot;       &quot;base&quot;</code></pre>
 <p>Aqui listo os pacotes instalados em meu R.</p>
 <div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb452-1" aria-hidden="true" tabindex="-1"></a>meus.pacotes <span class="ot">&lt;-</span> <span class="fu">library</span>()<span class="sc">$</span>results[,<span class="dv">1</span>]</span>
 <span id="cb452-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb452-2" aria-hidden="true" tabindex="-1"></a>meus.pacotes</span></code></pre></div>
@@ -1120,8 +1118,8 @@ Baixe o arquivo <strong>Cap_3_Informações - Alunos ENG 792.xlsx</strong> <a hr
 Antes de prosseguir certifique-se que o endereço de saída está adequado.</p>
 <div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb478-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(Info.Alunos, <span class="at">file=</span><span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Informações - Alunos ENG 792.csv&quot;</span>, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>,<span class="at">fileEncoding=</span><span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning in write.csv(Info.Alunos, file = &quot;J:/ENG 792/ENG_792-AVDR/
-## ENG.792-AVDR/Cap_3_Informações - Alunos ENG 792.csv&quot;, : attempt to
-## set &#39;sep&#39; ignored</code></pre>
+## ENG.792-AVDR/Cap_3_Informações - Alunos ENG 792.csv&quot;, : attempt to set
+## &#39;sep&#39; ignored</code></pre>
 <pre><code>## Error in is.data.frame(x): object &#39;Info.Alunos&#39; not found</code></pre>
 <div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb481-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv2</span>(Info.Alunos, <span class="at">file=</span><span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Informações - Alunos ENG 792.2.csv&quot;</span>,<span class="at">sep=</span><span class="st">&quot;,&quot;</span>,<span class="at">fileEncoding=</span><span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning in write.csv2(Info.Alunos, file = &quot;J:/ENG 792/ENG_792-AVDR/
