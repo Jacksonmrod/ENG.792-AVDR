@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 6 RMarkdown | R Markdown - Kit de Sobrevivência</title>
+  <title>Capítulo 6 RMarkdown | ENG 792 - Análise e visualização de dados com R (RStudio)</title>
   <meta name="description" content="Este é o material de supporte aos alunos matriculados na disciplina ENG 792 ofertada pelo programa de pós-gradução em Meteorologia Aplicada do Departamento de Engenharia Agrícola (DEA) da Universidade Federal de Viçosa (UFV)." />
   <meta name="generator" content="bookdown 0.22.17 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 6 RMarkdown | R Markdown - Kit de Sobrevivência" />
+  <meta property="og:title" content="Capítulo 6 RMarkdown | ENG 792 - Análise e visualização de dados com R (RStudio)" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 6 RMarkdown | R Markdown - Kit de Sobrevivência" />
+  <meta name="twitter:title" content="Capítulo 6 RMarkdown | ENG 792 - Análise e visualização de dados com R (RStudio)" />
   
   <meta name="twitter:description" content="Este é o material de supporte aos alunos matriculados na disciplina ENG 792 ofertada pelo programa de pós-gradução em Meteorologia Aplicada do Departamento de Engenharia Agrícola (DEA) da Universidade Federal de Viçosa (UFV)." />
   
@@ -24,6 +24,7 @@
 <meta name="author" content="Jackson Rodrigues" />
 
 
+<meta name="date" content="2021-09-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +32,7 @@
   
   
 <link rel="prev" href="produção-gráfica-e-comunicação-visual.html"/>
-
+<link rel="next" href="elementos-de-estatística-básica-no-r.html"/>
 <script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -60,6 +61,8 @@
 <script src="libs/graphre-0.1.3/graphre.js"></script>
 <script src="libs/nomnoml-1.3.1/nomnoml.js"></script>
 <script src="libs/nomnoml-binding-0.2.3/nomnoml.js"></script>
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 
 <style type="text/css">
@@ -299,6 +302,20 @@ div.csl-indent {
 <li class="chapter" data-level="6.11" data-path="rmarkdown.html"><a href="rmarkdown.html#dica-de-leitura-2"><i class="fa fa-check"></i><b>6.11</b> Dica de leitura</a></li>
 <li class="chapter" data-level="6.12" data-path="rmarkdown.html"><a href="rmarkdown.html#bibliografia"><i class="fa fa-check"></i><b>6.12</b> Bibliografia</a></li>
 </ul></li>
+<li class="chapter" data-level="7" data-path="elementos-de-estatística-básica-no-r.html"><a href="elementos-de-estatística-básica-no-r.html"><i class="fa fa-check"></i><b>7</b> <strong>Elementos de estatística básica no R</strong></a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="elementos-de-estatística-básica-no-r.html"><a href="elementos-de-estatística-básica-no-r.html#parte-1"><i class="fa fa-check"></i><b>7.1</b> <strong><em>Parte 1</em></strong></a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="elementos-de-estatística-básica-no-r.html"><a href="elementos-de-estatística-básica-no-r.html#estatística-descritiva"><i class="fa fa-check"></i><b>7.1.1</b> <strong>Estatística Descritiva</strong></a></li>
+<li class="chapter" data-level="7.1.2" data-path="elementos-de-estatística-básica-no-r.html"><a href="elementos-de-estatística-básica-no-r.html#leituras-complementares"><i class="fa fa-check"></i><b>7.1.2</b> <strong>Leituras complementares</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="elementos-de-estatística-básica-no-r.html"><a href="elementos-de-estatística-básica-no-r.html#parte-2"><i class="fa fa-check"></i><b>7.2</b> <strong>Parte 2</strong></a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="elementos-de-estatística-básica-no-r.html"><a href="elementos-de-estatística-básica-no-r.html#teste-de-diferença-entre-médias"><i class="fa fa-check"></i><b>7.2.1</b> <strong>Teste de diferença entre médias</strong></a></li>
+<li class="chapter" data-level="7.2.2" data-path="elementos-de-estatística-básica-no-r.html"><a href="elementos-de-estatística-básica-no-r.html#test-t-student"><i class="fa fa-check"></i><b>7.2.2</b> <strong>Test t (Student)</strong></a></li>
+<li class="chapter" data-level="7.2.3" data-path="elementos-de-estatística-básica-no-r.html"><a href="elementos-de-estatística-básica-no-r.html#teste-f"><i class="fa fa-check"></i><b>7.2.3</b> <strong><em>Teste F</em></strong></a></li>
+</ul></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -311,7 +328,7 @@ div.csl-indent {
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Markdown - Kit de Sobrevivência</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">ENG 792 - Análise e visualização de dados com R (RStudio)</a>
           </h1>
         </div>
 
@@ -321,8 +338,25 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="rmarkdown" class="section level1" number="6">
 <h1><span class="header-section-number">Capítulo 6</span> RMarkdown</h1>
-<p>Assista este conteúdo em <strong>Cap 3 - RMarkdown</strong> no <a href="https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php">PVANet</a></p>
+<p>Assista este conteúdo em <strong>Cap 5 - RMarkdown</strong> no <a href="https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php">PVANet</a></p>
 <p>O conteúdo apresentado aqui não será apresentado corretamente no material online. Para saber o real <em>output</em> veja o arquivo gerado <strong>R-Markdown—Kit-de-Sobrevivência.pdf</strong>.</p>
+<p>`—<br />
+title: “R Markdown - Kit de Sobrevivência”</p>
+<p>author: “Jackson Rodrigues”</p>
+<p>date: “14 setembro, 2021”</p>
+<p>output:</p>
+<p>pdf_document:</p>
+<p>toc: true</p>
+<p>toc_depth: 3</p>
+<p>number_sections: true</p>
+<p>line-height: 1.5em</p>
+<p>fontsize: 12pt</p>
+<p>link-citations: yes</p>
+<p>font-family: times new roman</p>
+<p>biblio-style: apalike</p>
+<p>subtitle: O mínimo que você precisa saber para gerar um .pdf</p>
+<p>bibliography: book.bib<br />
+—`</p>
 <p>O <strong>RMarkdown</strong> é uma excelente ferramenta para comunicação e compartilhamento de informações.<br />
 Nele podemos combinar textos, códigos, resultados (gráficos e tabelas) que permitirão outro usuário repetir passo a passo tudo que foi desenvolvido por você.
 Isso facilita muito, pois você não precisa enviar scripts cheios de comentários mais os dados utilizados. Você pode selvar os dados numa nuvem e deixar o link para leitura no seu arquivo.</p>
@@ -336,7 +370,10 @@ Da mesma maneira que a produção gráfica é veloz e com uma infinidade de recu
 Abrirá um <em>pop up</em> em sua tela onde você já pode definir algumas coisas como título, autor e formato a ser exportado. Para facilitar, deixe do jeito que está e dê <strong>OK</strong>.</p>
 <p>A nova aba aberta já é um <em>template RMarkdown</em> pronto para ser executado. Nele já temos as estruturas básicas que compõem o básico para produção de um arquivo como <em>YAML</em>, textos, <em>chunks</em> e alguns definidores de títulos.</p>
 <p>Com estes elementos já podemos gerar relatórios. Basta clicar em <code>Knit</code> que o arquivo ( <em>YAML</em>, <em>chunks</em>, <em>equações</em>, <em>textos</em>, <em>códigos</em> e etc) será processado no <a href="http://yihui.name/knitr/"><strong>knitr</strong></a> gerando um arquivo <em>.md</em> que será processao pelo <a href="https://pandoc.org/"><strong>pandoc</strong></a> que vai fazer a conversão para, no nosso caso, um <em>html</em>.</p>
-<p><a href="J:/ENG%20792/ENG_792-AVDR/ENG.792-AVDR/Cap_5_rmarkdownflow.png">rmarkdown flow PC</a></p>
+<div class="figure">
+<img src="Cap_5_rmarkdownflow.png" alt="" />
+<p class="caption">rmarkdown flow PC</p>
+</div>
 <div id="fontes" class="section level2" number="6.1">
 <h2><span class="header-section-number">6.1</span> Fontes</h2>
 <pre><code># Título
@@ -1065,74 +1102,6 @@ Z
 <div id="bibliografia" class="section level2" number="6.12">
 <h2><span class="header-section-number">6.12</span> Bibliografia</h2>
 
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div class="csl-entry">
-Allaire, JJ, Yihui Xie, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, Hadley Wickham, Joe Cheng, Winston Chang, and Richard Iannone. 2020. <em>Rmarkdown: Dynamic Documents for r</em>. <a href="https://github.com/rstudio/rmarkdown">https://github.com/rstudio/rmarkdown</a>.
-</div>
-<div class="csl-entry">
-Chang, W. 2020. <em>R Graphics Cookbook</em>. Second. O’Reilly. <a href="https://r-graphics.org/">https://r-graphics.org/</a>.
-</div>
-<div class="csl-entry">
-Dragulescu, Adrian, and Cole Arendt. 2020. <em>Xlsx: Read, Write, Format Excel 2007 and Excel 97/2000/XP/2003 Files</em>. <a href="https://CRAN.R-project.org/package=xlsx">https://CRAN.R-project.org/package=xlsx</a>.
-</div>
-<div class="csl-entry">
-Freire, S. M. 2020. <em>Introdução Ao r</em>. bookdown. <a href="https://bookdown.org/steve_midway/DAR/">https://bookdown.org/steve_midway/DAR/</a>.
-</div>
-<div class="csl-entry">
-Kabacoff, Robert I. 2015. <em><span class="nocase">R in Action</span></em>. Second. Manning. <a href="http://www.worldcat.org/isbn/9781617291388">http://www.worldcat.org/isbn/9781617291388</a>.
-</div>
-<div class="csl-entry">
-Kassambara, A. 2019. <em>GGPlot2 Essentials: Great Data Visualization in r</em>. Amazon Digital Services LLC - KDP Print US. <a href="https://books.google.com.br/books?id=McyXzQEACAAJ">https://books.google.com.br/books?id=McyXzQEACAAJ</a>.
-</div>
-<div class="csl-entry">
-Meireles, Fernando, and Denisson Silva. 2018. <em>Usando r: Um Guia Para Cientistas Políticos</em>. bookdown. <a href="http://electionsbr.com/livro/index.html">http://electionsbr.com/livro/index.html</a>.
-</div>
-<div class="csl-entry">
-Mello, M. P., and L. A. Peternelli. 2013. <em>Conhecendo o r: Uma Visão Mais Que Estatística</em>. First. Editora UFV.
-</div>
-<div class="csl-entry">
-Mirai Solutions GmbH. 2020. <em>XLConnect: Excel Connector for r</em>. <a href="https://CRAN.R-project.org/package=XLConnect">https://CRAN.R-project.org/package=XLConnect</a>.
-</div>
-<div class="csl-entry">
-Murrel, P. 2011. <em>R Graphics</em>. Second. Chapman &amp; Hall/CRC. <a href="https://www.stat.auckland.ac.nz/~paul/RG2e/">https://www.stat.auckland.ac.nz/~paul/RG2e/</a>.
-</div>
-<div class="csl-entry">
-Neth, H. 2021. <em>Data Science for Psychologists</em>. bookdown. <a href="https://bookdown.org/hneth/ds4psy/">https://bookdown.org/hneth/ds4psy/</a>.
-</div>
-<div class="csl-entry">
-Peng, R. D. 2020a. <em>Exploratory Data Analysis with r</em>. bookdown. <a href="https://bookdown.org/rdpeng/exdata/">https://bookdown.org/rdpeng/exdata/</a>.
-</div>
-<div class="csl-entry">
-———. 2020b. <em>R Programming for Data Science</em>. bookdown. <a href="https://bookdown.org/rdpeng/rprogdatascience/">https://bookdown.org/rdpeng/rprogdatascience/</a>.
-</div>
-<div class="csl-entry">
-Perlin, M. S. 2018. <em>Processamento e an<span>á</span>lise de Dados Financeiros e Econ<span>ô</span>micos Com o r</em>. Cl<span>ó</span>vis Nicacio. <a href="https://books.google.com.br/books?id=uxyluAEACAAJ">https://books.google.com.br/books?id=uxyluAEACAAJ</a>.
-</div>
-<div class="csl-entry">
-RCoreTeam. 2020. <em>R Data Import/Export</em>. <em>Cran</em>. <a href="https://cran.r-project.org/doc/manuals/R-data.pdf">https://cran.r-project.org/doc/manuals/R-data.pdf</a>.
-</div>
-<div class="csl-entry">
-Venables, W. N., and D. M. Smith. 2020. <em>An Introduction to r</em>. bookdown. <a href="https://colinfay.me/intro-to-r/">https://colinfay.me/intro-to-r/</a>.
-</div>
-<div class="csl-entry">
-Wickham, H., and G. Grolemund. 2019. <em>R Para Data Science: Importe, Arrume, Transforme, Visualize e Modele Dados</em>. First. Alta Books.
-</div>
-<div class="csl-entry">
-Wickham, Hadley, and Jennifer Bryan. 2019. <em>Readxl: Read Excel Files</em>. <a href="https://CRAN.R-project.org/package=readxl">https://CRAN.R-project.org/package=readxl</a>.
-</div>
-<div class="csl-entry">
-Xie, Yihui. 2015. <em>Dynamic Documents with r and Knitr</em>. 2nd ed. Chapman &amp; Hall/CRC the r Series. Chapman; Hall/CRC. <a href="http://gen.lib.rus.ec/book/index.php?md5=dac125f250d388d76db3c95844923767">http://gen.lib.rus.ec/book/index.php?md5=dac125f250d388d76db3c95844923767</a>.
-</div>
-<div class="csl-entry">
-Xie, Yihui, J. J. Allaire, and Garrett Grolemund. 2021. <em>R Markdown: The Definitive Guide</em>. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://bookdown.org/yihui/rmarkdown">https://bookdown.org/yihui/rmarkdown</a>.
-</div>
-<div class="csl-entry">
-Xie, Yihui, Christophe Dervieux, and Emily Riederer. 2020. <em>R Markdown Cookbook</em>. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://bookdown.org/yihui/rmarkdown-cookbook">https://bookdown.org/yihui/rmarkdown-cookbook</a>.
-</div>
-<div class="csl-entry">
-Yamamoto, J. K. 2020. <em>Estatística, análise e Interpolação de Dados Geoespaciais</em>. 1st ed. São Paulo: Gráfica Paulos.
-</div>
-</div>
 </div>
 </div>
 <h3>References</h3>
@@ -1158,8 +1127,8 @@ Xie, Yihui, Christophe Dervieux, and Emily Riederer. 2020. <em>R Markdown Cookbo
           </div>
         </div>
       </div>
-<a href="produção-gráfica-e-comunicação-visual.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="produção-gráfica-e-comunicação-visual.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="elementos-de-estatística-básica-no-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -1,0 +1,645 @@
+# **Elementos de estatística básica no R**     
+## ***Parte 1***
+
+Assista este conteúdo em **Cap 6 - Parte 1** no [PVANet](https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php)
+
+Sempre que nos apoderamos de uma banco de dados antes de qualquer coisa precisamos entender o que eles guardam. Precisamos explorá-los e tentar extrair informações que possam representar os padrões ou ausência de padrões ou a variância dentro destes bancos de dados.  
+
+Vários métodos podem ser utilizados para extrair informações de um banco de dados. Podemos começar métodos mais simples e ir aumentando a complexidade a medida que vamos aprofundando nosso conhecimento sobre nosso banco de dados.  
+Para tirar conclusões ou fazer inferências precisaremos ir além dos métodos de descrição dos dados. No entanto, vamos inicialmente lançar mão em métodos de estatístrica descritiva. Como fazer isso no R?
+
+### **Estatística Descritiva**  
+
+De acordo com @melloandpeternelli2013 estatística descritiva, como o próprio nome sugere, descreve e avalia certo grupo de dados, seja ele população ou amostra. Os autores ainda argumentam que temo na estatística descritva temos o ***método numérico*** e o ***método gráfico***.
+
+Vamos da uma olhada nos dados de [consumo de cigarro](https://vincentarelbundock.github.io/Rdatasets/doc/Ecdat/Cigar.html) nos Estados Unidos por ano. 
+
+
+Do jeito que a tabela está apresentada, ela pouco nos informa a respeito do comportamento dos dados. Mal podemos vê-la por completo deixando qualquer tentativa de *sumarizar* informações bastante frustrante. 
+
+```{r Consumo.decigarro.table,echo=T}
+Cons.Ciga<-read.csv("https://vincentarelbundock.github.io/Rdatasets/csv/Ecdat/Cigar.csv", header = T, row.names = 1)
+str(Cons.Ciga)
+library(rmarkdown)
+paged_table(Cons.Ciga)
+```
+
+Se tentarmos graficamente já dá uma melhorada, mas ainda não atender todas as expectativas.  
+
+
+```{r Consumo.decigarro.grafico,echo=T}
+par(mfrow=c(3,3), mar=c(2,2,1.5,1.5))
+for(i in 1:ncol(Cons.Ciga)){
+  plot(Cons.Ciga[,i], col=i+1, type="l", main=colnames(Cons.Ciga[i]))
+ }
+```  
+
+No entanto podemos começar buscando métodos "simples" de retirar informações.  
+
+#### **Medidas de tendência central**
+
+##### ***Média***
+
+A média das observações é a famosa soma dos valores dividido pelo número de observações.
+
+A função `mean()` calcula média de um vector. Caso queira médias por variáveis ou observações você pode utilizar `colMeans()`.
+
+
+```{r média, echo=T}
+(20+31+54+78+12)/5
+
+mean(c(20,31,54,78,12))
+
+mean(Cons.Ciga$price)
+
+colMeans(Cons.Ciga)
+
+media.linhas<-as.matrix(rowMeans(Cons.Ciga))
+
+plot(media.linhas, type="l")
+
+paged_table(as.data.frame(media.linhas))
+```
+
+Se você quiser apenas a soma use `sum()`, `rowSums` e `colSums()`.
+
+```{r soma, echo=T}
+(20+31+54+78+12)
+
+sum(c(20,31,54,78,12))
+
+sum(Cons.Ciga$price)
+
+colSums(Cons.Ciga)
+
+Soma.linhas<-as.matrix(rowSums(Cons.Ciga))
+
+plot(Soma.linhas, type="l")
+
+paged_table(as.data.frame(Soma.linhas))
+```
+
+##### ***Média Aparada***
+
+No mundo real, em dados observados, muitas vezes encontramos dados que fogem do padrão dos outros elementos.  
+Imagine que você coletou um banco de dados com os seguintes valores.  
+
+<p style="text-align:center;">-435, 34, 20, 18, 33, 26, 27, 29, 31, 19</p>
+
+Há algo de estranho com esse -435. Ele provavelmente é um *outlier*, um valor que foi de maneira equivocada coletado por falha do pesquisador ou falha no equipamento.
+
+De acordo com @Navarro2013 quando encaramos esse tipo de condição com valores extremos no meio de nossos dados, uma ***média aritmética*** não é o método mais indicado, pois ela sofre muita influêncioa dos valores extremos.  
+
+Para casos como esses podemos calcular uma mediana ou uma ***média aparada***. Para calcular uma ***média aparada*** vamos descartar os valores extremos preservando os valores "reais" ou "corretos" de nossas observações. Tendo as características preservadas em nosso banco de dados poderemos então partir para análises mais sofisticadas.
+
+A ***média aparada*** é descrita em termos de porcentagem de observações. Por exemplo, uma ***média aparada*** em 10% descarta os 10% dos dados maiores e os 10% menores calculando assim a ***média aritmética*** dos 80% restantes.
+
+Para calcular a ***média aparada*** no R utilize o argumento `trim=x` (x é uma valor que vai de 0.0 (0%) até 1 (100%)) dentro com comando `mean()`.
+
+```{r media.aparada, echo=TRUE}
+set.seed(1234)
+temp<-c(-100,runif(n=10, min = 20, max = 38))
+temp
+
+mean(temp)
+mean(temp, trim=0.0)
+mean(temp, trim=0.1)
+
+```
+
+##### ***Mediana*** 
+
+Medida utilizada para indicar o centro de um conjunto de dados ou o valor intermediário.  
+Se *n*  for ímpar a posição da mediana será `(n+1)/2`. 
+
+Em 9, 25, **36**, 49, 49 a mediana é **36**.
+
+Se *n* for par, a mediana será a média aritmética dos valores que ocupam as posições `n/2` e `n/2+1`.  
+Em 9, 25, **35**, **36**, 49, 49 a mediana é **35.5**.
+
+A mediana é uma medida útil quando temos valores extremos discrepantes dos demais (@melloandpeternelli2013). No R pode ser alcançada utilizando o comando `median()`.
+
+```{r mediana, echo=T}
+median(c(9, 25, 36, 49, 49))
+
+median(c(9, 25, 35, 36, 49, 49))
+
+for(i in 1:ncol(Cons.Ciga)){
+  print(noquote(paste(c('Mediana de', colnames(Cons.Ciga[i]), 'é', round(median(Cons.Ciga[,i]),digits=2)))))
+}
+
+par(mfrow=c(3,3),mar=c(2,2,1.5,1.5))
+for(i in 1:ncol(Cons.Ciga)){
+  (boxplot(Cons.Ciga[,i], main=colnames(Cons.Ciga[i])))
+  }
+```
+
+##### ***Moda*** 
+
+Um conjunto de dados pode ser *unimodal*, *bimodal* ou *amodal*. A moda pode ser usada para indicar tendência central de um conjunto de observações (*moda amostral*).
+
+No R podemos calcular a moda pela utilização da função `mfv()` ou `mfv1()` de alguns pacotes como `modeest` ou criar uma função para isso  uma vez que não conhecemos uma função nativa que calcule a moda.
+
+```{r moda, echo=T}
+#install.packages("modeest")
+library(modeest)
+
+# Atenção, pois `mfv()` e `mfv1()`produzem resultados diferentes.
+
+for(i in 1:ncol(Cons.Ciga)){
+  print(noquote(paste(c('A moda de', colnames(Cons.Ciga[i]), 'é', round(mfv1(Cons.Ciga[,i]),digits=2)))))
+}
+
+#Criando a própria função para MODA
+moda <- function(v) {
+   uniqv <- unique(v)
+   uniqv[which.max(tabulate(match(v, uniqv)))]
+   }
+
+for(i in 1:ncol(Cons.Ciga)){
+  print(noquote(paste(c('A moda de', colnames(Cons.Ciga[i]), 'é', round(moda(Cons.Ciga[,i]),digits=2)))))
+}
+```
+
+Temos também a função `maxFreq()`que retorna a frequência modal.
+
+```{r pacote lsr, echo=T}
+#install.packages("lsr")
+library(lsr)
+
+seleções.campeãs<-as.factor(c("Uruguai","Itália","Itália","Sem Copa","Sem Copa","Uruguai","Alemanha","Brasil",
+           "Brasil","Inglaterra","Brasil","Alemanha","Argentina","Itália","Argentina",
+           "Alemanha","Brasil","França","Brasil","Itália","Espanha","Alemanha","França"))
+
+table(seleções.campeãs)
+modeOf(seleções.campeãs) # Mostra a moda (aquele que mais se repete)
+maxFreq(seleções.campeãs) # Mostra a frequência daquele que mais se repete
+```
+
+#### **Medidas de Variabilidade**
+
+##### ***Amplitude*** 
+
+É simplesmente a diferença entre o maior e menor valor dentro de um conjunto de dados. Podemos utilizar os comandos `max()` e `min()` para acessar os valores máximos e mínimos do conjunto de dados ou `range()` que mostra os dois valores (máximo e mínimo) ao mesmo tempo.
+
+```{r Amplitude, echo=T}
+
+max(Cons.Ciga$price)-min(Cons.Ciga$price)
+
+range(Cons.Ciga$price)
+
+range(Cons.Ciga$price)[2]
+
+range(Cons.Ciga$price)[1]
+
+range(Cons.Ciga$price)[2]-range(Cons.Ciga$price)[1]
+
+for(i in 1:ncol(Cons.Ciga)){
+  print(noquote(paste(c('A Amplitude de', colnames(Cons.Ciga[i]), 'é', round(max(Cons.Ciga[,i])-min(Cons.Ciga$price),digits=2)))))
+}
+
+```
+
+##### ***Classificação percentil*** 
+
+A classificação percentil de um dado qualquer define a porcentagem dos casos em uma distribuição que se enquandram naquele valor ou abaixo dele.  
+Imagine que temos as seguintes notas de um conjunto de alunos e queremos saber quantas notas ficaram dentro de 60% total das notas. Podemos proceder com classificação percentil utilizando `quantile(x=, probs = )`.
+
+<p style="text-align:center;">94, 92, 91, 88, 85, 84, 80, 79, 77, 76, 74, 74, 71, 69, 65, 62, 56, 53, 48, 40</p>
+
+```{r Class.Percentil, echo=T}
+notas<-c(94, 92, 91, 88, 85, 84, 80, 79, 77, 76, 74, 74, 71, 69, 65, 62, 56, 53, 48, 40)
+
+quantile(x = notas, probs = .60)
+```
+
+```{r Class.Percentil2, echo=T}
+quantile( x = Cons.Ciga$price, probs = .50)
+
+print(noquote(paste(c('Observamos que 50% das estão abaixo de',(quantile(x = Cons.Ciga$price, probs = .50)[[1]]),"."))))
+
+```
+
+##### ***Variação interquartil*** 
+
+A variação interquartil (*IQR - Interquartile range*) mede a amplitude entre os quartis 1 (contém 25% dos dados) e 3 (contém 75% dos dados).
+
+```{r quantile, echo=T}
+
+quantile( x = Cons.Ciga$price, probs = .25)
+quantile( x = Cons.Ciga$price, probs = .75)
+quantile( x = Cons.Ciga$price, probs = c(0.25,0.75))
+
+```
+```{r IQR, echo=T}
+library(mosaic)
+IQR(x = Cons.Ciga$price )
+par(mar=c(0.5, 4, 0.2, 0.2), mfrow=c(2,1),
+     oma = c(4, 4, 0.2, 0.2))
+
+boxplot(Cons.Ciga$price, ylim=c(min(0), max(Cons.Ciga$price)),
+xlab = "",ylab = "",col = "orange",xaxt='n',
+yaxt="n",border = "brown",horizontal = TRUE,notch = TRUE)
+
+quant<-quantile(Cons.Ciga$price,probs = c(0.25,0.5,0.75))
+
+plot.ecdf(Cons.Ciga$price, pch = 1, xlim=c(min(0), max(Cons.Ciga$price)), col="orange", main="",ylab="", xlab="")
+
+mtext(text = "Preço do cigarro",side = 1,line = 2)
+mtext(text = "Frequência relativa acumulada",side = 2,line = 2)
+
+segments(-10,0.25,quant[[1]],0.25, col="blue",lwd=2)
+arrows(quant[[1]],0.25,quant[[1]],0, col="blue",lwd=2)
+text(x = -5, y = 0.30, paste0("Q1 = ",quant[[1]]), 
+     cex = 0.8, col = "blue", family="mono", font=2, adj=0)
+
+segments(-10,0.5,quant[[2]],0.5, col="darkviolet",lwd=2)
+arrows(quant[[2]],0.5,quant[[2]],0, col="darkviolet",lwd=2)
+text(x = -5, y = 0.60, paste("Q2 ou \nMediana = ",quant[[2]]), 
+     cex = 0.8, col = "darkviolet", family="mono", font=2, adj=0)
+
+segments(-10,0.75,quant[[3]],0.75, col="red",lwd=2)
+arrows(quant[[3]],0.75,quant[[3]],0, col="red",lwd=2)
+text(x = -5, y = 0.8, paste("Q3 = ",quant[[3]]), 
+     cex = 0.8, col = "red", family="mono", font=2, adj=0)
+
+text(x = 150, y = 0.4, paste("Variação \nInterquartil \n(IQR) = ",IQR(Cons.Ciga$price)), cex = 1, col = "black", family="mono", font=2, adj=0.5)
+
+```
+
+##### ***Desvios***
+
+Até o momento vimos 2 maneiras de medir a dispersão dos dados (amplitude e o variação interquartil).   
+Podemos, baseado em um valor de referência, avaliar a o **desvio médio absoluto**, que nada mais é do que o somatório das distâncias dos dados em relação à sua média ou mediana.
+
+\begin{align}
+(X) = \frac{1}{N} \sum_{i = 1}^N |X_i - \bar{X}|
+\end{align}
+
+Para ser honesto, eu nunca vi isso sendo utilizado como produto final, mas é um passo importante para entender seus dados e as próximas análises a serem desenvolvidas. De acordo com @Navarro2013 a o desvio com base na mediana é melhor que utilizando a média. Mas vamos dar uma olhada em ambas.   
+
+Primeiramente temos que definir nossa base por exemploe a **média**. Retornando para nosso exemplo de preços de cigarro temos que a média dos preços é ***`r round(mean(Cons.Ciga$price), digits=5)`***. Vamos dar uma olhada nos valores apenas no **Quartil 1**.
+
+No R podemos fazer passo a passo ou utilizando o pacote`lsr`.
+
+```{r DMA, echo=T}
+library(rmarkdown)
+mean(Cons.Ciga$price)
+
+Q1<-subset(Cons.Ciga,price<quant[[1]])
+Q1.desv<-abs(Q1$price-(mean(Q1$price)))
+
+Desvio<-as.data.frame(cbind(Q1$price,Q1.desv))
+
+colnames(Desvio)<-c("X","X-Xmed")
+
+paged_table((Desvio))
+
+print(mean(Desvio$`X-Xmed`)) # Desvio absoluto médio
+
+library(lsr)
+aad(Desvio$X)
+```
+
+O desvio absoluto médio do primeiro quartil é ***`r round(mean(Desvio[,2]), digits=3)`***. Isto mostra a média das distância entre cada dado do ***Quatil 1*** e a média.
+
+##### ***Variância***
+
+Diferentemente do desvio médio absoluto, a **variância** eleva a soma dos desvios ao quadrado.  
+
+\begin{align}
+\sigma^2 = \frac{\sum_{i=1}^{n}(x_i - \mu)^2} {n}
+\end{align}
+
+No R podemos fazer passo a passo ou utilizando o comando `var()`.
+
+```{r variancia, echo=T}
+
+sum((Desvio$X-mean(Desvio$X))^2/(length(Desvio$X)-1))
+
+var(Desvio$X)
+
+```
+
+##### ***Desvio Padrão***
+
+Quando elevamos os desvios ao quadrado criamos um problema, pois mudamos a unidade dos dados originais. Para colocar a medida de variabilidade na escala original, calculamos a raiz quadrada da variância e, com isso, temos o **desvio padrão**.  
+
+\begin{align}
+\hat\sigma = \sqrt{ \frac{1}{N-1} \sum_{i=1}^N \left( X_i - \bar{X} \right)^2 }
+\end{align}
+
+Mesmo assim a interpretação do **desvio padrão** é um tanto complexa. Vamos pensar em termos de desviopadrão da média numa distribuição de normal. Quanto mais longe do média, maior o desvio padrão.  
+Como discutido exaustivamente na lista 1, esperamos que aproximadamente 68% dos valores de dados normalmente distribuídos fiquem entre -1 e +1 desvio padrão da média, aproximadamente 95% entre -2 e +2 e paroximadamente 99% entre -3 e +3.  
+
+Obviamente esta definição se aplica à dados perfeitamente encaixados na distribuição normal, mas no mundo real isso é um pouco mais complexo e quanto menor a amostra pior fica.
+
+No R podemos calcular manualmente ou utilizando o comando `sd()`.
+
+Veja abaixo que a distribuição mesocúrtica dos nossos dados de preços de cigarro (linha azul), apenas do 1° quartil, se assemelha à distribuição normal "perfeita" (linha vermelha) principalemnte nos extremos possuindo e excetuando em aproximadamente -1 e + 1 desvio padrão.
+
+```{r Desvio.padrao, echo=T}
+sqrt(sum((Desvio$X-mean(Desvio$X))^2/(length(Desvio$X)-1)))
+
+sd(Desvio$X)
+
+library(tidyverse)
+
+Desvio<-Desvio %>% 
+  mutate(zscore = (Desvio$X - mean(Desvio$X))/sd(Desvio$X))
+
+head(Desvio)
+
+plot(density(Desvio$zscore), frame = FALSE, col = "blue", xlim=c(-3,3),lwd=3, ylim=c(0,0.4),main = "Densidade do Quartil 1", type="l", xlab="", ylab="")
+abline(v=mean(Desvio$zscore), col="blue", lwd=2,lty=4)
+
+par(new=T)
+x.values = seq(-3,3, length = 345)
+y.values = dnorm(x.values)
+
+plot(x.values, y.values, type="l", lty=1, xlab="", xlim=c(-3,3),ylim=c(0,0.4), ylab="",col="red")
+abline(v=mean(x.values), col="red", lwd=2, lty=3)
+
+abline(v=c(-1,1), col="grey", lwd=2, lty=4)
+
+
+Desv.pad.68.perc<-(Desvio$zscore[(Desvio$zscore >= -1.0) & (Desvio$zscore <= 1.0)])
+(length(Desv.pad.68.perc)/length(Desvio$zscore))*100
+
+```
+
+Veja que o preço dos cigarros do 1° quartil entre -1 e +1 desvio padrão ficam em 61.45%. Experimente fazer com toda a amostra.
+
+
+@Navarro2013 faz um resumo interessante sobre quando utilizar cada um das medidas até discutidas.
+
+**Amplitude:** Mostra a dispersão máxima dos dados. É sensível a valores extremos ou ***outliers*** sendo utilizada quando queremos avaliar a variação entre os extremos como no caso da temperatura na meteorologia.
+
+**Variação Interquartil:** Excelente método de exploração de dados fornecendo um conjunto de informações de uma só vez principalemnte quando acompanhando de ***boxplot***.
+
+**Desvio médio absoluto:** Mostra quão distante da média as observações estão.
+
+**Variância:** Descreve a variação dos dados ao redor da média com a limitação da dificuldade de interpretação em razão da escala ser diferente dos dados originais.
+
+**Desvio Padrão:** É oe método mais utilizado para medida de variação dos dados. É dado pela raiz quadrada da variância sendo mais simples de interpretar que a variância uma vez que está na mesma unidade de medida que os dados originais.
+
+### **Leituras complementares**
+[Descriptive statistics in R](https://www.r-bloggers.com/2020/01/descriptive-statistics-in-r/)
+
+@Yamamoto2020
+
+@Kabacoff2015R
+
+## **Parte 2**
+
+Assista este conteúdo em **Cap 6 - Parte 2** no [PVANet](https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php)
+
+### **Teste de diferença entre médias**
+
+Todos os trabalhos que conduzimos necessitam minimamente de algum teste estatístico. Seja ele descritivo, inferencial ou para testar hipóteses.
+Especificamente no ultimo caso, quando tratamos de experimentos precisamos conduzir testes para indentificar se nossa hipótese é plausível ou não (@melloandpeternelli2013).  
+Suponhamos que queremos comprar um fertilizante para nossa lavoura de milho, mas não sabemos se vale a pena. Para decidir qual é o melhor, podemos conduzir experimentos na produção de milho para testá-lo com objetivo de saber se há ganho na produtividade. 
+
+```{r fertilizante, echo=T}
+set.seed(1234)
+exper<-runif(25, min = 4350, max = 4900)
+```
+
+Suponhamos que a produtividade média sem fertilizante seja 4.350 kg ha e com o uso do fertilizante foi `r round(mean(exper), digits=2)` kg ha.
+
+Podemos dizer que o uso do fertilizante namédia aumentou a produtividade, mas será que vale a pena gastar mais para ter esse aumento? Talvez, talvez não. Não podemos tirar muitas conclusões baseados apenas nestas informações.   
+
+Poderíamos calcular, as médias (`r round(mean(exper), digits=2)`), a mediana (`r round(median(exper), digits=2)`), a variância (`r round(var(exper), digits=2)`) o desvio padrão (`r round(sd(exper), digits=2)`) e todos os outro métodos de análise descritiva que vimos até agora, mas mesmo assim seria inapropriado tomar uma decisão sobre a compra do fertilizante baseando-nos apenas numa medida central. Uma maior segurança em nossa tomada de decisão seria balizada por uma comparação da eficiência do uso de fertilizante com o não uso.  
+
+**Para realizar tal procedimento vamos seguir os passos sugeridos por @SergioFreireBIOEST2021:**
+
+#### **1 - Estabelecer um hipótese a ser testada**
+
+A hipótese a ser testada é a hipótese nula ($H_0$) e a hipótese que será confrontada será a hipótese de pesquisa é ($H_1$).  
+
+Na hipótese nula assumimos que as médias das amostras ou populações que estamos comparando são iguais e nossa hipótese de pesquisa diz que não são iguais.
+
+$H_0: \mu_A = 4.350$  
+
+$H_1: \mu_A \ne 4.350$
+
+#### **2 - Decidir qual teste utilizar**
+
+A partir da hipótese nula podemos decidir qual teste será mais apropriado. No nosso exemplo poderíamos selecionar uma amostra de 25 espigas de milho de cada tratamento e compararmos as médias (kg) das amostras conforme estabelecido pela hipótese nula ($H_0$). Teremos assim um distribuição t de Student com n-1 graus de liberdade.
+
+#### **3 - Selecionar o nível de significância ($\alpha$)**
+
+O nível de $\alpha$ define a região crítica da distribuição. Com este valor vamos identificar se a diferença amostral é estatísticamente significativa - se é o resultado da diferença de população real, e não apenas um erro amostral. Se o valor da estatística calculada a partir da amostra selecionada cair na região crítica, a hipótese nula ($H_0$) será rejeitada e ficamos com a hipótese de pesquisa ($H_1$). Assumimos rejeitamos a hipótese nula se a probabilidade  for muito pequena ( por exemplo, menos de 5 em 100), o que significqa que a diferença entre de amostra seria um produto do erro amostral. Caso contrário não a rejeitamos $H_0$.  
+Normalmente os valores de $\alpha$ são 0.1 (10%), 0.05 (5%) e 0.01 (1%). 
+
+> Cuidado com o termo "**aceitar $H_0$**". O correto é "**não rejeitar $H_0$**".
+
+Considerando que a estatística t, definida no passo 2, segue a distribuição t de Student na figura abaixo destacando as regiões críticas
+
+![](http://www.lampada.uerj.br/arquivosdb/_book/bioestatistica_basica_files/figure-html/regiaoCritica-1.png){heigth=50%, width=50%}  
+**Fonte:** @SergioFreireBIOEST2021
+
+Podemos definir nosso nível de significância em 10%, 5% e 1%. No `R` podemos calcular com a função `qt` 
+
+```{r pontos.criticos, echo=T}
+qt(0.95,24) #0.05 de cada lado
+qt(0.975,24) #0.025 de cada lado
+qt(0.995,24) #0.005 de cada lado
+```
+Desta forma termos nosso nível de significância para **10%** igual **`r qt(0.95,24)`**, para **5%** igual **`r qt(0.975,24)`** e para **1%** igual a **`r qt(0.995,24)`**. 
+
+![Fonte: @levin2012](D:/Desktop/Micro SD/Análise ambiental em R/test t.jpg){heigth=50%, width=50%} 
+
+#### **4 - Selecionar a amostra, realizar os cálculos e tomar a decisão**
+Após os passos 1, 2 e 3 procedemos a seleção da amostra do estudo, a partir da qual o valor da estatística será calculado e comparado com os valores críticos. Caso o valor da estatística caia dentro da região crítica do teste, a hipótese nula será rejeitada. Neste caso, dizemos que o resultado do teste é estatisticamente significativo. Caso contrário, ela não será rejeitada e o resultado do teste não é estatisticamente significativo.
+
+#### **Tipos de erros inerentes ao testes de hipótese**
+
+Ao realizarmos os testes estamos sujeitos a comenter 2 tipos erros.
+
+**ERRO tipo 1:** Rejeitar $H_0$ quando  $H_0$ é verdadeira. Isto pode acontecer quando extraímos uma amostra da população e a estatística calculada a partir dessa amostra cai na região crítica. Ao fixarmos α, fixamos a probabilidade deste erro.  
+
+**ERRO tipo 2:** Não rejeitar $H_0$ quando  esta for falsa.Isto acontece quando extraímos uma amostra da população e a estatística calculada a partir dessa amostra cai na região crítica.
+
+
+#### **P-value (Valor P ou P valor)**
+
+Ao testar uma hipótese podemos *a priori* dcefinir o nível de significância $\alpha$. O valor de $\alpha$ se refere ao tamanho das regiões da extremidade sob a curva que nos levarão a rejeitar a hipótese nula. Ou seja, é a área à direita ou equerda do valor crítico.
+
+O valor de P (*P value*) é a probabilidade exata de se obter dados de uma amostra quando a hipótese nula é verdadeira. Desta forma, o valor de $\alpha$ é o limiar do qual a probabilidade é considerada tão pequena (P<$\alpha$) que decidimos rejeitar a hipótese nula. 
+
+```{r test.t, echo=T }
+options(scipen = 999)
+t.test(exper)
+```
+
+Acima visualizamos o teste bilateral, mas temos também testes unilaterais.
+
+>Em outros cenários, o interesse pode ser em testar se o desvio em relação à hipótese nula ocorre em somente uma direção. Por exemplo, ao testar um medicamento para reduzir a pressão arterial de pacientes hipertensos, os investigadores estão interessados somente se ocorre uma redução da pressão arterial após o uso do medicamento testado. Se houver um aumento da pressão ou nenhuma alteração no valor da pressão arterial, então o medicamento será considerado ineficaz. Neste caso, sendo μ a variação média do valor da pressão arterial, a hipótese nula será $\mu\ge0$ e a hipótese alternativa será $\mu<0$, ou seja, a hipótese nula será rejeitada somente se a variação média da pressão arterial for menor que o valor crítico, determinado a partir do nível de significância (α) e da distribuição da estatística utilizada. Neste caso, o teste é chamado de teste unilateral (one-sided test). O valor de p será igual à probabilidade, sob a hipótese nula, de se observar um valor da estatística utilizada no teste de hipótese abaixo ou igual ao valor calculado na amostra utilizada no estudo.
+
+>Como outro exemplo de teste unilateral, agora na direção oposta, em um teste de um medicamento vasodilatador, os investigadores estão interessados somente se ocorre um aumento do diâmetro dos vasos sanguíneos após o uso do medicamento testado. Se houver uma redução ou nenhuma alteração no diâmetro dos vasos, então o medicamento será considerado ineficaz. Neste caso, sendo μ a variação média do valor do diâmetro do vaso sanguíneo, a hipótese nula será $\mu\le0$, e a hipótese alternativa será $\mu > 0$ , ou seja, a hipótese nula será rejeitada somente se a variação média do diâmetro do vaso for maior que o valor crítico, determinado a partir do nível de significância (α) e da distribuição da estatística utilizada. Neste caso, o valor de p será igual à probabilidade, sob a hipótese nula, de se observar um valor da estatística utilizada no teste de hipótese acima ou igual ao valor calculado na amostra utilizada no estudo.
+
+### **Test t (Student)**
+
+#### ***Para uma média***
+
+Utilizado para testar a afirmação sobre a média populacional ou fazer comparações entre médias de duas populações.
+
+Voltando ao nosso exemplo de vamos analisar se o uso de nosso fertilizante melhorou mesmo nossa produtividade.
+ 
+ Para calcular o ***test t***  no R podemos utilizar o comando `t.test()` e ajustar os demais parâmetros.
+
+`t.test(x, y = NULL, alternative = c("two.sided", "less", "greater"), mu = 0,`   
+      `paired = FALSE, var.equal = FALSE, conf.level = 0.95, ...)`
+
+ 
+```{r test.unila, echo=T}
+set.seed(1234)
+exper<-runif(25, min = 4200, max = 4800)
+exper
+
+options(scipen = 999)
+t.test(exper, mu=4350, alternative="greater",conf.level = 0.95)
+```
+
+Agora basta interpretar o resultado.  
+Para saber se $H_0$ foi rejeitado ou não, apenas verifique o valor de *p-value* e estipule um nível de sgnificância.  
+Neste exemplo o nível de significância ($\alpha$) foi 5%, então $H_0$ seria rejeitada, uma vez que *p-value* foi menor que **0.05**. 
+
+Neste caso observamos que a média do experimento é oriunda de uma população com média estatisticamente maior que 4350 kg ha com nível de significância de 5%. Ou seja, a utilização de fertilizante aumentou nossa produtividade de milho.  
+
+Com o argumento `alternative="greater"` fizemos um teste unilateral para saber se houve aumento da produtividade. Podemos variar este argumento com `less` para sber se foi menor ou `two.sided` para um teste bilateral. 
+
+```{r test.bila, echo=T}
+options(scipen = 999)
+t.test(exper,mu=4350, alternative="two.sided", conf.level = 0.95)
+```
+
+Para facilitar a visualização podemos utilziar o pacote `webr`que gerar uma gráfico destacando a região de rejeição de nossa hipótese e a posição do ***p-value***.
+
+a região rosa é a região de rejeição de $H_0$ e ponto azul o t calculado. 
+
+```{r grafico.t.test, echo=T}
+#if (!require("webr")) install.packages("webr")
+library(webr)
+
+plot(t.test(exper, mu=4350, alternative="greater", conf.level = 0.95))
+plot(t.test(exper, mu=4350, alternative="less", conf.level = 0.95))
+plot(t.test(exper, mu=4350, alternative="two.sided", conf.level = 0.95))
+```
+
+#### ***Duas amostras independentes***
+
+Vamos considerar agora que um novo experimento foi feito com um novo fertilizante lançado no mercado. Gostaríamos de saber se apresentam comprtamento semelhante, pois quero comprar o mais barato e, se forem iguais, fico com o mais barato.    
+Vamos considerá-las com variâncias não homogêneas `var.equal = F`.
+
+```{r 2.amostras, echo=T}
+set.seed(1234)
+exper2<-runif(25, min = 3500, max = 5200)
+exper2
+
+plot(t.test(exper,exper2,var.equal = F, alternative="less", conf.level = 0.95))
+plot(t.test(exper,exper2,var.equal = F, alternative="greater", conf.level = 0.95))
+plot(t.test(exper,exper2,var.equal = F, alternative="two.sided", conf.level = 0.95))
+```
+
+Rejeitamos as hipótese nula apenas no primeiro caso, pois ***p-value*** foi maior que ***0.05**. Nos demais não rejeitamos a hipótese nula assumimos então que a produtividade com os 2 fertilizantes são diferentes, estatisticamente , a 5% de significância.
+
+#### ***Para duas amostras dependentes***
+
+Quando temos pares de amostras (X e Y) coletadas dos mesmos indivíduos, temos um teste pareado. Neste caso basta acrescentar o argumento  `paired=T`. 
+
+```{r t.test.paired, echo=T}
+plot(t.test(exper,exper2,var.equal = F,paired=T, alternative="less", conf.level = 0.95))
+plot(t.test(exper,exper2,var.equal = F,paired=T, alternative="greater", conf.level = 0.95))
+plot(t.test(exper,exper2,var.equal = F,paired=T, alternative="two.sided", conf.level = 0.95))
+```
+
+### ***Teste F***
+
+Métodos utilizado verificar se as variâncias de amostras normalmente distribuídas são homogêneas.
+
+$H_0: \sigma^2_A = \sigma^2_B$  
+
+$H_1: \sigma^2_A > \sigma^2_B$ 
+
+```{r test.F, echo=T}  
+exper
+exper2
+
+n1<-length(exper)
+n2<-length(exper2)
+
+vm1<-var(exper)
+vm2<-var(exper2) 
+
+fcal<-(vm1/vm2)
+fcal
+
+pval<-pf(fcal, n1-1, n2-1, lower=F)
+pval
+```
+
+Nest caso nosso nível de significância é **5%** e o *p-value* foi `r pval`. $H_0$ não é rejeitada, pois o **p-value** foi maior que que o **nível de significância**. Assim, a variância da produtividade em **A** não é estatisticamente maior que da produtividade em **B**.   
+
+Acima fizemos um passo a passo, mas existe uma forma mais fácil de conduzir esta análise utilizando o comando `var.test()`.
+
+```{r var.test, echo=T}
+x1<-var.test(exper, exper2, alternative="greater")
+x1;plot(x1)
+x2<-var.test(exper, exper2, alternative="less")
+x2;plot(x2)
+x3<-var.test(exper, exper2, alternative="two.sided")
+x3;plot(x3)
+```
+
+
+#### ***Kolmogorov-Smirnov***
+
+O teste de Kolmogorov-Smirnov é utilizado para sabermos se um banco de dados segue alguma distribuição específica (@melloandpeternelli2013).
+
+No R o teste Kolmogorov-Smirnov para testar uma ditribuição pode ser acessado pelo comando `ks.test(x,"pdistribuição", mean(), sd())`.
+
+```{r Kolmogorov-Smirnov, echo=T}
+ks.test(exper,"pnorm",mean(exper),sd(exper)) 
+```
+
+ p-value não é menor que **0.05**, desta forma podemos assumir que os dado **exper** não são significativamente diferentes de distribuição normal.
+ 
+#### **Teste de Shapiro**  
+
+Outro teste para normalidade de dados é o teste de shapiro.  
+No R pode ser implementado utilizando `shapiro.test()`
+
+```{r shapiro.test, echo=T}
+shapiro.test(exper)
+shapiro.test(exper2)
+```
+
+The p-value de **exper** e **exper2** são `{r shapiro.test(exper)}` e `{r shapiro.test(exper2)}`, respectivamente. Ambos são 
+maiores que **0.05**, desta forma concluimos que a distribuição de ambos experiemntos não são significativamente diferentes de uma distribuição normal.
+
+Podemos tentar compreender melhor as distribuições utilizando gráficos.
+
+Se a dispersão dos pontos segue um padrão aproximado de uma linha entyendemos assim que os dados são normalmente distribuídos.
+
+```{r graficos.distribuicao, echo=T}
+qqnorm(exper);qqline(exper)
+qqnorm(exper2);qqline(exper2)
+```
+
+Existe uma infinidade de testes para serem conduzidos para explorar seus dados. Por isso procure um bom livro de estatística para compreender qual o melhor teste para seu caso. 
+
+Para implementação destes teste no R, vimos que não é tão complexo e encontramos facilmente material de suporte na internet.
+
+Caso queiram explorar os testes conduzidos no R digitem no console `apropos("test")` que lista tudo que tenha a palavra ***test***
+ou `help.search("test")` que listará os comandos encontrados nos pacotes instalados.
+
+```{r support, echo=T}
+apropos("test")
+help.search("test")
+```
+
+Para mais detalhes sobre os testes e sobre sua utilização no R podem acessar o material online como @Pires2018 e @SergioFreireBIOEST2021.
+
+Outras fontes muito interessantes para implemenação de estatíticas no R com exemplos são @Yamamoto2020, @Midway2021 e @Kabacoff2015R.  

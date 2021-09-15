@@ -1,26 +1,41 @@
----
-title: "R Markdown - Kit de Sobrevivência"
-author: "Jackson Rodrigues"
-date: "`r format(Sys.time(), '%d %B, %Y')`"
-output:
-  pdf_document:
-    toc: true
-    toc_depth: 3
-    number_sections: true
-line-height: 1.5em
-fontsize: 12pt
-link-citations: yes
-font-family: times new roman
-biblio-style: apalike
-subtitle: O mínimo que você precisa saber para gerar um .pdf
-bibliography: book.bib
----
-
 # RMarkdown
 
-Assista este conteúdo em **Cap 3 - RMarkdown** no [PVANet](https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php)
+Assista este conteúdo em **Cap 5 - RMarkdown** no [PVANet](https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php)
 
 O conteúdo apresentado aqui não será apresentado corretamente no material online. Para saber o real *output* veja o arquivo gerado **R-Markdown---Kit-de-Sobrevivência.pdf**.    
+
+`---    
+title: "R Markdown - Kit de Sobrevivência" 
+
+author: "Jackson Rodrigues"   
+
+date: "`r format(Sys.time(), '%d %B, %Y')`"   
+
+output:   
+
+  pdf_document:   
+
+   toc: true   
+  
+  toc_depth: 3   
+
+  number_sections: true   
+
+line-height: 1.5em    
+
+fontsize: 12pt    
+
+link-citations: yes    
+
+font-family: times new roman    
+
+biblio-style: apalike     
+
+subtitle: O mínimo que você precisa saber para gerar um .pdf    
+
+bibliography: book.bib    
+---`    
+
 
 O **RMarkdown** é uma excelente ferramenta para comunicação e compartilhamento de informações.  
 Nele podemos combinar textos, códigos, resultados (gráficos e tabelas) que permitirão outro usuário repetir passo a passo tudo que foi desenvolvido por você.
@@ -45,7 +60,7 @@ A nova aba aberta já é um _template RMarkdown_ pronto para ser executado. Nele
 
 Com estes elementos já podemos gerar relatórios. Basta clicar em `Knit` que o arquivo ( _YAML_, _chunks_, _equações_, _textos_, _códigos_ e etc) será processado no [**knitr**](http://yihui.name/knitr/) gerando um arquivo _.md_ que será processao pelo [**pandoc**](https://pandoc.org/) que vai fazer a conversão para, no nosso caso, um  _html_.
 
-[rmarkdown flow PC](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_5_rmarkdownflow.png)
+![rmarkdown flow PC](J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_5_rmarkdownflow.png)
 
 
 ## Fontes

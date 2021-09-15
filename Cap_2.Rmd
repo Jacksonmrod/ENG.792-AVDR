@@ -673,7 +673,7 @@ ifelse(Aluno*2>=Jackson^2, "Aluno é mais bonito!",
 
 @Yamamoto2020     
 
-@SergioFreireINTRO2020  
+@SergioFreireINTRO2021  
 
 [Spatial Data Science - Indexing](https://rspatial.org/intr/4-indexing.html)   
 

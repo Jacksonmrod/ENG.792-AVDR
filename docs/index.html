@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>R Markdown - Kit de Sobrevivência</title>
+  <title>ENG 792 - Análise e visualização de dados com R (RStudio)</title>
   <meta name="description" content="Este é o material de supporte aos alunos matriculados na disciplina ENG 792 ofertada pelo programa de pós-gradução em Meteorologia Aplicada do Departamento de Engenharia Agrícola (DEA) da Universidade Federal de Viçosa (UFV)." />
   <meta name="generator" content="bookdown 0.22.17 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="R Markdown - Kit de Sobrevivência" />
+  <meta property="og:title" content="ENG 792 - Análise e visualização de dados com R (RStudio)" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="R Markdown - Kit de Sobrevivência" />
+  <meta name="twitter:title" content="ENG 792 - Análise e visualização de dados com R (RStudio)" />
   
   <meta name="twitter:description" content="Este é o material de supporte aos alunos matriculados na disciplina ENG 792 ofertada pelo programa de pós-gradução em Meteorologia Aplicada do Departamento de Engenharia Agrícola (DEA) da Universidade Federal de Viçosa (UFV)." />
   
@@ -24,6 +24,7 @@
 <meta name="author" content="Jackson Rodrigues" />
 
 
+<meta name="date" content="2021-09-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -60,6 +61,8 @@
 <script src="libs/graphre-0.1.3/graphre.js"></script>
 <script src="libs/nomnoml-1.3.1/nomnoml.js"></script>
 <script src="libs/nomnoml-binding-0.2.3/nomnoml.js"></script>
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 
 <style type="text/css">
@@ -299,6 +302,20 @@ div.csl-indent {
 <li class="chapter" data-level="6.11" data-path="rmarkdown.html"><a href="rmarkdown.html#dica-de-leitura-2"><i class="fa fa-check"></i><b>6.11</b> Dica de leitura</a></li>
 <li class="chapter" data-level="6.12" data-path="rmarkdown.html"><a href="rmarkdown.html#bibliografia"><i class="fa fa-check"></i><b>6.12</b> Bibliografia</a></li>
 </ul></li>
+<li class="chapter" data-level="7" data-path="elementos-de-estatística-básica-no-r.html"><a href="elementos-de-estatística-básica-no-r.html"><i class="fa fa-check"></i><b>7</b> <strong>Elementos de estatística básica no R</strong></a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="elementos-de-estatística-básica-no-r.html"><a href="elementos-de-estatística-básica-no-r.html#parte-1"><i class="fa fa-check"></i><b>7.1</b> <strong><em>Parte 1</em></strong></a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="elementos-de-estatística-básica-no-r.html"><a href="elementos-de-estatística-básica-no-r.html#estatística-descritiva"><i class="fa fa-check"></i><b>7.1.1</b> <strong>Estatística Descritiva</strong></a></li>
+<li class="chapter" data-level="7.1.2" data-path="elementos-de-estatística-básica-no-r.html"><a href="elementos-de-estatística-básica-no-r.html#leituras-complementares"><i class="fa fa-check"></i><b>7.1.2</b> <strong>Leituras complementares</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="elementos-de-estatística-básica-no-r.html"><a href="elementos-de-estatística-básica-no-r.html#parte-2"><i class="fa fa-check"></i><b>7.2</b> <strong>Parte 2</strong></a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="elementos-de-estatística-básica-no-r.html"><a href="elementos-de-estatística-básica-no-r.html#teste-de-diferença-entre-médias"><i class="fa fa-check"></i><b>7.2.1</b> <strong>Teste de diferença entre médias</strong></a></li>
+<li class="chapter" data-level="7.2.2" data-path="elementos-de-estatística-básica-no-r.html"><a href="elementos-de-estatística-básica-no-r.html#test-t-student"><i class="fa fa-check"></i><b>7.2.2</b> <strong>Test t (Student)</strong></a></li>
+<li class="chapter" data-level="7.2.3" data-path="elementos-de-estatística-básica-no-r.html"><a href="elementos-de-estatística-básica-no-r.html#teste-f"><i class="fa fa-check"></i><b>7.2.3</b> <strong><em>Teste F</em></strong></a></li>
+</ul></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -311,7 +328,7 @@ div.csl-indent {
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Markdown - Kit de Sobrevivência</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">ENG 792 - Análise e visualização de dados com R (RStudio)</a>
           </h1>
         </div>
 
@@ -320,10 +337,9 @@ div.csl-indent {
 
             <section class="normal" id="section-">
 <div id="header">
-<h1 class="title">R Markdown - Kit de Sobrevivência</h1>
-<h2 class="subtitle"><em>O mínimo que você precisa saber para gerar um .pdf</em></h2>
+<h1 class="title">ENG 792 - Análise e visualização de dados com R (RStudio)</h1>
 <p class="author"><em>Jackson Rodrigues</em></p>
-<p class="date" style="margin-top: 1.5em;"><em>10 setembro, 2021</em></p>
+<p class="date" style="margin-top: 1.5em;"><em>2021-09-14</em></p>
 </div>
 <div id="apresentação" class="section level1" number="1">
 <h1><span class="header-section-number">Capítulo 1</span> Apresentação</h1>

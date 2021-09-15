@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 4 Acessando e criando Funções, Importação e exportação dados | R Markdown - Kit de Sobrevivência</title>
+  <title>Capítulo 4 Acessando e criando Funções, Importação e exportação dados | ENG 792 - Análise e visualização de dados com R (RStudio)</title>
   <meta name="description" content="Este é o material de supporte aos alunos matriculados na disciplina ENG 792 ofertada pelo programa de pós-gradução em Meteorologia Aplicada do Departamento de Engenharia Agrícola (DEA) da Universidade Federal de Viçosa (UFV)." />
   <meta name="generator" content="bookdown 0.22.17 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 4 Acessando e criando Funções, Importação e exportação dados | R Markdown - Kit de Sobrevivência" />
+  <meta property="og:title" content="Capítulo 4 Acessando e criando Funções, Importação e exportação dados | ENG 792 - Análise e visualização de dados com R (RStudio)" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 4 Acessando e criando Funções, Importação e exportação dados | R Markdown - Kit de Sobrevivência" />
+  <meta name="twitter:title" content="Capítulo 4 Acessando e criando Funções, Importação e exportação dados | ENG 792 - Análise e visualização de dados com R (RStudio)" />
   
   <meta name="twitter:description" content="Este é o material de supporte aos alunos matriculados na disciplina ENG 792 ofertada pelo programa de pós-gradução em Meteorologia Aplicada do Departamento de Engenharia Agrícola (DEA) da Universidade Federal de Viçosa (UFV)." />
   
@@ -24,6 +24,7 @@
 <meta name="author" content="Jackson Rodrigues" />
 
 
+<meta name="date" content="2021-09-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -60,6 +61,8 @@
 <script src="libs/graphre-0.1.3/graphre.js"></script>
 <script src="libs/nomnoml-1.3.1/nomnoml.js"></script>
 <script src="libs/nomnoml-binding-0.2.3/nomnoml.js"></script>
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 
 <style type="text/css">
@@ -299,6 +302,20 @@ div.csl-indent {
 <li class="chapter" data-level="6.11" data-path="rmarkdown.html"><a href="rmarkdown.html#dica-de-leitura-2"><i class="fa fa-check"></i><b>6.11</b> Dica de leitura</a></li>
 <li class="chapter" data-level="6.12" data-path="rmarkdown.html"><a href="rmarkdown.html#bibliografia"><i class="fa fa-check"></i><b>6.12</b> Bibliografia</a></li>
 </ul></li>
+<li class="chapter" data-level="7" data-path="elementos-de-estatística-básica-no-r.html"><a href="elementos-de-estatística-básica-no-r.html"><i class="fa fa-check"></i><b>7</b> <strong>Elementos de estatística básica no R</strong></a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="elementos-de-estatística-básica-no-r.html"><a href="elementos-de-estatística-básica-no-r.html#parte-1"><i class="fa fa-check"></i><b>7.1</b> <strong><em>Parte 1</em></strong></a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="elementos-de-estatística-básica-no-r.html"><a href="elementos-de-estatística-básica-no-r.html#estatística-descritiva"><i class="fa fa-check"></i><b>7.1.1</b> <strong>Estatística Descritiva</strong></a></li>
+<li class="chapter" data-level="7.1.2" data-path="elementos-de-estatística-básica-no-r.html"><a href="elementos-de-estatística-básica-no-r.html#leituras-complementares"><i class="fa fa-check"></i><b>7.1.2</b> <strong>Leituras complementares</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="elementos-de-estatística-básica-no-r.html"><a href="elementos-de-estatística-básica-no-r.html#parte-2"><i class="fa fa-check"></i><b>7.2</b> <strong>Parte 2</strong></a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="elementos-de-estatística-básica-no-r.html"><a href="elementos-de-estatística-básica-no-r.html#teste-de-diferença-entre-médias"><i class="fa fa-check"></i><b>7.2.1</b> <strong>Teste de diferença entre médias</strong></a></li>
+<li class="chapter" data-level="7.2.2" data-path="elementos-de-estatística-básica-no-r.html"><a href="elementos-de-estatística-básica-no-r.html#test-t-student"><i class="fa fa-check"></i><b>7.2.2</b> <strong>Test t (Student)</strong></a></li>
+<li class="chapter" data-level="7.2.3" data-path="elementos-de-estatística-básica-no-r.html"><a href="elementos-de-estatística-básica-no-r.html#teste-f"><i class="fa fa-check"></i><b>7.2.3</b> <strong><em>Teste F</em></strong></a></li>
+</ul></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -311,7 +328,7 @@ div.csl-indent {
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Markdown - Kit de Sobrevivência</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">ENG 792 - Análise e visualização de dados com R (RStudio)</a>
           </h1>
         </div>
 
@@ -334,7 +351,7 @@ Por exemplo:</p>
 <p>No display de ajuda da função <code>rnorm()</code>observamos como a função deve ser utilizada, quais parâmetros devem ser inseridos.<br />
 <code>rnorm(n, mean = 0, sd = 1)</code></p>
 <div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb387-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">5</span> ,<span class="dv">10</span> , <span class="dv">8</span>) <span class="co">#Vejam que não estão próximas de zero, mas de dez. </span></span></code></pre></div>
-<pre><code>## [1]  7.3908906 16.2244572  0.8957123  1.2613697  9.0059740</code></pre>
+<pre><code>## [1]  1.810754  9.878894  2.512411 18.818380  6.195255</code></pre>
 <p>Podemos dar nomes aos parâmetros também, caso não sejam nomeados, os parâmetros seguirão a ordem estabelecida na função original inciada em <em>n</em> seguida de <em>mean</em> e <em>sd</em>.</p>
 <div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb389-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
 <span id="cb389-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb389-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n=</span><span class="dv">5</span> ,<span class="at">mean=</span><span class="dv">10</span> , <span class="at">sd=</span><span class="dv">8</span>) </span></code></pre></div>
@@ -476,9 +493,9 @@ Tangente em radianos
 <pre><code>## [1] 1.14473</code></pre>
 <pre><code>## [1] 0.4971499</code></pre>
 <pre><code>## [1] 23.14069</code></pre>
-<pre><code>## [1] 1.224606e-16</code></pre>
+<pre><code>## [1] 0.0000000000000001224606</code></pre>
 <pre><code>## [1] -1</code></pre>
-<pre><code>## [1] -1.224647e-16</code></pre>
+<pre><code>## [1] -0.0000000000000001224647</code></pre>
 <p>Pesquise por <code>asin(), acos(), atan()</code>.</p>
 <p>Embora seja rico de opções, com funções dos mais variados tipos e aplicações às vezes não encontramos aquelas específicas que precisamos para algo específico. Ou, mesmo que esteja desenvolvendo uma metodologia nova com novos <em>approaches</em> ou um novo <strong>pacote</strong> você precisará impreterivelmente de criar suas próprias funções.</p>
 <p>As funções às vezes não são tão simples para uma primeira tentativa de uso ou criação principalmente para aqueles que estão iniciando em R ou qualquer linguagem de programação.
@@ -509,8 +526,8 @@ Podemos imaginar a função dividida em 3 partes (entrada, processamento e saíd
 <li><strong>{}</strong> guardam os comandos a serem executados;</li>
 <li><code>resultado &lt;- x/y</code> e <code>print(resultado)</code> são os comandos a serem executados.</li>
 </ol>
-<div id="htmlwidget-c2e3fede5c798441fdae" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c2e3fede5c798441fdae">{"x":{"code":"#.if: visual=rhomb fill=#e2efda align=center\n#.for: visual=rhomb fill=#ddebf7 align=center\n#.repeat: visual=rhomb fill=#fce4d6 align=center\n#.while: visual=rhomb fill=#fff2cc align=center\n#.standard: visual=class fill=#ededed align=left\n#.commented: visual=class fill=#ededed\n#.header: visual=roundrect fill=#d9e1f2 align=left\n#.return: visual=end fill=#70ad47  empty\n#.stop: visual=end fill=#ed7d31  empty\n#.break: visual=receiver fill=#ffc000 empty\n#.next: visual=transceiver fill=#5b9bd5  empty\n#arrowSize: 1\n#bendSize: 0.3\n#direction: down\n#gutter: 5\n#edgeMargin: 0\n#edges: hard\n#fill: #eee8d5\n#fillArrows: false\n#font: Courier\n#fontSize: 12\n#leading: 1.25\n#lineWidth: 3\n#padding: 16\n#spacing: 40\n#stroke: #33322E\n#title: filename\n#zoom: 1\n#acyclicer: greedy\n#ranker: network-simplex\n\n[<header>divisao(x, y)]  -> [<standard> 1: ;resultado <- x / y\nprint(resultado)]\n[<standard> 1: ;resultado <- x / y\nprint(resultado)]  -> [<return> 2:]","svg":true},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-0d7db73d03839427d3b7" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0d7db73d03839427d3b7">{"x":{"code":"#.if: visual=rhomb fill=#e2efda align=center\n#.for: visual=rhomb fill=#ddebf7 align=center\n#.repeat: visual=rhomb fill=#fce4d6 align=center\n#.while: visual=rhomb fill=#fff2cc align=center\n#.standard: visual=class fill=#ededed align=left\n#.commented: visual=class fill=#ededed\n#.header: visual=roundrect fill=#d9e1f2 align=left\n#.return: visual=end fill=#70ad47  empty\n#.stop: visual=end fill=#ed7d31  empty\n#.break: visual=receiver fill=#ffc000 empty\n#.next: visual=transceiver fill=#5b9bd5  empty\n#arrowSize: 1\n#bendSize: 0.3\n#direction: down\n#gutter: 5\n#edgeMargin: 0\n#edges: hard\n#fill: #eee8d5\n#fillArrows: false\n#font: Courier\n#fontSize: 12\n#leading: 1.25\n#lineWidth: 3\n#padding: 16\n#spacing: 40\n#stroke: #33322E\n#title: filename\n#zoom: 1\n#acyclicer: greedy\n#ranker: network-simplex\n\n[<header>divisao(x, y)]  -> [<standard> 1: ;resultado <- x / y\nprint(resultado)]\n[<standard> 1: ;resultado <- x / y\nprint(resultado)]  -> [<return> 2:]","svg":true},"evals":[],"jsHooks":[]}</script>
 <div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb413-1" aria-hidden="true" tabindex="-1"></a><span class="fu">divisao</span>(<span class="dv">50</span>,<span class="dv">25</span>)</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
 <div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb415-1" aria-hidden="true" tabindex="-1"></a><span class="fu">divisao</span>(<span class="dv">22</span>,<span class="fl">4.4</span>)</span></code></pre></div>
@@ -693,15 +710,17 @@ Use a aba packages para explorar suas funcionalidades</p>
 ## &#39;options(citation.bibtex.max=999)&#39;.</code></pre>
 <p>Aqui listo os pacotes carregados agora em meu R.</p>
 <div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb450-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">.packages</span>())</span></code></pre></div>
-<pre><code>##  [1] &quot;ggpubr&quot;        &quot;forcats&quot;       &quot;stringr&quot;       &quot;dplyr&quot;        
-##  [5] &quot;purrr&quot;         &quot;readr&quot;         &quot;tidyr&quot;         &quot;tibble&quot;       
-##  [9] &quot;tidyverse&quot;     &quot;viridis&quot;       &quot;viridisLite&quot;   &quot;unikn&quot;        
-## [13] &quot;RColorBrewer&quot;  &quot;analogue&quot;      &quot;vegan&quot;         &quot;lattice&quot;      
-## [17] &quot;permute&quot;       &quot;flow&quot;          &quot;prob&quot;          &quot;fAsianOptions&quot;
-## [21] &quot;fOptions&quot;      &quot;fBasics&quot;       &quot;timeSeries&quot;    &quot;timeDate&quot;     
-## [25] &quot;combinat&quot;      &quot;magrittr&quot;      &quot;ggplot2&quot;       &quot;stats&quot;        
-## [29] &quot;graphics&quot;      &quot;grDevices&quot;     &quot;utils&quot;         &quot;datasets&quot;     
-## [33] &quot;methods&quot;       &quot;base&quot;</code></pre>
+<pre><code>##  [1] &quot;webr&quot;          &quot;mosaic&quot;        &quot;ggridges&quot;      &quot;mosaicData&quot;   
+##  [5] &quot;ggformula&quot;     &quot;ggstance&quot;      &quot;Matrix&quot;        &quot;lsr&quot;          
+##  [9] &quot;modeest&quot;       &quot;rmarkdown&quot;     &quot;ggpubr&quot;        &quot;forcats&quot;      
+## [13] &quot;stringr&quot;       &quot;dplyr&quot;         &quot;purrr&quot;         &quot;readr&quot;        
+## [17] &quot;tidyr&quot;         &quot;tibble&quot;        &quot;tidyverse&quot;     &quot;viridis&quot;      
+## [21] &quot;viridisLite&quot;   &quot;unikn&quot;         &quot;RColorBrewer&quot;  &quot;analogue&quot;     
+## [25] &quot;vegan&quot;         &quot;lattice&quot;       &quot;permute&quot;       &quot;flow&quot;         
+## [29] &quot;prob&quot;          &quot;fAsianOptions&quot; &quot;fOptions&quot;      &quot;fBasics&quot;      
+## [33] &quot;timeSeries&quot;    &quot;timeDate&quot;      &quot;combinat&quot;      &quot;magrittr&quot;     
+## [37] &quot;ggplot2&quot;       &quot;stats&quot;         &quot;graphics&quot;      &quot;grDevices&quot;    
+## [41] &quot;utils&quot;         &quot;datasets&quot;      &quot;methods&quot;       &quot;base&quot;</code></pre>
 <p>Aqui listo os pacotes instalados em meu R.</p>
 <div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb452-1" aria-hidden="true" tabindex="-1"></a>meus.pacotes <span class="ot">&lt;-</span> <span class="fu">library</span>()<span class="sc">$</span>results[,<span class="dv">1</span>]</span>
 <span id="cb452-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb452-2" aria-hidden="true" tabindex="-1"></a>meus.pacotes</span></code></pre></div>
@@ -715,118 +734,130 @@ Use a aba packages para explorar suas funcionalidades</p>
 ##  [22] &quot;callr&quot;             &quot;car&quot;               &quot;carData&quot;          
 ##  [25] &quot;caret&quot;             &quot;cellranger&quot;        &quot;checkmate&quot;        
 ##  [28] &quot;classInt&quot;          &quot;cli&quot;               &quot;clipr&quot;            
-##  [31] &quot;clv&quot;               &quot;coda&quot;              &quot;colorspace&quot;       
-##  [34] &quot;combinat&quot;          &quot;commonmark&quot;        &quot;conquer&quot;          
-##  [37] &quot;corrplot&quot;          &quot;cowplot&quot;           &quot;cpp11&quot;            
-##  [40] &quot;crayon&quot;            &quot;credentials&quot;       &quot;crosstalk&quot;        
-##  [43] &quot;crul&quot;              &quot;curl&quot;              &quot;data.table&quot;       
-##  [46] &quot;DBI&quot;               &quot;dbplyr&quot;            &quot;decido&quot;           
-##  [49] &quot;deldir&quot;            &quot;desc&quot;              &quot;devtools&quot;         
-##  [52] &quot;dichromat&quot;         &quot;diffobj&quot;           &quot;digest&quot;           
-##  [55] &quot;doParallel&quot;        &quot;dotCall64&quot;         &quot;dplyr&quot;            
-##  [58] &quot;dtplyr&quot;            &quot;dtw&quot;               &quot;e1071&quot;            
-##  [61] &quot;easyGgplot2&quot;       &quot;ellipsis&quot;          &quot;evaluate&quot;         
-##  [64] &quot;expm&quot;              &quot;extraDistr&quot;        &quot;fansi&quot;            
-##  [67] &quot;farver&quot;            &quot;fAsianOptions&quot;     &quot;fastmap&quot;          
-##  [70] &quot;fBasics&quot;           &quot;fields&quot;            &quot;flow&quot;             
-##  [73] &quot;FNN&quot;               &quot;fOptions&quot;          &quot;forcats&quot;          
-##  [76] &quot;foreach&quot;           &quot;forecast&quot;          &quot;Formula&quot;          
-##  [79] &quot;formula.tools&quot;     &quot;fracdiff&quot;          &quot;fs&quot;               
-##  [82] &quot;gargle&quot;            &quot;gbm&quot;               &quot;gdata&quot;            
-##  [85] &quot;generics&quot;          &quot;geobr&quot;             &quot;geojsonsf&quot;        
-##  [88] &quot;geometries&quot;        &quot;geosphere&quot;         &quot;gert&quot;             
-##  [91] &quot;ggplot2&quot;           &quot;ggpubr&quot;            &quot;ggrepel&quot;          
-##  [94] &quot;ggsci&quot;             &quot;ggsignif&quot;          &quot;gh&quot;               
-##  [97] &quot;gitcreds&quot;          &quot;glcm&quot;              &quot;glue&quot;             
-## [100] &quot;gmodels&quot;           &quot;goftest&quot;           &quot;googledrive&quot;      
-## [103] &quot;googlesheets4&quot;     &quot;gower&quot;             &quot;gridExtra&quot;        
-## [106] &quot;gss&quot;               &quot;gstat&quot;             &quot;gtable&quot;           
-## [109] &quot;gtools&quot;            &quot;haven&quot;             &quot;here&quot;             
-## [112] &quot;hexbin&quot;            &quot;highr&quot;             &quot;hms&quot;              
-## [115] &quot;htmltools&quot;         &quot;htmlwidgets&quot;       &quot;httpcode&quot;         
-## [118] &quot;httpuv&quot;            &quot;httr&quot;              &quot;hydroGOF&quot;         
-## [121] &quot;hydroTSM&quot;          &quot;ids&quot;               &quot;igraph&quot;           
-## [124] &quot;ini&quot;               &quot;intervals&quot;         &quot;ipred&quot;            
-## [127] &quot;isoband&quot;           &quot;iterators&quot;         &quot;jpeg&quot;             
-## [130] &quot;jquerylib&quot;         &quot;jsonify&quot;           &quot;jsonlite&quot;         
-## [133] &quot;kableExtra&quot;        &quot;kernlab&quot;           &quot;kknn&quot;             
-## [136] &quot;knitr&quot;             &quot;kohonen&quot;           &quot;labeling&quot;         
-## [139] &quot;later&quot;             &quot;latticeExtra&quot;      &quot;lava&quot;             
-## [142] &quot;lazyeval&quot;          &quot;leafem&quot;            &quot;leaflet&quot;          
-## [145] &quot;leaflet.providers&quot; &quot;leafsync&quot;          &quot;LearnBayes&quot;       
-## [148] &quot;lifecycle&quot;         &quot;lme4&quot;              &quot;lmtest&quot;           
-## [151] &quot;locpol&quot;            &quot;longitudinalData&quot;  &quot;lubridate&quot;        
-## [154] &quot;lwgeom&quot;            &quot;magick&quot;            &quot;magrittr&quot;         
-## [157] &quot;maps&quot;              &quot;maptools&quot;          &quot;maptree&quot;          
-## [160] &quot;markdown&quot;          &quot;MatrixModels&quot;      &quot;matrixStats&quot;      
-## [163] &quot;memoise&quot;           &quot;metR&quot;              &quot;mime&quot;             
-## [166] &quot;miniUI&quot;            &quot;minqa&quot;             &quot;misc3d&quot;           
-## [169] &quot;mlbench&quot;           &quot;ModelMetrics&quot;      &quot;modelr&quot;           
-## [172] &quot;munsell&quot;           &quot;ncdf4&quot;             &quot;NeuralNetTools&quot;   
-## [175] &quot;nloptr&quot;            &quot;nomnoml&quot;           &quot;numDeriv&quot;         
-## [178] &quot;openssl&quot;           &quot;openxlsx&quot;          &quot;operator.tools&quot;   
-## [181] &quot;pacman&quot;            &quot;pbkrtest&quot;          &quot;pdc&quot;              
-## [184] &quot;permute&quot;           &quot;pillar&quot;            &quot;pkgbuild&quot;         
-## [187] &quot;pkgconfig&quot;         &quot;pkgload&quot;           &quot;plyr&quot;             
-## [190] &quot;png&quot;               &quot;polyclip&quot;          &quot;polynom&quot;          
-## [193] &quot;praise&quot;            &quot;prettyunits&quot;       &quot;princurve&quot;        
-## [196] &quot;prob&quot;              &quot;pROC&quot;              &quot;processx&quot;         
-## [199] &quot;prodlim&quot;           &quot;profileModel&quot;      &quot;progress&quot;         
-## [202] &quot;progressr&quot;         &quot;promises&quot;          &quot;proxy&quot;            
-## [205] &quot;ps&quot;                &quot;purrr&quot;             &quot;quadprog&quot;         
-## [208] &quot;quantmod&quot;          &quot;quantreg&quot;          &quot;R.cache&quot;          
-## [211] &quot;R.methodsS3&quot;       &quot;R.oo&quot;              &quot;R.utils&quot;          
-## [214] &quot;R6&quot;                &quot;randomForest&quot;      &quot;rapidjsonr&quot;       
-## [217] &quot;rappdirs&quot;          &quot;raster&quot;            &quot;rasterVis&quot;        
-## [220] &quot;rayimage&quot;          &quot;rayrender&quot;         &quot;rayshader&quot;        
-## [223] &quot;rcmdcheck&quot;         &quot;RColorBrewer&quot;      &quot;Rcpp&quot;             
-## [226] &quot;RcppArmadillo&quot;     &quot;RcppEigen&quot;         &quot;RcppThread&quot;       
-## [229] &quot;RCurl&quot;             &quot;readr&quot;             &quot;readxl&quot;           
-## [232] &quot;recipes&quot;           &quot;rematch&quot;           &quot;rematch2&quot;         
-## [235] &quot;remotes&quot;           &quot;reprex&quot;            &quot;reshape&quot;          
-## [238] &quot;reshape2&quot;          &quot;rgdal&quot;             &quot;rgeos&quot;            
-## [241] &quot;rgl&quot;               &quot;rio&quot;               &quot;rJava&quot;            
-## [244] &quot;rlang&quot;             &quot;rmarkdown&quot;         &quot;rnaturalearth&quot;    
-## [247] &quot;rnaturalearthdata&quot; &quot;RNCEP&quot;             &quot;roxygen2&quot;         
-## [250] &quot;rpart.plot&quot;        &quot;rprojroot&quot;         &quot;rstatix&quot;          
-## [253] &quot;RStoolbox&quot;         &quot;rstudioapi&quot;        &quot;rversions&quot;        
-## [256] &quot;rvest&quot;             &quot;sass&quot;              &quot;scales&quot;           
-## [259] &quot;selectr&quot;           &quot;servr&quot;             &quot;sessioninfo&quot;      
-## [262] &quot;sf&quot;                &quot;sfheaders&quot;         &quot;shiny&quot;            
-## [265] &quot;sourcetools&quot;       &quot;sp&quot;                &quot;spacefillr&quot;       
-## [268] &quot;spacetime&quot;         &quot;spam&quot;              &quot;SparseM&quot;          
-## [271] &quot;spatialEco&quot;        &quot;spatstat.core&quot;     &quot;spatstat.data&quot;    
-## [274] &quot;spatstat.geom&quot;     &quot;spatstat.sparse&quot;   &quot;spatstat.utils&quot;   
-## [277] &quot;spData&quot;            &quot;spdep&quot;             &quot;SQUAREM&quot;          
-## [280] &quot;stabledist&quot;        &quot;stars&quot;             &quot;stringi&quot;          
-## [283] &quot;stringr&quot;           &quot;styler&quot;            &quot;svglite&quot;          
-## [286] &quot;synoptReg&quot;         &quot;sys&quot;               &quot;systemfonts&quot;      
-## [289] &quot;tensor&quot;            &quot;terra&quot;             &quot;terrainmeshr&quot;     
-## [292] &quot;testthat&quot;          &quot;tgp&quot;               &quot;tibble&quot;           
-## [295] &quot;tidyr&quot;             &quot;tidyselect&quot;        &quot;tidyverse&quot;        
-## [298] &quot;timeDate&quot;          &quot;timeSeries&quot;        &quot;tinytex&quot;          
-## [301] &quot;tmap&quot;              &quot;tmaptools&quot;         &quot;trend&quot;            
-## [304] &quot;triebeard&quot;         &quot;TSclust&quot;           &quot;TSdist&quot;           
-## [307] &quot;tseries&quot;           &quot;TTR&quot;               &quot;unikn&quot;            
-## [310] &quot;units&quot;             &quot;urca&quot;              &quot;urltools&quot;         
-## [313] &quot;usethis&quot;           &quot;utf8&quot;              &quot;uuid&quot;             
-## [316] &quot;vctrs&quot;             &quot;vegan&quot;             &quot;viridis&quot;          
-## [319] &quot;viridisLite&quot;       &quot;waldo&quot;             &quot;webshot&quot;          
-## [322] &quot;wesanderson&quot;       &quot;whisker&quot;           &quot;widgetframe&quot;      
-## [325] &quot;withr&quot;             &quot;xfun&quot;              &quot;xlsx&quot;             
-## [328] &quot;xlsxjars&quot;          &quot;XML&quot;               &quot;xml2&quot;             
-## [331] &quot;xopen&quot;             &quot;xtable&quot;            &quot;xts&quot;              
-## [334] &quot;yaml&quot;              &quot;zip&quot;               &quot;zoo&quot;              
-## [337] &quot;base&quot;              &quot;boot&quot;              &quot;class&quot;            
-## [340] &quot;cluster&quot;           &quot;codetools&quot;         &quot;compiler&quot;         
-## [343] &quot;datasets&quot;          &quot;foreign&quot;           &quot;graphics&quot;         
-## [346] &quot;grDevices&quot;         &quot;grid&quot;              &quot;KernSmooth&quot;       
-## [349] &quot;lattice&quot;           &quot;MASS&quot;              &quot;Matrix&quot;           
-## [352] &quot;methods&quot;           &quot;mgcv&quot;              &quot;nlme&quot;             
-## [355] &quot;nnet&quot;              &quot;parallel&quot;          &quot;rpart&quot;            
-## [358] &quot;spatial&quot;           &quot;splines&quot;           &quot;stats&quot;            
-## [361] &quot;stats4&quot;            &quot;survival&quot;          &quot;tcltk&quot;            
-## [364] &quot;tools&quot;             &quot;translations&quot;      &quot;utils&quot;</code></pre>
+##  [31] &quot;clue&quot;              &quot;clv&quot;               &quot;coda&quot;             
+##  [34] &quot;colorspace&quot;        &quot;combinat&quot;          &quot;commonmark&quot;       
+##  [37] &quot;conquer&quot;           &quot;corrplot&quot;          &quot;cowplot&quot;          
+##  [40] &quot;cpp11&quot;             &quot;crayon&quot;            &quot;credentials&quot;      
+##  [43] &quot;crosstalk&quot;         &quot;crul&quot;              &quot;curl&quot;             
+##  [46] &quot;data.table&quot;        &quot;DBI&quot;               &quot;dbplyr&quot;           
+##  [49] &quot;decido&quot;            &quot;deldir&quot;            &quot;desc&quot;             
+##  [52] &quot;devEMF&quot;            &quot;devtools&quot;          &quot;dichromat&quot;        
+##  [55] &quot;diffobj&quot;           &quot;digest&quot;            &quot;doParallel&quot;       
+##  [58] &quot;dotCall64&quot;         &quot;dplyr&quot;             &quot;DT&quot;               
+##  [61] &quot;dtplyr&quot;            &quot;dtw&quot;               &quot;e1071&quot;            
+##  [64] &quot;easyGgplot2&quot;       &quot;editData&quot;          &quot;ellipsis&quot;         
+##  [67] &quot;evaluate&quot;          &quot;expm&quot;              &quot;extraDistr&quot;       
+##  [70] &quot;fansi&quot;             &quot;farver&quot;            &quot;fAsianOptions&quot;    
+##  [73] &quot;fastmap&quot;           &quot;fBasics&quot;           &quot;fields&quot;           
+##  [76] &quot;flextable&quot;         &quot;flow&quot;              &quot;FNN&quot;              
+##  [79] &quot;fOptions&quot;          &quot;forcats&quot;           &quot;foreach&quot;          
+##  [82] &quot;forecast&quot;          &quot;Formula&quot;           &quot;formula.tools&quot;    
+##  [85] &quot;fracdiff&quot;          &quot;fs&quot;                &quot;gargle&quot;           
+##  [88] &quot;gbm&quot;               &quot;gdata&quot;             &quot;gdtools&quot;          
+##  [91] &quot;generics&quot;          &quot;geobr&quot;             &quot;geojsonsf&quot;        
+##  [94] &quot;geometries&quot;        &quot;geosphere&quot;         &quot;gert&quot;             
+##  [97] &quot;ggdendro&quot;          &quot;ggforce&quot;           &quot;ggformula&quot;        
+## [100] &quot;ggplot2&quot;           &quot;ggpubr&quot;            &quot;ggrepel&quot;          
+## [103] &quot;ggridges&quot;          &quot;ggsci&quot;             &quot;ggsignif&quot;         
+## [106] &quot;ggstance&quot;          &quot;gh&quot;                &quot;gitcreds&quot;         
+## [109] &quot;glcm&quot;              &quot;glue&quot;              &quot;gmodels&quot;          
+## [112] &quot;goftest&quot;           &quot;googledrive&quot;       &quot;googlesheets4&quot;    
+## [115] &quot;gower&quot;             &quot;gridExtra&quot;         &quot;gss&quot;              
+## [118] &quot;gstat&quot;             &quot;gtable&quot;            &quot;gtools&quot;           
+## [121] &quot;haven&quot;             &quot;here&quot;              &quot;hexbin&quot;           
+## [124] &quot;highr&quot;             &quot;hms&quot;               &quot;htmltools&quot;        
+## [127] &quot;htmlwidgets&quot;       &quot;httpcode&quot;          &quot;httpuv&quot;           
+## [130] &quot;httr&quot;              &quot;hydroGOF&quot;          &quot;hydroTSM&quot;         
+## [133] &quot;ids&quot;               &quot;igraph&quot;            &quot;ini&quot;              
+## [136] &quot;insight&quot;           &quot;intervals&quot;         &quot;ipred&quot;            
+## [139] &quot;isoband&quot;           &quot;iterators&quot;         &quot;jpeg&quot;             
+## [142] &quot;jquerylib&quot;         &quot;jsonify&quot;           &quot;jsonlite&quot;         
+## [145] &quot;kableExtra&quot;        &quot;kernlab&quot;           &quot;kknn&quot;             
+## [148] &quot;knitr&quot;             &quot;kohonen&quot;           &quot;labeling&quot;         
+## [151] &quot;labelled&quot;          &quot;later&quot;             &quot;latticeExtra&quot;     
+## [154] &quot;lava&quot;              &quot;lazyeval&quot;          &quot;leafem&quot;           
+## [157] &quot;leaflet&quot;           &quot;leaflet.providers&quot; &quot;leafsync&quot;         
+## [160] &quot;LearnBayes&quot;        &quot;lifecycle&quot;         &quot;lme4&quot;             
+## [163] &quot;lmtest&quot;            &quot;locpol&quot;            &quot;longitudinalData&quot; 
+## [166] &quot;lsr&quot;               &quot;lubridate&quot;         &quot;lwgeom&quot;           
+## [169] &quot;magick&quot;            &quot;magrittr&quot;          &quot;maps&quot;             
+## [172] &quot;maptools&quot;          &quot;maptree&quot;           &quot;markdown&quot;         
+## [175] &quot;MatrixModels&quot;      &quot;matrixStats&quot;       &quot;memoise&quot;          
+## [178] &quot;metR&quot;              &quot;mime&quot;              &quot;miniUI&quot;           
+## [181] &quot;minqa&quot;             &quot;misc3d&quot;            &quot;mlbench&quot;          
+## [184] &quot;mnormt&quot;            &quot;modeest&quot;           &quot;ModelMetrics&quot;     
+## [187] &quot;modelr&quot;            &quot;moonBook&quot;          &quot;mosaic&quot;           
+## [190] &quot;mosaicCore&quot;        &quot;mosaicData&quot;        &quot;munsell&quot;          
+## [193] &quot;ncdf4&quot;             &quot;NeuralNetTools&quot;    &quot;nloptr&quot;           
+## [196] &quot;nomnoml&quot;           &quot;nortest&quot;           &quot;numDeriv&quot;         
+## [199] &quot;officer&quot;           &quot;openssl&quot;           &quot;openxlsx&quot;         
+## [202] &quot;operator.tools&quot;    &quot;pacman&quot;            &quot;pbkrtest&quot;         
+## [205] &quot;pdc&quot;               &quot;permute&quot;           &quot;pillar&quot;           
+## [208] &quot;pkgbuild&quot;          &quot;pkgconfig&quot;         &quot;pkgload&quot;          
+## [211] &quot;plyr&quot;              &quot;png&quot;               &quot;polyclip&quot;         
+## [214] &quot;polynom&quot;           &quot;praise&quot;            &quot;prettyunits&quot;      
+## [217] &quot;princurve&quot;         &quot;prob&quot;              &quot;pROC&quot;             
+## [220] &quot;processx&quot;          &quot;prodlim&quot;           &quot;profileModel&quot;     
+## [223] &quot;progress&quot;          &quot;progressr&quot;         &quot;promises&quot;         
+## [226] &quot;proxy&quot;             &quot;ps&quot;                &quot;psych&quot;            
+## [229] &quot;purrr&quot;             &quot;quadprog&quot;          &quot;quantmod&quot;         
+## [232] &quot;quantreg&quot;          &quot;R.cache&quot;           &quot;R.methodsS3&quot;      
+## [235] &quot;R.oo&quot;              &quot;R.utils&quot;           &quot;R6&quot;               
+## [238] &quot;randomForest&quot;      &quot;rapidjsonr&quot;        &quot;rappdirs&quot;         
+## [241] &quot;raster&quot;            &quot;rasterVis&quot;         &quot;rayimage&quot;         
+## [244] &quot;rayrender&quot;         &quot;rayshader&quot;         &quot;rcmdcheck&quot;        
+## [247] &quot;RColorBrewer&quot;      &quot;Rcpp&quot;              &quot;RcppArmadillo&quot;    
+## [250] &quot;RcppEigen&quot;         &quot;RcppThread&quot;        &quot;RCurl&quot;            
+## [253] &quot;readr&quot;             &quot;readxl&quot;            &quot;recipes&quot;          
+## [256] &quot;rematch&quot;           &quot;rematch2&quot;          &quot;remotes&quot;          
+## [259] &quot;reprex&quot;            &quot;reshape&quot;           &quot;reshape2&quot;         
+## [262] &quot;rgdal&quot;             &quot;rgeos&quot;             &quot;rgl&quot;              
+## [265] &quot;rio&quot;               &quot;rJava&quot;             &quot;rlang&quot;            
+## [268] &quot;rmarkdown&quot;         &quot;rmutil&quot;            &quot;rnaturalearth&quot;    
+## [271] &quot;rnaturalearthdata&quot; &quot;RNCEP&quot;             &quot;roxygen2&quot;         
+## [274] &quot;rpart.plot&quot;        &quot;rprojroot&quot;         &quot;rrtable&quot;          
+## [277] &quot;rstatix&quot;           &quot;RStoolbox&quot;         &quot;rstudioapi&quot;       
+## [280] &quot;rversions&quot;         &quot;rvest&quot;             &quot;rvg&quot;              
+## [283] &quot;sass&quot;              &quot;scales&quot;            &quot;selectr&quot;          
+## [286] &quot;servr&quot;             &quot;sessioninfo&quot;       &quot;sf&quot;               
+## [289] &quot;sfheaders&quot;         &quot;shiny&quot;             &quot;shinyWidgets&quot;     
+## [292] &quot;sjlabelled&quot;        &quot;sjmisc&quot;            &quot;sourcetools&quot;      
+## [295] &quot;sp&quot;                &quot;spacefillr&quot;        &quot;spacetime&quot;        
+## [298] &quot;spam&quot;              &quot;SparseM&quot;           &quot;spatialEco&quot;       
+## [301] &quot;spatstat.core&quot;     &quot;spatstat.data&quot;     &quot;spatstat.geom&quot;    
+## [304] &quot;spatstat.sparse&quot;   &quot;spatstat.utils&quot;    &quot;spData&quot;           
+## [307] &quot;spdep&quot;             &quot;SQUAREM&quot;           &quot;stable&quot;           
+## [310] &quot;stabledist&quot;        &quot;stars&quot;             &quot;statip&quot;           
+## [313] &quot;stringi&quot;           &quot;stringr&quot;           &quot;styler&quot;           
+## [316] &quot;svglite&quot;           &quot;synoptReg&quot;         &quot;sys&quot;              
+## [319] &quot;systemfonts&quot;       &quot;tensor&quot;            &quot;terra&quot;            
+## [322] &quot;terrainmeshr&quot;      &quot;testthat&quot;          &quot;tgp&quot;              
+## [325] &quot;tibble&quot;            &quot;tidyr&quot;             &quot;tidyselect&quot;       
+## [328] &quot;tidyverse&quot;         &quot;timeDate&quot;          &quot;timeSeries&quot;       
+## [331] &quot;tinytex&quot;           &quot;tmap&quot;              &quot;tmaptools&quot;        
+## [334] &quot;tmvnsim&quot;           &quot;trend&quot;             &quot;triebeard&quot;        
+## [337] &quot;TSclust&quot;           &quot;TSdist&quot;            &quot;tseries&quot;          
+## [340] &quot;TTR&quot;               &quot;tweenr&quot;            &quot;unikn&quot;            
+## [343] &quot;units&quot;             &quot;urca&quot;              &quot;urltools&quot;         
+## [346] &quot;usethis&quot;           &quot;utf8&quot;              &quot;uuid&quot;             
+## [349] &quot;vcd&quot;               &quot;vctrs&quot;             &quot;vegan&quot;            
+## [352] &quot;viridis&quot;           &quot;viridisLite&quot;       &quot;waldo&quot;            
+## [355] &quot;webr&quot;              &quot;webshot&quot;           &quot;wesanderson&quot;      
+## [358] &quot;whisker&quot;           &quot;widgetframe&quot;       &quot;withr&quot;            
+## [361] &quot;xfun&quot;              &quot;xlsx&quot;              &quot;xlsxjars&quot;         
+## [364] &quot;XML&quot;               &quot;xml2&quot;              &quot;xopen&quot;            
+## [367] &quot;xtable&quot;            &quot;xts&quot;               &quot;yaml&quot;             
+## [370] &quot;zip&quot;               &quot;zoo&quot;               &quot;ztable&quot;           
+## [373] &quot;base&quot;              &quot;boot&quot;              &quot;class&quot;            
+## [376] &quot;cluster&quot;           &quot;codetools&quot;         &quot;compiler&quot;         
+## [379] &quot;datasets&quot;          &quot;foreign&quot;           &quot;graphics&quot;         
+## [382] &quot;grDevices&quot;         &quot;grid&quot;              &quot;KernSmooth&quot;       
+## [385] &quot;lattice&quot;           &quot;MASS&quot;              &quot;Matrix&quot;           
+## [388] &quot;methods&quot;           &quot;mgcv&quot;              &quot;nlme&quot;             
+## [391] &quot;nnet&quot;              &quot;parallel&quot;          &quot;rpart&quot;            
+## [394] &quot;spatial&quot;           &quot;splines&quot;           &quot;stats&quot;            
+## [397] &quot;stats4&quot;            &quot;survival&quot;          &quot;tcltk&quot;            
+## [400] &quot;tools&quot;             &quot;translations&quot;      &quot;utils&quot;</code></pre>
 <p>Ou poderia simplesmente digitar <code>library()</code>.</p>
 <div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb454-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>()</span></code></pre></div>
 </div>
