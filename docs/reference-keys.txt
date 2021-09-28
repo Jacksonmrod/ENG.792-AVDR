@@ -142,3 +142,8 @@ para-duas-amostras-dependentes
 teste-f
 kolmogorov-smirnov
 teste-de-shapiro
+subtítulo-2x-menor
+subsubtítulo-3x-menor
+subsubsubsubsubtítulo-4x-menor
+subsubsubsubsubtítulo-5x-menor
+subsubsubsubsubsubtítulo-6x-menor
