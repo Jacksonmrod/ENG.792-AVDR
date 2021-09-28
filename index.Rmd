@@ -121,7 +121,7 @@ Semana/Data | Conteúdo
 14/10 | Palesrta com Professor [Dr. Alcinei Mistico Azevedo](http://lattes.cnpq.br/9415018624563178) -  **Análise Multivariada com o pacote _Multivariate Analysis_**    
 21/10 | Palestra com Professor [Dr. Rafael Delgado](http://lattes.cnpq.br/1178948690201659) - **Sensoriamento Remoto Ambiental – Técnicas e Aplicações com uso do software R**    
 28/10 | Palestra com [Msc. Filipe Matias](https://github.com/filipematias23/FIELDimageR-Workshop-11) - **FIELDimageR pipelines: Phenomics applied to Agriculture**
-04/11 | Palestra com [Msc. Maurício Vancine](https://mauriciovancine.github.io/) - **Modelagem de distribuição de espécies**   
+04/11 | Palestra com [Msc. Maurício Vancine](https://mauriciovancine.github.io/) - **Modelos em Ecologia: extrapolando nosso conhecimento sobre a distribuição das espécies**   
 11/11 | Palestra com Professor [Dr. Domingos Sárvio](http://lattes.cnpq.br/8080945803303151) - **_Machine Learning_ Aplicado à Agricultura**
 
 ### Métodos de avaliação  
