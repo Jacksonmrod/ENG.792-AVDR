@@ -100,7 +100,7 @@ Todo o material necessário para acompanhar a disciplina será oferecido via [gi
 
 As aulas serão ofertadas por material gravado e presencial às quintas e sextas entre 14:00 e 15:30.
 
-Semana | Conteúdo
+Semana/Data | Conteúdo
 :-:|:-------------------:
 1.1 | Apresentação do Conteúdo e Instalação do R
 1.2 | Funcionamento do R, tipo e estrutura dos objetos
@@ -116,6 +116,13 @@ Semana | Conteúdo
 7.1 | Análise Multivariada (Análise de agrupamento, medidas de (dis)similaridade, métodos de conexão, número de clusters, produção de dendogramas, árvores de decisão)
 7.2 | Métodos de Ordenação (Ana. Componentes Principais, Análise Canônica, Análise de fatores, Análise de Mahalanobis)
 8 - 15 | Será preenchido em breve 
+30/09 | Palestra com [Beatriz Milz](https://beatrizmilz.com/)  - **Como aprender R tem sido importante na minha trajetória como gestora ambiental**    
+07/10 | Palestra com [Felipe Barros](FelipeSBarros.github.io) - **Entendendo os mapas coropléticos**   
+14/10 | Palesrta com Professor [Alcinei Mistico Azevedo](http://lattes.cnpq.br/9415018624563178) -  **Análise Multivariada com o pacote _Multivariate Analysis_**    
+21/10 | Palestra com [Professor Rafael Delgado](http://lattes.cnpq.br/1178948690201659) - **Sensoriamento Remoto Ambiental – Técnicas e Aplicações com uso do software R**    
+28/10 | Palestra com MSc [Filipe Matias](https://github.com/filipematias23/FIELDimageR-Workshop-11) - **FIELDimageR pipelines: Phenomics applied to Agriculture**
+04/11 | Palestra com [Maurício Vancine](https://mauriciovancine.github.io/) - **Modelagem de distribuição de espécies**   
+11/11 | Palestra com Professor [Domingos Sárvio](http://lattes.cnpq.br/8080945803303151) - **_Machine Learning_ Aplicado à Agricultura**
 
 ### Métodos de avaliação  
 - Faremos pelo menos 3 listas de exercícios distribuídas pelo semestre.   
