@@ -118,9 +118,9 @@ Semana/Data | Conteúdo
 8 - 15 | Será preenchido em breve 
 30/09 | Palestra com [Msc. Beatriz Milz](https://beatrizmilz.com/)  - **Como aprender R tem sido importante na minha trajetória como gestora ambiental**    
 07/10 | Palestra com [Msc. Felipe Barros](FelipeSBarros.github.io) - **Entendendo os mapas coropléticos**   
-14/10 | Palesrta com Professor [Dr. Alcinei Mistico Azevedo](http://lattes.cnpq.br/9415018624563178) -  **Tecnologias digitais de apoio a análise de experimentos agronômicos**    
+14/10 | Palestra com Professor [Dr. Alcinei Mistico Azevedo](http://lattes.cnpq.br/9415018624563178) -  **Tecnologias digitais de apoio a análise de experimentos agronômicos**    
 21/10 | Palestra com Professor [Dr. Rafael Delgado](http://lattes.cnpq.br/1178948690201659) - **Sensoriamento Remoto Ambiental – Técnicas e Aplicações com uso do software R**    
-28/10 | Palestra com [Msc. Filipe Matias](https://github.com/filipematias23/FIELDimageR-Workshop-11) - **FIELDimageR pipeline: Image analysis from agricultural trials in R**
+28/10 | Palestra com [Msc. Filipe Matias](https://github.com/filipematias23/) - **FIELDimageR pipeline: Image analysis from agricultural trials in R**
 04/11 | Palestra com [Msc. Maurício Vancine](https://mauriciovancine.github.io/) - **Modelos em Ecologia: extrapolando nosso conhecimento sobre a distribuição das espécies**   
 11/11 | Palestra com Professor [Dr. Domingos Sárvio](http://lattes.cnpq.br/8080945803303151) - **_Machine Learning_ Aplicado à Agricultura**
 
