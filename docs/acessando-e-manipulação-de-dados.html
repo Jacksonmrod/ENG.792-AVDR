@@ -24,7 +24,7 @@
 <meta name="author" content="Jackson Rodrigues" />
 
 
-<meta name="date" content="2021-09-28" />
+<meta name="date" content="2021-09-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -434,9 +434,10 @@ Então um único número ou um único caractere será um vector.</p>
 </table>
 <p>Entender a posição de cada elemento dentro de um <code>vector</code> é crucial! Saber a posição correta onde determinado(s) elemento(s) está(estão) facilita em muito nossa limpeza, nosso tratamento e demais passos para uma eficiente manipulação dos dados.</p>
 <div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="acessando-e-manipulação-de-dados.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">100</span>,<span class="dv">50</span>,<span class="sc">-</span><span class="dv">1</span>)</span></code></pre></div>
-<pre><code>##  [1] 100  99  98  97  96  95  94  93  92  91  90  89  88  87  86  85  84
-## [18]  83  82  81  80  79  78  77  76  75  74  73  72  71  70  69  68  67
-## [35]  66  65  64  63  62  61  60  59  58  57  56  55  54  53  52  51  50</code></pre>
+<pre><code>##  [1] 100  99  98  97  96  95  94  93  92  91  90  89  88  87  86  85
+## [17]  84  83  82  81  80  79  78  77  76  75  74  73  72  71  70  69
+## [33]  68  67  66  65  64  63  62  61  60  59  58  57  56  55  54  53
+## [49]  52  51  50</code></pre>
 <p>Atenção para os números dentro dos colchetes <code>[1] [17] [33] [49]</code>. Como mencionado em aulas passadas, eles, os colchetes, indicam a posição de determinados elementos dentro de um banco de dados.<br />
 Especificamente o <code>[1]</code> informa que o número <em>100</em> é o primeiro elemento, <code>[17]</code> informa que o número <em>84</em> é o vigésimo elemento, <code>[33]</code> informa que o número <em>68</em> é o trigésimo nono elemento, <code>[49]</code> informa que o número <em>52</em> é o trigésimo nono elemento.</p>
 <div id="usando---subscribing-ou-indexing" class="section level3" number="3.1.1">
@@ -642,8 +643,8 @@ Nesse caso vamos ter uma aviso, em que o <strong>R</strong> ao fazer o preenchim
 <div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="acessando-e-manipulação-de-dados.html#cb168-1" aria-hidden="true" tabindex="-1"></a>j<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">50</span>,<span class="dv">34</span>,<span class="dv">11</span>,<span class="dv">7</span>,<span class="dv">24</span>,<span class="dv">631</span>)</span>
 <span id="cb168-2"><a href="acessando-e-manipulação-de-dados.html#cb168-2" aria-hidden="true" tabindex="-1"></a>k<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">100</span>,<span class="dv">2</span>,<span class="dv">56</span>,<span class="dv">12</span>,<span class="dv">0</span>,<span class="dv">65</span>,<span class="dv">93</span>,<span class="dv">10</span>,<span class="dv">244</span>,<span class="dv">1</span>)</span>
 <span id="cb168-3"><a href="acessando-e-manipulação-de-dados.html#cb168-3" aria-hidden="true" tabindex="-1"></a>j<span class="sc">+</span>k</span></code></pre></div>
-<pre><code>## Warning in j + k: longer object length is not a multiple of shorter object
-## length</code></pre>
+<pre><code>## Warning in j + k: longer object length is not a multiple of shorter
+## object length</code></pre>
 <pre><code>##  [1] 150  36  67  19  24 696 143  44 255   8</code></pre>
 </div>
 <div id="matrizes" class="section level4" number="3.1.1.2">
@@ -1592,34 +1593,40 @@ Rebaixado
 </tbody>
 </table>
 <div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="acessando-e-manipulação-de-dados.html#cb228-1" aria-hidden="true" tabindex="-1"></a>Campeonato.Brasileiro<span class="fl">.2019</span>[<span class="dv">1</span>,] <span class="co"># Retorna a primeira linha do data frame</span></span></code></pre></div>
-<pre><code>##    Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra Pontos
-## 1 Flamengo    38       28       6        4       86          37     90
-##   Saldo.de.Gols Aprov.      Destino
-## 1            49     79 Libertadores</code></pre>
+<pre><code>##    Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra
+## 1 Flamengo    38       28       6        4       86          37
+##   Pontos Saldo.de.Gols Aprov.      Destino
+## 1     90            49     79 Libertadores</code></pre>
 <div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="acessando-e-manipulação-de-dados.html#cb230-1" aria-hidden="true" tabindex="-1"></a>Campeonato.Brasileiro<span class="fl">.2019</span>[,<span class="dv">1</span>] <span class="co"># Retorna a primeira coluna do data frame</span></span></code></pre></div>
-<pre><code>##  [1] &quot;Flamengo&quot;             &quot;Santos&quot;               &quot;Palmeiras&quot;           
-##  [4] &quot;Grêmio&quot;               &quot;Athletico Paranaense&quot; &quot;Sao Paulo&quot;           
-##  [7] &quot;Internacional&quot;        &quot;Corinthians&quot;          &quot;Fortaleza&quot;           
-## [10] &quot;Goiás&quot;                &quot;Bahia&quot;                &quot;Vasco da Gama&quot;       
-## [13] &quot;Atlético Mineiro&quot;     &quot;Fluminense&quot;           &quot;Botafogo&quot;            
-## [16] &quot;Ceará&quot;                &quot;Cruzeiro&quot;             &quot;CSA&quot;                 
+<pre><code>##  [1] &quot;Flamengo&quot;             &quot;Santos&quot;              
+##  [3] &quot;Palmeiras&quot;            &quot;Grêmio&quot;              
+##  [5] &quot;Athletico Paranaense&quot; &quot;Sao Paulo&quot;           
+##  [7] &quot;Internacional&quot;        &quot;Corinthians&quot;         
+##  [9] &quot;Fortaleza&quot;            &quot;Goiás&quot;               
+## [11] &quot;Bahia&quot;                &quot;Vasco da Gama&quot;       
+## [13] &quot;Atlético Mineiro&quot;     &quot;Fluminense&quot;          
+## [15] &quot;Botafogo&quot;             &quot;Ceará&quot;               
+## [17] &quot;Cruzeiro&quot;             &quot;CSA&quot;                 
 ## [19] &quot;Chapecoense&quot;          &quot;Avaí&quot;</code></pre>
 <p>Todas as outras combinações utilizadas nas <code>matrizes</code> podem ser utilizadas aqui nos <code>data frames</code>.<br />
 No entanto, os data frames possuem uma outra “vantagem” sobre as matrizes. Além de armazenar elementos de diferentes tipos (<code>numeric, character, logical</code> e etc), eles também podemser acessados utilizando <code>$</code>.</p>
 <div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="acessando-e-manipulação-de-dados.html#cb232-1" aria-hidden="true" tabindex="-1"></a>Campeonato.Brasileiro<span class="fl">.2019</span><span class="sc">$</span>Equipes <span class="co"># Retorna os elementos da coluna &quot;Equipes&quot;</span></span></code></pre></div>
-<pre><code>##  [1] &quot;Flamengo&quot;             &quot;Santos&quot;               &quot;Palmeiras&quot;           
-##  [4] &quot;Grêmio&quot;               &quot;Athletico Paranaense&quot; &quot;Sao Paulo&quot;           
-##  [7] &quot;Internacional&quot;        &quot;Corinthians&quot;          &quot;Fortaleza&quot;           
-## [10] &quot;Goiás&quot;                &quot;Bahia&quot;                &quot;Vasco da Gama&quot;       
-## [13] &quot;Atlético Mineiro&quot;     &quot;Fluminense&quot;           &quot;Botafogo&quot;            
-## [16] &quot;Ceará&quot;                &quot;Cruzeiro&quot;             &quot;CSA&quot;                 
+<pre><code>##  [1] &quot;Flamengo&quot;             &quot;Santos&quot;              
+##  [3] &quot;Palmeiras&quot;            &quot;Grêmio&quot;              
+##  [5] &quot;Athletico Paranaense&quot; &quot;Sao Paulo&quot;           
+##  [7] &quot;Internacional&quot;        &quot;Corinthians&quot;         
+##  [9] &quot;Fortaleza&quot;            &quot;Goiás&quot;               
+## [11] &quot;Bahia&quot;                &quot;Vasco da Gama&quot;       
+## [13] &quot;Atlético Mineiro&quot;     &quot;Fluminense&quot;          
+## [15] &quot;Botafogo&quot;             &quot;Ceará&quot;               
+## [17] &quot;Cruzeiro&quot;             &quot;CSA&quot;                 
 ## [19] &quot;Chapecoense&quot;          &quot;Avaí&quot;</code></pre>
 <div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="acessando-e-manipulação-de-dados.html#cb234-1" aria-hidden="true" tabindex="-1"></a>Campeonato.Brasileiro<span class="fl">.2019</span><span class="sc">$</span>Vitórias <span class="co"># Retorna os elementos da coluna &quot;Vitórias&quot;</span></span></code></pre></div>
-<pre><code>##  [1] &quot;28&quot; &quot;22&quot; &quot;21&quot; &quot;19&quot; &quot;18&quot; &quot;17&quot; &quot;16&quot; &quot;14&quot; &quot;15&quot; &quot;15&quot; &quot;12&quot; &quot;12&quot; &quot;13&quot; &quot;12&quot;
-## [15] &quot;13&quot; &quot;10&quot; &quot;7&quot;  &quot;8&quot;  &quot;7&quot;  &quot;3&quot;</code></pre>
+<pre><code>##  [1] &quot;28&quot; &quot;22&quot; &quot;21&quot; &quot;19&quot; &quot;18&quot; &quot;17&quot; &quot;16&quot; &quot;14&quot; &quot;15&quot; &quot;15&quot; &quot;12&quot; &quot;12&quot; &quot;13&quot;
+## [14] &quot;12&quot; &quot;13&quot; &quot;10&quot; &quot;7&quot;  &quot;8&quot;  &quot;7&quot;  &quot;3&quot;</code></pre>
 <div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="acessando-e-manipulação-de-dados.html#cb236-1" aria-hidden="true" tabindex="-1"></a>Campeonato.Brasileiro<span class="fl">.2019</span><span class="sc">$</span>Gols.Pró <span class="co"># Retorna os elementos da coluna &quot;Gols.Pró&quot;</span></span></code></pre></div>
-<pre><code>##  [1] &quot;86&quot; &quot;60&quot; &quot;61&quot; &quot;64&quot; &quot;51&quot; &quot;39&quot; &quot;44&quot; &quot;42&quot; &quot;50&quot; &quot;46&quot; &quot;44&quot; &quot;39&quot; &quot;45&quot; &quot;38&quot;
-## [15] &quot;31&quot; &quot;36&quot; &quot;27&quot; &quot;24&quot; &quot;31&quot; &quot;18&quot;</code></pre>
+<pre><code>##  [1] &quot;86&quot; &quot;60&quot; &quot;61&quot; &quot;64&quot; &quot;51&quot; &quot;39&quot; &quot;44&quot; &quot;42&quot; &quot;50&quot; &quot;46&quot; &quot;44&quot; &quot;39&quot; &quot;45&quot;
+## [14] &quot;38&quot; &quot;31&quot; &quot;36&quot; &quot;27&quot; &quot;24&quot; &quot;31&quot; &quot;18&quot;</code></pre>
 <div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="acessando-e-manipulação-de-dados.html#cb238-1" aria-hidden="true" tabindex="-1"></a>Campeonato.Brasileiro<span class="fl">.2019</span><span class="sc">$</span>Saldo.de.Gols <span class="co"># Retorna os elementos da coluna &quot;Saldo.de.Gols&quot;</span></span></code></pre></div>
 <pre><code>##  [1] &quot;49&quot;  &quot;27&quot;  &quot;29&quot;  &quot;25&quot;  &quot;19&quot;  &quot;9&quot;   &quot;5&quot;   &quot;8&quot;   &quot;1&quot;   &quot;-18&quot; &quot;1&quot;  
 ## [12] &quot;-6&quot;  &quot;-4&quot;  &quot;-8&quot;  &quot;-14&quot; &quot;-5&quot;  &quot;-19&quot; &quot;-34&quot; &quot;-21&quot; &quot;-44&quot;</code></pre>
@@ -1641,10 +1648,10 @@ No entanto, os data frames possuem uma outra “vantagem” sobre as matrizes. A
 <pre><code>## [1] &quot;Sulamericana&quot;</code></pre>
 <p>Outra maneira de acessar informações pode através <code>[]</code>.</p>
 <div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="acessando-e-manipulação-de-dados.html#cb252-1" aria-hidden="true" tabindex="-1"></a>Campeonato.Brasileiro<span class="fl">.2019</span>[Campeonato.Brasileiro<span class="fl">.2019</span><span class="sc">$</span>Equipes<span class="sc">==</span><span class="st">&quot;Flamengo&quot;</span>,] <span class="co"># Retorna apenas as informações da coluna &quot;Equipes&quot; que atendem o critério &quot;Flamengo&quot;</span></span></code></pre></div>
-<pre><code>##    Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra Pontos
-## 1 Flamengo    38       28       6        4       86          37     90
-##   Saldo.de.Gols Aprov.      Destino
-## 1            49     79 Libertadores</code></pre>
+<pre><code>##    Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra
+## 1 Flamengo    38       28       6        4       86          37
+##   Pontos Saldo.de.Gols Aprov.      Destino
+## 1     90            49     79 Libertadores</code></pre>
 <div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="acessando-e-manipulação-de-dados.html#cb254-1" aria-hidden="true" tabindex="-1"></a><span class="fu">split</span>(Campeonato.Brasileiro<span class="fl">.2019</span>,Destino) <span class="co"># Retorna apenas as informações da coluna &quot;Destino&quot; </span></span></code></pre></div>
 <pre><code>## $Libertadores
 ##                Equipes Jogos Vitórias Empates Derrotas Gols.Pró
@@ -1667,12 +1674,12 @@ No entanto, os data frames possuem uma outra “vantagem” sobre as matrizes. A
 ## 8          34     56             8     49 Libertadores
 ## 
 ## $`NA`
-##     Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra Pontos
-## 15 Botafogo    38       13       4       21       31          45     43
-## 16    Ceará    38       10       9       19       36          41     39
-##    Saldo.de.Gols Aprov. Destino
-## 15           -14     38      NA
-## 16            -5     34      NA
+##     Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra
+## 15 Botafogo    38       13       4       21       31          45
+## 16    Ceará    38       10       9       19       36          41
+##    Pontos Saldo.de.Gols Aprov. Destino
+## 15     43           -14     38      NA
+## 16     39            -5     34      NA
 ## 
 ## $Rebaixado
 ##        Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra
@@ -1687,25 +1694,25 @@ No entanto, os data frames possuem uma outra “vantagem” sobre as matrizes. A
 ## 20     20           -44     18 Rebaixado
 ## 
 ## $Sulamericana
-##             Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra
-## 9         Fortaleza    38       15       8       15       50          49
-## 10            Goiás    38       15       7       16       46          64
-## 11            Bahia    38       12      13       13       44          43
-## 12    Vasco da Gama    38       12      13       13       39          45
-## 13 Atlético Mineiro    38       13       9       16       45          49
-## 14       Fluminense    38       12      10       16       38          46
-##    Pontos Saldo.de.Gols Aprov.      Destino
-## 9      53             1     46 Sulamericana
-## 10     52           -18     46 Sulamericana
-## 11     49             1     43 Sulamericana
-## 12     49            -6     43 Sulamericana
-## 13     48            -4     42 Sulamericana
-## 14     46            -8      4 Sulamericana</code></pre>
+##             Equipes Jogos Vitórias Empates Derrotas Gols.Pró
+## 9         Fortaleza    38       15       8       15       50
+## 10            Goiás    38       15       7       16       46
+## 11            Bahia    38       12      13       13       44
+## 12    Vasco da Gama    38       12      13       13       39
+## 13 Atlético Mineiro    38       13       9       16       45
+## 14       Fluminense    38       12      10       16       38
+##    Gols.Contra Pontos Saldo.de.Gols Aprov.      Destino
+## 9           49     53             1     46 Sulamericana
+## 10          64     52           -18     46 Sulamericana
+## 11          43     49             1     43 Sulamericana
+## 12          45     49            -6     43 Sulamericana
+## 13          49     48            -4     42 Sulamericana
+## 14          46     46            -8      4 Sulamericana</code></pre>
 <p>Vou criar alguns verores aleatórios.</p>
 <div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="acessando-e-manipulação-de-dados.html#cb256-1" aria-hidden="true" tabindex="-1"></a>gr1 <span class="ot">&lt;-</span> <span class="fu">rep</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>],<span class="at">each=</span><span class="dv">5</span>)</span>
 <span id="cb256-2"><a href="acessando-e-manipulação-de-dados.html#cb256-2" aria-hidden="true" tabindex="-1"></a>gr1</span></code></pre></div>
-<pre><code>##  [1] &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;b&quot; &quot;b&quot; &quot;b&quot; &quot;b&quot; &quot;b&quot; &quot;c&quot; &quot;c&quot; &quot;c&quot; &quot;c&quot; &quot;c&quot; &quot;d&quot; &quot;d&quot;
-## [18] &quot;d&quot; &quot;d&quot; &quot;d&quot;</code></pre>
+<pre><code>##  [1] &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;b&quot; &quot;b&quot; &quot;b&quot; &quot;b&quot; &quot;b&quot; &quot;c&quot; &quot;c&quot; &quot;c&quot; &quot;c&quot; &quot;c&quot; &quot;d&quot;
+## [17] &quot;d&quot; &quot;d&quot; &quot;d&quot; &quot;d&quot;</code></pre>
 <div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="acessando-e-manipulação-de-dados.html#cb258-1" aria-hidden="true" tabindex="-1"></a>gr2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,<span class="at">each=</span><span class="dv">5</span>),<span class="fu">rep</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>,<span class="at">each=</span><span class="dv">5</span>))</span>
 <span id="cb258-2"><a href="acessando-e-manipulação-de-dados.html#cb258-2" aria-hidden="true" tabindex="-1"></a>gr2</span></code></pre></div>
 <pre><code>##  [1] 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 3 3 3 3 3</code></pre>
@@ -1747,18 +1754,18 @@ No entanto, os data frames possuem uma outra “vantagem” sobre as matrizes. A
 ## 10     52           -18     46 Sulamericana
 ## 
 ## $c
-##             Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra
-## 11            Bahia    38       12      13       13       44          43
-## 12    Vasco da Gama    38       12      13       13       39          45
-## 13 Atlético Mineiro    38       13       9       16       45          49
-## 14       Fluminense    38       12      10       16       38          46
-## 15         Botafogo    38       13       4       21       31          45
-##    Pontos Saldo.de.Gols Aprov.      Destino
-## 11     49             1     43 Sulamericana
-## 12     49            -6     43 Sulamericana
-## 13     48            -4     42 Sulamericana
-## 14     46            -8      4 Sulamericana
-## 15     43           -14     38           NA
+##             Equipes Jogos Vitórias Empates Derrotas Gols.Pró
+## 11            Bahia    38       12      13       13       44
+## 12    Vasco da Gama    38       12      13       13       39
+## 13 Atlético Mineiro    38       13       9       16       45
+## 14       Fluminense    38       12      10       16       38
+## 15         Botafogo    38       13       4       21       31
+##    Gols.Contra Pontos Saldo.de.Gols Aprov.      Destino
+## 11          43     49             1     43 Sulamericana
+## 12          45     49            -6     43 Sulamericana
+## 13          49     48            -4     42 Sulamericana
+## 14          46     46            -8      4 Sulamericana
+## 15          45     43           -14     38           NA
 ## 
 ## $d
 ##        Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra
@@ -1789,28 +1796,28 @@ No entanto, os data frames possuem uma outra “vantagem” sobre as matrizes. A
 ## 5          32     64            19     56 Libertadores
 ## 
 ## $`2`
-##             Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra
-## 6         Sao Paulo    38       17      12        9       39          30
-## 7     Internacional    38       16       9       13       44          39
-## 8       Corinthians    38       14      14       10       42          34
-## 9         Fortaleza    38       15       8       15       50          49
-## 10            Goiás    38       15       7       16       46          64
-## 11            Bahia    38       12      13       13       44          43
-## 12    Vasco da Gama    38       12      13       13       39          45
-## 13 Atlético Mineiro    38       13       9       16       45          49
-## 14       Fluminense    38       12      10       16       38          46
-## 15         Botafogo    38       13       4       21       31          45
-##    Pontos Saldo.de.Gols Aprov.      Destino
-## 6      63             9     55 Libertadores
-## 7      57             5      5 Libertadores
-## 8      56             8     49 Libertadores
-## 9      53             1     46 Sulamericana
-## 10     52           -18     46 Sulamericana
-## 11     49             1     43 Sulamericana
-## 12     49            -6     43 Sulamericana
-## 13     48            -4     42 Sulamericana
-## 14     46            -8      4 Sulamericana
-## 15     43           -14     38           NA
+##             Equipes Jogos Vitórias Empates Derrotas Gols.Pró
+## 6         Sao Paulo    38       17      12        9       39
+## 7     Internacional    38       16       9       13       44
+## 8       Corinthians    38       14      14       10       42
+## 9         Fortaleza    38       15       8       15       50
+## 10            Goiás    38       15       7       16       46
+## 11            Bahia    38       12      13       13       44
+## 12    Vasco da Gama    38       12      13       13       39
+## 13 Atlético Mineiro    38       13       9       16       45
+## 14       Fluminense    38       12      10       16       38
+## 15         Botafogo    38       13       4       21       31
+##    Gols.Contra Pontos Saldo.de.Gols Aprov.      Destino
+## 6           30     63             9     55 Libertadores
+## 7           39     57             5      5 Libertadores
+## 8           34     56             8     49 Libertadores
+## 9           49     53             1     46 Sulamericana
+## 10          64     52           -18     46 Sulamericana
+## 11          43     49             1     43 Sulamericana
+## 12          45     49            -6     43 Sulamericana
+## 13          49     48            -4     42 Sulamericana
+## 14          46     46            -8      4 Sulamericana
+## 15          45     43           -14     38           NA
 ## 
 ## $`3`
 ##        Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra
@@ -1855,18 +1862,18 @@ No entanto, os data frames possuem uma outra “vantagem” sobre as matrizes. A
 ## 10     52           -18     46 Sulamericana
 ## 
 ## $`c: 2`
-##             Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra
-## 11            Bahia    38       12      13       13       44          43
-## 12    Vasco da Gama    38       12      13       13       39          45
-## 13 Atlético Mineiro    38       13       9       16       45          49
-## 14       Fluminense    38       12      10       16       38          46
-## 15         Botafogo    38       13       4       21       31          45
-##    Pontos Saldo.de.Gols Aprov.      Destino
-## 11     49             1     43 Sulamericana
-## 12     49            -6     43 Sulamericana
-## 13     48            -4     42 Sulamericana
-## 14     46            -8      4 Sulamericana
-## 15     43           -14     38           NA
+##             Equipes Jogos Vitórias Empates Derrotas Gols.Pró
+## 11            Bahia    38       12      13       13       44
+## 12    Vasco da Gama    38       12      13       13       39
+## 13 Atlético Mineiro    38       13       9       16       45
+## 14       Fluminense    38       12      10       16       38
+## 15         Botafogo    38       13       4       21       31
+##    Gols.Contra Pontos Saldo.de.Gols Aprov.      Destino
+## 11          43     49             1     43 Sulamericana
+## 12          45     49            -6     43 Sulamericana
+## 13          49     48            -4     42 Sulamericana
+## 14          46     46            -8      4 Sulamericana
+## 15          45     43           -14     38           NA
 ## 
 ## $`d: 3`
 ##        Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra
@@ -2634,12 +2641,15 @@ Rebaixado
 </table>
 <p>Vamos <del>expurgar</del> remover o <em>Vasco da Gama</em> da nossa lista.</p>
 <div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="acessando-e-manipulação-de-dados.html#cb273-1" aria-hidden="true" tabindex="-1"></a>Campeonato.Brasileiro<span class="fl">.2019</span><span class="sc">$</span>Equipes <span class="co"># Retorna apenas as informações da coluna &quot;Equipes&quot; </span></span></code></pre></div>
-<pre><code>##  [1] &quot;Flamengo&quot;             &quot;Santos&quot;               &quot;Palmeiras&quot;           
-##  [4] &quot;Grêmio&quot;               &quot;Athletico Paranaense&quot; &quot;Sao Paulo&quot;           
-##  [7] &quot;Internacional&quot;        &quot;Corinthians&quot;          &quot;Fortaleza&quot;           
-## [10] &quot;Goiás&quot;                &quot;Bahia&quot;                &quot;Vasco da Gama&quot;       
-## [13] &quot;Atlético Mineiro&quot;     &quot;Fluminense&quot;           &quot;Botafogo&quot;            
-## [16] &quot;Ceará&quot;                &quot;Cruzeiro&quot;             &quot;CSA&quot;                 
+<pre><code>##  [1] &quot;Flamengo&quot;             &quot;Santos&quot;              
+##  [3] &quot;Palmeiras&quot;            &quot;Grêmio&quot;              
+##  [5] &quot;Athletico Paranaense&quot; &quot;Sao Paulo&quot;           
+##  [7] &quot;Internacional&quot;        &quot;Corinthians&quot;         
+##  [9] &quot;Fortaleza&quot;            &quot;Goiás&quot;               
+## [11] &quot;Bahia&quot;                &quot;Vasco da Gama&quot;       
+## [13] &quot;Atlético Mineiro&quot;     &quot;Fluminense&quot;          
+## [15] &quot;Botafogo&quot;             &quot;Ceará&quot;               
+## [17] &quot;Cruzeiro&quot;             &quot;CSA&quot;                 
 ## [19] &quot;Chapecoense&quot;          &quot;Avaí&quot;</code></pre>
 <div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="acessando-e-manipulação-de-dados.html#cb275-1" aria-hidden="true" tabindex="-1"></a>Campeonato.Brasileiro.<span class="fl">2019.</span>SV<span class="ot">&lt;-</span>Campeonato.Brasileiro<span class="fl">.2019</span>[Campeonato.Brasileiro<span class="fl">.2019</span><span class="sc">$</span>Equipes<span class="sc">!=</span><span class="st">&quot;Vasco da Gama&quot;</span>,] <span class="co">#Seleciona tudo exceto aquilo que for de &quot;Vasco da Gama&quot;</span></span></code></pre></div>
 <table class="table" style="font-size: 11.5px; margin-left: auto; margin-right: auto;">
@@ -4236,12 +4246,15 @@ Rebaixado
 <div id="sub-e-gsub" class="section level3" number="3.1.4">
 <h3><span class="header-section-number">3.1.4</span> sub() e gsub()</h3>
 <div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="acessando-e-manipulação-de-dados.html#cb316-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sub</span>(<span class="st">&quot;Fla&quot;</span>, <span class="st">&quot;fla&quot;</span>, Campeonato.Brasileiro<span class="fl">.2019</span><span class="sc">$</span>Equipes) <span class="co">#Substitui Fla por fla naquilo que começa com Fla</span></span></code></pre></div>
-<pre><code>##  [1] &quot;flamengo&quot;             &quot;Santos&quot;               &quot;Palmeiras&quot;           
-##  [4] &quot;Grêmio&quot;               &quot;Athletico Paranaense&quot; &quot;Sao Paulo&quot;           
-##  [7] &quot;Internacional&quot;        &quot;Corinthians&quot;          &quot;Fortaleza&quot;           
-## [10] &quot;Goiás&quot;                &quot;Bahia&quot;                &quot;Vasco da Gama&quot;       
-## [13] &quot;Atlético Mineiro&quot;     &quot;Fluminense&quot;           &quot;Botafogo&quot;            
-## [16] &quot;Ceará&quot;                &quot;Cruzeiro&quot;             &quot;CSA&quot;                 
+<pre><code>##  [1] &quot;flamengo&quot;             &quot;Santos&quot;              
+##  [3] &quot;Palmeiras&quot;            &quot;Grêmio&quot;              
+##  [5] &quot;Athletico Paranaense&quot; &quot;Sao Paulo&quot;           
+##  [7] &quot;Internacional&quot;        &quot;Corinthians&quot;         
+##  [9] &quot;Fortaleza&quot;            &quot;Goiás&quot;               
+## [11] &quot;Bahia&quot;                &quot;Vasco da Gama&quot;       
+## [13] &quot;Atlético Mineiro&quot;     &quot;Fluminense&quot;          
+## [15] &quot;Botafogo&quot;             &quot;Ceará&quot;               
+## [17] &quot;Cruzeiro&quot;             &quot;CSA&quot;                 
 ## [19] &quot;Chapecoense&quot;          &quot;Avaí&quot;</code></pre>
 <div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="acessando-e-manipulação-de-dados.html#cb318-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gsub</span>(<span class="st">&quot;Atlé|Athle&quot;</span>, <span class="st">&quot;Atle&quot;</span>, Campeonato.Brasileiro<span class="fl">.2019</span><span class="sc">$</span>Equipes) <span class="co">#Substitui Atlé ou Athle por Atlé naquilo que contém com Atlé ou Athle</span></span></code></pre></div>
 <pre><code>##  [1] &quot;Flamengo&quot;            &quot;Santos&quot;              &quot;Palmeiras&quot;          

@@ -24,7 +24,7 @@
 <meta name="author" content="Jackson Rodrigues" />
 
 
-<meta name="date" content="2021-09-28" />
+<meta name="date" content="2021-09-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -578,24 +578,26 @@ Podemos imaginar a função dividida em 3 partes (entrada, processamento e saíd
 <span id="cb443-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb443-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(s) </span></code></pre></div>
 <pre><code>## [1] 50</code></pre>
 <div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb445-1" aria-hidden="true" tabindex="-1"></a>s</span></code></pre></div>
-<pre><code>##  [1]  1.000000  1.183673  1.367347  1.551020  1.734694  1.918367  2.102041
-##  [8]  2.285714  2.469388  2.653061  2.836735  3.020408  3.204082  3.387755
-## [15]  3.571429  3.755102  3.938776  4.122449  4.306122  4.489796  4.673469
-## [22]  4.857143  5.040816  5.224490  5.408163  5.591837  5.775510  5.959184
-## [29]  6.142857  6.326531  6.510204  6.693878  6.877551  7.061224  7.244898
-## [36]  7.428571  7.612245  7.795918  7.979592  8.163265  8.346939  8.530612
-## [43]  8.714286  8.897959  9.081633  9.265306  9.448980  9.632653  9.816327
-## [50] 10.000000</code></pre>
+<pre><code>##  [1]  1.000000  1.183673  1.367347  1.551020  1.734694  1.918367
+##  [7]  2.102041  2.285714  2.469388  2.653061  2.836735  3.020408
+## [13]  3.204082  3.387755  3.571429  3.755102  3.938776  4.122449
+## [19]  4.306122  4.489796  4.673469  4.857143  5.040816  5.224490
+## [25]  5.408163  5.591837  5.775510  5.959184  6.142857  6.326531
+## [31]  6.510204  6.693878  6.877551  7.061224  7.244898  7.428571
+## [37]  7.612245  7.795918  7.979592  8.163265  8.346939  8.530612
+## [43]  8.714286  8.897959  9.081633  9.265306  9.448980  9.632653
+## [49]  9.816327 10.000000</code></pre>
 <div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb447-1" aria-hidden="true" tabindex="-1"></a>d<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="at">from=</span><span class="dv">1</span>,<span class="at">to=</span><span class="dv">10</span>,<span class="at">length.out =</span> <span class="fu">length</span>(s))</span>
 <span id="cb447-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb447-2" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div>
-<pre><code>##  [1]  1.000000  1.183673  1.367347  1.551020  1.734694  1.918367  2.102041
-##  [8]  2.285714  2.469388  2.653061  2.836735  3.020408  3.204082  3.387755
-## [15]  3.571429  3.755102  3.938776  4.122449  4.306122  4.489796  4.673469
-## [22]  4.857143  5.040816  5.224490  5.408163  5.591837  5.775510  5.959184
-## [29]  6.142857  6.326531  6.510204  6.693878  6.877551  7.061224  7.244898
-## [36]  7.428571  7.612245  7.795918  7.979592  8.163265  8.346939  8.530612
-## [43]  8.714286  8.897959  9.081633  9.265306  9.448980  9.632653  9.816327
-## [50] 10.000000</code></pre>
+<pre><code>##  [1]  1.000000  1.183673  1.367347  1.551020  1.734694  1.918367
+##  [7]  2.102041  2.285714  2.469388  2.653061  2.836735  3.020408
+## [13]  3.204082  3.387755  3.571429  3.755102  3.938776  4.122449
+## [19]  4.306122  4.489796  4.673469  4.857143  5.040816  5.224490
+## [25]  5.408163  5.591837  5.775510  5.959184  6.142857  6.326531
+## [31]  6.510204  6.693878  6.877551  7.061224  7.244898  7.428571
+## [37]  7.612245  7.795918  7.979592  8.163265  8.346939  8.530612
+## [43]  8.714286  8.897959  9.081633  9.265306  9.448980  9.632653
+## [49]  9.816327 10.000000</code></pre>
 <div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb449-1" aria-hidden="true" tabindex="-1"></a>multiplicador <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y){</span>
 <span id="cb449-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb449-2" aria-hidden="true" tabindex="-1"></a>  resultado <span class="ot">&lt;-</span> x<span class="sc">*</span>y</span>
 <span id="cb449-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb449-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">assign</span>(<span class="st">&quot;resultado&quot;</span>, resultado, <span class="at">envir=</span><span class="fu">globalenv</span>())</span>
@@ -689,8 +691,8 @@ Use a aba packages para explorar suas funcionalidades</p>
 ## To cite R in publications use:
 ## 
 ##   R Core Team (2021). R: A language and environment for
-##   statistical computing. R Foundation for Statistical Computing,
-##   Vienna, Austria. URL https://www.R-project.org/.
+##   statistical computing. R Foundation for Statistical
+##   Computing, Vienna, Austria. URL https://www.R-project.org/.
 ## 
 ## A BibTeX entry for LaTeX users is
 ## 
@@ -703,8 +705,8 @@ Use a aba packages para explorar suas funcionalidades</p>
 ##     url = {https://www.R-project.org/},
 ##   }
 ## 
-## We have invested a lot of time and effort in creating R, please
-## cite it when using it for data analysis. See also
+## We have invested a lot of time and effort in creating R,
+## please cite it when using it for data analysis. See also
 ## &#39;citation(&quot;pkgname&quot;)&#39; for citing R packages.</code></pre>
 <div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb469-1" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span>(<span class="at">package =</span> <span class="st">&quot;analogue&quot;</span>) <span class="co"># citação do pacote Analogue</span></span></code></pre></div>
 <pre><code>## 
@@ -715,9 +717,9 @@ Use a aba packages para explorar suas funcionalidades</p>
 ##   models. (R package version 0.17-6 ).
 ##   (https://cran.r-project.org/package=analogue).
 ## 
-##   Simpson, G.L. (2007). Analogue Methods in Palaeoecology: Using
-##   the analogue Package Journal of Statistical Software, 22(2),
-##   1--29
+##   Simpson, G.L. (2007). Analogue Methods in Palaeoecology:
+##   Using the analogue Package Journal of Statistical Software,
+##   22(2), 1--29
 ## 
 ## To see these entries in BibTeX format, use &#39;print(&lt;citation&gt;,
 ## bibtex=TRUE)&#39;, &#39;toBibtex(.)&#39;, or set
@@ -1164,14 +1166,14 @@ Baixe o arquivo <strong>Cap_3_Informações - Alunos ENG 792.xlsx</strong> <a hr
 <p>Vamos experimentar os diferentes comandos.
 Antes de prosseguir certifique-se que o endereço de saída está adequado.</p>
 <div class="sourceCode" id="cb499"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb499-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb499-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(Info.Alunos, <span class="at">file=</span><span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Informações - Alunos ENG 792.csv&quot;</span>, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>,<span class="at">fileEncoding=</span><span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
-<pre><code>## Warning in write.csv(Info.Alunos, file = &quot;J:/ENG 792/ENG_792-AVDR/ENG.792-
-## AVDR/Cap_3_Informações - Alunos ENG 792.csv&quot;, : attempt to set &#39;sep&#39;
-## ignored</code></pre>
+<pre><code>## Warning in write.csv(Info.Alunos, file = &quot;J:/ENG 792/ENG_792-AVDR/
+## ENG.792-AVDR/Cap_3_Informações - Alunos ENG 792.csv&quot;, : attempt to set
+## &#39;sep&#39; ignored</code></pre>
 <pre><code>## Error in is.data.frame(x): object &#39;Info.Alunos&#39; not found</code></pre>
 <div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb502-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb502-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv2</span>(Info.Alunos, <span class="at">file=</span><span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Informações - Alunos ENG 792.2.csv&quot;</span>,<span class="at">sep=</span><span class="st">&quot;,&quot;</span>,<span class="at">fileEncoding=</span><span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning in write.csv2(Info.Alunos, file = &quot;J:/ENG 792/ENG_792-AVDR/
-## ENG.792-AVDR/Cap_3_Informações - Alunos ENG 792.2.csv&quot;, : attempt to set
-## &#39;sep&#39; ignored</code></pre>
+## ENG.792-AVDR/Cap_3_Informações - Alunos ENG 792.2.csv&quot;, : attempt to
+## set &#39;sep&#39; ignored</code></pre>
 <pre><code>## Error in is.data.frame(x): object &#39;Info.Alunos&#39; not found</code></pre>
 <div class="sourceCode" id="cb505"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb505-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb505-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(Info.Alunos, <span class="at">file=</span><span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Informações - Alunos ENG 792.txt&quot;</span>, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>,<span class="at">fileEncoding=</span><span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
 <pre><code>## Error in is.data.frame(x): object &#39;Info.Alunos&#39; not found</code></pre>
