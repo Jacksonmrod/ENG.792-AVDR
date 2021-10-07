@@ -1,0 +1,3917 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 8 Análise Multivariada | ENG 792 - Análise e visualização de dados com R (RStudio)</title>
+  <meta name="description" content="Este é o material de supporte aos alunos matriculados na disciplina ENG 792 ofertada pelo programa de pós-gradução em Meteorologia Aplicada do Departamento de Engenharia Agrícola (DEA) da Universidade Federal de Viçosa (UFV)." />
+  <meta name="generator" content="bookdown 0.22.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 8 Análise Multivariada | ENG 792 - Análise e visualização de dados com R (RStudio)" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Este é o material de supporte aos alunos matriculados na disciplina ENG 792 ofertada pelo programa de pós-gradução em Meteorologia Aplicada do Departamento de Engenharia Agrícola (DEA) da Universidade Federal de Viçosa (UFV)." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 8 Análise Multivariada | ENG 792 - Análise e visualização de dados com R (RStudio)" />
+  
+  <meta name="twitter:description" content="Este é o material de supporte aos alunos matriculados na disciplina ENG 792 ofertada pelo programa de pós-gradução em Meteorologia Aplicada do Departamento de Engenharia Agrícola (DEA) da Universidade Federal de Viçosa (UFV)." />
+  
+
+<meta name="author" content="Jackson Rodrigues" />
+
+
+<meta name="date" content="2021-10-07" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="elementos-de-estatística-básica-no-r.html"/>
+
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/es6shim-0.35.6/es6shim.js"></script>
+<script src="libs/es7shim-6.0.0/es7shim.js"></script>
+<script src="libs/graphre-0.1.3/graphre.js"></script>
+<script src="libs/nomnoml-1.3.1/nomnoml.js"></script>
+<script src="libs/nomnoml-binding-0.2.3/nomnoml.js"></script>
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">ENG_792-AVDR</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Apresentação</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#hello-world---sejam-bem-vindos"><i class="fa fa-check"></i><b>1.1</b> Hello World! - Sejam Bem Vindos!</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#sobre"><i class="fa fa-check"></i><b>1.1.1</b> Sobre</a></li>
+<li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#utilização"><i class="fa fa-check"></i><b>1.1.2</b> Utilização</a></li>
+<li class="chapter" data-level="1.1.3" data-path="index.html"><a href="index.html#códigos-e-dados"><i class="fa fa-check"></i><b>1.1.3</b> Códigos e Dados</a></li>
+<li class="chapter" data-level="1.1.4" data-path="index.html"><a href="index.html#cronograma-de-aulas"><i class="fa fa-check"></i><b>1.1.4</b> Cronograma de aulas</a></li>
+<li class="chapter" data-level="1.1.5" data-path="index.html"><a href="index.html#métodos-de-avaliação"><i class="fa fa-check"></i><b>1.1.5</b> Métodos de avaliação</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="vamos-ao-que-interesa.html"><a href="vamos-ao-que-interesa.html"><i class="fa fa-check"></i><b>2</b> Vamos ao que interesa</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="vamos-ao-que-interesa.html"><a href="vamos-ao-que-interesa.html#conhecendo-o-r"><i class="fa fa-check"></i><b>2.1</b> Conhecendo o R</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="vamos-ao-que-interesa.html"><a href="vamos-ao-que-interesa.html#o-que-é-o-r"><i class="fa fa-check"></i><b>2.1.1</b> O que é o R?</a></li>
+<li class="chapter" data-level="2.1.2" data-path="vamos-ao-que-interesa.html"><a href="vamos-ao-que-interesa.html#instalação-do-r"><i class="fa fa-check"></i><b>2.1.2</b> Instalação do R</a></li>
+<li class="chapter" data-level="2.1.3" data-path="vamos-ao-que-interesa.html"><a href="vamos-ao-que-interesa.html#primeiro-contato"><i class="fa fa-check"></i><b>2.1.3</b> Primeiro contato</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="vamos-ao-que-interesa.html"><a href="vamos-ao-que-interesa.html#como-r-funciona"><i class="fa fa-check"></i><b>2.2</b> Como R funciona</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="vamos-ao-que-interesa.html"><a href="vamos-ao-que-interesa.html#tipos-de-objetos-mode-ou-type"><i class="fa fa-check"></i><b>2.2.1</b> Tipos de objetos (<em>mode</em> ou <em>type</em>)</a></li>
+<li class="chapter" data-level="2.2.2" data-path="vamos-ao-que-interesa.html"><a href="vamos-ao-que-interesa.html#estrutura-do-objetos-class"><i class="fa fa-check"></i><b>2.2.2</b> Estrutura do objetos (<em>class</em>)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="3" data-path="acessando-e-manipulação-de-dados.html"><a href="acessando-e-manipulação-de-dados.html"><i class="fa fa-check"></i><b>3</b> Acessando e manipulação de dados</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="acessando-e-manipulação-de-dados.html"><a href="acessando-e-manipulação-de-dados.html#organização"><i class="fa fa-check"></i><b>3.1</b> Organização</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="acessando-e-manipulação-de-dados.html"><a href="acessando-e-manipulação-de-dados.html#usando---subscribing-ou-indexing"><i class="fa fa-check"></i><b>3.1.1</b> Usando [ ] - Subscribing ou indexing</a></li>
+<li class="chapter" data-level="3.1.2" data-path="acessando-e-manipulação-de-dados.html"><a href="acessando-e-manipulação-de-dados.html#grep"><i class="fa fa-check"></i><b>3.1.2</b> grep()</a></li>
+<li class="chapter" data-level="3.1.3" data-path="acessando-e-manipulação-de-dados.html"><a href="acessando-e-manipulação-de-dados.html#grepl"><i class="fa fa-check"></i><b>3.1.3</b> grepl()</a></li>
+<li class="chapter" data-level="3.1.4" data-path="acessando-e-manipulação-de-dados.html"><a href="acessando-e-manipulação-de-dados.html#sub-e-gsub"><i class="fa fa-check"></i><b>3.1.4</b> sub() e gsub()</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="acessando-e-manipulação-de-dados.html"><a href="acessando-e-manipulação-de-dados.html#operadores"><i class="fa fa-check"></i><b>3.2</b> Operadores</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="acessando-e-manipulação-de-dados.html"><a href="acessando-e-manipulação-de-dados.html#iterações"><i class="fa fa-check"></i><b>3.2.1</b> Iterações</a></li>
+<li class="chapter" data-level="3.2.2" data-path="acessando-e-manipulação-de-dados.html"><a href="acessando-e-manipulação-de-dados.html#condicionais"><i class="fa fa-check"></i><b>3.2.2</b> Condicionais</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="acessando-e-manipulação-de-dados.html"><a href="acessando-e-manipulação-de-dados.html#dica-de-leitura"><i class="fa fa-check"></i><b>3.3</b> Dica de leitura</a></li>
+<li class="chapter" data-level="3.4" data-path="acessando-e-manipulação-de-dados.html"><a href="acessando-e-manipulação-de-dados.html#exercícios"><i class="fa fa-check"></i><b>3.4</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="acessando-e-criando-funções-importação-e-exportação-dados.html"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html"><i class="fa fa-check"></i><b>4</b> Acessando e criando Funções, Importação e exportação dados</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="acessando-e-criando-funções-importação-e-exportação-dados.html"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#funções"><i class="fa fa-check"></i><b>4.1</b> Funções</a></li>
+<li class="chapter" data-level="4.2" data-path="acessando-e-criando-funções-importação-e-exportação-dados.html"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#pacotes"><i class="fa fa-check"></i><b>4.2</b> Pacotes</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="acessando-e-criando-funções-importação-e-exportação-dados.html"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#o-que-são-de-onde-vem-para-onde-vão-do-que-se-alimentam"><i class="fa fa-check"></i><b>4.2.1</b> O que são? De onde vem? Para onde vão? Do que se alimentam?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="acessando-e-criando-funções-importação-e-exportação-dados.html"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#entrando-com-dados"><i class="fa fa-check"></i><b>4.3</b> Entrando com dados</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="acessando-e-criando-funções-importação-e-exportação-dados.html"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#edit"><i class="fa fa-check"></i><b>4.3.1</b> edit()</a></li>
+<li class="chapter" data-level="4.3.2" data-path="acessando-e-criando-funções-importação-e-exportação-dados.html"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#built-in"><i class="fa fa-check"></i><b>4.3.2</b> built-in</a></li>
+<li class="chapter" data-level="4.3.3" data-path="acessando-e-criando-funções-importação-e-exportação-dados.html"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#scan"><i class="fa fa-check"></i><b>4.3.3</b> scan()</a></li>
+<li class="chapter" data-level="4.3.4" data-path="acessando-e-criando-funções-importação-e-exportação-dados.html"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#lendo-arquivos-de-texto-.txt"><i class="fa fa-check"></i><b>4.3.4</b> Lendo arquivos de texto (.txt)</a></li>
+<li class="chapter" data-level="4.3.5" data-path="acessando-e-criando-funções-importação-e-exportação-dados.html"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#read.csv"><i class="fa fa-check"></i><b>4.3.5</b> read.csv()</a></li>
+<li class="chapter" data-level="4.3.6" data-path="acessando-e-criando-funções-importação-e-exportação-dados.html"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#planilhas-excel-completas-.xls-ou-.xlsx"><i class="fa fa-check"></i><b>4.3.6</b> Planilhas excel completas (.xls ou .xlsx)</a></li>
+<li class="chapter" data-level="4.3.7" data-path="acessando-e-criando-funções-importação-e-exportação-dados.html"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#exportar-arquivos"><i class="fa fa-check"></i><b>4.3.7</b> Exportar arquivos()</a></li>
+<li class="chapter" data-level="4.3.8" data-path="acessando-e-criando-funções-importação-e-exportação-dados.html"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#definir-diretório-de-trabalho-setwd"><i class="fa fa-check"></i><b>4.3.8</b> Definir diretório de trabalho <code>setwd()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="acessando-e-criando-funções-importação-e-exportação-dados.html"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#exercícios-1"><i class="fa fa-check"></i><b>4.4</b> Exercícios</a></li>
+<li class="chapter" data-level="4.5" data-path="acessando-e-criando-funções-importação-e-exportação-dados.html"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#dica-de-leitura-1"><i class="fa fa-check"></i><b>4.5</b> Dica de leitura</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html"><i class="fa fa-check"></i><b>5</b> Produção gráfica e comunicação visual</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#utilizando-funções-nativas"><i class="fa fa-check"></i><b>5.1</b> Utilizando funções nativas</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#boxplot---boxplot"><i class="fa fa-check"></i><b>5.1.1</b> boxplot - boxplot()</a></li>
+<li class="chapter" data-level="5.1.2" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#histograma---hist"><i class="fa fa-check"></i><b>5.1.2</b> histograma - hist()</a></li>
+<li class="chapter" data-level="5.1.3" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#gráfico-de-barras---barplot"><i class="fa fa-check"></i><b>5.1.3</b> Gráfico de barras - barplot()</a></li>
+<li class="chapter" data-level="5.1.4" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#gráfico-de-setores-pizza---pie"><i class="fa fa-check"></i><b>5.1.4</b> Gráfico de setores (pizza) - pie()</a></li>
+<li class="chapter" data-level="5.1.5" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#função-plot"><i class="fa fa-check"></i><b>5.1.5</b> Função <em>plot()</em></a></li>
+<li class="chapter" data-level="5.1.6" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#formatando-eixos"><i class="fa fa-check"></i><b>5.1.6</b> Formatando eixos</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#cores-no-r"><i class="fa fa-check"></i><b>5.2</b> Cores no R</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#rcolorbrewer"><i class="fa fa-check"></i><b>5.2.1</b> RColorBrewer</a></li>
+<li class="chapter" data-level="5.2.2" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#unkin"><i class="fa fa-check"></i><b>5.2.2</b> unkin</a></li>
+<li class="chapter" data-level="5.2.3" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#viridis"><i class="fa fa-check"></i><b>5.2.3</b> viridis</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#para-mais-informações-utilize-o-google-ou-os-documentos-abaixo"><i class="fa fa-check"></i><b>5.3</b> Para mais informações utilize o Google ou os documentos abaixo</a></li>
+<li class="chapter" data-level="5.4" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#ggplot2"><i class="fa fa-check"></i><b>5.4</b> ggplot2</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#facetas-subgráficos---facets"><i class="fa fa-check"></i><b>5.4.1</b> Facetas (subgráficos) - facets</a></li>
+<li class="chapter" data-level="5.4.2" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#objetos-geométricos"><i class="fa fa-check"></i><b>5.4.2</b> Objetos geométricos</a></li>
+<li class="chapter" data-level="5.4.3" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#transformações-estatísticas"><i class="fa fa-check"></i><b>5.4.3</b> Transformações estatísticas</a></li>
+<li class="chapter" data-level="5.4.4" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#sistema-de-coordenadas"><i class="fa fa-check"></i><b>5.4.4</b> Sistema de coordenadas</a></li>
+<li class="chapter" data-level="5.4.5" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#rótulos"><i class="fa fa-check"></i><b>5.4.5</b> Rótulos</a></li>
+<li class="chapter" data-level="5.4.6" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#eixos"><i class="fa fa-check"></i><b>5.4.6</b> Eixos</a></li>
+<li class="chapter" data-level="5.4.7" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#escalas"><i class="fa fa-check"></i><b>5.4.7</b> Escalas</a></li>
+<li class="chapter" data-level="5.4.8" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#layout-da-legenda"><i class="fa fa-check"></i><b>5.4.8</b> layout da legenda</a></li>
+<li class="chapter" data-level="5.4.9" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#dando-zoom"><i class="fa fa-check"></i><b>5.4.9</b> Dando zoom</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="produção-gráfica-e-comunicação-visual.html"><a href="produção-gráfica-e-comunicação-visual.html#para-mais-informações-utilize-o-google-ou-os-documentos-abaixo-1"><i class="fa fa-check"></i><b>5.5</b> Para mais informações utilize o Google ou os documentos abaixo</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>6</b> RMarkdown</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="rmarkdown.html"><a href="rmarkdown.html#fontes"><i class="fa fa-check"></i><b>6.1</b> Fontes</a></li>
+<li class="chapter" data-level="6.2" data-path="rmarkdown.html"><a href="rmarkdown.html#formatação-de-texto"><i class="fa fa-check"></i><b>6.2</b> Formatação de texto</a></li>
+<li class="chapter" data-level="6.3" data-path="rmarkdown.html"><a href="rmarkdown.html#variando-cores"><i class="fa fa-check"></i><b>6.3</b> Variando Cores</a></li>
+<li class="chapter" data-level="6.4" data-path="rmarkdown.html"><a href="rmarkdown.html#inline"><i class="fa fa-check"></i><b>6.4</b> Inline</a></li>
+<li class="chapter" data-level="6.5" data-path="rmarkdown.html"><a href="rmarkdown.html#fórmulas-matemáticas"><i class="fa fa-check"></i><b>6.5</b> Fórmulas Matemáticas</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="rmarkdown.html"><a href="rmarkdown.html#soma"><i class="fa fa-check"></i><b>6.5.1</b> <em>Soma</em></a></li>
+<li class="chapter" data-level="6.5.2" data-path="rmarkdown.html"><a href="rmarkdown.html#subtração"><i class="fa fa-check"></i><b>6.5.2</b> <em>Subtração</em></a></li>
+<li class="chapter" data-level="6.5.3" data-path="rmarkdown.html"><a href="rmarkdown.html#multiplição"><i class="fa fa-check"></i><b>6.5.3</b> <em>Multiplição</em></a></li>
+<li class="chapter" data-level="6.5.4" data-path="rmarkdown.html"><a href="rmarkdown.html#divisão"><i class="fa fa-check"></i><b>6.5.4</b> <em>Divisão</em></a></li>
+<li class="chapter" data-level="6.5.5" data-path="rmarkdown.html"><a href="rmarkdown.html#potenciação"><i class="fa fa-check"></i><b>6.5.5</b> <em>Potenciação</em></a></li>
+<li class="chapter" data-level="6.5.6" data-path="rmarkdown.html"><a href="rmarkdown.html#raiz-quadrada"><i class="fa fa-check"></i><b>6.5.6</b> <em>Raiz Quadrada</em></a></li>
+<li class="chapter" data-level="6.5.7" data-path="rmarkdown.html"><a href="rmarkdown.html#raiz-quadrada-de-fração"><i class="fa fa-check"></i><b>6.5.7</b> <em>Raiz Quadrada de fração</em></a></li>
+<li class="chapter" data-level="6.5.8" data-path="rmarkdown.html"><a href="rmarkdown.html#subscrito"><i class="fa fa-check"></i><b>6.5.8</b> <em>Subscrito</em></a></li>
+<li class="chapter" data-level="6.5.9" data-path="rmarkdown.html"><a href="rmarkdown.html#sobrescrito"><i class="fa fa-check"></i><b>6.5.9</b> <em>Sobrescrito</em></a></li>
+<li class="chapter" data-level="6.5.10" data-path="rmarkdown.html"><a href="rmarkdown.html#conjunto"><i class="fa fa-check"></i><b>6.5.10</b> <em>Conjunto</em></a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="rmarkdown.html"><a href="rmarkdown.html#matriz"><i class="fa fa-check"></i><b>6.6</b> Matriz</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="rmarkdown.html"><a href="rmarkdown.html#matriz-1-x-4"><i class="fa fa-check"></i><b>6.6.1</b> Matriz 1 x 4</a></li>
+<li class="chapter" data-level="6.6.2" data-path="rmarkdown.html"><a href="rmarkdown.html#matriz-2-x-2"><i class="fa fa-check"></i><b>6.6.2</b> Matriz 2 x 2</a></li>
+<li class="chapter" data-level="6.6.3" data-path="rmarkdown.html"><a href="rmarkdown.html#matriz-2-x-2-entre-parênteses"><i class="fa fa-check"></i><b>6.6.3</b> Matriz 2 x 2 entre parênteses</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="rmarkdown.html"><a href="rmarkdown.html#tabelas"><i class="fa fa-check"></i><b>6.7</b> Tabelas</a></li>
+<li class="chapter" data-level="6.8" data-path="rmarkdown.html"><a href="rmarkdown.html#listas"><i class="fa fa-check"></i><b>6.8</b> Listas</a>
+<ul>
+<li class="chapter" data-level="6.8.1" data-path="rmarkdown.html"><a href="rmarkdown.html#lista-ordenada"><i class="fa fa-check"></i><b>6.8.1</b> Lista ordenada</a></li>
+<li class="chapter" data-level="6.8.2" data-path="rmarkdown.html"><a href="rmarkdown.html#lista-não-ordenada"><i class="fa fa-check"></i><b>6.8.2</b> Lista não ordenada</a></li>
+<li class="chapter" data-level="6.8.3" data-path="rmarkdown.html"><a href="rmarkdown.html#sublista"><i class="fa fa-check"></i><b>6.8.3</b> Sublista</a></li>
+</ul></li>
+<li class="chapter" data-level="6.9" data-path="rmarkdown.html"><a href="rmarkdown.html#criando-links"><i class="fa fa-check"></i><b>6.9</b> Criando links</a></li>
+<li class="chapter" data-level="6.10" data-path="rmarkdown.html"><a href="rmarkdown.html#comandos-r"><i class="fa fa-check"></i><b>6.10</b> Comandos R</a></li>
+<li class="chapter" data-level="6.11" data-path="rmarkdown.html"><a href="rmarkdown.html#dica-de-leitura-2"><i class="fa fa-check"></i><b>6.11</b> Dica de leitura</a></li>
+<li class="chapter" data-level="6.12" data-path="rmarkdown.html"><a href="rmarkdown.html#bibliografia"><i class="fa fa-check"></i><b>6.12</b> Bibliografia</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="elementos-de-estatística-básica-no-r.html"><a href="elementos-de-estatística-básica-no-r.html"><i class="fa fa-check"></i><b>7</b> <strong>Elementos de estatística básica no R</strong></a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="elementos-de-estatística-básica-no-r.html"><a href="elementos-de-estatística-básica-no-r.html#parte-1"><i class="fa fa-check"></i><b>7.1</b> <strong><em>Parte 1</em></strong></a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="elementos-de-estatística-básica-no-r.html"><a href="elementos-de-estatística-básica-no-r.html#estatística-descritiva"><i class="fa fa-check"></i><b>7.1.1</b> <strong>Estatística Descritiva</strong></a></li>
+<li class="chapter" data-level="7.1.2" data-path="elementos-de-estatística-básica-no-r.html"><a href="elementos-de-estatística-básica-no-r.html#leituras-complementares"><i class="fa fa-check"></i><b>7.1.2</b> <strong>Leituras complementares</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="elementos-de-estatística-básica-no-r.html"><a href="elementos-de-estatística-básica-no-r.html#parte-2"><i class="fa fa-check"></i><b>7.2</b> <strong>Parte 2</strong></a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="elementos-de-estatística-básica-no-r.html"><a href="elementos-de-estatística-básica-no-r.html#teste-de-diferença-entre-médias"><i class="fa fa-check"></i><b>7.2.1</b> <strong>Teste de diferença entre médias</strong></a></li>
+<li class="chapter" data-level="7.2.2" data-path="elementos-de-estatística-básica-no-r.html"><a href="elementos-de-estatística-básica-no-r.html#test-t-student"><i class="fa fa-check"></i><b>7.2.2</b> <strong>Test t (Student)</strong></a></li>
+<li class="chapter" data-level="7.2.3" data-path="elementos-de-estatística-básica-no-r.html"><a href="elementos-de-estatística-básica-no-r.html#teste-f"><i class="fa fa-check"></i><b>7.2.3</b> <strong><em>Teste F</em></strong></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="análise-multivariada.html"><a href="análise-multivariada.html"><i class="fa fa-check"></i><b>8</b> <strong><em>Análise Multivariada</em></strong></a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="análise-multivariada.html"><a href="análise-multivariada.html#antes-de-começar-vamso-dar-uma-olhada-na-família-apply"><i class="fa fa-check"></i><b>8.1</b> <strong><em>Antes de começar Vamso dar uma olhada na família <em>apply</em></em></strong></a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="análise-multivariada.html"><a href="análise-multivariada.html#lapply"><i class="fa fa-check"></i><b>8.1.1</b> <em>lapply</em></a></li>
+<li class="chapter" data-level="8.1.2" data-path="análise-multivariada.html"><a href="análise-multivariada.html#sapply"><i class="fa fa-check"></i><b>8.1.2</b> <em>sapply</em></a></li>
+<li class="chapter" data-level="8.1.3" data-path="análise-multivariada.html"><a href="análise-multivariada.html#tapply"><i class="fa fa-check"></i><b>8.1.3</b> <em>tapply</em></a></li>
+<li class="chapter" data-level="8.1.4" data-path="análise-multivariada.html"><a href="análise-multivariada.html#mapply"><i class="fa fa-check"></i><b>8.1.4</b> <em>mapply</em></a></li>
+<li class="chapter" data-level="8.1.5" data-path="análise-multivariada.html"><a href="análise-multivariada.html#apply"><i class="fa fa-check"></i><b>8.1.5</b> <em>apply</em></a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">ENG 792 - Análise e visualização de dados com R (RStudio)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="análise-multivariada" class="section level1" number="8">
+<h1><span class="header-section-number">Capítulo 8</span> <strong><em>Análise Multivariada</em></strong></h1>
+<div id="antes-de-começar-vamso-dar-uma-olhada-na-família-apply" class="section level2" number="8.1">
+<h2><span class="header-section-number">8.1</span> <strong><em>Antes de começar Vamso dar uma olhada na família <em>apply</em></em></strong></h2>
+<p>Antes de começar vamos dar uma olhada na família <em>apply</em>.<br />
+Esta família pertence ao grupos de funções básicas do <strong>R</strong> e guarda um conjunto de funções que facilitam muito nossa vida, principalmente quando precisamos fazer <em>loops</em> e não queremos utilizar os métodos apresentados anteriormente.</p>
+<p>Entre os irmãos da família temos <em>apply</em>, <em>lapply</em>, <em>sapply</em>, <em>mapply</em> e <em>rep</em>. Temos também os parentes <em>Sweep</em> e <em>aggregate</em>.<br />
+Em se tratando dos irmãos, cada um trabalha com uma estrutura de dados diferente ( <em>vector</em>, <em>matrix</em>, <em>list</em> e etc)</p>
+<p>Dito isto, para iniciarmos o conteúdo de multivariada precisaremos instalar alguns pacotes. Vejam como foi feita a instalação e o carregamento dos pacotes.</p>
+<div class="sourceCode" id="cb767"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb767-1"><a href="análise-multivariada.html#cb767-1" aria-hidden="true" tabindex="-1"></a>pacotes<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;datasets&quot;</span>,<span class="st">&quot;cluster&quot;</span>, <span class="st">&quot;factoextra&quot;</span>, <span class="st">&quot;vegan&quot;</span>, <span class="st">&quot;analogue&quot;</span>)</span>
+<span id="cb767-2"><a href="análise-multivariada.html#cb767-2" aria-hidden="true" tabindex="-1"></a><span class="co">#lapply(pacotes, install.packages, character.only = TRUE)</span></span>
+<span id="cb767-3"><a href="análise-multivariada.html#cb767-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(pacotes, library, <span class="at">character.only =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## [[1]]
+##  [1] &quot;factoextra&quot;    &quot;cluster&quot;       &quot;webr&quot;          &quot;mosaic&quot;        &quot;ggridges&quot;     
+##  [6] &quot;mosaicData&quot;    &quot;ggformula&quot;     &quot;ggstance&quot;      &quot;Matrix&quot;        &quot;lsr&quot;          
+## [11] &quot;modeest&quot;       &quot;rmarkdown&quot;     &quot;ggpubr&quot;        &quot;forcats&quot;       &quot;stringr&quot;      
+## [16] &quot;dplyr&quot;         &quot;purrr&quot;         &quot;readr&quot;         &quot;tidyr&quot;         &quot;tibble&quot;       
+## [21] &quot;tidyverse&quot;     &quot;viridis&quot;       &quot;viridisLite&quot;   &quot;unikn&quot;         &quot;RColorBrewer&quot; 
+## [26] &quot;analogue&quot;      &quot;vegan&quot;         &quot;lattice&quot;       &quot;permute&quot;       &quot;flow&quot;         
+## [31] &quot;prob&quot;          &quot;fAsianOptions&quot; &quot;fOptions&quot;      &quot;fBasics&quot;       &quot;timeSeries&quot;   
+## [36] &quot;timeDate&quot;      &quot;combinat&quot;      &quot;magrittr&quot;      &quot;ggplot2&quot;       &quot;stats&quot;        
+## [41] &quot;graphics&quot;      &quot;grDevices&quot;     &quot;utils&quot;         &quot;datasets&quot;      &quot;methods&quot;      
+## [46] &quot;base&quot;         
+## 
+## [[2]]
+##  [1] &quot;factoextra&quot;    &quot;cluster&quot;       &quot;webr&quot;          &quot;mosaic&quot;        &quot;ggridges&quot;     
+##  [6] &quot;mosaicData&quot;    &quot;ggformula&quot;     &quot;ggstance&quot;      &quot;Matrix&quot;        &quot;lsr&quot;          
+## [11] &quot;modeest&quot;       &quot;rmarkdown&quot;     &quot;ggpubr&quot;        &quot;forcats&quot;       &quot;stringr&quot;      
+## [16] &quot;dplyr&quot;         &quot;purrr&quot;         &quot;readr&quot;         &quot;tidyr&quot;         &quot;tibble&quot;       
+## [21] &quot;tidyverse&quot;     &quot;viridis&quot;       &quot;viridisLite&quot;   &quot;unikn&quot;         &quot;RColorBrewer&quot; 
+## [26] &quot;analogue&quot;      &quot;vegan&quot;         &quot;lattice&quot;       &quot;permute&quot;       &quot;flow&quot;         
+## [31] &quot;prob&quot;          &quot;fAsianOptions&quot; &quot;fOptions&quot;      &quot;fBasics&quot;       &quot;timeSeries&quot;   
+## [36] &quot;timeDate&quot;      &quot;combinat&quot;      &quot;magrittr&quot;      &quot;ggplot2&quot;       &quot;stats&quot;        
+## [41] &quot;graphics&quot;      &quot;grDevices&quot;     &quot;utils&quot;         &quot;datasets&quot;      &quot;methods&quot;      
+## [46] &quot;base&quot;         
+## 
+## [[3]]
+##  [1] &quot;factoextra&quot;    &quot;cluster&quot;       &quot;webr&quot;          &quot;mosaic&quot;        &quot;ggridges&quot;     
+##  [6] &quot;mosaicData&quot;    &quot;ggformula&quot;     &quot;ggstance&quot;      &quot;Matrix&quot;        &quot;lsr&quot;          
+## [11] &quot;modeest&quot;       &quot;rmarkdown&quot;     &quot;ggpubr&quot;        &quot;forcats&quot;       &quot;stringr&quot;      
+## [16] &quot;dplyr&quot;         &quot;purrr&quot;         &quot;readr&quot;         &quot;tidyr&quot;         &quot;tibble&quot;       
+## [21] &quot;tidyverse&quot;     &quot;viridis&quot;       &quot;viridisLite&quot;   &quot;unikn&quot;         &quot;RColorBrewer&quot; 
+## [26] &quot;analogue&quot;      &quot;vegan&quot;         &quot;lattice&quot;       &quot;permute&quot;       &quot;flow&quot;         
+## [31] &quot;prob&quot;          &quot;fAsianOptions&quot; &quot;fOptions&quot;      &quot;fBasics&quot;       &quot;timeSeries&quot;   
+## [36] &quot;timeDate&quot;      &quot;combinat&quot;      &quot;magrittr&quot;      &quot;ggplot2&quot;       &quot;stats&quot;        
+## [41] &quot;graphics&quot;      &quot;grDevices&quot;     &quot;utils&quot;         &quot;datasets&quot;      &quot;methods&quot;      
+## [46] &quot;base&quot;         
+## 
+## [[4]]
+##  [1] &quot;factoextra&quot;    &quot;cluster&quot;       &quot;webr&quot;          &quot;mosaic&quot;        &quot;ggridges&quot;     
+##  [6] &quot;mosaicData&quot;    &quot;ggformula&quot;     &quot;ggstance&quot;      &quot;Matrix&quot;        &quot;lsr&quot;          
+## [11] &quot;modeest&quot;       &quot;rmarkdown&quot;     &quot;ggpubr&quot;        &quot;forcats&quot;       &quot;stringr&quot;      
+## [16] &quot;dplyr&quot;         &quot;purrr&quot;         &quot;readr&quot;         &quot;tidyr&quot;         &quot;tibble&quot;       
+## [21] &quot;tidyverse&quot;     &quot;viridis&quot;       &quot;viridisLite&quot;   &quot;unikn&quot;         &quot;RColorBrewer&quot; 
+## [26] &quot;analogue&quot;      &quot;vegan&quot;         &quot;lattice&quot;       &quot;permute&quot;       &quot;flow&quot;         
+## [31] &quot;prob&quot;          &quot;fAsianOptions&quot; &quot;fOptions&quot;      &quot;fBasics&quot;       &quot;timeSeries&quot;   
+## [36] &quot;timeDate&quot;      &quot;combinat&quot;      &quot;magrittr&quot;      &quot;ggplot2&quot;       &quot;stats&quot;        
+## [41] &quot;graphics&quot;      &quot;grDevices&quot;     &quot;utils&quot;         &quot;datasets&quot;      &quot;methods&quot;      
+## [46] &quot;base&quot;         
+## 
+## [[5]]
+##  [1] &quot;factoextra&quot;    &quot;cluster&quot;       &quot;webr&quot;          &quot;mosaic&quot;        &quot;ggridges&quot;     
+##  [6] &quot;mosaicData&quot;    &quot;ggformula&quot;     &quot;ggstance&quot;      &quot;Matrix&quot;        &quot;lsr&quot;          
+## [11] &quot;modeest&quot;       &quot;rmarkdown&quot;     &quot;ggpubr&quot;        &quot;forcats&quot;       &quot;stringr&quot;      
+## [16] &quot;dplyr&quot;         &quot;purrr&quot;         &quot;readr&quot;         &quot;tidyr&quot;         &quot;tibble&quot;       
+## [21] &quot;tidyverse&quot;     &quot;viridis&quot;       &quot;viridisLite&quot;   &quot;unikn&quot;         &quot;RColorBrewer&quot; 
+## [26] &quot;analogue&quot;      &quot;vegan&quot;         &quot;lattice&quot;       &quot;permute&quot;       &quot;flow&quot;         
+## [31] &quot;prob&quot;          &quot;fAsianOptions&quot; &quot;fOptions&quot;      &quot;fBasics&quot;       &quot;timeSeries&quot;   
+## [36] &quot;timeDate&quot;      &quot;combinat&quot;      &quot;magrittr&quot;      &quot;ggplot2&quot;       &quot;stats&quot;        
+## [41] &quot;graphics&quot;      &quot;grDevices&quot;     &quot;utils&quot;         &quot;datasets&quot;      &quot;methods&quot;      
+## [46] &quot;base&quot;</code></pre>
+<p>Foi criado um um objeto <em>vector</em> com os nomes do pacotes que precisamos. Em seguida, iniciamos com <em>lapply</em> que fazer um <em>loop</em> dentro do objeto que foi criado (<code>pacotes</code>) depois vem o comando que quero que seja eecutado (<code>install.packages</code>) seguindo de um definição lógica (<code>character.only = TRUE</code>) onde que indica que o que tem dentro de pacotes é <em>character</em>.</p>
+<p><strong>Atenção!</strong> <code>character.only = TRUE</code> não está relacionado com <em>lapply</em>, mas com instalação ou carregamento de pacotes Para mais dealhes <a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/library.html">clique aqui</a>.</p>
+<p>Vamos observar uns exemplos mais completos seguindo as sugestões de <span class="citation"><a href="#ref-perlin2018processamento" role="doc-biblioref">Perlin</a> (<a href="#ref-perlin2018processamento" role="doc-biblioref">2018</a>)</span>.</p>
+<div id="lapply" class="section level3" number="8.1.1">
+<h3><span class="header-section-number">8.1.1</span> <em>lapply</em></h3>
+<p>Com <em>lapply</em> a entrada é uma lista e a saída também é um lista. Esta funçãovai fazer um loop dentro de cada elemento da lista e retornar o resultado em forma de lista.</p>
+<p>Abaixo vamos criar uma lista com 3 vetores e calcular a média de cada vetor utilizando <em>lapply</em>.</p>
+<div class="sourceCode" id="cb769"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb769-1"><a href="análise-multivariada.html#cb769-1" aria-hidden="true" tabindex="-1"></a>lista<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">vec1 =</span> <span class="dv">33</span><span class="sc">:</span><span class="dv">47</span>, <span class="at">vec2 =</span> <span class="fu">seq</span>(<span class="dv">115</span>,<span class="dv">157</span>,<span class="at">by=</span><span class="dv">3</span>), <span class="at">vec3 =</span> <span class="fu">seq</span>(<span class="dv">10</span>,<span class="at">by=</span><span class="sc">-</span><span class="fl">8.5</span>, <span class="at">length.out=</span><span class="dv">15</span>)) </span>
+<span id="cb769-2"><a href="análise-multivariada.html#cb769-2" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(lista<span class="fl">.1</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;list&quot;</code></pre>
+<div class="sourceCode" id="cb771"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb771-1"><a href="análise-multivariada.html#cb771-1" aria-hidden="true" tabindex="-1"></a>lista.<span class="fl">1.</span>mean <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="at">X =</span> lista<span class="fl">.1</span>, <span class="at">FUN =</span> mean) <span class="co"># print result</span></span>
+<span id="cb771-2"><a href="análise-multivariada.html#cb771-2" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(lista.<span class="fl">1.</span>mean)</span></code></pre></div>
+<pre><code>## [1] &quot;list&quot;</code></pre>
+<div class="sourceCode" id="cb773"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb773-1"><a href="análise-multivariada.html#cb773-1" aria-hidden="true" tabindex="-1"></a>lista.<span class="fl">1.</span>mean</span></code></pre></div>
+<pre><code>## $vec1
+## [1] 40
+## 
+## $vec2
+## [1] 136
+## 
+## $vec3
+## [1] -49.5</code></pre>
+<p>Também é possível combinar com argumento por exemplo <code>na.rm = TRUE</code>.</p>
+<div class="sourceCode" id="cb775"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb775-1"><a href="análise-multivariada.html#cb775-1" aria-hidden="true" tabindex="-1"></a>lista<span class="fl">.2</span> <span class="ot">&lt;-</span> <span class="fu">list</span>( <span class="fu">c</span>( <span class="dv">33</span><span class="sc">:</span><span class="dv">40</span>, <span class="cn">NA</span>, <span class="dv">50</span>), <span class="fu">c</span>( <span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>, <span class="cn">NA</span>), <span class="dv">10</span><span class="sc">:-</span><span class="dv">109</span>) </span>
+<span id="cb775-2"><a href="análise-multivariada.html#cb775-2" aria-hidden="true" tabindex="-1"></a>lista.<span class="fl">2.</span>mean <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="at">X =</span> lista<span class="fl">.1</span>, <span class="at">FUN =</span> mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb775-3"><a href="análise-multivariada.html#cb775-3" aria-hidden="true" tabindex="-1"></a>lista.<span class="fl">2.</span>mean</span></code></pre></div>
+<pre><code>## $vec1
+## [1] 40
+## 
+## $vec2
+## [1] 136
+## 
+## $vec3
+## [1] -49.5</code></pre>
+<p><strong><em>função para gerar arquivos</em></strong></p>
+<p>setwd("“J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR”)</p>
+<div class="sourceCode" id="cb777"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb777-1"><a href="análise-multivariada.html#cb777-1" aria-hidden="true" tabindex="-1"></a>criar.arquivo <span class="ot">&lt;-</span> <span class="cf">function</span>(nome.arquivo, <span class="at">N =</span> <span class="dv">100</span>){ </span>
+<span id="cb777-2"><a href="análise-multivariada.html#cb777-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">class</span>(nome.arquivo)<span class="sc">!=</span><span class="st">&quot;character&quot;</span>){<span class="fu">stop</span>(<span class="st">&quot;ERRO: Nome não é caractere!&quot;</span>)} </span>
+<span id="cb777-3"><a href="análise-multivariada.html#cb777-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span>( <span class="fu">class</span>(N) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;numeric&quot;</span>,<span class="st">&quot;integer&quot;</span>))){<span class="fu">stop</span>(<span class="st">&quot;ERRO: N não é integer ou numeric!&quot;</span>)} </span>
+<span id="cb777-4"><a href="análise-multivariada.html#cb777-4" aria-hidden="true" tabindex="-1"></a>  temp.df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">runif</span>(N)) </span>
+<span id="cb777-5"><a href="análise-multivariada.html#cb777-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write.csv</span>(<span class="at">x =</span> temp.df, <span class="at">file =</span> nome.arquivo) </span>
+<span id="cb777-6"><a href="análise-multivariada.html#cb777-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="cn">TRUE</span>) </span>
+<span id="cb777-7"><a href="análise-multivariada.html#cb777-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb777-8"><a href="análise-multivariada.html#cb777-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb777-9"><a href="análise-multivariada.html#cb777-9" aria-hidden="true" tabindex="-1"></a>n.files <span class="ot">&lt;-</span> <span class="dv">5</span> </span>
+<span id="cb777-10"><a href="análise-multivariada.html#cb777-10" aria-hidden="true" tabindex="-1"></a>pattern.name <span class="ot">&lt;-</span> <span class="st">&#39;meus_arquivos_com_lapply_&#39;</span> </span>
+<span id="cb777-11"><a href="análise-multivariada.html#cb777-11" aria-hidden="true" tabindex="-1"></a>out.dir <span class="ot">&lt;-</span> <span class="st">&#39;muitos arquivos/&#39;</span></span>
+<span id="cb777-12"><a href="análise-multivariada.html#cb777-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb777-13"><a href="análise-multivariada.html#cb777-13" aria-hidden="true" tabindex="-1"></a>file.names <span class="ot">&lt;-</span> <span class="fu">paste0</span>(out.dir, pattern.name, <span class="fu">seq</span>(<span class="dv">1</span>, n.files), <span class="st">&#39;. csv&#39;</span>) </span>
+<span id="cb777-14"><a href="análise-multivariada.html#cb777-14" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">dir.exists</span>(out.dir)){<span class="fu">dir.create</span>(out.dir)} </span>
+<span id="cb777-15"><a href="análise-multivariada.html#cb777-15" aria-hidden="true" tabindex="-1"></a><span class="fu">file.remove</span>(<span class="fu">list.files</span>(out.dir, <span class="at">full.names =</span> <span class="cn">TRUE</span>)) </span></code></pre></div>
+<pre><code>## logical(0)</code></pre>
+</div>
+<div id="sapply" class="section level3" number="8.1.2">
+<h3><span class="header-section-number">8.1.2</span> <em>sapply</em></h3>
+<p>Funciona de maneira semelhante ao <em>lapply</em> mas tentando simplificar a saída. Veja que no exemplo abaixo a saída é um vetor numérico.</p>
+<div class="sourceCode" id="cb779"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb779-1"><a href="análise-multivariada.html#cb779-1" aria-hidden="true" tabindex="-1"></a>lista<span class="fl">.3</span> <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">vec1 =</span> <span class="dv">33</span><span class="sc">:</span><span class="dv">47</span>, <span class="at">vec2 =</span> <span class="fu">seq</span>(<span class="dv">115</span>,<span class="dv">157</span>,<span class="at">by=</span><span class="dv">3</span>), <span class="at">vec3 =</span> <span class="fu">seq</span>(<span class="dv">10</span>,<span class="at">by=</span><span class="sc">-</span><span class="fl">8.5</span>, <span class="at">length.out=</span><span class="dv">15</span>))</span>
+<span id="cb779-2"><a href="análise-multivariada.html#cb779-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.list</span>(lista<span class="fl">.3</span>);<span class="fu">is.vector</span>(lista<span class="fl">.3</span>)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb782"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb782-1"><a href="análise-multivariada.html#cb782-1" aria-hidden="true" tabindex="-1"></a>lista.<span class="fl">3.</span>vec <span class="ot">&lt;-</span> <span class="fu">sapply</span>(lista<span class="fl">.3</span>, mean) </span>
+<span id="cb782-2"><a href="análise-multivariada.html#cb782-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(lista.<span class="fl">3.</span>vec);<span class="fu">is.list</span>(lista.<span class="fl">3.</span>vec);<span class="fu">is.vector</span>(lista.<span class="fl">3.</span>vec)</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb786"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb786-1"><a href="análise-multivariada.html#cb786-1" aria-hidden="true" tabindex="-1"></a>lista.<span class="fl">3.</span>vec</span></code></pre></div>
+<pre><code>##  vec1  vec2  vec3 
+##  40.0 136.0 -49.5</code></pre>
+<p>Criando um função para testar se a <code>lista.4</code>é <em>numéric</em> e <em>integer</em>.</p>
+<div class="sourceCode" id="cb788"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb788-1"><a href="análise-multivariada.html#cb788-1" aria-hidden="true" tabindex="-1"></a>lista<span class="fl">.4</span> <span class="ot">&lt;-</span> <span class="fu">list</span>( <span class="fu">runif</span>(<span class="dv">10</span>), <span class="fu">runif</span>(<span class="dv">15</span>), <span class="fu">rnorm</span>(<span class="dv">1000</span>))</span>
+<span id="cb788-2"><a href="análise-multivariada.html#cb788-2" aria-hidden="true" tabindex="-1"></a>my.fct <span class="ot">&lt;-</span> <span class="cf">function</span>( x){</span>
+<span id="cb788-3"><a href="análise-multivariada.html#cb788-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span>(<span class="fu">class</span>(x)<span class="sc">%in%</span><span class="fu">c</span>(<span class="st">&quot;numeric&quot;</span>,<span class="st">&quot;integer&quot;</span>)))</span>
+<span id="cb788-4"><a href="análise-multivariada.html#cb788-4" aria-hidden="true" tabindex="-1"></a>  {<span class="fu">stop</span>(<span class="st">&quot;ERRO: Class de x não é numeric ou integer.&quot;</span>) }</span>
+<span id="cb788-5"><a href="análise-multivariada.html#cb788-5" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(x)</span>
+<span id="cb788-6"><a href="análise-multivariada.html#cb788-6" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">mean</span>(x),<span class="fu">sd</span>(x))</span>
+<span id="cb788-7"><a href="análise-multivariada.html#cb788-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(out) </span>
+<span id="cb788-8"><a href="análise-multivariada.html#cb788-8" aria-hidden="true" tabindex="-1"></a>} </span></code></pre></div>
+<p>Utilizando a função criada com <em>sapply</em>.</p>
+<div class="sourceCode" id="cb789"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb789-1"><a href="análise-multivariada.html#cb789-1" aria-hidden="true" tabindex="-1"></a>lista.<span class="fl">4.</span>vec <span class="ot">&lt;-</span> <span class="fu">sapply</span>(lista<span class="fl">.4</span>, my.fct) <span class="co"># check result </span></span>
+<span id="cb789-2"><a href="análise-multivariada.html#cb789-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(lista.<span class="fl">4.</span>vec)</span></code></pre></div>
+<pre><code>## [1] &quot;matrix&quot; &quot;array&quot;</code></pre>
+<div class="sourceCode" id="cb791"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb791-1"><a href="análise-multivariada.html#cb791-1" aria-hidden="true" tabindex="-1"></a>lista.<span class="fl">4.</span>vec</span></code></pre></div>
+<pre><code>##           [,1]      [,2]        [,3]
+## [1,] 0.4842423 0.5437238 -0.02797632
+## [2,] 0.2943308 0.2381470  0.99852206</code></pre>
+</div>
+<div id="tapply" class="section level3" number="8.1.3">
+<h3><span class="header-section-number">8.1.3</span> <em>tapply</em></h3>
+<p>Função utilizada para cálculos em grupos (<em>factor</em>) de dados individualmente permitindo a criação de amostras para então aplicar os cáculos necessários.</p>
+<p>Abaixo temos o cálculode média para cada grupo <em>A</em>, <em>B</em> e <em>C</em>.</p>
+<div class="sourceCode" id="cb793"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb793-1"><a href="análise-multivariada.html#cb793-1" aria-hidden="true" tabindex="-1"></a>meu.vetor <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">150</span></span>
+<span id="cb793-2"><a href="análise-multivariada.html#cb793-2" aria-hidden="true" tabindex="-1"></a>factor<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;C&quot;</span>, <span class="dv">50</span>), <span class="fu">rep</span>(<span class="st">&quot;B&quot;</span>, <span class="dv">50</span>), <span class="fu">rep</span>(<span class="st">&quot;A&quot;</span>, <span class="dv">50</span>)))</span>
+<span id="cb793-3"><a href="análise-multivariada.html#cb793-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb793-4"><a href="análise-multivariada.html#cb793-4" aria-hidden="true" tabindex="-1"></a>factor.<span class="fl">1.</span>mean.vec <span class="ot">&lt;-</span> <span class="fu">tapply</span>(<span class="at">X =</span> meu.vetor, <span class="at">INDEX =</span> factor<span class="fl">.1</span>, <span class="at">FUN =</span> mean)</span>
+<span id="cb793-5"><a href="análise-multivariada.html#cb793-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb793-6"><a href="análise-multivariada.html#cb793-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(factor.<span class="fl">1.</span>mean.vec)</span></code></pre></div>
+<pre><code>##     A     B     C 
+## 125.5  75.5  25.5</code></pre>
+<p>Abaixo o operador <strong><em>%in%</em></strong> é utilizado para identificar se um parâmetro pertence a um tipo de restrição definida.
+Abaixo quero saber se a classe de <em>x</em> não é <code>numeric</code> ou <code>integer</code>. Se for vai omitir os valores <code>NA</code> e calcular a média, valor máximo e mínimo.</p>
+<div class="sourceCode" id="cb795"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb795-1"><a href="análise-multivariada.html#cb795-1" aria-hidden="true" tabindex="-1"></a>descr.vec <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb795-2"><a href="análise-multivariada.html#cb795-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span>(<span class="fu">class</span>(x)<span class="sc">%in%</span><span class="fu">c</span>(<span class="st">&#39;numeric&#39;</span>,<span class="st">&#39;integer&#39;</span>))){<span class="fu">stop</span>(<span class="st">&#39; ERROR: Class de x não é numeric ou integer.&#39;</span>) } </span>
+<span id="cb795-3"><a href="análise-multivariada.html#cb795-3" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(x) </span>
+<span id="cb795-4"><a href="análise-multivariada.html#cb795-4" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">c</span>( </span>
+<span id="cb795-5"><a href="análise-multivariada.html#cb795-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(x), </span>
+<span id="cb795-6"><a href="análise-multivariada.html#cb795-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">max =</span> <span class="fu">max</span>(x), </span>
+<span id="cb795-7"><a href="análise-multivariada.html#cb795-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">min =</span> <span class="fu">min</span>(x)) </span>
+<span id="cb795-8"><a href="análise-multivariada.html#cb795-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>( out)}</span></code></pre></div>
+<p>Temos aqui a função <a href="https://www.stat.berkeley.edu/~s133/Docall.html"><code>do.call</code></a> que permite aplicar uma função a toda uma lista.</p>
+<div class="sourceCode" id="cb796"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb796-1"><a href="análise-multivariada.html#cb796-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr) </span>
+<span id="cb796-2"><a href="análise-multivariada.html#cb796-2" aria-hidden="true" tabindex="-1"></a>airquality <span class="sc">%&gt;%</span> </span>
+<span id="cb796-3"><a href="análise-multivariada.html#cb796-3" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:right;">
+Ozone
+</th>
+<th style="text-align:right;">
+Solar.R
+</th>
+<th style="text-align:right;">
+Wind
+</th>
+<th style="text-align:right;">
+Temp
+</th>
+<th style="text-align:right;">
+Month
+</th>
+<th style="text-align:right;">
+Day
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+41
+</td>
+<td style="text-align:right;">
+190
+</td>
+<td style="text-align:right;">
+7.4
+</td>
+<td style="text-align:right;">
+67
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:right;">
+118
+</td>
+<td style="text-align:right;">
+8.0
+</td>
+<td style="text-align:right;">
+72
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+149
+</td>
+<td style="text-align:right;">
+12.6
+</td>
+<td style="text-align:right;">
+74
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+313
+</td>
+<td style="text-align:right;">
+11.5
+</td>
+<td style="text-align:right;">
+62
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+14.3
+</td>
+<td style="text-align:right;">
+56
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+14.9
+</td>
+<td style="text-align:right;">
+66
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+299
+</td>
+<td style="text-align:right;">
+8.6
+</td>
+<td style="text-align:right;">
+65
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+99
+</td>
+<td style="text-align:right;">
+13.8
+</td>
+<td style="text-align:right;">
+59
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+20.1
+</td>
+<td style="text-align:right;">
+61
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+194
+</td>
+<td style="text-align:right;">
+8.6
+</td>
+<td style="text-align:right;">
+69
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+6.9
+</td>
+<td style="text-align:right;">
+74
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+256
+</td>
+<td style="text-align:right;">
+9.7
+</td>
+<td style="text-align:right;">
+69
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+12
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+290
+</td>
+<td style="text-align:right;">
+9.2
+</td>
+<td style="text-align:right;">
+66
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+13
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+274
+</td>
+<td style="text-align:right;">
+10.9
+</td>
+<td style="text-align:right;">
+68
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+14
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+65
+</td>
+<td style="text-align:right;">
+13.2
+</td>
+<td style="text-align:right;">
+58
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+15
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+334
+</td>
+<td style="text-align:right;">
+11.5
+</td>
+<td style="text-align:right;">
+64
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+34
+</td>
+<td style="text-align:right;">
+307
+</td>
+<td style="text-align:right;">
+12.0
+</td>
+<td style="text-align:right;">
+66
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+17
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+78
+</td>
+<td style="text-align:right;">
+18.4
+</td>
+<td style="text-align:right;">
+57
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+18
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+322
+</td>
+<td style="text-align:right;">
+11.5
+</td>
+<td style="text-align:right;">
+68
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+19
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:right;">
+9.7
+</td>
+<td style="text-align:right;">
+62
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+20
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+9.7
+</td>
+<td style="text-align:right;">
+59
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+21
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+320
+</td>
+<td style="text-align:right;">
+16.6
+</td>
+<td style="text-align:right;">
+73
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+22
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+9.7
+</td>
+<td style="text-align:right;">
+61
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+23
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:right;">
+92
+</td>
+<td style="text-align:right;">
+12.0
+</td>
+<td style="text-align:right;">
+61
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+24
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+66
+</td>
+<td style="text-align:right;">
+16.6
+</td>
+<td style="text-align:right;">
+57
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+25
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+266
+</td>
+<td style="text-align:right;">
+14.9
+</td>
+<td style="text-align:right;">
+58
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+26
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+8.0
+</td>
+<td style="text-align:right;">
+57
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+12.0
+</td>
+<td style="text-align:right;">
+67
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+28
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:right;">
+252
+</td>
+<td style="text-align:right;">
+14.9
+</td>
+<td style="text-align:right;">
+81
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+29
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+115
+</td>
+<td style="text-align:right;">
+223
+</td>
+<td style="text-align:right;">
+5.7
+</td>
+<td style="text-align:right;">
+79
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+30
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+37
+</td>
+<td style="text-align:right;">
+279
+</td>
+<td style="text-align:right;">
+7.4
+</td>
+<td style="text-align:right;">
+76
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+31
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+286
+</td>
+<td style="text-align:right;">
+8.6
+</td>
+<td style="text-align:right;">
+78
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+287
+</td>
+<td style="text-align:right;">
+9.7
+</td>
+<td style="text-align:right;">
+74
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+242
+</td>
+<td style="text-align:right;">
+16.1
+</td>
+<td style="text-align:right;">
+67
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+186
+</td>
+<td style="text-align:right;">
+9.2
+</td>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+220
+</td>
+<td style="text-align:right;">
+8.6
+</td>
+<td style="text-align:right;">
+85
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+264
+</td>
+<td style="text-align:right;">
+14.3
+</td>
+<td style="text-align:right;">
+79
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:right;">
+127
+</td>
+<td style="text-align:right;">
+9.7
+</td>
+<td style="text-align:right;">
+82
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+273
+</td>
+<td style="text-align:right;">
+6.9
+</td>
+<td style="text-align:right;">
+87
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+71
+</td>
+<td style="text-align:right;">
+291
+</td>
+<td style="text-align:right;">
+13.8
+</td>
+<td style="text-align:right;">
+90
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+39
+</td>
+<td style="text-align:right;">
+323
+</td>
+<td style="text-align:right;">
+11.5
+</td>
+<td style="text-align:right;">
+87
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+259
+</td>
+<td style="text-align:right;">
+10.9
+</td>
+<td style="text-align:right;">
+93
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+250
+</td>
+<td style="text-align:right;">
+9.2
+</td>
+<td style="text-align:right;">
+92
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+12
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+148
+</td>
+<td style="text-align:right;">
+8.0
+</td>
+<td style="text-align:right;">
+82
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+13
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+332
+</td>
+<td style="text-align:right;">
+13.8
+</td>
+<td style="text-align:right;">
+80
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+14
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+322
+</td>
+<td style="text-align:right;">
+11.5
+</td>
+<td style="text-align:right;">
+79
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+15
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+191
+</td>
+<td style="text-align:right;">
+14.9
+</td>
+<td style="text-align:right;">
+77
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+37
+</td>
+<td style="text-align:right;">
+284
+</td>
+<td style="text-align:right;">
+20.7
+</td>
+<td style="text-align:right;">
+72
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+17
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+37
+</td>
+<td style="text-align:right;">
+9.2
+</td>
+<td style="text-align:right;">
+65
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+18
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:right;">
+11.5
+</td>
+<td style="text-align:right;">
+73
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+19
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+137
+</td>
+<td style="text-align:right;">
+10.3
+</td>
+<td style="text-align:right;">
+76
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+20
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+150
+</td>
+<td style="text-align:right;">
+6.3
+</td>
+<td style="text-align:right;">
+77
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+21
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+59
+</td>
+<td style="text-align:right;">
+1.7
+</td>
+<td style="text-align:right;">
+76
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+22
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+91
+</td>
+<td style="text-align:right;">
+4.6
+</td>
+<td style="text-align:right;">
+76
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+23
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+250
+</td>
+<td style="text-align:right;">
+6.3
+</td>
+<td style="text-align:right;">
+76
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+24
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+135
+</td>
+<td style="text-align:right;">
+8.0
+</td>
+<td style="text-align:right;">
+75
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+25
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+127
+</td>
+<td style="text-align:right;">
+8.0
+</td>
+<td style="text-align:right;">
+78
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+26
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+47
+</td>
+<td style="text-align:right;">
+10.3
+</td>
+<td style="text-align:right;">
+73
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+98
+</td>
+<td style="text-align:right;">
+11.5
+</td>
+<td style="text-align:right;">
+80
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+28
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:right;">
+14.9
+</td>
+<td style="text-align:right;">
+77
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+29
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+138
+</td>
+<td style="text-align:right;">
+8.0
+</td>
+<td style="text-align:right;">
+83
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+30
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+135
+</td>
+<td style="text-align:right;">
+269
+</td>
+<td style="text-align:right;">
+4.1
+</td>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+49
+</td>
+<td style="text-align:right;">
+248
+</td>
+<td style="text-align:right;">
+9.2
+</td>
+<td style="text-align:right;">
+85
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:right;">
+236
+</td>
+<td style="text-align:right;">
+9.2
+</td>
+<td style="text-align:right;">
+81
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+101
+</td>
+<td style="text-align:right;">
+10.9
+</td>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+64
+</td>
+<td style="text-align:right;">
+175
+</td>
+<td style="text-align:right;">
+4.6
+</td>
+<td style="text-align:right;">
+83
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:right;">
+314
+</td>
+<td style="text-align:right;">
+10.9
+</td>
+<td style="text-align:right;">
+83
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+77
+</td>
+<td style="text-align:right;">
+276
+</td>
+<td style="text-align:right;">
+5.1
+</td>
+<td style="text-align:right;">
+88
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+97
+</td>
+<td style="text-align:right;">
+267
+</td>
+<td style="text-align:right;">
+6.3
+</td>
+<td style="text-align:right;">
+92
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+97
+</td>
+<td style="text-align:right;">
+272
+</td>
+<td style="text-align:right;">
+5.7
+</td>
+<td style="text-align:right;">
+92
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+85
+</td>
+<td style="text-align:right;">
+175
+</td>
+<td style="text-align:right;">
+7.4
+</td>
+<td style="text-align:right;">
+89
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+139
+</td>
+<td style="text-align:right;">
+8.6
+</td>
+<td style="text-align:right;">
+82
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+264
+</td>
+<td style="text-align:right;">
+14.3
+</td>
+<td style="text-align:right;">
+73
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+12
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:right;">
+175
+</td>
+<td style="text-align:right;">
+14.9
+</td>
+<td style="text-align:right;">
+81
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+13
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+291
+</td>
+<td style="text-align:right;">
+14.9
+</td>
+<td style="text-align:right;">
+91
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+14
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+48
+</td>
+<td style="text-align:right;">
+14.3
+</td>
+<td style="text-align:right;">
+80
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+15
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+48
+</td>
+<td style="text-align:right;">
+260
+</td>
+<td style="text-align:right;">
+6.9
+</td>
+<td style="text-align:right;">
+81
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+274
+</td>
+<td style="text-align:right;">
+10.3
+</td>
+<td style="text-align:right;">
+82
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+17
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+61
+</td>
+<td style="text-align:right;">
+285
+</td>
+<td style="text-align:right;">
+6.3
+</td>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+18
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+79
+</td>
+<td style="text-align:right;">
+187
+</td>
+<td style="text-align:right;">
+5.1
+</td>
+<td style="text-align:right;">
+87
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+19
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+63
+</td>
+<td style="text-align:right;">
+220
+</td>
+<td style="text-align:right;">
+11.5
+</td>
+<td style="text-align:right;">
+85
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+20
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+6.9
+</td>
+<td style="text-align:right;">
+74
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+21
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+258
+</td>
+<td style="text-align:right;">
+9.7
+</td>
+<td style="text-align:right;">
+81
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+22
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+295
+</td>
+<td style="text-align:right;">
+11.5
+</td>
+<td style="text-align:right;">
+82
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+23
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+80
+</td>
+<td style="text-align:right;">
+294
+</td>
+<td style="text-align:right;">
+8.6
+</td>
+<td style="text-align:right;">
+86
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+24
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+108
+</td>
+<td style="text-align:right;">
+223
+</td>
+<td style="text-align:right;">
+8.0
+</td>
+<td style="text-align:right;">
+85
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+25
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+81
+</td>
+<td style="text-align:right;">
+8.6
+</td>
+<td style="text-align:right;">
+82
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+26
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+52
+</td>
+<td style="text-align:right;">
+82
+</td>
+<td style="text-align:right;">
+12.0
+</td>
+<td style="text-align:right;">
+86
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+82
+</td>
+<td style="text-align:right;">
+213
+</td>
+<td style="text-align:right;">
+7.4
+</td>
+<td style="text-align:right;">
+88
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+28
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:right;">
+275
+</td>
+<td style="text-align:right;">
+7.4
+</td>
+<td style="text-align:right;">
+86
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+29
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+64
+</td>
+<td style="text-align:right;">
+253
+</td>
+<td style="text-align:right;">
+7.4
+</td>
+<td style="text-align:right;">
+83
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+30
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+59
+</td>
+<td style="text-align:right;">
+254
+</td>
+<td style="text-align:right;">
+9.2
+</td>
+<td style="text-align:right;">
+81
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+31
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+39
+</td>
+<td style="text-align:right;">
+83
+</td>
+<td style="text-align:right;">
+6.9
+</td>
+<td style="text-align:right;">
+81
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+13.8
+</td>
+<td style="text-align:right;">
+81
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+77
+</td>
+<td style="text-align:right;">
+7.4
+</td>
+<td style="text-align:right;">
+82
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+78
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+6.9
+</td>
+<td style="text-align:right;">
+86
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+7.4
+</td>
+<td style="text-align:right;">
+85
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+66
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+4.6
+</td>
+<td style="text-align:right;">
+87
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+122
+</td>
+<td style="text-align:right;">
+255
+</td>
+<td style="text-align:right;">
+4.0
+</td>
+<td style="text-align:right;">
+89
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+89
+</td>
+<td style="text-align:right;">
+229
+</td>
+<td style="text-align:right;">
+10.3
+</td>
+<td style="text-align:right;">
+90
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+207
+</td>
+<td style="text-align:right;">
+8.0
+</td>
+<td style="text-align:right;">
+90
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+222
+</td>
+<td style="text-align:right;">
+8.6
+</td>
+<td style="text-align:right;">
+92
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+137
+</td>
+<td style="text-align:right;">
+11.5
+</td>
+<td style="text-align:right;">
+86
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:right;">
+192
+</td>
+<td style="text-align:right;">
+11.5
+</td>
+<td style="text-align:right;">
+86
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+12
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:right;">
+273
+</td>
+<td style="text-align:right;">
+11.5
+</td>
+<td style="text-align:right;">
+82
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+13
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+65
+</td>
+<td style="text-align:right;">
+157
+</td>
+<td style="text-align:right;">
+9.7
+</td>
+<td style="text-align:right;">
+80
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+14
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+64
+</td>
+<td style="text-align:right;">
+11.5
+</td>
+<td style="text-align:right;">
+79
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+15
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+71
+</td>
+<td style="text-align:right;">
+10.3
+</td>
+<td style="text-align:right;">
+77
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+59
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:right;">
+6.3
+</td>
+<td style="text-align:right;">
+79
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+17
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+115
+</td>
+<td style="text-align:right;">
+7.4
+</td>
+<td style="text-align:right;">
+76
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+18
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:right;">
+244
+</td>
+<td style="text-align:right;">
+10.9
+</td>
+<td style="text-align:right;">
+78
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+19
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:right;">
+190
+</td>
+<td style="text-align:right;">
+10.3
+</td>
+<td style="text-align:right;">
+78
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+20
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+259
+</td>
+<td style="text-align:right;">
+15.5
+</td>
+<td style="text-align:right;">
+77
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+21
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:right;">
+14.3
+</td>
+<td style="text-align:right;">
+72
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+22
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+255
+</td>
+<td style="text-align:right;">
+12.6
+</td>
+<td style="text-align:right;">
+75
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+23
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:right;">
+212
+</td>
+<td style="text-align:right;">
+9.7
+</td>
+<td style="text-align:right;">
+79
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+24
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+168
+</td>
+<td style="text-align:right;">
+238
+</td>
+<td style="text-align:right;">
+3.4
+</td>
+<td style="text-align:right;">
+81
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+25
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+73
+</td>
+<td style="text-align:right;">
+215
+</td>
+<td style="text-align:right;">
+8.0
+</td>
+<td style="text-align:right;">
+86
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+26
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+153
+</td>
+<td style="text-align:right;">
+5.7
+</td>
+<td style="text-align:right;">
+88
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+76
+</td>
+<td style="text-align:right;">
+203
+</td>
+<td style="text-align:right;">
+9.7
+</td>
+<td style="text-align:right;">
+97
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+28
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+118
+</td>
+<td style="text-align:right;">
+225
+</td>
+<td style="text-align:right;">
+2.3
+</td>
+<td style="text-align:right;">
+94
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+29
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:right;">
+237
+</td>
+<td style="text-align:right;">
+6.3
+</td>
+<td style="text-align:right;">
+96
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+30
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+85
+</td>
+<td style="text-align:right;">
+188
+</td>
+<td style="text-align:right;">
+6.3
+</td>
+<td style="text-align:right;">
+94
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+31
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+96
+</td>
+<td style="text-align:right;">
+167
+</td>
+<td style="text-align:right;">
+6.9
+</td>
+<td style="text-align:right;">
+91
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+78
+</td>
+<td style="text-align:right;">
+197
+</td>
+<td style="text-align:right;">
+5.1
+</td>
+<td style="text-align:right;">
+92
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+73
+</td>
+<td style="text-align:right;">
+183
+</td>
+<td style="text-align:right;">
+2.8
+</td>
+<td style="text-align:right;">
+93
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+91
+</td>
+<td style="text-align:right;">
+189
+</td>
+<td style="text-align:right;">
+4.6
+</td>
+<td style="text-align:right;">
+93
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+47
+</td>
+<td style="text-align:right;">
+95
+</td>
+<td style="text-align:right;">
+7.4
+</td>
+<td style="text-align:right;">
+87
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:right;">
+92
+</td>
+<td style="text-align:right;">
+15.5
+</td>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+252
+</td>
+<td style="text-align:right;">
+10.9
+</td>
+<td style="text-align:right;">
+80
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+220
+</td>
+<td style="text-align:right;">
+10.3
+</td>
+<td style="text-align:right;">
+78
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+230
+</td>
+<td style="text-align:right;">
+10.9
+</td>
+<td style="text-align:right;">
+75
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+259
+</td>
+<td style="text-align:right;">
+9.7
+</td>
+<td style="text-align:right;">
+73
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:right;">
+236
+</td>
+<td style="text-align:right;">
+14.9
+</td>
+<td style="text-align:right;">
+81
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+259
+</td>
+<td style="text-align:right;">
+15.5
+</td>
+<td style="text-align:right;">
+76
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+12
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:right;">
+238
+</td>
+<td style="text-align:right;">
+6.3
+</td>
+<td style="text-align:right;">
+77
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+13
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+10.9
+</td>
+<td style="text-align:right;">
+71
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+14
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+112
+</td>
+<td style="text-align:right;">
+11.5
+</td>
+<td style="text-align:right;">
+71
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+15
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+46
+</td>
+<td style="text-align:right;">
+237
+</td>
+<td style="text-align:right;">
+6.9
+</td>
+<td style="text-align:right;">
+78
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+224
+</td>
+<td style="text-align:right;">
+13.8
+</td>
+<td style="text-align:right;">
+67
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+17
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:right;">
+10.3
+</td>
+<td style="text-align:right;">
+76
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+18
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+238
+</td>
+<td style="text-align:right;">
+10.3
+</td>
+<td style="text-align:right;">
+68
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+19
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+201
+</td>
+<td style="text-align:right;">
+8.0
+</td>
+<td style="text-align:right;">
+82
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+20
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+238
+</td>
+<td style="text-align:right;">
+12.6
+</td>
+<td style="text-align:right;">
+64
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+21
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+9.2
+</td>
+<td style="text-align:right;">
+71
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+22
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:right;">
+139
+</td>
+<td style="text-align:right;">
+10.3
+</td>
+<td style="text-align:right;">
+81
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+23
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+49
+</td>
+<td style="text-align:right;">
+10.3
+</td>
+<td style="text-align:right;">
+69
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+24
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+16.6
+</td>
+<td style="text-align:right;">
+63
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+25
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+193
+</td>
+<td style="text-align:right;">
+6.9
+</td>
+<td style="text-align:right;">
+70
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+26
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+145
+</td>
+<td style="text-align:right;">
+13.2
+</td>
+<td style="text-align:right;">
+77
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+191
+</td>
+<td style="text-align:right;">
+14.3
+</td>
+<td style="text-align:right;">
+75
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+28
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+131
+</td>
+<td style="text-align:right;">
+8.0
+</td>
+<td style="text-align:right;">
+76
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+29
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+223
+</td>
+<td style="text-align:right;">
+11.5
+</td>
+<td style="text-align:right;">
+68
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+30
+</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb797"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb797-1"><a href="análise-multivariada.html#cb797-1" aria-hidden="true" tabindex="-1"></a>AirQua.res <span class="ot">&lt;-</span> <span class="fu">tapply</span>(<span class="at">X =</span> datasets<span class="sc">::</span>airquality<span class="sc">$</span>Temp, <span class="at">INDEX =</span> datasets<span class="sc">::</span>airquality<span class="sc">$</span>Month, </span>
+<span id="cb797-2"><a href="análise-multivariada.html#cb797-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">FUN =</span> descr.vec) </span>
+<span id="cb797-3"><a href="análise-multivariada.html#cb797-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb797-4"><a href="análise-multivariada.html#cb797-4" aria-hidden="true" tabindex="-1"></a>AirQua.res</span></code></pre></div>
+<pre><code>## $`5`
+##     mean      max      min 
+## 65.54839 81.00000 56.00000 
+## 
+## $`6`
+## mean  max  min 
+## 79.1 93.0 65.0 
+## 
+## $`7`
+##     mean      max      min 
+## 83.90323 92.00000 73.00000 
+## 
+## $`8`
+##     mean      max      min 
+## 83.96774 97.00000 72.00000 
+## 
+## $`9`
+## mean  max  min 
+## 76.9 93.0 63.0</code></pre>
+<div class="sourceCode" id="cb799"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb799-1"><a href="análise-multivariada.html#cb799-1" aria-hidden="true" tabindex="-1"></a>AirQua.res.tab <span class="ot">&lt;-</span> <span class="fu">do.call</span>(<span class="at">what =</span> rbind, <span class="at">args =</span> AirQua.res)</span>
+<span id="cb799-2"><a href="análise-multivariada.html#cb799-2" aria-hidden="true" tabindex="-1"></a>AirQua.res.tab</span></code></pre></div>
+<pre><code>##       mean max min
+## 5 65.54839  81  56
+## 6 79.10000  93  65
+## 7 83.90323  92  73
+## 8 83.96774  97  72
+## 9 76.90000  93  63</code></pre>
+</div>
+<div id="mapply" class="section level3" number="8.1.4">
+<h3><span class="header-section-number">8.1.4</span> <em>mapply</em></h3>
+<p>Esta função pode ser utilizada numa lista de múltiplas listas ou vários vetores.</p>
+<p>Abaixo vamos criar uma lista de 10 vetores de tamanhos diferentes.</p>
+<div class="sourceCode" id="cb801"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb801-1"><a href="análise-multivariada.html#cb801-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="co"># Prealocando a lista </span></span>
+<span id="cb801-2"><a href="análise-multivariada.html#cb801-2" aria-hidden="true" tabindex="-1"></a>minha.lista <span class="ot">&lt;-</span> <span class="fu">list</span>() </span>
+<span id="cb801-3"><a href="análise-multivariada.html#cb801-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb801-4"><a href="análise-multivariada.html#cb801-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">1</span>,N)){</span>
+<span id="cb801-5"><a href="análise-multivariada.html#cb801-5" aria-hidden="true" tabindex="-1"></a>  minha.lista[[i]]<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="dv">1</span>,i)}</span>
+<span id="cb801-6"><a href="análise-multivariada.html#cb801-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb801-7"><a href="análise-multivariada.html#cb801-7" aria-hidden="true" tabindex="-1"></a>minha.lista</span></code></pre></div>
+<pre><code>## [[1]]
+## [1] 1
+## 
+## [[2]]
+## [1] 1 2
+## 
+## [[3]]
+## [1] 1 2 3
+## 
+## [[4]]
+## [1] 1 2 3 4
+## 
+## [[5]]
+## [1] 1 2 3 4 5
+## 
+## [[6]]
+## [1] 1 2 3 4 5 6
+## 
+## [[7]]
+## [1] 1 2 3 4 5 6 7
+## 
+## [[8]]
+## [1] 1 2 3 4 5 6 7 8
+## 
+## [[9]]
+## [1] 1 2 3 4 5 6 7 8 9
+## 
+## [[10]]
+##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<p>Aqui fazemos a mesma coisa utilizando o <em>mapply</em>.</p>
+<div class="sourceCode" id="cb803"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb803-1"><a href="análise-multivariada.html#cb803-1" aria-hidden="true" tabindex="-1"></a>minha.lista <span class="ot">&lt;-</span> <span class="fu">mapply</span>(<span class="at">FUN =</span> seq, <span class="fu">rep</span>(<span class="dv">1</span>,N), <span class="fu">seq</span>(<span class="dv">1</span>,N)) </span>
+<span id="cb803-2"><a href="análise-multivariada.html#cb803-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(minha.lista)</span></code></pre></div>
+<pre><code>## [[1]]
+## [1] 1
+## 
+## [[2]]
+## [1] 1 2
+## 
+## [[3]]
+## [1] 1 2 3
+## 
+## [[4]]
+## [1] 1 2 3 4
+## 
+## [[5]]
+## [1] 1 2 3 4 5
+## 
+## [[6]]
+## [1] 1 2 3 4 5 6
+## 
+## [[7]]
+## [1] 1 2 3 4 5 6 7
+## 
+## [[8]]
+## [1] 1 2 3 4 5 6 7 8
+## 
+## [[9]]
+## [1] 1 2 3 4 5 6 7 8 9
+## 
+## [[10]]
+##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+</div>
+<div id="apply" class="section level3" number="8.1.5">
+<h3><span class="header-section-number">8.1.5</span> <em>apply</em></h3>
+<p>Utilizado em <em>arrays</em>.</p>
+<div class="sourceCode" id="cb805"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb805-1"><a href="análise-multivariada.html#cb805-1" aria-hidden="true" tabindex="-1"></a>minha.matriz <span class="ot">&lt;-</span> <span class="fu">matrix</span>( <span class="dv">1</span><span class="sc">:</span> <span class="dv">15</span>, <span class="at">nrow =</span> <span class="dv">5</span>) </span>
+<span id="cb805-2"><a href="análise-multivariada.html#cb805-2" aria-hidden="true" tabindex="-1"></a>minha.matriz</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    6   11
+## [2,]    2    7   12
+## [3,]    3    8   13
+## [4,]    4    9   14
+## [5,]    5   10   15</code></pre>
+<div class="sourceCode" id="cb807"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb807-1"><a href="análise-multivariada.html#cb807-1" aria-hidden="true" tabindex="-1"></a>soma.linha <span class="ot">&lt;-</span> <span class="fu">apply</span>( <span class="at">X =</span> minha.matriz, <span class="at">MARGIN =</span> <span class="dv">1</span>, <span class="at">FUN=</span>sum)</span>
+<span id="cb807-2"><a href="análise-multivariada.html#cb807-2" aria-hidden="true" tabindex="-1"></a>soma.linha</span></code></pre></div>
+<pre><code>## [1] 18 21 24 27 30</code></pre>
+<div class="sourceCode" id="cb809"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb809-1"><a href="análise-multivariada.html#cb809-1" aria-hidden="true" tabindex="-1"></a>soma.coluna <span class="ot">&lt;-</span> <span class="fu">apply</span>( <span class="at">X =</span> minha.matriz, <span class="at">MARGIN =</span> <span class="dv">2</span>, <span class="at">FUN =</span> sum) </span>
+<span id="cb809-2"><a href="análise-multivariada.html#cb809-2" aria-hidden="true" tabindex="-1"></a>soma.coluna</span></code></pre></div>
+<pre><code>## [1] 15 40 65</code></pre>
+<div class="sourceCode" id="cb811"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb811-1"><a href="análise-multivariada.html#cb811-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mostra os valores máximos por linha</span></span>
+<span id="cb811-2"><a href="análise-multivariada.html#cb811-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">apply</span>(<span class="at">X =</span> minha.matriz, <span class="at">MARGIN =</span> <span class="dv">1</span>, <span class="at">FUN =</span> max))</span></code></pre></div>
+<pre><code>## [1] 11 12 13 14 15</code></pre>
+<div class="sourceCode" id="cb813"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb813-1"><a href="análise-multivariada.html#cb813-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mostra os valores máximos por coluna</span></span>
+<span id="cb813-2"><a href="análise-multivariada.html#cb813-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">apply</span>( <span class="at">X =</span> minha.matriz, <span class="at">MARGIN =</span> <span class="dv">2</span>, <span class="at">FUN =</span> max))</span></code></pre></div>
+<pre><code>## [1]  5 10 15</code></pre>
+
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div class="csl-entry">
+Allaire, JJ, Yihui Xie, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, Hadley Wickham, Joe Cheng, Winston Chang, and Richard Iannone. 2020. <em>Rmarkdown: Dynamic Documents for r</em>. <a href="https://github.com/rstudio/rmarkdown">https://github.com/rstudio/rmarkdown</a>.
+</div>
+<div class="csl-entry">
+Chang, W. 2020. <em>R Graphics Cookbook</em>. Second. O’Reilly. <a href="https://r-graphics.org/">https://r-graphics.org/</a>.
+</div>
+<div class="csl-entry">
+Dragulescu, Adrian, and Cole Arendt. 2020. <em>Xlsx: Read, Write, Format Excel 2007 and Excel 97/2000/XP/2003 Files</em>. <a href="https://CRAN.R-project.org/package=xlsx">https://CRAN.R-project.org/package=xlsx</a>.
+</div>
+<div class="csl-entry">
+Freire, S. M. 2021a. <em>Bios Estatística básica</em>. 1st ed. Creative Commons. <a href="http://www.lampada.uerj.br/arquivosdb/_book/bioestatisticaBasica.html">http://www.lampada.uerj.br/arquivosdb/_book/bioestatisticaBasica.html</a>.
+</div>
+<div class="csl-entry">
+———. 2021b. <em>Introdução Ao r</em>. bookdown. <a href="http://www.lampada.uerj.br/arquivosdb/_book2/introducaoR.html">http://www.lampada.uerj.br/arquivosdb/_book2/introducaoR.html</a>.
+</div>
+<div class="csl-entry">
+Kabacoff, Robert I. 2015. <em><span class="nocase">R in Action</span></em>. Second. Manning. <a href="http://www.worldcat.org/isbn/9781617291388">http://www.worldcat.org/isbn/9781617291388</a>.
+</div>
+<div class="csl-entry">
+Kassambara, A. 2019. <em>GGPlot2 Essentials: Great Data Visualization in r</em>. Amazon Digital Services LLC - KDP Print US. <a href="https://books.google.com.br/books?id=McyXzQEACAAJ">https://books.google.com.br/books?id=McyXzQEACAAJ</a>.
+</div>
+<div class="csl-entry">
+Levin, J., J. A. Fox, and D. R. Forde. 2012. <em>Estatistica Aplicada a Ciencias Humanas</em>. Pearson.
+</div>
+<div class="csl-entry">
+Meireles, Fernando, and Denisson Silva. 2018. <em>Usando r: Um Guia Para Cientistas Políticos</em>. bookdown. <a href="http://electionsbr.com/livro/index.html">http://electionsbr.com/livro/index.html</a>.
+</div>
+<div class="csl-entry">
+Mello, M. P., and L. A. Peternelli. 2013. <em>Conhecendo o r: Uma Visão Mais Que Estatística</em>. First. Editora UFV.
+</div>
+<div class="csl-entry">
+Midway, S. 2020. <em>Data Analysis in r</em>. bookdown. <a href="https://bookdown.org/steve_midway/DAR/">https://bookdown.org/steve_midway/DAR/</a>.
+</div>
+<div class="csl-entry">
+Mirai Solutions GmbH. 2020. <em>XLConnect: Excel Connector for r</em>. <a href="https://CRAN.R-project.org/package=XLConnect">https://CRAN.R-project.org/package=XLConnect</a>.
+</div>
+<div class="csl-entry">
+Murrel, P. 2011. <em>R Graphics</em>. Second. Chapman &amp; Hall/CRC. <a href="https://www.stat.auckland.ac.nz/~paul/RG2e/">https://www.stat.auckland.ac.nz/~paul/RG2e/</a>.
+</div>
+<div class="csl-entry">
+Navarro, D. 2013. <em>Learning Statistics with r: A Tutorial for Psychology Students and Other Beginners</em> (version 0.6.1). bookdown. <a href="https://bookdown.org/ekothe/navarro26/preface.html">https://bookdown.org/ekothe/navarro26/preface.html</a>.
+</div>
+<div class="csl-entry">
+Neth, H. 2021. <em>Data Science for Psychologists</em>. bookdown. <a href="https://bookdown.org/hneth/ds4psy/">https://bookdown.org/hneth/ds4psy/</a>.
+</div>
+<div class="csl-entry">
+Peng, R. D. 2020a. <em>Exploratory Data Analysis with r</em>. bookdown. <a href="https://bookdown.org/rdpeng/exdata/">https://bookdown.org/rdpeng/exdata/</a>.
+</div>
+<div class="csl-entry">
+———. 2020b. <em>R Programming for Data Science</em>. bookdown. <a href="https://bookdown.org/rdpeng/rprogdatascience/">https://bookdown.org/rdpeng/rprogdatascience/</a>.
+</div>
+<div class="csl-entry">
+Perlin, M. S. 2018. <em>Processamento e an<span>á</span>lise de Dados Financeiros e Econ<span>ô</span>micos Com o r</em>. Cl<span>ó</span>vis Nicacio. <a href="https://books.google.com.br/books?id=uxyluAEACAAJ">https://books.google.com.br/books?id=uxyluAEACAAJ</a>.
+</div>
+<div class="csl-entry">
+Pires, M. C., M. B. Castro, Z. V Lieber, T. P. Menezes, and R. Y. da S. Aoki. 2018. <em>Estatística não Paramétrica básica No Software r: Uma Abordagem Por Resolução de Problemas</em>. UFMG. <a href="http://www.est.ufmg.br/portal/arquivos/rts/RTE_02_2018.pdf">http://www.est.ufmg.br/portal/arquivos/rts/RTE_02_2018.pdf</a>.
+</div>
+<div class="csl-entry">
+RCoreTeam. 2020. <em>R Data Import/Export</em>. <em>Cran</em>. <a href="https://cran.r-project.org/doc/manuals/R-data.pdf">https://cran.r-project.org/doc/manuals/R-data.pdf</a>.
+</div>
+<div class="csl-entry">
+Venables, W. N., and D. M. Smith. 2020. <em>An Introduction to r</em>. bookdown. <a href="https://colinfay.me/intro-to-r/">https://colinfay.me/intro-to-r/</a>.
+</div>
+<div class="csl-entry">
+Wickham, H., and G. Grolemund. 2019. <em>R Para Data Science: Importe, Arrume, Transforme, Visualize e Modele Dados</em>. First. Alta Books.
+</div>
+<div class="csl-entry">
+Wickham, Hadley, and Jennifer Bryan. 2019. <em>Readxl: Read Excel Files</em>. <a href="https://CRAN.R-project.org/package=readxl">https://CRAN.R-project.org/package=readxl</a>.
+</div>
+<div class="csl-entry">
+Xie, Yihui. 2015. <em>Dynamic Documents with r and Knitr</em>. 2nd ed. Chapman &amp; Hall/CRC the r Series. Chapman; Hall/CRC. <a href="http://gen.lib.rus.ec/book/index.php?md5=dac125f250d388d76db3c95844923767">http://gen.lib.rus.ec/book/index.php?md5=dac125f250d388d76db3c95844923767</a>.
+</div>
+<div class="csl-entry">
+Xie, Yihui, J. J. Allaire, and Garrett Grolemund. 2021. <em>R Markdown: The Definitive Guide</em>. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://bookdown.org/yihui/rmarkdown">https://bookdown.org/yihui/rmarkdown</a>.
+</div>
+<div class="csl-entry">
+Xie, Yihui, Christophe Dervieux, and Emily Riederer. 2020. <em>R Markdown Cookbook</em>. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://bookdown.org/yihui/rmarkdown-cookbook">https://bookdown.org/yihui/rmarkdown-cookbook</a>.
+</div>
+<div class="csl-entry">
+Yamamoto, J. K. 2020. <em>Estatística, análise e Interpolação de Dados Geoespaciais</em>. 1st ed. São Paulo: Gráfica Paulos.
+</div>
+</div>
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-perlin2018processamento" class="csl-entry">
+Perlin, M. S. 2018. <em>Processamento e an<span>á</span>lise de Dados Financeiros e Econ<span>ô</span>micos Com o r</em>. Cl<span>ó</span>vis Nicacio. <a href="https://books.google.com.br/books?id=uxyluAEACAAJ">https://books.google.com.br/books?id=uxyluAEACAAJ</a>.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="elementos-de-estatística-básica-no-r.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/Jacksonmrod/ENG.792-AVDR/edit/master/Cap_7.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/Cap_7.Rmd",
+"text": null
+},
+"download": ["ENG_792-AVDR.pdf", "ENG_792-AVDR.epub"],
+"search": {
+"engine": "lunr",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

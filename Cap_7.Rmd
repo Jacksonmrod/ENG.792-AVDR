@@ -1,0 +1,200 @@
+# ***Análise Multivariada***
+
+## ***Antes de começar Vamso dar uma olhada na família _apply_***  
+
+Antes de começar vamos dar uma olhada na família _apply_.   
+Esta família pertence ao grupos de funções básicas do **R** e guarda um conjunto de funções que facilitam muito nossa vida, principalmente quando precisamos fazer _loops_ e não queremos utilizar os métodos apresentados anteriormente.     
+
+Entre os irmãos da família temos _apply_, _lapply_, _sapply_, _mapply_ e _rep_. Temos também os parentes _Sweep_ e _aggregate_.     
+Em se tratando dos irmãos, cada um trabalha com uma estrutura de dados diferente ( _vector_, _matrix_, _list_ e etc)
+
+Dito isto, para iniciarmos o conteúdo de multivariada precisaremos instalar alguns pacotes. Vejam como foi feita a instalação e o carregamento dos pacotes.    
+
+
+```{r insta.carre.pacotes, echo=T}
+pacotes<-c("datasets","cluster", "factoextra", "vegan", "analogue")
+#lapply(pacotes, install.packages, character.only = TRUE)
+lapply(pacotes, library, character.only = TRUE)
+```
+
+Foi criado um um objeto _vector_ com os nomes do pacotes que precisamos. Em seguida, iniciamos com _lapply_ que fazer um _loop_ dentro do objeto que foi criado (`pacotes`) depois vem o comando que quero que seja eecutado (`install.packages`) seguindo de um definição lógica (`character.only = TRUE`) onde que indica que o que tem dentro de pacotes é _character_.
+
+**Atenção!** `character.only = TRUE` não está relacionado com _lapply_, mas com instalação ou carregamento de pacotes Para mais dealhes [clique aqui](https://stat.ethz.ch/R-manual/R-devel/library/base/html/library.html).    
+
+
+Vamos observar uns exemplos mais completos seguindo as sugestões de @perlin2018processamento.    
+
+### *lapply*
+
+Com _lapply_ a entrada é uma lista e a saída também é um lista. Esta funçãovai fazer um loop dentro de cada elemento da lista e retornar o resultado em forma de lista.
+
+Abaixo vamos criar uma lista com 3 vetores e calcular a média de cada vetor utilizando _lapply_.    
+
+```{r lapply1, echo =T}
+lista.1 <- list(vec1 = 33:47, vec2 = seq(115,157,by=3), vec3 = seq(10,by=-8.5, length.out=15)) 
+typeof(lista.1)
+
+lista.1.mean <- lapply(X = lista.1, FUN = mean) # print result
+typeof(lista.1.mean)
+lista.1.mean
+```
+
+Também é possível combinar com argumento por exemplo `na.rm = TRUE`. 
+
+```{r lapply2, echo=T}
+lista.2 <- list( c( 33:40, NA, 50), c( 2:5, NA), 10:-109) 
+lista.2.mean <- lapply(X = lista.1, FUN = mean, na.rm = TRUE) 
+lista.2.mean
+```
+
+
+***função para gerar arquivos***
+
+setwd(""J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR")
+
+
+```{r criar.arquivo, echo=T}
+criar.arquivo <- function(nome.arquivo, N = 100){ 
+  if (class(nome.arquivo)!="character"){stop("ERRO: Nome não é caractere!")} 
+  if (!( class(N) %in% c("numeric","integer"))){stop("ERRO: N não é integer ou numeric!")} 
+  temp.df <- data.frame(x = runif(N)) 
+  write.csv(x = temp.df, file = nome.arquivo) 
+  return(TRUE) 
+}
+
+n.files <- 5 
+pattern.name <- 'meus_arquivos_com_lapply_' 
+out.dir <- 'muitos arquivos/'
+
+file.names <- paste0(out.dir, pattern.name, seq(1, n.files), '. csv') 
+if(!dir.exists(out.dir)){dir.create(out.dir)} 
+file.remove(list.files(out.dir, full.names = TRUE)) 
+```
+
+### *sapply*
+
+Funciona de maneira semelhante ao _lapply_ mas tentando simplificar a saída. Veja que no exemplo abaixo a saída é um vetor numérico.
+
+```{r sapply1, echo=T}
+lista.3 <- list(vec1 = 33:47, vec2 = seq(115,157,by=3), vec3 = seq(10,by=-8.5, length.out=15))
+is.list(lista.3);is.vector(lista.3)
+lista.3.vec <- sapply(lista.3, mean) 
+class(lista.3.vec);is.list(lista.3.vec);is.vector(lista.3.vec)
+lista.3.vec
+```
+
+Criando um função para testar se a `lista.4`é _numéric_ e _integer_. 
+
+```{r lista.4, echo=T}
+lista.4 <- list( runif(10), runif(15), rnorm(1000))
+my.fct <- function( x){
+  if (!(class(x)%in%c("numeric","integer")))
+  {stop("ERRO: Class de x não é numeric ou integer.") }
+  x <- na.omit(x)
+  out <- c(mean(x),sd(x))
+  return(out) 
+} 
+``` 
+
+Utilizando a função criada com _sapply_.
+
+```{r sapply2, echo=T}
+lista.4.vec <- sapply(lista.4, my.fct) # check result 
+class(lista.4.vec)
+lista.4.vec
+```
+
+
+### *tapply*
+
+Função utilizada para cálculos em grupos (*factor*) de dados individualmente permitindo a criação de amostras para então aplicar os cáculos necessários.
+
+Abaixo temos o cálculode média para cada grupo *A*, *B* e *C*.
+
+```{r tapply1,echo=T}
+meu.vetor <- 1:150
+factor.1 <- factor(c(rep("C", 50), rep("B", 50), rep("A", 50)))
+
+factor.1.mean.vec <- tapply(X = meu.vetor, INDEX = factor.1, FUN = mean)
+
+print(factor.1.mean.vec)
+```
+
+Abaixo o operador ***%in%*** é utilizado para identificar se um parâmetro pertence a um tipo de restrição definida.
+Abaixo quero saber se a classe de _x_ não é `numeric` ou `integer`. Se for vai omitir os valores `NA` e calcular a média, valor máximo e mínimo. 
+
+```{r tapply2, echo=T}
+descr.vec <- function(x){
+  if (!(class(x)%in%c('numeric','integer'))){stop(' ERROR: Class de x não é numeric ou integer.') } 
+  x <- na.omit(x) 
+  out <- c( 
+    mean = mean(x), 
+    max = max(x), 
+    min = min(x)) 
+  return( out)}
+```
+
+
+ Temos aqui a função [`do.call`](https://www.stat.berkeley.edu/~s133/Docall.html) que permite aplicar uma função a toda uma lista.    
+ 
+```{r tapply3, echo=T}
+
+library(magrittr) 
+airquality %>% 
+  knitr::kable()
+
+AirQua.res <- tapply(X = datasets::airquality$Temp, INDEX = datasets::airquality$Month, 
+                     FUN = descr.vec) 
+
+AirQua.res
+AirQua.res.tab <- do.call(what = rbind, args = AirQua.res)
+AirQua.res.tab
+```
+
+### *mapply*
+
+Esta função pode ser utilizada numa lista de múltiplas listas ou vários vetores.
+
+Abaixo vamos criar uma lista de 10 vetores de tamanhos diferentes.
+
+```{r mapply, echo =T }
+N <- 10 # Prealocando a lista 
+minha.lista <- list() 
+
+for (i in seq(1,N)){
+  minha.lista[[i]]<-seq(1,i)}
+
+minha.lista
+```
+
+Aqui fazemos a mesma coisa utilizando o _mapply_.    
+
+```{r mapply2, echo=T}
+minha.lista <- mapply(FUN = seq, rep(1,N), seq(1,N)) 
+print(minha.lista)
+```
+
+### *apply* 
+
+Utilizado em _arrays_.
+
+```{r apply, echo=T}
+minha.matriz <- matrix( 1: 15, nrow = 5) 
+minha.matriz
+
+soma.linha <- apply( X = minha.matriz, MARGIN = 1, FUN=sum)
+soma.linha
+
+soma.coluna <- apply( X = minha.matriz, MARGIN = 2, FUN = sum) 
+soma.coluna
+```
+
+```{r apply2, echo=T}
+# mostra os valores máximos por linha
+print(apply(X = minha.matriz, MARGIN = 1, FUN = max))
+
+# mostra os valores máximos por coluna
+print(apply( X = minha.matriz, MARGIN = 2, FUN = max))
+```
+
+
