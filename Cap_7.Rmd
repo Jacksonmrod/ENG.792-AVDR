@@ -1,6 +1,6 @@
 # ***Análise Multivariada***
 
-## ***Antes de começar Vamso dar uma olhada na família _apply_***  
+## ***Antes de começar Vamos dar uma olhada na família _apply_***  
 
 Antes de começar vamos dar uma olhada na família _apply_.   
 Esta família pertence ao grupos de funções básicas do **R** e guarda um conjunto de funções que facilitam muito nossa vida, principalmente quando precisamos fazer _loops_ e não queremos utilizar os métodos apresentados anteriormente.     
