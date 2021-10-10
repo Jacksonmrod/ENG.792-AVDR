@@ -1,4 +1,4 @@
-# ***Outra maneira dde fazer loop***
+# ***Outra maneira de fazer loop***
 
 ## ***Vamos dar uma olhada na família _apply_***  
 
@@ -137,12 +137,14 @@ descr.vec <- function(x){
 
  Temos aqui a função [`do.call`](https://www.stat.berkeley.edu/~s133/Docall.html) que permite aplicar uma função a toda uma lista.    
  
-```{r tapply3, echo=T}
+```{r tapply3, echo=F}
 
 library(magrittr) 
 airquality %>% 
   knitr::kable()
+```
 
+```{r tapply3.1, echo=F}
 AirQua.res <- tapply(X = datasets::airquality$Temp, INDEX = datasets::airquality$Month, 
                      FUN = descr.vec) 
 
