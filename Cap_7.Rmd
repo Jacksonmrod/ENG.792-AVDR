@@ -2,6 +2,8 @@
 
 ## ***Vamos dar uma olhada na família _apply_***  
 
+Assista este conteúdo em **Cap_7_Apply family** no [PVANet](https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php)
+
 Antes de começar vamos dar uma olhada na família _apply_.   
 Esta família pertence ao grupos de funções básicas do **R** e guarda um conjunto de funções que facilitam muito nossa vida, principalmente quando precisamos fazer _loops_ e não queremos utilizar os métodos apresentados anteriormente.     
 
@@ -17,7 +19,7 @@ pacotes<-c("datasets","cluster", "factoextra", "vegan", "analogue")
 lapply(pacotes, library, character.only = TRUE)
 ```
 
-Foi criado um um objeto _vector_ com os nomes do pacotes que precisamos. Em seguida, iniciamos com _lapply_ que fazer um _loop_ dentro do objeto que foi criado (`pacotes`) depois vem o comando que quero que seja eecutado (`install.packages`) seguindo de um definição lógica (`character.only = TRUE`) onde que indica que o que tem dentro de pacotes é _character_.
+Foi criado um um objeto _vector_ com os nomes do pacotes que precisamos. Em seguida, iniciamos com _lapply_ que fazer um _loop_ dentro do objeto que foi criado (`pacotes`) depois vem o comando que quero que seja executado (`install.packages`) seguindo de um definição lógica (`character.only = TRUE`) onde que indica que o que tem dentro de pacotes é _character_.
 
 **Atenção!** `character.only = TRUE` não está relacionado com _lapply_, mas com instalação ou carregamento de pacotes Para mais dealhes [clique aqui](https://stat.ethz.ch/R-manual/R-devel/library/base/html/library.html).    
 
@@ -26,7 +28,7 @@ Vamos observar uns exemplos mais completos seguindo as sugestões de @perlin2018
 
 ### *lapply*
 
-Com _lapply_ a entrada é uma lista e a saída também é um lista. Esta funçãovai fazer um loop dentro de cada elemento da lista e retornar o resultado em forma de lista.
+Com _lapply_ a entrada é uma lista e a saída também é um lista. Esta função vai fazer um loop dentro de cada elemento da lista e retornar o resultado em forma de lista.
 
 Abaixo vamos criar uma lista com 3 vetores e calcular a média de cada vetor utilizando _lapply_.    
 
@@ -71,6 +73,11 @@ if(!dir.exists(out.dir)){dir.create(out.dir)}
 file.remove(list.files(out.dir, full.names = TRUE)) 
 ```
 
+```{r lapply3, echo=T}
+saida.l <- lapply(X = file.names, FUN = criar.arquivo, N = 100) 
+saida.l
+```
+
 ### *sapply*
 
 Funciona de maneira semelhante ao _lapply_ mas tentando simplificar a saída. Veja que no exemplo abaixo a saída é um vetor numérico.
@@ -83,7 +90,7 @@ class(lista.3.vec);is.list(lista.3.vec);is.vector(lista.3.vec)
 lista.3.vec
 ```
 
-Criando um função para testar se a `lista.4`é _numéric_ e _integer_. 
+Criando um função para testar se a `lista.4` é _numeric_ e _integer_. 
 
 ```{r lista.4, echo=T}
 lista.4 <- list( runif(10), runif(15), rnorm(1000))
@@ -135,7 +142,7 @@ descr.vec <- function(x){
 ```
 
 
- Temos aqui a função [`do.call`](https://www.stat.berkeley.edu/~s133/Docall.html) que permite aplicar uma função a toda uma lista.    
+Temos aqui a função [`do.call`](https://www.stat.berkeley.edu/~s133/Docall.html) que permite aplicar uma função a toda uma lista.    
  
 ```{r tapply3, echo=F}
 
@@ -199,4 +206,12 @@ print(apply(X = minha.matriz, MARGIN = 1, FUN = max))
 print(apply( X = minha.matriz, MARGIN = 2, FUN = max))
 ```
 
+### Leituras complementares
 
+[Tutorial on the R Apply Family](https://www.datacamp.com/community/tutorials/r-tutorial-apply-family)    
+
+[Apply Family](http://uc-r.github.io/apply_family)    
+
+[apply family in r apply(), lapply(), sapply(), mapply() and tapply()](https://www.r-bloggers.com/2021/05/apply-family-in-r-apply-lapply-sapply-mapply-and-tapply/)    
+
+[The Apply Family of Functions in R](https://www.analyticssteps.com/blogs/apply-family-functions-r)    
