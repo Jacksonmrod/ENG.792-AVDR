@@ -1,3 +1,4 @@
+tab:wd
 apresentação
 hello-world---sejam-bem-vindos
 sobre
@@ -150,6 +151,21 @@ tapply
 mapply
 apply
 leituras-complementares-1
+análise-multivariada
+cluster-analysis-análise-de-agrupamento
+primeiro-passo---importando-e-analisando-nossos-dados
+métodos-de-medida-de-dissimilaridadesemelhançadistância
+métodos-de-linkagem
+escolha-do-método-de-linkagem
+distância-cofenética
+distância-de-gower
+quantos-grupos-reter
+gráfico-de-valores-de-fusão-de-níveis
+comparando-dois-agrupamentos
+comparando-agrupamentos-flexíveis
+cluster-não-hierárquico
+k-means
+leitura-complementar
 url-your-book-url-like-httpsbookdown.orgyihuibookdown
 subtítulo-2x-menor
 subsubtítulo-3x-menor

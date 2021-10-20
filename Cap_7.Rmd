@@ -214,4 +214,5 @@ print(apply( X = minha.matriz, MARGIN = 2, FUN = max))
 
 [apply family in r apply(), lapply(), sapply(), mapply() and tapply()](https://www.r-bloggers.com/2021/05/apply-family-in-r-apply-lapply-sapply-mapply-and-tapply/)    
 
-[The Apply Family of Functions in R](https://www.analyticssteps.com/blogs/apply-family-functions-r)    
+[The Apply Family of Functions in R](https://www.analyticssteps.com/blogs/apply-family-functions-r)   
+

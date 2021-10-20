@@ -24,7 +24,7 @@
 <meta name="author" content="Jackson Rodrigues" />
 
 
-<meta name="date" content="2021-10-10" />
+<meta name="date" content="2021-10-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -326,6 +326,15 @@ div.csl-indent {
 <li class="chapter" data-level="8.1.4" data-path="outra-maneira-de-fazer-loop.html"><a href="outra-maneira-de-fazer-loop.html#mapply"><i class="fa fa-check"></i><b>8.1.4</b> <em>mapply</em></a></li>
 <li class="chapter" data-level="8.1.5" data-path="outra-maneira-de-fazer-loop.html"><a href="outra-maneira-de-fazer-loop.html#apply"><i class="fa fa-check"></i><b>8.1.5</b> <em>apply</em></a></li>
 <li class="chapter" data-level="8.1.6" data-path="outra-maneira-de-fazer-loop.html"><a href="outra-maneira-de-fazer-loop.html#leituras-complementares-1"><i class="fa fa-check"></i><b>8.1.6</b> Leituras complementares</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="análise-multivariada.html"><a href="análise-multivariada.html"><i class="fa fa-check"></i><b>9</b> Análise multivariada</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="análise-multivariada.html"><a href="análise-multivariada.html#cluster-analysis-análise-de-agrupamento"><i class="fa fa-check"></i><b>9.1</b> <strong><em>Cluster Analysis (Análise de Agrupamento)</em></strong></a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="análise-multivariada.html"><a href="análise-multivariada.html#primeiro-passo---importando-e-analisando-nossos-dados"><i class="fa fa-check"></i><b>9.1.1</b> Primeiro Passo - Importando e analisando nossos dados</a></li>
+<li class="chapter" data-level="9.1.2" data-path="análise-multivariada.html"><a href="análise-multivariada.html#quantos-grupos-reter"><i class="fa fa-check"></i><b>9.1.2</b> <strong><em>Quantos grupos reter</em></strong></a></li>
+<li class="chapter" data-level="9.1.3" data-path="análise-multivariada.html"><a href="análise-multivariada.html#cluster-não-hierárquico"><i class="fa fa-check"></i><b>9.1.3</b> Cluster não hierárquico</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -845,8 +854,8 @@ Objeto que permite combinar diferentes estruturtas de dados num único objeto
 <p><em><em>seq(from = 1, to = 1, by = ((to - from)/(length.out - 1)),length.out = NULL, along.with = NULL, …)</em></em></p>
 <div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="vamos-ao-que-interesa.html#cb53-1" aria-hidden="true" tabindex="-1"></a>g<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="fl">0.5</span>) <span class="co"># O objeto &quot;g&quot; recebe a sequência de 0 até 10 a cada 0.5</span></span>
 <span id="cb53-2"><a href="vamos-ao-que-interesa.html#cb53-2" aria-hidden="true" tabindex="-1"></a>g</span></code></pre></div>
-<pre><code>##  [1]  0.0  0.5  1.0  1.5  2.0  2.5  3.0  3.5  4.0  4.5  5.0  5.5  6.0  6.5
-## [15]  7.0  7.5  8.0  8.5  9.0  9.5 10.0</code></pre>
+<pre><code>##  [1]  0.0  0.5  1.0  1.5  2.0  2.5  3.0  3.5  4.0  4.5  5.0  5.5  6.0
+## [14]  6.5  7.0  7.5  8.0  8.5  9.0  9.5 10.0</code></pre>
 <div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="vamos-ao-que-interesa.html#cb55-1" aria-hidden="true" tabindex="-1"></a>h<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="at">from=</span><span class="dv">10</span>,<span class="at">to=</span><span class="dv">20</span>,<span class="at">length.out=</span><span class="dv">50</span>) <span class="co"># O objeto &quot;h&quot; recebe a sequência de 0 até 10 que é do compriumento 50, ou seja, há 50 número de 10 até 20</span></span>
 <span id="cb55-2"><a href="vamos-ao-que-interesa.html#cb55-2" aria-hidden="true" tabindex="-1"></a>h</span></code></pre></div>
 <pre><code>##  [1] 10.00000 10.20408 10.40816 10.61224 10.81633 11.02041 11.22449
@@ -1879,7 +1888,7 @@ As listas são construídas utilizando o comando <em>list()</em>.</p>
 ##  Two Sample t-test
 ## 
 ## data:  s and t
-## t = -12.758, df = 58, p-value &lt; 0.00000000000000022
+## t = -12.758, df = 58, p-value &lt; 2.2e-16
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
 ##  -33.54996 -24.45004

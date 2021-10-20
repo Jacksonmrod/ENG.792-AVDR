@@ -1,0 +1,784 @@
+# Análise multivariada
+
+## ***Cluster Analysis (Análise de Agrupamento)***
+
+Assista este conteúdo em **Cap_8_Cluster Analysis** no [PVANet](https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php)
+
+Análise de cluster ou agrupamento, como o próprio nome sugere, é uma análise exploratória que consiste em buscar padrões ou estruturas que descrevam um banco de dados para que possam ser agrupados(separados) baseados em sua similaridade(dissimilaridade) ou distância.    
+A partir deste agrupamento realizado poderemos ter uma compreensão um pouco melhor dos nossos dados para então interpretá-los de maneira mais satisfatória.    
+
+É importante salientar que a análise cluster tal qual outras análises exploratórias não são testes estatísticos definitivos que te darão a resposta final sobre alguma coisa. Estes são métodos exploratórios de análise que contribuem com nossa compreensão facilitando nossas análises. 
+
+Contudo, para alcançar uma melhor compreensão dos dados temos que dar alguns passos importantes tomando decisões igualmente importantes como:
+
+* Devemos padronizar nossos dados?    
+* Qual método de (dis)similaridade utilizar?    
+* Qual método de agrupamento utilizar?    
+* Quantos grupos reter?    
+
+Para compreender um pouco mais deixo logo no início esta seleção de trabalhos sobre [_cluster analysis_](https://www.sciencedirect.com/topics/medicine-and-dentistry/cluster-analysis) que vale a pena ser estudada.
+
+Um dos melhores guias para análise de cluster e multivariada em geral no **R** é o material [Numerical Ecology with R](http://adn.biol.umontreal.ca/~numericalecology/numecolR/), por isso vamos seguir os passos sugeridos pelos autores.
+
+Em @Borcard2018 os autores listam alguns métodos de agrupamento que dependem das decisões acima mencioadas.   
+
+1 - **Sequencial ou algoritmos simultâneos** - Ocorre a repetição de procedimentos até que todos os objetos encontrem seus grupos.    
+2 - **Aglomerativo ou Divisivo** - Aglomerativos agrupa objetos incialmente separados enquando os Divisivos separam os objetos que inicialmente estão todos juntos.     
+3 - **Monotético ou Politético** - São procedimentos relacionados ao método divisivo que utiliza um único descritor (monotético), o melhor encontrado, para particionar os grupos enqquanto o politético utiliza todos os descritores.     
+4 - **Hierárquico e não Hierárquico** - No primeiro, o membros de um _ranking_ inferior se tornam membros de um gruposd maior enquanto no segundo é produzido apenas uma única partição sem qualquer hierarquia.    
+5 - **Probailístico e não Probabilístico** - O probailístico baseia-se na definição dos grupos de maneira que dentro do grupo (entre seus objetos) tenham uma dada probabilidade  de serem homogêneos.    
+6 - **Restrito e não restrito** - Não restrito baseia-se na existência de 2 matrizes sendo: 1 - que será agrupada e 2 - com variáveis exploratórias que guiarão o procedimento da matriz 1.    
+
+### Primeiro Passo - Importando e analisando nossos dados
+
+```{r wd, echo=T}
+setwd("J:\\ENG 792\\ENG_792-AVDR\\ENG.792-AVDR")
+
+library(vegan)
+library(factoextra)
+library(gclus)
+
+camp.bras19<-read.csv("Brasileiro_2019_Completo.csv", sep=";", 
+                      header=T, row.names = 2)
+
+library(magrittr) 
+
+urls<-c("www.ogol.com.br")
+linkID<-c("O Gol")
+camp.bras19 %>% 
+    knitr::kable(caption = paste("Fonte: [",linkID,"](https://",urls,")"))
+```
+\tiny P = Pontos;V = Vitórias;	E = Empates;	D = Derrotas; GP = Gols Pró;	GC = Gols Sofridos; AG = Gols Contra;	SG = Saldo de Gols; GTIT = Gols como Titular; GSUP = Gols como Reserva; V3 = Vitórias por 3 ou mais Gols; VC = Vitórias em casa;	EC = Empates em casa;	DC	= Derrotas em casa; VF = Vitórias Fora;	EF = Empates Fora;	DF = Derrotas Fora;	MPG = Min. para marcar 1 gol; GPC = Gols Pró em Casa;	GCC	= Gols Sofridos Fora; GPF = Gols Pró Fora;	GCF =	Gols Sofridos Fora; RVV = Viradas;	A = Amarelos; X2A = Segundos Amarelos;	VE = Vermelhos;	VCS = Máx. Vitórias Consecutivas;	ECS = Máx. Empates Consecutivos;	DCS = Máx Derrotas Consecutivas;	JSSP = Máx. Jogos seguidos sem Perder;	JSP = Jogos sem Perder; JSG = Jogos sem Ganhar;	GS = Gols Sofridos;	GS.1.15 = GS min 1 a 15; 	GS.16.30 = GS min 16 a 30;	GS.31.45 = GS min 31 a 45;	GS.46.60 = GS min 46 a 60;	GS.61.75 = GS min 61 a 75;	GS.76.90 = GS min 76 a 90;	GS.90 = GS min 90+;	GP.1.15 = GP min 1 a 15;	GP.16.30 = GP min 16 a 30;	GP.31.45 = GP min 31 a 45;	GP.46.60 = GP min 46 a 60;	GP.61.75 = GP min 61 a 75;	GP.76.90 = GP min 76 a 90;	GP.90 = GP min 90+; PEN = Gols de Pênalti;	PENF = Pênaltis Falhados;	PEND = Pênaltis Defendidos
+
+\normalsize
+Ao analisar a tabela do Campeonato Brasileiro de 2019 identificamos algumas demandas antes de iniciarmos nossa análise. Inicialmente, deveremos fazer um tipo de "balanceamento" das informações, isto porque temos "variáveis" com valores muito altos e outras muito baixas (ex. Pontos e Saldo de Gols), além de escalas de grandeza diferentes (ex. Aproveitamento que está em %).    
+
+O próximo passo é saber se devemos normalizar nossos dados. Quando mencionamos "normalizar" estamos nos referindo a transformar nossos dados de modo que ele fiquem dentro de uma mesma escala de grandeza.
+Este passo é importante para balancear os pesos das variáveis , pois valores altos ou baixos demais podem influenciar na confecção de nossas análises. Desta forma, o objetivo principal das transformações é obter uma distribuição simétrica, que é a ideal, pois os valores estão igualmente distribuídos em torno da tendência central dos dados @Yamamoto2020.
+
+Quando não fazemos esse "balanceamento" estamos correndo o risco de ter resultados fortemente influenciados pelos valores mais altos reduzindo desproporcionalmente a importância de outras de valores baixos que podem ser fundamentais para descrever o comportamento dos dados. 
+
+O método mais comum utilizado para standatizar nossos dados consiste em transformar nossa média em 0 (*zero*) e variar o desvio padrão em torno desta média.    
+
+A transformação mais comum que observamos é a `padronização` por meio do cálculo do resíduo que transforma nossos dados em novos dados com média 0 e desvio padrão igual a 1.  No R utilize a função `scale()`.
+
+$z_{score} = \frac{x_{i}-\bar{x}}{\sigma_{x}}$
+
+No **R** esta transformação é feita com comando `scale()`.
+Vamos então "***estandartizar***" nossos dados para trazê-los todos para mesmo formato, espectro de variação, todos serão transformados em ***z score***.    
+Não confunda [***estandartizar*** com ***normalizar***](https://www.sisense.com/glossary/data-standardization/).    
+
+
+Podemos também fazer a transformação logarítmica que tem po objetivo a obtenção de uma distribuição normal. No R utilize a função `log()`.
+
+$y=ln(x)$
+
+Transformada Gaussiana gera sempre um histograma normal com média zero e desvio padrão  igual a um, qualquer que seja o histograma dos dados originais.
+
+$P(Y(u)\le{y})=G(y)$
+***G*** é a distribuição acumulada Gaussiana.
+
+Transformação de Hellinger é útil para abundância de espécies atribuindo valores baixos para espécies com contagens baixas e muitos zeros. Esta consiste baiscamente em calcular a raiz quadrada da divisão de cada valor da matriz de dados pela soma de sua respectiva linha.
+Diferentes pacotes no R fazem essa transformação.
+
+$y^{\prime}_{ij} = \sqrt{\frac{y_{ij}}{y_{i.}}}$
+
+Uma outra transformação baste utilizada é a aplicação da raiz quadrada. Reduz a amplitude dos dados comprimindo os valores grandes em menores. Útil para transformações de variáveis com proporção pequena de grandes valores se destacando da distribuição geral. No R utiliza-se `sqrt()`.
+
+```{r scale, echo=T}
+destino<-camp.bras19[,55] 
+camp.bras19.stan<-scale(camp.bras19[,2:54])
+
+library(magrittr) 
+
+camp.bras19.stan %>% 
+    knitr::kable()
+```
+
+Vamos remover as colunas com _NAN_.
+
+```{r subset, echo=T}
+camp.bras19.stan<-camp.bras19.stan[ , -which(colnames(camp.bras19.stan) %in% c("GS.91.105","GS.106.120","GS.120","GM.91.105","GM.106.120","GM.120"))]
+# Devem haver outras formas de fazer
+camp.bras19.stan %>% 
+    knitr::kable()
+```
+
+O próximo passo é calcular a matriz distância ou (dis)similaridade entre os objetos. Nós queremos saber o qunato odesempenho de cada time se assemelha ou diferencia de qualquer outro time.   
+
+Existem muitos métodos de calcular as distância entre os objetos. Neste [artigo](https://www.datanovia.com/en/lessons/clustering-distance-measures/) ou neste [livro](https://xsliulab.github.io/Workshop/week10/r-cluster-book.pdf) @Kassambaracluster2017 [Alboukadel](https://github.com/kassambara) [Kassambara](http://www.alboukadel.com/), quem já produziu importantes materiais sobre Análise Multivariada, discute os principais métodos ou os mais comuns.   
+
+Você deve ter uma ideia de como seus dados se comportam, se são presença ausência, linearmente relacionados ou possuem outra relação. POr isso é importante conhecer bem seus dados. 
+
+Temos uma lista de pacotes e, obviamente, comandos para computar as ditâncias. Veja Executando os comandos abaixo e veja em cada um a lista de métodos de cálculos disponíveis.
+
+#### ***Métodos de medida de (dis)similaridade/semelhança/distância***
+
+Mas uma pergunta importante é:  ***Qual o melhor índice?***
+ 
+Esta resposta depende de algumas informações.    
+ 1. Você vai fazer comparações entre amostras ou entre descritores?     
+ 2. Como são seus dados (binários (presença-ausência), abundância,  contínuos, ordianis e etc)?     
+ 3. Sua tabela é homogênea ou heterogênea?     
+ 
+Existem índices mais adequados que outros para cada tipo de dado. para saber mais detalhes sobre a escolha do índice leia @valentin1995agrupamento, @albuquerque2016comparaccao, @Gower2018, @Borcard2018 e tanto outros que encontrarem.
+
+    ?dist # Do pacote stats
+    ?vegan::vegdist # Do pacote vegan
+    ?analogue::distance # Do pacote analogue
+?factorextra::get_dist # Do pacote factorextra
+
+No nosso caso eu vou utilizar a distância euclidiana do pactote `vegan`, pois temos apenas dados numéricos e há certa linearidade entre os dados. Caso o resultado fique "estranho" poderei voltar e testar outros métodos.   
+
+Vejam que o pacote `vegan`oferece diferentes ,étodos de ***standardização***.
+
+    ?vegan::decostand
+
+Com o *heatmap* abaixo temos uma ideia da semelhança do desempenho entre os clubes. Quando temos o valor 0 (*zero*) temos que desempenhos idênticos e quanto maior a diferença entre os times maior será o número (distância).   
+Ainda assim fica difícil comparar todos os clubes de um só vez. Por isto, vamos focar em construir um dendograma ou agrupar nossos times.
+
+```{r dist.eucl, echo=T}
+camp.bras19.stan.ch <- vegdist(camp.bras19.stan, "euc")
+fviz_dist(camp.bras19.stan.ch)
+```
+
+#### ***Métodos de "linkagem"***   
+
+No entanto, o agrupamento a ser produzido também depende de algumas decisões a serem tomadas. Como vamos juntar os times? Vamos utilizar juntar aqueles com menor distância até que todos estejam agrupados (***Single Linkage***)? Vamos utlizar a maior (***Complete Linkage***)? Vamos utilizar a distância média aritmética (***UPGMA*** ou ***WPGMA***) ou centroid (***UPGMC*** ou  ***WPGMC***)? Vamos utilizar a mínima variância (***ward*** ou ***ward.D2***)?   
+
+Por isso temos diferentes métods de ***linkagem**
+
+
+***Single e Complete***
+
+```{r Sing.Compl, echo=T}
+par(mfrow=c(1,2))
+camp.bras19.stan.ch.single <- hclust(camp.bras19.stan.ch, method="single")
+summary(camp.bras19.stan.ch.single)
+plot(camp.bras19.stan.ch.single, main = "Single-linkage")
+rect.hclust(camp.bras19.stan.ch.single,k = 4)
+
+camp.bras19.stan.ch.complete <- hclust(camp.bras19.stan.ch, method="complete")
+summary(camp.bras19.stan.ch.complete)
+plot(camp.bras19.stan.ch.complete, main = "Complete-linkage")
+rect.hclust(camp.bras19.stan.ch.complete,k = 4)
+```
+
+***Distância Média***
+  
+```{r dist.media, echo=T}
+par(mfrow=c(1,2))
+camp.bras19.stan.ch.UPGMA.average <- hclust(camp.bras19.stan.ch, method="average")
+summary(camp.bras19.stan.ch.UPGMA.average)
+plot(camp.bras19.stan.ch.UPGMA.average, main = "UPGMA-linkage")
+rect.hclust(camp.bras19.stan.ch.UPGMA.average,k = 4)
+
+camp.bras19.stan.ch.UPGMA.centroid <- hclust(camp.bras19.stan.ch, method="centroid")
+summary(camp.bras19.stan.ch.UPGMA.centroid)
+plot(camp.bras19.stan.ch.UPGMA.centroid, main = "UPGMA-centroid")
+rect.hclust(camp.bras19.stan.ch.UPGMA.centroid,k = 4)
+
+par(mfrow=c(1,2))
+camp.bras19.stan.ch.WPGMA.median <- hclust(camp.bras19.stan.ch, method="median")
+summary(camp.bras19.stan.ch.WPGMA.median)
+plot(camp.bras19.stan.ch.WPGMA.median, main = "WPGMA-median")
+rect.hclust(camp.bras19.stan.ch.WPGMA.median,k = 4)
+
+camp.bras19.stan.ch.WPGMA.mcquitty <- hclust(camp.bras19.stan.ch, method="mcquitty")
+summary(camp.bras19.stan.ch.WPGMA.mcquitty)
+plot(camp.bras19.stan.ch.WPGMA.mcquitty, main = "WPGMA-mcquitty")
+rect.hclust(camp.bras19.stan.ch.WPGMA.mcquitty,k = 4)
+```
+
+***Mínima Variância***
+
+```{r mín.var, echo=T}
+par(mfrow=c(1,2))
+camp.bras19.stan.ch.ward <- hclust(camp.bras19.stan.ch, method="ward.D")
+summary(camp.bras19.stan.ch.ward)
+plot(camp.bras19.stan.ch.ward, main="Ward.D", cex=0.6)
+rect.hclust(camp.bras19.stan.ch.ward,k = 5)
+
+camp.bras19.stan.ch.ward2 <- hclust(camp.bras19.stan.ch, method="ward.D2")
+summary(camp.bras19.stan.ch.ward2)
+plot(camp.bras19.stan.ch.ward2, main="Ward.D2", cex=0.6)
+rect.hclust(camp.bras19.stan.ch.ward2,k = 5)
+```
+
+#### ***Escolha do método de "linkagem"***
+
+##### Distância Cofenética
+
+Diante de tantos métodos fica difícil e até meio incomodo decidir qual métodos de "*linkagem*" utilizar baseando-se apenas na intuição (embora não deva ser descartada).    
+Podemos utilizar alguns métodos para nos auxiliar na decisão de qual *link* utilizar como a distância cofenética.
+
+**A distância cofenética entre dois objetos em um dendrograma é a distância em que os dois objetos se tornam membros do mesmo grupo. Localize dois objetos quaisquer, comece de um e “suba na árvore” até o primeiro nó que leva ao segundo objeto: o nível desse nó ao longo da escala de distância é a distância cofenética entre os dois objetos. Uma matriz cofenética é uma matriz que representa as distâncias cofenéticas entre todos os pares de objetos. Uma correlação r de Pearson, chamada de correlação cofenética neste contexto, pode ser calculada entre a matriz de dissimilaridade original e a matriz cofenética. O método com maior correlação cofenética pode ser visto como aquele que produz o modelo de agrupamento que retém a maior parte das informações contidas na matriz de dissimilaridade. Isso não significa necessariamente, no entanto, que esse modelo de agrupamento seja o mais adequado para o objetivo do pesquisador.** @Borcard2018
+
+Leia mais em [Comparison of hierarchical cluster analysis methods by cophenetic correlation](https://journalofinequalitiesandapplications.springeropen.com/track/pdf/10.1186/1029-242X-2013-203.pdf) 
+
+
+```{r dist.cophe, echot=T}
+# Cophenetic correlations e Shepard-like diagrams
+par(mfrow = c(1,2 ))
+camp.bras19.stan.ch.single.coph <- cophenetic(camp.bras19.stan.ch.single)
+cor(camp.bras19.stan.ch, camp.bras19.stan.ch.single.coph)
+plot(camp.bras19.stan.ch,camp.bras19.stan.ch.single.coph, xlab = "Distância Euclidiana", 
+     ylab = "distância cofenética", asp = 1, xlim = c(0, 21), 
+     ylim = c(0, 10), main = c("Single linkage", paste("correlação cofenética =", 
+                                                       round(cor(camp.bras19.stan.ch, camp.bras19.stan.ch.single.coph),3))))
+abline(0, 1)
+lines(lowess(camp.bras19.stan.ch, camp.bras19.stan.ch.single.coph), col = "red")
+
+camp.bras19.stan.ch.comp.coph <- cophenetic(camp.bras19.stan.ch.complete)
+cor(camp.bras19.stan.ch, camp.bras19.stan.ch.comp.coph)
+plot(camp.bras19.stan.ch,camp.bras19.stan.ch.comp.coph, xlab = "Distância Euclidiana", 
+     ylab = "distância cofenética", asp = 1, xlim = c(0, 21), 
+     ylim = c(0, 25), main = c("Complete linkage", paste("correlação cofenética =", 
+                                                         round(cor(camp.bras19.stan.ch, camp.bras19.stan.ch.comp.coph),3))))
+abline(0, 1)
+lines(lowess(camp.bras19.stan.ch, camp.bras19.stan.ch.comp.coph), col = "red")
+
+camp.bras19.stan.ch.UPGMA.average.coph <- cophenetic(camp.bras19.stan.ch.UPGMA.average)
+cor(camp.bras19.stan.ch, camp.bras19.stan.ch.UPGMA.average.coph)
+plot(camp.bras19.stan.ch,camp.bras19.stan.ch.UPGMA.average.coph, xlab = "Distância Euclidiana", 
+     ylab = "distância cofenética", asp = 1, xlim = c(0, 21), 
+     ylim = c(0, 20), main = c("UPGMA Average", paste("correlação cofenética =", 
+                                                      round(cor(camp.bras19.stan.ch, camp.bras19.stan.ch.UPGMA.average.coph),3))))
+abline(0, 1)
+lines(lowess(camp.bras19.stan.ch, camp.bras19.stan.ch.UPGMA.average.coph), col = "red")
+
+camp.bras19.stan.ch.UPGMA.centroid.coph <- cophenetic(camp.bras19.stan.ch.UPGMA.centroid)
+cor(camp.bras19.stan.ch, camp.bras19.stan.ch.UPGMA.centroid.coph)
+plot(camp.bras19.stan.ch,camp.bras19.stan.ch.UPGMA.centroid.coph, xlab = "Distância Euclidiana", 
+     ylab = "distância cofenética", asp = 1, xlim = c(0, 21), 
+     ylim = c(0, 10), main = c("UPGMA centroid", paste("correlação cofenética =", 
+                                                       round(cor(camp.bras19.stan.ch, camp.bras19.stan.ch.UPGMA.centroid.coph),3))))
+abline(0, 1)
+lines(lowess(camp.bras19.stan.ch, camp.bras19.stan.ch.UPGMA.centroid.coph), col = "red")
+
+camp.bras19.stan.ch.WPGMA.median.coph <- cophenetic(camp.bras19.stan.ch.WPGMA.median)
+cor(camp.bras19.stan.ch, camp.bras19.stan.ch.WPGMA.median.coph)
+plot(camp.bras19.stan.ch,camp.bras19.stan.ch.WPGMA.median.coph, xlab = "Distância Euclidiana", 
+     ylab = "distância cofenética", asp = 1, xlim = c(0, 21), 
+     ylim = c(0, 10), main = c("WPGMA median", paste("correlação cofenética =", 
+                                                     round(cor(camp.bras19.stan.ch, camp.bras19.stan.ch.WPGMA.median.coph),3))))
+abline(0, 1)
+lines(lowess(camp.bras19.stan.ch, camp.bras19.stan.ch.WPGMA.median.coph), col = "red")
+
+camp.bras19.stan.ch.WPGMA.mcquitty.coph <- cophenetic(camp.bras19.stan.ch.WPGMA.mcquitty)
+cor(camp.bras19.stan.ch, camp.bras19.stan.ch.WPGMA.mcquitty.coph)
+plot(camp.bras19.stan.ch,camp.bras19.stan.ch.WPGMA.mcquitty.coph, xlab = "Distância Euclidiana", 
+     ylab = "distância cofenética", asp = 1, xlim = c(0, 21), 
+     ylim = c(0, 20), main = c("WPGMA mcquitty", paste("correlação cofenética =", 
+                                                       round(cor(camp.bras19.stan.ch, camp.bras19.stan.ch.WPGMA.mcquitty.coph),3))))
+abline(0, 1)
+lines(lowess(camp.bras19.stan.ch, camp.bras19.stan.ch.WPGMA.mcquitty.coph), col = "red")
+
+camp.bras19.stan.ch.ward.coph <- cophenetic(camp.bras19.stan.ch.ward)
+cor(camp.bras19.stan.ch, camp.bras19.stan.ch.ward.coph)
+plot(camp.bras19.stan.ch,camp.bras19.stan.ch.ward.coph, xlab = "Distância Euclidiana", 
+     ylab = "distância cofenética", asp = 1, xlim = c(0, 21), 
+     ylim = c(0, 35), main = c("Ward", paste("correlação cofenética =", 
+                                             round(cor(camp.bras19.stan.ch, camp.bras19.stan.ch.ward.coph),3))))
+abline(0, 1)
+lines(lowess(camp.bras19.stan.ch, camp.bras19.stan.ch.ward.coph), col = "red")
+
+camp.bras19.stan.ch.ward2.coph <- cophenetic(camp.bras19.stan.ch.ward2)
+cor(camp.bras19.stan.ch, camp.bras19.stan.ch.ward2.coph)
+cor(camp.bras19.stan.ch, camp.bras19.stan.ch.ward2.coph, method="spearman")
+plot(camp.bras19.stan.ch,camp.bras19.stan.ch.ward2.coph, xlab = "Distância Euclidiana", 
+     ylab = "distância cofenética", asp = 1, xlim = c(0, 21), 
+     ylim = c(0, 25), main = c("ward2", paste("correlação cofenética =", 
+                                              round(cor(camp.bras19.stan.ch, camp.bras19.stan.ch.ward2.coph),3))))
+abline(0, 1)
+lines(lowess(camp.bras19.stan.ch, camp.bras19.stan.ch.ward2.coph), col = "red")
+
+camp.bras19.stan.ch.ward2.coph <- cophenetic(camp.bras19.stan.ch.ward2)
+cor(camp.bras19.stan.ch, camp.bras19.stan.ch.ward2.coph)
+cor(camp.bras19.stan.ch, camp.bras19.stan.ch.ward2.coph, method="spearman")
+plot(camp.bras19.stan.ch,camp.bras19.stan.ch.ward2.coph, xlab = "Distância Euclidiana", 
+     ylab = "distância cofenética", asp = 1, xlim = c(0, 21), 
+     ylim = c(0, 25), main = c("ward2", paste("correlação cofenética =",
+                                              round(cor(camp.bras19.stan.ch, camp.bras19.stan.ch.ward2.coph, method="spearman"),3))))
+abline(0, 1)
+lines(lowess(camp.bras19.stan.ch, camp.bras19.stan.ch.ward2.coph), col = "red")
+```
+
+##### Distância de Gower
+
+*Outra estatística possível para a comparação dos resultados de agrupamento é a distância de Gower (1983), calculada como a soma das diferenças quadradas entre as dissimilaridades originais e as distâncias cofenéticas. O método de agrupamento que produz a menor distância de Gower pode ser visto como aquele que fornece o melhor modelo de agrupamento da matriz de dissimilaridade. A correlação cofenética e os critérios de distância de Gower nem sempre designam o mesmo resultado de agrupamento como o melhor.* @Borcard2018
+
+Atenção! Não confunda com medida de dissimilaridade de Gower disponível em ?vegan::vegdist.
+
+```{r gower, echo=T}
+# Gower (1983) distance
+gow.dist.single <- sum((camp.bras19.stan.ch-camp.bras19.stan.ch.single.coph)^2)
+gow.dist.comp <- sum((camp.bras19.stan.ch-camp.bras19.stan.ch.comp.coph)^2)
+gow.dist.UPGMA.average <- sum((camp.bras19.stan.ch-camp.bras19.stan.ch.UPGMA.average.coph)^2)
+gow.dist.UPGMA.centroid <- sum((camp.bras19.stan.ch-camp.bras19.stan.ch.UPGMA.centroid.coph)^2)
+gow.dist.WPGMA.median <- sum((camp.bras19.stan.ch-camp.bras19.stan.ch.WPGMA.median.coph)^2)
+gow.dist.WPGMA.mcquitty <- sum((camp.bras19.stan.ch-camp.bras19.stan.ch.WPGMA.mcquitty.coph)^2)
+gow.dist.ward <- sum((camp.bras19.stan.ch-camp.bras19.stan.ch.ward.coph)^2)
+gow.dist.ward2 <- sum((camp.bras19.stan.ch-camp.bras19.stan.ch.ward2.coph)^2)
+```
+
+Gower Distance para Single Linkage é `r gow.dist.single`.    
+Gower Distance para Complete Linkage é `r gow.dist.single`. 
+Gower Distance para UPGMA average é `r gow.dist.single`.    
+Gower Distance para UPGMA centroid é `r gow.dist.single`.    
+Gower Distance para WPGMA median é `r gow.dist.single`.    
+Gower Distance para WPGMA mcquitty é `r gow.dist.single`.    
+Gower Distance para Ward é `r gow.dist.single`.    
+Gower Distance para Ward 2 é `r gow.dist.single`.    
+
+
+### ***Quantos grupos reter***
+
+Uma vez definido o método de "*linkagen*" o próximo passo é definir quantos cluster vamos manter. Deve ser um número que permita uma interpretação clara.     
+No final das contas nós vamos tomar a decisão de onde cortar a nossa árvores, em qual altura. Podemos nos guiar por alguns procedimentos ou por uma inspeção visual
+
+#### Gráfico de valores de fusão de níveis
+
+O nível dos valores de fusões de um dendograma são a dissimilaridade onde a fusão entre 2 galhos ocorrem.
+
+```{r graf.fusao, echo=T}
+par(mfrow=c(2,2))
+
+plot(camp.bras19.stan.ch.single$height, nrow(camp.bras19):2, type="S", 
+     main="Fusion levels - euc \nSingle", 
+     ylab="k (number of clusters)", xlab="h (node height)", col="grey")
+text(camp.bras19.stan.ch.single$height, nrow(camp.bras19):2, nrow(camp.bras19):2, 
+     col="red", cex=0.8)
+
+plot(camp.bras19.stan.ch.complete$height, nrow(camp.bras19):2, type="S", 
+     main="Fusion levels - euc \nComplete", 
+     ylab="k (number of clusters)", xlab="h (node height)", col="grey")
+text(camp.bras19.stan.ch.complete$height, nrow(camp.bras19):2, nrow(camp.bras19):2, 
+     col="red", cex=0.8)
+
+plot(camp.bras19.stan.ch.UPGMA.average$height, nrow(camp.bras19):2, type="S", 
+     main="Fusion levels - euc \nUPGMA.average", 
+     ylab="k (number of clusters)", xlab="h (node height)", col="grey")
+text(camp.bras19.stan.ch.UPGMA.average$height, nrow(camp.bras19):2, 
+     nrow(camp.bras19):2, col="red", cex=0.8)
+
+plot(camp.bras19.stan.ch.UPGMA.centroid$height, nrow(camp.bras19):2, type="S", 
+     main="Fusion levels - euc \nUPGMA.centroid", 
+     ylab="k (number of clusters)", xlab="h (node height)", col="grey")
+text(camp.bras19.stan.ch.UPGMA.centroid$height, nrow(camp.bras19):2, 
+     nrow(camp.bras19):2, col="red", cex=0.8)
+
+plot(camp.bras19.stan.ch.WPGMA.median$height, nrow(camp.bras19):2, type="S", 
+     main="Fusion levels - euc \nWPGMA.median", 
+     ylab="k (number of clusters)", xlab="h (node height)", col="grey")
+text(camp.bras19.stan.ch.WPGMA.median$height, nrow(camp.bras19):2, 
+     nrow(camp.bras19):2, col="red", cex=0.8)
+
+plot(camp.bras19.stan.ch.WPGMA.mcquitty$height, nrow(camp.bras19):2, type="S", 
+     main="Fusion levels - euc \nWPGMA.mcquitty", 
+     ylab="k (number of clusters)", xlab="h (node height)", col="grey")
+text(camp.bras19.stan.ch.WPGMA.mcquitty$height, nrow(camp.bras19):2, 
+     nrow(camp.bras19):2, col="red", cex=0.8)
+
+plot(camp.bras19.stan.ch.ward$height, nrow(camp.bras19):2, type="S", 
+     main="Fusion levels - euc \nWard", 
+     ylab="k (number of clusters)", xlab="h (node height)", col="grey")
+text(camp.bras19.stan.ch.ward$height, nrow(camp.bras19):2, 
+     nrow(camp.bras19):2, col="red", cex=0.8)
+
+plot(camp.bras19.stan.ch.ward2$height, nrow(camp.bras19):2, type="S", 
+     main="Fusion levels - euc - Ward2", 
+     ylab="k (number of clusters)", xlab="h (node height)", col="grey")
+text(camp.bras19.stan.ch.ward2$height, nrow(camp.bras19):2, 
+     nrow(camp.bras19):2, col="red", cex=0.8)
+```
+
+```{r cut.dendo, echo=T} 
+k <- 4
+camp.bras2019.bc.single.g <- cutree(camp.bras19.stan.ch.single   , k)
+camp.bras2019.bc.complete.g <- cutree(camp.bras19.stan.ch.complete, k)
+camp.bras2019.bc.UPGMA.average.g <- cutree(camp.bras19.stan.ch.UPGMA.average, k)
+camp.bras2019.bc.UPGMA.centroid.g <- cutree(camp.bras19.stan.ch.UPGMA.centroid, k)
+camp.bras2019.bc.WPGMA.median.g <- cutree(camp.bras19.stan.ch.WPGMA.median, k)
+camp.bras2019.bc.WPGMA.mcquitty.g <- cutree(camp.bras19.stan.ch.WPGMA.mcquitty, k)
+camp.bras2019.bc.ward.g <- cutree(camp.bras19.stan.ch.ward, k)
+camp.bras2019.bc.ward2.g <- cutree(camp.bras19.stan.ch.ward2, k)
+
+camp.bras2019.bc<-cbind(camp.bras2019.bc.single.g,camp.bras2019.bc.complete.g,
+                        camp.bras2019.bc.UPGMA.average.g,camp.bras2019.bc.UPGMA.centroid.g,
+                        camp.bras2019.bc.WPGMA.median.g,camp.bras2019.bc.WPGMA.mcquitty.g,
+                        camp.bras2019.bc.ward.g,camp.bras2019.bc.ward2.g )
+
+colnames(camp.bras2019.bc)<-c("Single","Complete","UPGMA.Ave","UPGMA.Cent","WPGMA.medi","WPGMA.mcq","Ward","Ward2")
+camp.bras2019.bc %>% 
+    knitr::kable()
+```
+
+
+```{r }
+asw <- numeric(nrow(camp.bras19.stan))
+
+for (k in 2:(nrow(camp.bras19.stan)-1)) {
+  sil <- silhouette(cutree(camp.bras19.stan.ch.ward, k=k), camp.bras19.stan.ch)
+  asw[k] <- summary(sil)$avg.width
+}
+k.best <- which.max(asw)
+
+plot(1:nrow(camp.bras19.stan), asw, type="h", 
+     main="Número ótimo de cluster de acordo com Silhouette e Ward", 
+     xlab="k (número de grupos)", ylab="Silhouette width média")
+axis(1, k.best, paste("optimum",k.best,sep="\n"), col="red", font=2,
+     col.axis="red")
+points(k.best, max(asw), pch=16, col="red", cex=1.5)
+cat("", "Número ótimo de cluster de acordo com Silhouette k =", k.best, "\n", 
+    "com Silhouette width média com", max(asw), "\n")
+```
+
+##### Comparando dois Agrupamentos
+
+Aqui vamos comparar dendogramas utilizando a função `tangelgram()` do pacote `dendextend`, pois estamos na dúvida sobre qual utilizar.
+ 
+```{r comparing2, echo=T} 
+# Objects of class "hclust" must be first converted into objects of
+# class "dendrogram"
+library(dendextend)
+class(camp.bras19.stan.ch.UPGMA.average) # [1] "hclust"
+dend1 <- as.dendrogram(camp.bras19.stan.ch.UPGMA.average)
+class(dend1) # [1] "dendrogram"
+dend2 <- as.dendrogram(camp.bras19.stan.ch.ward2)
+dend12 <- dendlist(dend1, dend2)
+tanglegram(
+untangle(dend12),
+sort = TRUE,
+common_subtrees_color_branches = TRUE,
+main_left = "Método Ward2",
+main_right = "Métodos UPGMA.average"
+)
+
+```
+
+#### Comparando agrupamentos flexíveis    
+
+@Borcard2018 traz um método proposto por Lance and Williams (1966, 1967) que compara todos os métodos apresentados até agora através da implementação da função `agnes()` do pacote `cluster`. 
+
+```{r agnes, echo=T}
+# Compute beta-flexible clustering using cluster::agnes()
+# beta = -0.1
+camp.bras19.stan.ch.beta1 <- agnes(camp.bras19.stan.ch, method = "flexible",
+                      par.method = 0.55)
+# beta = -0.25
+camp.bras19.stan.ch.beta2 <- agnes(camp.bras19.stan.ch, method = "flexible",
+                      par.method = 0.625)
+# beta = -0.5
+camp.bras19.stan.ch.beta3 <- agnes(camp.bras19.stan.ch, method = "flexible",
+                      par.method = 0.75)
+# Change the class of agnes objects
+class(camp.bras19.stan.ch.beta1)
+camp.bras19.stan.ch.beta1 <- as.hclust(camp.bras19.stan.ch.beta1)
+class(camp.bras19.stan.ch.beta1)
+camp.bras19.stan.ch.beta2 <- as.hclust(camp.bras19.stan.ch.beta2)
+camp.bras19.stan.ch.beta3 <- as.hclust(camp.bras19.stan.ch.beta3)
+
+par(mfrow=c(1,3))
+plot(camp.bras19.stan.ch.beta1, 
+     labels = rownames(camp.bras19), 
+     main = "Chord - Beta-flexible (beta=-0.1)")
+plot(camp.bras19.stan.ch.beta2, 
+     labels = rownames(camp.bras19), 
+     main = "Chord - Beta-flexible (beta=-0.25)")
+plot(camp.bras19.stan.ch.beta3, 
+     labels = rownames(camp.bras19), 
+     main = "Chord - Beta-flexible (beta=-0.5)")
+```
+
+
+```{r asw, echo=T}
+k <- 4
+cutg <- cutree(camp.bras19.stan.ch.ward2, k=k)
+sil <- silhouette(cutg, camp.bras19.stan.ch)
+rownames(sil) <- row.names(camp.bras19.stan.ch)
+plot(sil, main="Silhouette plot - euc - Ward", 
+     cex.names=0.8, col=2:(k+1), nmax=100)
+
+
+camp.bras2019.chwo<-reorder(camp.bras19.stan.ch.ward2, camp.bras19.stan.ch)
+
+plot(camp.bras2019.chwo, hang = -1,xlab = "2 grupos",sub = "",
+     ylab = "Height",main = "euc - Ward (reordered)",
+     labels = cutree(camp.bras2019.chwo, k = k)
+)
+```
+```{r final.dendo, echo=T}
+library(gclus)
+camp.bras19.chwo <- reorder.hclust(camp.bras19.stan.ch.ward2,
+                                   camp.bras19.stan.ch)
+# Plot reordered dendrogram with group labels
+plot(camp.bras19.chwo,hang = -1,xlab = "4 groupos",sub = "",
+     ylab = "Altura", main = "Euclidean - Ward2 (reordered)",
+     labels = cutree(camp.bras19.chwo, k = k))
+rect.hclust(camp.bras19.chwo, k = k)
+# Plot the final dendrogram with group colors (RGBCMY...)
+# Fast method using the additional hcoplot() function:
+source("J:/ENG 792/ENG_792-AVDR/hcoplot.R")
+hcoplot(camp.bras19.stan.ch.ward2, camp.bras19.stan.ch, lab = rownames(camp.bras19), k = 4)
+```
+
+```{r as.dendo, echo=T}
+dend <- as.dendrogram(camp.bras19.chwo)
+# Plot the dendrogram with coloured branches
+dend %>% set("branches_k_color", k = k) %>% plot
+# Use standard colours for clusters
+clusters <- cutree(dend, k)[order.dendrogram(dend)]
+dend %>%
+set("branches_k_color", k = k, value = unique(clusters) + 1) %>%
+plot
+# Add a coloured bar
+colored_bars(clusters + 1,
+y_shift = -0.5,
+rowLabels = paste(k, "clusters"))
+```
+
+```{r heatmap.dendo, echo=T}
+heatmap(as.matrix(camp.bras19.stan.ch),Rowv = dend,
+        symm = TRUE,margin = c(3, 3))
+```
+
+
+### Cluster não hierárquico
+
+No procedimento de construção de clusters não hierárquicos o número de grupos é inicialmente conhecido. Desta forma, vamos particionando nossos objetos até que todos estejam agrupados de acordo com suas semelhanças.
+
+##### K-means
+
+É o método unsipervised mais utilizado principalmente em machine learning. O *K* representa o número de grupos *a priori* definidos.
+No métodos de K-means cada cluster é representado por seu centro (centroid) que corresponde à média dos pontos definidos para o cluster.
+
+1. A primeira coisa que devemos estabelelcer é o número de clusters. 
+2. O algorítmo vai selecionar aleatoriamente k objetos da base de dados para servir como centros iniciais. 
+3. Os objetos são atribuídos ao seu centroid mais próximo. 
+4. Os centroid são recalculados a cada iteração. 
+5. Iterativamente minimiza o total da soma dos quadrados dentro dos grupos iterando os passos 3 e 4 até que as distribuições parem ou o máximo número de iterações pe alcançado.
+
+    kmeans(x, centers, iter.max = 10, nstart = 1)
+
+Identificando o melhor número de clusters.
+
+Vamos calcular o agrupamento *k-means* usando diferentes valores dos clusters k. Em seguida, o wss (soma dos quadrado dentro dos grupos) é calculado de acordo com o número de clusters. A localização da quebra no gráfico é geralmente considerada como um indicador do número apropriado de grupos.
+
+*K-means* é um dos procedimentos mais comuns na condução da análise de agrupamento, pois na maioria das vezes temos uma ideia de quantos grupos temos em nossos dados.
+
+```{r kmeans, echo=T}
+camp.bras19.stan.ch.kmeans<- kmeans(camp.bras19.stan.ch, centers = 4, nstart=100)
+camp.bras19.stan.ch.kmeans
+```
+
+```{r kmeans.factoextra, echo=T}
+#install.packages("factoextra")
+library(factoextra)
+library(NbClust) 
+#silhouette
+camp.bras19.standart<-decostand(camp.bras19[,2:54],method="standardize")
+
+camp.bras19.standart<-camp.bras19.standart[ , -which(colnames(camp.bras19.standart) %in% c("GS.91.105","GS.106.120","GS.120","GM.91.105","GM.106.120","GM.120"))]
+
+fviz_nbclust(camp.bras19.standart, kmeans, method = "wss") +
+  geom_vline(xintercept = 2, linetype = 2)
+
+#elbow
+fviz_nbclust(camp.bras19.standart, kmeans, method = "silhouette")+
+  labs(subtitle = "Silhouette method")
+
+camp.bras2019.kmeans <- kmeans(camp.bras19.standart, 4, nstart = 100)
+print(camp.bras2019.kmeans)
+
+camp.bras2019.clustered <- cbind(camp.bras19, cluster = camp.bras2019.kmeans$cluster)
+head(camp.bras2019.clustered)
+tail(camp.bras2019.clustered)
+
+aggregate(camp.bras19.standart,
+          by=list(cluster=camp.bras2019.kmeans$cluster), mean)
+dd <- cbind(camp.bras19.standart, cluster = camp.bras2019.kmeans$cluster)
+head(dd)
+camp.bras2019.kmeans$cluster
+head(camp.bras2019.kmeans$cluster, 4)
+
+row.names(camp.bras19.standart)<-NULL
+
+camp.bras2019.res <- kmeans(camp.bras19.standart, 4, nstart = 25)
+
+fviz_cluster(camp.bras2019.res, data = camp.bras19.standart,
+             palette = c("#2E9FDF", "#00AFBB", "#E7B800","#FF0000"),
+             ellipse.type = "euclid", # Concentration ellipse
+             star.plot = F, # Add segments from centroids to items
+             repel = TRUE, # Avoid label overplotting (slow)
+             ggtheme = theme_minimal()
+             )
+```
+
+Um método bastante interessante de fazer um cluster é com `eclust` que premite realizar vários procedimentos de uma só vez.  
+Ele permite a utilização de diferentes métodos de similaridade.
+
+```{r eclust, echo=T}
+df<-camp.bras19[,2:54]
+df<-df[ , -which(colnames(df) %in% c("GS.91.105","GS.106.120","GS.120","GM.91.105","GM.106.120","GM.120"))]
+
+rownames(df) <- NULL
+df <- scale(df)
+
+km.res <- eclust(df, "kmeans", k = 4, nstart = 25, graph = FALSE)
+
+fviz_cluster(km.res, geom = "point", ellipse.type = "norm",
+             palette = "jco", ggtheme = theme_minimal())
+
+hc.res <- eclust(df, "hclust", k = 4, hc_metric = "euclidean",
+                 hc_method = "ward.D2", graph = FALSE)
+fviz_dend(hc.res, show_labels = FALSE,palette = "jco", as.ggplot = TRUE)
+```
+
+```{r}
+#install.packages("NbClust")
+library(NbClust)
+data(iris)
+iris
+names<-as.matrix(iris[,5])
+iris<-as.matrix(iris[,1:4])
+head(iris)
+row.names(iris)<-names
+head(iris)
+class(iris)
+
+iris.norm<-decostand(iris,"normalize")
+
+#install.packages("factoextra")
+library(factoextra)
+
+#silhouette
+fviz_nbclust(iris.norm, kmeans, method = "wss") +
+  geom_vline(xintercept = 2, linetype = 2)
+
+#elbow
+fviz_nbclust(iris.norm, kmeans, method = "silhouette")+
+  labs(subtitle = "Silhouette method")
+
+iris.kmeans <- kmeans(iris.norm, 2, nstart = 100)
+print(iris.kmeans)
+```
+
+```{r heatmap.dendo2, echo=T}
+dend <- as.dendrogram(camp.bras2019.chwo)
+heatmap(as.matrix(camp.bras19.stan.ch), Rowv=dend, symm=TRUE, margin=c(3,3))
+```
+
+
+Análise cluster respeitando a sequência dos dados. 
+
+```{r cluster.seq, echo=T}
+setwd("J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/")
+#install.packages("rioja")
+list.files(pattern=".txt")
+
+library(rioja)
+Ciama<-read.table("Ciama.txt", header=TRUE, sep="")
+Ciama_dist<-vegdist(Ciama, method="euc")
+
+clust1<-hclust(Ciama_dist, method = "ward.D")
+clust<-chclust(Ciama_dist, method = "coniss")
+
+plot(clust1, hang=0.08)
+rect.hclust(clust, k=5)
+
+plot(clust, hang=-1)
+rect.hclust(clust, k=5)
+
+x<-strat.plot(Ciama, scale.percent=T, y.rev=TRUE, clust=clust)
+addClustZone(x, clust, 5, col="red")
+
+```
+Outras opções visuais 
+
+```{r, col.clus, echo=T}
+#install.packages("ape")
+
+library(ape)
+grupos<-cutree(clust,k=5)
+clust.phylo<-as.phylo(clust)
+par(mfrow=c(1,1))
+plot(clust.phylo, type="phylogram",tip.color = grupos)
+plot(clust.phylo, type="cladogram",tip.color = grupos)
+plot(clust.phylo, type="fan",tip.color = grupos)
+plot(clust.phylo, type="unrooted",tip.color = grupos)
+plot(clust.phylo, type="radial",tip.color = grupos)
+```
+@Death apresentou uma metodologia interessante de construir dendogramas que ele chamou de *Multivariate Regression Tree*. Esta metodologia explora a ocorrência de objetos (variáveis dependentes) em relação à condicionantes (variáveis independentes).
+
+```{r MRT, echo=T}
+library(mvpart)
+library(MVPARTwrap)
+data(spider)
+result<-mvpart(data.matrix(spider[,1:12]) ~ herbs + reft + moss +
+                 sand + twigs + water, spider, xv="1se", xval=10,
+               xvmult=100)
+summary(result)
+printcp(result)
+
+# Resíduos do MRT
+par(mfrow=c(1,2))
+hist(residuals(result), col="grey")
+plot(predict(result, type="matrix"), residuals(result), main="Residuals vs Predicted")
+
+# Composição
+result$where
+# Identidade
+(groups.mrt <- levels(as.factor(result$where)))
+# Composisção da primeira folha
+spider[which(result$where==groups.mrt[1]),]
+# Variáveis ambientais da primeira folha
+spider[,12:18][which(result$where==groups.mrt[1]),]
+
+# Extraindo resultados MRT de um objeto mvpart
+
+# Pacotes MVPARTwrap e rdaTest tem que estar carregados 
+spe.ch.mvpart.wrap <- MRT(result, percent=10,
+                          species=colnames(spider[,1:12]))
+summary(spe.ch.mvpart.wrap)
+
+# Procura or Indicator species resultado do MRT
+library(labdsv)
+spe.ch.MRT.indval <- indval(spider, result$where)
+spe.ch.MRT.indval$pval		# Probability
+
+# Para cada espécie significante, encontra a folha com o maior IndVal
+spe.ch.MRT.indval$maxcls[which(spe.ch.MRT.indval$pval <= 0.05)]
+
+# Valor de IndVal na melhor folha para cada espécie significante
+spe.ch.MRT.indval$indcls[which(spe.ch.MRT.indval$pval <= 0.05)]
+```
+
+
+#### ***Leitura Complementar***
+[Data transformations](https://mb3is.megx.net/gustame/reference/transformations)  
+[Transforming Data](https://rcompanion.org/handbook/I_12.html)
+[Normalizar ou padronizar as variáveis?](https://medium.com/data-hackers/normalizar-ou-padronizar-as-vari%C3%A1veis-3b619876ccc9)  
+[Transformations for community composition data](http://biol09.biol.umontreal.ca/PLcourses/Section_7.7_Transformations.pdf)  
+[Cluster Analysis (1)](https://geodacenter.github.io/workbook/7bk_clusters_1a/lab7b.html)  
+[Hierarchical Cluster Analysis](https://uc-r.github.io/hc_clustering)  
+
+[2.3. Clustering](https://scikit-learn.org/stable/modules/clustering.html#hierarchical-clustering)    
+[What is cluster analysis? When should you use it for your survey results?](https://www.qualtrics.com/experience-management/research/cluster-analysis/)    
+[K-means Cluster Analysis](https://uc-r.github.io/kmeans_clustering)    
+[Cluster Analysis](https://www.sciencedirect.com/topics/medicine-and-dentistry/cluster-analysis)    
+[Cluster Analysis](https://www.statmethods.net/advstats/cluster.html)    
+[What is clustering analysis?](https://statsandr.com/blog/clustering-analysis-k-means-and-hierarchical-clustering-by-hand-and-in-r/#application-1-computing-distances)    
+[Cluster Analysis in Practice: Dealing with Outliers in Managerial Research](https://www.scielo.br/j/rac/a/tfCHybF3k3HVrkVCtvx5V9s/?format=html)    
+[Conduct and Interpret a Cluster Analysis](https://www.statisticssolutions.com/free-resources/directory-of-statistical-analyses/cluster-analysis/)    
+[Clustering Distance Measures](https://www.datanovia.com/en/lessons/clustering-distance-measures/)    
+[Cophenetic Correlation Coefficient](https://people.revoledu.com/kardi/tutorial/Clustering/Cophenetic.htm)    
+[Comparison of hierarchical cluster analysis methods by cophenetic correlation](https://journalofinequalitiesandapplications.springeropen.com/articles/10.1186/1029-242X-2013-203)    
+[Practical Guide To Cluster Analysis in R](https://xsliulab.github.io/Workshop/week10/r-cluster-book.pdf)    
+
+
+Para entender sobre MRT leia @Death.
+
+@Kassambaracluster2017  
+@daSilva2015  
+@perlin2018processamento 
