@@ -10785,13 +10785,13 @@ Podemos utilizar alguns métodos para nos auxiliar na decisão de qual <em>link<
 <span id="cb54-8"><a href="análise-multivariada.html#cb54-8" aria-hidden="true" tabindex="-1"></a>gow.dist.ward <span class="ot">&lt;-</span> <span class="fu">sum</span>((camp.bras19.stan.ch<span class="sc">-</span>camp.bras19.stan.ch.ward.coph)<span class="sc">^</span><span class="dv">2</span>)</span>
 <span id="cb54-9"><a href="análise-multivariada.html#cb54-9" aria-hidden="true" tabindex="-1"></a>gow.dist.ward2 <span class="ot">&lt;-</span> <span class="fu">sum</span>((camp.bras19.stan.ch<span class="sc">-</span>camp.bras19.stan.ch.ward2.coph)<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
 <p>Gower Distance para Single Linkage é 1782.5363281.<br />
-Gower Distance para Complete Linkage é 1782.5363281.
-Gower Distance para UPGMA average é 1782.5363281.<br />
-Gower Distance para UPGMA centroid é 1782.5363281.<br />
-Gower Distance para WPGMA median é 1782.5363281.<br />
-Gower Distance para WPGMA mcquitty é 1782.5363281.<br />
-Gower Distance para Ward é 1782.5363281.<br />
-Gower Distance para Ward 2 é 1782.5363281.</p>
+Gower Distance para Complete Linkage é 12473.9494.
+Gower Distance para UPGMA average é 541.7935889.<br />
+Gower Distance para UPGMA centroid é 3003.7463194.<br />
+Gower Distance para WPGMA median é 3191.3726267.<br />
+Gower Distance para WPGMA mcquitty é 3359.1155035.<br />
+Gower Distance para Ward é 37449.9793551.<br />
+Gower Distance para Ward 2 é 16453.7138985.</p>
 </div>
 </div>
 </div>
@@ -11629,42 +11629,33 @@ No métodos de K-means cada cluster é representado por seu centro (centroid) qu
 <pre><code>## K-means clustering with 4 clusters of sizes 9, 5, 1, 5
 ## 
 ## Cluster means:
-##   Flamengo    Santos Palmeiras    Gremio Athletico Paranaense Sao Paulo
-## 1 13.40827  9.361033  9.182023  8.052378             8.868434  7.901566
-## 2 10.10830  6.363613  5.159455  5.445392             6.376761  5.790060
-## 3  0.00000  9.017424  9.276192  9.012423            10.765812 12.469662
-## 4 17.29050 13.065349 12.839576 11.655762            12.514955 10.839846
-##   Internacional Corinthians Fortaleza     Goias     Bahia     Vasco
-## 1      5.883992    6.547480  6.455535  9.186120  6.174801  6.345399
-## 2      7.371374    7.497392  8.385889 11.167998  8.738761  8.697107
-## 3     11.979384   12.601243 12.214794 14.569269 12.882355 13.363198
-## 4      9.779751   10.245117  9.880310  7.622401  9.672697  9.349673
-##   Atletico Mineiro Fluminense  Botafogo     Ceara  Cruzeiro       CSA
-## 1         6.195042   6.153444  6.465339  6.728513  8.189876  8.932694
-## 2         8.718693   9.007088  9.765503  9.875975 11.044724 12.296911
-## 3        13.328485  14.295353 14.966763 15.042892 16.381046 17.704587
-## 4         8.191093   8.177561  8.274471  8.660244  6.829590  5.896205
-##   Chapecoense      Avai
-## 1    8.149719 11.225433
-## 2   11.108793 15.297062
-## 3   16.950703 20.846912
-## 4    6.067514  7.204532
+##   Flamengo    Santos Palmeiras    Gremio Athletico Paranaense Sao Paulo Internacional
+## 1 13.40827  9.361033  9.182023  8.052378             8.868434  7.901566      5.883992
+## 2 10.10830  6.363613  5.159455  5.445392             6.376761  5.790060      7.371374
+## 3  0.00000  9.017424  9.276192  9.012423            10.765812 12.469662     11.979384
+## 4 17.29050 13.065349 12.839576 11.655762            12.514955 10.839846      9.779751
+##   Corinthians Fortaleza     Goias     Bahia     Vasco Atletico Mineiro Fluminense
+## 1    6.547480  6.455535  9.186120  6.174801  6.345399         6.195042   6.153444
+## 2    7.497392  8.385889 11.167998  8.738761  8.697107         8.718693   9.007088
+## 3   12.601243 12.214794 14.569269 12.882355 13.363198        13.328485  14.295353
+## 4   10.245117  9.880310  7.622401  9.672697  9.349673         8.191093   8.177561
+##    Botafogo     Ceara  Cruzeiro       CSA Chapecoense      Avai
+## 1  6.465339  6.728513  8.189876  8.932694    8.149719 11.225433
+## 2  9.765503  9.875975 11.044724 12.296911   11.108793 15.297062
+## 3 14.966763 15.042892 16.381046 17.704587   16.950703 20.846912
+## 4  8.274471  8.660244  6.829590  5.896205    6.067514  7.204532
 ## 
 ## Clustering vector:
-##             Flamengo               Santos            Palmeiras 
-##                    3                    2                    2 
-##               Gremio Athletico Paranaense            Sao Paulo 
-##                    2                    2                    2 
-##        Internacional          Corinthians            Fortaleza 
-##                    1                    1                    1 
-##                Goias                Bahia                Vasco 
-##                    4                    1                    1 
-##     Atletico Mineiro           Fluminense             Botafogo 
-##                    1                    1                    1 
-##                Ceara             Cruzeiro                  CSA 
-##                    1                    4                    4 
-##          Chapecoense                 Avai 
-##                    4                    4 
+##             Flamengo               Santos            Palmeiras               Gremio 
+##                    3                    2                    2                    2 
+## Athletico Paranaense            Sao Paulo        Internacional          Corinthians 
+##                    2                    2                    1                    1 
+##            Fortaleza                Goias                Bahia                Vasco 
+##                    1                    4                    1                    1 
+##     Atletico Mineiro           Fluminense             Botafogo                Ceara 
+##                    1                    1                    1                    1 
+##             Cruzeiro                  CSA          Chapecoense                 Avai 
+##                    4                    4                    4                    4 
 ## 
 ## Within cluster sum of squares by cluster:
 ## [1] 520.5676 281.8806   0.0000 469.7166
@@ -11672,9 +11663,8 @@ No métodos de K-means cada cluster é representado por seu centro (centroid) qu
 ## 
 ## Available components:
 ## 
-## [1] &quot;cluster&quot;      &quot;centers&quot;      &quot;totss&quot;        &quot;withinss&quot;    
-## [5] &quot;tot.withinss&quot; &quot;betweenss&quot;    &quot;size&quot;         &quot;iter&quot;        
-## [9] &quot;ifault&quot;</code></pre>
+## [1] &quot;cluster&quot;      &quot;centers&quot;      &quot;totss&quot;        &quot;withinss&quot;     &quot;tot.withinss&quot;
+## [6] &quot;betweenss&quot;    &quot;size&quot;         &quot;iter&quot;         &quot;ifault&quot;</code></pre>
 <div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="análise-multivariada.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;factoextra&quot;)</span></span>
 <span id="cb80-2"><a href="análise-multivariada.html#cb80-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(factoextra)</span>
 <span id="cb80-3"><a href="análise-multivariada.html#cb80-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(NbClust) </span>
@@ -11695,41 +11685,36 @@ No métodos de K-means cada cluster é representado por seu centro (centroid) qu
 <pre><code>## K-means clustering with 4 clusters of sizes 1, 6, 9, 4
 ## 
 ## Cluster means:
-##            P          V          E         D         GP         GC
-## 1  2.2718440  2.3768498 -1.3746024 -1.860723  2.6960012 -0.6877908
-## 2  0.8332093  0.7523841  0.2532162 -0.939573  0.5771061 -1.0586584
-## 3 -0.2191254 -0.1690964 -0.2491969  0.309097 -0.1504877  0.3011894
-## 4 -1.3247428 -1.3423217  0.5245193  1.179072 -1.2010621  1.0822591
-##           SG     Aprov.         VC         EC          DC         VF
-## 1  2.1704285  2.2538301  2.0722105 -1.2914930 -1.79363787  2.5146974
-## 2  0.8637420  0.8430357  0.7438704 -0.5492556 -0.57347605  0.7283003
-## 3 -0.2362371 -0.2236625 -0.1121709  0.1434992  0.03660485 -0.2794108
-## 4 -1.3066866 -1.3247704 -1.3814737  0.8238834  1.22626263 -1.0924505
-##           EF         DF        GPC        GCC         GPF        GCF
-## 1 -0.4911441 -1.6307094  2.6616214  0.1078222  2.15027240 -1.0918365
-## 2  0.5093347 -0.8467145  0.5740752 -0.9304655  0.45193142 -0.9914377
-## 3 -0.1879687  0.3205668 -0.1913584  0.1610677 -0.03742107  0.3472124
-## 4 -0.2182863  0.9564738 -1.0959618  1.0063404 -1.13126781  0.9788879
-##           RVV           A        X2A          VE        VCS        ECS
-## 1  3.09833025  0.42611207 -0.2355302 -0.75035815  2.3242992 -1.1937336
-## 2  0.06075157 -0.22094700 -0.3336677 -0.14662171  0.8103878  0.2984334
-## 3  0.10125262  0.11047350  0.1570201 -0.06037364 -0.4066781 -0.3094865
-## 4 -1.09352832 -0.02367289  0.2060889  0.54336280 -0.8816307  0.5471279
-##           DCS       JSSP        JSP        JSG         GS    GS.1.15
-## 1 -1.29071377  3.3176256 -0.6367261 -0.3441236 -0.6877908 -0.6193514
-## 2 -0.60624435  0.4284021  0.2950682 -0.4588315 -1.0586584 -0.1677410
-## 3 -0.05215005 -0.4239742  0.0534919 -0.1911798  0.3011894 -0.1032252
-## 4  1.34938257 -0.5180677 -0.4037775  1.2044326  1.0822591  0.6387062
-##     GS.16.30     GS.31.45    GS.46.60    GS.61.75   GS.76.90      GS.90
-## 1  0.1319600 -0.355615607 -0.18666519 -0.27126771 -0.9110408 -0.1613301
-## 2 -0.6011511 -0.006972855 -0.46949123 -1.01592416 -1.0106081 -0.5646553
-## 3  0.3274563 -0.123187106 -0.03582463  0.68614773  0.1841995  0.1075534
-## 4  0.1319600  0.376534172  0.83150856  0.04787077  1.3292234  0.6453204
-##            G    GM.1.15   GM.16.30    GM.31.45   GM.46.60   GM.61.75
-## 1  2.6960012  1.4575275 -0.9713242  3.17009017  1.9638692  2.5715514
-## 2  0.5771061  0.6927754  0.3618659  0.22030073  0.7459658  0.3232005
-## 3 -0.1504877 -0.3418892  0.4888364 -0.04107302 -0.4042763 -0.1139789
-## 4 -1.2010621 -0.6342944 -1.3998496 -1.03055935 -0.7002944 -0.8712360
+##            P          V          E         D         GP         GC         SG
+## 1  2.2718440  2.3768498 -1.3746024 -1.860723  2.6960012 -0.6877908  2.1704285
+## 2  0.8332093  0.7523841  0.2532162 -0.939573  0.5771061 -1.0586584  0.8637420
+## 3 -0.2191254 -0.1690964 -0.2491969  0.309097 -0.1504877  0.3011894 -0.2362371
+## 4 -1.3247428 -1.3423217  0.5245193  1.179072 -1.2010621  1.0822591 -1.3066866
+##       Aprov.         VC         EC          DC         VF         EF         DF
+## 1  2.2538301  2.0722105 -1.2914930 -1.79363787  2.5146974 -0.4911441 -1.6307094
+## 2  0.8430357  0.7438704 -0.5492556 -0.57347605  0.7283003  0.5093347 -0.8467145
+## 3 -0.2236625 -0.1121709  0.1434992  0.03660485 -0.2794108 -0.1879687  0.3205668
+## 4 -1.3247704 -1.3814737  0.8238834  1.22626263 -1.0924505 -0.2182863  0.9564738
+##          GPC        GCC         GPF        GCF         RVV           A        X2A
+## 1  2.6616214  0.1078222  2.15027240 -1.0918365  3.09833025  0.42611207 -0.2355302
+## 2  0.5740752 -0.9304655  0.45193142 -0.9914377  0.06075157 -0.22094700 -0.3336677
+## 3 -0.1913584  0.1610677 -0.03742107  0.3472124  0.10125262  0.11047350  0.1570201
+## 4 -1.0959618  1.0063404 -1.13126781  0.9788879 -1.09352832 -0.02367289  0.2060889
+##            VE        VCS        ECS         DCS       JSSP        JSP        JSG
+## 1 -0.75035815  2.3242992 -1.1937336 -1.29071377  3.3176256 -0.6367261 -0.3441236
+## 2 -0.14662171  0.8103878  0.2984334 -0.60624435  0.4284021  0.2950682 -0.4588315
+## 3 -0.06037364 -0.4066781 -0.3094865 -0.05215005 -0.4239742  0.0534919 -0.1911798
+## 4  0.54336280 -0.8816307  0.5471279  1.34938257 -0.5180677 -0.4037775  1.2044326
+##           GS    GS.1.15   GS.16.30     GS.31.45    GS.46.60    GS.61.75   GS.76.90
+## 1 -0.6877908 -0.6193514  0.1319600 -0.355615607 -0.18666519 -0.27126771 -0.9110408
+## 2 -1.0586584 -0.1677410 -0.6011511 -0.006972855 -0.46949123 -1.01592416 -1.0106081
+## 3  0.3011894 -0.1032252  0.3274563 -0.123187106 -0.03582463  0.68614773  0.1841995
+## 4  1.0822591  0.6387062  0.1319600  0.376534172  0.83150856  0.04787077  1.3292234
+##        GS.90          G    GM.1.15   GM.16.30    GM.31.45   GM.46.60   GM.61.75
+## 1 -0.1613301  2.6960012  1.4575275 -0.9713242  3.17009017  1.9638692  2.5715514
+## 2 -0.5646553  0.5771061  0.6927754  0.3618659  0.22030073  0.7459658  0.3232005
+## 3  0.1075534 -0.1504877 -0.3418892  0.4888364 -0.04107302 -0.4042763 -0.1139789
+## 4  0.6453204 -1.2010621 -0.6342944 -1.3998496 -1.03055935 -0.7002944 -0.8712360
 ##      GM.76.90       GM.90         PEN        PENF        PEND
 ## 1  2.16970148  1.03741206  0.76642324  0.70098453  1.85691899
 ## 2  0.29657790  0.17290201  0.02838605 -0.07788717  0.08842471
@@ -11737,20 +11722,16 @@ No métodos de K-means cada cluster é representado por seu centro (centroid) qu
 ## 4 -1.03021797 -0.40343802 -0.59610696 -0.70098453 -0.13263707
 ## 
 ## Clustering vector:
-##             Flamengo               Santos            Palmeiras 
-##                    1                    2                    2 
-##               Gremio Athletico Paranaense            Sao Paulo 
-##                    2                    2                    2 
-##        Internacional          Corinthians            Fortaleza 
-##                    3                    2                    3 
-##                Goias                Bahia                Vasco 
-##                    3                    3                    3 
-##     Atletico Mineiro           Fluminense             Botafogo 
-##                    3                    3                    3 
-##                Ceara             Cruzeiro                  CSA 
-##                    3                    4                    4 
-##          Chapecoense                 Avai 
-##                    4                    4 
+##             Flamengo               Santos            Palmeiras               Gremio 
+##                    1                    2                    2                    2 
+## Athletico Paranaense            Sao Paulo        Internacional          Corinthians 
+##                    2                    2                    3                    2 
+##            Fortaleza                Goias                Bahia                Vasco 
+##                    3                    3                    3                    3 
+##     Atletico Mineiro           Fluminense             Botafogo                Ceara 
+##                    3                    3                    3                    3 
+##             Cruzeiro                  CSA          Chapecoense                 Avai 
+##                    4                    4                    4                    4 
 ## 
 ## Within cluster sum of squares by cluster:
 ## [1]   0.00000 137.91395 230.07437  88.90631
@@ -11758,246 +11739,201 @@ No métodos de K-means cada cluster é representado por seu centro (centroid) qu
 ## 
 ## Available components:
 ## 
-## [1] &quot;cluster&quot;      &quot;centers&quot;      &quot;totss&quot;        &quot;withinss&quot;    
-## [5] &quot;tot.withinss&quot; &quot;betweenss&quot;    &quot;size&quot;         &quot;iter&quot;        
-## [9] &quot;ifault&quot;</code></pre>
+## [1] &quot;cluster&quot;      &quot;centers&quot;      &quot;totss&quot;        &quot;withinss&quot;     &quot;tot.withinss&quot;
+## [6] &quot;betweenss&quot;    &quot;size&quot;         &quot;iter&quot;         &quot;ifault&quot;</code></pre>
 <div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="análise-multivariada.html#cb86-1" aria-hidden="true" tabindex="-1"></a>camp.bras2019.clustered <span class="ot">&lt;-</span> <span class="fu">cbind</span>(camp.bras19, <span class="at">cluster =</span> camp.bras2019.kmeans<span class="sc">$</span>cluster)</span>
 <span id="cb86-2"><a href="análise-multivariada.html#cb86-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(camp.bras2019.clustered)</span></code></pre></div>
-<pre><code>##                      Posicao  P  V  E  D GP GC SG Aprov. VC EC DC VF EF
-## Flamengo                   1 90 28  6  4 86 37 49     78 17  2  0 11  4
-## Santos                     2 74 22  8  8 60 33 27     64 14  4  1  8  4
-## Palmeiras                  3 74 21 11  6 61 32 29     64 13  4  2  8  7
-## Gremio                     4 65 19  8 11 64 39 25     57 12  3  4  7  5
-## Athletico Paranaense       5 64 18 10 10 51 32 19     56 12  3  4  6  7
-## Sao Paulo                  6 63 17 12  9 39 30  9     55 10  6  3  7  6
-##                      DF GPC GCC GPF GCF RVV   A X2A VE VCS ECS DCS JSSP
-## Flamengo              4  56  18  30  19   6  90   2  1   8   1   1   24
-## Santos                7  44  15  16  18   2 108   6  4   7   1   2    8
-## Palmeiras             4  40  13  21  19   1  73   1  3   7   4   3   10
-## Gremio                7  38  18  26  21   2  81   1  1   5   3   2    7
-## Athletico Paranaense  6  26  11  25  21   3  82   1  0   4   1   2   13
-## Sao Paulo             6  23  12  16  18   1  86   2  4   5   4   2    9
-##                      JSP JSG GS GS.1.15 GS.16.30 GS.31.45 GS.46.60
-## Flamengo               0   1 37       4        5        8        6
-## Santos                 1   0 33       3        4        6        9
-## Palmeiras              2   0 32       7        5        7        3
-## Gremio                 0   1 39       8        3       12        6
-## Athletico Paranaense  13   1 32       8        2        8        1
-## Sao Paulo              2   0 30       4        1       10        6
-##                      GS.61.75 GS.76.90 GS.90 GS.91.105 GS.106.120 GS.120
-## Flamengo                    6        5     3         0          0      0
-## Santos                      4        3     4         0          0      0
-## Palmeiras                   4        4     2         0          0      0
-## Gremio                      3        4     3         0          0      0
-## Athletico Paranaense        1        9     3         0          0      0
-## Sao Paulo                   4        4     1         0          0      0
-##                       G GM.1.15 GM.16.30 GM.31.45 GM.46.60 GM.61.75
-## Flamengo             86      11        3       23       13       16
-## Santos               60      13        6       11       10       11
-## Palmeiras            61      12        5        9       11        8
-## Gremio               64      10        6       14        7       11
-## Athletico Paranaense 51       3        6       10       10        8
-## Sao Paulo            39       7        3        7       10        3
-##                      GM.76.90 GM.90 GM.91.105 GM.106.120 GM.120 PEN PENF
-## Flamengo                   15     5         0          0      0   6    2
-## Santos                      8     1         0          0      0   5    2
-## Palmeiras                  12     4         0          0      0   5    1
-## Gremio                     11     5         0          0      0   7    2
-## Athletico Paranaense        9     5         0          0      0   3    1
-## Sao Paulo                   6     3         0          0      0   3    1
-##                      PEND      Destino cluster
-## Flamengo                2 Libertadores       1
-## Santos                  1 Libertadores       2
-## Palmeiras               1 Libertadores       2
-## Gremio                  0 Libertadores       2
-## Athletico Paranaense    2 Libertadores       2
-## Sao Paulo               0 Libertadores       2</code></pre>
+<pre><code>##                      Posicao  P  V  E  D GP GC SG Aprov. VC EC DC VF EF DF GPC GCC GPF
+## Flamengo                   1 90 28  6  4 86 37 49     78 17  2  0 11  4  4  56  18  30
+## Santos                     2 74 22  8  8 60 33 27     64 14  4  1  8  4  7  44  15  16
+## Palmeiras                  3 74 21 11  6 61 32 29     64 13  4  2  8  7  4  40  13  21
+## Gremio                     4 65 19  8 11 64 39 25     57 12  3  4  7  5  7  38  18  26
+## Athletico Paranaense       5 64 18 10 10 51 32 19     56 12  3  4  6  7  6  26  11  25
+## Sao Paulo                  6 63 17 12  9 39 30  9     55 10  6  3  7  6  6  23  12  16
+##                      GCF RVV   A X2A VE VCS ECS DCS JSSP JSP JSG GS GS.1.15 GS.16.30
+## Flamengo              19   6  90   2  1   8   1   1   24   0   1 37       4        5
+## Santos                18   2 108   6  4   7   1   2    8   1   0 33       3        4
+## Palmeiras             19   1  73   1  3   7   4   3   10   2   0 32       7        5
+## Gremio                21   2  81   1  1   5   3   2    7   0   1 39       8        3
+## Athletico Paranaense  21   3  82   1  0   4   1   2   13  13   1 32       8        2
+## Sao Paulo             18   1  86   2  4   5   4   2    9   2   0 30       4        1
+##                      GS.31.45 GS.46.60 GS.61.75 GS.76.90 GS.90 GS.91.105 GS.106.120
+## Flamengo                    8        6        6        5     3         0          0
+## Santos                      6        9        4        3     4         0          0
+## Palmeiras                   7        3        4        4     2         0          0
+## Gremio                     12        6        3        4     3         0          0
+## Athletico Paranaense        8        1        1        9     3         0          0
+## Sao Paulo                  10        6        4        4     1         0          0
+##                      GS.120  G GM.1.15 GM.16.30 GM.31.45 GM.46.60 GM.61.75 GM.76.90
+## Flamengo                  0 86      11        3       23       13       16       15
+## Santos                    0 60      13        6       11       10       11        8
+## Palmeiras                 0 61      12        5        9       11        8       12
+## Gremio                    0 64      10        6       14        7       11       11
+## Athletico Paranaense      0 51       3        6       10       10        8        9
+## Sao Paulo                 0 39       7        3        7       10        3        6
+##                      GM.90 GM.91.105 GM.106.120 GM.120 PEN PENF PEND      Destino
+## Flamengo                 5         0          0      0   6    2    2 Libertadores
+## Santos                   1         0          0      0   5    2    1 Libertadores
+## Palmeiras                4         0          0      0   5    1    1 Libertadores
+## Gremio                   5         0          0      0   7    2    0 Libertadores
+## Athletico Paranaense     5         0          0      0   3    1    2 Libertadores
+## Sao Paulo                3         0          0      0   3    1    0 Libertadores
+##                      cluster
+## Flamengo                   1
+## Santos                     2
+## Palmeiras                  2
+## Gremio                     2
+## Athletico Paranaense       2
+## Sao Paulo                  2</code></pre>
 <div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="análise-multivariada.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(camp.bras2019.clustered)</span></code></pre></div>
-<pre><code>##             Posicao  P  V  E  D GP GC  SG Aprov. VC EC DC VF EF DF GPC
-## Botafogo         15 43 13  4 21 31 45 -14     37  7  6  6  5  7  7  19
-## Ceara            16 39 10  9 19 36 41  -5     34  8  6  5  2  3 14  23
-## Cruzeiro         17 36  7 15 16 27 46 -19     31  6  5  8  2  3 14  13
-## CSA              18 32  8  8 22 24 58 -34     28  5  8  6  2  7 10  17
-## Chapecoense      19 32  7 11 20 31 52 -21     28  4  5 10  3  6 10  16
-## Avai             20 20  3 11 24 18 62 -44     17  1  9  9  2  2 15  10
-##             GCC GPF GCF RVV  A X2A VE VCS ECS DCS JSSP JSP JSG GS
-## Botafogo     17  12  28   2 95   2  1   3   1   4    3   1   3 45
-## Ceara        14  13  27   2 86   1  1   2   2   3    3   1   7 41
-## Cruzeiro     17  14  29   0 89   5  1   2   4   5   11   0   9 46
-## CSA          24   7  34   1 95   3  1   2   3   5    3   0   3 58
-## Chapecoense  22  15  30   0 79   1  4   2   2   4    3   2   1 52
-## Avai         24   8  38   0 78   2  8   2   2   8    2   1  18 62
-##             GS.1.15 GS.16.30 GS.31.45 GS.46.60 GS.61.75 GS.76.90 GS.90
-## Botafogo          6        4        7        4       12        9     3
-## Ceara             1        7       13        4        3        8     5
-## Cruzeiro          5        5        8        6        8       10     4
-## CSA              10        6       10        8        6       15     3
-## Chapecoense       6        2        9       14        5       11     5
-## Avai              8        7       12        8        9       14     4
-##             GS.91.105 GS.106.120 GS.120  G GM.1.15 GM.16.30 GM.31.45
-## Botafogo            0          0      0 31       2        6        7
-## Ceara               0          0      0 36       3        6        7
-## Cruzeiro            0          0      0 27       4        1        6
-## CSA                 0          0      0 24       1        1        4
-## Chapecoense         0          0      0 31       7        3        5
-## Avai                0          0      0 18       1        4        2
-##             GM.46.60 GM.61.75 GM.76.90 GM.90 GM.91.105 GM.106.120 GM.120
-## Botafogo           3        7        4     2         0          0      0
-## Ceara              2        4       10     4         0          0      0
-## Cruzeiro           6        5        3     2         0          0      0
-## CSA                3        7        5     3         0          0      0
-## Chapecoense        4        2        7     3         0          0      0
-## Avai               4        1        4     2         0          0      0
-##             PEN PENF PEND      Destino cluster
-## Botafogo      0    0    0         &lt;NA&gt;       3
-## Ceara         3    3    0         &lt;NA&gt;       3
-## Cruzeiro      4    1    2 Rebaixamento       4
-## CSA           0    0    0 Rebaixamento       4
-## Chapecoense   0    0    0 Rebaixamento       4
-## Avai          4    1    0 Rebaixamento       4</code></pre>
+<pre><code>##             Posicao  P  V  E  D GP GC  SG Aprov. VC EC DC VF EF DF GPC GCC GPF GCF RVV
+## Botafogo         15 43 13  4 21 31 45 -14     37  7  6  6  5  7  7  19  17  12  28   2
+## Ceara            16 39 10  9 19 36 41  -5     34  8  6  5  2  3 14  23  14  13  27   2
+## Cruzeiro         17 36  7 15 16 27 46 -19     31  6  5  8  2  3 14  13  17  14  29   0
+## CSA              18 32  8  8 22 24 58 -34     28  5  8  6  2  7 10  17  24   7  34   1
+## Chapecoense      19 32  7 11 20 31 52 -21     28  4  5 10  3  6 10  16  22  15  30   0
+## Avai             20 20  3 11 24 18 62 -44     17  1  9  9  2  2 15  10  24   8  38   0
+##              A X2A VE VCS ECS DCS JSSP JSP JSG GS GS.1.15 GS.16.30 GS.31.45 GS.46.60
+## Botafogo    95   2  1   3   1   4    3   1   3 45       6        4        7        4
+## Ceara       86   1  1   2   2   3    3   1   7 41       1        7       13        4
+## Cruzeiro    89   5  1   2   4   5   11   0   9 46       5        5        8        6
+## CSA         95   3  1   2   3   5    3   0   3 58      10        6       10        8
+## Chapecoense 79   1  4   2   2   4    3   2   1 52       6        2        9       14
+## Avai        78   2  8   2   2   8    2   1  18 62       8        7       12        8
+##             GS.61.75 GS.76.90 GS.90 GS.91.105 GS.106.120 GS.120  G GM.1.15 GM.16.30
+## Botafogo          12        9     3         0          0      0 31       2        6
+## Ceara              3        8     5         0          0      0 36       3        6
+## Cruzeiro           8       10     4         0          0      0 27       4        1
+## CSA                6       15     3         0          0      0 24       1        1
+## Chapecoense        5       11     5         0          0      0 31       7        3
+## Avai               9       14     4         0          0      0 18       1        4
+##             GM.31.45 GM.46.60 GM.61.75 GM.76.90 GM.90 GM.91.105 GM.106.120 GM.120 PEN
+## Botafogo           7        3        7        4     2         0          0      0   0
+## Ceara              7        2        4       10     4         0          0      0   3
+## Cruzeiro           6        6        5        3     2         0          0      0   4
+## CSA                4        3        7        5     3         0          0      0   0
+## Chapecoense        5        4        2        7     3         0          0      0   0
+## Avai               2        4        1        4     2         0          0      0   4
+##             PENF PEND      Destino cluster
+## Botafogo       0    0         &lt;NA&gt;       3
+## Ceara          3    0         &lt;NA&gt;       3
+## Cruzeiro       1    2 Rebaixamento       4
+## CSA            0    0 Rebaixamento       4
+## Chapecoense    0    0 Rebaixamento       4
+## Avai           1    0 Rebaixamento       4</code></pre>
 <div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="análise-multivariada.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(camp.bras19.standart,</span>
 <span id="cb90-2"><a href="análise-multivariada.html#cb90-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">by=</span><span class="fu">list</span>(<span class="at">cluster=</span>camp.bras2019.kmeans<span class="sc">$</span>cluster), mean)</span></code></pre></div>
-<pre><code>##   cluster          P          V          E         D         GP
-## 1       1  2.2718440  2.3768498 -1.3746024 -1.860723  2.6960012
-## 2       2  0.8332093  0.7523841  0.2532162 -0.939573  0.5771061
-## 3       3 -0.2191254 -0.1690964 -0.2491969  0.309097 -0.1504877
-## 4       4 -1.3247428 -1.3423217  0.5245193  1.179072 -1.2010621
-##           GC         SG     Aprov.         VC         EC          DC
-## 1 -0.6877908  2.1704285  2.2538301  2.0722105 -1.2914930 -1.79363787
-## 2 -1.0586584  0.8637420  0.8430357  0.7438704 -0.5492556 -0.57347605
-## 3  0.3011894 -0.2362371 -0.2236625 -0.1121709  0.1434992  0.03660485
-## 4  1.0822591 -1.3066866 -1.3247704 -1.3814737  0.8238834  1.22626263
-##           VF         EF         DF        GPC        GCC         GPF
-## 1  2.5146974 -0.4911441 -1.6307094  2.6616214  0.1078222  2.15027240
-## 2  0.7283003  0.5093347 -0.8467145  0.5740752 -0.9304655  0.45193142
-## 3 -0.2794108 -0.1879687  0.3205668 -0.1913584  0.1610677 -0.03742107
-## 4 -1.0924505 -0.2182863  0.9564738 -1.0959618  1.0063404 -1.13126781
-##          GCF         RVV           A        X2A          VE        VCS
-## 1 -1.0918365  3.09833025  0.42611207 -0.2355302 -0.75035815  2.3242992
-## 2 -0.9914377  0.06075157 -0.22094700 -0.3336677 -0.14662171  0.8103878
-## 3  0.3472124  0.10125262  0.11047350  0.1570201 -0.06037364 -0.4066781
-## 4  0.9788879 -1.09352832 -0.02367289  0.2060889  0.54336280 -0.8816307
-##          ECS         DCS       JSSP        JSP        JSG         GS
-## 1 -1.1937336 -1.29071377  3.3176256 -0.6367261 -0.3441236 -0.6877908
-## 2  0.2984334 -0.60624435  0.4284021  0.2950682 -0.4588315 -1.0586584
-## 3 -0.3094865 -0.05215005 -0.4239742  0.0534919 -0.1911798  0.3011894
-## 4  0.5471279  1.34938257 -0.5180677 -0.4037775  1.2044326  1.0822591
-##      GS.1.15   GS.16.30     GS.31.45    GS.46.60    GS.61.75   GS.76.90
-## 1 -0.6193514  0.1319600 -0.355615607 -0.18666519 -0.27126771 -0.9110408
-## 2 -0.1677410 -0.6011511 -0.006972855 -0.46949123 -1.01592416 -1.0106081
-## 3 -0.1032252  0.3274563 -0.123187106 -0.03582463  0.68614773  0.1841995
-## 4  0.6387062  0.1319600  0.376534172  0.83150856  0.04787077  1.3292234
-##        GS.90          G    GM.1.15   GM.16.30    GM.31.45   GM.46.60
-## 1 -0.1613301  2.6960012  1.4575275 -0.9713242  3.17009017  1.9638692
-## 2 -0.5646553  0.5771061  0.6927754  0.3618659  0.22030073  0.7459658
-## 3  0.1075534 -0.1504877 -0.3418892  0.4888364 -0.04107302 -0.4042763
-## 4  0.6453204 -1.2010621 -0.6342944 -1.3998496 -1.03055935 -0.7002944
-##     GM.61.75    GM.76.90       GM.90         PEN        PENF        PEND
-## 1  2.5715514  2.16970148  1.03741206  0.76642324  0.70098453  1.85691899
-## 2  0.3232005  0.29657790  0.17290201  0.02838605 -0.07788717  0.08842471
-## 3 -0.1139789  0.01907811 -0.05123023  0.16085426  0.28558629 -0.20632433
-## 4 -0.8712360 -1.03021797 -0.40343802 -0.59610696 -0.70098453 -0.13263707</code></pre>
+<pre><code>##   cluster          P          V          E         D         GP         GC         SG
+## 1       1  2.2718440  2.3768498 -1.3746024 -1.860723  2.6960012 -0.6877908  2.1704285
+## 2       2  0.8332093  0.7523841  0.2532162 -0.939573  0.5771061 -1.0586584  0.8637420
+## 3       3 -0.2191254 -0.1690964 -0.2491969  0.309097 -0.1504877  0.3011894 -0.2362371
+## 4       4 -1.3247428 -1.3423217  0.5245193  1.179072 -1.2010621  1.0822591 -1.3066866
+##       Aprov.         VC         EC          DC         VF         EF         DF
+## 1  2.2538301  2.0722105 -1.2914930 -1.79363787  2.5146974 -0.4911441 -1.6307094
+## 2  0.8430357  0.7438704 -0.5492556 -0.57347605  0.7283003  0.5093347 -0.8467145
+## 3 -0.2236625 -0.1121709  0.1434992  0.03660485 -0.2794108 -0.1879687  0.3205668
+## 4 -1.3247704 -1.3814737  0.8238834  1.22626263 -1.0924505 -0.2182863  0.9564738
+##          GPC        GCC         GPF        GCF         RVV           A        X2A
+## 1  2.6616214  0.1078222  2.15027240 -1.0918365  3.09833025  0.42611207 -0.2355302
+## 2  0.5740752 -0.9304655  0.45193142 -0.9914377  0.06075157 -0.22094700 -0.3336677
+## 3 -0.1913584  0.1610677 -0.03742107  0.3472124  0.10125262  0.11047350  0.1570201
+## 4 -1.0959618  1.0063404 -1.13126781  0.9788879 -1.09352832 -0.02367289  0.2060889
+##            VE        VCS        ECS         DCS       JSSP        JSP        JSG
+## 1 -0.75035815  2.3242992 -1.1937336 -1.29071377  3.3176256 -0.6367261 -0.3441236
+## 2 -0.14662171  0.8103878  0.2984334 -0.60624435  0.4284021  0.2950682 -0.4588315
+## 3 -0.06037364 -0.4066781 -0.3094865 -0.05215005 -0.4239742  0.0534919 -0.1911798
+## 4  0.54336280 -0.8816307  0.5471279  1.34938257 -0.5180677 -0.4037775  1.2044326
+##           GS    GS.1.15   GS.16.30     GS.31.45    GS.46.60    GS.61.75   GS.76.90
+## 1 -0.6877908 -0.6193514  0.1319600 -0.355615607 -0.18666519 -0.27126771 -0.9110408
+## 2 -1.0586584 -0.1677410 -0.6011511 -0.006972855 -0.46949123 -1.01592416 -1.0106081
+## 3  0.3011894 -0.1032252  0.3274563 -0.123187106 -0.03582463  0.68614773  0.1841995
+## 4  1.0822591  0.6387062  0.1319600  0.376534172  0.83150856  0.04787077  1.3292234
+##        GS.90          G    GM.1.15   GM.16.30    GM.31.45   GM.46.60   GM.61.75
+## 1 -0.1613301  2.6960012  1.4575275 -0.9713242  3.17009017  1.9638692  2.5715514
+## 2 -0.5646553  0.5771061  0.6927754  0.3618659  0.22030073  0.7459658  0.3232005
+## 3  0.1075534 -0.1504877 -0.3418892  0.4888364 -0.04107302 -0.4042763 -0.1139789
+## 4  0.6453204 -1.2010621 -0.6342944 -1.3998496 -1.03055935 -0.7002944 -0.8712360
+##      GM.76.90       GM.90         PEN        PENF        PEND
+## 1  2.16970148  1.03741206  0.76642324  0.70098453  1.85691899
+## 2  0.29657790  0.17290201  0.02838605 -0.07788717  0.08842471
+## 3  0.01907811 -0.05123023  0.16085426  0.28558629 -0.20632433
+## 4 -1.03021797 -0.40343802 -0.59610696 -0.70098453 -0.13263707</code></pre>
 <div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="análise-multivariada.html#cb92-1" aria-hidden="true" tabindex="-1"></a>dd <span class="ot">&lt;-</span> <span class="fu">cbind</span>(camp.bras19.standart, <span class="at">cluster =</span> camp.bras2019.kmeans<span class="sc">$</span>cluster)</span>
 <span id="cb92-2"><a href="análise-multivariada.html#cb92-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dd)</span></code></pre></div>
-<pre><code>##                              P         V           E         D
-## Flamengo             2.2718440 2.3768498 -1.37460237 -1.860723
-## Santos               1.3127542 1.3508715 -0.65112744 -1.123803
-## Palmeiras            1.3127542 1.1798751  0.43408496 -1.492263
-## Gremio               0.7732662 0.8378823 -0.65112744 -0.571113
-## Athletico Paranaense 0.7133230 0.6668859  0.07234749 -0.755343
-## Sao Paulo            0.6533799 0.4958895  0.79582243 -0.939573
-##                              GP         GC        SG    Aprov.        VC
-## Flamengo              2.6960012 -0.6877908 2.1704285 2.2538301 2.0722105
-## Santos                1.0349578 -1.0923737 1.1959504 1.2903607 1.2752065
-## Palmeiras             1.0988441 -1.1935194 1.2845393 1.2903607 1.0095385
-## Gremio                1.2905029 -0.4854994 1.1073615 0.8086261 0.7438704
-## Athletico Paranaense  0.4599812 -1.1935194 0.8415947 0.7398068 0.7438704
-## Sao Paulo            -0.3066542 -1.3958108 0.3986501 0.6709876 0.2125344
-##                              EC         DC        VF          EF
-## Flamengo             -1.2914930 -1.7936379 2.5146974 -0.49114414
-## Santos               -0.4008082 -1.4275893 1.2779610 -0.49114414
-## Palmeiras            -0.4008082 -1.0615408 1.2779610  1.14600300
-## Gremio               -0.8461506 -0.3294437 0.8657155  0.05457157
-## Athletico Paranaense -0.8461506 -0.3294437 0.4534700  1.14600300
-## Sao Paulo             0.4898766 -0.6954922 0.8657155  0.60028729
-##                              DF         GPC        GCC        GPF
-## Flamengo             -1.6307094  2.66162141  0.1078222  2.1502724
-## Santos               -0.6899155  1.58802622 -0.6109924 -0.2677046
-## Palmeiras            -1.6307094  1.23016116 -1.0902021  0.5958586
-## Gremio               -0.6899155  1.05122862  0.1078222  1.4594218
-## Athletico Paranaense -1.0035135 -0.02236657 -1.5694118  1.2867092
-## Sao Paulo            -1.0035135 -0.29076536 -1.3298069 -0.2677046
-##                             GCF        RVV           A        X2A
-## Flamengo             -1.0918365  3.0983303  0.42611207 -0.2355302
-## Santos               -1.2424346  0.1822547  2.13056035  2.1197714
-## Palmeiras            -1.0918365 -0.5467642 -1.18364464 -0.8243555
-## Gremio               -0.7906402  0.1822547 -0.42611207 -0.8243555
-## Athletico Paranaense -0.7906402  0.9112736 -0.33142050 -0.8243555
-## Sao Paulo            -1.2424346 -0.5467642  0.04734579 -0.2355302
-##                              VE       VCS        ECS        DCS
-## Flamengo             -0.7503581 2.3242992 -1.1937336 -1.2907138
-## Santos                0.8021070 1.7899775 -1.1937336 -0.7040257
-## Palmeiras             0.2846186 1.7899775  1.7906005 -0.1173376
-## Gremio               -0.7503581 0.7213342  0.7958224 -0.7040257
-## Athletico Paranaense -1.2678465 0.1870126 -1.1937336 -0.7040257
-## Sao Paulo             0.8021070 0.7213342  1.7906005 -0.7040257
-##                             JSSP         JSP        JSG         GS
-## Flamengo              3.31762563 -0.63672612 -0.3441236 -0.6877908
-## Santos                0.12951692 -0.32612801 -0.5735393 -1.0923737
-## Palmeiras             0.52803051 -0.01552991 -0.5735393 -1.1935194
-## Gremio               -0.06973988 -0.63672612 -0.3441236 -0.4854994
-## Athletico Paranaense  1.12580089  3.40104930 -0.3441236 -1.1935194
-## Sao Paulo             0.32877371 -0.01552991 -0.5735393 -1.3958108
-##                         GS.1.15   GS.16.30   GS.31.45   GS.46.60
-## Flamengo             -0.6193514  0.1319600 -0.3556156 -0.1866652
-## Santos               -1.0064461 -0.3079067 -1.1923582  0.8315086
-## Palmeiras             0.5419325  0.1319600 -0.7739869 -1.2048389
-## Gremio                0.9290272 -0.7477733  1.3178696 -0.1866652
-## Athletico Paranaense  0.9290272 -1.1876400 -0.3556156 -1.8836214
-## Sao Paulo            -0.6193514 -1.6275067  0.4811270 -0.1866652
-##                        GS.61.75   GS.76.90      GS.90          G
-## Flamengo             -0.2712677 -0.9110408 -0.1613301  2.6960012
-## Santos               -0.9095447 -1.5084446  0.6453204  1.0349578
-## Palmeiras            -0.9095447 -1.2097427 -0.9679805  1.0988441
-## Gremio               -1.2286832 -1.2097427 -0.1613301  1.2905029
-## Athletico Paranaense -1.8669601  0.2837668 -0.1613301  0.4599812
-## Sao Paulo            -0.9095447 -1.2097427 -1.7746310 -0.3066542
-##                         GM.1.15   GM.16.30   GM.31.45  GM.46.60
-## Flamengo              1.4575275 -0.9713242  3.1700902 1.9638692
-## Santos                1.9973525  0.7427774  0.4816745 1.0504417
-## Palmeiras             1.7274400  0.1714102  0.0336052 1.3549175
-## Gremio                1.1876150  0.7427774  1.1537784 0.1370141
-## Athletico Paranaense -0.7017725  0.7427774  0.2576398 1.0504417
-## Sao Paulo             0.3778775 -0.9713242 -0.4144641 1.0504417
-##                        GM.61.75    GM.76.90     GM.90        PEN
-## Flamengo              2.5715514  2.16970148  1.037412  0.7664232
-## Santos                1.1663321 -0.01560936 -1.267948  0.4257907
-## Palmeiras             0.3232005  1.23313969  0.461072  0.4257907
-## Gremio                1.1663321  0.92095243  1.037412  1.1070558
-## Athletico Paranaense  0.3232005  0.29657790  1.037412 -0.2554744
-## Sao Paulo            -1.0820189 -0.63998389 -0.115268 -0.2554744
-##                            PENF       PEND cluster
-## Flamengo              0.7009845  1.8569190       1
-## Santos                0.7009845  0.5305483       2
-## Palmeiras            -0.2336615  0.5305483       2
-## Gremio                0.7009845 -0.7958224       2
-## Athletico Paranaense -0.2336615  1.8569190       2
-## Sao Paulo            -0.2336615 -0.7958224       2</code></pre>
+<pre><code>##                              P         V           E         D         GP         GC
+## Flamengo             2.2718440 2.3768498 -1.37460237 -1.860723  2.6960012 -0.6877908
+## Santos               1.3127542 1.3508715 -0.65112744 -1.123803  1.0349578 -1.0923737
+## Palmeiras            1.3127542 1.1798751  0.43408496 -1.492263  1.0988441 -1.1935194
+## Gremio               0.7732662 0.8378823 -0.65112744 -0.571113  1.2905029 -0.4854994
+## Athletico Paranaense 0.7133230 0.6668859  0.07234749 -0.755343  0.4599812 -1.1935194
+## Sao Paulo            0.6533799 0.4958895  0.79582243 -0.939573 -0.3066542 -1.3958108
+##                             SG    Aprov.        VC         EC         DC        VF
+## Flamengo             2.1704285 2.2538301 2.0722105 -1.2914930 -1.7936379 2.5146974
+## Santos               1.1959504 1.2903607 1.2752065 -0.4008082 -1.4275893 1.2779610
+## Palmeiras            1.2845393 1.2903607 1.0095385 -0.4008082 -1.0615408 1.2779610
+## Gremio               1.1073615 0.8086261 0.7438704 -0.8461506 -0.3294437 0.8657155
+## Athletico Paranaense 0.8415947 0.7398068 0.7438704 -0.8461506 -0.3294437 0.4534700
+## Sao Paulo            0.3986501 0.6709876 0.2125344  0.4898766 -0.6954922 0.8657155
+##                               EF         DF         GPC        GCC        GPF
+## Flamengo             -0.49114414 -1.6307094  2.66162141  0.1078222  2.1502724
+## Santos               -0.49114414 -0.6899155  1.58802622 -0.6109924 -0.2677046
+## Palmeiras             1.14600300 -1.6307094  1.23016116 -1.0902021  0.5958586
+## Gremio                0.05457157 -0.6899155  1.05122862  0.1078222  1.4594218
+## Athletico Paranaense  1.14600300 -1.0035135 -0.02236657 -1.5694118  1.2867092
+## Sao Paulo             0.60028729 -1.0035135 -0.29076536 -1.3298069 -0.2677046
+##                             GCF        RVV           A        X2A         VE       VCS
+## Flamengo             -1.0918365  3.0983303  0.42611207 -0.2355302 -0.7503581 2.3242992
+## Santos               -1.2424346  0.1822547  2.13056035  2.1197714  0.8021070 1.7899775
+## Palmeiras            -1.0918365 -0.5467642 -1.18364464 -0.8243555  0.2846186 1.7899775
+## Gremio               -0.7906402  0.1822547 -0.42611207 -0.8243555 -0.7503581 0.7213342
+## Athletico Paranaense -0.7906402  0.9112736 -0.33142050 -0.8243555 -1.2678465 0.1870126
+## Sao Paulo            -1.2424346 -0.5467642  0.04734579 -0.2355302  0.8021070 0.7213342
+##                             ECS        DCS        JSSP         JSP        JSG
+## Flamengo             -1.1937336 -1.2907138  3.31762563 -0.63672612 -0.3441236
+## Santos               -1.1937336 -0.7040257  0.12951692 -0.32612801 -0.5735393
+## Palmeiras             1.7906005 -0.1173376  0.52803051 -0.01552991 -0.5735393
+## Gremio                0.7958224 -0.7040257 -0.06973988 -0.63672612 -0.3441236
+## Athletico Paranaense -1.1937336 -0.7040257  1.12580089  3.40104930 -0.3441236
+## Sao Paulo             1.7906005 -0.7040257  0.32877371 -0.01552991 -0.5735393
+##                              GS    GS.1.15   GS.16.30   GS.31.45   GS.46.60   GS.61.75
+## Flamengo             -0.6877908 -0.6193514  0.1319600 -0.3556156 -0.1866652 -0.2712677
+## Santos               -1.0923737 -1.0064461 -0.3079067 -1.1923582  0.8315086 -0.9095447
+## Palmeiras            -1.1935194  0.5419325  0.1319600 -0.7739869 -1.2048389 -0.9095447
+## Gremio               -0.4854994  0.9290272 -0.7477733  1.3178696 -0.1866652 -1.2286832
+## Athletico Paranaense -1.1935194  0.9290272 -1.1876400 -0.3556156 -1.8836214 -1.8669601
+## Sao Paulo            -1.3958108 -0.6193514 -1.6275067  0.4811270 -0.1866652 -0.9095447
+##                        GS.76.90      GS.90          G    GM.1.15   GM.16.30   GM.31.45
+## Flamengo             -0.9110408 -0.1613301  2.6960012  1.4575275 -0.9713242  3.1700902
+## Santos               -1.5084446  0.6453204  1.0349578  1.9973525  0.7427774  0.4816745
+## Palmeiras            -1.2097427 -0.9679805  1.0988441  1.7274400  0.1714102  0.0336052
+## Gremio               -1.2097427 -0.1613301  1.2905029  1.1876150  0.7427774  1.1537784
+## Athletico Paranaense  0.2837668 -0.1613301  0.4599812 -0.7017725  0.7427774  0.2576398
+## Sao Paulo            -1.2097427 -1.7746310 -0.3066542  0.3778775 -0.9713242 -0.4144641
+##                       GM.46.60   GM.61.75    GM.76.90     GM.90        PEN       PENF
+## Flamengo             1.9638692  2.5715514  2.16970148  1.037412  0.7664232  0.7009845
+## Santos               1.0504417  1.1663321 -0.01560936 -1.267948  0.4257907  0.7009845
+## Palmeiras            1.3549175  0.3232005  1.23313969  0.461072  0.4257907 -0.2336615
+## Gremio               0.1370141  1.1663321  0.92095243  1.037412  1.1070558  0.7009845
+## Athletico Paranaense 1.0504417  0.3232005  0.29657790  1.037412 -0.2554744 -0.2336615
+## Sao Paulo            1.0504417 -1.0820189 -0.63998389 -0.115268 -0.2554744 -0.2336615
+##                            PEND cluster
+## Flamengo              1.8569190       1
+## Santos                0.5305483       2
+## Palmeiras             0.5305483       2
+## Gremio               -0.7958224       2
+## Athletico Paranaense  1.8569190       2
+## Sao Paulo            -0.7958224       2</code></pre>
 <div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="análise-multivariada.html#cb94-1" aria-hidden="true" tabindex="-1"></a>camp.bras2019.kmeans<span class="sc">$</span>cluster</span></code></pre></div>
-<pre><code>##             Flamengo               Santos            Palmeiras 
-##                    1                    2                    2 
-##               Gremio Athletico Paranaense            Sao Paulo 
-##                    2                    2                    2 
-##        Internacional          Corinthians            Fortaleza 
-##                    3                    2                    3 
-##                Goias                Bahia                Vasco 
-##                    3                    3                    3 
-##     Atletico Mineiro           Fluminense             Botafogo 
-##                    3                    3                    3 
-##                Ceara             Cruzeiro                  CSA 
-##                    3                    4                    4 
-##          Chapecoense                 Avai 
-##                    4                    4</code></pre>
+<pre><code>##             Flamengo               Santos            Palmeiras               Gremio 
+##                    1                    2                    2                    2 
+## Athletico Paranaense            Sao Paulo        Internacional          Corinthians 
+##                    2                    2                    3                    2 
+##            Fortaleza                Goias                Bahia                Vasco 
+##                    3                    3                    3                    3 
+##     Atletico Mineiro           Fluminense             Botafogo                Ceara 
+##                    3                    3                    3                    3 
+##             Cruzeiro                  CSA          Chapecoense                 Avai 
+##                    4                    4                    4                    4</code></pre>
 <div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="análise-multivariada.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(camp.bras2019.kmeans<span class="sc">$</span>cluster, <span class="dv">4</span>)</span></code></pre></div>
 <pre><code>##  Flamengo    Santos Palmeiras    Gremio 
 ##         1         2         2         2</code></pre>
@@ -12031,8 +11967,8 @@ Ele permite a utilização de diferentes métodos de similaridade.</p>
 <div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="análise-multivariada.html#cb102-1" aria-hidden="true" tabindex="-1"></a>hc.res <span class="ot">&lt;-</span> <span class="fu">eclust</span>(df, <span class="st">&quot;hclust&quot;</span>, <span class="at">k =</span> <span class="dv">4</span>, <span class="at">hc_metric =</span> <span class="st">&quot;euclidean&quot;</span>,</span>
 <span id="cb102-2"><a href="análise-multivariada.html#cb102-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">hc_method =</span> <span class="st">&quot;ward.D2&quot;</span>, <span class="at">graph =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb102-3"><a href="análise-multivariada.html#cb102-3" aria-hidden="true" tabindex="-1"></a><span class="fu">fviz_dend</span>(hc.res, <span class="at">show_labels =</span> <span class="cn">FALSE</span>,<span class="at">palette =</span> <span class="st">&quot;jco&quot;</span>, <span class="at">as.ggplot =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<pre><code>## Warning: `guides(&lt;scale&gt; = FALSE)` is deprecated. Please use
-## `guides(&lt;scale&gt; = &quot;none&quot;)` instead.</code></pre>
+<pre><code>## Warning: `guides(&lt;scale&gt; = FALSE)` is deprecated. Please use `guides(&lt;scale&gt; = &quot;none&quot;)`
+## instead.</code></pre>
 <p><img src="ENG_792-AVDR_files/figure-html/eclust-2.png" width="672" /></p>
 <div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="análise-multivariada.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;NbClust&quot;)</span></span>
 <span id="cb104-2"><a href="análise-multivariada.html#cb104-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(NbClust)</span>
@@ -12233,56 +12169,50 @@ Ele permite a utilização de diferentes métodos de similaridade.</p>
 ## 2    0.7265305   0.3341267    0.5649710  0.19201808
 ## 
 ## Clustering vector:
-##     setosa     setosa     setosa     setosa     setosa     setosa 
-##          1          1          1          1          1          1 
-##     setosa     setosa     setosa     setosa     setosa     setosa 
-##          1          1          1          1          1          1 
-##     setosa     setosa     setosa     setosa     setosa     setosa 
-##          1          1          1          1          1          1 
-##     setosa     setosa     setosa     setosa     setosa     setosa 
-##          1          1          1          1          1          1 
-##     setosa     setosa     setosa     setosa     setosa     setosa 
-##          1          1          1          1          1          1 
-##     setosa     setosa     setosa     setosa     setosa     setosa 
-##          1          1          1          1          1          1 
-##     setosa     setosa     setosa     setosa     setosa     setosa 
-##          1          1          1          1          1          1 
-##     setosa     setosa     setosa     setosa     setosa     setosa 
-##          1          1          1          1          1          1 
-##     setosa     setosa versicolor versicolor versicolor versicolor 
-##          1          1          2          2          2          2 
-## versicolor versicolor versicolor versicolor versicolor versicolor 
-##          2          2          2          2          2          2 
-## versicolor versicolor versicolor versicolor versicolor versicolor 
-##          2          2          2          2          2          2 
-## versicolor versicolor versicolor versicolor versicolor versicolor 
-##          2          2          2          2          2          2 
-## versicolor versicolor versicolor versicolor versicolor versicolor 
-##          2          2          2          2          2          2 
-## versicolor versicolor versicolor versicolor versicolor versicolor 
-##          2          2          2          2          2          2 
-## versicolor versicolor versicolor versicolor versicolor versicolor 
-##          2          2          2          2          2          2 
-## versicolor versicolor versicolor versicolor versicolor versicolor 
-##          2          2          2          2          2          2 
-## versicolor versicolor versicolor versicolor  virginica  virginica 
-##          2          2          2          2          2          2 
-##  virginica  virginica  virginica  virginica  virginica  virginica 
-##          2          2          2          2          2          2 
-##  virginica  virginica  virginica  virginica  virginica  virginica 
-##          2          2          2          2          2          2 
-##  virginica  virginica  virginica  virginica  virginica  virginica 
-##          2          2          2          2          2          2 
-##  virginica  virginica  virginica  virginica  virginica  virginica 
-##          2          2          2          2          2          2 
-##  virginica  virginica  virginica  virginica  virginica  virginica 
-##          2          2          2          2          2          2 
-##  virginica  virginica  virginica  virginica  virginica  virginica 
-##          2          2          2          2          2          2 
-##  virginica  virginica  virginica  virginica  virginica  virginica 
-##          2          2          2          2          2          2 
-##  virginica  virginica  virginica  virginica  virginica  virginica 
-##          2          2          2          2          2          2 
+##     setosa     setosa     setosa     setosa     setosa     setosa     setosa 
+##          1          1          1          1          1          1          1 
+##     setosa     setosa     setosa     setosa     setosa     setosa     setosa 
+##          1          1          1          1          1          1          1 
+##     setosa     setosa     setosa     setosa     setosa     setosa     setosa 
+##          1          1          1          1          1          1          1 
+##     setosa     setosa     setosa     setosa     setosa     setosa     setosa 
+##          1          1          1          1          1          1          1 
+##     setosa     setosa     setosa     setosa     setosa     setosa     setosa 
+##          1          1          1          1          1          1          1 
+##     setosa     setosa     setosa     setosa     setosa     setosa     setosa 
+##          1          1          1          1          1          1          1 
+##     setosa     setosa     setosa     setosa     setosa     setosa     setosa 
+##          1          1          1          1          1          1          1 
+##     setosa versicolor versicolor versicolor versicolor versicolor versicolor 
+##          1          2          2          2          2          2          2 
+## versicolor versicolor versicolor versicolor versicolor versicolor versicolor 
+##          2          2          2          2          2          2          2 
+## versicolor versicolor versicolor versicolor versicolor versicolor versicolor 
+##          2          2          2          2          2          2          2 
+## versicolor versicolor versicolor versicolor versicolor versicolor versicolor 
+##          2          2          2          2          2          2          2 
+## versicolor versicolor versicolor versicolor versicolor versicolor versicolor 
+##          2          2          2          2          2          2          2 
+## versicolor versicolor versicolor versicolor versicolor versicolor versicolor 
+##          2          2          2          2          2          2          2 
+## versicolor versicolor versicolor versicolor versicolor versicolor versicolor 
+##          2          2          2          2          2          2          2 
+## versicolor versicolor  virginica  virginica  virginica  virginica  virginica 
+##          2          2          2          2          2          2          2 
+##  virginica  virginica  virginica  virginica  virginica  virginica  virginica 
+##          2          2          2          2          2          2          2 
+##  virginica  virginica  virginica  virginica  virginica  virginica  virginica 
+##          2          2          2          2          2          2          2 
+##  virginica  virginica  virginica  virginica  virginica  virginica  virginica 
+##          2          2          2          2          2          2          2 
+##  virginica  virginica  virginica  virginica  virginica  virginica  virginica 
+##          2          2          2          2          2          2          2 
+##  virginica  virginica  virginica  virginica  virginica  virginica  virginica 
+##          2          2          2          2          2          2          2 
+##  virginica  virginica  virginica  virginica  virginica  virginica  virginica 
+##          2          2          2          2          2          2          2 
+##  virginica  virginica  virginica 
+##          2          2          2 
 ## 
 ## Within cluster sum of squares by cluster:
 ## [1] 0.109453 0.444952
@@ -12290,9 +12220,8 @@ Ele permite a utilização de diferentes métodos de similaridade.</p>
 ## 
 ## Available components:
 ## 
-## [1] &quot;cluster&quot;      &quot;centers&quot;      &quot;totss&quot;        &quot;withinss&quot;    
-## [5] &quot;tot.withinss&quot; &quot;betweenss&quot;    &quot;size&quot;         &quot;iter&quot;        
-## [9] &quot;ifault&quot;</code></pre>
+## [1] &quot;cluster&quot;      &quot;centers&quot;      &quot;totss&quot;        &quot;withinss&quot;     &quot;tot.withinss&quot;
+## [6] &quot;betweenss&quot;    &quot;size&quot;         &quot;iter&quot;         &quot;ifault&quot;</code></pre>
 <div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="análise-multivariada.html#cb116-1" aria-hidden="true" tabindex="-1"></a>dend <span class="ot">&lt;-</span> <span class="fu">as.dendrogram</span>(camp.bras2019.chwo)</span>
 <span id="cb116-2"><a href="análise-multivariada.html#cb116-2" aria-hidden="true" tabindex="-1"></a><span class="fu">heatmap</span>(<span class="fu">as.matrix</span>(camp.bras19.stan.ch), <span class="at">Rowv=</span>dend, <span class="at">symm=</span><span class="cn">TRUE</span>, <span class="at">margin=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>))</span></code></pre></div>
 <p><img src="ENG_792-AVDR_files/figure-html/heatmap.dendo2-1.png" width="672" /></p>
@@ -12300,10 +12229,8 @@ Ele permite a utilização de diferentes métodos de similaridade.</p>
 <div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="análise-multivariada.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/&quot;</span>)</span>
 <span id="cb117-2"><a href="análise-multivariada.html#cb117-2" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;rioja&quot;)</span></span>
 <span id="cb117-3"><a href="análise-multivariada.html#cb117-3" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(<span class="at">pattern=</span><span class="st">&quot;.txt&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;Cap_3_Informações - Alunos ENG 792.txt&quot;
-## [2] &quot;Cap_3_Notas_2_ENG792.txt&quot;              
-## [3] &quot;Cap_3_Notas_ENG792.txt&quot;                
-## [4] &quot;Cap_5_Notas_ENG792.txt&quot;                
+<pre><code>## [1] &quot;Cap_3_Informações - Alunos ENG 792.txt&quot; &quot;Cap_3_Notas_2_ENG792.txt&quot;              
+## [3] &quot;Cap_3_Notas_ENG792.txt&quot;                 &quot;Cap_5_Notas_ENG792.txt&quot;                
 ## [5] &quot;Ciama.txt&quot;</code></pre>
 <div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="análise-multivariada.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rioja)</span>
 <span id="cb119-2"><a href="análise-multivariada.html#cb119-2" aria-hidden="true" tabindex="-1"></a>Ciama<span class="ot">&lt;-</span><span class="fu">read.table</span>(<span class="st">&quot;Ciama.txt&quot;</span>, <span class="at">header=</span><span class="cn">TRUE</span>, <span class="at">sep=</span><span class="st">&quot;&quot;</span>)</span>
@@ -12420,42 +12347,30 @@ Outras opções visuais</p>
 <pre><code>## [1] &quot;3&quot; &quot;4&quot; &quot;5&quot;</code></pre>
 <div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="análise-multivariada.html#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Composisção da primeira folha</span></span>
 <span id="cb138-2"><a href="análise-multivariada.html#cb138-2" aria-hidden="true" tabindex="-1"></a>spider[<span class="fu">which</span>(result<span class="sc">$</span>where<span class="sc">==</span>groups.mrt[<span class="dv">1</span>]),]</span></code></pre></div>
-<pre><code>##    arct.lute pard.lugu zora.spin pard.nigr pard.pull aulo.albi troc.terr
-## 18         0         0         0         1         1         0         1
-## 19         0         0         0         1         2         0         3
-## 20         0         1         2         2         0         1         4
-## 21         0         0         0         0         1         1         2
-## 22         0         0         0         0         0         0         1
-## 23         0         0         0         0         0         0         1
-## 24         0         1         0         0         0         0         1
-## 25         0         0         0         0         0         0         1
-## 26         0         0         0         0         0         0         0
-## 27         0         0         0         0         0         0         0
-## 28         0         0         0         0         0         0         1
-##    alop.cune pard.mont alop.acce alop.fabr arct.peri water sand moss
-## 18         1         5         1         0         0     5    0    9
-## 19         3         9         4         0         0     5    0    8
-## 20         1         3         3         3         0     3    7    2
-## 21         1         9         3         1         0     4    0    9
-## 22         0         4         1         1         0     4    8    7
-## 23         0         2         3         3         1     0    7    8
-## 24         0         2         4         3         2     0    6    9
-## 25         0         1         2         4         1     1    7    9
-## 26         0         1         5         3         2     0    5    8
-## 27         0         1         3         4         2     2    7    9
-## 28         0         0         1         2         4     0    9    4
-##    reft twigs herbs
-## 18    7     0     6
-## 19    8     0     8
-## 20    5     0     8
-## 21    8     0     7
-## 22    8     0     5
-## 23    8     0     6
-## 24    9     0     6
-## 25    8     0     0
-## 26    8     0     6
-## 27    9     0     5
-## 28    9     0     2</code></pre>
+<pre><code>##    arct.lute pard.lugu zora.spin pard.nigr pard.pull aulo.albi troc.terr alop.cune
+## 18         0         0         0         1         1         0         1         1
+## 19         0         0         0         1         2         0         3         3
+## 20         0         1         2         2         0         1         4         1
+## 21         0         0         0         0         1         1         2         1
+## 22         0         0         0         0         0         0         1         0
+## 23         0         0         0         0         0         0         1         0
+## 24         0         1         0         0         0         0         1         0
+## 25         0         0         0         0         0         0         1         0
+## 26         0         0         0         0         0         0         0         0
+## 27         0         0         0         0         0         0         0         0
+## 28         0         0         0         0         0         0         1         0
+##    pard.mont alop.acce alop.fabr arct.peri water sand moss reft twigs herbs
+## 18         5         1         0         0     5    0    9    7     0     6
+## 19         9         4         0         0     5    0    8    8     0     8
+## 20         3         3         3         0     3    7    2    5     0     8
+## 21         9         3         1         0     4    0    9    8     0     7
+## 22         4         1         1         0     4    8    7    8     0     5
+## 23         2         3         3         1     0    7    8    8     0     6
+## 24         2         4         3         2     0    6    9    9     0     6
+## 25         1         2         4         1     1    7    9    8     0     0
+## 26         1         5         3         2     0    5    8    8     0     6
+## 27         1         3         4         2     2    7    9    9     0     5
+## 28         0         1         2         4     0    9    4    9     0     2</code></pre>
 <div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="análise-multivariada.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Variáveis ambientais da primeira folha</span></span>
 <span id="cb140-2"><a href="análise-multivariada.html#cb140-2" aria-hidden="true" tabindex="-1"></a>spider[,<span class="dv">12</span><span class="sc">:</span><span class="dv">18</span>][<span class="fu">which</span>(result<span class="sc">$</span>where<span class="sc">==</span>groups.mrt[<span class="dv">1</span>]),]</span></code></pre></div>
 <pre><code>##    arct.peri water sand moss reft twigs herbs
@@ -12492,28 +12407,28 @@ Outras opções visuais</p>
 <span id="cb144-2"><a href="análise-multivariada.html#cb144-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(labdsv)</span>
 <span id="cb144-3"><a href="análise-multivariada.html#cb144-3" aria-hidden="true" tabindex="-1"></a>spe.ch.MRT.indval <span class="ot">&lt;-</span> <span class="fu">indval</span>(spider, result<span class="sc">$</span>where)</span>
 <span id="cb144-4"><a href="análise-multivariada.html#cb144-4" aria-hidden="true" tabindex="-1"></a>spe.ch.MRT.indval<span class="sc">$</span>pval      <span class="co"># Probability</span></span></code></pre></div>
-<pre><code>## arct.lute pard.lugu zora.spin pard.nigr pard.pull aulo.albi troc.terr 
-##     0.002     0.009     0.001     0.001     0.001     0.001     0.001 
-## alop.cune pard.mont alop.acce alop.fabr arct.peri     water      sand 
-##     0.003     0.082     0.002     0.001     0.004     0.015     0.001 
-##      moss      reft     twigs     herbs 
-##     0.001     0.001     0.001     0.001</code></pre>
+<pre><code>## arct.lute pard.lugu zora.spin pard.nigr pard.pull aulo.albi troc.terr alop.cune 
+##     0.002     0.009     0.001     0.001     0.001     0.001     0.001     0.003 
+## pard.mont alop.acce alop.fabr arct.peri     water      sand      moss      reft 
+##     0.082     0.002     0.001     0.004     0.015     0.001     0.001     0.001 
+##     twigs     herbs 
+##     0.001     0.001</code></pre>
 <div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="análise-multivariada.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Para cada espécie significante, encontra a folha com o maior IndVal</span></span>
 <span id="cb146-2"><a href="análise-multivariada.html#cb146-2" aria-hidden="true" tabindex="-1"></a>spe.ch.MRT.indval<span class="sc">$</span>maxcls[<span class="fu">which</span>(spe.ch.MRT.indval<span class="sc">$</span>pval <span class="sc">&lt;=</span> <span class="fl">0.05</span>)]</span></code></pre></div>
-<pre><code>## arct.lute pard.lugu zora.spin pard.nigr pard.pull aulo.albi troc.terr 
-##         3         2         3         3         3         3         3 
-## alop.cune alop.acce alop.fabr arct.peri     water      sand      moss 
-##         3         1         1         1         2         1         1 
-##      reft     twigs     herbs 
-##         1         2         3</code></pre>
+<pre><code>## arct.lute pard.lugu zora.spin pard.nigr pard.pull aulo.albi troc.terr alop.cune 
+##         3         2         3         3         3         3         3         3 
+## alop.acce alop.fabr arct.peri     water      sand      moss      reft     twigs 
+##         1         1         1         2         1         1         1         2 
+##     herbs 
+##         3</code></pre>
 <div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="análise-multivariada.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Valor de IndVal na melhor folha para cada espécie significante</span></span>
 <span id="cb148-2"><a href="análise-multivariada.html#cb148-2" aria-hidden="true" tabindex="-1"></a>spe.ch.MRT.indval<span class="sc">$</span>indcls[<span class="fu">which</span>(spe.ch.MRT.indval<span class="sc">$</span>pval <span class="sc">&lt;=</span> <span class="fl">0.05</span>)]</span></code></pre></div>
-<pre><code>## arct.lute pard.lugu zora.spin pard.nigr pard.pull aulo.albi troc.terr 
-## 0.6136364 0.6366000 0.6827586 0.8110116 0.8792185 0.8434837 0.5805450 
-## alop.cune alop.acce alop.fabr arct.peri     water      sand      moss 
-## 0.6344386 0.6451613 0.7340697 0.5454545 0.4554600 0.6148802 0.6087225 
-##      reft     twigs     herbs 
-## 0.5574938 0.9212828 0.5053885</code></pre>
+<pre><code>## arct.lute pard.lugu zora.spin pard.nigr pard.pull aulo.albi troc.terr alop.cune 
+## 0.6136364 0.6366000 0.6827586 0.8110116 0.8792185 0.8434837 0.5805450 0.6344386 
+## alop.acce alop.fabr arct.peri     water      sand      moss      reft     twigs 
+## 0.6451613 0.7340697 0.5454545 0.4554600 0.6148802 0.6087225 0.5574938 0.9212828 
+##     herbs 
+## 0.5053885</code></pre>
 </div>
 <div id="leitura-complementar" class="section level4" number="9.1.3.1">
 <h4><span class="header-section-number">9.1.3.1</span> <strong><em>Leitura Complementar</em></strong></h4>

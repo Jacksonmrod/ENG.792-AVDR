@@ -323,13 +323,13 @@ gow.dist.ward2 <- sum((camp.bras19.stan.ch-camp.bras19.stan.ch.ward2.coph)^2)
 ```
 
 Gower Distance para Single Linkage é `r gow.dist.single`.    
-Gower Distance para Complete Linkage é `r gow.dist.single`. 
-Gower Distance para UPGMA average é `r gow.dist.single`.    
-Gower Distance para UPGMA centroid é `r gow.dist.single`.    
-Gower Distance para WPGMA median é `r gow.dist.single`.    
-Gower Distance para WPGMA mcquitty é `r gow.dist.single`.    
-Gower Distance para Ward é `r gow.dist.single`.    
-Gower Distance para Ward 2 é `r gow.dist.single`.    
+Gower Distance para Complete Linkage é `r gow.dist.comp`. 
+Gower Distance para UPGMA average é `r gow.dist.UPGMA.average`.    
+Gower Distance para UPGMA centroid é `r gow.dist.UPGMA.centroid`.    
+Gower Distance para WPGMA median é `r gow.dist.WPGMA.median`.    
+Gower Distance para WPGMA mcquitty é `r gow.dist.WPGMA.mcquitty`.    
+Gower Distance para Ward é `r gow.dist.ward`.    
+Gower Distance para Ward 2 é `r gow.dist.ward2`.    
 
 
 ### ***Quantos grupos reter***
