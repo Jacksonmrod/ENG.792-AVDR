@@ -98,31 +98,7 @@ Todo o material necessário para acompanhar a disciplina será oferecido via [gi
 
 ### Cronograma de aulas
 
-As aulas serão ofertadas por material gravado e presencial às quintas e sextas entre 14:00 e 15:30.
-
-Semana/Data | Conteúdo
-:-:|:-------------------:
-1.1 | Apresentação do Conteúdo e Instalação do R
-1.2 | Funcionamento do R, tipo e estrutura dos objetos
-2.1 | Manipulação de dados 1
-2.2 | Manipulação de dados 2, testes lógicos e simbolos, condicionais e interações
-3.1 | Pacotes e Funções
-3.2 | Entrando/Importando dados. definição de diretórios
-4.1 | Produção gráfica com Rbase
-4.2 | Produção gráfica com ggplot 2
-5.1 | Elementos de estatística básica 1 (Est. Descritiva, Med. Tend. Central, Medi. de variabilidade)
-5.2 | Elementos de estatítica básica 2 (Dife. Entre médias, T-Student, Teste F, Testes de normalidade)
-6.1 | Elementos de estatítica básica 3 (ANOVA, delineamento, comparaçõe múltiplas, Regressão, Resíduos, Homocedasticidade, Normalidade dos resíduos, regressão múltipla, superfície de resposta)
-7.1 | Análise Multivariada (Análise de agrupamento, medidas de (dis)similaridade, métodos de conexão, número de clusters, produção de dendogramas, árvores de decisão)
-7.2 | Métodos de Ordenação (Ana. Componentes Principais, Análise Canônica, Análise de fatores, Análise de Mahalanobis)
-8 - 15 | Será preenchido em breve 
-30/09 | Palestra com [Msc. Beatriz Milz](https://beatrizmilz.com/)  - **Como aprender R tem sido importante na minha trajetória como gestora ambiental**    
-08/10 | Palestra com [Msc. Felipe Barros](https://felipesbarros.github.io/) - **Entendendo os mapas coropléticos**   
-14/10 | Palestra com Professor [Dr. Alcinei Mistico Azevedo](http://lattes.cnpq.br/9415018624563178) -  **Tecnologias digitais de apoio a análise de experimentos agronômicos**    
-21/10 | Palestra com Professor [Dr. Rafael Delgado](http://lattes.cnpq.br/1178948690201659) - **Sensoriamento Remoto Ambiental – Técnicas e Aplicações com uso do software R**    
-28/10 | Palestra com [Msc. Filipe Matias](https://github.com/filipematias23/) - **FIELDimageR pipeline: Image analysis from agricultural trials in R**
-04/11 | Palestra com [Msc. Maurício Vancine](https://mauriciovancine.github.io/) - **Modelos em Ecologia: extrapolando nosso conhecimento sobre a distribuição das espécies**   
-11/11 | Palestra com Professor [Dr. Domingos Sárvio](http://lattes.cnpq.br/8080945803303151) - **_Machine Learning_ Aplicado à Agricultura**
+As aulas serão ofertadas por material gravado e presencial às terças-feiras entre 13:30 e 16:00.
 
 ### Métodos de avaliação  
 - Faremos pelo menos 3 listas de exercícios distribuídas pelo semestre.   
