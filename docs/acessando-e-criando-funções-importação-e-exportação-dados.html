@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capítulo 4 Acessando e criando Funções, Importação e exportação dados | ENG 792 - Análise e visualização de dados com R (RStudio)</title>
   <meta name="description" content="Este é o material de supporte aos alunos matriculados na disciplina ENG 792 ofertada pelo programa de pós-gradução em Meteorologia Aplicada do Departamento de Engenharia Agrícola (DEA) da Universidade Federal de Viçosa (UFV)." />
-  <meta name="generator" content="bookdown 0.22.17 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capítulo 4 Acessando e criando Funções, Importação e exportação dados | ENG 792 - Análise e visualização de dados com R (RStudio)" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="Este é o material de supporte aos alunos matriculados na disciplina ENG 792 ofertada pelo programa de pós-gradução em Meteorologia Aplicada do Departamento de Engenharia Agrícola (DEA) da Universidade Federal de Viçosa (UFV)." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
@@ -24,7 +23,7 @@
 <meta name="author" content="Jackson Rodrigues" />
 
 
-<meta name="date" content="2021-10-20" />
+<meta name="date" content="2023-03-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +32,8 @@
   
 <link rel="prev" href="acessando-e-manipulação-de-dados.html"/>
 <link rel="next" href="produção-gráfica-e-comunicação-visual.html"/>
-<script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,17 +49,17 @@
 
 
 
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
 <script src="libs/es6shim-0.35.6/es6shim.js"></script>
 <script src="libs/es7shim-6.0.0/es7shim.js"></script>
 <script src="libs/graphre-0.1.3/graphre.js"></script>
-<script src="libs/nomnoml-1.3.1/nomnoml.js"></script>
-<script src="libs/nomnoml-binding-0.2.3/nomnoml.js"></script>
+<script src="libs/nomnoml-1.5.3/nomnoml.js"></script>
+<script src="libs/nomnoml-binding-0.2.6/nomnoml.js"></script>
 <link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 
@@ -103,7 +102,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -116,7 +115,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -357,10 +356,10 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="acessando-e-criando-funções-importação-e-exportação-dados" class="section level1" number="4">
-<h1><span class="header-section-number">Capítulo 4</span> Acessando e criando Funções, Importação e exportação dados</h1>
-<div id="funções" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Funções</h2>
+<div id="acessando-e-criando-funções-importação-e-exportação-dados" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Capítulo 4</span> Acessando e criando Funções, Importação e exportação dados<a href="acessando-e-criando-funções-importação-e-exportação-dados.html#acessando-e-criando-funções-importação-e-exportação-dados" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="funções" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Funções<a href="acessando-e-criando-funções-importação-e-exportação-dados.html#funções" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Assista este conteúdo em <strong>Cap 3 - Funções</strong> no <a href="https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php">PVANet</a></p>
 <p>Embora existam uma grande variedade de <em>funções</em> e <em>pacotes</em> disponíveis e crescendo em número, a grande versatilidade do R nos permite criar <em>comandos/funções</em> personalizadas.<br />
 No entanto, uma dúvida que por ventura você tenha e não consiga sanar dentro das opções de ajuda do próprio R, buscar em fóruns sobre o assunto pode ser uma saída, pois geralmente a sua dúvida foi a dúvida de alguém antes de você.</p>
@@ -369,29 +368,30 @@ Até aqui vimos algumas funções como: <code>c(), seq(), rep(), print(), is.num
 <p>Para entender melhor como uma <em>função</em> funciona ou o que ela faz e permite fazer podemos pedir ajuda escrevendo <code>?nomedafunção</code>.
 Por exemplo:</p>
 <div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb397-1" aria-hidden="true" tabindex="-1"></a>?rnorm <span class="co">#Gera um vetor de números aleatórios normalmente ditribuídos</span></span></code></pre></div>
+<pre><code>## starting httpd help server ... done</code></pre>
 <p>No display de ajuda da função <code>rnorm()</code>observamos como a função deve ser utilizada, quais parâmetros devem ser inseridos.<br />
 <code>rnorm(n, mean = 0, sd = 1)</code></p>
-<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb398-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">5</span> ,<span class="dv">10</span> , <span class="dv">8</span>) <span class="co">#Vejam que não estão próximas de zero, mas de dez. </span></span></code></pre></div>
-<pre><code>## [1] 14.048447  5.402080  5.626945  5.484384  2.879697</code></pre>
+<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb399-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">5</span> ,<span class="dv">10</span> , <span class="dv">8</span>) <span class="co">#Vejam que não estão próximas de zero, mas de dez. </span></span></code></pre></div>
+<pre><code>## [1] 22.101881 27.692473 18.294883  8.961472  4.598034</code></pre>
 <p>Podemos dar nomes aos parâmetros também, caso não sejam nomeados, os parâmetros seguirão a ordem estabelecida na função original inciada em <em>n</em> seguida de <em>mean</em> e <em>sd</em>.</p>
-<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb400-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
-<span id="cb400-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb400-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n=</span><span class="dv">5</span> ,<span class="at">mean=</span><span class="dv">10</span> , <span class="at">sd=</span><span class="dv">8</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb401-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb401-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb401-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n=</span><span class="dv">5</span> ,<span class="at">mean=</span><span class="dv">10</span> , <span class="at">sd=</span><span class="dv">8</span>) </span></code></pre></div>
 <pre><code>## [1]  0.343474 12.219434 18.675529 -8.765582 13.432998</code></pre>
-<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb402-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
-<span id="cb402-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb402-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">mean=</span><span class="dv">10</span>,<span class="at">n=</span><span class="dv">5</span>, <span class="at">sd=</span><span class="dv">8</span>) <span class="co"># Uma vez nomeados, eles podem ser arranjados da maneira que desejar. </span></span></code></pre></div>
+<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb403-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb403-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb403-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">mean=</span><span class="dv">10</span>,<span class="at">n=</span><span class="dv">5</span>, <span class="at">sd=</span><span class="dv">8</span>) <span class="co"># Uma vez nomeados, eles podem ser arranjados da maneira que desejar. </span></span></code></pre></div>
 <pre><code>## [1]  0.343474 12.219434 18.675529 -8.765582 13.432998</code></pre>
 <p>Quando você executou <code>?rnorm</code>, você deve ter percebido que existem outro comandos semelhantes:</p>
 <p><code>dnorm(x, mean = 0, sd = 1, log = FALSE)</code><br />
 <code>pnorm(q, mean = 0, sd = 1, lower.tail = TRUE, log.p = FALSE)</code>
 <code>qnorm(p, mean = 0, sd = 1, lower.tail = TRUE, log.p = FALSE)</code></p>
 <p><code>dnorm</code> retorna o valor da função de densidade de probabilidade para os parâmetros. fornececidos.</p>
-<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb404-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dnorm</span>(<span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">8</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb405-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dnorm</span>(<span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">8</span>)</span></code></pre></div>
 <pre><code>## [1] 0.04102012</code></pre>
 <p><code>pnorm</code> retorna a integral de <em>-Inf</em> até <em>q</em> de um <em>pdf</em> ( <em>Probability density function</em>) da distribuição normal onde <em>q</em> é o <em>z-score</em>.</p>
-<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb406-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">8</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb407-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">8</span>)</span></code></pre></div>
 <pre><code>## [1] 0.2659855</code></pre>
 <p><code>qnorm</code> é simplesmente o inverso do <em>cdf</em> ( <em>cumulative distribution function</em>), no qual você pode entender com o inverso de <code>pnorm</code>.</p>
-<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb408-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(.<span class="dv">2</span>) <span class="co"># Responde como o z-score do vigèsimo elemento de uma distribuiçãop normal.</span></span></code></pre></div>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb409-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(.<span class="dv">2</span>) <span class="co"># Responde como o z-score do vigèsimo elemento de uma distribuiçãop normal.</span></span></code></pre></div>
 <pre><code>## [1] -0.8416212</code></pre>
 <p>Para mais detalhes sobre estas funções <a href="http://seankross.com/notes/dpqr/">clique aqui</a>.</p>
 <p>As funções acima e tantas outras estão disponíveis no <strong>R</strong> desde sua instalação, assim como as funções básicas abaixo.</p>
@@ -532,28 +532,27 @@ Podemos imaginar a função dividida em 3 partes (entrada, processamento e saíd
 <li><p>Após fechar os parênteses abre-se chaves <em>{}</em> onde entram as equações ou testes a serem executados e as opções de saídas com o comando <strong>return</strong> quer geralmente encontra-se ao final da função. Não há restrição sobre a estrutura ou tipo de objeto retornado (<code>list, data.frame, matrix, numeric, logical</code> … etc).</p></li>
 <li><p>Após o registro da função no ambiente do R (Veja o <em>global environment</em>), a função fica pronta para uso.</p></li>
 </ul>
-<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb422-1" aria-hidden="true" tabindex="-1"></a>minhafunção <span class="ot">&lt;-</span> <span class="cf">function</span>(arg1, arg2, ... ){</span>
-<span id="cb422-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb422-2" aria-hidden="true" tabindex="-1"></a>    statements</span>
-<span id="cb422-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb422-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(object)</span>
-<span id="cb422-4"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb422-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p>Vamos criar uma função de divisão.</p>
-<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb423-1" aria-hidden="true" tabindex="-1"></a>divisao <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) { </span>
-<span id="cb423-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb423-2" aria-hidden="true" tabindex="-1"></a>    resultado <span class="ot">&lt;-</span> x<span class="sc">/</span>y </span>
-<span id="cb423-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb423-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(resultado) </span>
+<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb423-1" aria-hidden="true" tabindex="-1"></a>minhafunção <span class="ot">&lt;-</span> <span class="cf">function</span>(arg1, arg2, ... ){</span>
+<span id="cb423-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb423-2" aria-hidden="true" tabindex="-1"></a>    statements</span>
+<span id="cb423-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb423-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(object)</span>
 <span id="cb423-4"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb423-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Vamos criar uma função de divisão.</p>
+<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb424-1" aria-hidden="true" tabindex="-1"></a>divisao <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) { </span>
+<span id="cb424-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb424-2" aria-hidden="true" tabindex="-1"></a>    resultado <span class="ot">&lt;-</span> x<span class="sc">/</span>y </span>
+<span id="cb424-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb424-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(resultado) </span>
+<span id="cb424-4"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb424-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <ol style="list-style-type: decimal">
 <li>A função se chama <code>divisao</code>.</li>
 <li>Declare as variáveis <strong>x, y</strong> entre <strong>()</strong>;</li>
 <li><strong>{}</strong> guardam os comandos a serem executados;</li>
 <li><code>resultado &lt;- x/y</code> e <code>print(resultado)</code> são os comandos a serem executados.</li>
 </ol>
-<pre><code>## Warning: package &#39;flow&#39; was built under R version 4.1.1</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;flow&#39;</code></pre>
 <pre><code>## The following object is masked _by_ &#39;.GlobalEnv&#39;:
 ## 
 ##     d</code></pre>
-<div id="htmlwidget-8f836166d559454ecd73" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<div class="nomnoml html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-8f836166d559454ecd73" style="width:672px;height:480px;"></div>
 <script type="application/json" data-for="htmlwidget-8f836166d559454ecd73">{"x":{"code":"#.if: visual=rhomb fill=#e2efda align=center\n#.for: visual=rhomb fill=#ddebf7 align=center\n#.repeat: visual=rhomb fill=#fce4d6 align=center\n#.while: visual=rhomb fill=#fff2cc align=center\n#.standard: visual=class fill=#ededed align=left\n#.commented: visual=class fill=#ededed\n#.header: visual=roundrect fill=#d9e1f2 align=left\n#.return: visual=end fill=#70ad47  empty\n#.stop: visual=end fill=#ed7d31  empty\n#.break: visual=receiver fill=#ffc000 empty\n#.next: visual=transceiver fill=#5b9bd5  empty\n#arrowSize: 1\n#bendSize: 0.3\n#direction: down\n#gutter: 5\n#edgeMargin: 0\n#edges: hard\n#fill: #eee8d5\n#fillArrows: false\n#font: Courier\n#fontSize: 12\n#leading: 1.25\n#lineWidth: 3\n#padding: 16\n#spacing: 40\n#stroke: #33322E\n#title: filename\n#zoom: 1\n#acyclicer: greedy\n#ranker: network-simplex\n\n[<header>divisao(x, y)]  -> [<standard> 1: ;resultado <- x / y\nprint(resultado)]\n[<standard> 1: ;resultado <- x / y\nprint(resultado)]  -> [<return> 2:]","svg":true},"evals":[],"jsHooks":[]}</script>
 <div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb427-1" aria-hidden="true" tabindex="-1"></a><span class="fu">divisao</span>(<span class="dv">50</span>,<span class="dv">25</span>)</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
@@ -568,7 +567,7 @@ Podemos imaginar a função dividida em 3 partes (entrada, processamento e saíd
 <pre><code>## [1] 3</code></pre>
 <p>Experimentem e vejam o que acontece.</p>
 <div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb435-1" aria-hidden="true" tabindex="-1"></a><span class="fu">divisao</span>(<span class="dv">50</span>,)</span></code></pre></div>
-<pre><code>## Error in divisao(50, ): argument &quot;y&quot; is missing, with no default</code></pre>
+<pre><code>## Error in divisao(50, ): argumento &quot;y&quot; ausente, sem padrão</code></pre>
 <div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb437-1" aria-hidden="true" tabindex="-1"></a><span class="fu">divisao</span>(<span class="dv">50</span>,<span class="dv">25</span>,<span class="dv">32</span>)</span></code></pre></div>
 <pre><code>## Error in divisao(50, 25, 32): unused argument (32)</code></pre>
 <div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb439-1" aria-hidden="true" tabindex="-1"></a><span class="fu">divisao</span>(a,m)</span></code></pre></div>
@@ -599,26 +598,24 @@ Podemos imaginar a função dividida em 3 partes (entrada, processamento e saíd
 <span id="cb443-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb443-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(s) </span></code></pre></div>
 <pre><code>## [1] 50</code></pre>
 <div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb445-1" aria-hidden="true" tabindex="-1"></a>s</span></code></pre></div>
-<pre><code>##  [1]  1.000000  1.183673  1.367347  1.551020  1.734694  1.918367
-##  [7]  2.102041  2.285714  2.469388  2.653061  2.836735  3.020408
-## [13]  3.204082  3.387755  3.571429  3.755102  3.938776  4.122449
-## [19]  4.306122  4.489796  4.673469  4.857143  5.040816  5.224490
-## [25]  5.408163  5.591837  5.775510  5.959184  6.142857  6.326531
-## [31]  6.510204  6.693878  6.877551  7.061224  7.244898  7.428571
-## [37]  7.612245  7.795918  7.979592  8.163265  8.346939  8.530612
-## [43]  8.714286  8.897959  9.081633  9.265306  9.448980  9.632653
-## [49]  9.816327 10.000000</code></pre>
+<pre><code>##  [1]  1.000000  1.183673  1.367347  1.551020  1.734694  1.918367  2.102041
+##  [8]  2.285714  2.469388  2.653061  2.836735  3.020408  3.204082  3.387755
+## [15]  3.571429  3.755102  3.938776  4.122449  4.306122  4.489796  4.673469
+## [22]  4.857143  5.040816  5.224490  5.408163  5.591837  5.775510  5.959184
+## [29]  6.142857  6.326531  6.510204  6.693878  6.877551  7.061224  7.244898
+## [36]  7.428571  7.612245  7.795918  7.979592  8.163265  8.346939  8.530612
+## [43]  8.714286  8.897959  9.081633  9.265306  9.448980  9.632653  9.816327
+## [50] 10.000000</code></pre>
 <div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb447-1" aria-hidden="true" tabindex="-1"></a>d<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="at">from=</span><span class="dv">1</span>,<span class="at">to=</span><span class="dv">10</span>,<span class="at">length.out =</span> <span class="fu">length</span>(s))</span>
 <span id="cb447-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb447-2" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div>
-<pre><code>##  [1]  1.000000  1.183673  1.367347  1.551020  1.734694  1.918367
-##  [7]  2.102041  2.285714  2.469388  2.653061  2.836735  3.020408
-## [13]  3.204082  3.387755  3.571429  3.755102  3.938776  4.122449
-## [19]  4.306122  4.489796  4.673469  4.857143  5.040816  5.224490
-## [25]  5.408163  5.591837  5.775510  5.959184  6.142857  6.326531
-## [31]  6.510204  6.693878  6.877551  7.061224  7.244898  7.428571
-## [37]  7.612245  7.795918  7.979592  8.163265  8.346939  8.530612
-## [43]  8.714286  8.897959  9.081633  9.265306  9.448980  9.632653
-## [49]  9.816327 10.000000</code></pre>
+<pre><code>##  [1]  1.000000  1.183673  1.367347  1.551020  1.734694  1.918367  2.102041
+##  [8]  2.285714  2.469388  2.653061  2.836735  3.020408  3.204082  3.387755
+## [15]  3.571429  3.755102  3.938776  4.122449  4.306122  4.489796  4.673469
+## [22]  4.857143  5.040816  5.224490  5.408163  5.591837  5.775510  5.959184
+## [29]  6.142857  6.326531  6.510204  6.693878  6.877551  7.061224  7.244898
+## [36]  7.428571  7.612245  7.795918  7.979592  8.163265  8.346939  8.530612
+## [43]  8.714286  8.897959  9.081633  9.265306  9.448980  9.632653  9.816327
+## [50] 10.000000</code></pre>
 <div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb449-1" aria-hidden="true" tabindex="-1"></a>multiplicador <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y){</span>
 <span id="cb449-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb449-2" aria-hidden="true" tabindex="-1"></a>  resultado <span class="ot">&lt;-</span> x<span class="sc">*</span>y</span>
 <span id="cb449-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb449-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">assign</span>(<span class="st">&quot;resultado&quot;</span>, resultado, <span class="at">envir=</span><span class="fu">globalenv</span>())</span>
@@ -652,21 +649,23 @@ Podemos imaginar a função dividida em 3 partes (entrada, processamento e saíd
 <span id="cb453-4"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb453-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>( msg1, msg2)</span>
 <span id="cb453-5"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb453-5" aria-hidden="true" tabindex="-1"></a>   }</span>
 <span id="cb453-6"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb453-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mensagem</span>()</span></code></pre></div>
-<pre><code>## Olá Mundo! Hello World!</code></pre>
+<pre><code>## escreva sua mensagem: 
+## De novo: 
+## </code></pre>
 </div>
-<div id="pacotes" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> Pacotes</h2>
+<div id="pacotes" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Pacotes<a href="acessando-e-criando-funções-importação-e-exportação-dados.html#pacotes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Assista este conteúdo em <strong>Cap 3 - Pacotes</strong> no <a href="https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php">PVANet</a></p>
-<div id="o-que-são-de-onde-vem-para-onde-vão-do-que-se-alimentam" class="section level3" number="4.2.1">
-<h3><span class="header-section-number">4.2.1</span> O que são? De onde vem? Para onde vão? Do que se alimentam?</h3>
+<div id="o-que-são-de-onde-vem-para-onde-vão-do-que-se-alimentam" class="section level3 hasAnchor" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> O que são? De onde vem? Para onde vão? Do que se alimentam?<a href="acessando-e-criando-funções-importação-e-exportação-dados.html#o-que-são-de-onde-vem-para-onde-vão-do-que-se-alimentam" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Quando iniciamos o R pouco mais de 2000 funções e outros objetos na memória estão prontos para uso.</p>
 <p>No R temos os pacotes que são feitos para cálculos estatísticos dos mais variados, pacotes para fazer gráficos, pacotes aplicados à um determinado tipo de dado ou subdivisão da ciência e etc…</p>
 <p>Eles basicamente permitem vocês expandirem a funcionalidade do R para programação, ao invés de escrever dezenas de linhas de códigos, esses códigos são preparados, empacotados e tudo que você precisa fazer e usá-lo.
 Os <code>Packages</code> são coleções de funções, dados, e códigos compilados num formato bem definido. O diretório onde os pacotes estão armazenados são chamados <code>library</code>. A função
 <code>.libPaths()</code> onde sua biblioteca está alojada.</p>
 <div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb455-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.libPaths</span>()</span></code></pre></div>
-<pre><code>## [1] &quot;C:/Users/jacks/Documents/R/win-library/4.1&quot;
-## [2] &quot;C:/Program Files/R/R-4.1.0/library&quot;</code></pre>
+<pre><code>## [1] &quot;C:/Users/jacks/AppData/Local/R/win-library/4.2&quot;
+## [2] &quot;C:/Program Files/R/R-4.2.3/library&quot;</code></pre>
 <p>Milhares de outras funções, para as mais diversas tarefas, podem ser adicionadas por meio de pacotes (<strong>packages</strong>) disponíveis livremente na internet.<br />
 No entanto, a principal fonte de pacotes para o R é o <a href="https://cran.r-project.org/">CRAN</a>, mas também temos <a href="https://r-forge.r-project.org/.">r-forge</a>, <a href="https://github.com/">github</a> e outras fontes pela internet.</p>
 <p><a href="https://blog.revolutionanalytics.com/2017/01/cran-10000.html">CRAN now has 10,000 R packages. Here’s how to find the ones you need.</a></p>
@@ -688,34 +687,27 @@ Mas o que CRAN quer dizer? É o local onde os pacotes são armazenados.
 R é um open source software então se você quiser, pode criar um pacote ar mazená-lo no CRAN.</p>
 <div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb457-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;analogue&quot;)</span></span>
 <span id="cb457-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb457-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(analogue)</span></code></pre></div>
-<pre><code>## Warning: package &#39;analogue&#39; was built under R version 4.1.1</code></pre>
 <pre><code>## Carregando pacotes exigidos: vegan</code></pre>
-<pre><code>## Warning: package &#39;vegan&#39; was built under R version 4.1.1</code></pre>
 <pre><code>## Carregando pacotes exigidos: permute</code></pre>
 <pre><code>## Carregando pacotes exigidos: lattice</code></pre>
-<pre><code>## This is vegan 2.5-7</code></pre>
+<pre><code>## This is vegan 2.6-4</code></pre>
 <pre><code>## analogue version 0.17-6</code></pre>
-<pre><code>## 
-## Attaching package: &#39;analogue&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:timeSeries&#39;:
-## 
-##     smoothSpline</code></pre>
 <p>Visite <a href="https://cran.r-project.org/web/packages/analogue/">Analogue</a> e explore o que há disponível para o pacote analogue.
 Use a aba packages para explorar suas funcionalidades</p>
 <p>Muitas vezes os pacotes disponíveis no <strong>CRAN</strong> não estão <em>UpToDate</em> por isso talvez seja mais interessante isntalar os pacotes diretamente do <a href="https://github.com/">github</a>.</p>
 <p>Veja o pacote <a href="https://github.com/trinker/pacman">packman</a> e vamos instalá-lo pelo <strong>github</strong>. Mas antes vamos instalar o pacote <a href="https://www.r-project.org/nosvn/pandoc/devtools.html">devtools</a> que , entre outras coisas, nos permite “buscar” os pacotes do <strong>github</strong>.</p>
-<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb467-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;devtools&quot;)</span></span>
-<span id="cb467-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb467-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;trinker/pacman&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb463-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;devtools&quot;)</span></span>
+<span id="cb463-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb463-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;trinker/pacman&quot;</span>)</span></code></pre></div>
 <pre><code>## Skipping install of &#39;pacman&#39; from a github remote, the SHA1 (ace09364) has not changed since last install.
 ##   Use `force = TRUE` to force installation</code></pre>
 <p>Ao utilizar o software R e um pacote na execução de seu trabalho você <strong>deve</strong> citá-los.</p>
-<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb469-1" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span> () <span class="co"># citação do software R</span></span></code></pre></div>
+<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb465-1" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span> () <span class="co"># citação do software R</span></span></code></pre></div>
 <pre><code>## 
 ## To cite R in publications use:
 ## 
-##   R Core Team (2021). R: A language and environment for
-##   statistical computing. R Foundation for Statistical
-##   Computing, Vienna, Austria. URL https://www.R-project.org/.
+##   R Core Team (2023). R: A language and environment for statistical
+##   computing. R Foundation for Statistical Computing, Vienna, Austria.
+##   URL https://www.R-project.org/.
 ## 
 ## A BibTeX entry for LaTeX users is
 ## 
@@ -724,278 +716,267 @@ Use a aba packages para explorar suas funcionalidades</p>
 ##     author = {{R Core Team}},
 ##     organization = {R Foundation for Statistical Computing},
 ##     address = {Vienna, Austria},
-##     year = {2021},
+##     year = {2023},
 ##     url = {https://www.R-project.org/},
 ##   }
 ## 
-## We have invested a lot of time and effort in creating R, please
-## cite it when using it for data analysis. See also
-## &#39;citation(&quot;pkgname&quot;)&#39; for citing R packages.</code></pre>
-<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb471-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb471-1" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span>(<span class="at">package =</span> <span class="st">&quot;analogue&quot;</span>) <span class="co"># citação do pacote Analogue</span></span></code></pre></div>
+## We have invested a lot of time and effort in creating R, please cite it
+## when using it for data analysis. See also &#39;citation(&quot;pkgname&quot;)&#39; for
+## citing R packages.</code></pre>
+<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb467-1" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span>(<span class="at">package =</span> <span class="st">&quot;analogue&quot;</span>) <span class="co"># citação do pacote Analogue</span></span></code></pre></div>
 <pre><code>## 
 ## To cite use of &#39;analogue&#39; in publications use:
 ## 
-##   Simpson, G.L. and Oksanen, J.  ( 2021 ). analogue: Analogue
-##   matching and Modern Analogue Technique transfer function
-##   models. (R package version 0.17-6 ).
-##   (https://cran.r-project.org/package=analogue).
+##   Simpson, G.L. and Oksanen, J.  ( 2021 ). analogue: Analogue matching
+##   and Modern Analogue Technique transfer function models. (R package
+##   version 0.17-6 ). (https://cran.r-project.org/package=analogue).
 ## 
-##   Simpson, G.L. (2007). Analogue Methods in Palaeoecology:
-##   Using the analogue Package Journal of Statistical Software,
-##   22(2), 1--29
+##   Simpson, G.L. (2007). Analogue Methods in Palaeoecology: Using the
+##   analogue Package Journal of Statistical Software, 22(2), 1--29
 ## 
 ## To see these entries in BibTeX format, use &#39;print(&lt;citation&gt;,
 ## bibtex=TRUE)&#39;, &#39;toBibtex(.)&#39;, or set
 ## &#39;options(citation.bibtex.max=999)&#39;.</code></pre>
 <p>Aqui listo os pacotes carregados agora em meu R.</p>
-<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb473-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb473-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">.packages</span>())</span></code></pre></div>
-<pre><code>##  [1] &quot;analogue&quot;      &quot;vegan&quot;         &quot;lattice&quot;       &quot;permute&quot;      
-##  [5] &quot;flow&quot;          &quot;prob&quot;          &quot;fAsianOptions&quot; &quot;fOptions&quot;     
-##  [9] &quot;fBasics&quot;       &quot;timeSeries&quot;    &quot;timeDate&quot;      &quot;combinat&quot;     
-## [13] &quot;magrittr&quot;      &quot;ggplot2&quot;       &quot;stats&quot;         &quot;graphics&quot;     
-## [17] &quot;grDevices&quot;     &quot;utils&quot;         &quot;datasets&quot;      &quot;methods&quot;      
-## [21] &quot;base&quot;</code></pre>
+<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb469-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">.packages</span>())</span></code></pre></div>
+<pre><code>##  [1] &quot;analogue&quot;  &quot;vegan&quot;     &quot;lattice&quot;   &quot;permute&quot;   &quot;flow&quot;      &quot;purrr&quot;    
+##  [7] &quot;magrittr&quot;  &quot;ggplot2&quot;   &quot;stats&quot;     &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;    
+## [13] &quot;datasets&quot;  &quot;methods&quot;   &quot;base&quot;</code></pre>
 <p>Aqui listo os pacotes instalados em meu R.</p>
-<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb475-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb475-1" aria-hidden="true" tabindex="-1"></a>meus.pacotes <span class="ot">&lt;-</span> <span class="fu">library</span>()<span class="sc">$</span>results[,<span class="dv">1</span>]</span>
-<span id="cb475-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb475-2" aria-hidden="true" tabindex="-1"></a>meus.pacotes</span></code></pre></div>
-<pre><code>##   [1] &quot;abind&quot;                &quot;ade4&quot;                
-##   [3] &quot;analogue&quot;             &quot;ape&quot;                 
-##   [5] &quot;askpass&quot;              &quot;assertthat&quot;          
-##   [7] &quot;audio&quot;                &quot;automap&quot;             
-##   [9] &quot;backports&quot;            &quot;base64enc&quot;           
-##  [11] &quot;beepr&quot;                &quot;BH&quot;                  
-##  [13] &quot;bibtex&quot;               &quot;biotools&quot;            
-##  [15] &quot;bit&quot;                  &quot;bit64&quot;               
-##  [17] &quot;bitops&quot;               &quot;blob&quot;                
-##  [19] &quot;blogdown&quot;             &quot;bookdown&quot;            
-##  [21] &quot;brew&quot;                 &quot;brglm&quot;               
-##  [23] &quot;brio&quot;                 &quot;broom&quot;               
-##  [25] &quot;bslib&quot;                &quot;cachem&quot;              
-##  [27] &quot;callr&quot;                &quot;candisc&quot;             
-##  [29] &quot;car&quot;                  &quot;carData&quot;             
-##  [31] &quot;caret&quot;                &quot;cellranger&quot;          
-##  [33] &quot;checkmate&quot;            &quot;classInt&quot;            
-##  [35] &quot;cli&quot;                  &quot;ClimClass&quot;           
-##  [37] &quot;clipr&quot;                &quot;clue&quot;                
-##  [39] &quot;cluster&quot;              &quot;clv&quot;                 
-##  [41] &quot;coda&quot;                 &quot;colorspace&quot;          
-##  [43] &quot;combinat&quot;             &quot;commonmark&quot;          
-##  [45] &quot;conquer&quot;              &quot;corrplot&quot;            
-##  [47] &quot;cowplot&quot;              &quot;cpp11&quot;               
-##  [49] &quot;crayon&quot;               &quot;credentials&quot;         
-##  [51] &quot;crosstalk&quot;            &quot;crul&quot;                
-##  [53] &quot;curl&quot;                 &quot;data.table&quot;          
-##  [55] &quot;DBI&quot;                  &quot;dbplyr&quot;              
-##  [57] &quot;decido&quot;               &quot;deldir&quot;              
-##  [59] &quot;dendextend&quot;           &quot;desc&quot;                
-##  [61] &quot;devEMF&quot;               &quot;devtools&quot;            
-##  [63] &quot;dichromat&quot;            &quot;diffobj&quot;             
-##  [65] &quot;digest&quot;               &quot;doParallel&quot;          
-##  [67] &quot;dotCall64&quot;            &quot;dplyr&quot;               
-##  [69] &quot;DT&quot;                   &quot;dtplyr&quot;              
-##  [71] &quot;dtw&quot;                  &quot;e1071&quot;               
-##  [73] &quot;easyGgplot2&quot;          &quot;editData&quot;            
-##  [75] &quot;elevatr&quot;              &quot;ellipse&quot;             
-##  [77] &quot;ellipsis&quot;             &quot;evaluate&quot;            
-##  [79] &quot;expm&quot;                 &quot;extraDistr&quot;          
-##  [81] &quot;factoextra&quot;           &quot;FactoMineR&quot;          
-##  [83] &quot;fansi&quot;                &quot;farver&quot;              
-##  [85] &quot;fAsianOptions&quot;        &quot;fastmap&quot;             
-##  [87] &quot;fBasics&quot;              &quot;fields&quot;              
-##  [89] &quot;FinCal&quot;               &quot;flashClust&quot;          
-##  [91] &quot;flextable&quot;            &quot;flow&quot;                
-##  [93] &quot;FNN&quot;                  &quot;fOptions&quot;            
-##  [95] &quot;forcats&quot;              &quot;foreach&quot;             
-##  [97] &quot;forecast&quot;             &quot;forestmangr&quot;         
-##  [99] &quot;Formula&quot;              &quot;formula.tools&quot;       
-## [101] &quot;fracdiff&quot;             &quot;fs&quot;                  
-## [103] &quot;furrr&quot;                &quot;future&quot;              
-## [105] &quot;gargle&quot;               &quot;gbm&quot;                 
-## [107] &quot;gclus&quot;                &quot;gdata&quot;               
-## [109] &quot;gdtools&quot;              &quot;generics&quot;            
-## [111] &quot;geobr&quot;                &quot;geojsonsf&quot;           
-## [113] &quot;geometries&quot;           &quot;geosphere&quot;           
-## [115] &quot;gert&quot;                 &quot;ggdendro&quot;            
-## [117] &quot;ggforce&quot;              &quot;ggformula&quot;           
-## [119] &quot;ggmap&quot;                &quot;ggplot2&quot;             
-## [121] &quot;ggpmisc&quot;              &quot;ggpp&quot;                
-## [123] &quot;ggpubr&quot;               &quot;ggrepel&quot;             
-## [125] &quot;ggridges&quot;             &quot;ggsci&quot;               
-## [127] &quot;ggsignif&quot;             &quot;ggstance&quot;            
-## [129] &quot;ggthemes&quot;             &quot;gh&quot;                  
-## [131] &quot;gitcreds&quot;             &quot;glcm&quot;                
-## [133] &quot;globals&quot;              &quot;glue&quot;                
-## [135] &quot;gmodels&quot;              &quot;goftest&quot;             
-## [137] &quot;googledrive&quot;          &quot;googlesheets4&quot;       
-## [139] &quot;gower&quot;                &quot;gridExtra&quot;           
-## [141] &quot;gss&quot;                  &quot;gstat&quot;               
-## [143] &quot;gtable&quot;               &quot;gtools&quot;              
-## [145] &quot;haven&quot;                &quot;heplots&quot;             
-## [147] &quot;here&quot;                 &quot;hexbin&quot;              
-## [149] &quot;highr&quot;                &quot;Hmisc&quot;               
-## [151] &quot;hms&quot;                  &quot;htmlTable&quot;           
-## [153] &quot;htmltools&quot;            &quot;htmlwidgets&quot;         
-## [155] &quot;httpcode&quot;             &quot;httpuv&quot;              
-## [157] &quot;httr&quot;                 &quot;hydroGOF&quot;            
-## [159] &quot;hydroTSM&quot;             &quot;ids&quot;                 
-## [161] &quot;igraph&quot;               &quot;ini&quot;                 
-## [163] &quot;insight&quot;              &quot;intervals&quot;           
-## [165] &quot;ipred&quot;                &quot;isoband&quot;             
-## [167] &quot;iterators&quot;            &quot;jpeg&quot;                
-## [169] &quot;jquerylib&quot;            &quot;jsonify&quot;             
-## [171] &quot;jsonlite&quot;             &quot;kableExtra&quot;          
-## [173] &quot;kernlab&quot;              &quot;kknn&quot;                
-## [175] &quot;knitr&quot;                &quot;kohonen&quot;             
-## [177] &quot;labdsv&quot;               &quot;labeling&quot;            
-## [179] &quot;labelled&quot;             &quot;later&quot;               
-## [181] &quot;latticeExtra&quot;         &quot;lava&quot;                
-## [183] &quot;lazyeval&quot;             &quot;leafem&quot;              
-## [185] &quot;leaflet&quot;              &quot;leaflet.providers&quot;   
-## [187] &quot;leafpop&quot;              &quot;leafsync&quot;            
-## [189] &quot;leaps&quot;                &quot;LearnBayes&quot;          
-## [191] &quot;lifecycle&quot;            &quot;listenv&quot;             
-## [193] &quot;lme4&quot;                 &quot;lmodel2&quot;             
-## [195] &quot;lmtest&quot;               &quot;locpol&quot;              
-## [197] &quot;longitudinalData&quot;     &quot;lsr&quot;                 
-## [199] &quot;lubridate&quot;            &quot;lwgeom&quot;              
-## [201] &quot;magick&quot;               &quot;magrittr&quot;            
-## [203] &quot;maps&quot;                 &quot;maptools&quot;            
-## [205] &quot;maptree&quot;              &quot;mapview&quot;             
-## [207] &quot;markdown&quot;             &quot;MatrixModels&quot;        
-## [209] &quot;matrixStats&quot;          &quot;memoise&quot;             
-## [211] &quot;metR&quot;                 &quot;mime&quot;                
-## [213] &quot;miniUI&quot;               &quot;minpack.lm&quot;          
-## [215] &quot;minqa&quot;                &quot;misc3d&quot;              
-## [217] &quot;mlbench&quot;              &quot;mnormt&quot;              
-## [219] &quot;modeest&quot;              &quot;ModelMetrics&quot;        
-## [221] &quot;modelr&quot;               &quot;moonBook&quot;            
-## [223] &quot;mosaic&quot;               &quot;mosaicCore&quot;          
-## [225] &quot;mosaicData&quot;           &quot;MultivariateAnalysis&quot;
-## [227] &quot;munsell&quot;              &quot;mvpart&quot;              
-## [229] &quot;MVPARTwrap&quot;           &quot;nasapower&quot;           
-## [231] &quot;NbClust&quot;              &quot;ncdf4&quot;               
-## [233] &quot;NeuralNetTools&quot;       &quot;nloptr&quot;              
-## [235] &quot;nomnoml&quot;              &quot;nortest&quot;             
-## [237] &quot;numDeriv&quot;             &quot;officer&quot;             
-## [239] &quot;openssl&quot;              &quot;openxlsx&quot;            
-## [241] &quot;operator.tools&quot;       &quot;pacman&quot;              
-## [243] &quot;parallelly&quot;           &quot;pbkrtest&quot;            
-## [245] &quot;PCAmixdata&quot;           &quot;pdc&quot;                 
-## [247] &quot;permute&quot;              &quot;pillar&quot;              
-## [249] &quot;pixmap&quot;               &quot;pkgbuild&quot;            
-## [251] &quot;pkgconfig&quot;            &quot;pkgload&quot;             
-## [253] &quot;plyr&quot;                 &quot;png&quot;                 
-## [255] &quot;polyclip&quot;             &quot;polynom&quot;             
-## [257] &quot;praise&quot;               &quot;prettyunits&quot;         
-## [259] &quot;princurve&quot;            &quot;prob&quot;                
-## [261] &quot;pROC&quot;                 &quot;processx&quot;            
-## [263] &quot;prodlim&quot;              &quot;profileModel&quot;        
-## [265] &quot;progress&quot;             &quot;progressr&quot;           
-## [267] &quot;promises&quot;             &quot;proxy&quot;               
-## [269] &quot;ps&quot;                   &quot;psych&quot;               
-## [271] &quot;purrr&quot;                &quot;quadprog&quot;            
-## [273] &quot;quantmod&quot;             &quot;quantreg&quot;            
-## [275] &quot;R.cache&quot;              &quot;R.methodsS3&quot;         
-## [277] &quot;R.oo&quot;                 &quot;R.utils&quot;             
-## [279] &quot;R6&quot;                   &quot;randomForest&quot;        
-## [281] &quot;rapidjsonr&quot;           &quot;rappdirs&quot;            
-## [283] &quot;raster&quot;               &quot;rasterVis&quot;           
-## [285] &quot;rayimage&quot;             &quot;rayrender&quot;           
-## [287] &quot;rayshader&quot;            &quot;rcmdcheck&quot;           
-## [289] &quot;RColorBrewer&quot;         &quot;Rcpp&quot;                
-## [291] &quot;RcppArmadillo&quot;        &quot;RcppEigen&quot;           
-## [293] &quot;RcppThread&quot;           &quot;RCurl&quot;               
-## [295] &quot;readr&quot;                &quot;readxl&quot;              
-## [297] &quot;recipes&quot;              &quot;rematch&quot;             
-## [299] &quot;rematch2&quot;             &quot;remotes&quot;             
-## [301] &quot;reprex&quot;               &quot;reshape&quot;             
-## [303] &quot;reshape2&quot;             &quot;rgdal&quot;               
-## [305] &quot;rgeos&quot;                &quot;rgl&quot;                 
-## [307] &quot;RgoogleMaps&quot;          &quot;rio&quot;                 
-## [309] &quot;rioja&quot;                &quot;rJava&quot;               
-## [311] &quot;rjson&quot;                &quot;rlang&quot;               
-## [313] &quot;rmarkdown&quot;            &quot;rmutil&quot;              
-## [315] &quot;rnaturalearth&quot;        &quot;rnaturalearthdata&quot;   
-## [317] &quot;RNCEP&quot;                &quot;roxygen2&quot;            
-## [319] &quot;rpart.plot&quot;           &quot;rprojroot&quot;           
-## [321] &quot;rrtable&quot;              &quot;rstatix&quot;             
-## [323] &quot;RStoolbox&quot;            &quot;rstudioapi&quot;          
-## [325] &quot;Rtsne&quot;                &quot;rversions&quot;           
-## [327] &quot;rvest&quot;                &quot;rvg&quot;                 
-## [329] &quot;s2&quot;                   &quot;sandwich&quot;            
-## [331] &quot;sass&quot;                 &quot;satellite&quot;           
-## [333] &quot;scales&quot;               &quot;scatterplot3d&quot;       
-## [335] &quot;selectr&quot;              &quot;servr&quot;               
-## [337] &quot;sessioninfo&quot;          &quot;sf&quot;                  
-## [339] &quot;sfheaders&quot;            &quot;shiny&quot;               
-## [341] &quot;shinyWidgets&quot;         &quot;sjlabelled&quot;          
-## [343] &quot;sjmisc&quot;               &quot;sourcetools&quot;         
-## [345] &quot;sp&quot;                   &quot;spacefillr&quot;          
-## [347] &quot;spacetime&quot;            &quot;spam&quot;                
-## [349] &quot;SparseM&quot;              &quot;spatialEco&quot;          
-## [351] &quot;spatstat.core&quot;        &quot;spatstat.data&quot;       
-## [353] &quot;spatstat.geom&quot;        &quot;spatstat.sparse&quot;     
-## [355] &quot;spatstat.utils&quot;       &quot;spData&quot;              
-## [357] &quot;spdep&quot;                &quot;splus2R&quot;             
-## [359] &quot;SQUAREM&quot;              &quot;stable&quot;              
-## [361] &quot;stabledist&quot;           &quot;stars&quot;               
-## [363] &quot;statip&quot;               &quot;stringi&quot;             
-## [365] &quot;stringr&quot;              &quot;styler&quot;              
-## [367] &quot;svglite&quot;              &quot;synoptReg&quot;           
-## [369] &quot;sys&quot;                  &quot;systemfit&quot;           
-## [371] &quot;systemfonts&quot;          &quot;tensor&quot;              
-## [373] &quot;terra&quot;                &quot;terrainmeshr&quot;        
-## [375] &quot;testthat&quot;             &quot;tgp&quot;                 
-## [377] &quot;tibble&quot;               &quot;tidyr&quot;               
-## [379] &quot;tidyselect&quot;           &quot;tidyverse&quot;           
-## [381] &quot;timeDate&quot;             &quot;timeSeries&quot;          
-## [383] &quot;tinytex&quot;              &quot;tmap&quot;                
-## [385] &quot;tmaptools&quot;            &quot;tmvnsim&quot;             
-## [387] &quot;trend&quot;                &quot;triebeard&quot;           
-## [389] &quot;TSclust&quot;              &quot;TSdist&quot;              
-## [391] &quot;tseries&quot;              &quot;TTR&quot;                 
-## [393] &quot;tweenr&quot;               &quot;tzdb&quot;                
-## [395] &quot;unikn&quot;                &quot;units&quot;               
-## [397] &quot;urca&quot;                 &quot;urltools&quot;            
-## [399] &quot;usethis&quot;              &quot;utf8&quot;                
-## [401] &quot;uuid&quot;                 &quot;vcd&quot;                 
-## [403] &quot;vctrs&quot;                &quot;vegan&quot;               
-## [405] &quot;viridis&quot;              &quot;viridisLite&quot;         
-## [407] &quot;vroom&quot;                &quot;waldo&quot;               
-## [409] &quot;webr&quot;                 &quot;webshot&quot;             
-## [411] &quot;wesanderson&quot;          &quot;whisker&quot;             
-## [413] &quot;widgetframe&quot;          &quot;withr&quot;               
-## [415] &quot;wk&quot;                   &quot;xfun&quot;                
-## [417] &quot;xlsx&quot;                 &quot;xlsxjars&quot;            
-## [419] &quot;XML&quot;                  &quot;xml2&quot;                
-## [421] &quot;xopen&quot;                &quot;xtable&quot;              
-## [423] &quot;xts&quot;                  &quot;yaml&quot;                
-## [425] &quot;zip&quot;                  &quot;zoo&quot;                 
-## [427] &quot;ztable&quot;               &quot;base&quot;                
-## [429] &quot;boot&quot;                 &quot;class&quot;               
-## [431] &quot;cluster&quot;              &quot;codetools&quot;           
-## [433] &quot;compiler&quot;             &quot;datasets&quot;            
-## [435] &quot;foreign&quot;              &quot;graphics&quot;            
-## [437] &quot;grDevices&quot;            &quot;grid&quot;                
-## [439] &quot;KernSmooth&quot;           &quot;lattice&quot;             
-## [441] &quot;MASS&quot;                 &quot;Matrix&quot;              
-## [443] &quot;methods&quot;              &quot;mgcv&quot;                
-## [445] &quot;nlme&quot;                 &quot;nnet&quot;                
-## [447] &quot;parallel&quot;             &quot;rpart&quot;               
-## [449] &quot;spatial&quot;              &quot;splines&quot;             
-## [451] &quot;stats&quot;                &quot;stats4&quot;              
-## [453] &quot;survival&quot;             &quot;tcltk&quot;               
-## [455] &quot;tools&quot;                &quot;translations&quot;        
-## [457] &quot;utils&quot;</code></pre>
+<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb471-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb471-1" aria-hidden="true" tabindex="-1"></a>meus.pacotes <span class="ot">&lt;-</span> <span class="fu">library</span>()<span class="sc">$</span>results[,<span class="dv">1</span>]</span>
+<span id="cb471-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb471-2" aria-hidden="true" tabindex="-1"></a>meus.pacotes</span></code></pre></div>
+<pre><code>##   [1] &quot;abind&quot;                &quot;ade4&quot;                 &quot;AGD&quot;                 
+##   [4] &quot;alphavantager&quot;        &quot;ambient&quot;              &quot;Amelia&quot;              
+##   [7] &quot;AmesHousing&quot;          &quot;analogue&quot;             &quot;anytime&quot;             
+##  [10] &quot;ape&quot;                  &quot;arm&quot;                  &quot;ash&quot;                 
+##  [13] &quot;askpass&quot;              &quot;aspace&quot;               &quot;assertthat&quot;          
+##  [16] &quot;audio&quot;                &quot;automap&quot;              &quot;babynames&quot;           
+##  [19] &quot;backports&quot;            &quot;base64enc&quot;            &quot;beepr&quot;               
+##  [22] &quot;bfast&quot;                &quot;bfastSpatial&quot;         &quot;BH&quot;                  
+##  [25] &quot;bigleaf&quot;              &quot;bit&quot;                  &quot;bit64&quot;               
+##  [28] &quot;bitops&quot;               &quot;blob&quot;                 &quot;bookdown&quot;            
+##  [31] &quot;brew&quot;                 &quot;brglm&quot;                &quot;brio&quot;                
+##  [34] &quot;broom&quot;                &quot;BSDA&quot;                 &quot;bslib&quot;               
+##  [37] &quot;cachem&quot;               &quot;CALIBERrfimpute&quot;      &quot;callr&quot;               
+##  [40] &quot;car&quot;                  &quot;carData&quot;              &quot;caret&quot;               
+##  [43] &quot;caTools&quot;              &quot;cellranger&quot;           &quot;checkmate&quot;           
+##  [46] &quot;classInt&quot;             &quot;cli&quot;                  &quot;climateStability&quot;    
+##  [49] &quot;climdex.pcic&quot;         &quot;climdex.pcic.ncdf&quot;    &quot;clipr&quot;               
+##  [52] &quot;clock&quot;                &quot;clue&quot;                 &quot;cluster&quot;             
+##  [55] &quot;clv&quot;                  &quot;coda&quot;                 &quot;colorspace&quot;          
+##  [58] &quot;combinat&quot;             &quot;commonmark&quot;           &quot;conditionz&quot;          
+##  [61] &quot;conflicted&quot;           &quot;contfrac&quot;             &quot;coro&quot;                
+##  [64] &quot;corrplot&quot;             &quot;cowplot&quot;              &quot;cpp11&quot;               
+##  [67] &quot;crayon&quot;               &quot;credentials&quot;          &quot;crosstalk&quot;           
+##  [70] &quot;crsmeta&quot;              &quot;crul&quot;                 &quot;Cubist&quot;              
+##  [73] &quot;curl&quot;                 &quot;dados&quot;                &quot;data.table&quot;          
+##  [76] &quot;datawizard&quot;           &quot;DBI&quot;                  &quot;dbplyr&quot;              
+##  [79] &quot;decido&quot;               &quot;deepnet&quot;              &quot;deldir&quot;              
+##  [82] &quot;dendextend&quot;           &quot;DEoptimR&quot;             &quot;desc&quot;                
+##  [85] &quot;deSolve&quot;              &quot;devEMF&quot;               &quot;devtools&quot;            
+##  [88] &quot;diagram&quot;              &quot;dials&quot;                &quot;DiceDesign&quot;          
+##  [91] &quot;dichromat&quot;            &quot;diffobj&quot;              &quot;digest&quot;              
+##  [94] &quot;dismo&quot;                &quot;distributional&quot;       &quot;doParallel&quot;          
+##  [97] &quot;doRNG&quot;                &quot;doSNOW&quot;               &quot;dotCall64&quot;           
+## [100] &quot;downlit&quot;              &quot;downloader&quot;           &quot;dplyr&quot;               
+## [103] &quot;DT&quot;                   &quot;dtplyr&quot;               &quot;dtw&quot;                 
+## [106] &quot;DynACof&quot;              &quot;e1071&quot;                &quot;earth&quot;               
+## [109] &quot;easyGgplot2&quot;          &quot;editData&quot;             &quot;elevatr&quot;             
+## [112] &quot;ellipse&quot;              &quot;ellipsis&quot;             &quot;elliptic&quot;            
+## [115] &quot;emmeans&quot;              &quot;ENMeval&quot;              &quot;ENMTools&quot;            
+## [118] &quot;estimability&quot;         &quot;evaluate&quot;             &quot;evtree&quot;              
+## [121] &quot;exactextractr&quot;        &quot;expm&quot;                 &quot;extraDistr&quot;          
+## [124] &quot;fable&quot;                &quot;fabletools&quot;           &quot;factoextra&quot;          
+## [127] &quot;FactoMineR&quot;           &quot;fansi&quot;                &quot;farver&quot;              
+## [130] &quot;fastmap&quot;              &quot;fBasics&quot;              &quot;feasts&quot;              
+## [133] &quot;fields&quot;               &quot;flashClust&quot;           &quot;flextable&quot;           
+## [136] &quot;flow&quot;                 &quot;flowr&quot;                &quot;FNN&quot;                 
+## [139] &quot;fontawesome&quot;          &quot;fontBitstreamVera&quot;    &quot;fontLiberation&quot;      
+## [142] &quot;fontquiver&quot;           &quot;forcats&quot;              &quot;foreach&quot;             
+## [145] &quot;forecast&quot;             &quot;forecastHybrid&quot;       &quot;Formula&quot;             
+## [148] &quot;fracdiff&quot;             &quot;frbs&quot;                 &quot;fs&quot;                  
+## [151] &quot;fueleconomy&quot;          &quot;functional&quot;           &quot;furrr&quot;               
+## [154] &quot;future&quot;               &quot;future.apply&quot;         &quot;gamlss&quot;              
+## [157] &quot;gamlss.data&quot;          &quot;gamlss.dist&quot;          &quot;gapminder&quot;           
+## [160] &quot;gargle&quot;               &quot;gbm&quot;                  &quot;GCD&quot;                 
+## [163] &quot;gclus&quot;                &quot;gdalUtils&quot;            &quot;gdtools&quot;             
+## [166] &quot;generics&quot;             &quot;geobr&quot;                &quot;geojsonsf&quot;           
+## [169] &quot;geometries&quot;           &quot;geometry&quot;             &quot;gert&quot;                
+## [172] &quot;gfonts&quot;               &quot;ggbiplot&quot;             &quot;ggforce&quot;             
+## [175] &quot;ggformula&quot;            &quot;ggmap&quot;                &quot;ggOceanMaps&quot;         
+## [178] &quot;ggOceanMapsData&quot;      &quot;ggplot2&quot;              &quot;ggpubr&quot;              
+## [181] &quot;ggrepel&quot;              &quot;ggridges&quot;             &quot;ggsci&quot;               
+## [184] &quot;ggsignif&quot;             &quot;ggspatial&quot;            &quot;ggstance&quot;            
+## [187] &quot;gh&quot;                   &quot;GISTools&quot;             &quot;git2r&quot;               
+## [190] &quot;gitcreds&quot;             &quot;glmnet&quot;               &quot;globals&quot;             
+## [193] &quot;glue&quot;                 &quot;goftest&quot;              &quot;googledrive&quot;         
+## [196] &quot;googlesheets4&quot;        &quot;gower&quot;                &quot;GPfit&quot;               
+## [199] &quot;gridBase&quot;             &quot;gridExtra&quot;            &quot;gss&quot;                 
+## [202] &quot;gstat&quot;                &quot;gtable&quot;               &quot;GWmodel&quot;             
+## [205] &quot;h2o&quot;                  &quot;hardhat&quot;              &quot;haven&quot;               
+## [208] &quot;here&quot;                 &quot;hexbin&quot;               &quot;highr&quot;               
+## [211] &quot;HistogramTools&quot;       &quot;Hmisc&quot;                &quot;hms&quot;                 
+## [214] &quot;htmlTable&quot;            &quot;htmltools&quot;            &quot;htmlwidgets&quot;         
+## [217] &quot;hts&quot;                  &quot;httpcode&quot;             &quot;httpuv&quot;              
+## [220] &quot;httr&quot;                 &quot;httr2&quot;                &quot;hydroGOF&quot;            
+## [223] &quot;hydroTSM&quot;             &quot;hypergeo&quot;             &quot;ids&quot;                 
+## [226] &quot;igraph&quot;               &quot;imputeMissings&quot;       &quot;infer&quot;               
+## [229] &quot;ini&quot;                  &quot;insight&quot;              &quot;installr&quot;            
+## [232] &quot;interp&quot;               &quot;intervals&quot;            &quot;inum&quot;                
+## [235] &quot;ipred&quot;                &quot;isoband&quot;              &quot;iterators&quot;           
+## [238] &quot;itertools&quot;            &quot;janitor&quot;              &quot;jpeg&quot;                
+## [241] &quot;jquerylib&quot;            &quot;jsonify&quot;              &quot;jsonlite&quot;            
+## [244] &quot;JuliaCall&quot;            &quot;kableExtra&quot;           &quot;Kendall&quot;             
+## [247] &quot;kernlab&quot;              &quot;kknn&quot;                 &quot;knitr&quot;               
+## [250] &quot;KRLS&quot;                 &quot;labdsv&quot;               &quot;labeling&quot;            
+## [253] &quot;labelled&quot;             &quot;laeken&quot;               &quot;Lahman&quot;              
+## [256] &quot;later&quot;                &quot;latticeExtra&quot;         &quot;lava&quot;                
+## [259] &quot;lavaan&quot;               &quot;lazyeval&quot;             &quot;leafem&quot;              
+## [262] &quot;leaflet&quot;              &quot;leaflet.providers&quot;    &quot;leafsync&quot;            
+## [265] &quot;leaps&quot;                &quot;LearnBayes&quot;           &quot;lhs&quot;                 
+## [268] &quot;libcoin&quot;              &quot;lifecycle&quot;            &quot;linprog&quot;             
+## [271] &quot;listenv&quot;              &quot;lme4&quot;                 &quot;lmom&quot;                
+## [274] &quot;lmomco&quot;               &quot;Lmoments&quot;             &quot;lmtest&quot;              
+## [277] &quot;locfit&quot;               &quot;locpol&quot;               &quot;longitudinalData&quot;    
+## [280] &quot;lpSolve&quot;              &quot;lsr&quot;                  &quot;lubridate&quot;           
+## [283] &quot;lwgeom&quot;               &quot;magic&quot;                &quot;magrittr&quot;            
+## [286] &quot;mapproj&quot;              &quot;maps&quot;                 &quot;maptools&quot;            
+## [289] &quot;markdown&quot;             &quot;Matrix&quot;               &quot;MatrixModels&quot;        
+## [292] &quot;matrixStats&quot;          &quot;maxnet&quot;               &quot;memoise&quot;             
+## [295] &quot;Metrics&quot;              &quot;mi&quot;                   &quot;mice&quot;                
+## [298] &quot;mime&quot;                 &quot;miniUI&quot;               &quot;minqa&quot;               
+## [301] &quot;misc3d&quot;               &quot;missForest&quot;           &quot;mlbench&quot;             
+## [304] &quot;mnormt&quot;               &quot;modeest&quot;              &quot;modeldata&quot;           
+## [307] &quot;modelenv&quot;             &quot;ModelMetrics&quot;         &quot;modelr&quot;              
+## [310] &quot;monmlp&quot;               &quot;moonBook&quot;             &quot;mosaic&quot;              
+## [313] &quot;mosaicCore&quot;           &quot;mosaicData&quot;           &quot;multcompView&quot;        
+## [316] &quot;munsell&quot;              &quot;mvoutlier&quot;            &quot;mvpart&quot;              
+## [319] &quot;MVPARTwrap&quot;           &quot;mvtnorm&quot;              &quot;nabor&quot;               
+## [322] &quot;nasaweather&quot;          &quot;NbClust&quot;              &quot;ncdf4&quot;               
+## [325] &quot;ncdf4.helpers&quot;        &quot;NeuralNetTools&quot;       &quot;nloptr&quot;              
+## [328] &quot;nngeo&quot;                &quot;nomnoml&quot;              &quot;nortest&quot;             
+## [331] &quot;numDeriv&quot;             &quot;nycflights13&quot;         &quot;oai&quot;                 
+## [334] &quot;OCNet&quot;                &quot;officer&quot;              &quot;openssl&quot;             
+## [337] &quot;openxlsx&quot;             &quot;optimx&quot;               &quot;Orcs&quot;                
+## [340] &quot;packrat&quot;              &quot;pacman&quot;               &quot;padr&quot;                
+## [343] &quot;paleofire&quot;            &quot;palmerpenguins&quot;       &quot;palr&quot;                
+## [346] &quot;parallelly&quot;           &quot;params&quot;               &quot;parsnip&quot;             
+## [349] &quot;partykit&quot;             &quot;patchwork&quot;            &quot;pbivnorm&quot;            
+## [352] &quot;pbkrtest&quot;             &quot;PCICt&quot;                &quot;pdc&quot;                 
+## [355] &quot;PerformanceAnalytics&quot; &quot;permute&quot;              &quot;pillar&quot;              
+## [358] &quot;pixarfilms&quot;           &quot;pixmap&quot;               &quot;pkgbuild&quot;            
+## [361] &quot;pkgconfig&quot;            &quot;pkgdown&quot;              &quot;pkgload&quot;             
+## [364] &quot;plogr&quot;                &quot;plotly&quot;               &quot;plotmo&quot;              
+## [367] &quot;plotrix&quot;              &quot;plyr&quot;                 &quot;png&quot;                 
+## [370] &quot;polyclip&quot;             &quot;polynom&quot;              &quot;praise&quot;              
+## [373] &quot;prettymapr&quot;           &quot;prettyunits&quot;          &quot;princurve&quot;           
+## [376] &quot;pROC&quot;                 &quot;processx&quot;             &quot;prodlim&quot;             
+## [379] &quot;profileModel&quot;         &quot;profvis&quot;              &quot;progress&quot;            
+## [382] &quot;progressr&quot;            &quot;PROJ&quot;                 &quot;proj4&quot;               
+## [385] &quot;promises&quot;             &quot;proxy&quot;                &quot;PRROC&quot;               
+## [388] &quot;ps&quot;                   &quot;psych&quot;                &quot;purrr&quot;               
+## [391] &quot;qpdf&quot;                 &quot;quadmesh&quot;             &quot;quadprog&quot;            
+## [394] &quot;Quandl&quot;               &quot;quantmod&quot;             &quot;quantreg&quot;            
+## [397] &quot;quarto&quot;               &quot;R.cache&quot;              &quot;R.methodsS3&quot;         
+## [400] &quot;R.oo&quot;                 &quot;R.utils&quot;              &quot;R6&quot;                  
+## [403] &quot;radix&quot;                &quot;ragg&quot;                 &quot;randomForest&quot;        
+## [406] &quot;rangeModelMetadata&quot;   &quot;ranger&quot;               &quot;rapidjsonr&quot;          
+## [409] &quot;rappdirs&quot;             &quot;raster&quot;               &quot;rasterVis&quot;           
+## [412] &quot;rayimage&quot;             &quot;rayrender&quot;            &quot;rayshader&quot;           
+## [415] &quot;rayvertex&quot;            &quot;rbibutils&quot;            &quot;rbison&quot;              
+## [418] &quot;rcmdcheck&quot;            &quot;RColorBrewer&quot;         &quot;Rcpp&quot;                
+## [421] &quot;RcppArmadillo&quot;        &quot;RcppEigen&quot;            &quot;RcppProgress&quot;        
+## [424] &quot;RcppRoll&quot;             &quot;RcppThread&quot;           &quot;RcppTOML&quot;            
+## [427] &quot;RCurl&quot;                &quot;Rdpack&quot;               &quot;readr&quot;               
+## [430] &quot;readxl&quot;               &quot;rebird&quot;               &quot;recipes&quot;             
+## [433] &quot;rematch&quot;              &quot;rematch2&quot;             &quot;remotes&quot;             
+## [436] &quot;repr&quot;                 &quot;reprex&quot;               &quot;reproj&quot;              
+## [439] &quot;reshape&quot;              &quot;reshape2&quot;             &quot;rgbif&quot;               
+## [442] &quot;rgdal&quot;                &quot;rgeos&quot;                &quot;rgl&quot;                 
+## [445] &quot;RgoogleMaps&quot;          &quot;rgrass&quot;               &quot;rgrass7&quot;             
+## [448] &quot;ridigbio&quot;             &quot;riingo&quot;               &quot;rio&quot;                 
+## [451] &quot;rioja&quot;                &quot;rivnet&quot;               &quot;rJava&quot;               
+## [454] &quot;rjson&quot;                &quot;rkt&quot;                  &quot;rlang&quot;               
+## [457] &quot;rmarkdown&quot;            &quot;rmutil&quot;               &quot;rnaturalearth&quot;       
+## [460] &quot;rnaturalearthdata&quot;    &quot;rnaturalearthhires&quot;   &quot;rngtools&quot;            
+## [463] &quot;robustbase&quot;           &quot;rosm&quot;                 &quot;roxygen2&quot;            
+## [466] &quot;rpart.plot&quot;           &quot;rprojroot&quot;            &quot;rrtable&quot;             
+## [469] &quot;rsample&quot;              &quot;rsconnect&quot;            &quot;RSQLite&quot;             
+## [472] &quot;rstatix&quot;              &quot;RStoolbox&quot;            &quot;rstudioapi&quot;          
+## [475] &quot;rticles&quot;              &quot;Rtsne&quot;                &quot;rversions&quot;           
+## [478] &quot;rvertnet&quot;             &quot;rvest&quot;                &quot;rvg&quot;                 
+## [481] &quot;rworldmap&quot;            &quot;s2&quot;                   &quot;sandwich&quot;            
+## [484] &quot;sass&quot;                 &quot;scales&quot;               &quot;scatterplot3d&quot;       
+## [487] &quot;sdm&quot;                  &quot;sdmpredictors&quot;        &quot;selectr&quot;             
+## [490] &quot;servr&quot;                &quot;sessioninfo&quot;          &quot;sf&quot;                  
+## [493] &quot;sfheaders&quot;            &quot;sftime&quot;               &quot;sgeostat&quot;            
+## [496] &quot;shape&quot;                &quot;shapefiles&quot;           &quot;shiny&quot;               
+## [499] &quot;shinyBS&quot;              &quot;shinydashboard&quot;       &quot;shinyjs&quot;             
+## [502] &quot;shinythemes&quot;          &quot;shinyWidgets&quot;         &quot;sjlabelled&quot;          
+## [505] &quot;sjmisc&quot;               &quot;skimr&quot;                &quot;slickR&quot;              
+## [508] &quot;slider&quot;               &quot;slippymath&quot;           &quot;smoothr&quot;             
+## [511] &quot;snakecase&quot;            &quot;snow&quot;                 &quot;solartime&quot;           
+## [514] &quot;sourcetools&quot;          &quot;sp&quot;                   &quot;spacefillr&quot;          
+## [517] &quot;spacetime&quot;            &quot;spam&quot;                 &quot;SparseM&quot;             
+## [520] &quot;spatialreg&quot;           &quot;spatstat&quot;             &quot;spatstat.core&quot;       
+## [523] &quot;spatstat.data&quot;        &quot;spatstat.explore&quot;     &quot;spatstat.geom&quot;       
+## [526] &quot;spatstat.linnet&quot;      &quot;spatstat.model&quot;       &quot;spatstat.random&quot;     
+## [529] &quot;spatstat.sparse&quot;      &quot;spatstat.utils&quot;       &quot;spData&quot;              
+## [532] &quot;spdep&quot;                &quot;SPEI&quot;                 &quot;spex&quot;                
+## [535] &quot;splancs&quot;              &quot;spocc&quot;                &quot;spThin&quot;              
+## [538] &quot;SQUAREM&quot;              &quot;SSN&quot;                  &quot;stable&quot;              
+## [541] &quot;stabledist&quot;           &quot;stars&quot;                &quot;statip&quot;              
+## [544] &quot;stringi&quot;              &quot;stringr&quot;              &quot;strucchangeRcpp&quot;     
+## [547] &quot;styler&quot;               &quot;svglite&quot;              &quot;sys&quot;                 
+## [550] &quot;sysfonts&quot;             &quot;systemfonts&quot;          &quot;tcltk2&quot;              
+## [553] &quot;TeachingDemos&quot;        &quot;tensor&quot;               &quot;terra&quot;               
+## [556] &quot;terrainmeshr&quot;         &quot;testthat&quot;             &quot;textshaping&quot;         
+## [559] &quot;thematic&quot;             &quot;thief&quot;                &quot;tibble&quot;              
+## [562] &quot;tidymodels&quot;           &quot;tidyquant&quot;            &quot;tidyr&quot;               
+## [565] &quot;tidyselect&quot;           &quot;tidyverse&quot;            &quot;timechange&quot;          
+## [568] &quot;timeDate&quot;             &quot;timeSeries&quot;           &quot;timetk&quot;              
+## [571] &quot;tinytex&quot;              &quot;TLMoments&quot;            &quot;tmap&quot;                
+## [574] &quot;tmaptools&quot;            &quot;torch&quot;                &quot;traudem&quot;             
+## [577] &quot;trend&quot;                &quot;triebeard&quot;            &quot;TSclust&quot;             
+## [580] &quot;TSdist&quot;               &quot;tseries&quot;              &quot;tsfeatures&quot;          
+## [583] &quot;tsibble&quot;              &quot;tsibbledata&quot;          &quot;TSstudio&quot;            
+## [586] &quot;TTR&quot;                  &quot;tune&quot;                 &quot;tweenr&quot;              
+## [589] &quot;tzdb&quot;                 &quot;udunits2&quot;             &quot;unikn&quot;               
+## [592] &quot;units&quot;                &quot;urca&quot;                 &quot;urlchecker&quot;          
+## [595] &quot;urltools&quot;             &quot;usdm&quot;                 &quot;usethis&quot;             
+## [598] &quot;utf8&quot;                 &quot;uuid&quot;                 &quot;vcd&quot;                 
+## [601] &quot;vctrs&quot;                &quot;vegan&quot;                &quot;VIM&quot;                 
+## [604] &quot;vip&quot;                  &quot;viridis&quot;              &quot;viridisLite&quot;         
+## [607] &quot;visdat&quot;               &quot;vroom&quot;                &quot;waldo&quot;               
+## [610] &quot;warp&quot;                 &quot;weathermetrics&quot;       &quot;webr&quot;                
+## [613] &quot;webshot&quot;              &quot;wellknown&quot;            &quot;wesanderson&quot;         
+## [616] &quot;whisker&quot;              &quot;widgetframe&quot;          &quot;withr&quot;               
+## [619] &quot;wk&quot;                   &quot;woeBinning&quot;           &quot;workflows&quot;           
+## [622] &quot;workflowsets&quot;         &quot;xfun&quot;                 &quot;xgboost&quot;             
+## [625] &quot;xlsx&quot;                 &quot;xlsxjars&quot;             &quot;XML&quot;                 
+## [628] &quot;xml2&quot;                 &quot;xopen&quot;                &quot;xtable&quot;              
+## [631] &quot;xts&quot;                  &quot;yaml&quot;                 &quot;yardstick&quot;           
+## [634] &quot;zeallot&quot;              &quot;zip&quot;                  &quot;zoo&quot;                 
+## [637] &quot;ztable&quot;               &quot;zyp&quot;                  &quot;base&quot;                
+## [640] &quot;boot&quot;                 &quot;class&quot;                &quot;cluster&quot;             
+## [643] &quot;codetools&quot;            &quot;compiler&quot;             &quot;datasets&quot;            
+## [646] &quot;foreign&quot;              &quot;graphics&quot;             &quot;grDevices&quot;           
+## [649] &quot;grid&quot;                 &quot;KernSmooth&quot;           &quot;lattice&quot;             
+## [652] &quot;MASS&quot;                 &quot;Matrix&quot;               &quot;methods&quot;             
+## [655] &quot;mgcv&quot;                 &quot;nlme&quot;                 &quot;nnet&quot;                
+## [658] &quot;parallel&quot;             &quot;rpart&quot;                &quot;spatial&quot;             
+## [661] &quot;splines&quot;              &quot;stats&quot;                &quot;stats4&quot;              
+## [664] &quot;survival&quot;             &quot;tcltk&quot;                &quot;tools&quot;               
+## [667] &quot;translations&quot;         &quot;utils&quot;</code></pre>
 <p>Ou poderia simplesmente digitar <code>library()</code>.</p>
-<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb477-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb473-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb473-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>()</span></code></pre></div>
 </div>
 </div>
-<div id="entrando-com-dados" class="section level2" number="4.3">
-<h2><span class="header-section-number">4.3</span> Entrando com dados</h2>
+<div id="entrando-com-dados" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Entrando com dados<a href="acessando-e-criando-funções-importação-e-exportação-dados.html#entrando-com-dados" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Assista este conteúdo em <strong>Cap 3 - Entrando com dados partes 1 e 2</strong> no <a href="https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php">PVANet</a></p>
 <p>Agora que dominamos <del>100%</del> as estruturas e tratamento de objetos podemos partir para importação de dados das mais variadas fontes.<br />
-Até agora nós basicamente trabalhamos com dados “<code>café com leite</code>.” Criamos uma tabelinha aqui, uma matrizinha acolá um vetor e por aí vai.<br />
+Até agora nós basicamente trabalhamos com dados “<code>café com leite</code>”. Criamos uma tabelinha aqui, uma matrizinha acolá um vetor e por aí vai.<br />
 Sinto muito em informá-los, mas o mundo é bem mais complexo e cruel.</p>
 <table>
 <colgroup>
@@ -1011,32 +992,32 @@ Sinto muito em informá-los, mas o mundo é bem mais complexo e cruel.</p>
 |</p>
 <p>Os dados no R podem ser importados por diferentes meios (teclado, text file, outros softwares estatísticos, planilhas e etc).</p>
 <p><img src="Cap_3_data%20input.png" id="id" class="class" style="width:50.0%;height:50.0%" alt="Data input" /><br />
-Fonte: <span class="citation"><a href="#ref-Kabacoff2015R" role="doc-biblioref">Kabacoff</a> (<a href="#ref-Kabacoff2015R" role="doc-biblioref">2015</a>)</span></p>
-<div id="edit" class="section level3" number="4.3.1">
-<h3><span class="header-section-number">4.3.1</span> edit()</h3>
+Fonte: <span class="citation">Kabacoff (<a href="#ref-Kabacoff2015R" role="doc-biblioref">2015</a>)</span></p>
+<div id="edit" class="section level3 hasAnchor" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> edit()<a href="acessando-e-criando-funções-importação-e-exportação-dados.html#edit" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A forma mais simples de inserção de dados é através do teclado.
 No caso a seguir, o comando <code>Matrícula=numeric(0)</code> cria uma variável de um <code>mode()</code>específico, mas sem dados. O comando <code>edit()</code>, por sua vez, e como nome sugere, permite editar um banco de dados. Um <em>popup</em> abrirá na sua tela que permitirá a sua edição. Após o uso basta fechar que as edições feitas serão salvas.</p>
 <div class="figure">
 <img src="Cap_3_edit_DF.JPG" alt="" />
 <p class="caption"><strong>comando edit()</strong></p>
 </div>
-<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb478-1" aria-hidden="true" tabindex="-1"></a>Alunos.Eng792 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Nome=</span><span class="fu">character</span>(<span class="dv">0</span>),Matrícula<span class="ot">=</span><span class="fu">numeric</span>(<span class="dv">0</span>), Curço<span class="ot">=</span><span class="fu">character</span>(<span class="dv">0</span>),Nível<span class="at">.de.R=</span><span class="fu">numeric</span>(<span class="dv">0</span>),Nível.de.Pós<span class="ot">=</span><span class="fu">character</span>(<span class="dv">0</span>))</span>
-<span id="cb478-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb478-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb478-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb478-3" aria-hidden="true" tabindex="-1"></a>Alunos.Eng792</span></code></pre></div>
+<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb474-1" aria-hidden="true" tabindex="-1"></a>Alunos.Eng792 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Nome=</span><span class="fu">character</span>(<span class="dv">0</span>),Matrícula<span class="ot">=</span><span class="fu">numeric</span>(<span class="dv">0</span>), Curço<span class="ot">=</span><span class="fu">character</span>(<span class="dv">0</span>),Nível<span class="at">.de.R=</span><span class="fu">numeric</span>(<span class="dv">0</span>),Nível.de.Pós<span class="ot">=</span><span class="fu">character</span>(<span class="dv">0</span>))</span>
+<span id="cb474-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb474-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb474-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb474-3" aria-hidden="true" tabindex="-1"></a>Alunos.Eng792</span></code></pre></div>
 <pre><code>## [1] Nome         Matrícula    Curço        Nível.de.R   Nível.de.Pós
 ## &lt;0 linhas&gt; (ou row.names de comprimento 0)</code></pre>
-<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb480-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb480-1" aria-hidden="true" tabindex="-1"></a>Alunos.Eng792 <span class="ot">&lt;-</span> <span class="fu">edit</span>(Alunos.Eng792)</span>
-<span id="cb480-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb480-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb480-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb480-3" aria-hidden="true" tabindex="-1"></a>Alunos.Eng792</span></code></pre></div>
+<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb476-1" aria-hidden="true" tabindex="-1"></a>Alunos.Eng792 <span class="ot">&lt;-</span> <span class="fu">edit</span>(Alunos.Eng792)</span>
+<span id="cb476-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb476-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb476-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb476-3" aria-hidden="true" tabindex="-1"></a>Alunos.Eng792</span></code></pre></div>
 <pre><code>## [1] Nome         Matrícula    Curço        Nível.de.R   Nível.de.Pós
 ## &lt;0 linhas&gt; (ou row.names de comprimento 0)</code></pre>
 </div>
-<div id="built-in" class="section level3" number="4.3.2">
-<h3><span class="header-section-number">4.3.2</span> built-in</h3>
+<div id="built-in" class="section level3 hasAnchor" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> built-in<a href="acessando-e-criando-funções-importação-e-exportação-dados.html#built-in" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>No R também temos os dados <em>buit-in</em> que são dados que já vem “dentro” do R ou pacotes que permite a execução dos exemplos das funções naturais do R e aquelas instaladas por meio dos pacotes. Temos vários dados <em>built-in</em> no R como <code>ìris</code>, <code>mtcars</code>, <code>anscombe</code>, <code>USArrests</code>, <code>USAccDeaths</code>,<code>AirPassengers</code> e etc.</p>
 <p>Vamos dar uma olha no <code>USArrests</code> que contém estatísticas de presos por diferentes crimes em EUA em taxas de 100.000.</p>
-<div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb482-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb482-1" aria-hidden="true" tabindex="-1"></a>Presidiarios.USA<span class="ot">&lt;-</span>(USArrests)</span>
-<span id="cb482-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb482-2" aria-hidden="true" tabindex="-1"></a>Presidiarios.USA</span></code></pre></div>
+<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb478-1" aria-hidden="true" tabindex="-1"></a>Presidiarios.USA<span class="ot">&lt;-</span>(USArrests)</span>
+<span id="cb478-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb478-2" aria-hidden="true" tabindex="-1"></a>Presidiarios.USA</span></code></pre></div>
 <pre><code>##                Murder Assault UrbanPop Rape
 ## Alabama          13.2     236       58 21.2
 ## Alaska           10.0     263       48 44.5
@@ -1089,23 +1070,23 @@ No caso a seguir, o comando <code>Matrícula=numeric(0)</code> cria uma variáve
 ## Wisconsin         2.6      53       66 10.8
 ## Wyoming           6.8     161       60 15.6</code></pre>
 </div>
-<div id="scan" class="section level3" number="4.3.3">
-<h3><span class="header-section-number">4.3.3</span> scan()</h3>
+<div id="scan" class="section level3 hasAnchor" number="4.3.3">
+<h3><span class="header-section-number">4.3.3</span> scan()<a href="acessando-e-criando-funções-importação-e-exportação-dados.html#scan" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Uma outra forma de entrada manual se dá através dom comando <code>scan()</code>. Neste formato de entrada de dados podemos digitar informação por informação ou copiar de uma fonte e colá-la. Tudo isso feito no console e em formato numérico.</p>
 <p><strong>Exemplo com digitação.</strong></p>
-<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb484-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb484-1" aria-hidden="true" tabindex="-1"></a>teste1 <span class="ot">&lt;-</span><span class="fu">scan</span>()</span>
-<span id="cb484-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb484-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Digite 1, 2, 4, 5, 6, 7, 8</span></span>
-<span id="cb484-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb484-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb484-4"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb484-4" aria-hidden="true" tabindex="-1"></a>teste1</span></code></pre></div>
+<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb480-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb480-1" aria-hidden="true" tabindex="-1"></a>teste1 <span class="ot">&lt;-</span><span class="fu">scan</span>()</span>
+<span id="cb480-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb480-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Digite 1, 2, 4, 5, 6, 7, 8</span></span>
+<span id="cb480-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb480-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb480-4"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb480-4" aria-hidden="true" tabindex="-1"></a>teste1</span></code></pre></div>
 <p><strong>Exemplo com copia e cola.</strong></p>
-<div class="sourceCode" id="cb485"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb485-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb485-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">30</span>,<span class="dv">38</span>)</span>
-<span id="cb485-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb485-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb485-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb485-3" aria-hidden="true" tabindex="-1"></a>teste2 <span class="ot">&lt;-</span><span class="fu">scan</span>()</span>
-<span id="cb485-4"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb485-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb485-5"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb485-5" aria-hidden="true" tabindex="-1"></a>teste2</span></code></pre></div>
+<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb481-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">30</span>,<span class="dv">38</span>)</span>
+<span id="cb481-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb481-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb481-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb481-3" aria-hidden="true" tabindex="-1"></a>teste2 <span class="ot">&lt;-</span><span class="fu">scan</span>()</span>
+<span id="cb481-4"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb481-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb481-5"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb481-5" aria-hidden="true" tabindex="-1"></a>teste2</span></code></pre></div>
 </div>
-<div id="lendo-arquivos-de-texto-.txt" class="section level3" number="4.3.4">
-<h3><span class="header-section-number">4.3.4</span> Lendo arquivos de texto (.txt)</h3>
+<div id="lendo-arquivos-de-texto-.txt" class="section level3 hasAnchor" number="4.3.4">
+<h3><span class="header-section-number">4.3.4</span> Lendo arquivos de texto (.txt)<a href="acessando-e-criando-funções-importação-e-exportação-dados.html#lendo-arquivos-de-texto-.txt" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>No dia a dia esbarramos em dados que estão disponíveis em formato de texto. Geralmente este dados estão organizados em linhas e colunas onde cada linha representa uma observação e cada coluna uma variável.</p>
 <p>Para fazer leitura de dados em formato de texto (<strong>.txt</strong>) podemos utilizar o comando <code>read.table()</code> que lê o arquivo em formato de tabela e armazena em formato de <em>data.frame</em>.</p>
 <p>A sintaxe do comando é:<br />
@@ -1114,9 +1095,9 @@ No caso a seguir, o comando <code>Matrícula=numeric(0)</code> cria uma variáve
 <p>Para saber quais são as <em>options</em> e o que cada uma delas faz você pode acessar através de <code>?data.datble</code>.</p>
 <p>No caso abaixo estamos utilizando <code>sep=","</code>, <code>header=T</code> e <code>skip=3</code>.</p>
 <p>Baixe os dados aqui <strong>Cap_3_Notas_ENG792.txt</strong> no <a href="https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php">PVANet</a></p>
-<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb486-1" aria-hidden="true" tabindex="-1"></a>notas<span class="ot">&lt;-</span><span class="fu">read.table</span>(<span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Notas_ENG792.txt&quot;</span>, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>, <span class="at">header =</span> T, <span class="at">skip=</span><span class="dv">3</span>)</span>
-<span id="cb486-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb486-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb486-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb486-3" aria-hidden="true" tabindex="-1"></a>notas</span></code></pre></div>
+<div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb482-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb482-1" aria-hidden="true" tabindex="-1"></a>notas<span class="ot">&lt;-</span><span class="fu">read.table</span>(<span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Notas_ENG792.txt&quot;</span>, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>, <span class="at">header =</span> T, <span class="at">skip=</span><span class="dv">3</span>)</span>
+<span id="cb482-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb482-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb482-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb482-3" aria-hidden="true" tabindex="-1"></a>notas</span></code></pre></div>
 <pre><code>##    Nome Nota.1 Nota.2 Nota.3 Nota.4
 ## 1     A   10.9   60.9   53.6   12.0
 ## 2     B   71.3    9.9   13.9   47.0
@@ -1142,7 +1123,7 @@ No caso a seguir, o comando <code>Matrícula=numeric(0)</code> cria uma variáve
 ## 22    X   56.6   32.0   74.6   28.0
 ## 23    Y   22.3   42.3   88.9   65.0
 ## 24    Z   36.6   44.3   17.9   23.9</code></pre>
-<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb488-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(notas)</span></code></pre></div>
+<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb484-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb484-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(notas)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    24 obs. of  5 variables:
 ##  $ Nome  : chr  &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; ...
 ##  $ Nota.1: num  10.9 71.3 65.9 3.6 70.9 76.9 73.6 2 25.3 7 ...
@@ -1169,18 +1150,18 @@ Vejam que na tabela criada houve erros na na codificação dos caracteres especi
 <strong>RESOLVA ISSO! E digo mais determine que a primeira coluna (os nomes de vocês) sejam o nome das linhas</strong>
 </p>
 </div>
-<div id="read.csv" class="section level3" number="4.3.5">
-<h3><span class="header-section-number">4.3.5</span> read.csv()</h3>
+<div id="read.csv" class="section level3 hasAnchor" number="4.3.5">
+<h3><span class="header-section-number">4.3.5</span> read.csv()<a href="acessando-e-criando-funções-importação-e-exportação-dados.html#read.csv" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Embora muito comuns arquivos em formato <code>.txt</code>, a maioria dos cientistas preferem armazenar dados em planilhas eletrônicas como do excel <code>xlsx.</code> ou <code>.csv</code> ( <em>comma-separated values</em>).</p>
 <p>Baixe o arquivo <strong>Cap_1_P2-Mispriced-Diamonds.csv</strong> <a href="https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php">PVANet</a></p>
-<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb490-1" aria-hidden="true" tabindex="-1"></a>diamantes<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_1_P2-Mispriced-Diamonds.csv&quot;</span>)</span>
-<span id="cb490-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb490-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb490-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb490-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(diamantes)</span></code></pre></div>
+<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb486-1" aria-hidden="true" tabindex="-1"></a>diamantes<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_1_P2-Mispriced-Diamonds.csv&quot;</span>)</span>
+<span id="cb486-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb486-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb486-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb486-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(diamantes)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    53940 obs. of  3 variables:
 ##  $ carat  : num  0.23 0.21 0.23 0.29 0.31 0.24 0.24 0.26 0.22 0.23 ...
 ##  $ clarity: chr  &quot;SI2&quot; &quot;SI1&quot; &quot;VS1&quot; &quot;VS2&quot; ...
 ##  $ price  : int  326 326 327 334 335 336 336 337 337 338 ...</code></pre>
-<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb492-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(diamantes) <span class="co"># mostra as 6 primeiras linhas do objeto</span></span></code></pre></div>
+<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb488-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(diamantes) <span class="co"># mostra as 6 primeiras linhas do objeto</span></span></code></pre></div>
 <pre><code>##   carat clarity price
 ## 1  0.23     SI2   326
 ## 2  0.21     SI1   326
@@ -1188,7 +1169,7 @@ Vejam que na tabela criada houve erros na na codificação dos caracteres especi
 ## 4  0.29     VS2   334
 ## 5  0.31     SI2   335
 ## 6  0.24    VVS2   336</code></pre>
-<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb494-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(diamantes) <span class="co"># mostra as 6 últimas linhas do objeto </span></span></code></pre></div>
+<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb490-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(diamantes) <span class="co"># mostra as 6 últimas linhas do objeto </span></span></code></pre></div>
 <pre><code>##       carat clarity price
 ## 53935  0.72     SI1  2757
 ## 53936  0.72     SI1  2757
@@ -1198,8 +1179,8 @@ Vejam que na tabela criada houve erros na na codificação dos caracteres especi
 ## 53940  0.75     SI2  2757</code></pre>
 <p>Observem que no comando <code>read.csv()</code> nós não adicionamos o argumento <code>header=T</code>, issto por que por padrão <code>header</code>é igual a <code>TRUE (T)</code>, caso seus dados não tenham cabeçalhos você deve argumentar <code>header=F</code></p>
 <p>Você já deve ter esbarrado com dados no “brasileiros” nos quais os separadores decimais não são pontos como no padrão internacional, mas vírgulas. Da mesma maneira, em Banânia, os separadores de de células são <em>ponto e vírgula</em> (<em>semi-vírgula - ;</em>).</p>
-<p>Para evitar problemas como esse na importação dos dados, (<span class="citation"><a href="#ref-perlin2018processamento" role="doc-biblioref">Perlin</a> (<a href="#ref-perlin2018processamento" role="doc-biblioref">2018</a>)</span>) sugere que sejam abertos em um editor de texto qualquer e substitua todos os valores de <em>vírgula (,)</em> por <em>ponto (.)</em>. Isso deixa o arquivo em um formato internacional. No Windows, programas como o Notepad e o Notepad + + realizam essa tarefa facilmente, no linux o <em>gedit</em> e etc.</p>
-<p><span class="citation"><a href="#ref-perlin2018processamento" role="doc-biblioref">Perlin</a> (<a href="#ref-perlin2018processamento" role="doc-biblioref">2018</a>)</span> suegre para evitar problemas, antes de prosseguir para a importação de dados em um arquivo <em>.csv</em>, deve-se abrir o arquivo em um editor de texto qualquer e verificar:</p>
+<p>Para evitar problemas como esse na importação dos dados, (<span class="citation">Perlin (<a href="#ref-perlin2018processamento" role="doc-biblioref">2018</a>)</span>) sugere que sejam abertos em um editor de texto qualquer e substitua todos os valores de <em>vírgula (,)</em> por <em>ponto (.)</em>. Isso deixa o arquivo em um formato internacional. No Windows, programas como o Notepad e o Notepad + + realizam essa tarefa facilmente, no linux o <em>gedit</em> e etc.</p>
+<p><span class="citation">Perlin (<a href="#ref-perlin2018processamento" role="doc-biblioref">2018</a>)</span> suegre para evitar problemas, antes de prosseguir para a importação de dados em um arquivo <em>.csv</em>, deve-se abrir o arquivo em um editor de texto qualquer e verificar:</p>
 <ol style="list-style-type: decimal">
 <li>A existência de texto antes dos dados e a necessidade de ignorar algumas linhas iniciais;</li>
 <li>A existência ou não dos nomes das colunas;</li>
@@ -1212,8 +1193,8 @@ Vejam que na tabela criada houve erros na na codificação dos caracteres especi
 <p>Experimente ambos comandos para abrir o <strong>Cap_3_Notas_ENG792.csv</strong>.<br />
 <img src="Cap_3_notas.csv%20eng%20792.jpg" alt="Cap_3_Notas_ENG792.csv" /></p>
 <p>Temos 1 arquivo <strong>Cap_3_Notas_ENG792.csv</strong> <a href="https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php">PVANet</a></p>
-<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb496-1" aria-hidden="true" tabindex="-1"></a>Notas.csv<span class="ot">&lt;-</span><span class="fu">read.csv2</span>(<span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Notas_ENG792.csv&quot;</span>, <span class="at">row.names =</span> <span class="st">&quot;Nome&quot;</span>)</span>
-<span id="cb496-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb496-2" aria-hidden="true" tabindex="-1"></a>Notas.csv</span></code></pre></div>
+<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb492-1" aria-hidden="true" tabindex="-1"></a>Notas.csv<span class="ot">&lt;-</span><span class="fu">read.csv2</span>(<span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Notas_ENG792.csv&quot;</span>, <span class="at">row.names =</span> <span class="st">&quot;Nome&quot;</span>)</span>
+<span id="cb492-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb492-2" aria-hidden="true" tabindex="-1"></a>Notas.csv</span></code></pre></div>
 <pre><code>##   Nota.1 Nota.2 Nota.3 Nota.4
 ## A   10.9   60.9   53.6   12.0
 ## B   71.3    9.9   13.9   47.0
@@ -1240,18 +1221,18 @@ Vejam que na tabela criada houve erros na na codificação dos caracteres especi
 ## X   22.3   42.3   88.9   65.0
 ## Y   36.6   44.3   17.9   23.9
 ## Z   40.0   65.0   77.9   59.0</code></pre>
-<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb498-1" aria-hidden="true" tabindex="-1"></a>Notas.csv<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Notas_ENG792.csv&quot;</span>, <span class="at">row.names =</span> <span class="st">&quot;Nome&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb494-1" aria-hidden="true" tabindex="-1"></a>Notas.csv<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Notas_ENG792.csv&quot;</span>, <span class="at">row.names =</span> <span class="st">&quot;Nome&quot;</span>)</span></code></pre></div>
 <pre><code>## Error in read.table(file = file, header = header, sep = sep, quote = quote, : more columns than column names</code></pre>
 <p style="color:red">
 <strong>Note que o comando <code>read.csv()</code> não funcionou, faça os ajustes necessários para que ele funcine.</strong>
 </p>
 <p>Explore o comandos <code>rowSums()</code>, <code>colSums()</code>, <code>rowMeans()</code>, <code>colMeans()</code>.</p>
 </div>
-<div id="planilhas-excel-completas-.xls-ou-.xlsx" class="section level3" number="4.3.6">
-<h3><span class="header-section-number">4.3.6</span> Planilhas excel completas (.xls ou .xlsx)</h3>
+<div id="planilhas-excel-completas-.xls-ou-.xlsx" class="section level3 hasAnchor" number="4.3.6">
+<h3><span class="header-section-number">4.3.6</span> Planilhas excel completas (.xls ou .xlsx)<a href="acessando-e-criando-funções-importação-e-exportação-dados.html#planilhas-excel-completas-.xls-ou-.xlsx" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>É muito comum encontrarmos dados organizados em diferentes planilhas dentro de um mesmo arquivo como no caso do excel ( <em>.xls</em> ou <em>.xlsx</em>) e semelehantes ( <em>.odt</em>).</p>
 <p>Estes arquivos e suas diferentes abas podem ser acessados pelo R também, no entanto não há funções nativas que executem esta ação. Precisamos nesse caso instalar pacotes de funções específicas para desempnhar esta operação.</p>
-<p>Temos algumas opções de pacotes para esta função como <code>XLConnect</code> (<span class="citation"><a href="#ref-MiraiSolutionsGmbH2020" role="doc-biblioref">Mirai Solutions GmbH</a> (<a href="#ref-MiraiSolutionsGmbH2020" role="doc-biblioref">2020</a>)</span>), <code>xlsx</code> (<span class="citation"><a href="#ref-DragulescuandArendt2007" role="doc-biblioref">Dragulescu and Arendt</a> (<a href="#ref-DragulescuandArendt2007" role="doc-biblioref">2020</a>)</span>) e <code>readxl</code> (<span class="citation"><a href="#ref-WickhamandBryan2019" role="doc-biblioref">Hadley Wickham and Bryan</a> (<a href="#ref-WickhamandBryan2019" role="doc-biblioref">2019</a>)</span>).</p>
+<p>Temos algumas opções de pacotes para esta função como <code>XLConnect</code> (<span class="citation">Mirai Solutions GmbH (<a href="#ref-MiraiSolutionsGmbH2020" role="doc-biblioref">2020</a>)</span>), <code>xlsx</code> (<span class="citation">Dragulescu and Arendt (<a href="#ref-DragulescuandArendt2007" role="doc-biblioref">2020</a>)</span>) e <code>readxl</code> (<span class="citation">Hadley Wickham and Bryan (<a href="#ref-WickhamandBryan2019" role="doc-biblioref">2019</a>)</span>).</p>
 <p>Caso a instalação desses pacotes não funcione e, a mensagem de abaixo apareça.</p>
 <p><code>error: No CurrentVersion entry in Software/JavaSoft registry! Try re-installing Java and make sure R and Java have matching architectures.</code></p>
 <p>Experimente instalar ou atualizar antes o <a href="https://www.java.com/en/download/manual.jsp"><em>Java</em></a> correspondente ao seu sistema operacional e <em>bit</em>.</p>
@@ -1261,14 +1242,14 @@ Vejam que na tabela criada houve erros na na codificação dos caracteres especi
 <code>install.packages("xlsx")</code></p>
 <p>Baixe os dados aqui
 Baixe o arquivo <strong>Cap_3_Informações - Alunos ENG 792.xlsx</strong> <a href="https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php">PVANet</a></p>
-<div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb500-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb500-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(xlsx)</span>
-<span id="cb500-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb500-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb500-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb500-3" aria-hidden="true" tabindex="-1"></a>Info.Alunos<span class="ot">&lt;-</span><span class="fu">read.xlsx</span>(<span class="at">file=</span><span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Informações - Alunos ENG 792.xlsx&quot;</span>, <span class="at">endRow=</span><span class="dv">28</span>,<span class="at">sheetIndex=</span><span class="dv">4</span>,<span class="at">startRow =</span> <span class="dv">2</span>, <span class="at">header =</span> T,<span class="at">encoding=</span><span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb500-4"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb500-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb500-5"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb500-5" aria-hidden="true" tabindex="-1"></a>Info.Alunos</span></code></pre></div>
+<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb496-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(xlsx)</span>
+<span id="cb496-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb496-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb496-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb496-3" aria-hidden="true" tabindex="-1"></a>Info.Alunos<span class="ot">&lt;-</span><span class="fu">read.xlsx</span>(<span class="at">file=</span><span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Informações - Alunos ENG 792.xlsx&quot;</span>, <span class="at">endRow=</span><span class="dv">28</span>,<span class="at">sheetIndex=</span><span class="dv">4</span>,<span class="at">startRow =</span> <span class="dv">2</span>, <span class="at">header =</span> T,<span class="at">encoding=</span><span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb496-4"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb496-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb496-5"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb496-5" aria-hidden="true" tabindex="-1"></a>Info.Alunos</span></code></pre></div>
 </div>
-<div id="exportar-arquivos" class="section level3" number="4.3.7">
-<h3><span class="header-section-number">4.3.7</span> Exportar arquivos()</h3>
+<div id="exportar-arquivos" class="section level3 hasAnchor" number="4.3.7">
+<h3><span class="header-section-number">4.3.7</span> Exportar arquivos()<a href="acessando-e-criando-funções-importação-e-exportação-dados.html#exportar-arquivos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Uma vez que somo capazes de importar arquivos de formatos específicos, somo também capazes de exportá-los.</p>
 <p>Podemos exportar <code>data.frame</code>, <code>matrix</code> ou <code>vector</code> para <code>.csv</code> (dos 2 tipos <code>csv</code> e <code>csv2</code>) e para <code>.txt</code>.</p>
 <p>A estrutura é semelhante para diferentes métodos (<code>write.csv()</code>, <code>write.csv2()</code> ou <code>write.table()</code>):</p>
@@ -1276,39 +1257,39 @@ Baixe o arquivo <strong>Cap_3_Informações - Alunos ENG 792.xlsx</strong> <a hr
 <code>na = "NA", dec = ".", row.names = TRUE, col.names = TRUE, qmethod = c("escape", "double"), fileEncoding = "")</code></p>
 <p>Vamos experimentar os diferentes comandos.
 Antes de prosseguir certifique-se que o endereço de saída está adequado.</p>
-<div class="sourceCode" id="cb501"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb501-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb501-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(Info.Alunos, <span class="at">file=</span><span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Informações - Alunos ENG 792.csv&quot;</span>, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>,<span class="at">fileEncoding=</span><span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
-<pre><code>## Warning in write.csv(Info.Alunos, file = &quot;J:/ENG 792/ENG_792-AVDR/
-## ENG.792-AVDR/Cap_3_Informações - Alunos ENG 792.csv&quot;, : attempt to set
-## &#39;sep&#39; ignored</code></pre>
-<pre><code>## Error in is.data.frame(x): object &#39;Info.Alunos&#39; not found</code></pre>
-<div class="sourceCode" id="cb504"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb504-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb504-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv2</span>(Info.Alunos, <span class="at">file=</span><span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Informações - Alunos ENG 792.2.csv&quot;</span>,<span class="at">sep=</span><span class="st">&quot;,&quot;</span>,<span class="at">fileEncoding=</span><span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
-<pre><code>## Warning in write.csv2(Info.Alunos, file = &quot;J:/ENG 792/ENG_792-AVDR/
-## ENG.792-AVDR/Cap_3_Informações - Alunos ENG 792.2.csv&quot;, : attempt to set
-## &#39;sep&#39; ignored</code></pre>
-<pre><code>## Error in is.data.frame(x): object &#39;Info.Alunos&#39; not found</code></pre>
-<div class="sourceCode" id="cb507"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb507-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb507-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(Info.Alunos, <span class="at">file=</span><span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Informações - Alunos ENG 792.txt&quot;</span>, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>,<span class="at">fileEncoding=</span><span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
-<pre><code>## Error in is.data.frame(x): object &#39;Info.Alunos&#39; not found</code></pre>
+<div class="sourceCode" id="cb497"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb497-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb497-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(Info.Alunos, <span class="at">file=</span><span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Informações - Alunos ENG 792.csv&quot;</span>, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>,<span class="at">fileEncoding=</span><span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning in write.csv(Info.Alunos, file = &quot;J:/ENG
+## 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Informações - Alunos ENG 792.csv&quot;, :
+## attempt to set &#39;sep&#39; ignored</code></pre>
+<pre><code>## Error in is.data.frame(x): objeto &#39;Info.Alunos&#39; não encontrado</code></pre>
+<div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb500-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb500-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv2</span>(Info.Alunos, <span class="at">file=</span><span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Informações - Alunos ENG 792.2.csv&quot;</span>,<span class="at">sep=</span><span class="st">&quot;,&quot;</span>,<span class="at">fileEncoding=</span><span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning in write.csv2(Info.Alunos, file = &quot;J:/ENG
+## 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Informações - Alunos ENG 792.2.csv&quot;, :
+## attempt to set &#39;sep&#39; ignored</code></pre>
+<pre><code>## Error in is.data.frame(x): objeto &#39;Info.Alunos&#39; não encontrado</code></pre>
+<div class="sourceCode" id="cb503"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb503-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb503-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(Info.Alunos, <span class="at">file=</span><span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/Cap_3_Informações - Alunos ENG 792.txt&quot;</span>, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>,<span class="at">fileEncoding=</span><span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
+<pre><code>## Error in is.data.frame(x): objeto &#39;Info.Alunos&#39; não encontrado</code></pre>
 </div>
-<div id="definir-diretório-de-trabalho-setwd" class="section level3" number="4.3.8">
-<h3><span class="header-section-number">4.3.8</span> Definir diretório de trabalho <code>setwd()</code></h3>
+<div id="definir-diretório-de-trabalho-setwd" class="section level3 hasAnchor" number="4.3.8">
+<h3><span class="header-section-number">4.3.8</span> Definir diretório de trabalho <code>setwd()</code><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#definir-diretório-de-trabalho-setwd" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Durante a importação e exportação de dados nós forncemos dentro dos comandos os endereço no seu computador ou periférico de onde e para onde os dados deveriam ser importados e exportados, respectivamente.</p>
 <p>Esta tarefa pode ser simplificada pela determinação de um diretório de trabalho. Após esta definição o R vai comunicar diretamente com esta pasta de maneira que todos os arquivos importados e exportados de a para esta pasta.</p>
-<div class="sourceCode" id="cb509"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb509-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb509-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/&quot;</span>)</span>
-<span id="cb509-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb509-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb509-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb509-3" aria-hidden="true" tabindex="-1"></a>Al.Eng792<span class="ot">&lt;-</span><span class="fu">read.xlsx</span>(<span class="at">file=</span><span class="st">&quot;Cap_3_Informações - Alunos ENG 792.xlsx&quot;</span>, <span class="at">endRow=</span><span class="dv">28</span>,<span class="at">sheetIndex=</span><span class="dv">4</span>,<span class="at">startRow =</span> <span class="dv">2</span>, <span class="at">header =</span>T, <span class="at">encoding=</span><span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb509-4"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb509-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb509-5"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb509-5" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(Reposição.de.aula, <span class="at">file=</span><span class="st">&quot;Cap_3_Informações - Alunos ENG 792.txt&quot;</span>,<span class="at">sep=</span><span class="st">&quot;,&quot;</span>,<span class="at">fileEncoding=</span><span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb505"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb505-1"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb505-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR/&quot;</span>)</span>
+<span id="cb505-2"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb505-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb505-3"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb505-3" aria-hidden="true" tabindex="-1"></a>Al.Eng792<span class="ot">&lt;-</span><span class="fu">read.xlsx</span>(<span class="at">file=</span><span class="st">&quot;Cap_3_Informações - Alunos ENG 792.xlsx&quot;</span>, <span class="at">endRow=</span><span class="dv">28</span>,<span class="at">sheetIndex=</span><span class="dv">4</span>,<span class="at">startRow =</span> <span class="dv">2</span>, <span class="at">header =</span>T, <span class="at">encoding=</span><span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb505-4"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb505-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb505-5"><a href="acessando-e-criando-funções-importação-e-exportação-dados.html#cb505-5" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(Reposição.de.aula, <span class="at">file=</span><span class="st">&quot;Cap_3_Informações - Alunos ENG 792.txt&quot;</span>,<span class="at">sep=</span><span class="st">&quot;,&quot;</span>,<span class="at">fileEncoding=</span><span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
 <p style="color:red">
 <strong>Explore o comandos <code>rowSums()</code>, <code>colSums()</code>, <code>rowMeans()</code>, <code>colMeans()</code> e acrescente no <em>data.frame</em> notas uma coluna com soma e média das notas dos alunos e linhas com no fim do arquivo soma e média das notas 1 a 4. Para terminar exporte os arquivos em formato .csv e .txt</strong>
 </p>
-<p><strong>Para mais informações sobre importação e exportação de dados leia</strong> <span class="citation"><a href="#ref-RCoreTeam" role="doc-biblioref">RCoreTeam</a> (<a href="#ref-RCoreTeam" role="doc-biblioref">2020</a>)</span> <strong>.</strong></p>
+<p><strong>Para mais informações sobre importação e exportação de dados leia</strong> <span class="citation">RCoreTeam (<a href="#ref-RCoreTeam" role="doc-biblioref">2020</a>)</span> <strong>.</strong></p>
 <p style="color:red">
 <strong>E digo mais, é só isso mesmo.</strong>
 </p>
 </div>
 </div>
-<div id="exercícios-1" class="section level2" number="4.4">
-<h2><span class="header-section-number">4.4</span> Exercícios</h2>
+<div id="exercícios-1" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Exercícios<a href="acessando-e-criando-funções-importação-e-exportação-dados.html#exercícios-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li>Defina um objeto chamado <code>a</code> com valores de 60 a 85.</li>
 <li>Determine o elemento 12 de <code>a</code>.</li>
@@ -1328,8 +1309,8 @@ Antes de prosseguir certifique-se que o endereço de saída está adequado.</p>
 <li>Exporte seu <code>new_frame2</code> para <em>.csv</em> e <em>.txt</em>.</li>
 </ol>
 </div>
-<div id="dica-de-leitura-1" class="section level2" number="4.5">
-<h2><span class="header-section-number">4.5</span> Dica de leitura</h2>
+<div id="dica-de-leitura-1" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> Dica de leitura<a href="acessando-e-criando-funções-importação-e-exportação-dados.html#dica-de-leitura-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><a href="https://statisticsglobe.com/pacman-r-package">Introduction to the pacman Package in R (3 Examples)</a></p>
 <p><a href="https://support.rstudio.com/hc/en-us/articles/201057987-Quick-list-of-useful-R-packages">Quick list of useful R packages</a></p>
 <p><a href="http://www.leg.ufpr.br/~paulojus/embrapa/Rembrapa/Rembrapase36.html">36 Instalando e usando pacotes (packages) do R</a></p>
@@ -1380,7 +1361,6 @@ Wickham, Hadley, and Jennifer Bryan. 2019. <em>Readxl: Read Excel Files</em>. <a
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -1421,7 +1401,7 @@ gitbook.start({
 },
 "download": ["ENG_792-AVDR.pdf", "ENG_792-AVDR.epub"],
 "search": {
-"engine": "lunr",
+"engine": "fuse",
 "options": null
 },
 "toc": {
@@ -1437,7 +1417,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capítulo 3 Acessando e manipulação de dados | ENG 792 - Análise e visualização de dados com R (RStudio)</title>
   <meta name="description" content="Este é o material de supporte aos alunos matriculados na disciplina ENG 792 ofertada pelo programa de pós-gradução em Meteorologia Aplicada do Departamento de Engenharia Agrícola (DEA) da Universidade Federal de Viçosa (UFV)." />
-  <meta name="generator" content="bookdown 0.22.17 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capítulo 3 Acessando e manipulação de dados | ENG 792 - Análise e visualização de dados com R (RStudio)" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="Este é o material de supporte aos alunos matriculados na disciplina ENG 792 ofertada pelo programa de pós-gradução em Meteorologia Aplicada do Departamento de Engenharia Agrícola (DEA) da Universidade Federal de Viçosa (UFV)." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
@@ -24,7 +23,7 @@
 <meta name="author" content="Jackson Rodrigues" />
 
 
-<meta name="date" content="2021-10-20" />
+<meta name="date" content="2023-03-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +32,8 @@
   
 <link rel="prev" href="references.html"/>
 <link rel="next" href="acessando-e-criando-funções-importação-e-exportação-dados.html"/>
-<script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,17 +49,17 @@
 
 
 
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
 <script src="libs/es6shim-0.35.6/es6shim.js"></script>
 <script src="libs/es7shim-6.0.0/es7shim.js"></script>
 <script src="libs/graphre-0.1.3/graphre.js"></script>
-<script src="libs/nomnoml-1.3.1/nomnoml.js"></script>
-<script src="libs/nomnoml-binding-0.2.3/nomnoml.js"></script>
+<script src="libs/nomnoml-1.5.3/nomnoml.js"></script>
+<script src="libs/nomnoml-binding-0.2.6/nomnoml.js"></script>
 <link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 
@@ -103,7 +102,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -116,7 +115,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -357,10 +356,10 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="acessando-e-manipulação-de-dados" class="section level1" number="3">
-<h1><span class="header-section-number">Capítulo 3</span> Acessando e manipulação de dados</h1>
-<div id="organização" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> Organização</h2>
+<div id="acessando-e-manipulação-de-dados" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Capítulo 3</span> Acessando e manipulação de dados<a href="acessando-e-manipulação-de-dados.html#acessando-e-manipulação-de-dados" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="organização" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Organização<a href="acessando-e-manipulação-de-dados.html#organização" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Assista este conteúdo em <strong>Cap 2 - Organização Partes 1 e 2</strong> no <a href="https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php">PVANet</a></p>
 <p>Como mencionado anteriormente, <code>vector</code> é uma das principais estruturas do <strong>R</strong>. Um vetor é uma sequência de elementos (1…n) do mesmo tipo organizados tal qual livros em uma prateleira.<br />
 No caso abaixo temos um vetor numérico que pode ser <code>integer</code> ou <code>double</code>.</p>
@@ -455,15 +454,15 @@ Então um único número ou um único caractere será um vector.</p>
 </table>
 <p>Entender a posição de cada elemento dentro de um <code>vector</code> é crucial! Saber a posição correta onde determinado(s) elemento(s) está(estão) facilita em muito nossa limpeza, nosso tratamento e demais passos para uma eficiente manipulação dos dados.</p>
 <div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="acessando-e-manipulação-de-dados.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">100</span>,<span class="dv">50</span>,<span class="sc">-</span><span class="dv">1</span>)</span></code></pre></div>
-<pre><code>##  [1] 100  99  98  97  96  95  94  93  92  91  90  89  88  87  86  85  84
-## [18]  83  82  81  80  79  78  77  76  75  74  73  72  71  70  69  68  67
-## [35]  66  65  64  63  62  61  60  59  58  57  56  55  54  53  52  51  50</code></pre>
+<pre><code>##  [1] 100  99  98  97  96  95  94  93  92  91  90  89  88  87  86  85  84  83  82
+## [20]  81  80  79  78  77  76  75  74  73  72  71  70  69  68  67  66  65  64  63
+## [39]  62  61  60  59  58  57  56  55  54  53  52  51  50</code></pre>
 <p>Atenção para os números dentro dos colchetes <code>[1] [17] [33] [49]</code>. Como mencionado em aulas passadas, eles, os colchetes, indicam a posição de determinados elementos dentro de um banco de dados.<br />
 Especificamente o <code>[1]</code> informa que o número <em>100</em> é o primeiro elemento, <code>[17]</code> informa que o número <em>84</em> é o vigésimo elemento, <code>[33]</code> informa que o número <em>68</em> é o trigésimo nono elemento, <code>[49]</code> informa que o número <em>52</em> é o trigésimo nono elemento.</p>
-<div id="usando---subscribing-ou-indexing" class="section level3" number="3.1.1">
-<h3><span class="header-section-number">3.1.1</span> Usando [ ] - Subscribing ou indexing</h3>
-<div id="vetores" class="section level4" number="3.1.1.1">
-<h4><span class="header-section-number">3.1.1.1</span> Vetores</h4>
+<div id="usando---subscribing-ou-indexing" class="section level3 hasAnchor" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Usando [ ] - Subscribing ou indexing<a href="acessando-e-manipulação-de-dados.html#usando---subscribing-ou-indexing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="vetores" class="section level4 hasAnchor" number="3.1.1.1">
+<h4><span class="header-section-number">3.1.1.1</span> Vetores<a href="acessando-e-manipulação-de-dados.html#vetores" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Podemos extrapolar esta ideia de utilização de <code>[]</code> para acessar informações dentros dos objetos que criamos ou importamos.</p>
 <div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="acessando-e-manipulação-de-dados.html#cb130-1" aria-hidden="true" tabindex="-1"></a>d<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;c&quot;</span>,<span class="st">&quot;d&quot;</span>,<span class="st">&quot;e&quot;</span>)</span>
 <span id="cb130-2"><a href="acessando-e-manipulação-de-dados.html#cb130-2" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div>
@@ -663,12 +662,12 @@ Nesse caso vamos ter uma aviso, em que o <strong>R</strong> ao fazer o preenchim
 <div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="acessando-e-manipulação-de-dados.html#cb168-1" aria-hidden="true" tabindex="-1"></a>j<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">50</span>,<span class="dv">34</span>,<span class="dv">11</span>,<span class="dv">7</span>,<span class="dv">24</span>,<span class="dv">631</span>)</span>
 <span id="cb168-2"><a href="acessando-e-manipulação-de-dados.html#cb168-2" aria-hidden="true" tabindex="-1"></a>k<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">100</span>,<span class="dv">2</span>,<span class="dv">56</span>,<span class="dv">12</span>,<span class="dv">0</span>,<span class="dv">65</span>,<span class="dv">93</span>,<span class="dv">10</span>,<span class="dv">244</span>,<span class="dv">1</span>)</span>
 <span id="cb168-3"><a href="acessando-e-manipulação-de-dados.html#cb168-3" aria-hidden="true" tabindex="-1"></a>j<span class="sc">+</span>k</span></code></pre></div>
-<pre><code>## Warning in j + k: longer object length is not a multiple of shorter
-## object length</code></pre>
+<pre><code>## Warning in j + k: comprimento do objeto maior não é múltiplo do comprimento do
+## objeto menor</code></pre>
 <pre><code>##  [1] 150  36  67  19  24 696 143  44 255   8</code></pre>
 </div>
-<div id="matrizes" class="section level4" number="3.1.1.2">
-<h4><span class="header-section-number">3.1.1.2</span> Matrizes</h4>
+<div id="matrizes" class="section level4 hasAnchor" number="3.1.1.2">
+<h4><span class="header-section-number">3.1.1.2</span> Matrizes<a href="acessando-e-manipulação-de-dados.html#matrizes" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Da mesma forma que utilizamos <code>[ ]</code> para acessar elementos específicos em um vetor, estes podem ser utilizados para acessar elementos de matrizes.<br />
 Lembrando que as matrizes possuem duas dimensões e que as dimensões são organizadas na sequência de linhas e colunas.</p>
 <div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="acessando-e-manipulação-de-dados.html#cb171-1" aria-hidden="true" tabindex="-1"></a>l<span class="ot">&lt;-</span><span class="fu">cbind</span>(<span class="fu">matrix</span>(<span class="dv">14</span><span class="sc">:</span><span class="dv">1</span>, <span class="at">ncol=</span><span class="dv">2</span>),<span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">14</span>, <span class="at">ncol=</span><span class="dv">2</span>))</span>
@@ -801,8 +800,8 @@ Podemos desta forma selecionar uma ou várias linhas e colunas de uma só vez. P
 ## f  9 6 13
 ## g  8 7 14</code></pre>
 </div>
-<div id="arrays" class="section level4" number="3.1.1.3">
-<h4><span class="header-section-number">3.1.1.3</span> Arrays</h4>
+<div id="arrays" class="section level4 hasAnchor" number="3.1.1.3">
+<h4><span class="header-section-number">3.1.1.3</span> Arrays<a href="acessando-e-manipulação-de-dados.html#arrays" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Sendo muito similares aos vetores e matrizes, os arrays podem ter <em>n</em> dimensões.</p>
 <div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="acessando-e-manipulação-de-dados.html#cb215-1" aria-hidden="true" tabindex="-1"></a>m<span class="ot">&lt;-</span><span class="dv">1</span><span class="sc">:</span><span class="dv">24</span></span>
 <span id="cb215-2"><a href="acessando-e-manipulação-de-dados.html#cb215-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(m)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>)</span>
@@ -856,8 +855,8 @@ Podemos desta forma selecionar uma ou várias linhas e colunas de uma só vez. P
 <div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="acessando-e-manipulação-de-dados.html#cb225-1" aria-hidden="true" tabindex="-1"></a>m[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>] <span class="co"># Retorna as intersecções entre a primeira linha com segunda coluna da sugunda camada</span></span></code></pre></div>
 <pre><code>## [1] 17</code></pre>
 </div>
-<div id="data-frame-1" class="section level4" number="3.1.1.4">
-<h4><span class="header-section-number">3.1.1.4</span> Data Frame</h4>
+<div id="data-frame-1" class="section level4 hasAnchor" number="3.1.1.4">
+<h4><span class="header-section-number">3.1.1.4</span> Data Frame<a href="acessando-e-manipulação-de-dados.html#data-frame-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Sendo semelhantes às <code>matrizes</code>, os <code>data frames</code> pode serm acessados pelo número das linhas ou colunas.</p>
 <div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="acessando-e-manipulação-de-dados.html#cb227-1" aria-hidden="true" tabindex="-1"></a>Equipes<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;Flamengo&quot;</span>,  <span class="st">&quot;Santos&quot;</span>,   <span class="st">&quot;Palmeiras&quot;</span>,    <span class="st">&quot;Grêmio&quot;</span>,   <span class="st">&quot;Athletico Paranaense&quot;</span>, <span class="st">&quot;Săo Paulo&quot;</span>,    <span class="st">&quot;Internacional&quot;</span>,    <span class="st">&quot;Corinthians&quot;</span>,  <span class="st">&quot;Fortaleza&quot;</span>,    <span class="st">&quot;Goiás&quot;</span>,    <span class="st">&quot;Bahia&quot;</span>,    <span class="st">&quot;Vasco da Gama&quot;</span>,    <span class="st">&quot;Atlético Mineiro&quot;</span>, <span class="st">&quot;Fluminense&quot;</span>,   <span class="st">&quot;Botafogo&quot;</span>, <span class="st">&quot;Ceará&quot;</span>,    <span class="st">&quot;Cruzeiro&quot;</span>, <span class="st">&quot;CSA&quot;</span>,  <span class="st">&quot;Chapecoense&quot;</span>,  <span class="st">&quot;Avaí&quot;</span>)</span>
 <span id="cb227-2"><a href="acessando-e-manipulação-de-dados.html#cb227-2" aria-hidden="true" tabindex="-1"></a>Jogos<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;38&quot;</span>,  <span class="st">&quot;38&quot;</span>,   <span class="st">&quot;38&quot;</span>,   <span class="st">&quot;38&quot;</span>,   <span class="st">&quot;38&quot;</span>,   <span class="st">&quot;38&quot;</span>,   <span class="st">&quot;38&quot;</span>,   <span class="st">&quot;38&quot;</span>,   <span class="st">&quot;38&quot;</span>,   <span class="st">&quot;38&quot;</span>,   <span class="st">&quot;38&quot;</span>,   <span class="st">&quot;38&quot;</span>,   <span class="st">&quot;38&quot;</span>,   <span class="st">&quot;38&quot;</span>,   <span class="st">&quot;38&quot;</span>,   <span class="st">&quot;38&quot;</span>,   <span class="st">&quot;38&quot;</span>,   <span class="st">&quot;38&quot;</span>,   <span class="st">&quot;38&quot;</span>,   <span class="st">&quot;38&quot;</span>)</span>
@@ -1087,7 +1086,7 @@ Libertadores
 </tr>
 <tr>
 <td style="text-align:left;">
-Sao Paulo
+Săo Paulo
 </td>
 <td style="text-align:left;">
 38
@@ -1618,44 +1617,37 @@ Rebaixado
 ##   Saldo.de.Gols Aprov.      Destino
 ## 1            49     79 Libertadores</code></pre>
 <div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="acessando-e-manipulação-de-dados.html#cb230-1" aria-hidden="true" tabindex="-1"></a>Campeonato.Brasileiro<span class="fl">.2019</span>[,<span class="dv">1</span>] <span class="co"># Retorna a primeira coluna do data frame</span></span></code></pre></div>
-<pre><code>##  [1] &quot;Flamengo&quot;             &quot;Santos&quot;              
-##  [3] &quot;Palmeiras&quot;            &quot;Grêmio&quot;              
-##  [5] &quot;Athletico Paranaense&quot; &quot;Sao Paulo&quot;           
-##  [7] &quot;Internacional&quot;        &quot;Corinthians&quot;         
-##  [9] &quot;Fortaleza&quot;            &quot;Goiás&quot;               
-## [11] &quot;Bahia&quot;                &quot;Vasco da Gama&quot;       
-## [13] &quot;Atlético Mineiro&quot;     &quot;Fluminense&quot;          
-## [15] &quot;Botafogo&quot;             &quot;Ceará&quot;               
-## [17] &quot;Cruzeiro&quot;             &quot;CSA&quot;                 
+<pre><code>##  [1] &quot;Flamengo&quot;             &quot;Santos&quot;               &quot;Palmeiras&quot;           
+##  [4] &quot;Grêmio&quot;               &quot;Athletico Paranaense&quot; &quot;Săo Paulo&quot;           
+##  [7] &quot;Internacional&quot;        &quot;Corinthians&quot;          &quot;Fortaleza&quot;           
+## [10] &quot;Goiás&quot;                &quot;Bahia&quot;                &quot;Vasco da Gama&quot;       
+## [13] &quot;Atlético Mineiro&quot;     &quot;Fluminense&quot;           &quot;Botafogo&quot;            
+## [16] &quot;Ceará&quot;                &quot;Cruzeiro&quot;             &quot;CSA&quot;                 
 ## [19] &quot;Chapecoense&quot;          &quot;Avaí&quot;</code></pre>
 <p>Todas as outras combinações utilizadas nas <code>matrizes</code> podem ser utilizadas aqui nos <code>data frames</code>.<br />
 No entanto, os data frames possuem uma outra “vantagem” sobre as matrizes. Além de armazenar elementos de diferentes tipos (<code>numeric, character, logical</code> e etc), eles também podemser acessados utilizando <code>$</code>.</p>
 <div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="acessando-e-manipulação-de-dados.html#cb232-1" aria-hidden="true" tabindex="-1"></a>Campeonato.Brasileiro<span class="fl">.2019</span><span class="sc">$</span>Equipes <span class="co"># Retorna os elementos da coluna &quot;Equipes&quot;</span></span></code></pre></div>
-<pre><code>##  [1] &quot;Flamengo&quot;             &quot;Santos&quot;              
-##  [3] &quot;Palmeiras&quot;            &quot;Grêmio&quot;              
-##  [5] &quot;Athletico Paranaense&quot; &quot;Sao Paulo&quot;           
-##  [7] &quot;Internacional&quot;        &quot;Corinthians&quot;         
-##  [9] &quot;Fortaleza&quot;            &quot;Goiás&quot;               
-## [11] &quot;Bahia&quot;                &quot;Vasco da Gama&quot;       
-## [13] &quot;Atlético Mineiro&quot;     &quot;Fluminense&quot;          
-## [15] &quot;Botafogo&quot;             &quot;Ceará&quot;               
-## [17] &quot;Cruzeiro&quot;             &quot;CSA&quot;                 
+<pre><code>##  [1] &quot;Flamengo&quot;             &quot;Santos&quot;               &quot;Palmeiras&quot;           
+##  [4] &quot;Grêmio&quot;               &quot;Athletico Paranaense&quot; &quot;Săo Paulo&quot;           
+##  [7] &quot;Internacional&quot;        &quot;Corinthians&quot;          &quot;Fortaleza&quot;           
+## [10] &quot;Goiás&quot;                &quot;Bahia&quot;                &quot;Vasco da Gama&quot;       
+## [13] &quot;Atlético Mineiro&quot;     &quot;Fluminense&quot;           &quot;Botafogo&quot;            
+## [16] &quot;Ceará&quot;                &quot;Cruzeiro&quot;             &quot;CSA&quot;                 
 ## [19] &quot;Chapecoense&quot;          &quot;Avaí&quot;</code></pre>
 <div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="acessando-e-manipulação-de-dados.html#cb234-1" aria-hidden="true" tabindex="-1"></a>Campeonato.Brasileiro<span class="fl">.2019</span><span class="sc">$</span>Vitórias <span class="co"># Retorna os elementos da coluna &quot;Vitórias&quot;</span></span></code></pre></div>
-<pre><code>##  [1] &quot;28&quot; &quot;22&quot; &quot;21&quot; &quot;19&quot; &quot;18&quot; &quot;17&quot; &quot;16&quot; &quot;14&quot; &quot;15&quot; &quot;15&quot; &quot;12&quot; &quot;12&quot; &quot;13&quot;
-## [14] &quot;12&quot; &quot;13&quot; &quot;10&quot; &quot;7&quot;  &quot;8&quot;  &quot;7&quot;  &quot;3&quot;</code></pre>
+<pre><code>##  [1] &quot;28&quot; &quot;22&quot; &quot;21&quot; &quot;19&quot; &quot;18&quot; &quot;17&quot; &quot;16&quot; &quot;14&quot; &quot;15&quot; &quot;15&quot; &quot;12&quot; &quot;12&quot; &quot;13&quot; &quot;12&quot; &quot;13&quot;
+## [16] &quot;10&quot; &quot;7&quot;  &quot;8&quot;  &quot;7&quot;  &quot;3&quot;</code></pre>
 <div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="acessando-e-manipulação-de-dados.html#cb236-1" aria-hidden="true" tabindex="-1"></a>Campeonato.Brasileiro<span class="fl">.2019</span><span class="sc">$</span>Gols.Pró <span class="co"># Retorna os elementos da coluna &quot;Gols.Pró&quot;</span></span></code></pre></div>
-<pre><code>##  [1] &quot;86&quot; &quot;60&quot; &quot;61&quot; &quot;64&quot; &quot;51&quot; &quot;39&quot; &quot;44&quot; &quot;42&quot; &quot;50&quot; &quot;46&quot; &quot;44&quot; &quot;39&quot; &quot;45&quot;
-## [14] &quot;38&quot; &quot;31&quot; &quot;36&quot; &quot;27&quot; &quot;24&quot; &quot;31&quot; &quot;18&quot;</code></pre>
+<pre><code>##  [1] &quot;86&quot; &quot;60&quot; &quot;61&quot; &quot;64&quot; &quot;51&quot; &quot;39&quot; &quot;44&quot; &quot;42&quot; &quot;50&quot; &quot;46&quot; &quot;44&quot; &quot;39&quot; &quot;45&quot; &quot;38&quot; &quot;31&quot;
+## [16] &quot;36&quot; &quot;27&quot; &quot;24&quot; &quot;31&quot; &quot;18&quot;</code></pre>
 <div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="acessando-e-manipulação-de-dados.html#cb238-1" aria-hidden="true" tabindex="-1"></a>Campeonato.Brasileiro<span class="fl">.2019</span><span class="sc">$</span>Saldo.de.Gols <span class="co"># Retorna os elementos da coluna &quot;Saldo.de.Gols&quot;</span></span></code></pre></div>
-<pre><code>##  [1] &quot;49&quot;  &quot;27&quot;  &quot;29&quot;  &quot;25&quot;  &quot;19&quot;  &quot;9&quot;   &quot;5&quot;   &quot;8&quot;   &quot;1&quot;   &quot;-18&quot; &quot;1&quot;  
-## [12] &quot;-6&quot;  &quot;-4&quot;  &quot;-8&quot;  &quot;-14&quot; &quot;-5&quot;  &quot;-19&quot; &quot;-34&quot; &quot;-21&quot; &quot;-44&quot;</code></pre>
+<pre><code>##  [1] &quot;49&quot;  &quot;27&quot;  &quot;29&quot;  &quot;25&quot;  &quot;19&quot;  &quot;9&quot;   &quot;5&quot;   &quot;8&quot;   &quot;1&quot;   &quot;-18&quot; &quot;1&quot;   &quot;-6&quot; 
+## [13] &quot;-4&quot;  &quot;-8&quot;  &quot;-14&quot; &quot;-5&quot;  &quot;-19&quot; &quot;-34&quot; &quot;-21&quot; &quot;-44&quot;</code></pre>
 <div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="acessando-e-manipulação-de-dados.html#cb240-1" aria-hidden="true" tabindex="-1"></a>Campeonato.Brasileiro<span class="fl">.2019</span><span class="sc">$</span>Destino <span class="co"># Retorna os elementos da coluna &quot;Destino&quot;</span></span></code></pre></div>
-<pre><code>##  [1] &quot;Libertadores&quot; &quot;Libertadores&quot; &quot;Libertadores&quot; &quot;Libertadores&quot;
-##  [5] &quot;Libertadores&quot; &quot;Libertadores&quot; &quot;Libertadores&quot; &quot;Libertadores&quot;
-##  [9] &quot;Sulamericana&quot; &quot;Sulamericana&quot; &quot;Sulamericana&quot; &quot;Sulamericana&quot;
-## [13] &quot;Sulamericana&quot; &quot;Sulamericana&quot; &quot;NA&quot;           &quot;NA&quot;          
-## [17] &quot;Rebaixado&quot;    &quot;Rebaixado&quot;    &quot;Rebaixado&quot;    &quot;Rebaixado&quot;</code></pre>
+<pre><code>##  [1] &quot;Libertadores&quot; &quot;Libertadores&quot; &quot;Libertadores&quot; &quot;Libertadores&quot; &quot;Libertadores&quot;
+##  [6] &quot;Libertadores&quot; &quot;Libertadores&quot; &quot;Libertadores&quot; &quot;Sulamericana&quot; &quot;Sulamericana&quot;
+## [11] &quot;Sulamericana&quot; &quot;Sulamericana&quot; &quot;Sulamericana&quot; &quot;Sulamericana&quot; &quot;NA&quot;          
+## [16] &quot;NA&quot;           &quot;Rebaixado&quot;    &quot;Rebaixado&quot;    &quot;Rebaixado&quot;    &quot;Rebaixado&quot;</code></pre>
 <div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="acessando-e-manipulação-de-dados.html#cb242-1" aria-hidden="true" tabindex="-1"></a>Campeonato.Brasileiro<span class="fl">.2019</span><span class="sc">$</span>Equipes[<span class="dv">2</span>] <span class="co"># Retorna o segundo elemento da coluna &quot;Nome&quot;</span></span></code></pre></div>
 <pre><code>## [1] &quot;Santos&quot;</code></pre>
 <div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="acessando-e-manipulação-de-dados.html#cb244-1" aria-hidden="true" tabindex="-1"></a>Campeonato.Brasileiro<span class="fl">.2019</span><span class="sc">$</span>Vitórias[<span class="dv">5</span>] <span class="co"># Retorna o quinto elemento da coluna &quot;Vitórias&quot;</span></span></code></pre></div>
@@ -1674,24 +1666,24 @@ No entanto, os data frames possuem uma outra “vantagem” sobre as matrizes. A
 ## 1            49     79 Libertadores</code></pre>
 <div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="acessando-e-manipulação-de-dados.html#cb254-1" aria-hidden="true" tabindex="-1"></a><span class="fu">split</span>(Campeonato.Brasileiro<span class="fl">.2019</span>,Destino) <span class="co"># Retorna apenas as informações da coluna &quot;Destino&quot; </span></span></code></pre></div>
 <pre><code>## $Libertadores
-##                Equipes Jogos Vitórias Empates Derrotas Gols.Pró
-## 1             Flamengo    38       28       6        4       86
-## 2               Santos    38       22       8        8       60
-## 3            Palmeiras    38       21      11        6       61
-## 4               Grêmio    38       19       8       11       64
-## 5 Athletico Paranaense    38       18      10       10       51
-## 6            Sao Paulo    38       17      12        9       39
-## 7        Internacional    38       16       9       13       44
-## 8          Corinthians    38       14      14       10       42
-##   Gols.Contra Pontos Saldo.de.Gols Aprov.      Destino
-## 1          37     90            49     79 Libertadores
-## 2          33     74            27     65 Libertadores
-## 3          32     74            29     65 Libertadores
-## 4          39     65            25     57 Libertadores
-## 5          32     64            19     56 Libertadores
-## 6          30     63             9     55 Libertadores
-## 7          39     57             5      5 Libertadores
-## 8          34     56             8     49 Libertadores
+##                Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra
+## 1             Flamengo    38       28       6        4       86          37
+## 2               Santos    38       22       8        8       60          33
+## 3            Palmeiras    38       21      11        6       61          32
+## 4               Grêmio    38       19       8       11       64          39
+## 5 Athletico Paranaense    38       18      10       10       51          32
+## 6            Săo Paulo    38       17      12        9       39          30
+## 7        Internacional    38       16       9       13       44          39
+## 8          Corinthians    38       14      14       10       42          34
+##   Pontos Saldo.de.Gols Aprov.      Destino
+## 1     90            49     79 Libertadores
+## 2     74            27     65 Libertadores
+## 3     74            29     65 Libertadores
+## 4     65            25     57 Libertadores
+## 5     64            19     56 Libertadores
+## 6     63             9     55 Libertadores
+## 7     57             5      5 Libertadores
+## 8     56             8     49 Libertadores
 ## 
 ## $`NA`
 ##     Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra Pontos
@@ -1702,37 +1694,37 @@ No entanto, os data frames possuem uma outra “vantagem” sobre as matrizes. A
 ## 16            -5     34      NA
 ## 
 ## $Rebaixado
-##        Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra
-## 17    Cruzeiro    38        7      15       16       27          46
-## 18         CSA    38        8       8       22       24          58
-## 19 Chapecoense    38        7      11       20       31          52
-## 20        Avaí    38        3      11       24       18          62
-##    Pontos Saldo.de.Gols Aprov.   Destino
-## 17     36           -19     32 Rebaixado
-## 18     32           -34     28 Rebaixado
-## 19     32           -21     28 Rebaixado
-## 20     20           -44     18 Rebaixado
+##        Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra Pontos
+## 17    Cruzeiro    38        7      15       16       27          46     36
+## 18         CSA    38        8       8       22       24          58     32
+## 19 Chapecoense    38        7      11       20       31          52     32
+## 20        Avaí    38        3      11       24       18          62     20
+##    Saldo.de.Gols Aprov.   Destino
+## 17           -19     32 Rebaixado
+## 18           -34     28 Rebaixado
+## 19           -21     28 Rebaixado
+## 20           -44     18 Rebaixado
 ## 
 ## $Sulamericana
-##             Equipes Jogos Vitórias Empates Derrotas Gols.Pró
-## 9         Fortaleza    38       15       8       15       50
-## 10            Goiás    38       15       7       16       46
-## 11            Bahia    38       12      13       13       44
-## 12    Vasco da Gama    38       12      13       13       39
-## 13 Atlético Mineiro    38       13       9       16       45
-## 14       Fluminense    38       12      10       16       38
-##    Gols.Contra Pontos Saldo.de.Gols Aprov.      Destino
-## 9           49     53             1     46 Sulamericana
-## 10          64     52           -18     46 Sulamericana
-## 11          43     49             1     43 Sulamericana
-## 12          45     49            -6     43 Sulamericana
-## 13          49     48            -4     42 Sulamericana
-## 14          46     46            -8      4 Sulamericana</code></pre>
+##             Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra Pontos
+## 9         Fortaleza    38       15       8       15       50          49     53
+## 10            Goiás    38       15       7       16       46          64     52
+## 11            Bahia    38       12      13       13       44          43     49
+## 12    Vasco da Gama    38       12      13       13       39          45     49
+## 13 Atlético Mineiro    38       13       9       16       45          49     48
+## 14       Fluminense    38       12      10       16       38          46     46
+##    Saldo.de.Gols Aprov.      Destino
+## 9              1     46 Sulamericana
+## 10           -18     46 Sulamericana
+## 11             1     43 Sulamericana
+## 12            -6     43 Sulamericana
+## 13            -4     42 Sulamericana
+## 14            -8      4 Sulamericana</code></pre>
 <p>Vou criar alguns verores aleatórios.</p>
 <div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="acessando-e-manipulação-de-dados.html#cb256-1" aria-hidden="true" tabindex="-1"></a>gr1 <span class="ot">&lt;-</span> <span class="fu">rep</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>],<span class="at">each=</span><span class="dv">5</span>)</span>
 <span id="cb256-2"><a href="acessando-e-manipulação-de-dados.html#cb256-2" aria-hidden="true" tabindex="-1"></a>gr1</span></code></pre></div>
-<pre><code>##  [1] &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;b&quot; &quot;b&quot; &quot;b&quot; &quot;b&quot; &quot;b&quot; &quot;c&quot; &quot;c&quot; &quot;c&quot; &quot;c&quot; &quot;c&quot; &quot;d&quot; &quot;d&quot;
-## [18] &quot;d&quot; &quot;d&quot; &quot;d&quot;</code></pre>
+<pre><code>##  [1] &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;b&quot; &quot;b&quot; &quot;b&quot; &quot;b&quot; &quot;b&quot; &quot;c&quot; &quot;c&quot; &quot;c&quot; &quot;c&quot; &quot;c&quot; &quot;d&quot; &quot;d&quot; &quot;d&quot; &quot;d&quot;
+## [20] &quot;d&quot;</code></pre>
 <div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="acessando-e-manipulação-de-dados.html#cb258-1" aria-hidden="true" tabindex="-1"></a>gr2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,<span class="at">each=</span><span class="dv">5</span>),<span class="fu">rep</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>,<span class="at">each=</span><span class="dv">5</span>))</span>
 <span id="cb258-2"><a href="acessando-e-manipulação-de-dados.html#cb258-2" aria-hidden="true" tabindex="-1"></a>gr2</span></code></pre></div>
 <pre><code>##  [1] 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 3 3 3 3 3</code></pre>
@@ -1746,175 +1738,174 @@ No entanto, os data frames possuem uma outra “vantagem” sobre as matrizes. A
 ## Levels: 1 2 3</code></pre>
 <div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="acessando-e-manipulação-de-dados.html#cb264-1" aria-hidden="true" tabindex="-1"></a><span class="fu">split</span>(Campeonato.Brasileiro<span class="fl">.2019</span>,<span class="at">f=</span>(gr1)) <span class="co"># Divide o Campeonato.Brasileiro.2019 de acordo com os vetores informados </span></span></code></pre></div>
 <pre><code>## $a
-##                Equipes Jogos Vitórias Empates Derrotas Gols.Pró
-## 1             Flamengo    38       28       6        4       86
-## 2               Santos    38       22       8        8       60
-## 3            Palmeiras    38       21      11        6       61
-## 4               Grêmio    38       19       8       11       64
-## 5 Athletico Paranaense    38       18      10       10       51
-##   Gols.Contra Pontos Saldo.de.Gols Aprov.      Destino
-## 1          37     90            49     79 Libertadores
-## 2          33     74            27     65 Libertadores
-## 3          32     74            29     65 Libertadores
-## 4          39     65            25     57 Libertadores
-## 5          32     64            19     56 Libertadores
+##                Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra
+## 1             Flamengo    38       28       6        4       86          37
+## 2               Santos    38       22       8        8       60          33
+## 3            Palmeiras    38       21      11        6       61          32
+## 4               Grêmio    38       19       8       11       64          39
+## 5 Athletico Paranaense    38       18      10       10       51          32
+##   Pontos Saldo.de.Gols Aprov.      Destino
+## 1     90            49     79 Libertadores
+## 2     74            27     65 Libertadores
+## 3     74            29     65 Libertadores
+## 4     65            25     57 Libertadores
+## 5     64            19     56 Libertadores
 ## 
 ## $b
-##          Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra
-## 6      Sao Paulo    38       17      12        9       39          30
-## 7  Internacional    38       16       9       13       44          39
-## 8    Corinthians    38       14      14       10       42          34
-## 9      Fortaleza    38       15       8       15       50          49
-## 10         Goiás    38       15       7       16       46          64
-##    Pontos Saldo.de.Gols Aprov.      Destino
-## 6      63             9     55 Libertadores
-## 7      57             5      5 Libertadores
-## 8      56             8     49 Libertadores
-## 9      53             1     46 Sulamericana
-## 10     52           -18     46 Sulamericana
+##          Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra Pontos
+## 6      Săo Paulo    38       17      12        9       39          30     63
+## 7  Internacional    38       16       9       13       44          39     57
+## 8    Corinthians    38       14      14       10       42          34     56
+## 9      Fortaleza    38       15       8       15       50          49     53
+## 10         Goiás    38       15       7       16       46          64     52
+##    Saldo.de.Gols Aprov.      Destino
+## 6              9     55 Libertadores
+## 7              5      5 Libertadores
+## 8              8     49 Libertadores
+## 9              1     46 Sulamericana
+## 10           -18     46 Sulamericana
 ## 
 ## $c
-##             Equipes Jogos Vitórias Empates Derrotas Gols.Pró
-## 11            Bahia    38       12      13       13       44
-## 12    Vasco da Gama    38       12      13       13       39
-## 13 Atlético Mineiro    38       13       9       16       45
-## 14       Fluminense    38       12      10       16       38
-## 15         Botafogo    38       13       4       21       31
-##    Gols.Contra Pontos Saldo.de.Gols Aprov.      Destino
-## 11          43     49             1     43 Sulamericana
-## 12          45     49            -6     43 Sulamericana
-## 13          49     48            -4     42 Sulamericana
-## 14          46     46            -8      4 Sulamericana
-## 15          45     43           -14     38           NA
+##             Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra Pontos
+## 11            Bahia    38       12      13       13       44          43     49
+## 12    Vasco da Gama    38       12      13       13       39          45     49
+## 13 Atlético Mineiro    38       13       9       16       45          49     48
+## 14       Fluminense    38       12      10       16       38          46     46
+## 15         Botafogo    38       13       4       21       31          45     43
+##    Saldo.de.Gols Aprov.      Destino
+## 11             1     43 Sulamericana
+## 12            -6     43 Sulamericana
+## 13            -4     42 Sulamericana
+## 14            -8      4 Sulamericana
+## 15           -14     38           NA
 ## 
 ## $d
-##        Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra
-## 16       Ceará    38       10       9       19       36          41
-## 17    Cruzeiro    38        7      15       16       27          46
-## 18         CSA    38        8       8       22       24          58
-## 19 Chapecoense    38        7      11       20       31          52
-## 20        Avaí    38        3      11       24       18          62
-##    Pontos Saldo.de.Gols Aprov.   Destino
-## 16     39            -5     34        NA
-## 17     36           -19     32 Rebaixado
-## 18     32           -34     28 Rebaixado
-## 19     32           -21     28 Rebaixado
-## 20     20           -44     18 Rebaixado</code></pre>
+##        Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra Pontos
+## 16       Ceará    38       10       9       19       36          41     39
+## 17    Cruzeiro    38        7      15       16       27          46     36
+## 18         CSA    38        8       8       22       24          58     32
+## 19 Chapecoense    38        7      11       20       31          52     32
+## 20        Avaí    38        3      11       24       18          62     20
+##    Saldo.de.Gols Aprov.   Destino
+## 16            -5     34        NA
+## 17           -19     32 Rebaixado
+## 18           -34     28 Rebaixado
+## 19           -21     28 Rebaixado
+## 20           -44     18 Rebaixado</code></pre>
 <div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="acessando-e-manipulação-de-dados.html#cb266-1" aria-hidden="true" tabindex="-1"></a><span class="fu">split</span>(Campeonato.Brasileiro<span class="fl">.2019</span>,<span class="at">f=</span>(gr2)) <span class="co"># Divide o Campeonato.Brasileiro.2019 de acordo com os vetores informados </span></span></code></pre></div>
 <pre><code>## $`1`
-##                Equipes Jogos Vitórias Empates Derrotas Gols.Pró
-## 1             Flamengo    38       28       6        4       86
-## 2               Santos    38       22       8        8       60
-## 3            Palmeiras    38       21      11        6       61
-## 4               Grêmio    38       19       8       11       64
-## 5 Athletico Paranaense    38       18      10       10       51
-##   Gols.Contra Pontos Saldo.de.Gols Aprov.      Destino
-## 1          37     90            49     79 Libertadores
-## 2          33     74            27     65 Libertadores
-## 3          32     74            29     65 Libertadores
-## 4          39     65            25     57 Libertadores
-## 5          32     64            19     56 Libertadores
+##                Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra
+## 1             Flamengo    38       28       6        4       86          37
+## 2               Santos    38       22       8        8       60          33
+## 3            Palmeiras    38       21      11        6       61          32
+## 4               Grêmio    38       19       8       11       64          39
+## 5 Athletico Paranaense    38       18      10       10       51          32
+##   Pontos Saldo.de.Gols Aprov.      Destino
+## 1     90            49     79 Libertadores
+## 2     74            27     65 Libertadores
+## 3     74            29     65 Libertadores
+## 4     65            25     57 Libertadores
+## 5     64            19     56 Libertadores
 ## 
 ## $`2`
-##             Equipes Jogos Vitórias Empates Derrotas Gols.Pró
-## 6         Sao Paulo    38       17      12        9       39
-## 7     Internacional    38       16       9       13       44
-## 8       Corinthians    38       14      14       10       42
-## 9         Fortaleza    38       15       8       15       50
-## 10            Goiás    38       15       7       16       46
-## 11            Bahia    38       12      13       13       44
-## 12    Vasco da Gama    38       12      13       13       39
-## 13 Atlético Mineiro    38       13       9       16       45
-## 14       Fluminense    38       12      10       16       38
-## 15         Botafogo    38       13       4       21       31
-##    Gols.Contra Pontos Saldo.de.Gols Aprov.      Destino
-## 6           30     63             9     55 Libertadores
-## 7           39     57             5      5 Libertadores
-## 8           34     56             8     49 Libertadores
-## 9           49     53             1     46 Sulamericana
-## 10          64     52           -18     46 Sulamericana
-## 11          43     49             1     43 Sulamericana
-## 12          45     49            -6     43 Sulamericana
-## 13          49     48            -4     42 Sulamericana
-## 14          46     46            -8      4 Sulamericana
-## 15          45     43           -14     38           NA
+##             Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra Pontos
+## 6         Săo Paulo    38       17      12        9       39          30     63
+## 7     Internacional    38       16       9       13       44          39     57
+## 8       Corinthians    38       14      14       10       42          34     56
+## 9         Fortaleza    38       15       8       15       50          49     53
+## 10            Goiás    38       15       7       16       46          64     52
+## 11            Bahia    38       12      13       13       44          43     49
+## 12    Vasco da Gama    38       12      13       13       39          45     49
+## 13 Atlético Mineiro    38       13       9       16       45          49     48
+## 14       Fluminense    38       12      10       16       38          46     46
+## 15         Botafogo    38       13       4       21       31          45     43
+##    Saldo.de.Gols Aprov.      Destino
+## 6              9     55 Libertadores
+## 7              5      5 Libertadores
+## 8              8     49 Libertadores
+## 9              1     46 Sulamericana
+## 10           -18     46 Sulamericana
+## 11             1     43 Sulamericana
+## 12            -6     43 Sulamericana
+## 13            -4     42 Sulamericana
+## 14            -8      4 Sulamericana
+## 15           -14     38           NA
 ## 
 ## $`3`
-##        Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra
-## 16       Ceará    38       10       9       19       36          41
-## 17    Cruzeiro    38        7      15       16       27          46
-## 18         CSA    38        8       8       22       24          58
-## 19 Chapecoense    38        7      11       20       31          52
-## 20        Avaí    38        3      11       24       18          62
-##    Pontos Saldo.de.Gols Aprov.   Destino
-## 16     39            -5     34        NA
-## 17     36           -19     32 Rebaixado
-## 18     32           -34     28 Rebaixado
-## 19     32           -21     28 Rebaixado
-## 20     20           -44     18 Rebaixado</code></pre>
+##        Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra Pontos
+## 16       Ceará    38       10       9       19       36          41     39
+## 17    Cruzeiro    38        7      15       16       27          46     36
+## 18         CSA    38        8       8       22       24          58     32
+## 19 Chapecoense    38        7      11       20       31          52     32
+## 20        Avaí    38        3      11       24       18          62     20
+##    Saldo.de.Gols Aprov.   Destino
+## 16            -5     34        NA
+## 17           -19     32 Rebaixado
+## 18           -34     28 Rebaixado
+## 19           -21     28 Rebaixado
+## 20           -44     18 Rebaixado</code></pre>
 <div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="acessando-e-manipulação-de-dados.html#cb268-1" aria-hidden="true" tabindex="-1"></a><span class="fu">split</span>(Campeonato.Brasileiro<span class="fl">.2019</span>,<span class="at">f=</span><span class="fu">list</span>(gr1,gr2), <span class="at">drop =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">&quot;: &quot;</span>) <span class="co"># Divide o Campeonato.Brasileiro.2019 de acordo com as listas informadas </span></span></code></pre></div>
 <pre><code>## $`a: 1`
-##                Equipes Jogos Vitórias Empates Derrotas Gols.Pró
-## 1             Flamengo    38       28       6        4       86
-## 2               Santos    38       22       8        8       60
-## 3            Palmeiras    38       21      11        6       61
-## 4               Grêmio    38       19       8       11       64
-## 5 Athletico Paranaense    38       18      10       10       51
-##   Gols.Contra Pontos Saldo.de.Gols Aprov.      Destino
-## 1          37     90            49     79 Libertadores
-## 2          33     74            27     65 Libertadores
-## 3          32     74            29     65 Libertadores
-## 4          39     65            25     57 Libertadores
-## 5          32     64            19     56 Libertadores
+##                Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra
+## 1             Flamengo    38       28       6        4       86          37
+## 2               Santos    38       22       8        8       60          33
+## 3            Palmeiras    38       21      11        6       61          32
+## 4               Grêmio    38       19       8       11       64          39
+## 5 Athletico Paranaense    38       18      10       10       51          32
+##   Pontos Saldo.de.Gols Aprov.      Destino
+## 1     90            49     79 Libertadores
+## 2     74            27     65 Libertadores
+## 3     74            29     65 Libertadores
+## 4     65            25     57 Libertadores
+## 5     64            19     56 Libertadores
 ## 
 ## $`b: 2`
-##          Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra
-## 6      Sao Paulo    38       17      12        9       39          30
-## 7  Internacional    38       16       9       13       44          39
-## 8    Corinthians    38       14      14       10       42          34
-## 9      Fortaleza    38       15       8       15       50          49
-## 10         Goiás    38       15       7       16       46          64
-##    Pontos Saldo.de.Gols Aprov.      Destino
-## 6      63             9     55 Libertadores
-## 7      57             5      5 Libertadores
-## 8      56             8     49 Libertadores
-## 9      53             1     46 Sulamericana
-## 10     52           -18     46 Sulamericana
+##          Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra Pontos
+## 6      Săo Paulo    38       17      12        9       39          30     63
+## 7  Internacional    38       16       9       13       44          39     57
+## 8    Corinthians    38       14      14       10       42          34     56
+## 9      Fortaleza    38       15       8       15       50          49     53
+## 10         Goiás    38       15       7       16       46          64     52
+##    Saldo.de.Gols Aprov.      Destino
+## 6              9     55 Libertadores
+## 7              5      5 Libertadores
+## 8              8     49 Libertadores
+## 9              1     46 Sulamericana
+## 10           -18     46 Sulamericana
 ## 
 ## $`c: 2`
-##             Equipes Jogos Vitórias Empates Derrotas Gols.Pró
-## 11            Bahia    38       12      13       13       44
-## 12    Vasco da Gama    38       12      13       13       39
-## 13 Atlético Mineiro    38       13       9       16       45
-## 14       Fluminense    38       12      10       16       38
-## 15         Botafogo    38       13       4       21       31
-##    Gols.Contra Pontos Saldo.de.Gols Aprov.      Destino
-## 11          43     49             1     43 Sulamericana
-## 12          45     49            -6     43 Sulamericana
-## 13          49     48            -4     42 Sulamericana
-## 14          46     46            -8      4 Sulamericana
-## 15          45     43           -14     38           NA
+##             Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra Pontos
+## 11            Bahia    38       12      13       13       44          43     49
+## 12    Vasco da Gama    38       12      13       13       39          45     49
+## 13 Atlético Mineiro    38       13       9       16       45          49     48
+## 14       Fluminense    38       12      10       16       38          46     46
+## 15         Botafogo    38       13       4       21       31          45     43
+##    Saldo.de.Gols Aprov.      Destino
+## 11             1     43 Sulamericana
+## 12            -6     43 Sulamericana
+## 13            -4     42 Sulamericana
+## 14            -8      4 Sulamericana
+## 15           -14     38           NA
 ## 
 ## $`d: 3`
-##        Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra
-## 16       Ceará    38       10       9       19       36          41
-## 17    Cruzeiro    38        7      15       16       27          46
-## 18         CSA    38        8       8       22       24          58
-## 19 Chapecoense    38        7      11       20       31          52
-## 20        Avaí    38        3      11       24       18          62
-##    Pontos Saldo.de.Gols Aprov.   Destino
-## 16     39            -5     34        NA
-## 17     36           -19     32 Rebaixado
-## 18     32           -34     28 Rebaixado
-## 19     32           -21     28 Rebaixado
-## 20     20           -44     18 Rebaixado</code></pre>
+##        Equipes Jogos Vitórias Empates Derrotas Gols.Pró Gols.Contra Pontos
+## 16       Ceará    38       10       9       19       36          41     39
+## 17    Cruzeiro    38        7      15       16       27          46     36
+## 18         CSA    38        8       8       22       24          58     32
+## 19 Chapecoense    38        7      11       20       31          52     32
+## 20        Avaí    38        3      11       24       18          62     20
+##    Saldo.de.Gols Aprov.   Destino
+## 16            -5     34        NA
+## 17           -19     32 Rebaixado
+## 18           -34     28 Rebaixado
+## 19           -21     28 Rebaixado
+## 20           -44     18 Rebaixado</code></pre>
 <p>Alterando elementos dentro do <code>data frame</code>.</p>
 <div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="acessando-e-manipulação-de-dados.html#cb270-1" aria-hidden="true" tabindex="-1"></a>Campeonato.Brasileiro<span class="fl">.2019</span><span class="sc">$</span>Destino <span class="co"># Retorna apenas as informações da coluna &quot;Destino&quot; </span></span></code></pre></div>
-<pre><code>##  [1] &quot;Libertadores&quot; &quot;Libertadores&quot; &quot;Libertadores&quot; &quot;Libertadores&quot;
-##  [5] &quot;Libertadores&quot; &quot;Libertadores&quot; &quot;Libertadores&quot; &quot;Libertadores&quot;
-##  [9] &quot;Sulamericana&quot; &quot;Sulamericana&quot; &quot;Sulamericana&quot; &quot;Sulamericana&quot;
-## [13] &quot;Sulamericana&quot; &quot;Sulamericana&quot; &quot;NA&quot;           &quot;NA&quot;          
-## [17] &quot;Rebaixado&quot;    &quot;Rebaixado&quot;    &quot;Rebaixado&quot;    &quot;Rebaixado&quot;</code></pre>
+<pre><code>##  [1] &quot;Libertadores&quot; &quot;Libertadores&quot; &quot;Libertadores&quot; &quot;Libertadores&quot; &quot;Libertadores&quot;
+##  [6] &quot;Libertadores&quot; &quot;Libertadores&quot; &quot;Libertadores&quot; &quot;Sulamericana&quot; &quot;Sulamericana&quot;
+## [11] &quot;Sulamericana&quot; &quot;Sulamericana&quot; &quot;Sulamericana&quot; &quot;Sulamericana&quot; &quot;NA&quot;          
+## [16] &quot;NA&quot;           &quot;Rebaixado&quot;    &quot;Rebaixado&quot;    &quot;Rebaixado&quot;    &quot;Rebaixado&quot;</code></pre>
 <div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="acessando-e-manipulação-de-dados.html#cb272-1" aria-hidden="true" tabindex="-1"></a>Campeonato.Brasileiro<span class="fl">.2019</span><span class="sc">$</span>Destino[Campeonato.Brasileiro<span class="fl">.2019</span><span class="sc">$</span>Destino<span class="sc">==</span><span class="st">&quot;NA&quot;</span>]<span class="ot">&lt;-</span><span class="st">&quot;Lugar Algum&quot;</span> </span>
 <span id="cb272-2"><a href="acessando-e-manipulação-de-dados.html#cb272-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Substitui &quot;Libertadores&quot; na coluna &quot;Destino&quot; por &quot;Liberta&quot;.</span></span></code></pre></div>
 <p>Veja como ficou com a informação alterada.</p>
@@ -2134,7 +2125,7 @@ Libertadores
 </tr>
 <tr>
 <td style="text-align:left;">
-Sao Paulo
+Săo Paulo
 </td>
 <td style="text-align:left;">
 38
@@ -2661,15 +2652,12 @@ Rebaixado
 </table>
 <p>Vamos <del>expurgar</del> remover o <em>Vasco da Gama</em> da nossa lista.</p>
 <div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="acessando-e-manipulação-de-dados.html#cb273-1" aria-hidden="true" tabindex="-1"></a>Campeonato.Brasileiro<span class="fl">.2019</span><span class="sc">$</span>Equipes <span class="co"># Retorna apenas as informações da coluna &quot;Equipes&quot; </span></span></code></pre></div>
-<pre><code>##  [1] &quot;Flamengo&quot;             &quot;Santos&quot;              
-##  [3] &quot;Palmeiras&quot;            &quot;Grêmio&quot;              
-##  [5] &quot;Athletico Paranaense&quot; &quot;Sao Paulo&quot;           
-##  [7] &quot;Internacional&quot;        &quot;Corinthians&quot;         
-##  [9] &quot;Fortaleza&quot;            &quot;Goiás&quot;               
-## [11] &quot;Bahia&quot;                &quot;Vasco da Gama&quot;       
-## [13] &quot;Atlético Mineiro&quot;     &quot;Fluminense&quot;          
-## [15] &quot;Botafogo&quot;             &quot;Ceará&quot;               
-## [17] &quot;Cruzeiro&quot;             &quot;CSA&quot;                 
+<pre><code>##  [1] &quot;Flamengo&quot;             &quot;Santos&quot;               &quot;Palmeiras&quot;           
+##  [4] &quot;Grêmio&quot;               &quot;Athletico Paranaense&quot; &quot;Săo Paulo&quot;           
+##  [7] &quot;Internacional&quot;        &quot;Corinthians&quot;          &quot;Fortaleza&quot;           
+## [10] &quot;Goiás&quot;                &quot;Bahia&quot;                &quot;Vasco da Gama&quot;       
+## [13] &quot;Atlético Mineiro&quot;     &quot;Fluminense&quot;           &quot;Botafogo&quot;            
+## [16] &quot;Ceará&quot;                &quot;Cruzeiro&quot;             &quot;CSA&quot;                 
 ## [19] &quot;Chapecoense&quot;          &quot;Avaí&quot;</code></pre>
 <div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="acessando-e-manipulação-de-dados.html#cb275-1" aria-hidden="true" tabindex="-1"></a>Campeonato.Brasileiro.<span class="fl">2019.</span>SV<span class="ot">&lt;-</span>Campeonato.Brasileiro<span class="fl">.2019</span>[Campeonato.Brasileiro<span class="fl">.2019</span><span class="sc">$</span>Equipes<span class="sc">!=</span><span class="st">&quot;Vasco da Gama&quot;</span>,] <span class="co">#Seleciona tudo exceto aquilo que for de &quot;Vasco da Gama&quot;</span></span></code></pre></div>
 <table class="table" style="font-size: 11.5px; margin-left: auto; margin-right: auto;">
@@ -2908,7 +2896,7 @@ Libertadores
 6
 </td>
 <td style="text-align:left;">
-Sao Paulo
+Săo Paulo
 </td>
 <td style="text-align:left;">
 38
@@ -3441,8 +3429,8 @@ Rebaixado
 <p>As funções <code>grep, grepl, regexpr, gregexpr e regexec</code> busca por elementos de um objeto que coincidem com um <em>argumento padrão</em>.</p>
 </div>
 </div>
-<div id="grep" class="section level3" number="3.1.2">
-<h3><span class="header-section-number">3.1.2</span> grep()</h3>
+<div id="grep" class="section level3 hasAnchor" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> grep()<a href="acessando-e-manipulação-de-dados.html#grep" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="acessando-e-manipulação-de-dados.html#cb276-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="st">&quot;Lugar Algum&quot;</span>, Campeonato.Brasileiro<span class="fl">.2019</span><span class="sc">$</span>Destino) <span class="co"># retorna as posições de tudo no vetor Campeonato.Brasileiro.2019$Destino que coincide com Lugar Algum </span></span></code></pre></div>
 <pre><code>## [1] 15 16</code></pre>
 <p><strong>Durante a aula gravada eu me enrolei um pouco na demonstração abaixo. Acontece que Libertadores estava escrito errado, estava escrito Libetadores (sem o r).</strong></p>
@@ -3668,7 +3656,7 @@ Libertadores
 </tr>
 <tr>
 <td style="text-align:left;">
-Sao Paulo
+Săo Paulo
 </td>
 <td style="text-align:left;">
 38
@@ -4205,80 +4193,94 @@ Rebaixado
 <div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="acessando-e-manipulação-de-dados.html#cb291-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setdiff</span>(<span class="fu">grep</span>(<span class="st">&quot;Lugar Algum&quot;</span>, Campeonato.Brasileiro<span class="fl">.2019</span><span class="sc">$</span>Destino), </span>
 <span id="cb291-2"><a href="acessando-e-manipulação-de-dados.html#cb291-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">grep</span>(<span class="st">&quot;lugar algum&quot;</span>, Campeonato.Brasileiro<span class="fl">.2019</span><span class="sc">$</span>Destino)) </span></code></pre></div>
 <pre><code>## [1] 16</code></pre>
-<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="acessando-e-manipulação-de-dados.html#cb293-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;prob&quot;)</span></span>
-<span id="cb293-2"><a href="acessando-e-manipulação-de-dados.html#cb293-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(prob)</span></code></pre></div>
-<pre><code>## Carregando pacotes exigidos: combinat</code></pre>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="acessando-e-manipulação-de-dados.html#cb293-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span></code></pre></div>
 <pre><code>## 
-## Attaching package: &#39;combinat&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:utils&#39;:
+## Attaching package: &#39;purrr&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:magrittr&#39;:
 ## 
-##     combn</code></pre>
-<pre><code>## Carregando pacotes exigidos: fAsianOptions</code></pre>
-<pre><code>## Carregando pacotes exigidos: timeDate</code></pre>
-<pre><code>## Carregando pacotes exigidos: timeSeries</code></pre>
-<pre><code>## Carregando pacotes exigidos: fBasics</code></pre>
-<pre><code>## Carregando pacotes exigidos: fOptions</code></pre>
-<pre><code>## 
-## Attaching package: &#39;prob&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:base&#39;:
-## 
-##     intersect, setdiff, union</code></pre>
-<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="acessando-e-manipulação-de-dados.html#cb304-1" aria-hidden="true" tabindex="-1"></a>S <span class="ot">&lt;-</span> <span class="fu">cards</span>()</span>
-<span id="cb304-2"><a href="acessando-e-manipulação-de-dados.html#cb304-2" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">subset</span>(S, suit <span class="sc">==</span> <span class="st">&quot;Heart&quot;</span>)</span>
-<span id="cb304-3"><a href="acessando-e-manipulação-de-dados.html#cb304-3" aria-hidden="true" tabindex="-1"></a>A</span></code></pre></div>
-<pre><code>##    rank  suit
-## 27    2 Heart
-## 28    3 Heart
-## 29    4 Heart
-## 30    5 Heart
-## 31    6 Heart
-## 32    7 Heart
-## 33    8 Heart
-## 34    9 Heart
-## 35   10 Heart
-## 36    J Heart
-## 37    Q Heart
-## 38    K Heart
-## 39    A Heart</code></pre>
-<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="acessando-e-manipulação-de-dados.html#cb306-1" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">subset</span>(S, rank <span class="sc">==</span> <span class="st">&quot;A&quot;</span> )</span>
+##     set_names</code></pre>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="acessando-e-manipulação-de-dados.html#cb296-1" aria-hidden="true" tabindex="-1"></a>suits <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;spades&#39;</span>, <span class="st">&#39;clubs&#39;</span>, <span class="st">&#39;diamonds&#39;</span>, <span class="st">&#39;hearts&#39;</span>)</span>
+<span id="cb296-2"><a href="acessando-e-manipulação-de-dados.html#cb296-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb296-3"><a href="acessando-e-manipulação-de-dados.html#cb296-3" aria-hidden="true" tabindex="-1"></a>suit <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">map</span>(suits, rep, <span class="dv">13</span>))</span>
+<span id="cb296-4"><a href="acessando-e-manipulação-de-dados.html#cb296-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb296-5"><a href="acessando-e-manipulação-de-dados.html#cb296-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(suit)</span></code></pre></div>
+<pre><code>## [1] &quot;spades&quot; &quot;spades&quot; &quot;spades&quot; &quot;spades&quot; &quot;spades&quot; &quot;spades&quot;</code></pre>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="acessando-e-manipulação-de-dados.html#cb298-1" aria-hidden="true" tabindex="-1"></a>faces <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;king&#39;</span>, <span class="st">&#39;queen&#39;</span>, <span class="st">&#39;jack&#39;</span>, <span class="st">&#39;ten&#39;</span>, <span class="st">&#39;nine&#39;</span>, <span class="st">&#39;eight&#39;</span>, <span class="st">&#39;seven&#39;</span>, <span class="st">&#39;six&#39;</span>, <span class="st">&#39;five&#39;</span>, <span class="st">&#39;four&#39;</span>, <span class="st">&#39;three&#39;</span>, <span class="st">&#39;two&#39;</span>, <span class="st">&#39;ace&#39;</span>)</span>
+<span id="cb298-2"><a href="acessando-e-manipulação-de-dados.html#cb298-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb298-3"><a href="acessando-e-manipulação-de-dados.html#cb298-3" aria-hidden="true" tabindex="-1"></a>face <span class="ot">&lt;-</span> <span class="fu">rep</span>(faces, <span class="dv">4</span>)</span>
+<span id="cb298-4"><a href="acessando-e-manipulação-de-dados.html#cb298-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb298-5"><a href="acessando-e-manipulação-de-dados.html#cb298-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(face)</span></code></pre></div>
+<pre><code>## [1] &quot;king&quot;  &quot;queen&quot; &quot;jack&quot;  &quot;ten&quot;   &quot;nine&quot;  &quot;eight&quot;</code></pre>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="acessando-e-manipulação-de-dados.html#cb300-1" aria-hidden="true" tabindex="-1"></a>value <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">13</span><span class="sc">:</span><span class="dv">1</span>, <span class="dv">4</span>)</span>
+<span id="cb300-2"><a href="acessando-e-manipulação-de-dados.html#cb300-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb300-3"><a href="acessando-e-manipulação-de-dados.html#cb300-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(value)</span></code></pre></div>
+<pre><code>## [1] 13 12 11 10  9  8</code></pre>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="acessando-e-manipulação-de-dados.html#cb302-1" aria-hidden="true" tabindex="-1"></a>deck <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(face, suit, value)</span>
+<span id="cb302-2"><a href="acessando-e-manipulação-de-dados.html#cb302-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb302-3"><a href="acessando-e-manipulação-de-dados.html#cb302-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(deck)</span></code></pre></div>
+<pre><code>##    face   suit value
+## 1  king spades    13
+## 2 queen spades    12
+## 3  jack spades    11
+## 4   ten spades    10
+## 5  nine spades     9
+## 6 eight spades     8</code></pre>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="acessando-e-manipulação-de-dados.html#cb304-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">subset</span>(deck, suit <span class="sc">==</span> <span class="st">&quot;hearts&quot;</span>)</span>
+<span id="cb304-2"><a href="acessando-e-manipulação-de-dados.html#cb304-2" aria-hidden="true" tabindex="-1"></a>A</span></code></pre></div>
+<pre><code>##     face   suit value
+## 40  king hearts    13
+## 41 queen hearts    12
+## 42  jack hearts    11
+## 43   ten hearts    10
+## 44  nine hearts     9
+## 45 eight hearts     8
+## 46 seven hearts     7
+## 47   six hearts     6
+## 48  five hearts     5
+## 49  four hearts     4
+## 50 three hearts     3
+## 51   two hearts     2
+## 52   ace hearts     1</code></pre>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="acessando-e-manipulação-de-dados.html#cb306-1" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">subset</span>(deck, face <span class="sc">==</span> <span class="st">&quot;ace&quot;</span> )</span>
 <span id="cb306-2"><a href="acessando-e-manipulação-de-dados.html#cb306-2" aria-hidden="true" tabindex="-1"></a>B</span></code></pre></div>
-<pre><code>##    rank    suit
-## 13    A    Club
-## 26    A Diamond
-## 39    A   Heart
-## 52    A   Spade</code></pre>
+<pre><code>##    face     suit value
+## 13  ace   spades     1
+## 26  ace    clubs     1
+## 39  ace diamonds     1
+## 52  ace   hearts     1</code></pre>
 <div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="acessando-e-manipulação-de-dados.html#cb308-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setdiff</span>(B, A) <span class="co">#Identifica a difença entre X e Y</span></span></code></pre></div>
-<pre><code>##    rank    suit
-## 13    A    Club
-## 26    A Diamond
-## 52    A   Spade</code></pre>
+<pre><code>## $face
+## [1] &quot;ace&quot; &quot;ace&quot; &quot;ace&quot; &quot;ace&quot;
+## 
+## $suit
+## [1] &quot;spades&quot;   &quot;clubs&quot;    &quot;diamonds&quot; &quot;hearts&quot;  
+## 
+## $value
+## [1] 1 1 1 1</code></pre>
 <div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="acessando-e-manipulação-de-dados.html#cb310-1" aria-hidden="true" tabindex="-1"></a>Campeonato.Brasileiro<span class="fl">.2019</span><span class="sc">$</span>Equipes[<span class="dv">1</span>]</span></code></pre></div>
 <pre><code>## [1] &quot;Flamengo&quot;</code></pre>
 <div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="acessando-e-manipulação-de-dados.html#cb312-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="st">&quot;Flamengo&quot;</span>, Campeonato.Brasileiro<span class="fl">.2019</span><span class="sc">$</span>Equipes, <span class="at">value =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Flamengo&quot;</code></pre>
 </div>
-<div id="grepl" class="section level3" number="3.1.3">
-<h3><span class="header-section-number">3.1.3</span> grepl()</h3>
+<div id="grepl" class="section level3 hasAnchor" number="3.1.3">
+<h3><span class="header-section-number">3.1.3</span> grepl()<a href="acessando-e-manipulação-de-dados.html#grepl" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="acessando-e-manipulação-de-dados.html#cb314-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grepl</span>(<span class="st">&quot;Flamengo&quot;</span>, Campeonato.Brasileiro<span class="fl">.2019</span><span class="sc">$</span>Equipes) <span class="co"># Retorna valores lógicos de acordo com o critério estabelecido</span></span></code></pre></div>
-<pre><code>##  [1]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-## [12] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
+<pre><code>##  [1]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
 </div>
-<div id="sub-e-gsub" class="section level3" number="3.1.4">
-<h3><span class="header-section-number">3.1.4</span> sub() e gsub()</h3>
+<div id="sub-e-gsub" class="section level3 hasAnchor" number="3.1.4">
+<h3><span class="header-section-number">3.1.4</span> sub() e gsub()<a href="acessando-e-manipulação-de-dados.html#sub-e-gsub" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="acessando-e-manipulação-de-dados.html#cb316-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sub</span>(<span class="st">&quot;Fla&quot;</span>, <span class="st">&quot;fla&quot;</span>, Campeonato.Brasileiro<span class="fl">.2019</span><span class="sc">$</span>Equipes) <span class="co">#Substitui Fla por fla naquilo que começa com Fla</span></span></code></pre></div>
-<pre><code>##  [1] &quot;flamengo&quot;             &quot;Santos&quot;              
-##  [3] &quot;Palmeiras&quot;            &quot;Grêmio&quot;              
-##  [5] &quot;Athletico Paranaense&quot; &quot;Sao Paulo&quot;           
-##  [7] &quot;Internacional&quot;        &quot;Corinthians&quot;         
-##  [9] &quot;Fortaleza&quot;            &quot;Goiás&quot;               
-## [11] &quot;Bahia&quot;                &quot;Vasco da Gama&quot;       
-## [13] &quot;Atlético Mineiro&quot;     &quot;Fluminense&quot;          
-## [15] &quot;Botafogo&quot;             &quot;Ceará&quot;               
-## [17] &quot;Cruzeiro&quot;             &quot;CSA&quot;                 
+<pre><code>##  [1] &quot;flamengo&quot;             &quot;Santos&quot;               &quot;Palmeiras&quot;           
+##  [4] &quot;Grêmio&quot;               &quot;Athletico Paranaense&quot; &quot;Săo Paulo&quot;           
+##  [7] &quot;Internacional&quot;        &quot;Corinthians&quot;          &quot;Fortaleza&quot;           
+## [10] &quot;Goiás&quot;                &quot;Bahia&quot;                &quot;Vasco da Gama&quot;       
+## [13] &quot;Atlético Mineiro&quot;     &quot;Fluminense&quot;           &quot;Botafogo&quot;            
+## [16] &quot;Ceará&quot;                &quot;Cruzeiro&quot;             &quot;CSA&quot;                 
 ## [19] &quot;Chapecoense&quot;          &quot;Avaí&quot;</code></pre>
 <div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="acessando-e-manipulação-de-dados.html#cb318-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gsub</span>(<span class="st">&quot;Atlé|Athle&quot;</span>, <span class="st">&quot;Atle&quot;</span>, Campeonato.Brasileiro<span class="fl">.2019</span><span class="sc">$</span>Equipes) <span class="co">#Substitui Atlé ou Athle por Atlé naquilo que contém com Atlé ou Athle</span></span></code></pre></div>
 <pre><code>##  [1] &quot;Flamengo&quot;            &quot;Santos&quot;              &quot;Palmeiras&quot;          
-##  [4] &quot;Grêmio&quot;              &quot;Atletico Paranaense&quot; &quot;Sao Paulo&quot;          
+##  [4] &quot;Grêmio&quot;              &quot;Atletico Paranaense&quot; &quot;Săo Paulo&quot;          
 ##  [7] &quot;Internacional&quot;       &quot;Corinthians&quot;         &quot;Fortaleza&quot;          
 ## [10] &quot;Goiás&quot;               &quot;Bahia&quot;               &quot;Vasco da Gama&quot;      
 ## [13] &quot;Atletico Mineiro&quot;    &quot;Fluminense&quot;          &quot;Botafogo&quot;           
@@ -4514,7 +4516,7 @@ Libertadores
 </tr>
 <tr>
 <td style="text-align:left;">
-Sao Paulo
+Săo Paulo
 </td>
 <td style="text-align:left;">
 38
@@ -5065,8 +5067,8 @@ Rebaixado
 <pre><code>##      row col</code></pre>
 </div>
 </div>
-<div id="operadores" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> Operadores</h2>
+<div id="operadores" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Operadores<a href="acessando-e-manipulação-de-dados.html#operadores" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Assista este conteúdo em <strong>Cap 2 - Operadores</strong> no <a href="https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php">PVANet</a></p>
 <p>O R tem vários operadores, tais quais outras linguagens, que nos permitem realizar procedimentos <em>aritiméticos</em>, <em>lógicos</em> ou <em>relacionais</em>.</p>
 <p>Os operadores aritméticos atuam em 2 elementos (<em>x</em> e <em>y</em>) e retorna respostas lógicas. Estes elementos, pos sua vez, podem ser de modo (<code>mode()</code>) numéricos ou complexos e também variáveis lógicas.</p>
@@ -5218,10 +5220,10 @@ Rebaixado
 <p class="caption">Existem dois tipos de pessoas: = &amp; &lt;-</p>
 </div>
 <p>Com o passar do tempo vamos “brincando” com cada operador e, assim, assimilando o que cada uma faz.</p>
-<div id="iterações" class="section level3" number="3.2.1">
-<h3><span class="header-section-number">3.2.1</span> Iterações</h3>
-<div id="while" class="section level4" number="3.2.1.1">
-<h4><span class="header-section-number">3.2.1.1</span> while()</h4>
+<div id="iterações" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Iterações<a href="acessando-e-manipulação-de-dados.html#iterações" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="while" class="section level4 hasAnchor" number="3.2.1.1">
+<h4><span class="header-section-number">3.2.1.1</span> while()<a href="acessando-e-manipulação-de-dados.html#while" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Essa forma de <em>loop</em> é menos comumente usada e potencialmente perigosa, uma vez que ela pode resultar em uma execução descontrolada. Por isso, em muitos casos iterações restritivas são mais adequadas.
 A função <code>while()</code> requer uma condição testável que continuará a resultar em declarações subsequentes a serem executadas até o resultado do teste dar falso (FALSE).</p>
 <p>Estrutura:
@@ -5246,8 +5248,8 @@ Num concurso de beleza Jackson desafiou qualquer um de seus alunos. Cada um rece
 <span id="cb377-3"><a href="acessando-e-manipulação-de-dados.html#cb377-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span>(Aluno<span class="sc">&lt;</span>Jackson){  </span>
 <span id="cb377-4"><a href="acessando-e-manipulação-de-dados.html#cb377-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(Jackson)} </span></code></pre></div>
 </div>
-<div id="for" class="section level4" number="3.2.1.2">
-<h4><span class="header-section-number">3.2.1.2</span> for()</h4>
+<div id="for" class="section level4 hasAnchor" number="3.2.1.2">
+<h4><span class="header-section-number">3.2.1.2</span> for()<a href="acessando-e-manipulação-de-dados.html#for" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>É similar ao <code>while()</code>, mas é mais conveniente na maioria dos casos.
 Iterações restritas (loops) destinam-se a execução de um número fixo de vezes dos comandos usando a função <code>for()</code>.
 O loop é executado tantas vezes quanto variam os valores de <em>i</em>.
@@ -5279,10 +5281,10 @@ Começa com a palavra <code>for</code> seguindo de por <em>parênteses</em> e <e
 <p>Não importa onde você começa ou o tipo de vetor que é (<em>Caractere</em>, <em>número</em> e etc). Basicamente toda vez que mudar ele vai executar o que estiver dentro do corpo do loop.</p>
 </div>
 </div>
-<div id="condicionais" class="section level3" number="3.2.2">
-<h3><span class="header-section-number">3.2.2</span> Condicionais</h3>
-<div id="if-else" class="section level4" number="3.2.2.1">
-<h4><span class="header-section-number">3.2.2.1</span> if, else</h4>
+<div id="condicionais" class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Condicionais<a href="acessando-e-manipulação-de-dados.html#condicionais" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="if-else" class="section level4 hasAnchor" number="3.2.2.1">
+<h4><span class="header-section-number">3.2.2.1</span> if, else<a href="acessando-e-manipulação-de-dados.html#if-else" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>A função <code>if()</code> é usado para conduzir uma ou mais declarações contidas dentro de <code>[]</code>, fornecendo a condição dentro de <code>()</code>.</p>
 <p>Voltando para nosso concurso de beleza, temos um controle um pouco mais inteligente do resultado mostrado.</p>
 <div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="acessando-e-manipulação-de-dados.html#cb382-1" aria-hidden="true" tabindex="-1"></a>Jackson<span class="ot">&lt;-</span><span class="fl">9.5</span>  </span>
@@ -5317,8 +5319,8 @@ Ao contrário de uma função qualquer, <code>else</code> não pode ser usado in
 <span id="cb389-6"><a href="acessando-e-manipulação-de-dados.html#cb389-6" aria-hidden="true" tabindex="-1"></a>    }</span></code></pre></div>
 <pre><code>## [1] &quot;Aluno2 é mais bonito que Aluno e menos bonito que Jackson.&quot;</code></pre>
 </div>
-<div id="ifelse" class="section level4" number="3.2.2.2">
-<h4><span class="header-section-number">3.2.2.2</span> ifelse()</h4>
+<div id="ifelse" class="section level4 hasAnchor" number="3.2.2.2">
+<h4><span class="header-section-number">3.2.2.2</span> ifelse()<a href="acessando-e-manipulação-de-dados.html#ifelse" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>A função <code>ifelse()</code> é separada de <code>if()</code> e é formada de uma sintaxe mais simples e concisa. No entanto, ela pode ser usada para gerar o mesmo efeito que nas demonstrações anteriores usando <code>if()</code> com o modificador <code>else</code>.</p>
 <div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="acessando-e-manipulação-de-dados.html#cb391-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(Aluno<span class="sc">*</span><span class="dv">2</span><span class="sc">&gt;=</span>Jackson<span class="sc">^</span><span class="dv">2</span>, <span class="st">&quot;Aluno é mais bonito!&quot;</span>, <span class="st">&quot;Jackson é mais bonito!&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Jackson é mais bonito!&quot;</code></pre>
@@ -5335,22 +5337,22 @@ Ao contrário de uma função qualquer, <code>else</code> não pode ser usado in
 </div>
 </div>
 </div>
-<div id="dica-de-leitura" class="section level2" number="3.3">
-<h2><span class="header-section-number">3.3</span> Dica de leitura</h2>
-<p><span class="citation"><a href="#ref-melloandpeternelli2013" role="doc-biblioref">Mello and Peternelli</a> (<a href="#ref-melloandpeternelli2013" role="doc-biblioref">2013</a>)</span></p>
-<p><span class="citation"><a href="#ref-RogerPeng2020RPro" role="doc-biblioref">Peng</a> (<a href="#ref-RogerPeng2020RPro" role="doc-biblioref">2020b</a>)</span></p>
-<p><span class="citation"><a href="#ref-Kabacoff2015R" role="doc-biblioref">Kabacoff</a> (<a href="#ref-Kabacoff2015R" role="doc-biblioref">2015</a>)</span></p>
-<p><span class="citation"><a href="#ref-VenablesSmithRTeamCore2017" role="doc-biblioref">Venables and Smith</a> (<a href="#ref-VenablesSmithRTeamCore2017" role="doc-biblioref">2020</a>)</span></p>
-<p><span class="citation"><a href="#ref-Neth2021" role="doc-biblioref">Neth</a> (<a href="#ref-Neth2021" role="doc-biblioref">2021</a>)</span></p>
-<p><span class="citation"><a href="#ref-Yamamoto2020" role="doc-biblioref">Yamamoto</a> (<a href="#ref-Yamamoto2020" role="doc-biblioref">2020</a>)</span></p>
-<p><span class="citation"><a href="#ref-SergioFreireINTRO2021" role="doc-biblioref">Freire</a> (<a href="#ref-SergioFreireINTRO2021" role="doc-biblioref">2021b</a>)</span></p>
+<div id="dica-de-leitura" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Dica de leitura<a href="acessando-e-manipulação-de-dados.html#dica-de-leitura" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><span class="citation">Mello and Peternelli (<a href="#ref-melloandpeternelli2013" role="doc-biblioref">2013</a>)</span></p>
+<p><span class="citation">Peng (<a href="#ref-RogerPeng2020RPro" role="doc-biblioref">2020b</a>)</span></p>
+<p><span class="citation">Kabacoff (<a href="#ref-Kabacoff2015R" role="doc-biblioref">2015</a>)</span></p>
+<p><span class="citation">Venables and Smith (<a href="#ref-VenablesSmithRTeamCore2017" role="doc-biblioref">2020</a>)</span></p>
+<p><span class="citation">Neth (<a href="#ref-Neth2021" role="doc-biblioref">2021</a>)</span></p>
+<p><span class="citation">Yamamoto (<a href="#ref-Yamamoto2020" role="doc-biblioref">2020</a>)</span></p>
+<p><span class="citation">Freire (<a href="#ref-SergioFreireINTRO2021" role="doc-biblioref">2021b</a>)</span></p>
 <p><a href="https://rspatial.org/intr/4-indexing.html">Spatial Data Science - Indexing</a></p>
 <p><a href="http://www.cookbook-r.com/Basics/Indexing_into_a_data_structure/">Indexing into a data structure</a></p>
 <p><a href="https://r-coder.com/split-r/">r-coder</a></p>
 <p><a href="https://www.datamentor.io/r-programming/if-else-statement/">datamentor - R if…else Statement</a></p>
 </div>
-<div id="exercícios" class="section level2" number="3.4">
-<h2><span class="header-section-number">3.4</span> Exercícios</h2>
+<div id="exercícios" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Exercícios<a href="acessando-e-manipulação-de-dados.html#exercícios" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li>Crie o vetor <em>p</em> que contenham uma sequência de <em>200</em> iniciando em <em>0</em> aumentando <em>0.5</em>.</li>
 <li>Eleve o vetor <em>p</em> ao cubo criando o vetor <em>o</em> e multiplique por <em>p</em>.
@@ -5388,7 +5390,7 @@ Neth, H. 2021. <em>Data Science for Psychologists</em>. bookdown. <a href="https
 Venables, W. N., and D. M. Smith. 2020. <em>An Introduction to r</em>. bookdown. <a href="https://colinfay.me/intro-to-r/">https://colinfay.me/intro-to-r/</a>.
 </div>
 <div id="ref-Yamamoto2020" class="csl-entry">
-Yamamoto, J. K. 2020. <em>Estatística, análise e Interpolação de Dados Geoespaciais</em>. 1st ed. São Paulo: Gráfica Paulos.
+Yamamoto, J. K. 2020. <em><a href="">Estatística, Análise e Interpolação de Dados Geoespaciais</a></em>. 1st ed. São Paulo: Gráfica Paulos.
 </div>
 </div>
             </section>
@@ -5401,7 +5403,6 @@ Yamamoto, J. K. 2020. <em>Estatística, análise e Interpolação de Dados Geoes
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -5442,7 +5443,7 @@ gitbook.start({
 },
 "download": ["ENG_792-AVDR.pdf", "ENG_792-AVDR.epub"],
 "search": {
-"engine": "lunr",
+"engine": "fuse",
 "options": null
 },
 "toc": {
@@ -5458,7 +5459,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

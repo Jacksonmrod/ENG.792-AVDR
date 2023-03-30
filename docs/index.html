@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>ENG 792 - Análise e visualização de dados com R (RStudio)</title>
   <meta name="description" content="Este é o material de supporte aos alunos matriculados na disciplina ENG 792 ofertada pelo programa de pós-gradução em Meteorologia Aplicada do Departamento de Engenharia Agrícola (DEA) da Universidade Federal de Viçosa (UFV)." />
-  <meta name="generator" content="bookdown 0.22.17 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
   <meta property="og:title" content="ENG 792 - Análise e visualização de dados com R (RStudio)" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="Este é o material de supporte aos alunos matriculados na disciplina ENG 792 ofertada pelo programa de pós-gradução em Meteorologia Aplicada do Departamento de Engenharia Agrícola (DEA) da Universidade Federal de Viçosa (UFV)." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
@@ -24,7 +23,7 @@
 <meta name="author" content="Jackson Rodrigues" />
 
 
-<meta name="date" content="2021-10-20" />
+<meta name="date" content="2023-03-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +32,8 @@
   
 
 <link rel="next" href="vamos-ao-que-interesa.html"/>
-<script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,17 +49,17 @@
 
 
 
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
 <script src="libs/es6shim-0.35.6/es6shim.js"></script>
 <script src="libs/es7shim-6.0.0/es7shim.js"></script>
 <script src="libs/graphre-0.1.3/graphre.js"></script>
-<script src="libs/nomnoml-1.3.1/nomnoml.js"></script>
-<script src="libs/nomnoml-binding-0.2.3/nomnoml.js"></script>
+<script src="libs/nomnoml-1.5.3/nomnoml.js"></script>
+<script src="libs/nomnoml-binding-0.2.6/nomnoml.js"></script>
 <link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 
@@ -103,7 +102,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -116,7 +115,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -360,23 +359,22 @@ div.csl-indent {
 <div id="header">
 <h1 class="title">ENG 792 - Análise e visualização de dados com R (RStudio)</h1>
 <p class="author"><em>Jackson Rodrigues</em></p>
-<p class="date" style="margin-top: 1.5em;"><em>2021-10-20</em></p>
+<p class="date"><em>2023-03-30</em></p>
 </div>
-<div id="apresentação" class="section level1" number="1">
-<h1><span class="header-section-number">Capítulo 1</span> Apresentação</h1>
-<div id="hello-world---sejam-bem-vindos" class="section level2" number="1.1">
-<h2><span class="header-section-number">1.1</span> Hello World! - Sejam Bem Vindos!</h2>
+<div id="apresentação" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">Capítulo 1</span> Apresentação<a href="index.html#apresentação" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="hello-world---sejam-bem-vindos" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Hello World! - Sejam Bem Vindos!<a href="index.html#hello-world---sejam-bem-vindos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Assista este conteúdo em <strong>Cap 1 - Hello World! - Sejam Bem Vindos!</strong> no <a href="https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php">PVANet</a>.</p>
 <p><img src="Cap_1_ET.jpg" id="id" class="class" style="width:50.0%;height:50.0%" /></p>
 <p>Este é o material para os alunos matriculados na disciplina <strong>ENG 792 - Análise e Visualização de dados com R (RStudio)</strong> ofertada pelo programa de pós-graduação em Meteorologia Aplicada da Universidade Federal de Viçosa (UFV).</p>
 <p>Este curso foi criado e é ministrado por Jackson Rodrigues, professor da Universidade Federal Fluminense (UFF), mas também professor no programa de pós-graduação em Meteorologia Aplicada do Departamento de Engenharia Agrícola (DEA) da Universidade Federal de Viçosa (UFV).</p>
 <p>Este curso foi construído pensando em minha saga para aprender algo utilizando o R em meu doutorado. Foi bastante dolorido, principalmente no começo quando eu nunca havia tido contato com a liguagem, na verdade, sabia quase nada em programação.</p>
 <p>Desta forma, o público alvo é aquele que tem conhecimento <strong>zero</strong> sobre o assunto. Mas se você já sabe algo em qualquer nível, seja bem vindo também! Podemos aprender juntos, você ensina o que você sabe e eu ensino o que eu sei.</p>
-<p>A ideia principal deste curso é que o(a) aluno(a) que nada sabe de <strong>R</strong> seja exposto(a) a grande quantidade de conceitos e métodos para que o “gelo” seja quebrado e possa se virar sozinho ao término do curso. Desta forma, não é um curso de estatística, não é um curso de produção gráfica nem um curso produção de conteúdo (eg. modelagem), mas um curso de exposição, quase um “<em>how to</em>.” Vamos levantar demandas do dia a dia e tentar resolver os problemas comuns enfrentados pelo estudante na condução de suas análises.</p>
+<p>A ideia principal deste curso é que o(a) aluno(a) que nada sabe de <strong>R</strong> seja exposto(a) a grande quantidade de conceitos e métodos para que o “gelo” seja quebrado e possa se virar sozinho ao término do curso. Desta forma, não é um curso de estatística, não é um curso de produção gráfica nem um curso produção de conteúdo (eg. modelagem), mas um curso de exposição, quase um “<em>how to</em>”. Vamos levantar demandas do dia a dia e tentar resolver os problemas comuns enfrentados pelo estudante na condução de suas análises.</p>
 <p>Eventualmente algum especialista será convidado para dar uma aula, bater um papo, fazer uma apresentação e etc sobre um assunto específico.</p>
-<p>O R é uma ferramenta espetacular para análise e produção de dados, bem como produção gráfica! Vamos começar devagar e ao poucos vocês vão se tornando autossuficientes.
-Muitas dúvidas surgem em fóruns, grupos e tanto outros canais de comunicação da comunidade de usuários de R.</p>
-<p>Muitas vezes surgem perguntas como:<strong>"Tem como fazer isso no R?</strong> A resposta imediada, devido à sua versatilidade, é: <strong>A pergunta não é “se tem jeito,” mas “como fazer”</strong>.</p>
+<p>O R é uma ferramenta espetacular para análise e produção de dados, bem como produção gráfica! Vamos começar devagar e ao poucos vocês vão se tornando autossuficientes. Muitas dúvidas surgem em fóruns, grupos e tanto outros canais de comunicação da comunidade de usuários de R.</p>
+<p>Muitas vezes surgem perguntas como:<strong>“Tem como fazer isso no R?</strong> A resposta imediada, devido à sua versatilidade, é: <strong>A pergunta não é “se tem jeito”, mas “como fazer”</strong>.</p>
 <p>Vamos dar uma passeio por muitas coisas legais que o <strong>R</strong> pode fazer e que vão ajudar a tornar sua vida bem melhor. Com tempo ganho na otimização das suas tarefas por utilização do <strong>R</strong> sobrará tempo para você escrever um paper a mais na pós-graduação, dormir no final de semana sem culpa, tomar uma cerveja na sexta com a turma e ir ao culto domingo sem pedidos.</p>
 <p>Vamos fazer tudo isso nos divertindo. É legal! Vocês verão. Por isso não se procupem comigo (professor), será muito pior para mim por ter que corrigir trabalhos enquanto vocês produzem mais um paper, dormem, tomam um cerveja com a turma e/ou rezam como foi na véspera de natal de 2020 quando estava corrigindo trabalhos.</p>
 <div class="figure">
@@ -403,15 +401,14 @@ Muitas dúvidas surgem em fóruns, grupos e tanto outros canais de comunicação
 <li><p>O curso funciona como um <strong><em>How to</em></strong>. Não teremos tempo de nos aprofundar nas teorias dos assuntos aqui apresentados (nem é a intenção), por isso, vou mostrar o <strong>“que é”</strong>, <strong>“como usar”</strong> e <strong>“como fazer”</strong>.</p></li>
 <li><p>Ao término de cada aula será mostrada uma bibliografia básica sobre o conteúdo. Como são conteúdos diversificados, acho melhor separar as bibliografias por aula.</p></li>
 </ul>
-<div id="sobre" class="section level3" number="1.1.1">
-<h3><span class="header-section-number">1.1.1</span> Sobre</h3>
+<div id="sobre" class="section level3 hasAnchor" number="1.1.1">
+<h3><span class="header-section-number">1.1.1</span> Sobre<a href="index.html#sobre" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Este é um material de apoio compilado e criado para os alunos da disciplina <strong>ENG 792 - Análise e visualização de dados com R (RStudio)</strong>.</p>
 <p>Importante mencionar que o conteúdo aqui apresentado é um compilado de vários anos de materiais estudados disponíveis <em>online</em> ou em livros e artigos especialzados. Desta forma, caso identifique algum conteúdo apresentado aqui que não esteja devidamente referenciado fique à vontade para solicitar os devidos créditos aos autores originais. Não tenho a intenção de ter crédito que não é meu.</p>
 </div>
-<div id="utilização" class="section level3" number="1.1.2">
-<h3><span class="header-section-number">1.1.2</span> Utilização</h3>
-<p>Cada capítulo é referente ao conteúdo de mais ou menos uma semana de curso. Cada semama trata de um assunto diferente e complementar ao conteúdo da semana anterior.
-Desta forma, fique livre para ir e vir no conteúdo caso algo não esteja claro o suficiente.</p>
+<div id="utilização" class="section level3 hasAnchor" number="1.1.2">
+<h3><span class="header-section-number">1.1.2</span> Utilização<a href="index.html#utilização" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Cada capítulo é referente ao conteúdo de mais ou menos uma semana de curso. Cada semama trata de um assunto diferente e complementar ao conteúdo da semana anterior. Desta forma, fique livre para ir e vir no conteúdo caso algo não esteja claro o suficiente.</p>
 <ul>
 <li>Teremos aulas gravadas e aulas síncronas através de alguma plataforma.<br />
 </li>
@@ -420,119 +417,22 @@ Desta forma, fique livre para ir e vir no conteúdo caso algo não esteja claro 
 <li>A distribuição e/ou compartilhamento do conteúdo gravado por qualquer meio é proibido.</li>
 </ul>
 </div>
-<div id="códigos-e-dados" class="section level3" number="1.1.3">
-<h3><span class="header-section-number">1.1.3</span> Códigos e Dados</h3>
+<div id="códigos-e-dados" class="section level3 hasAnchor" number="1.1.3">
+<h3><span class="header-section-number">1.1.3</span> Códigos e Dados<a href="index.html#códigos-e-dados" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Todo o material necessário para acompanhar a disciplina será oferecido via <a href="https://github.com/Jacksonmrod/ENG-792">github</a>. Os códigos com alguma explicação neste material online (explicação completa nas aulas) e os dados onde forem possíveis de serem armazenados.</p>
 </div>
-<div id="cronograma-de-aulas" class="section level3" number="1.1.4">
-<h3><span class="header-section-number">1.1.4</span> Cronograma de aulas</h3>
-<p>As aulas serão ofertadas por material gravado e presencial às quintas e sextas entre 14:00 e 15:30.</p>
-<table>
-<colgroup>
-<col width="12%" />
-<col width="87%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="center">Semana/Data</th>
-<th align="center">Conteúdo</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">1.1</td>
-<td align="center">Apresentação do Conteúdo e Instalação do R</td>
-</tr>
-<tr class="even">
-<td align="center">1.2</td>
-<td align="center">Funcionamento do R, tipo e estrutura dos objetos</td>
-</tr>
-<tr class="odd">
-<td align="center">2.1</td>
-<td align="center">Manipulação de dados 1</td>
-</tr>
-<tr class="even">
-<td align="center">2.2</td>
-<td align="center">Manipulação de dados 2, testes lógicos e simbolos, condicionais e interações</td>
-</tr>
-<tr class="odd">
-<td align="center">3.1</td>
-<td align="center">Pacotes e Funções</td>
-</tr>
-<tr class="even">
-<td align="center">3.2</td>
-<td align="center">Entrando/Importando dados. definição de diretórios</td>
-</tr>
-<tr class="odd">
-<td align="center">4.1</td>
-<td align="center">Produção gráfica com Rbase</td>
-</tr>
-<tr class="even">
-<td align="center">4.2</td>
-<td align="center">Produção gráfica com ggplot 2</td>
-</tr>
-<tr class="odd">
-<td align="center">5.1</td>
-<td align="center">Elementos de estatística básica 1 (Est. Descritiva, Med. Tend. Central, Medi. de variabilidade)</td>
-</tr>
-<tr class="even">
-<td align="center">5.2</td>
-<td align="center">Elementos de estatítica básica 2 (Dife. Entre médias, T-Student, Teste F, Testes de normalidade)</td>
-</tr>
-<tr class="odd">
-<td align="center">6.1</td>
-<td align="center">Elementos de estatítica básica 3 (ANOVA, delineamento, comparaçõe múltiplas, Regressão, Resíduos, Homocedasticidade, Normalidade dos resíduos, regressão múltipla, superfície de resposta)</td>
-</tr>
-<tr class="even">
-<td align="center">7.1</td>
-<td align="center">Análise Multivariada (Análise de agrupamento, medidas de (dis)similaridade, métodos de conexão, número de clusters, produção de dendogramas, árvores de decisão)</td>
-</tr>
-<tr class="odd">
-<td align="center">7.2</td>
-<td align="center">Métodos de Ordenação (Ana. Componentes Principais, Análise Canônica, Análise de fatores, Análise de Mahalanobis)</td>
-</tr>
-<tr class="even">
-<td align="center">8 - 15</td>
-<td align="center">Será preenchido em breve</td>
-</tr>
-<tr class="odd">
-<td align="center">30/09</td>
-<td align="center">Palestra com <a href="https://beatrizmilz.com/">Msc. Beatriz Milz</a> - <strong>Como aprender R tem sido importante na minha trajetória como gestora ambiental</strong></td>
-</tr>
-<tr class="even">
-<td align="center">08/10</td>
-<td align="center">Palestra com <a href="https://felipesbarros.github.io/">Msc. Felipe Barros</a> - <strong>Entendendo os mapas coropléticos</strong></td>
-</tr>
-<tr class="odd">
-<td align="center">14/10</td>
-<td align="center">Palestra com Professor <a href="http://lattes.cnpq.br/9415018624563178">Dr. Alcinei Mistico Azevedo</a> - <strong>Tecnologias digitais de apoio a análise de experimentos agronômicos</strong></td>
-</tr>
-<tr class="even">
-<td align="center">21/10</td>
-<td align="center">Palestra com Professor <a href="http://lattes.cnpq.br/1178948690201659">Dr. Rafael Delgado</a> - <strong>Sensoriamento Remoto Ambiental – Técnicas e Aplicações com uso do software R</strong></td>
-</tr>
-<tr class="odd">
-<td align="center">28/10</td>
-<td align="center">Palestra com <a href="https://github.com/filipematias23/">Msc. Filipe Matias</a> - <strong>FIELDimageR pipeline: Image analysis from agricultural trials in R</strong></td>
-</tr>
-<tr class="even">
-<td align="center">04/11</td>
-<td align="center">Palestra com <a href="https://mauriciovancine.github.io/">Msc. Maurício Vancine</a> - <strong>Modelos em Ecologia: extrapolando nosso conhecimento sobre a distribuição das espécies</strong></td>
-</tr>
-<tr class="odd">
-<td align="center">11/11</td>
-<td align="center">Palestra com Professor <a href="http://lattes.cnpq.br/8080945803303151">Dr. Domingos Sárvio</a> - <strong><em>Machine Learning</em> Aplicado à Agricultura</strong></td>
-</tr>
-</tbody>
-</table>
+<div id="cronograma-de-aulas" class="section level3 hasAnchor" number="1.1.4">
+<h3><span class="header-section-number">1.1.4</span> Cronograma de aulas<a href="index.html#cronograma-de-aulas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>As aulas serão ofertadas por material gravado e presencial às terças-feiras entre 13:30 e 16:00.</p>
 </div>
-<div id="métodos-de-avaliação" class="section level3" number="1.1.5">
-<h3><span class="header-section-number">1.1.5</span> Métodos de avaliação</h3>
+<div id="métodos-de-avaliação" class="section level3 hasAnchor" number="1.1.5">
+<h3><span class="header-section-number">1.1.5</span> Métodos de avaliação<a href="index.html#métodos-de-avaliação" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>Faremos pelo menos 3 listas de exercícios distribuídas pelo semestre.<br />
 </li>
 <li>O trabalho final será a confecção de um atrabalho autoral com o conteúdo do curso que poderá ser feito em grupo (isso será definido ainda em conversa com vocês). Este trabalho será apresentado na forma de seminário ao término do curso.</li>
 </ul>
+<p>Bom curso!</p>
 
 </div>
 </div>
@@ -547,7 +447,6 @@ Desta forma, fique livre para ir e vir no conteúdo caso algo não esteja claro 
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -588,7 +487,7 @@ gitbook.start({
 },
 "download": ["ENG_792-AVDR.pdf", "ENG_792-AVDR.epub"],
 "search": {
-"engine": "lunr",
+"engine": "fuse",
 "options": null
 },
 "toc": {
@@ -604,7 +503,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

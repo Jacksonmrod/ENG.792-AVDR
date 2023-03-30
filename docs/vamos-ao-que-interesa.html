@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capítulo 2 Vamos ao que interesa | ENG 792 - Análise e visualização de dados com R (RStudio)</title>
   <meta name="description" content="Este é o material de supporte aos alunos matriculados na disciplina ENG 792 ofertada pelo programa de pós-gradução em Meteorologia Aplicada do Departamento de Engenharia Agrícola (DEA) da Universidade Federal de Viçosa (UFV)." />
-  <meta name="generator" content="bookdown 0.22.17 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capítulo 2 Vamos ao que interesa | ENG 792 - Análise e visualização de dados com R (RStudio)" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="Este é o material de supporte aos alunos matriculados na disciplina ENG 792 ofertada pelo programa de pós-gradução em Meteorologia Aplicada do Departamento de Engenharia Agrícola (DEA) da Universidade Federal de Viçosa (UFV)." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
@@ -24,7 +23,7 @@
 <meta name="author" content="Jackson Rodrigues" />
 
 
-<meta name="date" content="2021-10-20" />
+<meta name="date" content="2023-03-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +32,8 @@
   
 <link rel="prev" href="index.html"/>
 <link rel="next" href="references.html"/>
-<script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,17 +49,17 @@
 
 
 
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
 <script src="libs/es6shim-0.35.6/es6shim.js"></script>
 <script src="libs/es7shim-6.0.0/es7shim.js"></script>
 <script src="libs/graphre-0.1.3/graphre.js"></script>
-<script src="libs/nomnoml-1.3.1/nomnoml.js"></script>
-<script src="libs/nomnoml-binding-0.2.3/nomnoml.js"></script>
+<script src="libs/nomnoml-1.5.3/nomnoml.js"></script>
+<script src="libs/nomnoml-binding-0.2.6/nomnoml.js"></script>
 <link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 
@@ -103,7 +102,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -116,7 +115,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -357,18 +356,18 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="vamos-ao-que-interesa" class="section level1" number="2">
-<h1><span class="header-section-number">Capítulo 2</span> Vamos ao que interesa</h1>
-<div id="conhecendo-o-r" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> Conhecendo o R</h2>
-<div id="o-que-é-o-r" class="section level3" number="2.1.1">
-<h3><span class="header-section-number">2.1.1</span> O que é o R?</h3>
+<div id="vamos-ao-que-interesa" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Capítulo 2</span> Vamos ao que interesa<a href="vamos-ao-que-interesa.html#vamos-ao-que-interesa" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="conhecendo-o-r" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Conhecendo o R<a href="vamos-ao-que-interesa.html#conhecendo-o-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="o-que-é-o-r" class="section level3 hasAnchor" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> O que é o R?<a href="vamos-ao-que-interesa.html#o-que-é-o-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>É uma linguagem de programação voltada para resolução de problemas estatísticos, tratamento e visualização de dados.</p>
-<p>Para <span class="citation"><a href="#ref-RogerPeng2020RPro" role="doc-biblioref">Peng</a> (<a href="#ref-RogerPeng2020RPro" role="doc-biblioref">2020b</a>)</span> essa resposta é simples, “<em>R é um dialeto do S</em>.”</p>
-<p>De acordo com <span class="citation"><a href="#ref-perlin2018processamento" role="doc-biblioref">Perlin</a> (<a href="#ref-perlin2018processamento" role="doc-biblioref">2018</a>)</span> <em>O código base do R foi inicialmente criado no laboratório da Bell/ AT&amp; T por John Chambers e seus colegas, com base na linguagem S. Esse código foi reaproveitado por dois acadêmicos, Ross Ihaka e Robert Gentleman, resultando na plataforma de programação que temos hoje. Para os curiosos, o nome R foi escolhido devido ao compartilhamento da primeira letra do nome de seus criadores.</em></p>
+<p>Para <span class="citation">Peng (<a href="#ref-RogerPeng2020RPro" role="doc-biblioref">2020b</a>)</span> essa resposta é simples, “<em>R é um dialeto do S</em>”.</p>
+<p>De acordo com <span class="citation">Perlin (<a href="#ref-perlin2018processamento" role="doc-biblioref">2018</a>)</span> <em>O código base do R foi inicialmente criado no laboratório da Bell/ AT&amp; T por John Chambers e seus colegas, com base na linguagem S. Esse código foi reaproveitado por dois acadêmicos, Ross Ihaka e Robert Gentleman, resultando na plataforma de programação que temos hoje. Para os curiosos, o nome R foi escolhido devido ao compartilhamento da primeira letra do nome de seus criadores.</em></p>
 <p><img src="Cap_1_Ross_Robert%20R.jpg" id="id" class="class" style="width:70.0%;height:70.0%" /></p>
 <p>O R está em constante desenvolvimento por um grupo chamado <a href="https://www.r-project.org/">R Team Core</a> e conta com colaboração gratuita de centenas de milhares de usuários e desenvolvedores ao redor do mundo.
-Por isso, atualmente o R é utilizado por diversas áreas do conhecimento variando das ciências humanas até exatas, naquelas ciências que poderíamos imaginar pouco ou nada relacionadas. Por isso não se limite a procurar informações apenas no seu nicho, abra sua mente e busque aprender de outras ciências também. Eu, particularmente, busco muita coisa na econometria. Embora presente em todo tipo de livro sobre R, esta citação acima (<span class="citation"><a href="#ref-perlin2018processamento" role="doc-biblioref">Perlin</a> (<a href="#ref-perlin2018processamento" role="doc-biblioref">2018</a>)</span>) é de um livro de econometria. Veremos mais conteúdos desse material em breve.</p>
+Por isso, atualmente o R é utilizado por diversas áreas do conhecimento variando das ciências humanas até exatas, naquelas ciências que poderíamos imaginar pouco ou nada relacionadas. Por isso não se limite a procurar informações apenas no seu nicho, abra sua mente e busque aprender de outras ciências também. Eu, particularmente, busco muita coisa na econometria. Embora presente em todo tipo de livro sobre R, esta citação acima (<span class="citation">Perlin (<a href="#ref-perlin2018processamento" role="doc-biblioref">2018</a>)</span>) é de um livro de econometria. Veremos mais conteúdos desse material em breve.</p>
 <p>R é um software livre de análise de dados (não só estatística) que funciona em diversos sistemas operacionais: GNU Linux, MicrosoftWindows, Mac OS X e outros.</p>
 <p>O aprendizado do R é difícil no início devido à necessidade de se adaptar à sua lógica de funcionamento, se acostumar com a estrutura dos seus documentos de ajuda e memorizar alguns comandos básicos.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="vamos-ao-que-interesa.html#cb1-1" aria-hidden="true" tabindex="-1"></a>eq <span class="ot">=</span> <span class="cf">function</span>(x){x<span class="sc">*</span>x}</span>
@@ -378,8 +377,8 @@ Por isso, atualmente o R é utilizado por diversas áreas do conhecimento varian
 Entretanto, depois de um certo tempo, ele possibilita que se trabalhe com grande produtividade e, o que é mais importante, eficácia e independência.</p>
 <p>Leia também sobre o <a href="https://www.r-bloggers.com/2021/07/the-myth-of-the-r-learning-curve/">mito da curva de aprendizado do R</a>.</p>
 </div>
-<div id="instalação-do-r" class="section level3" number="2.1.2">
-<h3><span class="header-section-number">2.1.2</span> Instalação do R</h3>
+<div id="instalação-do-r" class="section level3 hasAnchor" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> Instalação do R<a href="vamos-ao-que-interesa.html#instalação-do-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>O <strong>R</strong> é um software gratuito para análises estatísticas e além. Pode ser baixado de <a href="https://www.r-project.org/">The R Project for Statistical Computing</a>.</p>
 <p>Clique em <strong>download R</strong>.<br />
 <img src="Cap_1_Pagina_R.jpg" id="id" class="class" style="width:90.0%;height:90.0%" /></p>
@@ -390,8 +389,8 @@ Entretanto, depois de um certo tempo, ele possibilita que se trabalhe com grande
 <p>Assista este conteúdo em <strong>Cap 1 - Instalação do R no Windows</strong> no <a href="https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php">PVANet</a>.</p>
 <p>Eu não tenho um sistema operacional de cada para mostrar a instalação, por isso deixo este vídeo para <a href="https://www.youtube.com/watch?v=np2-FIgzpTg&amp;ab_channel=AutoDeeDucks">instalação no linux</a> e este para <a href="https://www.youtube.com/watch?v=LanBozXJjOk&amp;ab_channel=DataSciencewithTom">instalação no mac</a>. Caso você não consiga instalar me procure.</p>
 </div>
-<div id="primeiro-contato" class="section level3" number="2.1.3">
-<h3><span class="header-section-number">2.1.3</span> Primeiro contato</h3>
+<div id="primeiro-contato" class="section level3 hasAnchor" number="2.1.3">
+<h3><span class="header-section-number">2.1.3</span> Primeiro contato<a href="vamos-ao-que-interesa.html#primeiro-contato" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Assista este conteúdo em <strong>Cap 1 - Primeiro contato</strong> no <a href="https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php">PVANet</a>.</p>
 <p><img src="Cap_1_ET-dedo.jpg" id="id" class="class" style="width:50.0%;height:50.0%" /></p>
 <p>Temos 1 arquivo <strong>Cap_1_P2-Mispriced-Diamonds.csv</strong> <a href="https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php">PVANet</a> no PVANet com mais de 50.000 linhas referentes a transações de venda de diamantes dividida em 3 colunas <em>clarity</em>, <em>carat</em> e <em>price</em>. Quanto mais claro mais caro, certo? Ou há sub ou super valorização? Vamos investigar se essa relação é verdadeira como sugerido em <a href="https://ecapitaladvisors.com/blog/finding-mispriced-diamonds/">ecapitaladvisors</a>.</p>
@@ -418,7 +417,7 @@ Entretanto, depois de um certo tempo, ele possibilita que se trabalhe com grande
 <span id="cb5-2"><a href="vamos-ao-que-interesa.html#cb5-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>carat, <span class="at">y=</span>price, <span class="at">colour=</span>clarity))<span class="sc">+</span></span>
 <span id="cb5-3"><a href="vamos-ao-que-interesa.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.1</span>) <span class="sc">+</span></span>
 <span id="cb5-4"><a href="vamos-ao-que-interesa.html#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code></pre></div>
-<pre><code>## `geom_smooth()` using method = &#39;gam&#39; and formula &#39;y ~ s(x, bs = &quot;cs&quot;)&#39;</code></pre>
+<pre><code>## `geom_smooth()` using method = &#39;gam&#39; and formula = &#39;y ~ s(x, bs = &quot;cs&quot;)&#39;</code></pre>
 <p><img src="ENG_792-AVDR_files/figure-html/Exemplo_1.4-1.png" width="672" /></p>
 <p><strong>Vamos agora reproduzir um ourto exemplo muito legal do pacote <a href="https://www.rayshader.com/">rayshader</a>.</strong></p>
 <p>Executando o código abaixo você produzirá uma Modelo Digital do Terreno em 3D em uma janela <strong>pop up</strong>.</p>
@@ -450,13 +449,13 @@ Entretanto, depois de um certo tempo, ele possibilita que se trabalhe com grande
 <p><img src="Cap_1_rayshader2.jpeg" id="id" class="class" style="width:120.0%;height:120.0%" /></p>
 </div>
 </div>
-<div id="como-r-funciona" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> Como R funciona</h2>
+<div id="como-r-funciona" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Como R funciona<a href="vamos-ao-que-interesa.html#como-r-funciona" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Assista este conteúdo em <strong>Cap 1 - Como R Funciona</strong> no <a href="https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php">PVANet</a>.</p>
 <p>Diferentemente de outras linguagens, todos os comandos escritos são diretamente executados, desta forma o R não precisa de um compilador para executar os comandos como Fortran. Por isso, torna-se uma linguagem muito mais amigável e acessível para não programadores.</p>
 <p>A linguagem é muito intuitiva (quase uma sintaxe lógica). Por exemplo uma regressão linear pode ser executada como <em>lm(x~y)</em> ( <em><em>lm</em></em> vem de <em><em>linear model</em></em>). Como no exemplo do modelo linear acima, sempre que formos executar um comando temos que seguir da seguinte forma <em><em>função(dados e demais ajustes ou parâmetros)</em></em>, ou seja chame a função e coloque o resto dentro de parênteses.</p>
 <p>Tudo que é executado pelo R fica armazenado na memória ativa (RAM) do computador na forma de objetos que possuem um nome. Os objetos, que variam em tipos e estruturas, podem ser funções criadas pelo próprio usuário, dados criados ou importados de uma memória, expressões e etc. Antes de entrarmos em detalhes sobre funções ou expressões, vamos nos ater aos objetos enquanto tipo e, na sequência, suas estruturas.</p>
-<p>Dica de livro de cabeceira sobre R <span class="citation"><a href="#ref-melloandpeternelli2013" role="doc-biblioref">Mello and Peternelli</a> (<a href="#ref-melloandpeternelli2013" role="doc-biblioref">2013</a>)</span>.</p>
+<p>Dica de livro de cabeceira sobre R <span class="citation">Mello and Peternelli (<a href="#ref-melloandpeternelli2013" role="doc-biblioref">2013</a>)</span>.</p>
 <p>Antes de avançarmos para os objetos é necessário fazer algumas recomendações e ressalvas.</p>
 <p>Para criar um objeto qualquer podemos utilizar <strong>&lt;-</strong> ou <strong>=</strong>. As boas práticas recomendam o uso de <strong>&lt;-</strong> para evitar confusão já que o sinal <strong>=</strong> tem outras funções.</p>
 <p>Um objeto é criado da seguinte forma <strong>nome_do_objeto &lt;- atribuição</strong>.</p>
@@ -465,78 +464,42 @@ Entretanto, depois de um certo tempo, ele possibilita que se trabalhe com grande
 <pre><code>## [1] &quot;atribuição&quot;</code></pre>
 <p>Contudo, evitem nomes longos, que comecem com numerais ou caracteres especiais ou letras maiúsculas (R é case-sensitive).
 Caso sua linha de comando esteja ficando longa demais opte por quebrar a linha veremos isso mais adiante).</p>
-<div id="tipos-de-objetos-mode-ou-type" class="section level3" number="2.2.1">
-<h3><span class="header-section-number">2.2.1</span> Tipos de objetos (<em>mode</em> ou <em>type</em>)</h3>
+<div id="tipos-de-objetos-mode-ou-type" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Tipos de objetos (<em>mode</em> ou <em>type</em>)<a href="vamos-ao-que-interesa.html#tipos-de-objetos-mode-ou-type" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Os objetos no R podem ser do tipo <em>lógico</em>, <em>inteiro</em>, <em>simples</em>, <em>dupla</em>, <em>complexo</em>, <em>função</em> ou <em>caractere</em>.</p>
 <table>
 <thead>
-<tr>
-<th style="text-align:left;">
-mode()
-</th>
-<th style="text-align:left;">
-Armazenamento
-</th>
-<th style="text-align:left;">
-Exemplo
-</th>
+<tr class="header">
+<th align="left">mode()</th>
+<th align="left">Armazenamento</th>
+<th align="left">Exemplo</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-logical
-</td>
-<td style="text-align:left;">
-lógico
-</td>
-<td style="text-align:left;">
-TRUE or FALSE
-</td>
+<tr class="odd">
+<td align="left">logical</td>
+<td align="left">lógico</td>
+<td align="left">TRUE or FALSE</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-inteiro, simples ou dupla
-</td>
-<td style="text-align:left;">
-Números 1, 3.14, 2e-308 etc
-</td>
+<tr class="even">
+<td align="left">numeric</td>
+<td align="left">inteiro, simples ou dupla</td>
+<td align="left">Números 1, 3.14, 2e-308 etc</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-complex
-</td>
-<td style="text-align:left;">
-complexo
-</td>
-<td style="text-align:left;">
-3+2i
-</td>
+<tr class="odd">
+<td align="left">complex</td>
+<td align="left">complexo</td>
+<td align="left">3+2i</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-function
-</td>
-<td style="text-align:left;">
-função
-</td>
-<td style="text-align:left;">
-Soma&lt;-function(…)
-</td>
+<tr class="even">
+<td align="left">function</td>
+<td align="left">função</td>
+<td align="left">Soma&lt;-function(…)</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-name
-</td>
-<td style="text-align:left;">
-caractere
-</td>
-<td style="text-align:left;">
-média
-</td>
+<tr class="odd">
+<td align="left">name</td>
+<td align="left">caractere</td>
+<td align="left">média</td>
 </tr>
 </tbody>
 </table>
@@ -593,238 +556,129 @@ média
 <p>Cada tipo de dado é associado com um teste e uma função de conversão conforme a tabela 2.</p>
 <table>
 <thead>
-<tr>
-<th style="text-align:left;">
-Tipo
-</th>
-<th style="text-align:left;">
-Teste
-</th>
-<th style="text-align:left;">
-Função de conversão
-</th>
+<tr class="header">
+<th align="left">Tipo</th>
+<th align="left">Teste</th>
+<th align="left">Função de conversão</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-character
-</td>
-<td style="text-align:left;">
-is.character
-</td>
-<td style="text-align:left;">
-as.character
-</td>
+<tr class="odd">
+<td align="left">character</td>
+<td align="left">is.character</td>
+<td align="left">as.character</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-complex
-</td>
-<td style="text-align:left;">
-is.complex
-</td>
-<td style="text-align:left;">
-as.complex
-</td>
+<tr class="even">
+<td align="left">complex</td>
+<td align="left">is.complex</td>
+<td align="left">as.complex</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-double
-</td>
-<td style="text-align:left;">
-is.double
-</td>
-<td style="text-align:left;">
-as.double
-</td>
+<tr class="odd">
+<td align="left">double</td>
+<td align="left">is.double</td>
+<td align="left">as.double</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-expression
-</td>
-<td style="text-align:left;">
-is.expression
-</td>
-<td style="text-align:left;">
-as.expression
-</td>
+<tr class="even">
+<td align="left">expression</td>
+<td align="left">is.expression</td>
+<td align="left">as.expression</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-is.integer
-</td>
-<td style="text-align:left;">
-as.integer
-</td>
+<tr class="odd">
+<td align="left">integer</td>
+<td align="left">is.integer</td>
+<td align="left">as.integer</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-list
-</td>
-<td style="text-align:left;">
-is.list
-</td>
-<td style="text-align:left;">
-as.list
-</td>
+<tr class="even">
+<td align="left">list</td>
+<td align="left">is.list</td>
+<td align="left">as.list</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-logical
-</td>
-<td style="text-align:left;">
-is.logical
-</td>
-<td style="text-align:left;">
-as.logical
-</td>
+<tr class="odd">
+<td align="left">logical</td>
+<td align="left">is.logical</td>
+<td align="left">as.logical</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-is.numeric
-</td>
-<td style="text-align:left;">
-as.numeric
-</td>
+<tr class="even">
+<td align="left">numeric</td>
+<td align="left">is.numeric</td>
+<td align="left">as.numeric</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-single
-</td>
-<td style="text-align:left;">
-is.single
-</td>
-<td style="text-align:left;">
-as.single
-</td>
+<tr class="odd">
+<td align="left">single</td>
+<td align="left">is.single</td>
+<td align="left">as.single</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-raw
-</td>
-<td style="text-align:left;">
-is.raw
-</td>
-<td style="text-align:left;">
-as.raw
-</td>
+<tr class="even">
+<td align="left">raw</td>
+<td align="left">is.raw</td>
+<td align="left">as.raw</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Date
-</td>
-<td style="text-align:left;">
-is.Date
-</td>
-<td style="text-align:left;">
-as.Date
-</td>
+<tr class="odd">
+<td align="left">Date</td>
+<td align="left">is.Date</td>
+<td align="left">as.Date</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Tabela 2:</strong> Tipos de dados, teste e modos de conversão.</p>
 </div>
-<div id="estrutura-do-objetos-class" class="section level3" number="2.2.2">
-<h3><span class="header-section-number">2.2.2</span> Estrutura do objetos (<em>class</em>)</h3>
+<div id="estrutura-do-objetos-class" class="section level3 hasAnchor" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Estrutura do objetos (<em>class</em>)<a href="vamos-ao-que-interesa.html#estrutura-do-objetos-class" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>As informações armazenadas em objetos no R podem ser organizadas em diferentes estruturas ou classes.</p>
 <ul>
-<li>No R existe uma grande variedade de classes de objetos, e sempre surgindo mais. No entanto, há classes de objetos que são mais comuns em situações em que estamos manipulando bases de dados, seja ela já existente, ou quando estamos criando com coleta usando técnicas de webscraping, por exemplo. São elas: interger, numeric, character, factor, matrix, data.frame e list. Uma coisa importante, no R não precisamos declarar qual classe vai ser o objeto unidimensional como em outras linguagem, embora possamos fazer isso, pois, o R aloca o objeto automaticamente em uma classe a partir do seu conteúdo. <span class="citation"><a href="#ref-MeirelesandSilva2018" role="doc-biblioref">Meireles and Silva</a> (<a href="#ref-MeirelesandSilva2018" role="doc-biblioref">2018</a>)</span></li>
+<li>No R existe uma grande variedade de classes de objetos, e sempre surgindo mais. No entanto, há classes de objetos que são mais comuns em situações em que estamos manipulando bases de dados, seja ela já existente, ou quando estamos criando com coleta usando técnicas de webscraping, por exemplo. São elas: interger, numeric, character, factor, matrix, data.frame e list. Uma coisa importante, no R não precisamos declarar qual classe vai ser o objeto unidimensional como em outras linguagem, embora possamos fazer isso, pois, o R aloca o objeto automaticamente em uma classe a partir do seu conteúdo. <span class="citation">Meireles and Silva (<a href="#ref-MeirelesandSilva2018" role="doc-biblioref">2018</a>)</span></li>
 </ul>
 <p><img src="Cap_1_R_data_strucutres.jpg" id="id" class="class" style="width:50.0%;height:50.0%" /></p>
 <p><strong>Figura 1:</strong> Estrutura de dados no R. Fonte: <a href="https://techvidvan.com/tutorials/r-data-structures/">techvidvan</a></p>
 <table>
+<colgroup>
+<col width="6%" />
+<col width="40%" />
+<col width="52%" />
+</colgroup>
 <thead>
-<tr>
-<th style="text-align:left;">
-Objeto
-</th>
-<th style="text-align:left;">
-modes
-</th>
-<th style="text-align:left;">
-descrição
-</th>
+<tr class="header">
+<th align="left">Objeto</th>
+<th align="left">modes</th>
+<th align="left">descrição</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-vector
-</td>
-<td style="text-align:left;">
-numeric, character, complex ou logical
-</td>
-<td style="text-align:left;">
-Com um ou mais elementos
-</td>
+<tr class="odd">
+<td align="left">vector</td>
+<td align="left">numeric, character, complex ou logical</td>
+<td align="left">Com um ou mais elementos</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-factor
-</td>
-<td style="text-align:left;">
-numeric ou character
-</td>
-<td style="text-align:left;">
-Vetor que representa dados categóricos
-</td>
+<tr class="even">
+<td align="left">factor</td>
+<td align="left">numeric ou character</td>
+<td align="left">Vetor que representa dados categóricos</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-matriz
-</td>
-<td style="text-align:left;">
-numeric, character, complex ou logical
-</td>
-<td style="text-align:left;">
-Um array de duas dimensões
-</td>
+<tr class="odd">
+<td align="left">matriz</td>
+<td align="left">numeric, character, complex ou logical</td>
+<td align="left">Um array de duas dimensões</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-array
-</td>
-<td style="text-align:left;">
-numeric, character, complex ou logical
-</td>
-<td style="text-align:left;">
-Pode conter um, duas ou mais dimensões
-</td>
+<tr class="even">
+<td align="left">array</td>
+<td align="left">numeric, character, complex ou logical</td>
+<td align="left">Pode conter um, duas ou mais dimensões</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-data frame
-</td>
-<td style="text-align:left;">
-numeric, character, complex ou logical
-</td>
-<td style="text-align:left;">
-Um array de duas dimenões que permite colunas de diferentes tipos dem mesmo objeto
-</td>
+<tr class="odd">
+<td align="left">data frame</td>
+<td align="left">numeric, character, complex ou logical</td>
+<td align="left">Um array de duas dimenões que permite colunas de diferentes tipos dem mesmo objeto</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-list
-</td>
-<td style="text-align:left;">
-numeric, character, complex, logical, function, expression, …
-</td>
-<td style="text-align:left;">
-Objeto que permite combinar diferentes estruturtas de dados num único objeto
-</td>
+<tr class="even">
+<td align="left">list</td>
+<td align="left">numeric, character, complex, logical, function, expression, …</td>
+<td align="left">Objeto que permite combinar diferentes estruturtas de dados num único objeto</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Tabela 3:</strong> Características dos tipos de objetos.</p>
-<div id="vetores-vectors" class="section level4" number="2.2.2.1">
-<h4><span class="header-section-number">2.2.2.1</span> Vetores (<em>Vectors</em>)</h4>
+<div id="vetores-vectors" class="section level4 hasAnchor" number="2.2.2.1">
+<h4><span class="header-section-number">2.2.2.1</span> Vetores (<em>Vectors</em>)<a href="vamos-ao-que-interesa.html#vetores-vectors" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Vetores são os tipos de objetos mais comuns no R. Um vetor é composto de uma informação ou uma séries de informações ( <em>arrays</em> ) unidimensionais que podem conter informaçõs numéricas, caracteres ou dados lógicos.</p>
 <p>Mesmo quando digitamos apenas um único elemento ele se torna um vetor de comprimento um (1).</p>
 <p><em>Vetores com Apenas 1 elemento</em></p>
@@ -854,18 +708,17 @@ Objeto que permite combinar diferentes estruturtas de dados num único objeto
 <p><em><em>seq(from = 1, to = 1, by = ((to - from)/(length.out - 1)),length.out = NULL, along.with = NULL, …)</em></em></p>
 <div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="vamos-ao-que-interesa.html#cb53-1" aria-hidden="true" tabindex="-1"></a>g<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="fl">0.5</span>) <span class="co"># O objeto &quot;g&quot; recebe a sequência de 0 até 10 a cada 0.5</span></span>
 <span id="cb53-2"><a href="vamos-ao-que-interesa.html#cb53-2" aria-hidden="true" tabindex="-1"></a>g</span></code></pre></div>
-<pre><code>##  [1]  0.0  0.5  1.0  1.5  2.0  2.5  3.0  3.5  4.0  4.5  5.0  5.5  6.0
-## [14]  6.5  7.0  7.5  8.0  8.5  9.0  9.5 10.0</code></pre>
+<pre><code>##  [1]  0.0  0.5  1.0  1.5  2.0  2.5  3.0  3.5  4.0  4.5  5.0  5.5  6.0  6.5  7.0
+## [16]  7.5  8.0  8.5  9.0  9.5 10.0</code></pre>
 <div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="vamos-ao-que-interesa.html#cb55-1" aria-hidden="true" tabindex="-1"></a>h<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="at">from=</span><span class="dv">10</span>,<span class="at">to=</span><span class="dv">20</span>,<span class="at">length.out=</span><span class="dv">50</span>) <span class="co"># O objeto &quot;h&quot; recebe a sequência de 0 até 10 que é do compriumento 50, ou seja, há 50 número de 10 até 20</span></span>
 <span id="cb55-2"><a href="vamos-ao-que-interesa.html#cb55-2" aria-hidden="true" tabindex="-1"></a>h</span></code></pre></div>
-<pre><code>##  [1] 10.00000 10.20408 10.40816 10.61224 10.81633 11.02041 11.22449
-##  [8] 11.42857 11.63265 11.83673 12.04082 12.24490 12.44898 12.65306
-## [15] 12.85714 13.06122 13.26531 13.46939 13.67347 13.87755 14.08163
-## [22] 14.28571 14.48980 14.69388 14.89796 15.10204 15.30612 15.51020
-## [29] 15.71429 15.91837 16.12245 16.32653 16.53061 16.73469 16.93878
-## [36] 17.14286 17.34694 17.55102 17.75510 17.95918 18.16327 18.36735
-## [43] 18.57143 18.77551 18.97959 19.18367 19.38776 19.59184 19.79592
-## [50] 20.00000</code></pre>
+<pre><code>##  [1] 10.00000 10.20408 10.40816 10.61224 10.81633 11.02041 11.22449 11.42857
+##  [9] 11.63265 11.83673 12.04082 12.24490 12.44898 12.65306 12.85714 13.06122
+## [17] 13.26531 13.46939 13.67347 13.87755 14.08163 14.28571 14.48980 14.69388
+## [25] 14.89796 15.10204 15.30612 15.51020 15.71429 15.91837 16.12245 16.32653
+## [33] 16.53061 16.73469 16.93878 17.14286 17.34694 17.55102 17.75510 17.95918
+## [41] 18.16327 18.36735 18.57143 18.77551 18.97959 19.18367 19.38776 19.59184
+## [49] 19.79592 20.00000</code></pre>
 <p>Experimente também a função <em>rep()</em>.</p>
 <p><em><em>rep(x, times = 1, length.out = NA, each = 1)</em></em></p>
 <div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="vamos-ao-que-interesa.html#cb57-1" aria-hidden="true" tabindex="-1"></a>i<span class="ot">&lt;-</span><span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">10</span>) <span class="co"># O objeto &quot;i&quot; recebe 10 números 1</span></span>
@@ -886,8 +739,8 @@ Objeto que permite combinar diferentes estruturtas de dados num único objeto
 <pre><code>## [1] &quot;double&quot;</code></pre>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
 </div>
-<div id="fatores-factors" class="section level4" number="2.2.2.2">
-<h4><span class="header-section-number">2.2.2.2</span> Fatores (<em>Factors</em>)</h4>
+<div id="fatores-factors" class="section level4 hasAnchor" number="2.2.2.2">
+<h4><span class="header-section-number">2.2.2.2</span> Fatores (<em>Factors</em>)<a href="vamos-ao-que-interesa.html#fatores-factors" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Os fatores são vetores em que os elementos pertencem a uma ou mais categorias temáticas.
 As variáveis aleatórias podem ser divididas em contínuas e categóricas.</p>
 <ul>
@@ -916,8 +769,8 @@ A função <em>factor()</em> armazena os valores categóricos como um vetor de i
 <div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="vamos-ao-que-interesa.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(n)</span></code></pre></div>
 <pre><code>## [1] &quot;M&quot; &quot;F&quot;</code></pre>
 </div>
-<div id="matriz-matrix" class="section level4" number="2.2.2.3">
-<h4><span class="header-section-number">2.2.2.3</span> Matriz (<em>Matrix</em>)</h4>
+<div id="matriz-matrix" class="section level4 hasAnchor" number="2.2.2.3">
+<h4><span class="header-section-number">2.2.2.3</span> Matriz (<em>Matrix</em>)<a href="vamos-ao-que-interesa.html#matriz-matrix" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>É o tipo de dado mais comum que encontramos do dia a dia. A maioria dos dados que analisamos estão organizados em matrizes que são dados combinados em 2 dimensões (linhas e colunas).
 Existem várias maneiras de criar uma matriz como utilizando o comando <em>matrix()</em>.</p>
 <p><em><em>matrix(data = NA, nrow = 1, ncol = 1, byrow = FALSE,dimnames = NULL)</em></em></p>
@@ -958,20 +811,13 @@ Existem várias maneiras de criar uma matriz como utilizando o comando <em>matri
 <pre><code>## [1] 5 2</code></pre>
 <p>Também é interessante usar o comando <em>summary()</em>.</p>
 <div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="vamos-ao-que-interesa.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(o_matriz1);<span class="fu">summary</span>(o_matriz2) <span class="co"># Mostra informações por coluna</span></span></code></pre></div>
-<pre><code>##        V1             V2             V3             V4      
-##  Min.   :1.00   Min.   :3.00   Min.   :5.00   Min.   :7.00  
-##  1st Qu.:1.25   1st Qu.:3.25   1st Qu.:5.25   1st Qu.:7.25  
-##  Median :1.50   Median :3.50   Median :5.50   Median :7.50  
-##  Mean   :1.50   Mean   :3.50   Mean   :5.50   Mean   :7.50  
-##  3rd Qu.:1.75   3rd Qu.:3.75   3rd Qu.:5.75   3rd Qu.:7.75  
-##  Max.   :2.00   Max.   :4.00   Max.   :6.00   Max.   :8.00  
-##        V5       
-##  Min.   : 9.00  
-##  1st Qu.: 9.25  
-##  Median : 9.50  
-##  Mean   : 9.50  
-##  3rd Qu.: 9.75  
-##  Max.   :10.00</code></pre>
+<pre><code>##        V1             V2             V3             V4             V5       
+##  Min.   :1.00   Min.   :3.00   Min.   :5.00   Min.   :7.00   Min.   : 9.00  
+##  1st Qu.:1.25   1st Qu.:3.25   1st Qu.:5.25   1st Qu.:7.25   1st Qu.: 9.25  
+##  Median :1.50   Median :3.50   Median :5.50   Median :7.50   Median : 9.50  
+##  Mean   :1.50   Mean   :3.50   Mean   :5.50   Mean   :7.50   Mean   : 9.50  
+##  3rd Qu.:1.75   3rd Qu.:3.75   3rd Qu.:5.75   3rd Qu.:7.75   3rd Qu.: 9.75  
+##  Max.   :2.00   Max.   :4.00   Max.   :6.00   Max.   :8.00   Max.   :10.00</code></pre>
 <pre><code>##        V1          V2    
 ##  Min.   :1   Min.   : 6  
 ##  1st Qu.:2   1st Qu.: 7  
@@ -997,8 +843,8 @@ Existem várias maneiras de criar uma matriz como utilizando o comando <em>matri
 ## [4,]    4    9    4    9
 ## [5,]    5   10    5   10</code></pre>
 </div>
-<div id="array" class="section level4" number="2.2.2.4">
-<h4><span class="header-section-number">2.2.2.4</span> Array</h4>
+<div id="array" class="section level4 hasAnchor" number="2.2.2.4">
+<h4><span class="header-section-number">2.2.2.4</span> Array<a href="vamos-ao-que-interesa.html#array" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>O array é um conjunto de matrizes ou vetores que podem ter qualquer número de dimensões. Estas dimensões podem receber nomes.
 Podemos criar <em>arrays</em> atribuindo dimensções a um vetor com o comando <em>dim()</em> ou usando <em>array()</em>.</p>
 <p><em><em>array(data = NA, dim = length(data), dimnames = NULL)</em></em></p>
@@ -1030,8 +876,8 @@ Podemos criar <em>arrays</em> atribuindo dimensções a um vetor com o comando <
 ## [1,]    7    9   11
 ## [2,]    8   10   12</code></pre>
 </div>
-<div id="data-frame" class="section level4" number="2.2.2.5">
-<h4><span class="header-section-number">2.2.2.5</span> Data Frame</h4>
+<div id="data-frame" class="section level4 hasAnchor" number="2.2.2.5">
+<h4><span class="header-section-number">2.2.2.5</span> Data Frame<a href="vamos-ao-que-interesa.html#data-frame" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Tão comum quanto a matriz, o data frame também um modo bidimensional de organização dos dados (linhas e colunas) que, diferentemente da matriz, permite objetos de tipos diferentes (character, numeric, logical e etc) sejam armazenados.
 Normalmente, nos data frames temos nas linhas as observações e nas colunas temos as variáveis.
 No entanto, é importante que cada coluna tenha o mesmo tamanho.</p>
@@ -1252,7 +1098,7 @@ Libertadores
 </tr>
 <tr>
 <td style="text-align:left;">
-Sao Paulo
+Săo Paulo
 </td>
 <td style="text-align:left;">
 38
@@ -1848,8 +1694,8 @@ F
 </table>
 <p><strong>Tabela 4:</strong> Tabela com dados fictícios.</p>
 </div>
-<div id="lista-list" class="section level4" number="2.2.2.6">
-<h4><span class="header-section-number">2.2.2.6</span> Lista (<em>list</em>)</h4>
+<div id="lista-list" class="section level4 hasAnchor" number="2.2.2.6">
+<h4><span class="header-section-number">2.2.2.6</span> Lista (<em>list</em>)<a href="vamos-ao-que-interesa.html#lista-list" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><em>List</em> permite combinar diferentes estruturas de dados em um mesmo objeto, ou seja, <em>vetores</em>, <em>matrizes</em>, <em>arrays</em>, <em>data.frames</em> e até outras listas.
 As listas são construídas utilizando o comando <em>list()</em>.</p>
 <p>Os componentes da lista são criados da mesma maneira como para <em>data.frame</em>.
@@ -1934,7 +1780,6 @@ Perlin, M. S. 2018. <em>Processamento e an<span>á</span>lise de Dados Financeir
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -1975,7 +1820,7 @@ gitbook.start({
 },
 "download": ["ENG_792-AVDR.pdf", "ENG_792-AVDR.epub"],
 "search": {
-"engine": "lunr",
+"engine": "fuse",
 "options": null
 },
 "toc": {
@@ -1991,7 +1836,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

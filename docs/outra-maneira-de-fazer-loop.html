@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capítulo 8 Outra maneira de fazer loop | ENG 792 - Análise e visualização de dados com R (RStudio)</title>
   <meta name="description" content="Este é o material de supporte aos alunos matriculados na disciplina ENG 792 ofertada pelo programa de pós-gradução em Meteorologia Aplicada do Departamento de Engenharia Agrícola (DEA) da Universidade Federal de Viçosa (UFV)." />
-  <meta name="generator" content="bookdown 0.22.17 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capítulo 8 Outra maneira de fazer loop | ENG 792 - Análise e visualização de dados com R (RStudio)" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="Este é o material de supporte aos alunos matriculados na disciplina ENG 792 ofertada pelo programa de pós-gradução em Meteorologia Aplicada do Departamento de Engenharia Agrícola (DEA) da Universidade Federal de Viçosa (UFV)." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
@@ -24,7 +23,7 @@
 <meta name="author" content="Jackson Rodrigues" />
 
 
-<meta name="date" content="2021-10-20" />
+<meta name="date" content="2023-03-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +32,8 @@
   
 <link rel="prev" href="elementos-de-estatística-básica-no-r.html"/>
 <link rel="next" href="análise-multivariada.html"/>
-<script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,17 +49,17 @@
 
 
 
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
 <script src="libs/es6shim-0.35.6/es6shim.js"></script>
 <script src="libs/es7shim-6.0.0/es7shim.js"></script>
 <script src="libs/graphre-0.1.3/graphre.js"></script>
-<script src="libs/nomnoml-1.3.1/nomnoml.js"></script>
-<script src="libs/nomnoml-binding-0.2.3/nomnoml.js"></script>
+<script src="libs/nomnoml-1.5.3/nomnoml.js"></script>
+<script src="libs/nomnoml-binding-0.2.6/nomnoml.js"></script>
 <link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 
@@ -103,7 +102,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -116,7 +115,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -357,104 +356,83 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="outra-maneira-de-fazer-loop" class="section level1" number="8">
-<h1><span class="header-section-number">Capítulo 8</span> <strong><em>Outra maneira de fazer loop</em></strong></h1>
-<div id="vamos-dar-uma-olhada-na-família-apply" class="section level2" number="8.1">
-<h2><span class="header-section-number">8.1</span> <strong><em>Vamos dar uma olhada na família <em>apply</em></em></strong></h2>
+<div id="outra-maneira-de-fazer-loop" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">Capítulo 8</span> <strong><em>Outra maneira de fazer loop</em></strong><a href="outra-maneira-de-fazer-loop.html#outra-maneira-de-fazer-loop" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="vamos-dar-uma-olhada-na-família-apply" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> <strong><em>Vamos dar uma olhada na família <em>apply</em></em></strong><a href="outra-maneira-de-fazer-loop.html#vamos-dar-uma-olhada-na-família-apply" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Assista este conteúdo em <strong>Cap_7_Apply family</strong> no <a href="https://www2.cead.ufv.br/sistemas/pvanet/geral/login.php">PVANet</a></p>
 <p>Antes de começar vamos dar uma olhada na família <em>apply</em>.<br />
 Esta família pertence ao grupos de funções básicas do <strong>R</strong> e guarda um conjunto de funções que facilitam muito nossa vida, principalmente quando precisamos fazer <em>loops</em> e não queremos utilizar os métodos apresentados anteriormente.</p>
 <p>Entre os irmãos da família temos <em>apply</em>, <em>lapply</em>, <em>sapply</em>, <em>mapply</em> e <em>rep</em>. Temos também os parentes <em>Sweep</em> e <em>aggregate</em>.<br />
 Em se tratando dos irmãos, cada um trabalha com uma estrutura de dados diferente ( <em>vector</em>, <em>matrix</em>, <em>list</em> e etc)</p>
 <p>Dito isto, para iniciarmos o conteúdo de multivariada precisaremos instalar alguns pacotes. Vejam como foi feita a instalação e o carregamento dos pacotes.</p>
-<div class="sourceCode" id="cb824"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb824-1"><a href="outra-maneira-de-fazer-loop.html#cb824-1" aria-hidden="true" tabindex="-1"></a>pacotes<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;datasets&quot;</span>,<span class="st">&quot;cluster&quot;</span>, <span class="st">&quot;factoextra&quot;</span>, <span class="st">&quot;vegan&quot;</span>, <span class="st">&quot;analogue&quot;</span>)</span>
-<span id="cb824-2"><a href="outra-maneira-de-fazer-loop.html#cb824-2" aria-hidden="true" tabindex="-1"></a><span class="co">#lapply(pacotes, install.packages, character.only = TRUE)</span></span>
-<span id="cb824-3"><a href="outra-maneira-de-fazer-loop.html#cb824-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(pacotes, library, <span class="at">character.only =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<pre><code>## Warning: package &#39;cluster&#39; was built under R version 4.1.1</code></pre>
-<pre><code>## Warning: package &#39;factoextra&#39; was built under R version 4.1.1</code></pre>
+<div class="sourceCode" id="cb809"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb809-1"><a href="outra-maneira-de-fazer-loop.html#cb809-1" aria-hidden="true" tabindex="-1"></a>pacotes<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;datasets&quot;</span>,<span class="st">&quot;cluster&quot;</span>, <span class="st">&quot;factoextra&quot;</span>, <span class="st">&quot;vegan&quot;</span>, <span class="st">&quot;analogue&quot;</span>)</span>
+<span id="cb809-2"><a href="outra-maneira-de-fazer-loop.html#cb809-2" aria-hidden="true" tabindex="-1"></a><span class="co">#lapply(pacotes, install.packages, character.only = TRUE)</span></span>
+<span id="cb809-3"><a href="outra-maneira-de-fazer-loop.html#cb809-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(pacotes, library, <span class="at">character.only =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## Welcome! Want to learn more? See two factoextra-related books at https://goo.gl/ve3WBa</code></pre>
 <pre><code>## [[1]]
-##  [1] &quot;webr&quot;          &quot;mosaic&quot;        &quot;ggridges&quot;      &quot;mosaicData&quot;   
-##  [5] &quot;ggformula&quot;     &quot;ggstance&quot;      &quot;Matrix&quot;        &quot;lsr&quot;          
-##  [9] &quot;modeest&quot;       &quot;rmarkdown&quot;     &quot;ggpubr&quot;        &quot;forcats&quot;      
-## [13] &quot;stringr&quot;       &quot;dplyr&quot;         &quot;purrr&quot;         &quot;readr&quot;        
-## [17] &quot;tidyr&quot;         &quot;tibble&quot;        &quot;tidyverse&quot;     &quot;viridis&quot;      
-## [21] &quot;viridisLite&quot;   &quot;unikn&quot;         &quot;RColorBrewer&quot;  &quot;analogue&quot;     
-## [25] &quot;vegan&quot;         &quot;lattice&quot;       &quot;permute&quot;       &quot;flow&quot;         
-## [29] &quot;prob&quot;          &quot;fAsianOptions&quot; &quot;fOptions&quot;      &quot;fBasics&quot;      
-## [33] &quot;timeSeries&quot;    &quot;timeDate&quot;      &quot;combinat&quot;      &quot;magrittr&quot;     
-## [37] &quot;ggplot2&quot;       &quot;stats&quot;         &quot;graphics&quot;      &quot;grDevices&quot;    
-## [41] &quot;utils&quot;         &quot;datasets&quot;      &quot;methods&quot;       &quot;base&quot;         
+##  [1] &quot;webr&quot;         &quot;mosaic&quot;       &quot;mosaicData&quot;   &quot;ggformula&quot;    &quot;Matrix&quot;      
+##  [6] &quot;lsr&quot;          &quot;modeest&quot;      &quot;rmarkdown&quot;    &quot;ggpubr&quot;       &quot;lubridate&quot;   
+## [11] &quot;forcats&quot;      &quot;stringr&quot;      &quot;dplyr&quot;        &quot;readr&quot;        &quot;tidyr&quot;       
+## [16] &quot;tibble&quot;       &quot;tidyverse&quot;    &quot;viridis&quot;      &quot;viridisLite&quot;  &quot;unikn&quot;       
+## [21] &quot;RColorBrewer&quot; &quot;analogue&quot;     &quot;vegan&quot;        &quot;lattice&quot;      &quot;permute&quot;     
+## [26] &quot;flow&quot;         &quot;purrr&quot;        &quot;magrittr&quot;     &quot;ggplot2&quot;      &quot;stats&quot;       
+## [31] &quot;graphics&quot;     &quot;grDevices&quot;    &quot;utils&quot;        &quot;datasets&quot;     &quot;methods&quot;     
+## [36] &quot;base&quot;        
 ## 
 ## [[2]]
-##  [1] &quot;cluster&quot;       &quot;webr&quot;          &quot;mosaic&quot;        &quot;ggridges&quot;     
-##  [5] &quot;mosaicData&quot;    &quot;ggformula&quot;     &quot;ggstance&quot;      &quot;Matrix&quot;       
-##  [9] &quot;lsr&quot;           &quot;modeest&quot;       &quot;rmarkdown&quot;     &quot;ggpubr&quot;       
-## [13] &quot;forcats&quot;       &quot;stringr&quot;       &quot;dplyr&quot;         &quot;purrr&quot;        
-## [17] &quot;readr&quot;         &quot;tidyr&quot;         &quot;tibble&quot;        &quot;tidyverse&quot;    
-## [21] &quot;viridis&quot;       &quot;viridisLite&quot;   &quot;unikn&quot;         &quot;RColorBrewer&quot; 
-## [25] &quot;analogue&quot;      &quot;vegan&quot;         &quot;lattice&quot;       &quot;permute&quot;      
-## [29] &quot;flow&quot;          &quot;prob&quot;          &quot;fAsianOptions&quot; &quot;fOptions&quot;     
-## [33] &quot;fBasics&quot;       &quot;timeSeries&quot;    &quot;timeDate&quot;      &quot;combinat&quot;     
-## [37] &quot;magrittr&quot;      &quot;ggplot2&quot;       &quot;stats&quot;         &quot;graphics&quot;     
-## [41] &quot;grDevices&quot;     &quot;utils&quot;         &quot;datasets&quot;      &quot;methods&quot;      
-## [45] &quot;base&quot;         
+##  [1] &quot;cluster&quot;      &quot;webr&quot;         &quot;mosaic&quot;       &quot;mosaicData&quot;   &quot;ggformula&quot;   
+##  [6] &quot;Matrix&quot;       &quot;lsr&quot;          &quot;modeest&quot;      &quot;rmarkdown&quot;    &quot;ggpubr&quot;      
+## [11] &quot;lubridate&quot;    &quot;forcats&quot;      &quot;stringr&quot;      &quot;dplyr&quot;        &quot;readr&quot;       
+## [16] &quot;tidyr&quot;        &quot;tibble&quot;       &quot;tidyverse&quot;    &quot;viridis&quot;      &quot;viridisLite&quot; 
+## [21] &quot;unikn&quot;        &quot;RColorBrewer&quot; &quot;analogue&quot;     &quot;vegan&quot;        &quot;lattice&quot;     
+## [26] &quot;permute&quot;      &quot;flow&quot;         &quot;purrr&quot;        &quot;magrittr&quot;     &quot;ggplot2&quot;     
+## [31] &quot;stats&quot;        &quot;graphics&quot;     &quot;grDevices&quot;    &quot;utils&quot;        &quot;datasets&quot;    
+## [36] &quot;methods&quot;      &quot;base&quot;        
 ## 
 ## [[3]]
-##  [1] &quot;factoextra&quot;    &quot;cluster&quot;       &quot;webr&quot;          &quot;mosaic&quot;       
-##  [5] &quot;ggridges&quot;      &quot;mosaicData&quot;    &quot;ggformula&quot;     &quot;ggstance&quot;     
-##  [9] &quot;Matrix&quot;        &quot;lsr&quot;           &quot;modeest&quot;       &quot;rmarkdown&quot;    
-## [13] &quot;ggpubr&quot;        &quot;forcats&quot;       &quot;stringr&quot;       &quot;dplyr&quot;        
-## [17] &quot;purrr&quot;         &quot;readr&quot;         &quot;tidyr&quot;         &quot;tibble&quot;       
-## [21] &quot;tidyverse&quot;     &quot;viridis&quot;       &quot;viridisLite&quot;   &quot;unikn&quot;        
-## [25] &quot;RColorBrewer&quot;  &quot;analogue&quot;      &quot;vegan&quot;         &quot;lattice&quot;      
-## [29] &quot;permute&quot;       &quot;flow&quot;          &quot;prob&quot;          &quot;fAsianOptions&quot;
-## [33] &quot;fOptions&quot;      &quot;fBasics&quot;       &quot;timeSeries&quot;    &quot;timeDate&quot;     
-## [37] &quot;combinat&quot;      &quot;magrittr&quot;      &quot;ggplot2&quot;       &quot;stats&quot;        
-## [41] &quot;graphics&quot;      &quot;grDevices&quot;     &quot;utils&quot;         &quot;datasets&quot;     
-## [45] &quot;methods&quot;       &quot;base&quot;         
+##  [1] &quot;factoextra&quot;   &quot;cluster&quot;      &quot;webr&quot;         &quot;mosaic&quot;       &quot;mosaicData&quot;  
+##  [6] &quot;ggformula&quot;    &quot;Matrix&quot;       &quot;lsr&quot;          &quot;modeest&quot;      &quot;rmarkdown&quot;   
+## [11] &quot;ggpubr&quot;       &quot;lubridate&quot;    &quot;forcats&quot;      &quot;stringr&quot;      &quot;dplyr&quot;       
+## [16] &quot;readr&quot;        &quot;tidyr&quot;        &quot;tibble&quot;       &quot;tidyverse&quot;    &quot;viridis&quot;     
+## [21] &quot;viridisLite&quot;  &quot;unikn&quot;        &quot;RColorBrewer&quot; &quot;analogue&quot;     &quot;vegan&quot;       
+## [26] &quot;lattice&quot;      &quot;permute&quot;      &quot;flow&quot;         &quot;purrr&quot;        &quot;magrittr&quot;    
+## [31] &quot;ggplot2&quot;      &quot;stats&quot;        &quot;graphics&quot;     &quot;grDevices&quot;    &quot;utils&quot;       
+## [36] &quot;datasets&quot;     &quot;methods&quot;      &quot;base&quot;        
 ## 
 ## [[4]]
-##  [1] &quot;factoextra&quot;    &quot;cluster&quot;       &quot;webr&quot;          &quot;mosaic&quot;       
-##  [5] &quot;ggridges&quot;      &quot;mosaicData&quot;    &quot;ggformula&quot;     &quot;ggstance&quot;     
-##  [9] &quot;Matrix&quot;        &quot;lsr&quot;           &quot;modeest&quot;       &quot;rmarkdown&quot;    
-## [13] &quot;ggpubr&quot;        &quot;forcats&quot;       &quot;stringr&quot;       &quot;dplyr&quot;        
-## [17] &quot;purrr&quot;         &quot;readr&quot;         &quot;tidyr&quot;         &quot;tibble&quot;       
-## [21] &quot;tidyverse&quot;     &quot;viridis&quot;       &quot;viridisLite&quot;   &quot;unikn&quot;        
-## [25] &quot;RColorBrewer&quot;  &quot;analogue&quot;      &quot;vegan&quot;         &quot;lattice&quot;      
-## [29] &quot;permute&quot;       &quot;flow&quot;          &quot;prob&quot;          &quot;fAsianOptions&quot;
-## [33] &quot;fOptions&quot;      &quot;fBasics&quot;       &quot;timeSeries&quot;    &quot;timeDate&quot;     
-## [37] &quot;combinat&quot;      &quot;magrittr&quot;      &quot;ggplot2&quot;       &quot;stats&quot;        
-## [41] &quot;graphics&quot;      &quot;grDevices&quot;     &quot;utils&quot;         &quot;datasets&quot;     
-## [45] &quot;methods&quot;       &quot;base&quot;         
+##  [1] &quot;factoextra&quot;   &quot;cluster&quot;      &quot;webr&quot;         &quot;mosaic&quot;       &quot;mosaicData&quot;  
+##  [6] &quot;ggformula&quot;    &quot;Matrix&quot;       &quot;lsr&quot;          &quot;modeest&quot;      &quot;rmarkdown&quot;   
+## [11] &quot;ggpubr&quot;       &quot;lubridate&quot;    &quot;forcats&quot;      &quot;stringr&quot;      &quot;dplyr&quot;       
+## [16] &quot;readr&quot;        &quot;tidyr&quot;        &quot;tibble&quot;       &quot;tidyverse&quot;    &quot;viridis&quot;     
+## [21] &quot;viridisLite&quot;  &quot;unikn&quot;        &quot;RColorBrewer&quot; &quot;analogue&quot;     &quot;vegan&quot;       
+## [26] &quot;lattice&quot;      &quot;permute&quot;      &quot;flow&quot;         &quot;purrr&quot;        &quot;magrittr&quot;    
+## [31] &quot;ggplot2&quot;      &quot;stats&quot;        &quot;graphics&quot;     &quot;grDevices&quot;    &quot;utils&quot;       
+## [36] &quot;datasets&quot;     &quot;methods&quot;      &quot;base&quot;        
 ## 
 ## [[5]]
-##  [1] &quot;factoextra&quot;    &quot;cluster&quot;       &quot;webr&quot;          &quot;mosaic&quot;       
-##  [5] &quot;ggridges&quot;      &quot;mosaicData&quot;    &quot;ggformula&quot;     &quot;ggstance&quot;     
-##  [9] &quot;Matrix&quot;        &quot;lsr&quot;           &quot;modeest&quot;       &quot;rmarkdown&quot;    
-## [13] &quot;ggpubr&quot;        &quot;forcats&quot;       &quot;stringr&quot;       &quot;dplyr&quot;        
-## [17] &quot;purrr&quot;         &quot;readr&quot;         &quot;tidyr&quot;         &quot;tibble&quot;       
-## [21] &quot;tidyverse&quot;     &quot;viridis&quot;       &quot;viridisLite&quot;   &quot;unikn&quot;        
-## [25] &quot;RColorBrewer&quot;  &quot;analogue&quot;      &quot;vegan&quot;         &quot;lattice&quot;      
-## [29] &quot;permute&quot;       &quot;flow&quot;          &quot;prob&quot;          &quot;fAsianOptions&quot;
-## [33] &quot;fOptions&quot;      &quot;fBasics&quot;       &quot;timeSeries&quot;    &quot;timeDate&quot;     
-## [37] &quot;combinat&quot;      &quot;magrittr&quot;      &quot;ggplot2&quot;       &quot;stats&quot;        
-## [41] &quot;graphics&quot;      &quot;grDevices&quot;     &quot;utils&quot;         &quot;datasets&quot;     
-## [45] &quot;methods&quot;       &quot;base&quot;</code></pre>
+##  [1] &quot;factoextra&quot;   &quot;cluster&quot;      &quot;webr&quot;         &quot;mosaic&quot;       &quot;mosaicData&quot;  
+##  [6] &quot;ggformula&quot;    &quot;Matrix&quot;       &quot;lsr&quot;          &quot;modeest&quot;      &quot;rmarkdown&quot;   
+## [11] &quot;ggpubr&quot;       &quot;lubridate&quot;    &quot;forcats&quot;      &quot;stringr&quot;      &quot;dplyr&quot;       
+## [16] &quot;readr&quot;        &quot;tidyr&quot;        &quot;tibble&quot;       &quot;tidyverse&quot;    &quot;viridis&quot;     
+## [21] &quot;viridisLite&quot;  &quot;unikn&quot;        &quot;RColorBrewer&quot; &quot;analogue&quot;     &quot;vegan&quot;       
+## [26] &quot;lattice&quot;      &quot;permute&quot;      &quot;flow&quot;         &quot;purrr&quot;        &quot;magrittr&quot;    
+## [31] &quot;ggplot2&quot;      &quot;stats&quot;        &quot;graphics&quot;     &quot;grDevices&quot;    &quot;utils&quot;       
+## [36] &quot;datasets&quot;     &quot;methods&quot;      &quot;base&quot;</code></pre>
 <p>Foi criado um um objeto <em>vector</em> com os nomes do pacotes que precisamos. Em seguida, iniciamos com <em>lapply</em> que fazer um <em>loop</em> dentro do objeto que foi criado (<code>pacotes</code>) depois vem o comando que quero que seja executado (<code>install.packages</code>) seguindo de um definição lógica (<code>character.only = TRUE</code>) onde que indica que o que tem dentro de pacotes é <em>character</em>.</p>
 <p><strong>Atenção!</strong> <code>character.only = TRUE</code> não está relacionado com <em>lapply</em>, mas com instalação ou carregamento de pacotes Para mais dealhes <a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/library.html">clique aqui</a>.</p>
-<p>Vamos observar uns exemplos mais completos seguindo as sugestões de <span class="citation"><a href="#ref-perlin2018processamento" role="doc-biblioref">Perlin</a> (<a href="#ref-perlin2018processamento" role="doc-biblioref">2018</a>)</span>.</p>
-<div id="lapply" class="section level3" number="8.1.1">
-<h3><span class="header-section-number">8.1.1</span> <em>lapply</em></h3>
+<p>Vamos observar uns exemplos mais completos seguindo as sugestões de <span class="citation">Perlin (<a href="#ref-perlin2018processamento" role="doc-biblioref">2018</a>)</span>.</p>
+<div id="lapply" class="section level3 hasAnchor" number="8.1.1">
+<h3><span class="header-section-number">8.1.1</span> <em>lapply</em><a href="outra-maneira-de-fazer-loop.html#lapply" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Com <em>lapply</em> a entrada é uma lista e a saída também é um lista. Esta função vai fazer um loop dentro de cada elemento da lista e retornar o resultado em forma de lista.</p>
 <p>Abaixo vamos criar uma lista com 3 vetores e calcular a média de cada vetor utilizando <em>lapply</em>.</p>
-<div class="sourceCode" id="cb829"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb829-1"><a href="outra-maneira-de-fazer-loop.html#cb829-1" aria-hidden="true" tabindex="-1"></a>lista<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">vec1 =</span> <span class="dv">33</span><span class="sc">:</span><span class="dv">47</span>, <span class="at">vec2 =</span> <span class="fu">seq</span>(<span class="dv">115</span>,<span class="dv">157</span>,<span class="at">by=</span><span class="dv">3</span>), <span class="at">vec3 =</span> <span class="fu">seq</span>(<span class="dv">10</span>,<span class="at">by=</span><span class="sc">-</span><span class="fl">8.5</span>, <span class="at">length.out=</span><span class="dv">15</span>)) </span>
-<span id="cb829-2"><a href="outra-maneira-de-fazer-loop.html#cb829-2" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(lista<span class="fl">.1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb812"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb812-1"><a href="outra-maneira-de-fazer-loop.html#cb812-1" aria-hidden="true" tabindex="-1"></a>lista<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">vec1 =</span> <span class="dv">33</span><span class="sc">:</span><span class="dv">47</span>, <span class="at">vec2 =</span> <span class="fu">seq</span>(<span class="dv">115</span>,<span class="dv">157</span>,<span class="at">by=</span><span class="dv">3</span>), <span class="at">vec3 =</span> <span class="fu">seq</span>(<span class="dv">10</span>,<span class="at">by=</span><span class="sc">-</span><span class="fl">8.5</span>, <span class="at">length.out=</span><span class="dv">15</span>)) </span>
+<span id="cb812-2"><a href="outra-maneira-de-fazer-loop.html#cb812-2" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(lista<span class="fl">.1</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;list&quot;</code></pre>
-<div class="sourceCode" id="cb831"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb831-1"><a href="outra-maneira-de-fazer-loop.html#cb831-1" aria-hidden="true" tabindex="-1"></a>lista.<span class="fl">1.</span>mean <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="at">X =</span> lista<span class="fl">.1</span>, <span class="at">FUN =</span> mean) <span class="co"># print result</span></span>
-<span id="cb831-2"><a href="outra-maneira-de-fazer-loop.html#cb831-2" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(lista.<span class="fl">1.</span>mean)</span></code></pre></div>
+<div class="sourceCode" id="cb814"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb814-1"><a href="outra-maneira-de-fazer-loop.html#cb814-1" aria-hidden="true" tabindex="-1"></a>lista.<span class="fl">1.</span>mean <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="at">X =</span> lista<span class="fl">.1</span>, <span class="at">FUN =</span> mean) <span class="co"># print result</span></span>
+<span id="cb814-2"><a href="outra-maneira-de-fazer-loop.html#cb814-2" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(lista.<span class="fl">1.</span>mean)</span></code></pre></div>
 <pre><code>## [1] &quot;list&quot;</code></pre>
-<div class="sourceCode" id="cb833"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb833-1"><a href="outra-maneira-de-fazer-loop.html#cb833-1" aria-hidden="true" tabindex="-1"></a>lista.<span class="fl">1.</span>mean</span></code></pre></div>
+<div class="sourceCode" id="cb816"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb816-1"><a href="outra-maneira-de-fazer-loop.html#cb816-1" aria-hidden="true" tabindex="-1"></a>lista.<span class="fl">1.</span>mean</span></code></pre></div>
 <pre><code>## $vec1
 ## [1] 40
 ## 
@@ -464,9 +442,9 @@ Em se tratando dos irmãos, cada um trabalha com uma estrutura de dados diferent
 ## $vec3
 ## [1] -49.5</code></pre>
 <p>Também é possível combinar com argumento por exemplo <code>na.rm = TRUE</code>.</p>
-<div class="sourceCode" id="cb835"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb835-1"><a href="outra-maneira-de-fazer-loop.html#cb835-1" aria-hidden="true" tabindex="-1"></a>lista<span class="fl">.2</span> <span class="ot">&lt;-</span> <span class="fu">list</span>( <span class="fu">c</span>( <span class="dv">33</span><span class="sc">:</span><span class="dv">40</span>, <span class="cn">NA</span>, <span class="dv">50</span>), <span class="fu">c</span>( <span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>, <span class="cn">NA</span>), <span class="dv">10</span><span class="sc">:-</span><span class="dv">109</span>) </span>
-<span id="cb835-2"><a href="outra-maneira-de-fazer-loop.html#cb835-2" aria-hidden="true" tabindex="-1"></a>lista.<span class="fl">2.</span>mean <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="at">X =</span> lista<span class="fl">.1</span>, <span class="at">FUN =</span> mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) </span>
-<span id="cb835-3"><a href="outra-maneira-de-fazer-loop.html#cb835-3" aria-hidden="true" tabindex="-1"></a>lista.<span class="fl">2.</span>mean</span></code></pre></div>
+<div class="sourceCode" id="cb818"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb818-1"><a href="outra-maneira-de-fazer-loop.html#cb818-1" aria-hidden="true" tabindex="-1"></a>lista<span class="fl">.2</span> <span class="ot">&lt;-</span> <span class="fu">list</span>( <span class="fu">c</span>( <span class="dv">33</span><span class="sc">:</span><span class="dv">40</span>, <span class="cn">NA</span>, <span class="dv">50</span>), <span class="fu">c</span>( <span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>, <span class="cn">NA</span>), <span class="dv">10</span><span class="sc">:-</span><span class="dv">109</span>) </span>
+<span id="cb818-2"><a href="outra-maneira-de-fazer-loop.html#cb818-2" aria-hidden="true" tabindex="-1"></a>lista.<span class="fl">2.</span>mean <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="at">X =</span> lista<span class="fl">.1</span>, <span class="at">FUN =</span> mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb818-3"><a href="outra-maneira-de-fazer-loop.html#cb818-3" aria-hidden="true" tabindex="-1"></a>lista.<span class="fl">2.</span>mean</span></code></pre></div>
 <pre><code>## $vec1
 ## [1] 40
 ## 
@@ -476,25 +454,25 @@ Em se tratando dos irmãos, cada um trabalha com uma estrutura de dados diferent
 ## $vec3
 ## [1] -49.5</code></pre>
 <p><strong><em>função para gerar arquivos</em></strong></p>
-<p>setwd("“J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR”)</p>
-<div class="sourceCode" id="cb837"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb837-1"><a href="outra-maneira-de-fazer-loop.html#cb837-1" aria-hidden="true" tabindex="-1"></a>criar.arquivo <span class="ot">&lt;-</span> <span class="cf">function</span>(nome.arquivo, <span class="at">N =</span> <span class="dv">100</span>){ </span>
-<span id="cb837-2"><a href="outra-maneira-de-fazer-loop.html#cb837-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">class</span>(nome.arquivo)<span class="sc">!=</span><span class="st">&quot;character&quot;</span>){<span class="fu">stop</span>(<span class="st">&quot;ERRO: Nome não é caractere!&quot;</span>)} </span>
-<span id="cb837-3"><a href="outra-maneira-de-fazer-loop.html#cb837-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span>( <span class="fu">class</span>(N) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;numeric&quot;</span>,<span class="st">&quot;integer&quot;</span>))){<span class="fu">stop</span>(<span class="st">&quot;ERRO: N não é integer ou numeric!&quot;</span>)} </span>
-<span id="cb837-4"><a href="outra-maneira-de-fazer-loop.html#cb837-4" aria-hidden="true" tabindex="-1"></a>  temp.df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">runif</span>(N)) </span>
-<span id="cb837-5"><a href="outra-maneira-de-fazer-loop.html#cb837-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write.csv</span>(<span class="at">x =</span> temp.df, <span class="at">file =</span> nome.arquivo) </span>
-<span id="cb837-6"><a href="outra-maneira-de-fazer-loop.html#cb837-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="cn">TRUE</span>) </span>
-<span id="cb837-7"><a href="outra-maneira-de-fazer-loop.html#cb837-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb837-8"><a href="outra-maneira-de-fazer-loop.html#cb837-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb837-9"><a href="outra-maneira-de-fazer-loop.html#cb837-9" aria-hidden="true" tabindex="-1"></a>n.files <span class="ot">&lt;-</span> <span class="dv">5</span> </span>
-<span id="cb837-10"><a href="outra-maneira-de-fazer-loop.html#cb837-10" aria-hidden="true" tabindex="-1"></a>pattern.name <span class="ot">&lt;-</span> <span class="st">&#39;meus_arquivos_com_lapply_&#39;</span> </span>
-<span id="cb837-11"><a href="outra-maneira-de-fazer-loop.html#cb837-11" aria-hidden="true" tabindex="-1"></a>out.dir <span class="ot">&lt;-</span> <span class="st">&#39;muitos arquivos/&#39;</span></span>
-<span id="cb837-12"><a href="outra-maneira-de-fazer-loop.html#cb837-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb837-13"><a href="outra-maneira-de-fazer-loop.html#cb837-13" aria-hidden="true" tabindex="-1"></a>file.names <span class="ot">&lt;-</span> <span class="fu">paste0</span>(out.dir, pattern.name, <span class="fu">seq</span>(<span class="dv">1</span>, n.files), <span class="st">&#39;. csv&#39;</span>) </span>
-<span id="cb837-14"><a href="outra-maneira-de-fazer-loop.html#cb837-14" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">dir.exists</span>(out.dir)){<span class="fu">dir.create</span>(out.dir)} </span>
-<span id="cb837-15"><a href="outra-maneira-de-fazer-loop.html#cb837-15" aria-hidden="true" tabindex="-1"></a><span class="fu">file.remove</span>(<span class="fu">list.files</span>(out.dir, <span class="at">full.names =</span> <span class="cn">TRUE</span>)) </span></code></pre></div>
+<p>setwd(““J:/ENG 792/ENG_792-AVDR/ENG.792-AVDR”)</p>
+<div class="sourceCode" id="cb820"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb820-1"><a href="outra-maneira-de-fazer-loop.html#cb820-1" aria-hidden="true" tabindex="-1"></a>criar.arquivo <span class="ot">&lt;-</span> <span class="cf">function</span>(nome.arquivo, <span class="at">N =</span> <span class="dv">100</span>){ </span>
+<span id="cb820-2"><a href="outra-maneira-de-fazer-loop.html#cb820-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">class</span>(nome.arquivo)<span class="sc">!=</span><span class="st">&quot;character&quot;</span>){<span class="fu">stop</span>(<span class="st">&quot;ERRO: Nome não é caractere!&quot;</span>)} </span>
+<span id="cb820-3"><a href="outra-maneira-de-fazer-loop.html#cb820-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span>( <span class="fu">class</span>(N) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;numeric&quot;</span>,<span class="st">&quot;integer&quot;</span>))){<span class="fu">stop</span>(<span class="st">&quot;ERRO: N não é integer ou numeric!&quot;</span>)} </span>
+<span id="cb820-4"><a href="outra-maneira-de-fazer-loop.html#cb820-4" aria-hidden="true" tabindex="-1"></a>  temp.df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">runif</span>(N)) </span>
+<span id="cb820-5"><a href="outra-maneira-de-fazer-loop.html#cb820-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write.csv</span>(<span class="at">x =</span> temp.df, <span class="at">file =</span> nome.arquivo) </span>
+<span id="cb820-6"><a href="outra-maneira-de-fazer-loop.html#cb820-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="cn">TRUE</span>) </span>
+<span id="cb820-7"><a href="outra-maneira-de-fazer-loop.html#cb820-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb820-8"><a href="outra-maneira-de-fazer-loop.html#cb820-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb820-9"><a href="outra-maneira-de-fazer-loop.html#cb820-9" aria-hidden="true" tabindex="-1"></a>n.files <span class="ot">&lt;-</span> <span class="dv">5</span> </span>
+<span id="cb820-10"><a href="outra-maneira-de-fazer-loop.html#cb820-10" aria-hidden="true" tabindex="-1"></a>pattern.name <span class="ot">&lt;-</span> <span class="st">&#39;meus_arquivos_com_lapply_&#39;</span> </span>
+<span id="cb820-11"><a href="outra-maneira-de-fazer-loop.html#cb820-11" aria-hidden="true" tabindex="-1"></a>out.dir <span class="ot">&lt;-</span> <span class="st">&#39;muitos arquivos/&#39;</span></span>
+<span id="cb820-12"><a href="outra-maneira-de-fazer-loop.html#cb820-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb820-13"><a href="outra-maneira-de-fazer-loop.html#cb820-13" aria-hidden="true" tabindex="-1"></a>file.names <span class="ot">&lt;-</span> <span class="fu">paste0</span>(out.dir, pattern.name, <span class="fu">seq</span>(<span class="dv">1</span>, n.files), <span class="st">&#39;. csv&#39;</span>) </span>
+<span id="cb820-14"><a href="outra-maneira-de-fazer-loop.html#cb820-14" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">dir.exists</span>(out.dir)){<span class="fu">dir.create</span>(out.dir)} </span>
+<span id="cb820-15"><a href="outra-maneira-de-fazer-loop.html#cb820-15" aria-hidden="true" tabindex="-1"></a><span class="fu">file.remove</span>(<span class="fu">list.files</span>(out.dir, <span class="at">full.names =</span> <span class="cn">TRUE</span>)) </span></code></pre></div>
 <pre><code>## [1] TRUE TRUE TRUE TRUE TRUE</code></pre>
-<div class="sourceCode" id="cb839"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb839-1"><a href="outra-maneira-de-fazer-loop.html#cb839-1" aria-hidden="true" tabindex="-1"></a>saida.l <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="at">X =</span> file.names, <span class="at">FUN =</span> criar.arquivo, <span class="at">N =</span> <span class="dv">100</span>) </span>
-<span id="cb839-2"><a href="outra-maneira-de-fazer-loop.html#cb839-2" aria-hidden="true" tabindex="-1"></a>saida.l</span></code></pre></div>
+<div class="sourceCode" id="cb822"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb822-1"><a href="outra-maneira-de-fazer-loop.html#cb822-1" aria-hidden="true" tabindex="-1"></a>saida.l <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="at">X =</span> file.names, <span class="at">FUN =</span> criar.arquivo, <span class="at">N =</span> <span class="dv">100</span>) </span>
+<span id="cb822-2"><a href="outra-maneira-de-fazer-loop.html#cb822-2" aria-hidden="true" tabindex="-1"></a>saida.l</span></code></pre></div>
 <pre><code>## [[1]]
 ## [1] TRUE
 ## 
@@ -510,61 +488,61 @@ Em se tratando dos irmãos, cada um trabalha com uma estrutura de dados diferent
 ## [[5]]
 ## [1] TRUE</code></pre>
 </div>
-<div id="sapply" class="section level3" number="8.1.2">
-<h3><span class="header-section-number">8.1.2</span> <em>sapply</em></h3>
+<div id="sapply" class="section level3 hasAnchor" number="8.1.2">
+<h3><span class="header-section-number">8.1.2</span> <em>sapply</em><a href="outra-maneira-de-fazer-loop.html#sapply" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Funciona de maneira semelhante ao <em>lapply</em> mas tentando simplificar a saída. Veja que no exemplo abaixo a saída é um vetor numérico.</p>
-<div class="sourceCode" id="cb841"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb841-1"><a href="outra-maneira-de-fazer-loop.html#cb841-1" aria-hidden="true" tabindex="-1"></a>lista<span class="fl">.3</span> <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">vec1 =</span> <span class="dv">33</span><span class="sc">:</span><span class="dv">47</span>, <span class="at">vec2 =</span> <span class="fu">seq</span>(<span class="dv">115</span>,<span class="dv">157</span>,<span class="at">by=</span><span class="dv">3</span>), <span class="at">vec3 =</span> <span class="fu">seq</span>(<span class="dv">10</span>,<span class="at">by=</span><span class="sc">-</span><span class="fl">8.5</span>, <span class="at">length.out=</span><span class="dv">15</span>))</span>
-<span id="cb841-2"><a href="outra-maneira-de-fazer-loop.html#cb841-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.list</span>(lista<span class="fl">.3</span>);<span class="fu">is.vector</span>(lista<span class="fl">.3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb824"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb824-1"><a href="outra-maneira-de-fazer-loop.html#cb824-1" aria-hidden="true" tabindex="-1"></a>lista<span class="fl">.3</span> <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">vec1 =</span> <span class="dv">33</span><span class="sc">:</span><span class="dv">47</span>, <span class="at">vec2 =</span> <span class="fu">seq</span>(<span class="dv">115</span>,<span class="dv">157</span>,<span class="at">by=</span><span class="dv">3</span>), <span class="at">vec3 =</span> <span class="fu">seq</span>(<span class="dv">10</span>,<span class="at">by=</span><span class="sc">-</span><span class="fl">8.5</span>, <span class="at">length.out=</span><span class="dv">15</span>))</span>
+<span id="cb824-2"><a href="outra-maneira-de-fazer-loop.html#cb824-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.list</span>(lista<span class="fl">.3</span>);<span class="fu">is.vector</span>(lista<span class="fl">.3</span>)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb844"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb844-1"><a href="outra-maneira-de-fazer-loop.html#cb844-1" aria-hidden="true" tabindex="-1"></a>lista.<span class="fl">3.</span>vec <span class="ot">&lt;-</span> <span class="fu">sapply</span>(lista<span class="fl">.3</span>, mean) </span>
-<span id="cb844-2"><a href="outra-maneira-de-fazer-loop.html#cb844-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(lista.<span class="fl">3.</span>vec);<span class="fu">is.list</span>(lista.<span class="fl">3.</span>vec);<span class="fu">is.vector</span>(lista.<span class="fl">3.</span>vec)</span></code></pre></div>
+<div class="sourceCode" id="cb827"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb827-1"><a href="outra-maneira-de-fazer-loop.html#cb827-1" aria-hidden="true" tabindex="-1"></a>lista.<span class="fl">3.</span>vec <span class="ot">&lt;-</span> <span class="fu">sapply</span>(lista<span class="fl">.3</span>, mean) </span>
+<span id="cb827-2"><a href="outra-maneira-de-fazer-loop.html#cb827-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(lista.<span class="fl">3.</span>vec);<span class="fu">is.list</span>(lista.<span class="fl">3.</span>vec);<span class="fu">is.vector</span>(lista.<span class="fl">3.</span>vec)</span></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
 <pre><code>## [1] FALSE</code></pre>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb848"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb848-1"><a href="outra-maneira-de-fazer-loop.html#cb848-1" aria-hidden="true" tabindex="-1"></a>lista.<span class="fl">3.</span>vec</span></code></pre></div>
+<div class="sourceCode" id="cb831"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb831-1"><a href="outra-maneira-de-fazer-loop.html#cb831-1" aria-hidden="true" tabindex="-1"></a>lista.<span class="fl">3.</span>vec</span></code></pre></div>
 <pre><code>##  vec1  vec2  vec3 
 ##  40.0 136.0 -49.5</code></pre>
 <p>Criando um função para testar se a <code>lista.4</code> é <em>numeric</em> e <em>integer</em>.</p>
-<div class="sourceCode" id="cb850"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb850-1"><a href="outra-maneira-de-fazer-loop.html#cb850-1" aria-hidden="true" tabindex="-1"></a>lista<span class="fl">.4</span> <span class="ot">&lt;-</span> <span class="fu">list</span>( <span class="fu">runif</span>(<span class="dv">10</span>), <span class="fu">runif</span>(<span class="dv">15</span>), <span class="fu">rnorm</span>(<span class="dv">1000</span>))</span>
-<span id="cb850-2"><a href="outra-maneira-de-fazer-loop.html#cb850-2" aria-hidden="true" tabindex="-1"></a>my.fct <span class="ot">&lt;-</span> <span class="cf">function</span>( x){</span>
-<span id="cb850-3"><a href="outra-maneira-de-fazer-loop.html#cb850-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span>(<span class="fu">class</span>(x)<span class="sc">%in%</span><span class="fu">c</span>(<span class="st">&quot;numeric&quot;</span>,<span class="st">&quot;integer&quot;</span>)))</span>
-<span id="cb850-4"><a href="outra-maneira-de-fazer-loop.html#cb850-4" aria-hidden="true" tabindex="-1"></a>  {<span class="fu">stop</span>(<span class="st">&quot;ERRO: Class de x não é numeric ou integer.&quot;</span>) }</span>
-<span id="cb850-5"><a href="outra-maneira-de-fazer-loop.html#cb850-5" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(x)</span>
-<span id="cb850-6"><a href="outra-maneira-de-fazer-loop.html#cb850-6" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">mean</span>(x),<span class="fu">sd</span>(x))</span>
-<span id="cb850-7"><a href="outra-maneira-de-fazer-loop.html#cb850-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(out) </span>
-<span id="cb850-8"><a href="outra-maneira-de-fazer-loop.html#cb850-8" aria-hidden="true" tabindex="-1"></a>} </span></code></pre></div>
+<div class="sourceCode" id="cb833"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb833-1"><a href="outra-maneira-de-fazer-loop.html#cb833-1" aria-hidden="true" tabindex="-1"></a>lista<span class="fl">.4</span> <span class="ot">&lt;-</span> <span class="fu">list</span>( <span class="fu">runif</span>(<span class="dv">10</span>), <span class="fu">runif</span>(<span class="dv">15</span>), <span class="fu">rnorm</span>(<span class="dv">1000</span>))</span>
+<span id="cb833-2"><a href="outra-maneira-de-fazer-loop.html#cb833-2" aria-hidden="true" tabindex="-1"></a>my.fct <span class="ot">&lt;-</span> <span class="cf">function</span>( x){</span>
+<span id="cb833-3"><a href="outra-maneira-de-fazer-loop.html#cb833-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span>(<span class="fu">class</span>(x)<span class="sc">%in%</span><span class="fu">c</span>(<span class="st">&quot;numeric&quot;</span>,<span class="st">&quot;integer&quot;</span>)))</span>
+<span id="cb833-4"><a href="outra-maneira-de-fazer-loop.html#cb833-4" aria-hidden="true" tabindex="-1"></a>  {<span class="fu">stop</span>(<span class="st">&quot;ERRO: Class de x não é numeric ou integer.&quot;</span>) }</span>
+<span id="cb833-5"><a href="outra-maneira-de-fazer-loop.html#cb833-5" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(x)</span>
+<span id="cb833-6"><a href="outra-maneira-de-fazer-loop.html#cb833-6" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">mean</span>(x),<span class="fu">sd</span>(x))</span>
+<span id="cb833-7"><a href="outra-maneira-de-fazer-loop.html#cb833-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(out) </span>
+<span id="cb833-8"><a href="outra-maneira-de-fazer-loop.html#cb833-8" aria-hidden="true" tabindex="-1"></a>} </span></code></pre></div>
 <p>Utilizando a função criada com <em>sapply</em>.</p>
-<div class="sourceCode" id="cb851"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb851-1"><a href="outra-maneira-de-fazer-loop.html#cb851-1" aria-hidden="true" tabindex="-1"></a>lista.<span class="fl">4.</span>vec <span class="ot">&lt;-</span> <span class="fu">sapply</span>(lista<span class="fl">.4</span>, my.fct) <span class="co"># check result </span></span>
-<span id="cb851-2"><a href="outra-maneira-de-fazer-loop.html#cb851-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(lista.<span class="fl">4.</span>vec)</span></code></pre></div>
+<div class="sourceCode" id="cb834"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb834-1"><a href="outra-maneira-de-fazer-loop.html#cb834-1" aria-hidden="true" tabindex="-1"></a>lista.<span class="fl">4.</span>vec <span class="ot">&lt;-</span> <span class="fu">sapply</span>(lista<span class="fl">.4</span>, my.fct) <span class="co"># check result </span></span>
+<span id="cb834-2"><a href="outra-maneira-de-fazer-loop.html#cb834-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(lista.<span class="fl">4.</span>vec)</span></code></pre></div>
 <pre><code>## [1] &quot;matrix&quot; &quot;array&quot;</code></pre>
-<div class="sourceCode" id="cb853"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb853-1"><a href="outra-maneira-de-fazer-loop.html#cb853-1" aria-hidden="true" tabindex="-1"></a>lista.<span class="fl">4.</span>vec</span></code></pre></div>
+<div class="sourceCode" id="cb836"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb836-1"><a href="outra-maneira-de-fazer-loop.html#cb836-1" aria-hidden="true" tabindex="-1"></a>lista.<span class="fl">4.</span>vec</span></code></pre></div>
 <pre><code>##           [,1]      [,2]        [,3]
 ## [1,] 0.3956025 0.7014711 -0.03105341
 ## [2,] 0.3011568 0.2377516  0.97647518</code></pre>
 </div>
-<div id="tapply" class="section level3" number="8.1.3">
-<h3><span class="header-section-number">8.1.3</span> <em>tapply</em></h3>
+<div id="tapply" class="section level3 hasAnchor" number="8.1.3">
+<h3><span class="header-section-number">8.1.3</span> <em>tapply</em><a href="outra-maneira-de-fazer-loop.html#tapply" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Função utilizada para cálculos em grupos (<em>factor</em>) de dados individualmente permitindo a criação de amostras para então aplicar os cáculos necessários.</p>
 <p>Abaixo temos o cálculode média para cada grupo <em>A</em>, <em>B</em> e <em>C</em>.</p>
-<div class="sourceCode" id="cb855"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb855-1"><a href="outra-maneira-de-fazer-loop.html#cb855-1" aria-hidden="true" tabindex="-1"></a>meu.vetor <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">150</span></span>
-<span id="cb855-2"><a href="outra-maneira-de-fazer-loop.html#cb855-2" aria-hidden="true" tabindex="-1"></a>factor<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;C&quot;</span>, <span class="dv">50</span>), <span class="fu">rep</span>(<span class="st">&quot;B&quot;</span>, <span class="dv">50</span>), <span class="fu">rep</span>(<span class="st">&quot;A&quot;</span>, <span class="dv">50</span>)))</span>
-<span id="cb855-3"><a href="outra-maneira-de-fazer-loop.html#cb855-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb855-4"><a href="outra-maneira-de-fazer-loop.html#cb855-4" aria-hidden="true" tabindex="-1"></a>factor.<span class="fl">1.</span>mean.vec <span class="ot">&lt;-</span> <span class="fu">tapply</span>(<span class="at">X =</span> meu.vetor, <span class="at">INDEX =</span> factor<span class="fl">.1</span>, <span class="at">FUN =</span> mean)</span>
-<span id="cb855-5"><a href="outra-maneira-de-fazer-loop.html#cb855-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb855-6"><a href="outra-maneira-de-fazer-loop.html#cb855-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(factor.<span class="fl">1.</span>mean.vec)</span></code></pre></div>
+<div class="sourceCode" id="cb838"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb838-1"><a href="outra-maneira-de-fazer-loop.html#cb838-1" aria-hidden="true" tabindex="-1"></a>meu.vetor <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">150</span></span>
+<span id="cb838-2"><a href="outra-maneira-de-fazer-loop.html#cb838-2" aria-hidden="true" tabindex="-1"></a>factor<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;C&quot;</span>, <span class="dv">50</span>), <span class="fu">rep</span>(<span class="st">&quot;B&quot;</span>, <span class="dv">50</span>), <span class="fu">rep</span>(<span class="st">&quot;A&quot;</span>, <span class="dv">50</span>)))</span>
+<span id="cb838-3"><a href="outra-maneira-de-fazer-loop.html#cb838-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb838-4"><a href="outra-maneira-de-fazer-loop.html#cb838-4" aria-hidden="true" tabindex="-1"></a>factor.<span class="fl">1.</span>mean.vec <span class="ot">&lt;-</span> <span class="fu">tapply</span>(<span class="at">X =</span> meu.vetor, <span class="at">INDEX =</span> factor<span class="fl">.1</span>, <span class="at">FUN =</span> mean)</span>
+<span id="cb838-5"><a href="outra-maneira-de-fazer-loop.html#cb838-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb838-6"><a href="outra-maneira-de-fazer-loop.html#cb838-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(factor.<span class="fl">1.</span>mean.vec)</span></code></pre></div>
 <pre><code>##     A     B     C 
 ## 125.5  75.5  25.5</code></pre>
 <p>Abaixo o operador <strong><em>%in%</em></strong> é utilizado para identificar se um parâmetro pertence a um tipo de restrição definida.
 Abaixo quero saber se a classe de <em>x</em> não é <code>numeric</code> ou <code>integer</code>. Se for vai omitir os valores <code>NA</code> e calcular a média, valor máximo e mínimo.</p>
-<div class="sourceCode" id="cb857"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb857-1"><a href="outra-maneira-de-fazer-loop.html#cb857-1" aria-hidden="true" tabindex="-1"></a>descr.vec <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb857-2"><a href="outra-maneira-de-fazer-loop.html#cb857-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span>(<span class="fu">class</span>(x)<span class="sc">%in%</span><span class="fu">c</span>(<span class="st">&#39;numeric&#39;</span>,<span class="st">&#39;integer&#39;</span>))){<span class="fu">stop</span>(<span class="st">&#39; ERROR: Class de x não é numeric ou integer.&#39;</span>) } </span>
-<span id="cb857-3"><a href="outra-maneira-de-fazer-loop.html#cb857-3" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(x) </span>
-<span id="cb857-4"><a href="outra-maneira-de-fazer-loop.html#cb857-4" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">c</span>( </span>
-<span id="cb857-5"><a href="outra-maneira-de-fazer-loop.html#cb857-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(x), </span>
-<span id="cb857-6"><a href="outra-maneira-de-fazer-loop.html#cb857-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">max =</span> <span class="fu">max</span>(x), </span>
-<span id="cb857-7"><a href="outra-maneira-de-fazer-loop.html#cb857-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">min =</span> <span class="fu">min</span>(x)) </span>
-<span id="cb857-8"><a href="outra-maneira-de-fazer-loop.html#cb857-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>( out)}</span></code></pre></div>
+<div class="sourceCode" id="cb840"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb840-1"><a href="outra-maneira-de-fazer-loop.html#cb840-1" aria-hidden="true" tabindex="-1"></a>descr.vec <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb840-2"><a href="outra-maneira-de-fazer-loop.html#cb840-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span>(<span class="fu">class</span>(x)<span class="sc">%in%</span><span class="fu">c</span>(<span class="st">&#39;numeric&#39;</span>,<span class="st">&#39;integer&#39;</span>))){<span class="fu">stop</span>(<span class="st">&#39; ERROR: Class de x não é numeric ou integer.&#39;</span>) } </span>
+<span id="cb840-3"><a href="outra-maneira-de-fazer-loop.html#cb840-3" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(x) </span>
+<span id="cb840-4"><a href="outra-maneira-de-fazer-loop.html#cb840-4" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">c</span>( </span>
+<span id="cb840-5"><a href="outra-maneira-de-fazer-loop.html#cb840-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(x), </span>
+<span id="cb840-6"><a href="outra-maneira-de-fazer-loop.html#cb840-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">max =</span> <span class="fu">max</span>(x), </span>
+<span id="cb840-7"><a href="outra-maneira-de-fazer-loop.html#cb840-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">min =</span> <span class="fu">min</span>(x)) </span>
+<span id="cb840-8"><a href="outra-maneira-de-fazer-loop.html#cb840-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>( out)}</span></code></pre></div>
 <p>Temos aqui a função <a href="https://www.stat.berkeley.edu/~s133/Docall.html"><code>do.call</code></a> que permite aplicar uma função a toda uma lista.</p>
 <table>
 <thead>
@@ -3678,17 +3656,17 @@ NA
 ## 8 83.96774  97  72
 ## 9 76.90000  93  63</code></pre>
 </div>
-<div id="mapply" class="section level3" number="8.1.4">
-<h3><span class="header-section-number">8.1.4</span> <em>mapply</em></h3>
+<div id="mapply" class="section level3 hasAnchor" number="8.1.4">
+<h3><span class="header-section-number">8.1.4</span> <em>mapply</em><a href="outra-maneira-de-fazer-loop.html#mapply" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Esta função pode ser utilizada numa lista de múltiplas listas ou vários vetores.</p>
 <p>Abaixo vamos criar uma lista de 10 vetores de tamanhos diferentes.</p>
-<div class="sourceCode" id="cb860"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb860-1"><a href="outra-maneira-de-fazer-loop.html#cb860-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="co"># Prealocando a lista </span></span>
-<span id="cb860-2"><a href="outra-maneira-de-fazer-loop.html#cb860-2" aria-hidden="true" tabindex="-1"></a>minha.lista <span class="ot">&lt;-</span> <span class="fu">list</span>() </span>
-<span id="cb860-3"><a href="outra-maneira-de-fazer-loop.html#cb860-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb860-4"><a href="outra-maneira-de-fazer-loop.html#cb860-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">1</span>,N)){</span>
-<span id="cb860-5"><a href="outra-maneira-de-fazer-loop.html#cb860-5" aria-hidden="true" tabindex="-1"></a>  minha.lista[[i]]<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="dv">1</span>,i)}</span>
-<span id="cb860-6"><a href="outra-maneira-de-fazer-loop.html#cb860-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb860-7"><a href="outra-maneira-de-fazer-loop.html#cb860-7" aria-hidden="true" tabindex="-1"></a>minha.lista</span></code></pre></div>
+<div class="sourceCode" id="cb843"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb843-1"><a href="outra-maneira-de-fazer-loop.html#cb843-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="co"># Prealocando a lista </span></span>
+<span id="cb843-2"><a href="outra-maneira-de-fazer-loop.html#cb843-2" aria-hidden="true" tabindex="-1"></a>minha.lista <span class="ot">&lt;-</span> <span class="fu">list</span>() </span>
+<span id="cb843-3"><a href="outra-maneira-de-fazer-loop.html#cb843-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb843-4"><a href="outra-maneira-de-fazer-loop.html#cb843-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">1</span>,N)){</span>
+<span id="cb843-5"><a href="outra-maneira-de-fazer-loop.html#cb843-5" aria-hidden="true" tabindex="-1"></a>  minha.lista[[i]]<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="dv">1</span>,i)}</span>
+<span id="cb843-6"><a href="outra-maneira-de-fazer-loop.html#cb843-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb843-7"><a href="outra-maneira-de-fazer-loop.html#cb843-7" aria-hidden="true" tabindex="-1"></a>minha.lista</span></code></pre></div>
 <pre><code>## [[1]]
 ## [1] 1
 ## 
@@ -3719,8 +3697,8 @@ NA
 ## [[10]]
 ##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
 <p>Aqui fazemos a mesma coisa utilizando o <em>mapply</em>.</p>
-<div class="sourceCode" id="cb862"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb862-1"><a href="outra-maneira-de-fazer-loop.html#cb862-1" aria-hidden="true" tabindex="-1"></a>minha.lista <span class="ot">&lt;-</span> <span class="fu">mapply</span>(<span class="at">FUN =</span> seq, <span class="fu">rep</span>(<span class="dv">1</span>,N), <span class="fu">seq</span>(<span class="dv">1</span>,N)) </span>
-<span id="cb862-2"><a href="outra-maneira-de-fazer-loop.html#cb862-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(minha.lista)</span></code></pre></div>
+<div class="sourceCode" id="cb845"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb845-1"><a href="outra-maneira-de-fazer-loop.html#cb845-1" aria-hidden="true" tabindex="-1"></a>minha.lista <span class="ot">&lt;-</span> <span class="fu">mapply</span>(<span class="at">FUN =</span> seq, <span class="fu">rep</span>(<span class="dv">1</span>,N), <span class="fu">seq</span>(<span class="dv">1</span>,N)) </span>
+<span id="cb845-2"><a href="outra-maneira-de-fazer-loop.html#cb845-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(minha.lista)</span></code></pre></div>
 <pre><code>## [[1]]
 ## [1] 1
 ## 
@@ -3751,32 +3729,32 @@ NA
 ## [[10]]
 ##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
 </div>
-<div id="apply" class="section level3" number="8.1.5">
-<h3><span class="header-section-number">8.1.5</span> <em>apply</em></h3>
+<div id="apply" class="section level3 hasAnchor" number="8.1.5">
+<h3><span class="header-section-number">8.1.5</span> <em>apply</em><a href="outra-maneira-de-fazer-loop.html#apply" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Utilizado em <em>arrays</em>.</p>
-<div class="sourceCode" id="cb864"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb864-1"><a href="outra-maneira-de-fazer-loop.html#cb864-1" aria-hidden="true" tabindex="-1"></a>minha.matriz <span class="ot">&lt;-</span> <span class="fu">matrix</span>( <span class="dv">1</span><span class="sc">:</span> <span class="dv">15</span>, <span class="at">nrow =</span> <span class="dv">5</span>) </span>
-<span id="cb864-2"><a href="outra-maneira-de-fazer-loop.html#cb864-2" aria-hidden="true" tabindex="-1"></a>minha.matriz</span></code></pre></div>
+<div class="sourceCode" id="cb847"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb847-1"><a href="outra-maneira-de-fazer-loop.html#cb847-1" aria-hidden="true" tabindex="-1"></a>minha.matriz <span class="ot">&lt;-</span> <span class="fu">matrix</span>( <span class="dv">1</span><span class="sc">:</span> <span class="dv">15</span>, <span class="at">nrow =</span> <span class="dv">5</span>) </span>
+<span id="cb847-2"><a href="outra-maneira-de-fazer-loop.html#cb847-2" aria-hidden="true" tabindex="-1"></a>minha.matriz</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    6   11
 ## [2,]    2    7   12
 ## [3,]    3    8   13
 ## [4,]    4    9   14
 ## [5,]    5   10   15</code></pre>
-<div class="sourceCode" id="cb866"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb866-1"><a href="outra-maneira-de-fazer-loop.html#cb866-1" aria-hidden="true" tabindex="-1"></a>soma.linha <span class="ot">&lt;-</span> <span class="fu">apply</span>( <span class="at">X =</span> minha.matriz, <span class="at">MARGIN =</span> <span class="dv">1</span>, <span class="at">FUN=</span>sum)</span>
-<span id="cb866-2"><a href="outra-maneira-de-fazer-loop.html#cb866-2" aria-hidden="true" tabindex="-1"></a>soma.linha</span></code></pre></div>
+<div class="sourceCode" id="cb849"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb849-1"><a href="outra-maneira-de-fazer-loop.html#cb849-1" aria-hidden="true" tabindex="-1"></a>soma.linha <span class="ot">&lt;-</span> <span class="fu">apply</span>( <span class="at">X =</span> minha.matriz, <span class="at">MARGIN =</span> <span class="dv">1</span>, <span class="at">FUN=</span>sum)</span>
+<span id="cb849-2"><a href="outra-maneira-de-fazer-loop.html#cb849-2" aria-hidden="true" tabindex="-1"></a>soma.linha</span></code></pre></div>
 <pre><code>## [1] 18 21 24 27 30</code></pre>
-<div class="sourceCode" id="cb868"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb868-1"><a href="outra-maneira-de-fazer-loop.html#cb868-1" aria-hidden="true" tabindex="-1"></a>soma.coluna <span class="ot">&lt;-</span> <span class="fu">apply</span>( <span class="at">X =</span> minha.matriz, <span class="at">MARGIN =</span> <span class="dv">2</span>, <span class="at">FUN =</span> sum) </span>
-<span id="cb868-2"><a href="outra-maneira-de-fazer-loop.html#cb868-2" aria-hidden="true" tabindex="-1"></a>soma.coluna</span></code></pre></div>
+<div class="sourceCode" id="cb851"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb851-1"><a href="outra-maneira-de-fazer-loop.html#cb851-1" aria-hidden="true" tabindex="-1"></a>soma.coluna <span class="ot">&lt;-</span> <span class="fu">apply</span>( <span class="at">X =</span> minha.matriz, <span class="at">MARGIN =</span> <span class="dv">2</span>, <span class="at">FUN =</span> sum) </span>
+<span id="cb851-2"><a href="outra-maneira-de-fazer-loop.html#cb851-2" aria-hidden="true" tabindex="-1"></a>soma.coluna</span></code></pre></div>
 <pre><code>## [1] 15 40 65</code></pre>
-<div class="sourceCode" id="cb870"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb870-1"><a href="outra-maneira-de-fazer-loop.html#cb870-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mostra os valores máximos por linha</span></span>
-<span id="cb870-2"><a href="outra-maneira-de-fazer-loop.html#cb870-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">apply</span>(<span class="at">X =</span> minha.matriz, <span class="at">MARGIN =</span> <span class="dv">1</span>, <span class="at">FUN =</span> max))</span></code></pre></div>
+<div class="sourceCode" id="cb853"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb853-1"><a href="outra-maneira-de-fazer-loop.html#cb853-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mostra os valores máximos por linha</span></span>
+<span id="cb853-2"><a href="outra-maneira-de-fazer-loop.html#cb853-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">apply</span>(<span class="at">X =</span> minha.matriz, <span class="at">MARGIN =</span> <span class="dv">1</span>, <span class="at">FUN =</span> max))</span></code></pre></div>
 <pre><code>## [1] 11 12 13 14 15</code></pre>
-<div class="sourceCode" id="cb872"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb872-1"><a href="outra-maneira-de-fazer-loop.html#cb872-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mostra os valores máximos por coluna</span></span>
-<span id="cb872-2"><a href="outra-maneira-de-fazer-loop.html#cb872-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">apply</span>( <span class="at">X =</span> minha.matriz, <span class="at">MARGIN =</span> <span class="dv">2</span>, <span class="at">FUN =</span> max))</span></code></pre></div>
+<div class="sourceCode" id="cb855"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb855-1"><a href="outra-maneira-de-fazer-loop.html#cb855-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mostra os valores máximos por coluna</span></span>
+<span id="cb855-2"><a href="outra-maneira-de-fazer-loop.html#cb855-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">apply</span>( <span class="at">X =</span> minha.matriz, <span class="at">MARGIN =</span> <span class="dv">2</span>, <span class="at">FUN =</span> max))</span></code></pre></div>
 <pre><code>## [1]  5 10 15</code></pre>
 </div>
-<div id="leituras-complementares-1" class="section level3" number="8.1.6">
-<h3><span class="header-section-number">8.1.6</span> Leituras complementares</h3>
+<div id="leituras-complementares-1" class="section level3 hasAnchor" number="8.1.6">
+<h3><span class="header-section-number">8.1.6</span> Leituras complementares<a href="outra-maneira-de-fazer-loop.html#leituras-complementares-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><a href="https://www.datacamp.com/community/tutorials/r-tutorial-apply-family">Tutorial on the R Apply Family</a></p>
 <p><a href="http://uc-r.github.io/apply_family">Apply Family</a></p>
 <p><a href="https://www.r-bloggers.com/2021/05/apply-family-in-r-apply-lapply-sapply-mapply-and-tapply/">apply family in r apply(), lapply(), sapply(), mapply() and tapply()</a></p>
@@ -3801,7 +3779,6 @@ Perlin, M. S. 2018. <em>Processamento e an<span>á</span>lise de Dados Financeir
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -3842,7 +3819,7 @@ gitbook.start({
 },
 "download": ["ENG_792-AVDR.pdf", "ENG_792-AVDR.epub"],
 "search": {
-"engine": "lunr",
+"engine": "fuse",
 "options": null
 },
 "toc": {
@@ -3858,7 +3835,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
